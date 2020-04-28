@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default as Layout } from \"./Layout\";","map":{"version":3,"sources":["D:/Anvar/Projects/React/React.js/inStore/layouts/index.js"],"names":["default","Layout"],"mappings":"AAAA,SAASA,OAAO,IAAIC,MAApB,QAAkC,UAAlC","sourcesContent":["export { default as Layout } from \"./Layout\";\r\n"]},"metadata":{},"sourceType":"module"}

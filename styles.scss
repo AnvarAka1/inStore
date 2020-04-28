@@ -1,0 +1,61 @@
+:root {
+    --accent: #024E8F
+}
+
+@font-face {
+    font-family: "OpenSans";
+    src: url("/static/fonts/opensans/OpenSans-Regular.ttf");
+}
+
+body {
+    font-size: 16px;
+    position: relative;
+    font-family: "OpenSans", sans-serif !important;
+}
+
+p {
+    color: #777777;
+}
+
+div {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: bold;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+        list-style-type: none;
+    }
+}
+
+.text {
+    &-small {
+        font-size: .75rem;
+    }
+
+    &-underline {
+        text-decoration: underline;
+    }
+
+    &-bold {
+        font-weight: bold;
+    }
+
+    &-accent {
+        color: var(--accent)
+    }
+}
