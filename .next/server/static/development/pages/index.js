@@ -115,6 +115,131 @@ module.exports = require("next/dist/next-server/lib/utils.js");
 
 /***/ }),
 
+/***/ "./components/Compilations/Compilation/Compilation.js":
+/*!************************************************************!*\
+  !*** ./components/Compilations/Compilation/Compilation.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Compilation_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Compilation.module.scss */ "./components/Compilations/Compilation/Compilation.module.scss");
+/* harmony import */ var _Compilation_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Compilation_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Compilations\\Compilation\\Compilation.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+const compilation = ({
+  className,
+  text,
+  img
+}) => {
+  return __jsx("div", {
+    className: `${className} ${_Compilation_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Compilation}`,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 3
+    }
+  }, __jsx("img", {
+    src: img,
+    alt: text,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 4
+    }
+  }), __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 4
+    }
+  }, __jsx("h3", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 5
+    }
+  }, text)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (compilation);
+
+/***/ }),
+
+/***/ "./components/Compilations/Compilation/Compilation.module.scss":
+/*!*********************************************************************!*\
+  !*** ./components/Compilations/Compilation/Compilation.module.scss ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Exports
+module.exports = {
+	"Compilation": "Compilation_Compilation__1T3DJ"
+};
+
+
+/***/ }),
+
+/***/ "./components/Compilations/Compilations.js":
+/*!*************************************************!*\
+  !*** ./components/Compilations/Compilations.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Compilation_Compilation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Compilation/Compilation */ "./components/Compilations/Compilation/Compilation.js");
+var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Compilations\\Compilations.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+const compilations = ({
+  items,
+  onClick
+}) => {
+  const compilationsView = items.map(item => {
+    return __jsx(_Compilation_Compilation__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: item.id,
+      onClick: () => onClick(item.id),
+      text: item.text,
+      img: item.img,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 6,
+        columnNumber: 10
+      }
+    });
+  });
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 9
+    }
+  }, compilationsView);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (compilations);
+
+/***/ }),
+
 /***/ "./components/Footer/Footer.js":
 /*!*************************************!*\
   !*** ./components/Footer/Footer.js ***!
@@ -436,6 +561,7 @@ module.exports = {
 	"Social": "Footer_Social__aHE_y"
 };
 
+
 /***/ }),
 
 /***/ "./components/Footer/FooterItems/FooterItem/FooterItem.js":
@@ -561,6 +687,67 @@ const footerItems = ({
 
 /***/ }),
 
+/***/ "./components/Heading/Heading.js":
+/*!***************************************!*\
+  !*** ./components/Heading/Heading.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Heading\\Heading.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+const heading = ({
+  className,
+  children,
+  text,
+  clicked
+}) => {
+  return __jsx("div", {
+    className: className,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 3
+    }
+  }, __jsx("h5", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 4
+    }
+  }, children), __jsx("p", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 4
+    }
+  }, text), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    onClick: clicked,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 4
+    }
+  }, "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0432\u0435\u0441\u044C \u0441\u043F\u0438\u0441\u043E\u043A"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (heading);
+
+/***/ }),
+
 /***/ "./components/Logo/Logo.js":
 /*!*********************************!*\
   !*** ./components/Logo/Logo.js ***!
@@ -620,6 +807,7 @@ module.exports = {
 	"Logo": "Logo_Logo__h5BMD"
 };
 
+
 /***/ }),
 
 /***/ "./components/Navigation/Navbar.js":
@@ -652,6 +840,8 @@ const navbar = () => {
     }
   }, __jsx("img", {
     src: "/static/images/icons/book.png",
+    className: "icon",
+    alt: "\u041A\u043D\u0438\u0433\u0438",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -669,6 +859,8 @@ const navbar = () => {
     }
   }, __jsx("img", {
     src: "/static/images/icons/video.png",
+    className: "icon",
+    alt: "\u0412\u0438\u0434\u0435\u043E\u043A\u0443\u0440\u0441\u044B",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -891,11 +1083,287 @@ const navbar = () => {
 
 /***/ }),
 
+/***/ "./components/PreCarousel/PreCarousel.js":
+/*!***********************************************!*\
+  !*** ./components/PreCarousel/PreCarousel.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PreCarousel.module.scss */ "./components/PreCarousel/PreCarousel.module.scss");
+/* harmony import */ var _PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\PreCarousel\\PreCarousel.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+const preCarousel = ({
+  isVideo,
+  children
+}) => {
+  return __jsx("div", {
+    className: _PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.PreCarousel,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 3
+    }
+  }, __jsx("div", {
+    className: _PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Image,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 4
+    }
+  }, __jsx("img", {
+    src: `/static/images/icons/${!isVideo ? "books.png" : "videos.png"}`,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 5
+    }
+  })), __jsx("h3", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 4
+    }
+  }, children), __jsx("p", {
+    className: `text-small mt-auto ${isVideo && "text-bold"}`,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 4
+    }
+  }, "\u0412\u0441\u0435 \u0441\u0431\u043E\u0440\u043D\u0438\u043A\u0438"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (preCarousel);
+
+/***/ }),
+
+/***/ "./components/PreCarousel/PreCarousel.module.scss":
+/*!********************************************************!*\
+  !*** ./components/PreCarousel/PreCarousel.module.scss ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Exports
+module.exports = {
+	"PreCarousel": "PreCarousel_PreCarousel__3mKDO",
+	"Image": "PreCarousel_Image__EsRZ-"
+};
+
+
+/***/ }),
+
+/***/ "./components/SliderCarousel/SliderCarousel.js":
+/*!*****************************************************!*\
+  !*** ./components/SliderCarousel/SliderCarousel.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_multi_carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-multi-carousel */ "react-multi-carousel");
+/* harmony import */ var react_multi_carousel__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_multi_carousel__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SliderCarousel.module.scss */ "./components/SliderCarousel/SliderCarousel.module.scss");
+/* harmony import */ var _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Compilations_Compilation_Compilation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Compilations/Compilation/Compilation */ "./components/Compilations/Compilation/Compilation.js");
+var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\SliderCarousel\\SliderCarousel.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+const sliderCarousel = ({
+  items,
+  children,
+  slidesPerPage
+}) => {
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: {
+        max: 4000,
+        min: 3000
+      },
+      items: 5
+    },
+    desktop: {
+      breakpoint: {
+        max: 3000,
+        min: 1024
+      },
+      items: 3
+    },
+    tablet: {
+      breakpoint: {
+        max: 1024,
+        min: 464
+      },
+      items: 2
+    },
+    mobile: {
+      breakpoint: {
+        max: 464,
+        min: 0
+      },
+      items: 1
+    }
+  };
+  const icons = {
+    arrowLeft: __jsx("div", {
+      className: [_SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Icon, _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Left].join(" "),
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 27,
+        columnNumber: 4
+      }
+    }, __jsx("img", {
+      className: "icon",
+      src: "/static/images/icons/arrow-left.png",
+      alt: "left",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28,
+        columnNumber: 5
+      }
+    })),
+    arrowLeftDisabled: __jsx("div", {
+      className: [_SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Icon, _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Disabled].join(" "),
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32,
+        columnNumber: 4
+      }
+    }, __jsx("img", {
+      className: "icon",
+      src: "/static/images/icons/arrow-left.png",
+      alt: "left",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 33,
+        columnNumber: 5
+      }
+    })),
+    arrowRight: __jsx("div", {
+      className: [_SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Icon, _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Right].join(" "),
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 37,
+        columnNumber: 4
+      }
+    }, __jsx("img", {
+      className: "icon",
+      src: "/static/images/icons/arrow-right.png",
+      alt: "right",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 38,
+        columnNumber: 5
+      }
+    })),
+    arrowRightDisabled: __jsx("div", {
+      className: [_SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Icon, _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Disabled].join(" "),
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 42,
+        columnNumber: 4
+      }
+    }, __jsx("img", {
+      className: "icon",
+      src: "/static/images/icons/arrow-right.png",
+      alt: "right",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 43,
+        columnNumber: 5
+      }
+    }))
+  };
+  return __jsx("div", {
+    className: _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Carousel,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49,
+      columnNumber: 3
+    }
+  }, __jsx(react_multi_carousel__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    swipeable: true,
+    draggable: true,
+    showDots: true,
+    responsive: responsive,
+    ssr: true // means to render carousel on server-side.
+    ,
+    infinite: true,
+    autoPlay: true,
+    autoPlaySpeed: 1000,
+    keyBoardControl: true,
+    customTransition: "all .5",
+    transitionDuration: 500,
+    containerClass: "carousel-container",
+    removeArrowOnDeviceType: ["tablet", "mobile"] // deviceType={this.props.deviceType}
+    ,
+    dotListClass: "custom-dot-list-style",
+    itemClass: "carousel-item-padding-40-px",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50,
+      columnNumber: 4
+    }
+  }, items), " ");
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (sliderCarousel);
+
+/***/ }),
+
+/***/ "./components/SliderCarousel/SliderCarousel.module.scss":
+/*!**************************************************************!*\
+  !*** ./components/SliderCarousel/SliderCarousel.module.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Exports
+module.exports = {
+	"Icon": "SliderCarousel_Icon__3HUvI",
+	"Disabled": "SliderCarousel_Disabled__3p6q8"
+};
+
+
+/***/ }),
+
 /***/ "./components/index.js":
 /*!*****************************!*\
   !*** ./components/index.js ***!
   \*****************************/
-/*! exports provided: Navbar, Footer, Logo */
+/*! exports provided: Navbar, Footer, Logo, Heading, PreCarousel, SliderCarousel, Compilations */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -908,6 +1376,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _Logo_Logo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Logo/Logo */ "./components/Logo/Logo.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Logo", function() { return _Logo_Logo__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _Heading_Heading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Heading/Heading */ "./components/Heading/Heading.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Heading", function() { return _Heading_Heading__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _PreCarousel_PreCarousel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PreCarousel/PreCarousel */ "./components/PreCarousel/PreCarousel.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PreCarousel", function() { return _PreCarousel_PreCarousel__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _SliderCarousel_SliderCarousel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SliderCarousel/SliderCarousel */ "./components/SliderCarousel/SliderCarousel.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SliderCarousel", function() { return _SliderCarousel_SliderCarousel__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _Compilations_Compilations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Compilations/Compilations */ "./components/Compilations/Compilations.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Compilations", function() { return _Compilations_Compilations__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+
+
+
 
 
 
@@ -926,11 +1410,14 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components */ "./components/index.js");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/head */ "next/head");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components */ "./components/index.js");
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\layouts\\Layout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -942,35 +1429,49 @@ const layout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
+      lineNumber: 7,
       columnNumber: 3
     }
-  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["Navbar"], {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7,
-      columnNumber: 4
-    }
-  }), __jsx("main", {
+  }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8,
       columnNumber: 4
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
+  }, __jsx("title", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 9,
       columnNumber: 5
     }
-  }, children)), __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["Footer"], {
+  }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["Navbar"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 11,
+      columnNumber: 4
+    }
+  }), __jsx("main", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 5
+    }
+  }, children)), __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["Footer"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
       columnNumber: 4
     }
   }));
@@ -1625,6 +2126,8 @@ function delBasePath(path) {
   return path.indexOf(basePath) === 0 ? path.substr(basePath.length) || '/' : path;
 }
 
+exports.delBasePath = delBasePath;
+
 function toRoute(path) {
   return path.replace(/\/$/, '') || '/';
 }
@@ -1636,8 +2139,8 @@ function fetchNextData(pathname, query, isServerRender, cb) {
 
   function getResponse() {
     return fetch(utils_1.formatWithValidation({
-      // @ts-ignore __NEXT_DATA__
-      pathname: `/_next/data/${__NEXT_DATA__.buildId}${pathname}.json`,
+      pathname: addBasePath( // @ts-ignore __NEXT_DATA__
+      `/_next/data/${__NEXT_DATA__.buildId}${delBasePath(pathname)}.json`),
       query
     }), {
       // Cookies are required to be present for Next.js' SSG "Preview Mode".
@@ -2382,11 +2885,16 @@ exports.getRouteMatcher = getRouteMatcher;
 
 Object.defineProperty(exports, "__esModule", {
   value: true
-});
+}); // this isn't importing the escape-string-regex module
+// to reduce bytes
+
+function escapeRegex(str) {
+  return str.replace(/[|\\{}()[\]^$+*?.-]/g, '\\$&');
+}
 
 function getRouteRegex(normalizedRoute) {
   // Escape all characters that could be considered RegEx
-  const escapedRoute = (normalizedRoute.replace(/\/$/, '') || '/').replace(/[|\\{}()[\]^$+*?.-]/g, '\\$&');
+  const escapedRoute = escapeRegex(normalizedRoute.replace(/\/$/, '') || '/');
   const groups = {};
   let groupIndex = 1;
   const parameterizedRoute = escapedRoute.replace(/\/\\\[([^/]+?)\\\](?=\/|$)/g, (_, $1) => {
@@ -2399,10 +2907,24 @@ function getRouteRegex(normalizedRoute) {
     };
     return isCatchAll ? '/(.+?)' : '/([^/]+?)';
   });
-  return {
+  let namedParameterizedRoute; // dead code eliminate for browser since it's only needed
+  // while generating routes-manifest
+
+  if (true) {
+    namedParameterizedRoute = escapedRoute.replace(/\/\\\[([^/]+?)\\\](?=\/|$)/g, (_, $1) => {
+      const isCatchAll = /^(\\\.){3}/.test($1);
+      const key = $1 // Un-escape key
+      .replace(/\\([|\\{}()[\]^$+*?.-])/g, '$1').replace(/^\.{3}/, '');
+      return isCatchAll ? `/(?<${escapeRegex(key)}>.+?)` : `/(?<${escapeRegex(key)}>[^/]+?)`;
+    });
+  }
+
+  return Object.assign({
     re: new RegExp('^' + parameterizedRoute + '(?:/)?$', 'i'),
     groups
-  };
+  }, namedParameterizedRoute ? {
+    namedRegex: `^${namedParameterizedRoute}(?:/)?$`
+  } : {});
 }
 
 exports.getRouteRegex = getRouteRegex;
@@ -2933,8 +3455,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _layouts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../layouts */ "./layouts/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components */ "./components/index.js");
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\pages\\index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
 
 
 
@@ -2943,11 +3470,316 @@ const indexPage = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5,
+      lineNumber: 7,
+      columnNumber: 3
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 5
+    }
+  }, __jsx("section", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 6
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 7
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 8
+    }
+  }, __jsx("img", {
+    className: "d-block w-100",
+    src: "/static/images/main/books/carousel1.png",
+    alt: "First slide",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
       columnNumber: 9
     }
-  }, "Hello there");
+  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Caption, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 9
+    }
+  }, __jsx("h3", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 10
+    }
+  }, "First slide label"), __jsx("p", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
+      columnNumber: 10
+    }
+  }, "Nulla vitae elit libero, a pharetra augue mollis interdum."))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 8
+    }
+  }, __jsx("img", {
+    className: "d-block w-100",
+    src: "/static/images/main/books/carousel1.png",
+    alt: "Third slide",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24,
+      columnNumber: 9
+    }
+  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Caption, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30,
+      columnNumber: 9
+    }
+  }, __jsx("h3", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 10
+    }
+  }, "Second slide label"), __jsx("p", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 10
+    }
+  }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit."))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 8
+    }
+  }, __jsx("img", {
+    className: "d-block w-100",
+    src: "/static/images/main/books/carousel1.png",
+    alt: "Third slide",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 9
+    }
+  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Caption, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42,
+      columnNumber: 9
+    }
+  }, __jsx("h3", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 43,
+      columnNumber: 10
+    }
+  }, "Third slide label"), __jsx("p", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 44,
+      columnNumber: 10
+    }
+  }, "Praesent commodo cursus magna, vel scelerisque nisl consectetur."))))))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 6
+    }
+  }, __jsx("img", {
+    src: "/static/images/main/books/first.png",
+    alt: "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u0435 \u0438 \u043F\u0435\u0447\u0430\u0442\u043D\u044B\u0435 \u043A\u043D\u0438\u0433\u0438",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
+      columnNumber: 7
+    }
+  }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57,
+      columnNumber: 5
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["Heading"], {
+    text: "\u043A\u043D\u0438\u0433\u0438 \u043D\u0430 \u043B\u044E\u0431\u043E\u0439 \u0432\u043A\u0443\u0441",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58,
+      columnNumber: 6
+    }
+  }, "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u0435 \u0438 \u043F\u0435\u0447\u0430\u0442\u043D\u044B\u0435"))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    sm: 4,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 62,
+      columnNumber: 5
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["PreCarousel"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63,
+      columnNumber: 6
+    }
+  }, "\u0421\u0431\u043E\u0440\u043D\u0438\u043A\u0438 \u0430\u0443\u0434\u0438\u043E\u043A\u043D\u0438\u0433")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    sm: 8,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65,
+      columnNumber: 5
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["SliderCarousel"], {
+    items: __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["Compilations"], {
+      items: getBookCarouselItems(),
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 66,
+        columnNumber: 29
+      }
+    }),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66,
+      columnNumber: 6
+    }
+  }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70,
+      columnNumber: 5
+    }
+  }, "\u041F\u043E\u043F\u0443\u043B\u044F\u0440\u043D\u044B\u0435 \u043A\u043D\u0438\u0433\u0438")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73,
+      columnNumber: 5
+    }
+  })));
 };
+
+const getBookCarouselItems = () => [{
+  id: 0,
+  img: "/static/images/main/books/slider-carousel/1.png",
+  text: "ТОП-10 романов"
+}, {
+  id: 1,
+  img: "/static/images/main/books/slider-carousel/2.png",
+  text: "На досуге"
+}, {
+  id: 2,
+  img: "/static/images/main/books/slider-carousel/3.png",
+  text: "Бестселлеры"
+}];
+
+const getPopularBooks = () => [{
+  id: 0,
+  img: "/static/images/items/books/1.png",
+  title: "Нескучные десерты",
+  author: "Истомин Виталий",
+  currentPrice: "39 500 сум",
+  price: "55 500 сум"
+}, {
+  id: 1,
+  img: "/static/images/items/books/1.png",
+  title: "Нескучные десерты",
+  author: "Истомин Виталий",
+  currentPrice: "39 500 сум",
+  price: "55 500 сум"
+}, {
+  id: 2,
+  img: "/static/images/items/books/1.png",
+  title: "Нескучные десерты",
+  author: "Истомин Виталий",
+  currentPrice: "39 500 сум",
+  price: "55 500 сум"
+}, {
+  id: 3,
+  img: "/static/images/items/books/1.png",
+  title: "Нескучные десерты",
+  author: "Истомин Виталий",
+  currentPrice: "39 500 сум",
+  price: "55 500 сум"
+}];
 
 /* harmony default export */ __webpack_exports__["default"] = (indexPage);
 
@@ -2962,6 +3794,17 @@ const indexPage = props => {
 
 module.exports = __webpack_require__(/*! D:\Anvar\Projects\React\React.js\inStore\pages\index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "next/head":
+/*!****************************!*\
+  !*** external "next/head" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/head");
 
 /***/ }),
 
@@ -3006,6 +3849,17 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-bootstrap");
+
+/***/ }),
+
+/***/ "react-multi-carousel":
+/*!***************************************!*\
+  !*** external "react-multi-carousel" ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-multi-carousel");
 
 /***/ }),
 

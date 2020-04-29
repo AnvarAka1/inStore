@@ -13,6 +13,20 @@ body {
     font-family: "OpenSans", sans-serif !important;
 }
 
+
+img {
+    width: 100%;
+}
+
+.icon {
+    height: 0.75rem;
+    width: auto;
+
+    &-big {
+        height: 2rem;
+    }
+}
+
 p {
     color: #777777;
 }
@@ -57,5 +71,18 @@ ul {
 
     &-accent {
         color: var(--accent)
+    }
+}
+
+// Slider Carousel
+.BrainhubCarousel__customArrows {
+    z-index: 2;
+
+    &.BrainhubCarousel__custom-arrowLeft {
+        margin-right: -20px;
+    }
+
+    &.BrainhubCarousel__custom-arrowRight {
+        margin-left: -20px;
     }
 }

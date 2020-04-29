@@ -5,12 +5,12 @@ import { Logo } from "../";
 const navbar = () => {
 	const books = (
 		<React.Fragment>
-			<img src="/static/images/icons/book.png" />Книги
+			<img src="/static/images/icons/book.png" className="icon" alt="Книги" />Книги
 		</React.Fragment>
 	);
 	const videolessons = (
 		<React.Fragment>
-			<img src="/static/images/icons/video.png" />Видеокурсы
+			<img src="/static/images/icons/video.png" className="icon" alt="Видеокурсы" />Видеокурсы
 		</React.Fragment>
 	);
 	return (

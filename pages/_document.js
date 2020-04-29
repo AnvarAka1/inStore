@@ -9,7 +9,10 @@ class MyDocument extends Document {
 	render() {
 		return (
 			<Html lang="ru">
-				<Head title="hey" />
+				<Head>
+					<link rel="shortcut icon" href="/static/images/favicon.ico" />
+					{/* <title>InStore | Библиотека книг и видеоуроков</title> */}
+				</Head>
 				<body>
 					<Main />
 					<NextScript />

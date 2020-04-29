@@ -3,3 +3,10 @@
 // <Link href="/">
 //     <a>going back!</a>
 // </Link>
+import React from "react";
+
+const help = () => {
+	return <div />;
+};
+
+export default help;
