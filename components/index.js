@@ -5,3 +5,8 @@ export { default as Heading } from "./Heading/Heading";
 export { default as PreCarousel } from "./PreCarousel/PreCarousel";
 export { default as SliderCarousel } from "./SliderCarousel/SliderCarousel";
 export { default as Compilations } from "./Compilations/Compilations";
+export { default as CompilationsCarousel } from "./Compilations/CompilationsCarousel";
+export { default as Products } from "./Products/Products";
+export { default as ProductsCarousel } from "./Products/ProductsCarousel";
+export { default as ImagesCarousel } from "./ImagesCarousel/ImagesCarousel";
+export { default as Speaker } from "./Speakers/Speaker/Speaker";

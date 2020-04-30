@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -128,8 +128,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Compilation_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Compilation.module.scss */ "./components/Compilations/Compilation/Compilation.module.scss");
 /* harmony import */ var _Compilation_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Compilation_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Compilations\\Compilation\\Compilation.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -138,13 +141,28 @@ const compilation = ({
   text,
   img
 }) => {
-  return __jsx("div", {
+  return __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/#",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 3
+    }
+  }, __jsx("a", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 4
+    }
+  }, __jsx("div", {
     className: `${className} ${_Compilation_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Compilation}`,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5,
-      columnNumber: 3
+      lineNumber: 8,
+      columnNumber: 5
     }
   }, __jsx("img", {
     src: img,
@@ -152,24 +170,24 @@ const compilation = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
-      columnNumber: 4
+      lineNumber: 9,
+      columnNumber: 6
     }
   }), __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
-      columnNumber: 4
+      lineNumber: 10,
+      columnNumber: 6
     }
   }, __jsx("h3", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
-      columnNumber: 5
+      lineNumber: 11,
+      columnNumber: 7
     }
-  }, text)));
+  }, text)))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (compilation);
@@ -237,6 +255,57 @@ const compilations = ({
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (compilations);
+
+/***/ }),
+
+/***/ "./components/Compilations/CompilationsCarousel.js":
+/*!*********************************************************!*\
+  !*** ./components/Compilations/CompilationsCarousel.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ */ "./components/index.js");
+/* harmony import */ var _Compilation_Compilation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Compilation/Compilation */ "./components/Compilations/Compilation/Compilation.js");
+var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Compilations\\CompilationsCarousel.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+const CompilationsCarousel = ({
+  items,
+  onClick
+}) => {
+  const compilationsView = items.map(item => {
+    return __jsx(_Compilation_Compilation__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      key: item.id,
+      onClick: () => onClick(item.id),
+      text: item.text,
+      img: item.img,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 6,
+        columnNumber: 10
+      }
+    });
+  });
+  return __jsx(___WEBPACK_IMPORTED_MODULE_1__["SliderCarousel"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 9
+    }
+  }, compilationsView);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CompilationsCarousel);
 
 /***/ }),
 
@@ -748,6 +817,96 @@ const heading = ({
 
 /***/ }),
 
+/***/ "./components/ImagesCarousel/ImageCarousel.module.scss":
+/*!*************************************************************!*\
+  !*** ./components/ImagesCarousel/ImageCarousel.module.scss ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Exports
+module.exports = {
+	"Image": "ImageCarousel_Image__3ztLJ"
+};
+
+
+/***/ }),
+
+/***/ "./components/ImagesCarousel/ImagesCarousel.js":
+/*!*****************************************************!*\
+  !*** ./components/ImagesCarousel/ImagesCarousel.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ImageCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ImageCarousel.module.scss */ "./components/ImagesCarousel/ImageCarousel.module.scss");
+/* harmony import */ var _ImageCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ImageCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ */ "./components/index.js");
+var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\ImagesCarousel\\ImagesCarousel.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+const imagesCarousel = ({
+  items,
+  nextClicked,
+  prevClicked
+}) => {
+  const imagesView = items.map(item => {
+    return __jsx("div", {
+      key: item.id,
+      className: _ImageCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Image,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 7,
+        columnNumber: 4
+      }
+    }, __jsx("img", {
+      src: item.img,
+      alt: item.name,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8,
+        columnNumber: 5
+      }
+    }), __jsx("div", {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9,
+        columnNumber: 5
+      }
+    }));
+  });
+  return __jsx(___WEBPACK_IMPORTED_MODULE_2__["SliderCarousel"], {
+    items: {
+      xl: 1,
+      lg: 1,
+      sm: 1,
+      xs: 1
+    },
+    nextClicked: nextClicked,
+    prevClicked: prevClicked,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 3
+    }
+  }, imagesView);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (imagesCarousel);
+
+/***/ }),
+
 /***/ "./components/Logo/Logo.js":
 /*!*********************************!*\
   !*** ./components/Logo/Logo.js ***!
@@ -1167,6 +1326,270 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./components/Products/Product/Product.js":
+/*!************************************************!*\
+  !*** ./components/Products/Product/Product.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Product_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Product.module.scss */ "./components/Products/Product/Product.module.scss");
+/* harmony import */ var _Product_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Product_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Products\\Product\\Product.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+const product = ({
+  id,
+  img,
+  title,
+  author,
+  currentPrice,
+  price
+}) => {
+  return __jsx("div", {
+    className: _Product_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Product,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 3
+    }
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: `/products/${id}`,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 4
+    }
+  }, __jsx("a", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: _Product_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Image,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 6
+    }
+  }, __jsx("img", {
+    src: img,
+    alt: title,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 7
+    }
+  })))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: `/products/${id}`,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14,
+      columnNumber: 4
+    }
+  }, __jsx("a", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 5
+    }
+  }, __jsx("h5", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 6
+    }
+  }, title), __jsx("p", {
+    className: "text-small",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17,
+      columnNumber: 6
+    }
+  }, author))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: `/products/${id}`,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
+      columnNumber: 4
+    }
+  }, __jsx("a", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-end",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22,
+      columnNumber: 6
+    }
+  }, __jsx("h5", {
+    className: "text-danger",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 7
+    }
+  }, currentPrice), " ", __jsx("p", {
+    className: "text-small text-crossed",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24,
+      columnNumber: 7
+    }
+  }, price)))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (product);
+
+/***/ }),
+
+/***/ "./components/Products/Product/Product.module.scss":
+/*!*********************************************************!*\
+  !*** ./components/Products/Product/Product.module.scss ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Exports
+module.exports = {};
+
+
+/***/ }),
+
+/***/ "./components/Products/Products.js":
+/*!*****************************************!*\
+  !*** ./components/Products/Products.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Product_Product__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Product/Product */ "./components/Products/Product/Product.js");
+var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Products\\Products.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+
+const products = ({
+  items
+}) => {
+  const productsView = items.map(item => {
+    return __jsx(_Product_Product__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
+      key: item.id
+    }, item, {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 5,
+        columnNumber: 10
+      }
+    }));
+  });
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 9
+    }
+  }, productsView);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (products);
+
+/***/ }),
+
+/***/ "./components/Products/ProductsCarousel.js":
+/*!*************************************************!*\
+  !*** ./components/Products/ProductsCarousel.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Product_Product__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Product/Product */ "./components/Products/Product/Product.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ */ "./components/index.js");
+var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Products\\ProductsCarousel.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+
+
+const productsCarousel = ({
+  items
+}) => {
+  const productsView = items.map(item => {
+    return __jsx(_Product_Product__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
+      key: item.id
+    }, item, {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 7,
+        columnNumber: 10
+      }
+    }));
+  });
+  return __jsx(___WEBPACK_IMPORTED_MODULE_2__["SliderCarousel"], {
+    items: {
+      xl: 8,
+      lg: 6,
+      sm: 5,
+      xs: 3
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 9
+    }
+  }, productsView);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (productsCarousel);
+
+/***/ }),
+
 /***/ "./components/SliderCarousel/SliderCarousel.js":
 /*!*****************************************************!*\
   !*** ./components/SliderCarousel/SliderCarousel.js ***!
@@ -1182,18 +1605,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_multi_carousel__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_multi_carousel__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SliderCarousel.module.scss */ "./components/SliderCarousel/SliderCarousel.module.scss");
 /* harmony import */ var _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Compilations_Compilation_Compilation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Compilations/Compilation/Compilation */ "./components/Compilations/Compilation/Compilation.js");
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\SliderCarousel\\SliderCarousel.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-
-
+ // import Carousel from "@brainhubeu/react-carousel";
+// import Carousel from "react-slick";
 
 const sliderCarousel = ({
-  items,
   children,
-  slidesPerPage
+  items
 }) => {
   const responsive = {
     superLargeDesktop: {
@@ -1202,28 +1623,28 @@ const sliderCarousel = ({
         max: 4000,
         min: 3000
       },
-      items: 5
+      items: items ? items.xl ? items.xl : 5 : 5
     },
     desktop: {
       breakpoint: {
         max: 3000,
         min: 1024
       },
-      items: 3
+      items: items ? items.lg ? items.lg : 3 : 3
     },
     tablet: {
       breakpoint: {
         max: 1024,
         min: 464
       },
-      items: 2
+      items: items ? items.sm ? items.sm : 2 : 2
     },
     mobile: {
       breakpoint: {
         max: 464,
         min: 0
       },
-      items: 1
+      items: items ? items.xs ? items.xs : 1 : 1
     }
   };
   const icons = {
@@ -1232,7 +1653,7 @@ const sliderCarousel = ({
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 27,
+        lineNumber: 28,
         columnNumber: 4
       }
     }, __jsx("img", {
@@ -1242,7 +1663,7 @@ const sliderCarousel = ({
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 28,
+        lineNumber: 29,
         columnNumber: 5
       }
     })),
@@ -1251,7 +1672,7 @@ const sliderCarousel = ({
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 32,
+        lineNumber: 33,
         columnNumber: 4
       }
     }, __jsx("img", {
@@ -1261,7 +1682,7 @@ const sliderCarousel = ({
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 33,
+        lineNumber: 34,
         columnNumber: 5
       }
     })),
@@ -1270,7 +1691,7 @@ const sliderCarousel = ({
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 37,
+        lineNumber: 38,
         columnNumber: 4
       }
     }, __jsx("img", {
@@ -1280,7 +1701,7 @@ const sliderCarousel = ({
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 38,
+        lineNumber: 39,
         columnNumber: 5
       }
     })),
@@ -1289,7 +1710,7 @@ const sliderCarousel = ({
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42,
+        lineNumber: 43,
         columnNumber: 4
       }
     }, __jsx("img", {
@@ -1299,7 +1720,7 @@ const sliderCarousel = ({
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43,
+        lineNumber: 44,
         columnNumber: 5
       }
     }))
@@ -1309,34 +1730,32 @@ const sliderCarousel = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49,
+      lineNumber: 50,
       columnNumber: 3
     }
   }, __jsx(react_multi_carousel__WEBPACK_IMPORTED_MODULE_1___default.a, {
     swipeable: true,
     draggable: true,
-    showDots: true,
+    showDots: false,
+    partialVisbile: true,
     responsive: responsive,
     ssr: true // means to render carousel on server-side.
     ,
     infinite: true,
-    autoPlay: true,
-    autoPlaySpeed: 1000,
-    keyBoardControl: true,
-    customTransition: "all .5",
-    transitionDuration: 500,
     containerClass: "carousel-container",
-    removeArrowOnDeviceType: ["tablet", "mobile"] // deviceType={this.props.deviceType}
+    removeArrowOnDeviceType: ["tablet", "mobile"],
+    itemClass: _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Item // autoPlay={true}
+    // autoPlaySpeed={100}
+    // transitionDuration={300}
+    // deviceType={this.props.deviceType}
     ,
-    dotListClass: "custom-dot-list-style",
-    itemClass: "carousel-item-padding-40-px",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50,
+      lineNumber: 51,
       columnNumber: 4
     }
-  }, items), " ");
+  }, children));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (sliderCarousel);
@@ -1353,7 +1772,107 @@ const sliderCarousel = ({
 // Exports
 module.exports = {
 	"Icon": "SliderCarousel_Icon__3HUvI",
-	"Disabled": "SliderCarousel_Disabled__3p6q8"
+	"Disabled": "SliderCarousel_Disabled__3p6q8",
+	"Item": "SliderCarousel_Item__3Mhgn"
+};
+
+
+/***/ }),
+
+/***/ "./components/Speakers/Speaker/Speaker.js":
+/*!************************************************!*\
+  !*** ./components/Speakers/Speaker/Speaker.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Speaker_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Speaker.module.scss */ "./components/Speakers/Speaker/Speaker.module.scss");
+/* harmony import */ var _Speaker_module_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Speaker_module_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
+var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Speakers\\Speaker\\Speaker.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+const speaker = ({
+  name,
+  role,
+  quote,
+  onClick
+}) => {
+  return __jsx("div", {
+    className: _Speaker_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Speaker,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 3
+    }
+  }, __jsx("h3", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 4
+    }
+  }, name), __jsx("p", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 4
+    }
+  }, role), __jsx("p", {
+    className: _Speaker_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Quote,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 4
+    }
+  }, quote), __jsx("h3", {
+    className: "text-normal mt-auto",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 4
+    }
+  }, "\u0421\u0442\u0430\u043D\u044C \u043D\u0430\u0448\u0438\u043C \u0441\u043F\u0438\u043A\u0435\u0440\u043E\u043C"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    onClick: onClick,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 4
+    }
+  }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u044F\u0432\u043A\u0443"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (speaker);
+
+/***/ }),
+
+/***/ "./components/Speakers/Speaker/Speaker.module.scss":
+/*!*********************************************************!*\
+  !*** ./components/Speakers/Speaker/Speaker.module.scss ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Exports
+module.exports = {
+	"Speaker": "Speaker_Speaker__R6Tqq",
+	"Quote": "Speaker_Quote__8rFsa"
 };
 
 
@@ -1363,7 +1882,7 @@ module.exports = {
 /*!*****************************!*\
   !*** ./components/index.js ***!
   \*****************************/
-/*! exports provided: Navbar, Footer, Logo, Heading, PreCarousel, SliderCarousel, Compilations */
+/*! exports provided: Navbar, Footer, Logo, Heading, PreCarousel, SliderCarousel, Compilations, CompilationsCarousel, Products, ProductsCarousel, ImagesCarousel, Speaker */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1388,6 +1907,26 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _Compilations_Compilations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Compilations/Compilations */ "./components/Compilations/Compilations.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Compilations", function() { return _Compilations_Compilations__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _Compilations_CompilationsCarousel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Compilations/CompilationsCarousel */ "./components/Compilations/CompilationsCarousel.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CompilationsCarousel", function() { return _Compilations_CompilationsCarousel__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony import */ var _Products_Products__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Products/Products */ "./components/Products/Products.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Products", function() { return _Products_Products__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+
+/* harmony import */ var _Products_ProductsCarousel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Products/ProductsCarousel */ "./components/Products/ProductsCarousel.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProductsCarousel", function() { return _Products_ProductsCarousel__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+
+/* harmony import */ var _ImagesCarousel_ImagesCarousel__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ImagesCarousel/ImagesCarousel */ "./components/ImagesCarousel/ImagesCarousel.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImagesCarousel", function() { return _ImagesCarousel_ImagesCarousel__WEBPACK_IMPORTED_MODULE_10__["default"]; });
+
+/* harmony import */ var _Speakers_Speaker_Speaker__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Speakers/Speaker/Speaker */ "./components/Speakers/Speaker/Speaker.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Speaker", function() { return _Speakers_Speaker_Speaker__WEBPACK_IMPORTED_MODULE_11__["default"]; });
+
+
+
+
+
 
 
 
@@ -3461,6 +4000,9 @@ __webpack_require__.r(__webpack_exports__);
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\pages\\index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
 
 
 
@@ -3501,139 +4043,66 @@ const indexPage = props => {
       lineNumber: 11,
       columnNumber: 7
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
+  }, getCarouselItems().map(item => {
+    return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
+      key: item.id,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14,
+        columnNumber: 10
+      }
+    }, __jsx("img", {
+      className: "d-block w-100",
+      src: item.img,
+      alt: item.title,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15,
+        columnNumber: 11
+      }
+    }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Caption, {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16,
+        columnNumber: 11
+      }
+    }, __jsx("h3", {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17,
+        columnNumber: 12
+      }
+    }, item.title), __jsx("p", {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18,
+        columnNumber: 12
+      }
+    }, item.text)));
+  }))))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 8
-    }
-  }, __jsx("img", {
-    className: "d-block w-100",
-    src: "/static/images/main/books/carousel1.png",
-    alt: "First slide",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 9
-    }
-  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Caption, {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18,
-      columnNumber: 9
-    }
-  }, __jsx("h3", {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19,
-      columnNumber: 10
-    }
-  }, "First slide label"), __jsx("p", {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20,
-      columnNumber: 10
-    }
-  }, "Nulla vitae elit libero, a pharetra augue mollis interdum."))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 8
-    }
-  }, __jsx("img", {
-    className: "d-block w-100",
-    src: "/static/images/main/books/carousel1.png",
-    alt: "Third slide",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24,
-      columnNumber: 9
-    }
-  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Caption, {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 9
-    }
-  }, __jsx("h3", {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31,
-      columnNumber: 10
-    }
-  }, "Second slide label"), __jsx("p", {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 10
-    }
-  }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit."))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 8
-    }
-  }, __jsx("img", {
-    className: "d-block w-100",
-    src: "/static/images/main/books/carousel1.png",
-    alt: "Third slide",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36,
-      columnNumber: 9
-    }
-  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Caption, {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 42,
-      columnNumber: 9
-    }
-  }, __jsx("h3", {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 43,
-      columnNumber: 10
-    }
-  }, "Third slide label"), __jsx("p", {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 44,
-      columnNumber: 10
-    }
-  }, "Praesent commodo cursus magna, vel scelerisque nisl consectetur."))))))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 27,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 28,
       columnNumber: 5
     }
   }, __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 29,
       columnNumber: 6
     }
   }, __jsx("img", {
@@ -3642,14 +4111,14 @@ const indexPage = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 30,
       columnNumber: 7
     }
   }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 33,
       columnNumber: 5
     }
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["Heading"], {
@@ -3657,14 +4126,14 @@ const indexPage = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 34,
       columnNumber: 6
     }
   }, "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u0435 \u0438 \u043F\u0435\u0447\u0430\u0442\u043D\u044B\u0435"))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 37,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
@@ -3672,14 +4141,133 @@ const indexPage = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62,
+      lineNumber: 38,
       columnNumber: 5
     }
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["PreCarousel"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 6
+    }
+  }, "\u0421\u0431\u043E\u0440\u043D\u0438\u043A\u0438 \u043A\u043D\u0438\u0433")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    sm: 8,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41,
+      columnNumber: 5
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["CompilationsCarousel"], {
+    items: getBookCarouselItems(),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42,
+      columnNumber: 6
+    }
+  }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46,
+      columnNumber: 5
+    }
+  }, "\u041F\u043E\u043F\u0443\u043B\u044F\u0440\u043D\u044B\u0435 \u0430\u0443\u0434\u0438\u043E\u043A\u043D\u0438\u0433\u0438")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49,
+      columnNumber: 5
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["ProductsCarousel"], {
+    items: getPopularBooks(),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50,
+      columnNumber: 6
+    }
+  }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
+      columnNumber: 5
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["Heading"], {
+    text: "\u0441\u043B\u0443\u0448\u0430\u0439\u0442\u0435 \u043A\u043E\u0433\u0434\u0430 \u0438 \u0433\u0434\u0435 \u0443\u0433\u043E\u0434\u043D\u043E",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55,
+      columnNumber: 6
+    }
+  }, "\u0410\u0443\u0434\u0438\u043E\u043A\u043D\u0438\u0433\u0438")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58,
+      columnNumber: 6
+    }
+  }, __jsx("img", {
+    src: "/static/images/main/books/second.png",
+    alt: "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u0435 \u0438 \u043F\u0435\u0447\u0430\u0442\u043D\u044B\u0435 \u043A\u043D\u0438\u0433\u0438",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 59,
+      columnNumber: 7
+    }
+  })))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
       lineNumber: 63,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    sm: 4,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 64,
+      columnNumber: 5
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["PreCarousel"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65,
       columnNumber: 6
     }
   }, "\u0421\u0431\u043E\u0440\u043D\u0438\u043A\u0438 \u0430\u0443\u0434\u0438\u043E\u043A\u043D\u0438\u0433")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
@@ -3687,55 +4275,118 @@ const indexPage = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 67,
       columnNumber: 5
     }
-  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["SliderCarousel"], {
-    items: __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["Compilations"], {
-      items: getBookCarouselItems(),
-      __self: undefined,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 66,
-        columnNumber: 29
-      }
-    }),
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["CompilationsCarousel"], {
+    items: getBookCarouselItems(),
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 68,
       columnNumber: 6
     }
   }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 71,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 5
-    }
-  }, "\u041F\u043E\u043F\u0443\u043B\u044F\u0440\u043D\u044B\u0435 \u043A\u043D\u0438\u0433\u0438")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 72,
+      columnNumber: 5
+    }
+  }, __jsx("h3", {
+    className: "text-accent",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73,
+      columnNumber: 6
+    }
+  }, "\u041B\u0443\u0447\u0448\u0438\u0435 \u0441\u043F\u0438\u043A\u0435\u0440\u044B"))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    sm: 5,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77,
+      columnNumber: 5
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["ImagesCarousel"], {
+    items: getSpeakers(),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 78,
+      columnNumber: 6
+    }
+  })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+    sm: 7,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80,
+      columnNumber: 5
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["Speaker"], _extends({}, getSpeakers()[0], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 81,
+      columnNumber: 6
+    }
+  })))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 84,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73,
+      lineNumber: 85,
       columnNumber: 5
     }
-  })));
+  }, __jsx("h3", {
+    className: "text-accent",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86,
+      columnNumber: 6
+    }
+  }, "\u041E\u0442\u0437\u044B\u0432\u044B \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439"))));
 };
+
+const getCarouselItems = () => [{
+  id: 0,
+  img: "/static/images/main/books/carousel1.png",
+  title: "First slide label",
+  text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+}, {
+  id: 1,
+  img: "/static/images/main/books/carousel1.png",
+  title: "First slide label",
+  text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+}, {
+  id: 2,
+  img: "/static/images/main/books/carousel1.png",
+  title: "First slide label",
+  text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+}];
 
 const getBookCarouselItems = () => [{
   id: 0,
@@ -3779,13 +4430,68 @@ const getPopularBooks = () => [{
   author: "Истомин Виталий",
   currentPrice: "39 500 сум",
   price: "55 500 сум"
+}, {
+  id: 4,
+  img: "/static/images/items/books/1.png",
+  title: "Нескучные десерты",
+  author: "Истомин Виталий",
+  currentPrice: "39 500 сум",
+  price: "55 500 сум"
+}, {
+  id: 5,
+  img: "/static/images/items/books/1.png",
+  title: "Нескучные десерты",
+  author: "Истомин Виталий",
+  currentPrice: "39 500 сум",
+  price: "55 500 сум"
+}, {
+  id: 6,
+  img: "/static/images/items/books/1.png",
+  title: "Нескучные десерты",
+  author: "Истомин Виталий",
+  currentPrice: "39 500 сум",
+  price: "55 500 сум"
+}, {
+  id: 7,
+  img: "/static/images/items/books/1.png",
+  title: "Нескучные десерты",
+  author: "Истомин Виталий",
+  currentPrice: "39 500 сум",
+  price: "55 500 сум"
+}, {
+  id: 8,
+  img: "/static/images/items/books/1.png",
+  title: "Нескучные десерты",
+  author: "Истомин Виталий",
+  currentPrice: "39 500 сум",
+  price: "55 500 сум"
+}];
+
+const getSpeakers = () => [{
+  id: 0,
+  img: "/static/images/main/books/person.png",
+  name: "Валерия Филиппова",
+  role: "Писатель",
+  quote: "“Скрытый смысл, не учитывая количества слогов, стоящих между ударениями, многопланово аннигилирует былинный реформаторский пафос. Мифопоэтическое пространство вызывает амфибрахий.”"
+}, {
+  id: 1,
+  img: "/static/images/main/books/person.png",
+  name: "Валерия Леонтьева",
+  role: "Спикер",
+  quote: "“Скрытый умысел, не учитывая количества слогов, стоящих между ударениями, многопланово аннигилирует былинный реформаторский пафос. Мифопоэтическое пространство вызывает амфибрахий.”"
+}, {
+  id: 2,
+  img: "/static/images/main/books/person.png",
+  name: "Валерия Филиппова",
+  role: "Писатель",
+  quote: "“Скрытый смысл, не учитывая количества слогов, стоящих между ударениями, многопланово аннигилирует былинный реформаторский пафос. Мифопоэтическое пространство вызывает амфибрахий.”"
 }];
 
 /* harmony default export */ __webpack_exports__["default"] = (indexPage);
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

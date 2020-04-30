@@ -3775,6 +3775,8 @@ var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\pages\\_app.j
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
  // import "@brainhubeu/react-carousel/lib/style.css";
 
+ // import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 
 
 function MyApp(_ref) {
@@ -3784,7 +3786,7 @@ function MyApp(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
+      lineNumber: 9,
       columnNumber: 9
     }
   }));

@@ -1,6 +1,4 @@
-.Carousel {
-   
-}
+.Carousel {}
 
 .Icon {
     border-radius: 50%;
@@ -14,4 +12,8 @@
     &.Disabled {
         filter: grayscale(1);
     }
+}
+
+.Item {
+    padding: 0 10px;
 }

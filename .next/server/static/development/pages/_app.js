@@ -141,6 +141,8 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
  // import "@brainhubeu/react-carousel/lib/style.css";
 
+ // import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 
 
 function MyApp({
@@ -151,7 +153,7 @@ function MyApp({
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
+      lineNumber: 9,
       columnNumber: 9
     }
   }));

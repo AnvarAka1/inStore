@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "../layouts";
 import { Row, Col, Carousel } from "react-bootstrap";
-import { Heading, PreCarousel, SliderCarousel, Compilations } from "../components";
+import { Heading, PreCarousel, CompilationsCarousel, ProductsCarousel, Speaker, ImagesCarousel } from "../components";
 const indexPage = props => {
 	return (
 		<Layout>
@@ -9,41 +9,17 @@ const indexPage = props => {
 				<Col>
 					<section>
 						<Carousel>
-							<Carousel.Item>
-								<img
-									className="d-block w-100"
-									src="/static/images/main/books/carousel1.png"
-									alt="First slide"
-								/>
-								<Carousel.Caption>
-									<h3>First slide label</h3>
-									<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-								</Carousel.Caption>
-							</Carousel.Item>
-							<Carousel.Item>
-								<img
-									className="d-block w-100"
-									src="/static/images/main/books/carousel1.png"
-									alt="Third slide"
-								/>
-
-								<Carousel.Caption>
-									<h3>Second slide label</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-								</Carousel.Caption>
-							</Carousel.Item>
-							<Carousel.Item>
-								<img
-									className="d-block w-100"
-									src="/static/images/main/books/carousel1.png"
-									alt="Third slide"
-								/>
-
-								<Carousel.Caption>
-									<h3>Third slide label</h3>
-									<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-								</Carousel.Caption>
-							</Carousel.Item>
+							{getCarouselItems().map(item => {
+								return (
+									<Carousel.Item key={item.id}>
+										<img className="d-block w-100" src={item.img} alt={item.title} />
+										<Carousel.Caption>
+											<h3>{item.title}</h3>
+											<p>{item.text}</p>
+										</Carousel.Caption>
+									</Carousel.Item>
+								);
+							})}
 						</Carousel>
 					</section>
 				</Col>
@@ -60,21 +36,79 @@ const indexPage = props => {
 			</Row>
 			<Row>
 				<Col sm={4}>
+					<PreCarousel>Сборники книг</PreCarousel>
+				</Col>
+				<Col sm={8}>
+					<CompilationsCarousel items={getBookCarouselItems()} />
+				</Col>
+			</Row>
+			<Row>
+				<Col>Популярные аудиокниги</Col>
+			</Row>
+			<Row>
+				<Col>
+					<ProductsCarousel items={getPopularBooks()} />
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<Heading text="слушайте когда и где угодно">Аудиокниги</Heading>
+				</Col>
+				<Col>
+					<div>
+						<img src="/static/images/main/books/second.png" alt="Электронные и печатные книги" />
+					</div>
+				</Col>
+			</Row>
+			<Row>
+				<Col sm={4}>
 					<PreCarousel>Сборники аудиокниг</PreCarousel>
 				</Col>
 				<Col sm={8}>
-					<SliderCarousel items={<Compilations items={getBookCarouselItems()} />} />
+					<CompilationsCarousel items={getBookCarouselItems()} />
 				</Col>
 			</Row>
 			<Row>
-				<Col>Популярные книги</Col>
+				<Col>
+					<h3 className="text-accent">Лучшие спикеры</h3>
+				</Col>
 			</Row>
 			<Row>
-				<Col>{/* <SliderCarousel items={getPopularBooks()} /> */}</Col>
+				<Col sm={5}>
+					<ImagesCarousel items={getSpeakers()} />
+				</Col>
+				<Col sm={7}>
+					<Speaker {...getSpeakers()[0]} />
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<h3 className="text-accent">Отзывы пользователей</h3>
+				</Col>
 			</Row>
 		</Layout>
 	);
 };
+const getCarouselItems = () => [
+	{
+		id: 0,
+		img: "/static/images/main/books/carousel1.png",
+		title: "First slide label",
+		text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+	},
+	{
+		id: 1,
+		img: "/static/images/main/books/carousel1.png",
+		title: "First slide label",
+		text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+	},
+	{
+		id: 2,
+		img: "/static/images/main/books/carousel1.png",
+		title: "First slide label",
+		text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+	}
+];
 const getBookCarouselItems = () => [
 	{
 		id: 0,
@@ -124,6 +158,72 @@ const getPopularBooks = () => [
 		author: "Истомин Виталий",
 		currentPrice: "39 500 сум",
 		price: "55 500 сум"
+	},
+	{
+		id: 4,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	},
+	{
+		id: 5,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	},
+	{
+		id: 6,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	},
+	{
+		id: 7,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	},
+	{
+		id: 8,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	}
+];
+const getSpeakers = () => [
+	{
+		id: 0,
+		img: "/static/images/main/books/person.png",
+		name: "Валерия Филиппова",
+		role: "Писатель",
+		quote:
+			"“Скрытый смысл, не учитывая количества слогов, стоящих между ударениями, многопланово аннигилирует былинный реформаторский пафос. Мифопоэтическое пространство вызывает амфибрахий.”"
+	},
+	{
+		id: 1,
+		img: "/static/images/main/books/person.png",
+		name: "Валерия Леонтьева",
+		role: "Спикер",
+		quote:
+			"“Скрытый умысел, не учитывая количества слогов, стоящих между ударениями, многопланово аннигилирует былинный реформаторский пафос. Мифопоэтическое пространство вызывает амфибрахий.”"
+	},
+	{
+		id: 2,
+		img: "/static/images/main/books/person.png",
+		name: "Валерия Филиппова",
+		role: "Писатель",
+		quote:
+			"“Скрытый смысл, не учитывая количества слогов, стоящих между ударениями, многопланово аннигилирует былинный реформаторский пафос. Мифопоэтическое пространство вызывает амфибрахий.”"
 	}
 ];
 export default indexPage;

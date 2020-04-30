@@ -1,25 +1,26 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import classes from "./SliderCarousel.module.scss";
-import Compilation from "../Compilations/Compilation/Compilation";
-const sliderCarousel = ({ items, children, slidesPerPage }) => {
+// import Carousel from "@brainhubeu/react-carousel";
+// import Carousel from "react-slick";
+const sliderCarousel = ({ children, items }) => {
 	const responsive = {
 		superLargeDesktop: {
 			// the naming can be any, depends on you.
 			breakpoint: { max: 4000, min: 3000 },
-			items: 5
+			items: items ? (items.xl ? items.xl : 5) : 5
 		},
 		desktop: {
 			breakpoint: { max: 3000, min: 1024 },
-			items: 3
+			items: items ? (items.lg ? items.lg : 3) : 3
 		},
 		tablet: {
 			breakpoint: { max: 1024, min: 464 },
-			items: 2
+			items: items ? (items.sm ? items.sm : 2) : 2
 		},
 		mobile: {
 			breakpoint: { max: 464, min: 0 },
-			items: 1
+			items: items ? (items.xs ? items.xs : 1) : 1
 		}
 	};
 	const icons = {
@@ -50,23 +51,22 @@ const sliderCarousel = ({ items, children, slidesPerPage }) => {
 			<Carousel
 				swipeable={true}
 				draggable={true}
-				showDots={true}
+				showDots={false}
+				partialVisbile={true}
 				responsive={responsive}
 				ssr={true} // means to render carousel on server-side.
 				infinite={true}
-				autoPlay={true}
-				autoPlaySpeed={1000}
-				keyBoardControl={true}
-				customTransition="all .5"
-				transitionDuration={500}
 				containerClass="carousel-container"
 				removeArrowOnDeviceType={[ "tablet", "mobile" ]}
+				itemClass={classes.Item}
+
+				// autoPlay={true}
+				// autoPlaySpeed={100}
+				// transitionDuration={300}
 				// deviceType={this.props.deviceType}
-				dotListClass="custom-dot-list-style"
-				itemClass="carousel-item-padding-40-px"
 			>
-				{items}
-			</Carousel>{" "}
+				{children}
+			</Carousel>
 		</div>
 	);
 };
