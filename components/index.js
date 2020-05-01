@@ -10,3 +10,8 @@ export { default as Products } from "./Products/Products";
 export { default as ProductsCarousel } from "./Products/ProductsCarousel";
 export { default as ImagesCarousel } from "./ImagesCarousel/ImagesCarousel";
 export { default as Speaker } from "./Speakers/Speaker/Speaker";
+export { default as ReviewsCarousel } from "./Reviews/ReviewsCarousel";
+export { default as Reviews } from "./Reviews/Reviews";
+export { default as Stars } from "./Stars/Stars";
+export { default as PopularHeader } from "./PopularHeader/PopularHeader";
+export { default as BookCategories } from "./BookCategories/BookCategories";

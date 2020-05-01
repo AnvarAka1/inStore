@@ -8,9 +8,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    z-index: 1000;
+    cursor: pointer;
 
     &.Disabled {
         filter: grayscale(1);
+    }
+
+    &.Left {
+        left: -0px;
+    }
+
+    &.Right {
+        right: 0;
     }
 }
 

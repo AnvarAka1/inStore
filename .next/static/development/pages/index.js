@@ -1,5 +1,254 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\index.js"],{
 
+/***/ "./components/BookCategories/BookCategories.js":
+/*!*****************************************************!*\
+  !*** ./components/BookCategories/BookCategories.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _BookCategory_BookCategory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BookCategory/BookCategory */ "./components/BookCategories/BookCategory/BookCategory.js");
+
+
+var _this = undefined,
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\BookCategories\\BookCategories.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+var bookCategories = function bookCategories(_ref) {
+  var items = _ref.items,
+      isVideo = _ref.isVideo,
+      _onClick = _ref.onClick;
+  var bookCategoriesView = items.map(function (item) {
+    return __jsx(_BookCategory_BookCategory__WEBPACK_IMPORTED_MODULE_2__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+      key: item.id
+    }, item, {
+      onClick: function onClick() {
+        return _onClick(item.id);
+      },
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 5,
+        columnNumber: 10
+      }
+    }));
+  });
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 3
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-center mb-4",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 4
+    }
+  }, __jsx("img", {
+    className: "icon icon-md",
+    src: "/static/images/icons/janra.png",
+    alt: "\u0416\u0430\u043D\u0440\u044B",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 5
+    }
+  }), __jsx("h5", {
+    className: "ml-1 mb-0 text-secondary",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 5
+    }
+  }, !isVideo ? "Жанры" : "Категории")), __jsx("ul", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 4
+    }
+  }, bookCategoriesView));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (bookCategories);
+
+/***/ }),
+
+/***/ "./components/BookCategories/BookCategory/BookCategory.js":
+/*!****************************************************************!*\
+  !*** ./components/BookCategories/BookCategory/BookCategory.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _BookCategory_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookCategory.module.scss */ "./components/BookCategories/BookCategory/BookCategory.module.scss");
+/* harmony import */ var _BookCategory_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_BookCategory_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+var _this = undefined,
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\BookCategories\\BookCategory\\BookCategory.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+var bookCategory = function bookCategory(_ref) {
+  var title = _ref.title,
+      onClick = _ref.onClick,
+      isActive = _ref.isActive;
+  return __jsx("li", {
+    className: [_BookCategory_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.BookCategory, isActive && _BookCategory_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Active].join(" "),
+    onClick: onClick,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 3
+    }
+  }, __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 4
+    }
+  }, title), isActive && __jsx("div", {
+    className: "ml-1",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 5
+    }
+  }, __jsx("img", {
+    src: "/static/images/icons/tick.png",
+    className: "icon",
+    alt: "active",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 6
+    }
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (bookCategory);
+
+/***/ }),
+
+/***/ "./components/BookCategories/BookCategory/BookCategory.module.scss":
+/*!*************************************************************************!*\
+  !*** ./components/BookCategories/BookCategory/BookCategory.module.scss ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./BookCategory.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/BookCategories/BookCategory/BookCategory.module.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = function(element){// These elements should always exist. If they do not,
+// this code should fail.
+var anchorElement=document.querySelector('#__next_css__DO_NOT_USE__');var parentNode=anchorElement.parentNode;// Normally <head>
+// Each style tag should be placed right before our
+// anchor. By inserting before and not after, we do not
+// need to track the last inserted element.
+parentNode.insertBefore(element,anchorElement)// Remember: this is development only code.
+//
+// After styles are injected, we need to remove the
+// <style> tags that set `body { display: none; }`.
+//
+// We use `requestAnimationFrame` as a way to defer
+// this operation since there may be multiple style
+// tags.
+;(self.requestAnimationFrame||setTimeout)(function(){for(var x=document.querySelectorAll('[data-next-hide-fouc]'),i=x.length;i--;){x[i].parentNode.removeChild(x[i]);}});};
+options.singleton = false;
+
+var update = api(content, options);
+
+
+if (true) {
+  if (!content.locals || module.hot.invalidate) {
+    var isEqualLocals = function isEqualLocals(a, b) {
+  if (!a && b || a && !b) {
+    return false;
+  }
+
+  var p;
+
+  for (p in a) {
+    if (a[p] !== b[p]) {
+      return false;
+    }
+  }
+
+  for (p in b) {
+    if (!a[p]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+    var oldLocals = content.locals;
+
+    module.hot.accept(
+      /*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./BookCategory.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/BookCategories/BookCategory/BookCategory.module.scss",
+      function () {
+        var newContent = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./BookCategory.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/BookCategories/BookCategory/BookCategory.module.scss");
+
+              newContent = newContent.__esModule ? newContent.default : newContent;
+
+              if (typeof newContent === 'string') {
+                newContent = [[module.i, newContent, '']];
+              }
+
+              if (!isEqualLocals(oldLocals, newContent.locals)) {
+                module.hot.invalidate();
+
+                return;
+              }
+
+              oldLocals = newContent.locals;
+
+              update(newContent);
+      }
+    )
+  }
+
+  module.hot.dispose(function() {
+    update();
+  });
+}
+
+module.exports = content.locals || {};
+
+/***/ }),
+
 /***/ "./components/Compilations/Compilation/Compilation.js":
 /*!************************************************************!*\
   !*** ./components/Compilations/Compilation/Compilation.js ***!
@@ -66,7 +315,7 @@ var compilation = function compilation(_ref) {
       lineNumber: 10,
       columnNumber: 6
     }
-  }, __jsx("h3", {
+  }, __jsx("h4", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -828,11 +1077,14 @@ var footerItems = function footerItems(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _Heading_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Heading.module.scss */ "./components/Heading/Heading.module.scss");
+/* harmony import */ var _Heading_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Heading_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Heading\\Heading.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -842,39 +1094,136 @@ var heading = function heading(_ref) {
       text = _ref.text,
       clicked = _ref.clicked;
   return __jsx("div", {
-    className: className,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 5,
-      columnNumber: 3
-    }
-  }, __jsx("h5", {
+    className: [className, _Heading_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Heading].join(" "),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 6,
-      columnNumber: 4
+      columnNumber: 3
     }
-  }, children), __jsx("p", {
+  }, __jsx("h3", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7,
       columnNumber: 4
     }
-  }, text), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    onClick: clicked,
+  }, children), __jsx("h5", {
+    className: "mb-3 text-normal",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8,
       columnNumber: 4
     }
+  }, text), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    onClick: clicked,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 4
+    }
   }, "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0432\u0435\u0441\u044C \u0441\u043F\u0438\u0441\u043E\u043A"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (heading);
+
+/***/ }),
+
+/***/ "./components/Heading/Heading.module.scss":
+/*!************************************************!*\
+  !*** ./components/Heading/Heading.module.scss ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./Heading.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Heading/Heading.module.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = function(element){// These elements should always exist. If they do not,
+// this code should fail.
+var anchorElement=document.querySelector('#__next_css__DO_NOT_USE__');var parentNode=anchorElement.parentNode;// Normally <head>
+// Each style tag should be placed right before our
+// anchor. By inserting before and not after, we do not
+// need to track the last inserted element.
+parentNode.insertBefore(element,anchorElement)// Remember: this is development only code.
+//
+// After styles are injected, we need to remove the
+// <style> tags that set `body { display: none; }`.
+//
+// We use `requestAnimationFrame` as a way to defer
+// this operation since there may be multiple style
+// tags.
+;(self.requestAnimationFrame||setTimeout)(function(){for(var x=document.querySelectorAll('[data-next-hide-fouc]'),i=x.length;i--;){x[i].parentNode.removeChild(x[i]);}});};
+options.singleton = false;
+
+var update = api(content, options);
+
+
+if (true) {
+  if (!content.locals || module.hot.invalidate) {
+    var isEqualLocals = function isEqualLocals(a, b) {
+  if (!a && b || a && !b) {
+    return false;
+  }
+
+  var p;
+
+  for (p in a) {
+    if (a[p] !== b[p]) {
+      return false;
+    }
+  }
+
+  for (p in b) {
+    if (!a[p]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+    var oldLocals = content.locals;
+
+    module.hot.accept(
+      /*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./Heading.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Heading/Heading.module.scss",
+      function () {
+        var newContent = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./Heading.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Heading/Heading.module.scss");
+
+              newContent = newContent.__esModule ? newContent.default : newContent;
+
+              if (typeof newContent === 'string') {
+                newContent = [[module.i, newContent, '']];
+              }
+
+              if (!isEqualLocals(oldLocals, newContent.locals)) {
+                module.hot.invalidate();
+
+                return;
+              }
+
+              oldLocals = newContent.locals;
+
+              update(newContent);
+      }
+    )
+  }
+
+  module.hot.dispose(function() {
+    update();
+  });
+}
+
+module.exports = content.locals || {};
 
 /***/ }),
 
@@ -1205,12 +1554,18 @@ module.exports = content.locals || {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ */ "./components/index.js");
+/* harmony import */ var _Navbar_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navbar.module.scss */ "./components/Navigation/Navbar.module.scss");
+/* harmony import */ var _Navbar_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Navbar_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ */ "./components/index.js");
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Navigation\\Navbar.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
 
 
 
@@ -1220,7 +1575,7 @@ var navbar = function navbar() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 9,
       columnNumber: 3
     }
   }, __jsx("img", {
@@ -1230,7 +1585,7 @@ var navbar = function navbar() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 10,
       columnNumber: 4
     }
   }), "\u041A\u043D\u0438\u0433\u0438");
@@ -1239,7 +1594,7 @@ var navbar = function navbar() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 14,
       columnNumber: 3
     }
   }, __jsx("img", {
@@ -1249,222 +1604,415 @@ var navbar = function navbar() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 15,
       columnNumber: 4
     }
   }), "\u0412\u0438\u0434\u0435\u043E\u043A\u0443\u0440\u0441\u044B");
 
   return __jsx("header", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 3
-    }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
-    bg: "light",
-    expand: "lg",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18,
-      columnNumber: 4
-    }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, {
-    href: "#home",
+    className: _Navbar_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Navbar,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 19,
-      columnNumber: 5
+      columnNumber: 3
     }
-  }, __jsx(___WEBPACK_IMPORTED_MODULE_2__["Logo"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 20,
-      columnNumber: 6
+      columnNumber: 4
     }
-  })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Toggle, {
-    "aria-controls": "basic-navbar-nav",
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 5
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 22,
-      columnNumber: 5
+      columnNumber: 6
     }
-  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Collapse, {
-    id: "basic-navbar-nav",
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"], {
+    expand: "lg",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 23,
-      columnNumber: 5
+      columnNumber: 7
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
-    className: "mr-auto",
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 24,
-      columnNumber: 6
+      columnNumber: 8
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
-    title: books,
-    id: "basic-nav-dropdown",
+  }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 25,
-      columnNumber: 7
+      columnNumber: 9
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-    href: "#action/3.1",
+  }, __jsx(___WEBPACK_IMPORTED_MODULE_4__["Logo"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 26,
-      columnNumber: 8
+      columnNumber: 10
     }
-  }, "Action"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-    href: "#action/3.2",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27,
-      columnNumber: 8
-    }
-  }, "Another action"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-    href: "#action/3.3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 8
-    }
-  }, "Something"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Divider, {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29,
-      columnNumber: 8
-    }
-  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-    href: "#action/3.4",
+  }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"].Toggle, {
+    "aria-controls": "basic-navbar-nav",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 30,
       columnNumber: 8
     }
-  }, "Separated link")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
+  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"].Collapse, {
+    id: "basic-navbar-nav",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 8
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"], {
+    className: "mr-auto",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 9
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"], {
+    title: books,
+    id: "basic-nav-dropdown",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33,
+      columnNumber: 10
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Item, {
+    href: "#action/3.1",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 11
+    }
+  }, "Action"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Item, {
+    href: "#action/3.2",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 11
+    }
+  }, "Another action"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Item, {
+    href: "#action/3.3",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 11
+    }
+  }, "Something"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Divider, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37,
+      columnNumber: 11
+    }
+  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Item, {
+    href: "#action/3.4",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 11
+    }
+  }, "Separated link")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"], {
     title: videolessons,
     id: "basic-nav-dropdown",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 7
+      lineNumber: 40,
+      columnNumber: 10
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Item, {
     href: "#action/3.1",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
-      columnNumber: 8
+      lineNumber: 41,
+      columnNumber: 11
     }
-  }, "Action"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
+  }, "Action"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Item, {
     href: "#action/3.2",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 8
+      lineNumber: 42,
+      columnNumber: 11
     }
-  }, "Another action"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
+  }, "Another action"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Item, {
     href: "#action/3.3",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 8
+      lineNumber: 43,
+      columnNumber: 11
     }
-  }, "Something"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Divider, {
+  }, "Something"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Divider, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
-      columnNumber: 8
+      lineNumber: 44,
+      columnNumber: 11
     }
-  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
+  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Item, {
     href: "#action/3.4",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 8
+      lineNumber: 45,
+      columnNumber: 11
     }
-  }, "Separated link"))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+  }, "Separated link"))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"], {
     inline: true,
     className: "ml-auto",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 6
+      lineNumber: 48,
+      columnNumber: 9
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Control, {
     type: "text",
     placeholder: "Search",
     className: "mr-sm-2",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
-      columnNumber: 7
+      lineNumber: 49,
+      columnNumber: 10
     }
-  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     variant: "outline-success",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
-      columnNumber: 7
+      lineNumber: 50,
+      columnNumber: 10
     }
   }, "Search")), __jsx("div", {
     className: "d-flex justify-content-between align-items-center",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
-      columnNumber: 6
+      lineNumber: 52,
+      columnNumber: 9
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"].Item, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
-      columnNumber: 7
+      lineNumber: 53,
+      columnNumber: 10
     }
-  }, "\u0418\u0437\u0431\u0440\u0430\u043D\u043D\u044B\u0435"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, {
+  }, "\u0418\u0437\u0431\u0440\u0430\u043D\u043D\u044B\u0435"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"].Item, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
-      columnNumber: 7
+      lineNumber: 54,
+      columnNumber: 10
     }
-  }, "\u041A\u043E\u0440\u0437\u0438\u043D\u0430"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, {
+  }, "\u041A\u043E\u0440\u0437\u0438\u043D\u0430"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"].Item, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
-      columnNumber: 7
+      lineNumber: 55,
+      columnNumber: 10
     }
-  }, "\u0412\u043E\u0439\u0442\u0438")))));
+  }, "\u0412\u043E\u0439\u0442\u0438"))))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (navbar);
+
+/***/ }),
+
+/***/ "./components/Navigation/Navbar.module.scss":
+/*!**************************************************!*\
+  !*** ./components/Navigation/Navbar.module.scss ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./Navbar.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Navigation/Navbar.module.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = function(element){// These elements should always exist. If they do not,
+// this code should fail.
+var anchorElement=document.querySelector('#__next_css__DO_NOT_USE__');var parentNode=anchorElement.parentNode;// Normally <head>
+// Each style tag should be placed right before our
+// anchor. By inserting before and not after, we do not
+// need to track the last inserted element.
+parentNode.insertBefore(element,anchorElement)// Remember: this is development only code.
+//
+// After styles are injected, we need to remove the
+// <style> tags that set `body { display: none; }`.
+//
+// We use `requestAnimationFrame` as a way to defer
+// this operation since there may be multiple style
+// tags.
+;(self.requestAnimationFrame||setTimeout)(function(){for(var x=document.querySelectorAll('[data-next-hide-fouc]'),i=x.length;i--;){x[i].parentNode.removeChild(x[i]);}});};
+options.singleton = false;
+
+var update = api(content, options);
+
+
+if (true) {
+  if (!content.locals || module.hot.invalidate) {
+    var isEqualLocals = function isEqualLocals(a, b) {
+  if (!a && b || a && !b) {
+    return false;
+  }
+
+  var p;
+
+  for (p in a) {
+    if (a[p] !== b[p]) {
+      return false;
+    }
+  }
+
+  for (p in b) {
+    if (!a[p]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+    var oldLocals = content.locals;
+
+    module.hot.accept(
+      /*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./Navbar.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Navigation/Navbar.module.scss",
+      function () {
+        var newContent = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./Navbar.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Navigation/Navbar.module.scss");
+
+              newContent = newContent.__esModule ? newContent.default : newContent;
+
+              if (typeof newContent === 'string') {
+                newContent = [[module.i, newContent, '']];
+              }
+
+              if (!isEqualLocals(oldLocals, newContent.locals)) {
+                module.hot.invalidate();
+
+                return;
+              }
+
+              oldLocals = newContent.locals;
+
+              update(newContent);
+      }
+    )
+  }
+
+  module.hot.dispose(function() {
+    update();
+  });
+}
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./components/PopularHeader/PopularHeader.js":
+/*!***************************************************!*\
+  !*** ./components/PopularHeader/PopularHeader.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+var _this = undefined,
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\PopularHeader\\PopularHeader.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+var popularHeader = function popularHeader(_ref) {
+  var children = _ref.children,
+      link = _ref.link;
+  return __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: link,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 3
+    }
+  }, __jsx("a", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 4
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-end pb-3",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 5
+    }
+  }, __jsx("h3", {
+    className: "mb-0 mr-3 text-normal text-secondary",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 6
+    }
+  }, "\u041F\u043E\u043F\u0443\u043B\u044F\u0440\u043D\u044B\u0435 ", children), __jsx("p", {
+    className: "mb-0 text-small text-secondary",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 6
+    }
+  }, "\u041F\u0435\u0440\u0435\u0439\u0442\u0438 \u0432 \u0441\u043F\u0438\u0441\u043E\u043A \xBB"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (popularHeader);
 
 /***/ }),
 
@@ -1479,8 +2027,10 @@ var navbar = function navbar() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PreCarousel.module.scss */ "./components/PreCarousel/PreCarousel.module.scss");
-/* harmony import */ var _PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PreCarousel.module.scss */ "./components/PreCarousel/PreCarousel.module.scss");
+/* harmony import */ var _PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2__);
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\PreCarousel\\PreCarousel.js";
 
@@ -1488,49 +2038,67 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
 var preCarousel = function preCarousel(_ref) {
   var isVideo = _ref.isVideo,
-      children = _ref.children;
-  return __jsx("div", {
-    className: _PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.PreCarousel,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 5,
-      columnNumber: 3
-    }
-  }, __jsx("div", {
-    className: _PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Image,
+      children = _ref.children,
+      link = _ref.link;
+  return __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: link,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 6,
+      columnNumber: 3
+    }
+  }, __jsx("a", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
       columnNumber: 4
+    }
+  }, __jsx("div", {
+    className: _PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.PreCarousel,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: _PreCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Image,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 6
     }
   }, __jsx("img", {
     src: "/static/images/icons/".concat(!isVideo ? "books.png" : "videos.png"),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
-      columnNumber: 5
+      lineNumber: 10,
+      columnNumber: 7
     }
   })), __jsx("h3", {
+    className: "text-accent",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 4
+      lineNumber: 12,
+      columnNumber: 6
     }
   }, children), __jsx("p", {
     className: "text-small mt-auto ".concat(isVideo && "text-bold"),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
-      columnNumber: 4
+      lineNumber: 13,
+      columnNumber: 6
     }
-  }, "\u0412\u0441\u0435 \u0441\u0431\u043E\u0440\u043D\u0438\u043A\u0438"));
+  }, "\u0412\u0441\u0435 \u0441\u0431\u043E\u0440\u043D\u0438\u043A\u0438"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (preCarousel);
@@ -1644,14 +2212,16 @@ module.exports = content.locals || {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Product_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Product.module.scss */ "./components/Products/Product/Product.module.scss");
-/* harmony import */ var _Product_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Product_module_scss__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../ */ "./components/index.js");
+/* harmony import */ var _Product_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Product.module.scss */ "./components/Products/Product/Product.module.scss");
+/* harmony import */ var _Product_module_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Product_module_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Products\\Product\\Product.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -1661,37 +2231,38 @@ var product = function product(_ref) {
       img = _ref.img,
       title = _ref.title,
       author = _ref.author,
+      rate = _ref.rate,
       currentPrice = _ref.currentPrice,
       price = _ref.price;
   return __jsx("div", {
-    className: _Product_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Product,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 6,
-      columnNumber: 3
-    }
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/products/".concat(id),
+    className: _Product_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Product,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7,
+      columnNumber: 3
+    }
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    href: "/products/".concat(id),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
       columnNumber: 4
     }
   }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 9,
       columnNumber: 5
     }
   }, __jsx("div", {
-    className: _Product_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Image,
+    className: _Product_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Image,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
+      lineNumber: 10,
       columnNumber: 6
     }
   }, __jsx("img", {
@@ -1700,29 +2271,30 @@ var product = function product(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 11,
       columnNumber: 7
     }
-  })))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+  })))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
     href: "/products/".concat(id),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 15,
       columnNumber: 4
     }
   }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 16,
       columnNumber: 5
     }
   }, __jsx("h5", {
+    className: "text-black mb-1",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 17,
       columnNumber: 6
     }
   }, title), __jsx("p", {
@@ -1730,46 +2302,54 @@ var product = function product(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 18,
       columnNumber: 6
     }
-  }, author))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+  }, author), __jsx(___WEBPACK_IMPORTED_MODULE_1__["Stars"], {
+    rate: rate,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 6
+    }
+  }))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
     href: "/products/".concat(id),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 22,
       columnNumber: 4
     }
   }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 23,
       columnNumber: 5
     }
   }, __jsx("div", {
-    className: "d-flex align-items-end",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 6
-    }
-  }, __jsx("h5", {
-    className: "text-danger",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 7
-    }
-  }, currentPrice), " ", __jsx("p", {
-    className: "text-small text-crossed",
+    className: "d-flex align-items-end mt-1",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 24,
+      columnNumber: 6
+    }
+  }, __jsx("p", {
+    className: "text-danger text-bold mb-0 mr-1 text-md",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25,
+      columnNumber: 7
+    }
+  }, currentPrice), " ", __jsx("p", {
+    className: "text-xsmall text-crossed",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26,
       columnNumber: 7
     }
   }, price)))));
@@ -1887,7 +2467,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Product_Product__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Product/Product */ "./components/Products/Product/Product.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _Product_Product__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Product/Product */ "./components/Products/Product/Product.js");
 
 
 var _this = undefined,
@@ -1897,25 +2478,35 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
+
 var products = function products(_ref) {
   var items = _ref.items;
   var productsView = items.map(function (item) {
-    return __jsx(_Product_Product__WEBPACK_IMPORTED_MODULE_2__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-      key: item.id
-    }, item, {
+    return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+      className: "mb-4",
+      key: item.id,
+      md: 4,
+      sm: 3,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 5,
-        columnNumber: 10
+        lineNumber: 7,
+        columnNumber: 4
       }
-    }));
+    }, __jsx(_Product_Product__WEBPACK_IMPORTED_MODULE_3__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, item, {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8,
+        columnNumber: 5
+      }
+    })));
   });
   return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 12,
       columnNumber: 9
     }
   }, productsView);
@@ -1983,6 +2574,392 @@ var productsCarousel = function productsCarousel(_ref) {
 
 /***/ }),
 
+/***/ "./components/Reviews/Review/Review.js":
+/*!*********************************************!*\
+  !*** ./components/Reviews/Review/Review.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Review_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Review.module.scss */ "./components/Reviews/Review/Review.module.scss");
+/* harmony import */ var _Review_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Review_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../ */ "./components/index.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
+var _this = undefined,
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Reviews\\Review\\Review.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+var review = function review(_ref) {
+  var id = _ref.id,
+      img = _ref.img,
+      name = _ref.name,
+      rate = _ref.rate,
+      text = _ref.text;
+  return __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    href: "/users/".concat(id),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 3
+    }
+  }, __jsx("a", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 4
+    }
+  }, __jsx("div", {
+    className: _Review_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Review,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-end justify-content-start",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 6
+    }
+  }, __jsx("div", {
+    className: _Review_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Image,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 7
+    }
+  }, __jsx("img", {
+    src: img,
+    alt: name,
+    className: "img-small radius",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 8
+    }
+  })), __jsx("div", {
+    className: "",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14,
+      columnNumber: 7
+    }
+  }, __jsx("h5", {
+    className: "mb-0 text-small text-secondary",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 8
+    }
+  }, name), __jsx(___WEBPACK_IMPORTED_MODULE_2__["Stars"], {
+    rate: rate,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 8
+    }
+  }))), __jsx("p", {
+    className: "text-secondary text-small",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 6
+    }
+  }, text))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (review);
+
+/***/ }),
+
+/***/ "./components/Reviews/Review/Review.module.scss":
+/*!******************************************************!*\
+  !*** ./components/Reviews/Review/Review.module.scss ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./Review.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Reviews/Review/Review.module.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = function(element){// These elements should always exist. If they do not,
+// this code should fail.
+var anchorElement=document.querySelector('#__next_css__DO_NOT_USE__');var parentNode=anchorElement.parentNode;// Normally <head>
+// Each style tag should be placed right before our
+// anchor. By inserting before and not after, we do not
+// need to track the last inserted element.
+parentNode.insertBefore(element,anchorElement)// Remember: this is development only code.
+//
+// After styles are injected, we need to remove the
+// <style> tags that set `body { display: none; }`.
+//
+// We use `requestAnimationFrame` as a way to defer
+// this operation since there may be multiple style
+// tags.
+;(self.requestAnimationFrame||setTimeout)(function(){for(var x=document.querySelectorAll('[data-next-hide-fouc]'),i=x.length;i--;){x[i].parentNode.removeChild(x[i]);}});};
+options.singleton = false;
+
+var update = api(content, options);
+
+
+if (true) {
+  if (!content.locals || module.hot.invalidate) {
+    var isEqualLocals = function isEqualLocals(a, b) {
+  if (!a && b || a && !b) {
+    return false;
+  }
+
+  var p;
+
+  for (p in a) {
+    if (a[p] !== b[p]) {
+      return false;
+    }
+  }
+
+  for (p in b) {
+    if (!a[p]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+    var oldLocals = content.locals;
+
+    module.hot.accept(
+      /*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./Review.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Reviews/Review/Review.module.scss",
+      function () {
+        var newContent = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./Review.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Reviews/Review/Review.module.scss");
+
+              newContent = newContent.__esModule ? newContent.default : newContent;
+
+              if (typeof newContent === 'string') {
+                newContent = [[module.i, newContent, '']];
+              }
+
+              if (!isEqualLocals(oldLocals, newContent.locals)) {
+                module.hot.invalidate();
+
+                return;
+              }
+
+              oldLocals = newContent.locals;
+
+              update(newContent);
+      }
+    )
+  }
+
+  module.hot.dispose(function() {
+    update();
+  });
+}
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./components/Reviews/Reviews.js":
+/*!***************************************!*\
+  !*** ./components/Reviews/Reviews.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./components/Reviews/ReviewsCarousel.js":
+/*!***********************************************!*\
+  !*** ./components/Reviews/ReviewsCarousel.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ReviewsCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReviewsCarousel.module.scss */ "./components/Reviews/ReviewsCarousel.module.scss");
+/* harmony import */ var _ReviewsCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ReviewsCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Review_Review__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Review/Review */ "./components/Reviews/Review/Review.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ */ "./components/index.js");
+
+
+var _this = undefined,
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Reviews\\ReviewsCarousel.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+
+
+var reviewsCarousel = function reviewsCarousel(_ref) {
+  var items = _ref.items;
+  var reviewsView = items.map(function (item) {
+    return __jsx(_Review_Review__WEBPACK_IMPORTED_MODULE_3__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+      key: item.id
+    }, item, {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 7,
+        columnNumber: 10
+      }
+    }));
+  });
+  return __jsx(___WEBPACK_IMPORTED_MODULE_4__["SliderCarousel"], {
+    arrows: false,
+    autoPlay: true,
+    items: {
+      xl: 6,
+      lg: 4,
+      sm: 3,
+      xs: 1
+    },
+    className: _ReviewsCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Item,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 3
+    }
+  }, reviewsView);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (reviewsCarousel);
+
+/***/ }),
+
+/***/ "./components/Reviews/ReviewsCarousel.module.scss":
+/*!********************************************************!*\
+  !*** ./components/Reviews/ReviewsCarousel.module.scss ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./ReviewsCarousel.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Reviews/ReviewsCarousel.module.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = function(element){// These elements should always exist. If they do not,
+// this code should fail.
+var anchorElement=document.querySelector('#__next_css__DO_NOT_USE__');var parentNode=anchorElement.parentNode;// Normally <head>
+// Each style tag should be placed right before our
+// anchor. By inserting before and not after, we do not
+// need to track the last inserted element.
+parentNode.insertBefore(element,anchorElement)// Remember: this is development only code.
+//
+// After styles are injected, we need to remove the
+// <style> tags that set `body { display: none; }`.
+//
+// We use `requestAnimationFrame` as a way to defer
+// this operation since there may be multiple style
+// tags.
+;(self.requestAnimationFrame||setTimeout)(function(){for(var x=document.querySelectorAll('[data-next-hide-fouc]'),i=x.length;i--;){x[i].parentNode.removeChild(x[i]);}});};
+options.singleton = false;
+
+var update = api(content, options);
+
+
+if (true) {
+  if (!content.locals || module.hot.invalidate) {
+    var isEqualLocals = function isEqualLocals(a, b) {
+  if (!a && b || a && !b) {
+    return false;
+  }
+
+  var p;
+
+  for (p in a) {
+    if (a[p] !== b[p]) {
+      return false;
+    }
+  }
+
+  for (p in b) {
+    if (!a[p]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+    var oldLocals = content.locals;
+
+    module.hot.accept(
+      /*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./ReviewsCarousel.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Reviews/ReviewsCarousel.module.scss",
+      function () {
+        var newContent = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./ReviewsCarousel.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Reviews/ReviewsCarousel.module.scss");
+
+              newContent = newContent.__esModule ? newContent.default : newContent;
+
+              if (typeof newContent === 'string') {
+                newContent = [[module.i, newContent, '']];
+              }
+
+              if (!isEqualLocals(oldLocals, newContent.locals)) {
+                module.hot.invalidate();
+
+                return;
+              }
+
+              oldLocals = newContent.locals;
+
+              update(newContent);
+      }
+    )
+  }
+
+  module.hot.dispose(function() {
+    update();
+  });
+}
+
+module.exports = content.locals || {};
+
+/***/ }),
+
 /***/ "./components/SliderCarousel/SliderCarousel.js":
 /*!*****************************************************!*\
   !*** ./components/SliderCarousel/SliderCarousel.js ***!
@@ -2008,8 +2985,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 // import Carousel from "react-slick";
 
 var sliderCarousel = function sliderCarousel(_ref) {
-  var children = _ref.children,
-      items = _ref.items;
+  var className = _ref.className,
+      children = _ref.children,
+      items = _ref.items,
+      _ref$arrows = _ref.arrows,
+      arrows = _ref$arrows === void 0 ? true : _ref$arrows,
+      _ref$autoPlay = _ref.autoPlay,
+      autoPlay = _ref$autoPlay === void 0 ? false : _ref$autoPlay;
   var responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -2040,116 +3022,128 @@ var sliderCarousel = function sliderCarousel(_ref) {
       },
       items: items ? items.xs ? items.xs : 1 : 1
     }
-  };
-  var icons = {
-    arrowLeft: __jsx("div", {
-      className: [_SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Icon, _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Left].join(" "),
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 28,
-        columnNumber: 4
-      }
-    }, __jsx("img", {
-      className: "icon",
-      src: "/static/images/icons/arrow-left.png",
-      alt: "left",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 29,
-        columnNumber: 5
-      }
-    })),
-    arrowLeftDisabled: __jsx("div", {
-      className: [_SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Icon, _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Disabled].join(" "),
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 33,
-        columnNumber: 4
-      }
-    }, __jsx("img", {
-      className: "icon",
-      src: "/static/images/icons/arrow-left.png",
-      alt: "left",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 34,
-        columnNumber: 5
-      }
-    })),
-    arrowRight: __jsx("div", {
-      className: [_SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Icon, _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Right].join(" "),
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 38,
-        columnNumber: 4
-      }
-    }, __jsx("img", {
-      className: "icon",
-      src: "/static/images/icons/arrow-right.png",
-      alt: "right",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 39,
-        columnNumber: 5
-      }
-    })),
-    arrowRightDisabled: __jsx("div", {
-      className: [_SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Icon, _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Disabled].join(" "),
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 43,
-        columnNumber: 4
-      }
-    }, __jsx("img", {
-      className: "icon",
-      src: "/static/images/icons/arrow-right.png",
-      alt: "right",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 44,
-        columnNumber: 5
-      }
-    }))
-  };
+  }; // const icons = {
+  // 	arrowLeft: (
+  // 	),
+  // 	arrowLeftDisabled: (
+  // 		<div className={[ classes.Icon, classes.Disabled ].join(" ")}>
+  // 			<img className="icon" src="/static/images/icons/arrow-left.png" alt="left" />
+  // 		</div>
+  // 	),
+  // 	arrowRight: (
+  // 		<div className={[ classes.Icon, classes.Right ].join(" ")}>
+  // 			<img className="icon" src="/static/images/icons/arrow-right.png" alt="right" />
+  // 		</div>
+  // 	),
+  // 	arrowRightDisabled: (
+  // 		<div className={[ classes.Icon, classes.Disabled ].join(" ")}>
+  // 			<img className="icon" src="/static/images/icons/arrow-right.png" alt="right" />
+  // 		</div>
+  // 	)
+  // };
+
   return __jsx("div", {
     className: _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Carousel,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50,
+      lineNumber: 48,
       columnNumber: 3
     }
   }, __jsx(react_multi_carousel__WEBPACK_IMPORTED_MODULE_1___default.a, {
     swipeable: true,
     draggable: true,
-    showDots: false,
-    partialVisbile: true,
+    arrows: arrows,
+    showDots: false // partialVisbile={true}
+    ,
     responsive: responsive,
     ssr: true // means to render carousel on server-side.
     ,
     infinite: true,
+    className: "pb-2 pt-2",
     containerClass: "carousel-container",
     removeArrowOnDeviceType: ["tablet", "mobile"],
-    itemClass: _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Item // autoPlay={true}
-    // autoPlaySpeed={100}
-    // transitionDuration={300}
+    itemClass: [_SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Item, className].join(" "),
+    autoPlay: autoPlay,
+    autoPlaySpeed: 5000 // transitionDuration={300}
     // deviceType={this.props.deviceType}
     ,
+    customLeftArrow: __jsx(CustomArrowLeft, {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 66,
+        columnNumber: 22
+      }
+    }),
+    customRightArrow: __jsx(CustomArrowRight, {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 67,
+        columnNumber: 23
+      }
+    }),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 49,
       columnNumber: 4
     }
   }, children));
+};
+
+var CustomArrowLeft = function CustomArrowLeft(_ref2) {
+  var _onClick = _ref2.onClick;
+  return __jsx("div", {
+    onClick: function onClick() {
+      return _onClick();
+    },
+    className: [_SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Icon, _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Left].join(" "),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76,
+      columnNumber: 3
+    }
+  }, __jsx("img", {
+    className: "icon",
+    src: "/static/images/icons/arrow-left.png",
+    alt: "left",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77,
+      columnNumber: 4
+    }
+  }));
+};
+
+var CustomArrowRight = function CustomArrowRight(_ref3) {
+  var _onClick2 = _ref3.onClick;
+  return __jsx("div", {
+    onClick: function onClick() {
+      return _onClick2();
+    },
+    className: [_SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Icon, _SliderCarousel_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Right].join(" "),
+    "aria-label": "Go to next slide",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 83,
+      columnNumber: 3
+    }
+  }, __jsx("img", {
+    className: "icon",
+    src: "/static/images/icons/arrow-right.png",
+    alt: "right",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 88,
+      columnNumber: 4
+    }
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (sliderCarousel);
@@ -2431,11 +3425,99 @@ module.exports = content.locals || {};
 
 /***/ }),
 
+/***/ "./components/Stars/Stars.js":
+/*!***********************************!*\
+  !*** ./components/Stars/Stars.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _this = undefined,
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Stars\\Stars.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+var MAX_STARS = 5;
+
+var stars = function stars(_ref) {
+  var rate = _ref.rate;
+
+  if (rate > MAX_STARS) {
+    return;
+  }
+
+  var starsArray = [];
+
+  for (var i = 0; i < MAX_STARS; i++) {
+    starsArray.push(__jsx("div", {
+      key: i,
+      className: "mr-1",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 10,
+        columnNumber: 4
+      }
+    }, __jsx("img", {
+      src: "/static/images/icons/star.png",
+      className: "icon",
+      alt: "star",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11,
+        columnNumber: 5
+      }
+    })));
+  }
+
+  for (var _i = 0; _i < rate; _i++) {
+    starsArray[_i] = __jsx("div", {
+      key: _i,
+      className: "mr-1",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17,
+        columnNumber: 4
+      }
+    }, __jsx("img", {
+      src: "/static/images/icons/star-gold.png",
+      className: "icon",
+      alt: "star-gold",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18,
+        columnNumber: 5
+      }
+    }));
+  }
+
+  return __jsx("div", {
+    className: "d-flex align-items-center",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22,
+      columnNumber: 9
+    }
+  }, starsArray);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (stars);
+
+/***/ }),
+
 /***/ "./components/index.js":
 /*!*****************************!*\
   !*** ./components/index.js ***!
   \*****************************/
-/*! exports provided: Navbar, Footer, Logo, Heading, PreCarousel, SliderCarousel, Compilations, CompilationsCarousel, Products, ProductsCarousel, ImagesCarousel, Speaker */
+/*! exports provided: Navbar, Footer, Logo, Heading, PreCarousel, SliderCarousel, Compilations, CompilationsCarousel, Products, ProductsCarousel, ImagesCarousel, Speaker, ReviewsCarousel, Reviews, Stars, PopularHeader, BookCategories */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2475,6 +3557,26 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _Speakers_Speaker_Speaker__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Speakers/Speaker/Speaker */ "./components/Speakers/Speaker/Speaker.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Speaker", function() { return _Speakers_Speaker_Speaker__WEBPACK_IMPORTED_MODULE_11__["default"]; });
+
+/* harmony import */ var _Reviews_ReviewsCarousel__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Reviews/ReviewsCarousel */ "./components/Reviews/ReviewsCarousel.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ReviewsCarousel", function() { return _Reviews_ReviewsCarousel__WEBPACK_IMPORTED_MODULE_12__["default"]; });
+
+/* harmony import */ var _Reviews_Reviews__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Reviews/Reviews */ "./components/Reviews/Reviews.js");
+/* harmony import */ var _Reviews_Reviews__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_Reviews_Reviews__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "Reviews", function() { return _Reviews_Reviews__WEBPACK_IMPORTED_MODULE_13___default.a; });
+/* harmony import */ var _Stars_Stars__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Stars/Stars */ "./components/Stars/Stars.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Stars", function() { return _Stars_Stars__WEBPACK_IMPORTED_MODULE_14__["default"]; });
+
+/* harmony import */ var _PopularHeader_PopularHeader__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./PopularHeader/PopularHeader */ "./components/PopularHeader/PopularHeader.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PopularHeader", function() { return _PopularHeader_PopularHeader__WEBPACK_IMPORTED_MODULE_15__["default"]; });
+
+/* harmony import */ var _BookCategories_BookCategories__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./BookCategories/BookCategories */ "./components/BookCategories/BookCategories.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BookCategories", function() { return _BookCategories_BookCategories__WEBPACK_IMPORTED_MODULE_16__["default"]; });
+
+
+
+
+
 
 
 
@@ -2546,6 +3648,7 @@ var layout = function layout(_ref) {
       columnNumber: 4
     }
   }), __jsx("main", {
+    className: "pt-4",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -5989,6 +7092,28 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/BookCategories/BookCategory/BookCategory.module.scss":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/resolve-url-loader??ref--5-oneOf-3-3!./node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./components/BookCategories/BookCategory/BookCategory.module.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(true);
+// Module
+exports.push([module.i, ".BookCategory_BookCategory__30zDX {\n  cursor: pointer;\n  margin-bottom: 1rem;\n  display: flex;\n  align-items: center; }\n  .BookCategory_BookCategory__30zDX:hover p, .BookCategory_BookCategory__30zDX.BookCategory_Active__3usDj p {\n    color: var(--accent); }\n  .BookCategory_BookCategory__30zDX p {\n    font-weight: bold;\n    transition: .25s all ease;\n    font-size: .9rem; }\n", "",{"version":3,"sources":["BookCategory.module.scss"],"names":[],"mappings":"AAAA;EACI,eAAe;EACf,mBAAmB;EACnB,aAAa;EACb,mBAAmB,EAAA;EAJvB;IASY,oBAAoB,EAAA;EAThC;IAgBQ,iBAAiB;IACjB,yBAAyB;IACzB,gBAAgB,EAAA","file":"BookCategory.module.scss","sourcesContent":[".BookCategory {\r\n    cursor: pointer;\r\n    margin-bottom: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n\r\n    &:hover,\r\n    &.Active {\r\n        p {\r\n            color: var(--accent);\r\n        }\r\n    }\r\n\r\n\r\n\r\n    p {\r\n        font-weight: bold;\r\n        transition: .25s all ease;\r\n        font-size: .9rem;\r\n    }\r\n\r\n\r\n}"]}]);
+// Exports
+exports.locals = {
+	"BookCategory": "BookCategory_BookCategory__30zDX",
+	"Active": "BookCategory_Active__3usDj"
+};
+module.exports = exports;
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Compilations/Compilation/Compilation.module.scss":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/resolve-url-loader??ref--5-oneOf-3-3!./node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./components/Compilations/Compilation/Compilation.module.scss ***!
@@ -6000,7 +7125,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ".Compilation_Compilation__1T3DJ {\n  width: 100%;\n  height: 100%;\n  position: relative;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  outline: 0;\n  text-align: center; }\n  .Compilation_Compilation__1T3DJ:before {\n    content: \"\";\n    position: absolute;\n    height: 100%;\n    width: 100%;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    background: #1a1a1a67;\n    right: 0; }\n  .Compilation_Compilation__1T3DJ img {\n    -o-object-fit: cover;\n       object-fit: cover;\n    width: 100%;\n    height: 100%; }\n  .Compilation_Compilation__1T3DJ div {\n    position: absolute;\n    height: 100%;\n    width: 100%;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    display: flex;\n    align-items: center;\n    justify-content: center; }\n    .Compilation_Compilation__1T3DJ div h3 {\n      color: #FFF4E2; }\n", "",{"version":3,"sources":["Compilation.module.scss"],"names":[],"mappings":"AAAA;EACI,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,2BAA2B;EAC3B,yBAAyB;EAEzB,sBAAsB;EACtB,qBAAqB;EACrB,iBAAiB;EACjB,UAAU;EACV,kBAAkB,EAAA;EAXtB;IAcQ,WAAW;IACX,kBAAkB;IAClB,YAAY;IACZ,WAAW;IACX,MAAM;IACN,SAAS;IACT,OAAO;IACP,qBAAqB;IACrB,QAAQ,EAAA;EAtBhB;IA2BQ,oBAAiB;OAAjB,iBAAiB;IACjB,WAAW;IACX,YAAY,EAAA;EA7BpB;IAkCQ,kBAAkB;IAClB,YAAY;IACZ,WAAW;IACX,MAAM;IACN,SAAS;IACT,OAAO;IACP,QAAQ;IACR,aAAa;IACb,mBAAmB;IACnB,uBAAuB,EAAA;IA3C/B;MA8CY,cACJ,EAAA","file":"Compilation.module.scss","sourcesContent":[".Compilation {\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    outline: 0;\r\n    text-align: center;\r\n\r\n    &:before {\r\n        content: \"\";\r\n        position: absolute;\r\n        height: 100%;\r\n        width: 100%;\r\n        top: 0;\r\n        bottom: 0;\r\n        left: 0;\r\n        background: #1a1a1a67;\r\n        right: 0;\r\n    }\r\n\r\n\r\n    img {\r\n        object-fit: cover;\r\n        width: 100%;\r\n        height: 100%;\r\n    }\r\n\r\n    div {\r\n        // z-index: 99;\r\n        position: absolute;\r\n        height: 100%;\r\n        width: 100%;\r\n        top: 0;\r\n        bottom: 0;\r\n        left: 0;\r\n        right: 0;\r\n        display: flex;\r\n        align-items: center;\r\n        justify-content: center;\r\n\r\n        h3 {\r\n            color: #FFF4E2\r\n        }\r\n    }\r\n}"]}]);
+exports.push([module.i, ".Compilation_Compilation__1T3DJ {\n  width: 100%;\n  height: 100%;\n  position: relative;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  outline: 0;\n  text-align: center; }\n  .Compilation_Compilation__1T3DJ:before {\n    content: \"\";\n    position: absolute;\n    height: 100%;\n    width: 100%;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    background: #1a1a1a67;\n    right: 0; }\n  .Compilation_Compilation__1T3DJ img {\n    -o-object-fit: cover;\n       object-fit: cover;\n    width: 100%;\n    height: 100%; }\n  .Compilation_Compilation__1T3DJ div {\n    position: absolute;\n    height: 100%;\n    width: 100%;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    display: flex;\n    align-items: center;\n    justify-content: center; }\n    .Compilation_Compilation__1T3DJ div h4 {\n      color: #FFF4E2; }\n", "",{"version":3,"sources":["Compilation.module.scss"],"names":[],"mappings":"AAAA;EACI,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,2BAA2B;EAC3B,yBAAyB;EAEzB,sBAAsB;EACtB,qBAAqB;EACrB,iBAAiB;EACjB,UAAU;EACV,kBAAkB,EAAA;EAXtB;IAcQ,WAAW;IACX,kBAAkB;IAClB,YAAY;IACZ,WAAW;IACX,MAAM;IACN,SAAS;IACT,OAAO;IACP,qBAAqB;IACrB,QAAQ,EAAA;EAtBhB;IA2BQ,oBAAiB;OAAjB,iBAAiB;IACjB,WAAW;IACX,YAAY,EAAA;EA7BpB;IAkCQ,kBAAkB;IAClB,YAAY;IACZ,WAAW;IACX,MAAM;IACN,SAAS;IACT,OAAO;IACP,QAAQ;IACR,aAAa;IACb,mBAAmB;IACnB,uBAAuB,EAAA;IA3C/B;MA8CY,cACJ,EAAA","file":"Compilation.module.scss","sourcesContent":[".Compilation {\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    outline: 0;\r\n    text-align: center;\r\n\r\n    &:before {\r\n        content: \"\";\r\n        position: absolute;\r\n        height: 100%;\r\n        width: 100%;\r\n        top: 0;\r\n        bottom: 0;\r\n        left: 0;\r\n        background: #1a1a1a67;\r\n        right: 0;\r\n    }\r\n\r\n\r\n    img {\r\n        object-fit: cover;\r\n        width: 100%;\r\n        height: 100%;\r\n    }\r\n\r\n    div {\r\n        // z-index: 99;\r\n        position: absolute;\r\n        height: 100%;\r\n        width: 100%;\r\n        top: 0;\r\n        bottom: 0;\r\n        left: 0;\r\n        right: 0;\r\n        display: flex;\r\n        align-items: center;\r\n        justify-content: center;\r\n\r\n        h4 {\r\n            color: #FFF4E2\r\n        }\r\n    }\r\n}"]}]);
 // Exports
 exports.locals = {
 	"Compilation": "Compilation_Compilation__1T3DJ"
@@ -6021,12 +7146,33 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ".Footer_Footer__AtGet {\n  text-align: center;\n  background: #F0F0F0;\n  width: 100%;\n  padding: 15px 0 50px; }\n  .Footer_Footer__AtGet .Footer_FlexColumns__tpdA1 {\n    display: flex;\n    flex-wrap: wrap;\n    padding-left: 0; }\n    .Footer_Footer__AtGet .Footer_FlexColumns__tpdA1 li {\n      flex: 0 0 33.333333%; }\n    .Footer_Footer__AtGet .Footer_FlexColumns__tpdA1 img {\n      height: 22px; }\n  .Footer_Footer__AtGet .Footer_Social__aHE_y ul {\n    display: flex;\n    justify-content: space-between; }\n  .Footer_Footer__AtGet .Footer_Social__aHE_y li div {\n    background-color: var(--accent);\n    border-radius: 50%;\n    text-align: center;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 8px; }\n    .Footer_Footer__AtGet .Footer_Social__aHE_y li div img {\n      width: .75rem; }\n", "",{"version":3,"sources":["Footer.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAkB;EAClB,mBAAmB;EACnB,WAAW;EACX,oBAAoB,EAAA;EAJxB;IAOQ,aAAa;IACb,eAAe;IACf,eAAe,EAAA;IATvB;MAYY,oBAAoB,EAAA;IAZhC;MAgBY,YAAY,EAAA;EAhBxB;IAuBY,aAAa;IACb,8BAA8B,EAAA;EAxB1C;IA6BgB,+BAA+B;IAC/B,kBAAkB;IAClB,kBAAkB;IAClB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,YAAY,EAAA;IAnC5B;MAsCoB,aAAa,EAAA","file":"Footer.module.scss","sourcesContent":[".Footer {\r\n    text-align: center;\r\n    background: #F0F0F0;\r\n    width: 100%;\r\n    padding: 15px 0 50px;\r\n\r\n    .FlexColumns {\r\n        display: flex;\r\n        flex-wrap: wrap;\r\n        padding-left: 0;\r\n\r\n        li {\r\n            flex: 0 0 33.333333%;\r\n        }\r\n\r\n        img {\r\n            height: 22px;\r\n        }\r\n\r\n    }\r\n\r\n    .Social {\r\n        ul {\r\n            display: flex;\r\n            justify-content: space-between;\r\n        }\r\n\r\n        li {\r\n            div {\r\n                background-color: var(--accent);\r\n                border-radius: 50%;\r\n                text-align: center;\r\n                display: flex;\r\n                justify-content: center;\r\n                align-items: center;\r\n                padding: 8px;\r\n\r\n                img {\r\n                    width: .75rem;\r\n                }\r\n            }\r\n        }\r\n    }\r\n}"]}]);
+exports.push([module.i, ".Footer_Footer__AtGet {\n  text-align: center;\n  background: #F0F0F0;\n  width: 100%;\n  padding: 15px 0 50px;\n  margin-top: 20px; }\n  .Footer_Footer__AtGet .Footer_FlexColumns__tpdA1 {\n    display: flex;\n    flex-wrap: wrap;\n    padding-left: 0; }\n    .Footer_Footer__AtGet .Footer_FlexColumns__tpdA1 li {\n      flex: 0 0 33.333333%; }\n    .Footer_Footer__AtGet .Footer_FlexColumns__tpdA1 img {\n      height: 22px;\n      -o-object-fit: contain;\n         object-fit: contain; }\n  .Footer_Footer__AtGet .Footer_Social__aHE_y ul {\n    display: flex;\n    justify-content: space-between; }\n  .Footer_Footer__AtGet .Footer_Social__aHE_y li div {\n    background-color: var(--accent);\n    border-radius: 50%;\n    text-align: center;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 8px; }\n    .Footer_Footer__AtGet .Footer_Social__aHE_y li div img {\n      width: .75rem; }\n", "",{"version":3,"sources":["Footer.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAkB;EAClB,mBAAmB;EACnB,WAAW;EACX,oBAAoB;EACpB,gBAAgB,EAAA;EALpB;IAQQ,aAAa;IACb,eAAe;IACf,eAAe,EAAA;IAVvB;MAaY,oBAAoB,EAAA;IAbhC;MAiBY,YAAY;MACZ,sBACJ;SADI,mBACJ,EAAA;EAnBR;IAyBY,aAAa;IACb,8BAA8B,EAAA;EA1B1C;IA+BgB,+BAA+B;IAC/B,kBAAkB;IAClB,kBAAkB;IAClB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,YAAY,EAAA;IArC5B;MAwCoB,aAAa,EAAA","file":"Footer.module.scss","sourcesContent":[".Footer {\r\n    text-align: center;\r\n    background: #F0F0F0;\r\n    width: 100%;\r\n    padding: 15px 0 50px;\r\n    margin-top: 20px;\r\n\r\n    .FlexColumns {\r\n        display: flex;\r\n        flex-wrap: wrap;\r\n        padding-left: 0;\r\n\r\n        li {\r\n            flex: 0 0 33.333333%;\r\n        }\r\n\r\n        img {\r\n            height: 22px;\r\n            object-fit: contain\r\n        }\r\n\r\n    }\r\n\r\n    .Social {\r\n        ul {\r\n            display: flex;\r\n            justify-content: space-between;\r\n        }\r\n\r\n        li {\r\n            div {\r\n                background-color: var(--accent);\r\n                border-radius: 50%;\r\n                text-align: center;\r\n                display: flex;\r\n                justify-content: center;\r\n                align-items: center;\r\n                padding: 8px;\r\n\r\n                img {\r\n                    width: .75rem;\r\n                }\r\n            }\r\n        }\r\n    }\r\n}"]}]);
 // Exports
 exports.locals = {
 	"Footer": "Footer_Footer__AtGet",
 	"FlexColumns": "Footer_FlexColumns__tpdA1",
 	"Social": "Footer_Social__aHE_y"
+};
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Heading/Heading.module.scss":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/resolve-url-loader??ref--5-oneOf-3-3!./node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./components/Heading/Heading.module.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(true);
+// Module
+exports.push([module.i, ".Heading_Heading__s1qOY {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: center;\n  height: 100%;\n  color: var(--accent); }\n", "",{"version":3,"sources":["Heading.module.scss"],"names":[],"mappings":"AAAA;EACI,aAAa;EACb,sBAAsB;EACtB,uBAAuB;EACvB,uBAAuB;EACvB,YAAY;EACZ,oBAAoB,EAAA","file":"Heading.module.scss","sourcesContent":[".Heading {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: flex-start;\r\n    justify-content: center;\r\n    height: 100%;\r\n    color: var(--accent)\r\n}"]}]);
+// Exports
+exports.locals = {
+	"Heading": "Heading_Heading__s1qOY"
 };
 module.exports = exports;
 
@@ -6075,6 +7221,27 @@ module.exports = exports;
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Navigation/Navbar.module.scss":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/resolve-url-loader??ref--5-oneOf-3-3!./node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./components/Navigation/Navbar.module.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(true);
+// Module
+exports.push([module.i, ".Navbar_Navbar__2O_ie {\n  background: #FFFFFF;\n  box-shadow: 0px 5px 10px rgba(204, 204, 204, 0.5);\n  min-height: 72px;\n  display: flex;\n  align-items: center; }\n", "",{"version":3,"sources":["Navbar.module.scss"],"names":[],"mappings":"AAAA;EACI,mBAAmB;EACnB,iDAAiD;EACjD,gBAAgB;EAChB,aAAa;EACb,mBAAmB,EAAA","file":"Navbar.module.scss","sourcesContent":[".Navbar {\r\n    background: #FFFFFF;\r\n    box-shadow: 0px 5px 10px rgba(204, 204, 204, 0.5);\r\n    min-height: 72px;\r\n    display: flex;\r\n    align-items: center;\r\n}"]}]);
+// Exports
+exports.locals = {
+	"Navbar": "Navbar_Navbar__2O_ie"
+};
+module.exports = exports;
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/PreCarousel/PreCarousel.module.scss":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/resolve-url-loader??ref--5-oneOf-3-3!./node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./components/PreCarousel/PreCarousel.module.scss ***!
@@ -6115,6 +7282,49 @@ module.exports = exports;
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Reviews/Review/Review.module.scss":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/resolve-url-loader??ref--5-oneOf-3-3!./node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./components/Reviews/Review/Review.module.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(true);
+// Module
+exports.push([module.i, ".Review_Review__3Yftx {\n  padding: 15px 15px 30px;\n  background-color: white;\n  box-shadow: 0px 5px 10px rgba(204, 204, 204, 0.5);\n  border-radius: 4px; }\n\n.Review_Image__mbLGB {\n  margin-right: .5rem; }\n", "",{"version":3,"sources":["Review.module.scss"],"names":[],"mappings":"AAAA;EACI,uBAAuB;EACvB,uBAAuB;EACvB,iDAAiD;EACjD,kBAAkB,EAAA;;AAGtB;EACI,mBAAmB,EAAA","file":"Review.module.scss","sourcesContent":[".Review {\r\n    padding: 15px 15px 30px;\r\n    background-color: white;\r\n    box-shadow: 0px 5px 10px rgba(204, 204, 204, 0.5);\r\n    border-radius: 4px;\r\n}\r\n\r\n.Image {\r\n    margin-right: .5rem;\r\n}"]}]);
+// Exports
+exports.locals = {
+	"Review": "Review_Review__3Yftx",
+	"Image": "Review_Image__mbLGB"
+};
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Reviews/ReviewsCarousel.module.scss":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/resolve-url-loader??ref--5-oneOf-3-3!./node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./components/Reviews/ReviewsCarousel.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(true);
+// Module
+exports.push([module.i, ".ReviewsCarousel_Item__2pVG2 {\n  width: 300px; }\n", "",{"version":3,"sources":["ReviewsCarousel.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAY,EAAA","file":"ReviewsCarousel.module.scss","sourcesContent":[".Item {\r\n    width: 300px;\r\n}"]}]);
+// Exports
+exports.locals = {
+	"Item": "ReviewsCarousel_Item__2pVG2"
+};
+module.exports = exports;
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/SliderCarousel/SliderCarousel.module.scss":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/resolve-url-loader??ref--5-oneOf-3-3!./node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./components/SliderCarousel/SliderCarousel.module.scss ***!
@@ -6126,11 +7336,13 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ".SliderCarousel_Icon__3HUvI {\n  border-radius: 50%;\n  padding: 12px;\n  border: 1px solid #CCCCCC;\n  background-color: white;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n  .SliderCarousel_Icon__3HUvI.SliderCarousel_Disabled__3p6q8 {\n    -webkit-filter: grayscale(1);\n            filter: grayscale(1); }\n\n.SliderCarousel_Item__3Mhgn {\n  padding: 0 10px; }\n", "",{"version":3,"sources":["SliderCarousel.module.scss"],"names":[],"mappings":"AAEA;EACI,kBAAkB;EAClB,aAAa;EACb,yBAAyB;EACzB,uBAAuB;EACvB,aAAa;EACb,uBAAuB;EACvB,mBAAmB,EAAA;EAPvB;IAUQ,4BAAoB;YAApB,oBAAoB,EAAA;;AAI5B;EACI,eAAe,EAAA","file":"SliderCarousel.module.scss","sourcesContent":[".Carousel {}\r\n\r\n.Icon {\r\n    border-radius: 50%;\r\n    padding: 12px;\r\n    border: 1px solid #CCCCCC;\r\n    background-color: white;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n\r\n    &.Disabled {\r\n        filter: grayscale(1);\r\n    }\r\n}\r\n\r\n.Item {\r\n    padding: 0 10px;\r\n}"]}]);
+exports.push([module.i, ".SliderCarousel_Icon__3HUvI {\n  border-radius: 50%;\n  padding: 12px;\n  border: 1px solid #CCCCCC;\n  background-color: white;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: absolute;\n  z-index: 1000;\n  cursor: pointer; }\n  .SliderCarousel_Icon__3HUvI.SliderCarousel_Disabled__3p6q8 {\n    -webkit-filter: grayscale(1);\n            filter: grayscale(1); }\n  .SliderCarousel_Icon__3HUvI.SliderCarousel_Left__1ez2_ {\n    left: -0px; }\n  .SliderCarousel_Icon__3HUvI.SliderCarousel_Right__wOvwT {\n    right: 0; }\n\n.SliderCarousel_Item__3Mhgn {\n  padding: 0 10px; }\n", "",{"version":3,"sources":["SliderCarousel.module.scss"],"names":[],"mappings":"AAEA;EACI,kBAAkB;EAClB,aAAa;EACb,yBAAyB;EACzB,uBAAuB;EACvB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,kBAAkB;EAClB,aAAa;EACb,eAAe,EAAA;EAVnB;IAaQ,4BAAoB;YAApB,oBAAoB,EAAA;EAb5B;IAiBQ,UAAU,EAAA;EAjBlB;IAqBQ,QAAQ,EAAA;;AAIhB;EACI,eAAe,EAAA","file":"SliderCarousel.module.scss","sourcesContent":[".Carousel {}\r\n\r\n.Icon {\r\n    border-radius: 50%;\r\n    padding: 12px;\r\n    border: 1px solid #CCCCCC;\r\n    background-color: white;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    position: absolute;\r\n    z-index: 1000;\r\n    cursor: pointer;\r\n\r\n    &.Disabled {\r\n        filter: grayscale(1);\r\n    }\r\n\r\n    &.Left {\r\n        left: -0px;\r\n    }\r\n\r\n    &.Right {\r\n        right: 0;\r\n    }\r\n}\r\n\r\n.Item {\r\n    padding: 0 10px;\r\n}"]}]);
 // Exports
 exports.locals = {
 	"Icon": "SliderCarousel_Icon__3HUvI",
 	"Disabled": "SliderCarousel_Disabled__3p6q8",
+	"Left": "SliderCarousel_Left__1ez2_",
+	"Right": "SliderCarousel_Right__wOvwT",
 	"Item": "SliderCarousel_Item__3Mhgn"
 };
 module.exports = exports;
@@ -23418,40 +24630,41 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
-var indexPage = function indexPage(props) {
+var IndexPage = function IndexPage(props) {
   return __jsx(_layouts__WEBPACK_IMPORTED_MODULE_2__["Layout"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 16,
       columnNumber: 3
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+    className: "mb-4",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 17,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
+      lineNumber: 18,
       columnNumber: 5
     }
   }, __jsx("section", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 19,
       columnNumber: 6
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Carousel"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
+      lineNumber: 20,
       columnNumber: 7
     }
   }, getCarouselItems().map(function (item) {
@@ -23460,7 +24673,7 @@ var indexPage = function indexPage(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 14,
+        lineNumber: 23,
         columnNumber: 10
       }
     }, __jsx("img", {
@@ -23470,50 +24683,43 @@ var indexPage = function indexPage(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 15,
+        lineNumber: 24,
         columnNumber: 11
       }
     }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Carousel"].Caption, {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 16,
+        lineNumber: 25,
         columnNumber: 11
       }
     }, __jsx("h3", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 17,
+        lineNumber: 26,
         columnNumber: 12
       }
-    }, item.title), __jsx("p", {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 18,
-        columnNumber: 12
-      }
-    }, item.text)));
+    }, item.title)));
   }))))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 36,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 37,
       columnNumber: 5
     }
   }, __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 38,
       columnNumber: 6
     }
   }, __jsx("img", {
@@ -23522,14 +24728,14 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 39,
       columnNumber: 7
     }
   }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 42,
       columnNumber: 5
     }
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["Heading"], {
@@ -23537,14 +24743,15 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 43,
       columnNumber: 6
     }
   }, "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u0435 \u0438 \u043F\u0435\u0447\u0430\u0442\u043D\u044B\u0435"))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+    className: "mt-4 mb-4 pt-4 pb-4",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 46,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
@@ -23552,14 +24759,15 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 47,
       columnNumber: 5
     }
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["PreCarousel"], {
+    link: "/#",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 48,
       columnNumber: 6
     }
   }, "\u0421\u0431\u043E\u0440\u043D\u0438\u043A\u0438 \u043A\u043D\u0438\u0433")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
@@ -23567,7 +24775,7 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 50,
       columnNumber: 5
     }
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["CompilationsCarousel"], {
@@ -23575,35 +24783,43 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
+      lineNumber: 51,
       columnNumber: 6
     }
   }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 54,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 55,
       columnNumber: 5
     }
-  }, "\u041F\u043E\u043F\u0443\u043B\u044F\u0440\u043D\u044B\u0435 \u0430\u0443\u0434\u0438\u043E\u043A\u043D\u0438\u0433\u0438")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["PopularHeader"], {
+    link: "/books/popular",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 56,
+      columnNumber: 6
+    }
+  }, "\u043A\u043D\u0438\u0433\u0438"))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 59,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49,
+      lineNumber: 60,
       columnNumber: 5
     }
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["ProductsCarousel"], {
@@ -23611,21 +24827,22 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50,
+      lineNumber: 61,
       columnNumber: 6
     }
   }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+    className: "mt-5 pt-4 mb-5 pb-4",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 64,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 65,
       columnNumber: 5
     }
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["Heading"], {
@@ -23633,21 +24850,21 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 66,
       columnNumber: 6
     }
   }, "\u0410\u0443\u0434\u0438\u043E\u043A\u043D\u0438\u0433\u0438")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 68,
       columnNumber: 5
     }
   }, __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 69,
       columnNumber: 6
     }
   }, __jsx("img", {
@@ -23656,14 +24873,14 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 70,
       columnNumber: 7
     }
   })))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63,
+      lineNumber: 74,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
@@ -23671,14 +24888,15 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
+      lineNumber: 75,
       columnNumber: 5
     }
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["PreCarousel"], {
+    link: "/#",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 76,
       columnNumber: 6
     }
   }, "\u0421\u0431\u043E\u0440\u043D\u0438\u043A\u0438 \u0430\u0443\u0434\u0438\u043E\u043A\u043D\u0438\u0433")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
@@ -23686,7 +24904,7 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 78,
       columnNumber: 5
     }
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["CompilationsCarousel"], {
@@ -23694,21 +24912,67 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 79,
       columnNumber: 6
     }
   }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+    className: "mt-5 pt-4",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 82,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72,
+      lineNumber: 83,
+      columnNumber: 5
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["PopularHeader"], {
+    link: "/audio/popular",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 84,
+      columnNumber: 6
+    }
+  }, "\u0430\u0443\u0434\u0438\u043E\u043A\u043D\u0438\u0433\u0438"))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 87,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 88,
+      columnNumber: 5
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["ProductsCarousel"], {
+    items: getPopularBooks(),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 89,
+      columnNumber: 6
+    }
+  }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+    className: "mb-4  mt-5 pt-3",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 92,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 93,
       columnNumber: 5
     }
   }, __jsx("h3", {
@@ -23716,14 +24980,14 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73,
+      lineNumber: 94,
       columnNumber: 6
     }
   }, "\u041B\u0443\u0447\u0448\u0438\u0435 \u0441\u043F\u0438\u043A\u0435\u0440\u044B"))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
+      lineNumber: 97,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
@@ -23731,7 +24995,7 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77,
+      lineNumber: 98,
       columnNumber: 5
     }
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["ImagesCarousel"], {
@@ -23739,7 +25003,7 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78,
+      lineNumber: 99,
       columnNumber: 6
     }
   })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
@@ -23747,28 +25011,29 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80,
+      lineNumber: 101,
       columnNumber: 5
     }
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["Speaker"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, getSpeakers()[0], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81,
+      lineNumber: 102,
       columnNumber: 6
     }
   })))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+    className: "mb-4  mt-5 pt-3",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84,
+      lineNumber: 105,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85,
+      lineNumber: 106,
       columnNumber: 5
     }
   }, __jsx("h3", {
@@ -23776,28 +25041,83 @@ var indexPage = function indexPage(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86,
+      lineNumber: 107,
       columnNumber: 6
     }
-  }, "\u041E\u0442\u0437\u044B\u0432\u044B \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439"))));
+  }, "\u041E\u0442\u0437\u044B\u0432\u044B \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439"))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 110,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 111,
+      columnNumber: 5
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["ReviewsCarousel"], {
+    items: getReviewsItems(),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 112,
+      columnNumber: 6
+    }
+  }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+    className: "mt-3 mb-5 pb-4",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 115,
+      columnNumber: 4
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 116,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "text-center",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 117,
+      columnNumber: 6
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+    onClick: function onClick() {
+      return;
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 118,
+      columnNumber: 7
+    }
+  }, "\u041E\u0441\u0442\u0430\u0432\u0438\u0442\u044C \u043E\u0442\u0437\u044B\u0432")))));
 };
 
 var getCarouselItems = function getCarouselItems() {
   return [{
     id: 0,
     img: "/static/images/main/books/carousel1.png",
-    title: "First slide label",
-    text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+    title: "Электронные книги и Видео уроки" // text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+
   }, {
     id: 1,
     img: "/static/images/main/books/carousel1.png",
-    title: "First slide label",
-    text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+    title: "Электронные книги и Видео уроки" // text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+
   }, {
     id: 2,
     img: "/static/images/main/books/carousel1.png",
-    title: "First slide label",
-    text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+    title: "Электронные книги и Видео уроки" // text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+
   }];
 };
 
@@ -23823,6 +25143,7 @@ var getPopularBooks = function getPopularBooks() {
     img: "/static/images/items/books/1.png",
     title: "Нескучные десерты",
     author: "Истомин Виталий",
+    rate: 3,
     currentPrice: "39 500 сум",
     price: "55 500 сум"
   }, {
@@ -23830,6 +25151,7 @@ var getPopularBooks = function getPopularBooks() {
     img: "/static/images/items/books/1.png",
     title: "Нескучные десерты",
     author: "Истомин Виталий",
+    rate: 1,
     currentPrice: "39 500 сум",
     price: "55 500 сум"
   }, {
@@ -23837,6 +25159,7 @@ var getPopularBooks = function getPopularBooks() {
     img: "/static/images/items/books/1.png",
     title: "Нескучные десерты",
     author: "Истомин Виталий",
+    rate: 4,
     currentPrice: "39 500 сум",
     price: "55 500 сум"
   }, {
@@ -23844,6 +25167,7 @@ var getPopularBooks = function getPopularBooks() {
     img: "/static/images/items/books/1.png",
     title: "Нескучные десерты",
     author: "Истомин Виталий",
+    rate: 0,
     currentPrice: "39 500 сум",
     price: "55 500 сум"
   }, {
@@ -23851,6 +25175,7 @@ var getPopularBooks = function getPopularBooks() {
     img: "/static/images/items/books/1.png",
     title: "Нескучные десерты",
     author: "Истомин Виталий",
+    rate: 4,
     currentPrice: "39 500 сум",
     price: "55 500 сум"
   }, {
@@ -23858,6 +25183,7 @@ var getPopularBooks = function getPopularBooks() {
     img: "/static/images/items/books/1.png",
     title: "Нескучные десерты",
     author: "Истомин Виталий",
+    rate: 4,
     currentPrice: "39 500 сум",
     price: "55 500 сум"
   }, {
@@ -23865,6 +25191,7 @@ var getPopularBooks = function getPopularBooks() {
     img: "/static/images/items/books/1.png",
     title: "Нескучные десерты",
     author: "Истомин Виталий",
+    rate: 4,
     currentPrice: "39 500 сум",
     price: "55 500 сум"
   }, {
@@ -23872,6 +25199,7 @@ var getPopularBooks = function getPopularBooks() {
     img: "/static/images/items/books/1.png",
     title: "Нескучные десерты",
     author: "Истомин Виталий",
+    rate: 5,
     currentPrice: "39 500 сум",
     price: "55 500 сум"
   }, {
@@ -23879,6 +25207,7 @@ var getPopularBooks = function getPopularBooks() {
     img: "/static/images/items/books/1.png",
     title: "Нескучные десерты",
     author: "Истомин Виталий",
+    rate: 4,
     currentPrice: "39 500 сум",
     price: "55 500 сум"
   }];
@@ -23906,11 +25235,39 @@ var getSpeakers = function getSpeakers() {
   }];
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (indexPage);
+var getReviewsItems = function getReviewsItems() {
+  return [{
+    id: 0,
+    img: "/static/images/main/books/person.png",
+    name: "Антон Алексеев",
+    rate: 4,
+    text: "“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
+  }, {
+    id: 1,
+    img: "/static/images/main/books/person.png",
+    name: "Антон Алексеев",
+    rate: 4,
+    text: "“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
+  }, {
+    id: 2,
+    img: "/static/images/main/books/person.png",
+    name: "Антон Алексеев",
+    rate: 4,
+    text: "“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
+  }, {
+    id: 3,
+    img: "/static/images/main/books/person.png",
+    name: "Антон Алексеев",
+    rate: 4,
+    text: "“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
+  }];
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (IndexPage);
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /*!**************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=D%3A%5CAnvar%5CProjects%5CReact%5CReact.js%5CinStore%5Cpages%5Cindex.js&hotRouterUpdates=true ***!
   \**************************************************************************************************************************************************************/
@@ -23933,5 +25290,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

@@ -1,0 +1,23 @@
+.BookCategory {
+    cursor: pointer;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+
+    &:hover,
+    &.Active {
+        p {
+            color: var(--accent);
+        }
+    }
+
+
+
+    p {
+        font-weight: bold;
+        transition: .25s all ease;
+        font-size: .9rem;
+    }
+
+
+}

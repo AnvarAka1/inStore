@@ -8,7 +8,7 @@ const compilation = ({ className, text, img }) => {
 				<div className={`${className} ${classes.Compilation}`}>
 					<img src={img} alt={text} />
 					<div>
-						<h3>{text}</h3>
+						<h4>{text}</h4>
 					</div>
 				</div>
 			</a>

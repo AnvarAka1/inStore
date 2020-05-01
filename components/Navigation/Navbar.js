@@ -1,5 +1,7 @@
 import React from "react";
-import { Navbar, Nav, NavDropdown, Form, Button } from "react-bootstrap";
+import classes from "./Navbar.module.scss";
+import Link from "next/link";
+import { Navbar, Nav, NavDropdown, Form, Button, Container, Row, Col } from "react-bootstrap";
 import { Logo } from "../";
 
 const navbar = () => {
@@ -14,40 +16,49 @@ const navbar = () => {
 		</React.Fragment>
 	);
 	return (
-		<header>
-			<Navbar bg="light" expand="lg">
-				<Navbar.Brand href="#home">
-					<Logo />
-				</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="mr-auto">
-						<NavDropdown title={books} id="basic-nav-dropdown">
-							<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-							<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-							<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-							<NavDropdown.Divider />
-							<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-						</NavDropdown>
-						<NavDropdown title={videolessons} id="basic-nav-dropdown">
-							<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-							<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-							<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-							<NavDropdown.Divider />
-							<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-						</NavDropdown>
-					</Nav>
-					<Form inline className="ml-auto">
-						<Form.Control type="text" placeholder="Search" className="mr-sm-2" />
-						<Button variant="outline-success">Search</Button>
-					</Form>
-					<div className="d-flex justify-content-between align-items-center">
-						<Nav.Item>Избранные</Nav.Item>
-						<Nav.Item>Корзина</Nav.Item>
-						<Nav.Item>Войти</Nav.Item>
-					</div>
-				</Navbar.Collapse>
-			</Navbar>
+		<header className={classes.Navbar}>
+			<Container>
+				<Row>
+					<Col>
+						<Navbar expand="lg">
+							<Link href="/">
+								<a>
+									<Logo />
+								</a>
+							</Link>
+
+							<Navbar.Toggle aria-controls="basic-navbar-nav" />
+							<Navbar.Collapse id="basic-navbar-nav">
+								<Nav className="mr-auto">
+									<NavDropdown title={books} id="basic-nav-dropdown">
+										<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+										<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+										<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+										<NavDropdown.Divider />
+										<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+									</NavDropdown>
+									<NavDropdown title={videolessons} id="basic-nav-dropdown">
+										<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+										<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+										<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+										<NavDropdown.Divider />
+										<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+									</NavDropdown>
+								</Nav>
+								<Form inline className="ml-auto">
+									<Form.Control type="text" placeholder="Search" className="mr-sm-2" />
+									<Button variant="outline-success">Search</Button>
+								</Form>
+								<div className="d-flex justify-content-between align-items-center">
+									<Nav.Item>Избранные</Nav.Item>
+									<Nav.Item>Корзина</Nav.Item>
+									<Nav.Item>Войти</Nav.Item>
+								</div>
+							</Navbar.Collapse>
+						</Navbar>
+					</Col>
+				</Row>
+			</Container>
 		</header>
 	);
 };

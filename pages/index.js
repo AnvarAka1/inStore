@@ -1,11 +1,20 @@
 import React from "react";
 import { Layout } from "../layouts";
-import { Row, Col, Carousel } from "react-bootstrap";
-import { Heading, PreCarousel, CompilationsCarousel, ProductsCarousel, Speaker, ImagesCarousel } from "../components";
-const indexPage = props => {
+import { Row, Col, Carousel, Button } from "react-bootstrap";
+import {
+	Heading,
+	PreCarousel,
+	CompilationsCarousel,
+	ProductsCarousel,
+	Speaker,
+	ImagesCarousel,
+	ReviewsCarousel,
+	PopularHeader
+} from "../components";
+const IndexPage = props => {
 	return (
 		<Layout>
-			<Row>
+			<Row className="mb-4">
 				<Col>
 					<section>
 						<Carousel>
@@ -15,7 +24,7 @@ const indexPage = props => {
 										<img className="d-block w-100" src={item.img} alt={item.title} />
 										<Carousel.Caption>
 											<h3>{item.title}</h3>
-											<p>{item.text}</p>
+											{/* <p>{item.text}</p> */}
 										</Carousel.Caption>
 									</Carousel.Item>
 								);
@@ -34,23 +43,25 @@ const indexPage = props => {
 					<Heading text="книги на любой вкус">Электронные и печатные</Heading>
 				</Col>
 			</Row>
-			<Row>
+			<Row className="mt-4 mb-4 pt-4 pb-4">
 				<Col sm={4}>
-					<PreCarousel>Сборники книг</PreCarousel>
+					<PreCarousel link="/#">Сборники книг</PreCarousel>
 				</Col>
 				<Col sm={8}>
 					<CompilationsCarousel items={getBookCarouselItems()} />
 				</Col>
 			</Row>
 			<Row>
-				<Col>Популярные аудиокниги</Col>
+				<Col>
+					<PopularHeader link="/books/popular">книги</PopularHeader>
+				</Col>
 			</Row>
 			<Row>
 				<Col>
 					<ProductsCarousel items={getPopularBooks()} />
 				</Col>
 			</Row>
-			<Row>
+			<Row className="mt-5 pt-4 mb-5 pb-4">
 				<Col>
 					<Heading text="слушайте когда и где угодно">Аудиокниги</Heading>
 				</Col>
@@ -62,13 +73,23 @@ const indexPage = props => {
 			</Row>
 			<Row>
 				<Col sm={4}>
-					<PreCarousel>Сборники аудиокниг</PreCarousel>
+					<PreCarousel link="/#">Сборники аудиокниг</PreCarousel>
 				</Col>
 				<Col sm={8}>
 					<CompilationsCarousel items={getBookCarouselItems()} />
 				</Col>
 			</Row>
+			<Row className="mt-5 pt-4">
+				<Col>
+					<PopularHeader link="/audio/popular">аудиокниги</PopularHeader>
+				</Col>
+			</Row>
 			<Row>
+				<Col>
+					<ProductsCarousel items={getPopularBooks()} />
+				</Col>
+			</Row>
+			<Row className="mb-4  mt-5 pt-3">
 				<Col>
 					<h3 className="text-accent">Лучшие спикеры</h3>
 				</Col>
@@ -81,32 +102,51 @@ const indexPage = props => {
 					<Speaker {...getSpeakers()[0]} />
 				</Col>
 			</Row>
-			<Row>
+			<Row className="mb-4  mt-5 pt-3">
 				<Col>
 					<h3 className="text-accent">Отзывы пользователей</h3>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<ReviewsCarousel items={getReviewsItems()} />
+				</Col>
+			</Row>
+			<Row className="mt-3 mb-5 pb-4">
+				<Col>
+					<div className="text-center">
+						<Button
+							onClick={() => {
+								return;
+							}}
+						>
+							Оставить отзыв
+						</Button>
+					</div>
 				</Col>
 			</Row>
 		</Layout>
 	);
 };
+
 const getCarouselItems = () => [
 	{
 		id: 0,
 		img: "/static/images/main/books/carousel1.png",
-		title: "First slide label",
-		text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+		title: "Электронные книги и Видео уроки"
+		// text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
 	},
 	{
 		id: 1,
 		img: "/static/images/main/books/carousel1.png",
-		title: "First slide label",
-		text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+		title: "Электронные книги и Видео уроки"
+		// text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
 	},
 	{
 		id: 2,
 		img: "/static/images/main/books/carousel1.png",
-		title: "First slide label",
-		text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
+		title: "Электронные книги и Видео уроки"
+		// text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
 	}
 ];
 const getBookCarouselItems = () => [
@@ -132,6 +172,7 @@ const getPopularBooks = () => [
 		img: "/static/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
+		rate: 3,
 		currentPrice: "39 500 сум",
 		price: "55 500 сум"
 	},
@@ -140,6 +181,7 @@ const getPopularBooks = () => [
 		img: "/static/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
+		rate: 1,
 		currentPrice: "39 500 сум",
 		price: "55 500 сум"
 	},
@@ -148,6 +190,7 @@ const getPopularBooks = () => [
 		img: "/static/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
+		rate: 4,
 		currentPrice: "39 500 сум",
 		price: "55 500 сум"
 	},
@@ -156,6 +199,7 @@ const getPopularBooks = () => [
 		img: "/static/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
+		rate: 0,
 		currentPrice: "39 500 сум",
 		price: "55 500 сум"
 	},
@@ -164,6 +208,7 @@ const getPopularBooks = () => [
 		img: "/static/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
+		rate: 4,
 		currentPrice: "39 500 сум",
 		price: "55 500 сум"
 	},
@@ -172,6 +217,7 @@ const getPopularBooks = () => [
 		img: "/static/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
+		rate: 4,
 		currentPrice: "39 500 сум",
 		price: "55 500 сум"
 	},
@@ -180,6 +226,7 @@ const getPopularBooks = () => [
 		img: "/static/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
+		rate: 4,
 		currentPrice: "39 500 сум",
 		price: "55 500 сум"
 	},
@@ -188,6 +235,7 @@ const getPopularBooks = () => [
 		img: "/static/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
+		rate: 5,
 		currentPrice: "39 500 сум",
 		price: "55 500 сум"
 	},
@@ -196,6 +244,7 @@ const getPopularBooks = () => [
 		img: "/static/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
+		rate: 4,
 		currentPrice: "39 500 сум",
 		price: "55 500 сум"
 	}
@@ -226,4 +275,38 @@ const getSpeakers = () => [
 			"“Скрытый смысл, не учитывая количества слогов, стоящих между ударениями, многопланово аннигилирует былинный реформаторский пафос. Мифопоэтическое пространство вызывает амфибрахий.”"
 	}
 ];
-export default indexPage;
+const getReviewsItems = () => [
+	{
+		id: 0,
+		img: "/static/images/main/books/person.png",
+		name: "Антон Алексеев",
+		rate: 4,
+		text:
+			"“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
+	},
+	{
+		id: 1,
+		img: "/static/images/main/books/person.png",
+		name: "Антон Алексеев",
+		rate: 4,
+		text:
+			"“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
+	},
+	{
+		id: 2,
+		img: "/static/images/main/books/person.png",
+		name: "Антон Алексеев",
+		rate: 4,
+		text:
+			"“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
+	},
+	{
+		id: 3,
+		img: "/static/images/main/books/person.png",
+		name: "Антон Алексеев",
+		rate: 4,
+		text:
+			"“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
+	}
+];
+export default IndexPage;

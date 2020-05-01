@@ -3,6 +3,7 @@
     background: #F0F0F0;
     width: 100%;
     padding: 15px 0 50px;
+    margin-top: 20px;
 
     .FlexColumns {
         display: flex;
@@ -15,6 +16,7 @@
 
         img {
             height: 22px;
+            object-fit: contain
         }
 
     }

@@ -9,7 +9,7 @@ const layout = ({ children }) => {
 				<title>InStore | Библиотека книг и видеоуроков</title>
 			</Head>
 			<Navbar />
-			<main>
+			<main className="pt-4">
 				<Container>{children}</Container>
 			</main>
 			<Footer />
