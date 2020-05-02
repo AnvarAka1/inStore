@@ -1,5 +1,103 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\_app.js"],{
 
+/***/ "./helpers/utils.js":
+/*!**************************!*\
+  !*** ./helpers/utils.js ***!
+  \**************************/
+/*! exports provided: categorySelector, convertFrontToBackDate, convertBackToFrontDate, formCheckValidity */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "categorySelector", function() { return categorySelector; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "convertFrontToBackDate", function() { return convertFrontToBackDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "convertBackToFrontDate", function() { return convertBackToFrontDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "formCheckValidity", function() { return formCheckValidity; });
+var categorySelector = function categorySelector(id, categories, _selectedId) {
+  if (id === _selectedId) return null;
+
+  if (_selectedId != -1) {
+    categories.forEach(function (el) {
+      if (_selectedId === el.id) {
+        el.isActive = false;
+      }
+    });
+  }
+
+  categories.forEach(function (el) {
+    if (el.id === id) {
+      el.isActive = true;
+    }
+  });
+  _selectedId = id;
+  return {
+    _selectedId: _selectedId,
+    categories: categories
+  };
+};
+var convertFrontToBackDate = function convertFrontToBackDate(date) {
+  var year = date.substring(0, 4);
+  var month = date.substring(5, 7);
+  var day = date.substring(8, 10);
+  return "".concat(day, "-").concat(month, "-").concat(year);
+};
+var convertBackToFrontDate = function convertBackToFrontDate(date) {
+  var year = date.substring(6, 10);
+  var month = date.substring(3, 5);
+  var day = date.substring(0, 2);
+  return "".concat(year, "-").concat(month, "-").concat(day);
+};
+var formCheckValidity = function formCheckValidity() {
+  var formControls = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var isFormValid = true;
+  formControls.forEach(function (c) {
+    isFormValid = isFormValid && c.isValid;
+  });
+  return isFormValid;
+};
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _arrayLikeToArray; });
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _arrayWithoutHoles; });
+/* harmony import */ var _arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js");
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return Object(_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(arr);
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/extends.js":
 /*!************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
@@ -26,6 +124,85 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/iterableToArray.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _iterableToArray; });
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _nonIterableSpread; });
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _toConsumableArray; });
+/* harmony import */ var _arrayWithoutHoles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayWithoutHoles */ "./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js");
+/* harmony import */ var _iterableToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./iterableToArray */ "./node_modules/@babel/runtime/helpers/esm/iterableToArray.js");
+/* harmony import */ var _unsupportedIterableToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./unsupportedIterableToArray */ "./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js");
+/* harmony import */ var _nonIterableSpread__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nonIterableSpread */ "./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js");
+
+
+
+
+function _toConsumableArray(arr) {
+  return Object(_arrayWithoutHoles__WEBPACK_IMPORTED_MODULE_0__["default"])(arr) || Object(_iterableToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(arr) || Object(_unsupportedIterableToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(arr) || Object(_nonIterableSpread__WEBPACK_IMPORTED_MODULE_3__["default"])();
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _unsupportedIterableToArray; });
+/* harmony import */ var _arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js");
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return Object(_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(n);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Object(_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(o, minLen);
 }
 
 /***/ }),
@@ -180,7 +357,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ":root {\n  --accent: #024E8F;\n  --secondary: #777\r\n; }\n\n@font-face {\n  font-family: \"OpenSans\";\n  src: url(\"/static/fonts/opensans/OpenSans-Regular.ttf\"); }\n\nbody {\n  font-size: 16px;\n  position: relative;\n  font-family: \"OpenSans\", sans-serif !important; }\n\nimg {\n  width: 100%; }\n\n.icon {\n  height: 0.75rem;\n  width: auto; }\n  .icon-md {\n    height: 1.5rem; }\n  .icon-big {\n    height: 2rem; }\n\np {\n  color: #777777; }\n\ndiv h1,\ndiv h2,\ndiv h3,\ndiv h4,\ndiv h5,\ndiv h6 {\n  font-weight: bold; }\n\ndiv p {\n  margin-bottom: 0; }\n\nul {\n  margin: 0;\n  padding: 0; }\n  ul li {\n    list-style-type: none; }\n\n.text-small {\n  font-size: .75rem; }\n\n.text-underline {\n  text-decoration: underline; }\n\n.text-normal {\n  font-weight: normal; }\n\n.text-bold {\n  font-weight: bold; }\n\n.text-accent {\n  color: var(--accent); }\n\n.text-crossed {\n  text-decoration: line-through; }\n\n.text-secondary {\n  color: var(--secondary); }\n\n.text-black {\n  color: #000; }\n\n.text-light {\n  color: #CCCCCC; }\n\n.text-md {\n  font-size: .9rem; }\n\n.text-xsmall {\n  font-size: .5rem; }\n\n.img-small {\n  width: 50px;\n  height: 50px;\n  -o-object-fit: contain;\n     object-fit: contain; }\n\n.carousel-caption {\n  right: auto;\n  text-align: left;\n  bottom: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: left;\n  justify-content: center;\n  width: 300px;\n  color: var(--accent); }\n\n.carousel-control-prev, .carousel-control-next {\n  display: none; }\n\n.carousel-indicators {\n  right: auto; }\n  .carousel-indicators li {\n    width: 15px;\n    height: 15px;\n    border-radius: 50%;\n    background: transparent;\n    border: 1px solid #004A8B;\n    box-sizing: border-box; }\n    .carousel-indicators li.active {\n      background: #014C8D; }\n\n.react-multi-carousel-list {\n  box-sizing: border-box; }\n\n.radius {\n  border-radius: 50%; }\n", "",{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA;EACI,iBAAS;EACT;AAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uDAAuD,EAAA;;AAG3D;EACI,eAAe;EACf,kBAAkB;EAClB,8CAA8C,EAAA;;AAIlD;EACI,WAAW,EAAA;;AAGf;EACI,eAAe;EACf,WAAW,EAAA;EAEX;IACI,cACJ,EAAA;EAEA;IACI,YAAY,EAAA;;AAIpB;EACI,cAAc,EAAA;;AAGlB;;;;;;EAQQ,iBAAiB,EAAA;;AARzB;EAYQ,gBAAgB,EAAA;;AAIxB;EACI,SAAS;EACT,UAAU,EAAA;EAFd;IAKQ,qBAAqB,EAAA;;AAUzB;EACI,iBAAiB,EAAA;;AAGrB;EACI,0BAA0B,EAAA;;AAG9B;EACI,mBAAmB,EAAA;;AAGvB;EACI,iBAAiB,EAAA;;AAGrB;EACI,oBAAoB,EAAA;;AAGxB;EACI,6BAA6B,EAAA;;AAGjC;EACI,uBAAuB,EAAA;;AAG3B;EACI,WAAW,EAAA;;AAGf;EACI,cAAc,EAAA;;AAGlB;EACI,gBAAgB,EAAA;;AAGpB;EACI,gBAAgB,EAAA;;AAKpB;EACI,WAAW;EACX,YAAY;EACZ,sBAAmB;KAAnB,mBAAmB,EAAA;;AAO3B;EACI,WAAW;EACX,gBAAgB;EAChB,SAAS;EACT,MAAM;EACN,aAAa;EACb,sBAAsB;EACtB,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,oBAAoB,EAAA;;AAKpB;EAEI,aAAa,EAAA;;AAIrB;EACI,WAAW,EAAA;EADf;IAIQ,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,uBAAuB;IACvB,yBAAyB;IACzB,sBAAsB,EAAA;IAT9B;MAYY,mBAAmB,EAAA;;AAM/B;EACI,sBAAsB,EAAA;;AAG1B;EACI,kBAAkB,EAAA","file":"styles.scss","sourcesContent":[":root {\r\n    --accent: #024E8F;\r\n    --secondary: #777\r\n}\r\n\r\n@font-face {\r\n    font-family: \"OpenSans\";\r\n    src: url(\"/static/fonts/opensans/OpenSans-Regular.ttf\");\r\n}\r\n\r\nbody {\r\n    font-size: 16px;\r\n    position: relative;\r\n    font-family: \"OpenSans\", sans-serif !important;\r\n}\r\n\r\n\r\nimg {\r\n    width: 100%;\r\n}\r\n\r\n.icon {\r\n    height: 0.75rem;\r\n    width: auto;\r\n\r\n    &-md {\r\n        height: 1.5rem\r\n    }\r\n\r\n    &-big {\r\n        height: 2rem;\r\n    }\r\n}\r\n\r\np {\r\n    color: #777777;\r\n}\r\n\r\ndiv {\r\n\r\n    h1,\r\n    h2,\r\n    h3,\r\n    h4,\r\n    h5,\r\n    h6 {\r\n        font-weight: bold;\r\n    }\r\n\r\n    p {\r\n        margin-bottom: 0;\r\n    }\r\n}\r\n\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n\r\n    li {\r\n        list-style-type: none;\r\n    }\r\n}\r\n\r\np {\r\n    // line-height: normal;\r\n}\r\n\r\n.text {\r\n\r\n    &-small {\r\n        font-size: .75rem;\r\n    }\r\n\r\n    &-underline {\r\n        text-decoration: underline;\r\n    }\r\n\r\n    &-normal {\r\n        font-weight: normal;\r\n    }\r\n\r\n    &-bold {\r\n        font-weight: bold;\r\n    }\r\n\r\n    &-accent {\r\n        color: var(--accent)\r\n    }\r\n\r\n    &-crossed {\r\n        text-decoration: line-through;\r\n    }\r\n\r\n    &-secondary {\r\n        color: var(--secondary)\r\n    }\r\n\r\n    &-black {\r\n        color: #000;\r\n    }\r\n\r\n    &-light {\r\n        color: #CCCCCC;\r\n    }\r\n\r\n    &-md {\r\n        font-size: .9rem;\r\n    }\r\n\r\n    &-xsmall {\r\n        font-size: .5rem;\r\n    }\r\n}\r\n\r\n.img {\r\n    &-small {\r\n        width: 50px;\r\n        height: 50px;\r\n        object-fit: contain;\r\n    }\r\n\r\n}\r\n\r\n// Carousel\r\n// Dots\r\n.carousel-caption {\r\n    right: auto;\r\n    text-align: left;\r\n    bottom: 0;\r\n    top: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: left;\r\n    justify-content: center;\r\n    width: 300px;\r\n    color: var(--accent);\r\n}\r\n\r\n.carousel-control {\r\n\r\n    &-prev,\r\n    &-next {\r\n        display: none;\r\n    }\r\n}\r\n\r\n.carousel-indicators {\r\n    right: auto;\r\n\r\n    li {\r\n        width: 15px;\r\n        height: 15px;\r\n        border-radius: 50%;\r\n        background: transparent;\r\n        border: 1px solid #004A8B;\r\n        box-sizing: border-box;\r\n\r\n        &.active {\r\n            background: #014C8D;\r\n        }\r\n    }\r\n}\r\n\r\n// Slider Carousel\r\n.react-multi-carousel-list {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.radius {\r\n    border-radius: 50%;\r\n}"]}]);
+exports.push([module.i, ":root {\n  --accent: #024E8F;\n  --secondary: #777\r\n; }\n\n@font-face {\n  font-family: \"OpenSans\";\n  src: url(\"/static/fonts/opensans/OpenSans-Regular.ttf\"); }\n\nbody {\n  font-size: 16px;\n  position: relative;\n  font-family: \"OpenSans\", sans-serif !important; }\n\nimg {\n  width: 100%; }\n\np {\n  color: #777777; }\n\ndiv h1,\ndiv h2,\ndiv h3,\ndiv h4,\ndiv h5,\ndiv h6 {\n  font-weight: bold; }\n\ndiv p {\n  margin-bottom: 0; }\n\nul {\n  margin: 0;\n  padding: 0; }\n  ul li {\n    list-style-type: none; }\n\n.text-small {\n  font-size: .75rem; }\n\n.text-md {\n  font-size: .9rem; }\n\n.text-big {\n  font-size: 1.2rem; }\n\n.text-underline {\n  text-decoration: underline; }\n\n.text-normal {\n  font-weight: normal; }\n\n.text-bold {\n  font-weight: bold; }\n\n.text-accent {\n  color: var(--accent); }\n\n.text-crossed {\n  text-decoration: line-through; }\n\n.text-secondary {\n  color: var(--secondary); }\n\n.text-black {\n  color: #000; }\n\n.text-light {\n  color: #CCCCCC; }\n\n.text-xsmall {\n  font-size: .5rem; }\n\n.icon {\n  height: 0.75rem;\n  width: auto; }\n  .icon-sm {\n    height: 1.2rem; }\n  .icon-md {\n    height: 1.5rem; }\n  .icon-big {\n    height: 2rem; }\n\n.img-small {\n  width: 50px;\n  height: 50px;\n  -o-object-fit: contain;\n     object-fit: contain; }\n\n.carousel-caption {\n  right: auto;\n  text-align: left;\n  bottom: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: left;\n  justify-content: center;\n  width: 300px;\n  color: var(--accent); }\n\n.carousel-control-prev, .carousel-control-next {\n  display: none; }\n\n.carousel-indicators {\n  right: auto; }\n  .carousel-indicators li {\n    width: 15px;\n    height: 15px;\n    border-radius: 50%;\n    background: transparent;\n    border: 1px solid #004A8B;\n    box-sizing: border-box; }\n    .carousel-indicators li.active {\n      background: #014C8D; }\n\n.react-multi-carousel-list {\n  box-sizing: border-box; }\n\n.radius {\n  border-radius: 50%; }\n", "",{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA;EACI,iBAAS;EACT;AAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uDAAuD,EAAA;;AAG3D;EACI,eAAe;EACf,kBAAkB;EAClB,8CAA8C,EAAA;;AAIlD;EACI,WAAW,EAAA;;AAKf;EACI,cAAc,EAAA;;AAGlB;;;;;;EAQQ,iBAAiB,EAAA;;AARzB;EAYQ,gBAAgB,EAAA;;AAIxB;EACI,SAAS;EACT,UAAU,EAAA;EAFd;IAKQ,qBAAqB,EAAA;;AAUzB;EACI,iBAAiB,EAAA;;AAGrB;EACI,gBAAgB,EAAA;;AAGpB;EACI,iBAAiB,EAAA;;AAGrB;EACI,0BAA0B,EAAA;;AAG9B;EACI,mBAAmB,EAAA;;AAGvB;EACI,iBAAiB,EAAA;;AAGrB;EACI,oBAAoB,EAAA;;AAGxB;EACI,6BAA6B,EAAA;;AAGjC;EACI,uBAAuB,EAAA;;AAG3B;EACI,WAAW,EAAA;;AAGf;EACI,cAAc,EAAA;;AAIlB;EACI,gBAAgB,EAAA;;AAIxB;EACI,eAAe;EACf,WAAW,EAAA;EAEX;IACI,cAAc,EAAA;EAGlB;IACI,cACJ,EAAA;EAEA;IACI,YAAY,EAAA;;AAKhB;EACI,WAAW;EACX,YAAY;EACZ,sBAAmB;KAAnB,mBAAmB,EAAA;;AAO3B;EACI,WAAW;EACX,gBAAgB;EAChB,SAAS;EACT,MAAM;EACN,aAAa;EACb,sBAAsB;EACtB,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,oBAAoB,EAAA;;AAKpB;EAEI,aAAa,EAAA;;AAIrB;EACI,WAAW,EAAA;EADf;IAIQ,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,uBAAuB;IACvB,yBAAyB;IACzB,sBAAsB,EAAA;IAT9B;MAYY,mBAAmB,EAAA;;AAM/B;EACI,sBAAsB,EAAA;;AAG1B;EACI,kBAAkB,EAAA","file":"styles.scss","sourcesContent":[":root {\r\n    --accent: #024E8F;\r\n    --secondary: #777\r\n}\r\n\r\n@font-face {\r\n    font-family: \"OpenSans\";\r\n    src: url(\"/static/fonts/opensans/OpenSans-Regular.ttf\");\r\n}\r\n\r\nbody {\r\n    font-size: 16px;\r\n    position: relative;\r\n    font-family: \"OpenSans\", sans-serif !important;\r\n}\r\n\r\n\r\nimg {\r\n    width: 100%;\r\n}\r\n\r\n\r\n\r\np {\r\n    color: #777777;\r\n}\r\n\r\ndiv {\r\n\r\n    h1,\r\n    h2,\r\n    h3,\r\n    h4,\r\n    h5,\r\n    h6 {\r\n        font-weight: bold;\r\n    }\r\n\r\n    p {\r\n        margin-bottom: 0;\r\n    }\r\n}\r\n\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n\r\n    li {\r\n        list-style-type: none;\r\n    }\r\n}\r\n\r\np {\r\n    // line-height: normal;\r\n}\r\n\r\n.text {\r\n\r\n    &-small {\r\n        font-size: .75rem;\r\n    }\r\n\r\n    &-md {\r\n        font-size: .9rem;\r\n    }\r\n\r\n    &-big {\r\n        font-size: 1.2rem;\r\n    }\r\n\r\n    &-underline {\r\n        text-decoration: underline;\r\n    }\r\n\r\n    &-normal {\r\n        font-weight: normal;\r\n    }\r\n\r\n    &-bold {\r\n        font-weight: bold;\r\n    }\r\n\r\n    &-accent {\r\n        color: var(--accent)\r\n    }\r\n\r\n    &-crossed {\r\n        text-decoration: line-through;\r\n    }\r\n\r\n    &-secondary {\r\n        color: var(--secondary)\r\n    }\r\n\r\n    &-black {\r\n        color: #000;\r\n    }\r\n\r\n    &-light {\r\n        color: #CCCCCC;\r\n    }\r\n\r\n\r\n    &-xsmall {\r\n        font-size: .5rem;\r\n    }\r\n}\r\n\r\n.icon {\r\n    height: 0.75rem;\r\n    width: auto;\r\n\r\n    &-sm {\r\n        height: 1.2rem;\r\n    }\r\n\r\n    &-md {\r\n        height: 1.5rem\r\n    }\r\n\r\n    &-big {\r\n        height: 2rem;\r\n    }\r\n}\r\n\r\n.img {\r\n    &-small {\r\n        width: 50px;\r\n        height: 50px;\r\n        object-fit: contain;\r\n    }\r\n\r\n}\r\n\r\n// Carousel\r\n// Dots\r\n.carousel-caption {\r\n    right: auto;\r\n    text-align: left;\r\n    bottom: 0;\r\n    top: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: left;\r\n    justify-content: center;\r\n    width: 300px;\r\n    color: var(--accent);\r\n}\r\n\r\n.carousel-control {\r\n\r\n    &-prev,\r\n    &-next {\r\n        display: none;\r\n    }\r\n}\r\n\r\n.carousel-indicators {\r\n    right: auto;\r\n\r\n    li {\r\n        width: 15px;\r\n        height: 15px;\r\n        border-radius: 50%;\r\n        background: transparent;\r\n        border: 1px solid #004A8B;\r\n        box-sizing: border-box;\r\n\r\n        &.active {\r\n            background: #014C8D;\r\n        }\r\n    }\r\n}\r\n\r\n// Slider Carousel\r\n.react-multi-carousel-list {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.radius {\r\n    border-radius: 50%;\r\n}"]}]);
 // Exports
 module.exports = exports;
 
@@ -3761,36 +3938,160 @@ module.exports = function (list, options) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MyApp; });
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-multi-carousel/lib/styles.css */ "./node_modules/react-multi-carousel/lib/styles.css");
-/* harmony import */ var react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../styles.scss */ "./styles.scss");
-/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_styles_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-multi-carousel/lib/styles.css */ "./node_modules/react-multi-carousel/lib/styles.css");
+/* harmony import */ var react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../styles.scss */ "./styles.scss");
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_styles_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _store_CategoryContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store/CategoryContext */ "./store/CategoryContext.js");
+/* harmony import */ var _store_CartContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../store/CartContext */ "./store/CartContext.js");
+/* harmony import */ var _helpers_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../helpers/utils */ "./helpers/utils.js");
+
 
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\pages\\_app.js";
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
- // import "@brainhubeu/react-carousel/lib/style.css";
-
- // import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
+
+
+
+
+
+var _selectedId = 0;
 function MyApp(_ref) {
   var Component = _ref.Component,
       pageProps = _ref.pageProps;
-  return __jsx(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, pageProps, {
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])([]),
+      cart = _useState[0],
+      setCart = _useState[1];
+
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])([{
+    id: 0,
+    title: "Все",
+    imgs: ["/static/images/icons/all.png", "/static/images/icons/all-active.png"],
+    isActive: true
+  }, {
+    id: 1,
+    title: "Сборники",
+    imgs: ["/static/images/icons/compilations.png", "/static/images/icons/compilations-active.png"],
+    isActive: false
+  }, {
+    id: 2,
+    title: "Аудиокниги",
+    imgs: ["/static/images/icons/audio.png", "/static/images/icons/audio-active.png"],
+    isActive: false
+  }, {
+    id: 3,
+    title: "Печатные книги",
+    imgs: ["/static/images/icons/book.png", "/static/images/icons/book-active.png"],
+    isActive: false
+  }, {
+    id: 4,
+    title: "Электронные книги",
+    imgs: ["/static/images/icons/pdf.png", "/static/images/icons/pdf-active.png"],
+    isActive: false
+  }]),
+      categories = _useState2[0],
+      setCategories = _useState2[1];
+
+  var categoryHandler = function categoryHandler(id) {
+    var cats = Object(_helpers_utils__WEBPACK_IMPORTED_MODULE_8__["categorySelector"])(id, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(categories), _selectedId);
+
+    if (cats) {
+      _selectedId = cats._selectedId;
+      setCategories(cats.categories);
+    }
+  };
+
+  var addToCartHandler = function addToCartHandler(id) {
+    console.log("Item with id = ", id, "was added to cart"); // add item if does not exist
+  };
+
+  var removeFromCartHandler = function removeFromCartHandler(id) {
+    console.log("Item with id = ", id, "was removed from cart"); // remove item if exists
+  };
+
+  var increaseCartItemHandler = function increaseCartItemHandler(id) {
+    console.log(id, "increased");
+  };
+
+  var reduceCartItemHandler = function reduceCartItemHandler(id) {
+    console.log(id, "decreased");
+  };
+
+  return __jsx(_store_CartContext__WEBPACK_IMPORTED_MODULE_7__["default"].Provider, {
+    value: {
+      cart: cart,
+      addToCartHandler: addToCartHandler,
+      removeFromCartHandler: removeFromCartHandler,
+      increaseCartItemHandler: increaseCartItemHandler,
+      reduceCartItemHandler: reduceCartItemHandler
+    },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 9
+      lineNumber: 66,
+      columnNumber: 3
     }
-  }));
+  }, __jsx(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_6__["default"].Provider, {
+    value: {
+      categories: categories,
+      categoryHandler: categoryHandler
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69,
+      columnNumber: 4
+    }
+  }, __jsx(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, pageProps, {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70,
+      columnNumber: 5
+    }
+  }))));
 }
+
+/***/ }),
+
+/***/ "./store/CartContext.js":
+/*!******************************!*\
+  !*** ./store/CartContext.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var cartContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])();
+/* harmony default export */ __webpack_exports__["default"] = (cartContext);
+
+/***/ }),
+
+/***/ "./store/CategoryContext.js":
+/*!**********************************!*\
+  !*** ./store/CategoryContext.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var CategoryContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])();
+/* harmony default export */ __webpack_exports__["default"] = (CategoryContext);
 
 /***/ }),
 

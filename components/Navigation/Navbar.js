@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Navbar, Nav, NavDropdown, Form, Button, Container, Row, Col } from "react-bootstrap";
 import { Logo } from "../";
 
-const navbar = () => {
+const navbar = ({ booksCategories, booksCategoryClicked }) => {
 	const books = (
 		<React.Fragment>
 			<img src="/static/images/icons/book.png" className="icon" alt="Книги" />Книги
@@ -31,11 +31,17 @@ const navbar = () => {
 							<Navbar.Collapse id="basic-navbar-nav">
 								<Nav className="mr-auto">
 									<NavDropdown title={books} id="basic-nav-dropdown">
-										<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-										<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-										<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-										<NavDropdown.Divider />
-										<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+										{booksCategories.map(cat => {
+											return (
+												<NavDropdown.Item
+													key={cat.id}
+													// active={cat.isActive}
+													onClick={() => booksCategoryClicked(cat.id)}
+												>
+													{cat.title}
+												</NavDropdown.Item>
+											);
+										})}
 									</NavDropdown>
 									<NavDropdown title={videolessons} id="basic-nav-dropdown">
 										<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

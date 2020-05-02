@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import CategoryContext from "../../store/CategoryContext";
 import { Layout } from "../../layouts";
 import { categorySelector } from "../../helpers/utils";
 import { Row, Col } from "react-bootstrap";
-import { BookCategories, Products } from "../../components/";
+import { Categories, Products } from "../../components/";
 let _selectedId = -1;
 const BooksPage = props => {
 	const [ categories, setCategories ] = useState([]);
 	const [ books, setBooks ] = useState({});
 	const [ loading, setLoading ] = useState(true);
+	const catContext = useContext(CategoryContext);
 	useEffect(() => {
 		setCategories(props.categories);
 		setBooks(props.books);
@@ -24,7 +26,10 @@ const BooksPage = props => {
 	return (
 		<Layout>
 			<Row>
-				<Col sm={3}>{!loading ? <BookCategories items={categories} onClick={categoryHandler} /> : null}</Col>
+				<Col sm={3}>
+					<Categories items={catContext.categories} onClick={catContext.categoryHandler} isStatic />
+					{!loading ? <Categories items={categories} onClick={categoryHandler} /> : null}
+				</Col>
 				<Col sm={9}>
 					<Row>{!loading ? <Products items={books.popular.books} title={books.popular.title} /> : null}</Row>
 				</Col>

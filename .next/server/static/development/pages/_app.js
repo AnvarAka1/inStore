@@ -93,6 +93,63 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./helpers/utils.js":
+/*!**************************!*\
+  !*** ./helpers/utils.js ***!
+  \**************************/
+/*! exports provided: categorySelector, convertFrontToBackDate, convertBackToFrontDate, formCheckValidity */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "categorySelector", function() { return categorySelector; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "convertFrontToBackDate", function() { return convertFrontToBackDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "convertBackToFrontDate", function() { return convertBackToFrontDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "formCheckValidity", function() { return formCheckValidity; });
+const categorySelector = (id, categories, _selectedId) => {
+  if (id === _selectedId) return null;
+
+  if (_selectedId != -1) {
+    categories.forEach(el => {
+      if (_selectedId === el.id) {
+        el.isActive = false;
+      }
+    });
+  }
+
+  categories.forEach(el => {
+    if (el.id === id) {
+      el.isActive = true;
+    }
+  });
+  _selectedId = id;
+  return {
+    _selectedId,
+    categories
+  };
+};
+const convertFrontToBackDate = date => {
+  const year = date.substring(0, 4);
+  const month = date.substring(5, 7);
+  const day = date.substring(8, 10);
+  return `${day}-${month}-${year}`;
+};
+const convertBackToFrontDate = date => {
+  const year = date.substring(6, 10);
+  const month = date.substring(3, 5);
+  const day = date.substring(0, 2);
+  return `${year}-${month}-${day}`;
+};
+const formCheckValidity = (formControls = []) => {
+  let isFormValid = true;
+  formControls.forEach(c => {
+    isFormValid = isFormValid && c.isValid;
+  });
+  return isFormValid;
+};
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap/dist/css/bootstrap.min.css":
 /*!***********************************************************!*\
   !*** ./node_modules/bootstrap/dist/css/bootstrap.min.css ***!
@@ -133,31 +190,153 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../styles.scss */ "./styles.scss");
 /* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _store_CategoryContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/CategoryContext */ "./store/CategoryContext.js");
+/* harmony import */ var _store_CartContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/CartContext */ "./store/CartContext.js");
+/* harmony import */ var _helpers_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../helpers/utils */ "./helpers/utils.js");
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\pages\\_app.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
- // import "@brainhubeu/react-carousel/lib/style.css";
-
- // import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 
 
+
+
+
+
+
+let _selectedId = 0;
 function MyApp({
   Component,
   pageProps
 }) {
-  return __jsx(Component, _extends({}, pageProps, {
+  const {
+    0: cart,
+    1: setCart
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const {
+    0: categories,
+    1: setCategories
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([{
+    id: 0,
+    title: "Все",
+    imgs: ["/static/images/icons/all.png", "/static/images/icons/all-active.png"],
+    isActive: true
+  }, {
+    id: 1,
+    title: "Сборники",
+    imgs: ["/static/images/icons/compilations.png", "/static/images/icons/compilations-active.png"],
+    isActive: false
+  }, {
+    id: 2,
+    title: "Аудиокниги",
+    imgs: ["/static/images/icons/audio.png", "/static/images/icons/audio-active.png"],
+    isActive: false
+  }, {
+    id: 3,
+    title: "Печатные книги",
+    imgs: ["/static/images/icons/book.png", "/static/images/icons/book-active.png"],
+    isActive: false
+  }, {
+    id: 4,
+    title: "Электронные книги",
+    imgs: ["/static/images/icons/pdf.png", "/static/images/icons/pdf-active.png"],
+    isActive: false
+  }]);
+
+  const categoryHandler = id => {
+    const cats = Object(_helpers_utils__WEBPACK_IMPORTED_MODULE_6__["categorySelector"])(id, [...categories], _selectedId);
+
+    if (cats) {
+      _selectedId = cats._selectedId;
+      setCategories(cats.categories);
+    }
+  };
+
+  const addToCartHandler = id => {
+    console.log("Item with id = ", id, "was added to cart"); // add item if does not exist
+  };
+
+  const removeFromCartHandler = id => {
+    console.log("Item with id = ", id, "was removed from cart"); // remove item if exists
+  };
+
+  const increaseCartItemHandler = id => {
+    console.log(id, "increased");
+  };
+
+  const reduceCartItemHandler = id => {
+    console.log(id, "decreased");
+  };
+
+  return __jsx(_store_CartContext__WEBPACK_IMPORTED_MODULE_5__["default"].Provider, {
+    value: {
+      cart,
+      addToCartHandler,
+      removeFromCartHandler,
+      increaseCartItemHandler,
+      reduceCartItemHandler
+    },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 9
+      lineNumber: 66,
+      columnNumber: 3
     }
-  }));
+  }, __jsx(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_4__["default"].Provider, {
+    value: {
+      categories,
+      categoryHandler
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69,
+      columnNumber: 4
+    }
+  }, __jsx(Component, _extends({}, pageProps, {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70,
+      columnNumber: 5
+    }
+  }))));
 }
+
+/***/ }),
+
+/***/ "./store/CartContext.js":
+/*!******************************!*\
+  !*** ./store/CartContext.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const cartContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])();
+/* harmony default export */ __webpack_exports__["default"] = (cartContext);
+
+/***/ }),
+
+/***/ "./store/CategoryContext.js":
+/*!**********************************!*\
+  !*** ./store/CategoryContext.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const CategoryContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])();
+/* harmony default export */ __webpack_exports__["default"] = (CategoryContext);
 
 /***/ }),
 

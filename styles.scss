@@ -19,18 +19,7 @@ img {
     width: 100%;
 }
 
-.icon {
-    height: 0.75rem;
-    width: auto;
 
-    &-md {
-        height: 1.5rem
-    }
-
-    &-big {
-        height: 2rem;
-    }
-}
 
 p {
     color: #777777;
@@ -71,6 +60,14 @@ p {
         font-size: .75rem;
     }
 
+    &-md {
+        font-size: .9rem;
+    }
+
+    &-big {
+        font-size: 1.2rem;
+    }
+
     &-underline {
         text-decoration: underline;
     }
@@ -103,12 +100,26 @@ p {
         color: #CCCCCC;
     }
 
-    &-md {
-        font-size: .9rem;
-    }
 
     &-xsmall {
         font-size: .5rem;
+    }
+}
+
+.icon {
+    height: 0.75rem;
+    width: auto;
+
+    &-sm {
+        height: 1.2rem;
+    }
+
+    &-md {
+        height: 1.5rem
+    }
+
+    &-big {
+        height: 2rem;
     }
 }
 

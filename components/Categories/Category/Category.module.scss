@@ -1,4 +1,4 @@
-.BookCategory {
+.Category {
     cursor: pointer;
     margin-bottom: 1rem;
     display: flex;
@@ -17,6 +17,10 @@
         font-weight: bold;
         transition: .25s all ease;
         font-size: .9rem;
+    }
+
+    .Big {
+        font-size: 1.1rem;
     }
 
 
