@@ -1,6 +1,6 @@
 import React from "react";
-import { Form } from "react-bootstrap";
-const makeOrder = ({ codeController, isValidCode, productCount, price, overallPrice, discount }) => {
+import { Form, Button } from "react-bootstrap";
+const makeOrder = ({ codeController, isValidCode, productCount, price, discount, ordered }) => {
 	return (
 		<div>
 			<h6>Сумма</h6>
@@ -32,11 +32,16 @@ const makeOrder = ({ codeController, isValidCode, productCount, price, overallPr
 				<h6>Итого:</h6>
 				<h6>{price - discount * price}</h6>
 			</div>
+			<Button onClick={ordered}>Оформить заказ</Button>
 		</div>
 	);
 };
 makeOrder.defaultProps = {
 	discount: 0,
-	price: 0
+	price: 0,
+	codeController: {
+		value: "",
+		onChange: null
+	}
 };
 export default makeOrder;

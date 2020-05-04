@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Layout } from "../../layouts";
+import Router from "next/router";
 import { useForm } from "../../hooks";
 import CartContext from "../../store/CartContext";
 import { Row, Col, Button } from "react-bootstrap";
@@ -11,10 +12,28 @@ const CartPage = props => {
 	const cartContext = useContext(CartContext);
 	const codeController = useForm();
 	useEffect(() => {
+		console.log(props.pathname);
 		setBooks(props.books);
 		setPrice(props.price);
 		setLoading(false);
 	}, []);
+
+	const orderHandler = () => {
+		// when the api is ready, it will be easier to know
+		// which query params to use and from which variables
+
+		// Router.push({
+		// 	pathname: '/cart/order',
+		// 	query: {
+		// 		price,
+		// 		cart
+		// 	}
+		// })
+		// but for now, just route
+		Router.push({
+			pathname: props.pathname + "/order"
+		});
+	};
 	return (
 		<Layout>
 			<Row>
@@ -43,6 +62,7 @@ const CartPage = props => {
 						discount={20}
 						productCount={cartContext.cart.length}
 						codeController={codeController}
+						ordered={orderHandler}
 					/>
 				</Col>
 			</Row>
@@ -138,7 +158,9 @@ CartPage.getInitialProps = async context => {
 	const price = books.reduce((sum, book) => {
 		return sum + +book.price;
 	}, 0);
+
 	return {
+		pathname: context.pathname,
 		price,
 		books
 	};
