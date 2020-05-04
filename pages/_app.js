@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-multi-carousel/lib/styles.css";
 import "../styles.scss";
@@ -41,6 +41,11 @@ export default function MyApp({ Component, pageProps }) {
 			isActive: false
 		}
 	]);
+	useEffect(() => {
+		if (localStorage.getItem("cart")) {
+			setCart(JSON.parse(localStorage.getItem("cart")));
+		}
+	}, []);
 	const categoryHandler = id => {
 		const cats = categorySelector(id, [ ...categories ], _selectedId);
 		if (cats) {
@@ -48,23 +53,45 @@ export default function MyApp({ Component, pageProps }) {
 			setCategories(cats.categories);
 		}
 	};
-	const addToCartHandler = id => {
-		console.log("Item with id = ", id, "was added to cart");
-		// add item if does not exist
+
+	const addRemoveItemFromCart = id => {
+		let cartCopy = [ ...cart ];
+		const item = cartCopy.find(item => {
+			return item === id;
+		});
+
+		if (item === undefined) {
+			cartCopy.push(id);
+		} else {
+			cartCopy = cartCopy.filter(item => {
+				return item !== id;
+			});
+		}
+		localStorage.setItem("cart", JSON.stringify(cartCopy));
+
+		setCart(cartCopy);
 	};
-	const removeFromCartHandler = id => {
-		console.log("Item with id = ", id, "was removed from cart");
-		// remove item if exists
+	const findItemInCart = id => {
+		let cartCopy = [ ...cart ];
+		const item = cartCopy.find(item => {
+			return item === id;
+		});
+		if (item !== undefined) return true;
+		return false;
 	};
-	const increaseCartItemHandler = id => {
-		console.log(id, "increased");
-	};
-	const reduceCartItemHandler = id => {
-		console.log(id, "decreased");
+	const clearCartHandler = () => {
+		console.log("Cleared");
+		setCart([]);
+		localStorage.removeItem("cart");
 	};
 	return (
 		<CartContext.Provider
-			value={{ cart, addToCartHandler, removeFromCartHandler, increaseCartItemHandler, reduceCartItemHandler }}
+			value={{
+				cart,
+				onAddRemoveItem: addRemoveItemFromCart,
+				onFindInCart: findItemInCart,
+				onClearCart: clearCartHandler
+			}}
 		>
 			<CategoryContext.Provider value={{ categories, categoryHandler }}>
 				<Component {...pageProps} />

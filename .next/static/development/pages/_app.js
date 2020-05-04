@@ -3999,6 +3999,12 @@ function MyApp(_ref) {
       categories = _useState2[0],
       setCategories = _useState2[1];
 
+  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
+    if (localStorage.getItem("cart")) {
+      setCart(JSON.parse(localStorage.getItem("cart")));
+    }
+  }, []);
+
   var categoryHandler = function categoryHandler(id) {
     var cats = Object(_helpers_utils__WEBPACK_IMPORTED_MODULE_8__["categorySelector"])(id, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(categories), _selectedId);
 
@@ -4008,34 +4014,52 @@ function MyApp(_ref) {
     }
   };
 
-  var addToCartHandler = function addToCartHandler(id) {
-    console.log("Item with id = ", id, "was added to cart"); // add item if does not exist
+  var addRemoveItemFromCart = function addRemoveItemFromCart(id) {
+    var cartCopy = Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(cart);
+
+    var item = cartCopy.find(function (item) {
+      return item === id;
+    });
+
+    if (item === undefined) {
+      cartCopy.push(id);
+    } else {
+      cartCopy = cartCopy.filter(function (item) {
+        return item !== id;
+      });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cartCopy));
+    setCart(cartCopy);
   };
 
-  var removeFromCartHandler = function removeFromCartHandler(id) {
-    console.log("Item with id = ", id, "was removed from cart"); // remove item if exists
+  var findItemInCart = function findItemInCart(id) {
+    var cartCopy = Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(cart);
+
+    var item = cartCopy.find(function (item) {
+      return item === id;
+    });
+    if (item !== undefined) return true;
+    return false;
   };
 
-  var increaseCartItemHandler = function increaseCartItemHandler(id) {
-    console.log(id, "increased");
-  };
-
-  var reduceCartItemHandler = function reduceCartItemHandler(id) {
-    console.log(id, "decreased");
+  var clearCartHandler = function clearCartHandler() {
+    console.log("Cleared");
+    setCart([]);
+    localStorage.removeItem("cart");
   };
 
   return __jsx(_store_CartContext__WEBPACK_IMPORTED_MODULE_7__["default"].Provider, {
     value: {
       cart: cart,
-      addToCartHandler: addToCartHandler,
-      removeFromCartHandler: removeFromCartHandler,
-      increaseCartItemHandler: increaseCartItemHandler,
-      reduceCartItemHandler: reduceCartItemHandler
+      onAddRemoveItem: addRemoveItemFromCart,
+      onFindInCart: findItemInCart,
+      onClearCart: clearCartHandler
     },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 88,
       columnNumber: 3
     }
   }, __jsx(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_6__["default"].Provider, {
@@ -4046,14 +4070,14 @@ function MyApp(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 96,
       columnNumber: 4
     }
   }, __jsx(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, pageProps, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 97,
       columnNumber: 5
     }
   }))));

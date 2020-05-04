@@ -243,6 +243,11 @@ function MyApp({
     imgs: ["/static/images/icons/pdf.png", "/static/images/icons/pdf-active.png"],
     isActive: false
   }]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if (localStorage.getItem("cart")) {
+      setCart(JSON.parse(localStorage.getItem("cart")));
+    }
+  }, []);
 
   const categoryHandler = id => {
     const cats = Object(_helpers_utils__WEBPACK_IMPORTED_MODULE_6__["categorySelector"])(id, [...categories], _selectedId);
@@ -253,34 +258,50 @@ function MyApp({
     }
   };
 
-  const addToCartHandler = id => {
-    console.log("Item with id = ", id, "was added to cart"); // add item if does not exist
+  const addRemoveItemFromCart = id => {
+    let cartCopy = [...cart];
+    const item = cartCopy.find(item => {
+      return item === id;
+    });
+
+    if (item === undefined) {
+      cartCopy.push(id);
+    } else {
+      cartCopy = cartCopy.filter(item => {
+        return item !== id;
+      });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cartCopy));
+    setCart(cartCopy);
   };
 
-  const removeFromCartHandler = id => {
-    console.log("Item with id = ", id, "was removed from cart"); // remove item if exists
+  const findItemInCart = id => {
+    let cartCopy = [...cart];
+    const item = cartCopy.find(item => {
+      return item === id;
+    });
+    if (item !== undefined) return true;
+    return false;
   };
 
-  const increaseCartItemHandler = id => {
-    console.log(id, "increased");
-  };
-
-  const reduceCartItemHandler = id => {
-    console.log(id, "decreased");
+  const clearCartHandler = () => {
+    console.log("Cleared");
+    setCart([]);
+    localStorage.removeItem("cart");
   };
 
   return __jsx(_store_CartContext__WEBPACK_IMPORTED_MODULE_5__["default"].Provider, {
     value: {
       cart,
-      addToCartHandler,
-      removeFromCartHandler,
-      increaseCartItemHandler,
-      reduceCartItemHandler
+      onAddRemoveItem: addRemoveItemFromCart,
+      onFindInCart: findItemInCart,
+      onClearCart: clearCartHandler
     },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 88,
       columnNumber: 3
     }
   }, __jsx(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_4__["default"].Provider, {
@@ -291,14 +312,14 @@ function MyApp({
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 96,
       columnNumber: 4
     }
   }, __jsx(Component, _extends({}, pageProps, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 97,
       columnNumber: 5
     }
   }))));

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { useForm } from "../../hooks";
+import CartContext from "../../store/CartContext";
 import { Row, Col } from "react-bootstrap";
 import { ProductDetails, ProductDescription, Comments, ProductsCarousel } from "../../components/";
 import { Layout } from "../../layouts";
@@ -10,12 +11,13 @@ const BookPage = props => {
 	const [ otherBooks, setOtherBooks ] = useState([]);
 	const [ rate, setRate ] = useState(0);
 	const [ loading, setLoading ] = useState(true);
-
+	const cartContext = useContext(CartContext);
 	const commentControl = useForm();
 	useEffect(() => {
 		setBook(props.book);
 		setOtherBooks(props.otherBooks);
 		setLoading(false);
+		console.log(props.query);
 	}, []);
 	const commentSubmitHandler = event => {
 		event.preventDefault();
@@ -33,16 +35,23 @@ const BookPage = props => {
 					)}
 				</Col>
 				<Col sm={7}>
-					<ProductDescription {...book} />
 					{!loading && (
-						<Comments
-							items={book.responses}
-							rate={rate}
-							onSubmit={commentSubmitHandler}
-							commentControl={commentControl}
-							rateClicked={rateHandler}
-							isAuthorized={true}
-						/>
+						<React.Fragment>
+							<ProductDescription
+								{...book}
+								cartClicked={() => cartContext.onAddRemoveItem(book.id)}
+								isInCart={cartContext.onFindInCart(book.id)}
+							/>
+
+							<Comments
+								items={book.responses}
+								rate={rate}
+								onSubmit={commentSubmitHandler}
+								commentControl={commentControl}
+								rateClicked={rateHandler}
+								isAuthorized={true}
+							/>
+						</React.Fragment>
 					)}
 
 					<h3>Также вас может заинтересовать</h3>
@@ -55,7 +64,7 @@ const BookPage = props => {
 
 const getBook = () => {
 	return {
-		id: 0,
+		id: Math.floor(Math.random() * 100),
 		date: "2019",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
@@ -215,6 +224,7 @@ BookPage.getInitialProps = async context => {
 		)
 	};
 	return {
+		query: context.query,
 		book: getBook(),
 		otherBooks: getPopularBooks()
 	};

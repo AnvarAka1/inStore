@@ -11,7 +11,6 @@ const useForm = (hasValidity = false) => {
 	const [ error, setError ] = useState(null);
 	const inputChangeHandler = event => {
 		const val = event.target.value;
-		console.log(val);
 		setValue(val);
 		checkValidity(val);
 	};
@@ -54,7 +53,7 @@ const useForm = (hasValidity = false) => {
 		const val = targetValue.trim();
 		// else check the validity
 		const { required, minSymbols } = validityOptions;
-		console.log(minSymbols);
+
 		// console.log(required, minSymbols);
 		let isValidTemp = true;
 		if (required && isValidTemp && val.length === 0) {

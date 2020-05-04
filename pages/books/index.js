@@ -9,11 +9,10 @@ const BooksPage = props => {
 	const [ categories, setCategories ] = useState([]);
 	const [ books, setBooks ] = useState({});
 	const [ loading, setLoading ] = useState(true);
-	const catContext = useContext(CategoryContext);
+	const categoryContext = useContext(CategoryContext);
 	useEffect(() => {
 		setCategories(props.categories);
 		setBooks(props.books);
-		console.log(props.books);
 		setLoading(false);
 	}, []);
 	const categoryHandler = id => {
@@ -27,7 +26,7 @@ const BooksPage = props => {
 		<Layout>
 			<Row>
 				<Col sm={3}>
-					<Categories items={catContext.categories} onClick={catContext.categoryHandler} isStatic />
+					<Categories items={categoryContext.categories} onClick={categoryContext.categoryHandler} isStatic />
 					{!loading ? <Categories items={categories} onClick={categoryHandler} /> : null}
 				</Col>
 				<Col sm={9}>

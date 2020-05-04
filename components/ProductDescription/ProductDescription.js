@@ -1,6 +1,7 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import classes from "./ProductDescription.module.scss";
-const productDescription = ({ date, title, author, type, description, price, currentPrice }) => {
+const productDescription = ({ date, title, author, type, description, price, currentPrice, isInCart, cartClicked }) => {
 	return (
 		<div className={classes.ProductDescription}>
 			<p>{date}</p>
@@ -28,7 +29,7 @@ const productDescription = ({ date, title, author, type, description, price, cur
 					{/* Читать фрагмент */}
 				</div>
 			</div>
-			{/* Кнопка "в корзину" */}
+			<Button onClick={cartClicked}>{isInCart ? "Удалить из корзины" : "Добавить в корзину"}</Button>
 		</div>
 	);
 };

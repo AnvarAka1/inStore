@@ -19,3 +19,4 @@ export { default as Categories } from "./Categories/Categories";
 export { default as ProductDetails } from "./ProductDetails/ProductDetails";
 export { default as ProductDescription } from "./ProductDescription/ProductDescription";
 export { default as Comments } from "./Comments/Comments";
+export { default as MakeOrder } from "./MakeOrder/MakeOrder";
