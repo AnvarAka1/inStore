@@ -180,3 +180,19 @@ p {
 .radius {
     border-radius: 50%;
 }
+
+.flex-columns {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+
+    li {
+        flex: 0 0 33.333333%;
+    }
+
+    img {
+        height: 22px;
+        object-fit: contain
+    }
+
+}

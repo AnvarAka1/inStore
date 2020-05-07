@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useForm, useModal } from "../hooks";
 import { Layout } from "../layouts";
-import { Row, Col, Carousel, Button } from "react-bootstrap";
+import { Row, Col, Carousel, Button, Form } from "react-bootstrap";
 import {
 	Heading,
 	PreCarousel,
@@ -9,11 +10,83 @@ import {
 	Speaker,
 	ImagesCarousel,
 	ReviewsCarousel,
-	PopularHeader
+	PopularHeader,
+	Modal,
+	Card,
+	Stars
 } from "../components";
-const IndexPage = props => {
+import { FormGroup } from "../components/UI";
+
+const IndexPage = React.memo(props => {
+	const [ rate, setRate ] = useState(4);
+	const nameControl = useForm();
+	const mailControl = useForm();
+	const phoneControl = useForm();
+	const reviewControl = useForm();
+	const speakerModal = useModal();
+	const reviewModal = useModal();
+	// Functions
+	const rateChangedHandler = id => {
+		setRate(id);
+	};
+
+	const speakerSubmitHandler = event => {
+		event.preventDefault();
+		// axios;
+		console.log("Speaker submitted");
+	};
+
+	const reviewSubmitHandler = event => {
+		event.preventDefault();
+		console.log("Review submitted");
+	};
+	const speakerCard = (
+		<Card>
+			<Card.Header>Стать спикером</Card.Header>
+			<Card.Body>
+				<Form onSubmit={speakerSubmitHandler}>
+					<FormGroup placeholder="Ф.И.О" control={nameControl}>
+						Ф.И.О
+					</FormGroup>
+					<FormGroup placeholder="example@mail.com" control={mailControl}>
+						Эл. почта
+					</FormGroup>
+					<FormGroup placeholder="+998 (__) ___ - __ - __" control={phoneControl}>
+						Номер телефона
+					</FormGroup>
+					<Button type="submit">Отправить</Button>
+				</Form>
+			</Card.Body>
+		</Card>
+	);
+
+	const reviewCard = (
+		<Card>
+			<Card.Header>Оставить отзыв</Card.Header>
+			<Card.Body>
+				<Form onSubmit={reviewSubmitHandler}>
+					<Form.Group>
+						<Form.Label>Ваша оценка</Form.Label>
+						<Stars isBig onClick={rateChangedHandler} rate={rate} />
+					</Form.Group>
+					<FormGroup
+						as="textarea"
+						placeholder="Напишите тут (максимум 1000 символов)"
+						size="sm"
+						control={reviewControl}
+					>
+						Ваш отзыв
+					</FormGroup>
+
+					<Button type="submit">Оставить отзыв</Button>
+				</Form>
+			</Card.Body>
+		</Card>
+	);
 	return (
-		<Layout>
+		<React.Fragment>
+			<Modal modal={speakerModal}>{speakerCard}</Modal>
+			<Modal modal={reviewModal}>{reviewCard}</Modal>
 			<Row className="mb-4">
 				<Col>
 					<section>
@@ -99,7 +172,7 @@ const IndexPage = props => {
 					<ImagesCarousel items={getSpeakers()} />
 				</Col>
 				<Col sm={7}>
-					<Speaker {...getSpeakers()[0]} />
+					<Speaker onClick={speakerModal.onShow} {...getSpeakers()[0]} />
 				</Col>
 			</Row>
 			<Row className="mb-4  mt-5 pt-3">
@@ -115,19 +188,13 @@ const IndexPage = props => {
 			<Row className="mt-3 mb-5 pb-4">
 				<Col>
 					<div className="text-center">
-						<Button
-							onClick={() => {
-								return;
-							}}
-						>
-							Оставить отзыв
-						</Button>
+						<Button onClick={reviewModal.onShow}>Оставить отзыв</Button>
 					</div>
 				</Col>
 			</Row>
-		</Layout>
+		</React.Fragment>
 	);
-};
+});
 
 const getCarouselItems = () => [
 	{

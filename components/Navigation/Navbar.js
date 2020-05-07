@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Navbar, Nav, NavDropdown, Form, Button, Container, Row, Col } from "react-bootstrap";
 import { Logo } from "../";
 
-const navbar = ({ booksCategories, booksCategoryClicked }) => {
+const navbar = ({ booksCategories, booksCategoryClicked, authModalShow }) => {
 	const books = (
 		<React.Fragment>
 			<img src="/static/images/icons/book.png" className="icon" alt="Книги" />Книги
@@ -56,9 +56,17 @@ const navbar = ({ booksCategories, booksCategoryClicked }) => {
 									<Button variant="outline-success">Search</Button>
 								</Form>
 								<div className="d-flex justify-content-between align-items-center">
-									<Nav.Item>Избранные</Nav.Item>
-									<Nav.Item>Корзина</Nav.Item>
-									<Nav.Item>Войти</Nav.Item>
+									<Nav.Item>
+										<Link href="favorite">
+											<a>Избранные</a>
+										</Link>
+									</Nav.Item>
+									<Nav.Item>
+										<Link href="/cart">
+											<a>Корзина</a>
+										</Link>
+									</Nav.Item>
+									<Nav.Item onClick={authModalShow}>Войти</Nav.Item>
 								</div>
 							</Navbar.Collapse>
 						</Navbar>
@@ -69,4 +77,4 @@ const navbar = ({ booksCategories, booksCategoryClicked }) => {
 	);
 };
 
-export default navbar;
+export default React.memo(navbar);

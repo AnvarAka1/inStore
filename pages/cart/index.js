@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Layout } from "../../layouts";
+
 import Router from "next/router";
 import { useForm } from "../../hooks";
 import CartContext from "../../store/CartContext";
@@ -10,7 +10,7 @@ const CartPage = props => {
 	const [ books, setBooks ] = useState([]);
 	const [ loading, setLoading ] = useState(true);
 	const cartContext = useContext(CartContext);
-	const codeController = useForm();
+	const codeControl = useForm();
 	useEffect(() => {
 		console.log(props.pathname);
 		setBooks(props.books);
@@ -31,42 +31,43 @@ const CartPage = props => {
 		// })
 		// but for now, just route
 		Router.push({
-			pathname: props.pathname + "/order"
+			pathname: props.pathname + "/order",
+			query: {
+				code: codeControl.value
+			}
 		});
 	};
 	return (
-		<Layout>
-			<Row>
-				<Col md={9}>
-					<Row>
-						<Col>
-							<h2>Корзина</h2>
-						</Col>
-					</Row>
-					<Row>
-						<Col>
-							<div className="d-flex align-items-center">
-								<h3 className="text-normal mb-0 mr-3">Всего в корзине {cartContext.cart.length}</h3>
-								<Button onClick={cartContext.onClearCart}>Сбросить корзину</Button>
-							</div>
-						</Col>
-					</Row>
-					<Row className="mt-3">
-						{!loading && <Products items={books} onAddRemoveItem={cartContext.onAddRemoveItem} />}
-					</Row>
-				</Col>
-				<Col md={3}>
-					<MakeOrder
-						isValidCode={true}
-						price={price}
-						discount={20}
-						productCount={cartContext.cart.length}
-						codeController={codeController}
-						ordered={orderHandler}
-					/>
-				</Col>
-			</Row>
-		</Layout>
+		<Row>
+			<Col md={9}>
+				<Row>
+					<Col>
+						<h2>Корзина</h2>
+					</Col>
+				</Row>
+				<Row>
+					<Col>
+						<div className="d-flex align-items-center">
+							<h3 className="text-normal mb-0 mr-3">Всего в корзине {cartContext.cart.length}</h3>
+							<Button onClick={cartContext.onClearCart}>Сбросить корзину</Button>
+						</div>
+					</Col>
+				</Row>
+				<Row className="mt-3">
+					{!loading && <Products items={books} onAddRemoveItem={cartContext.onAddRemoveItem} />}
+				</Row>
+			</Col>
+			<Col md={3}>
+				<MakeOrder
+					isValidCode={true}
+					price={price}
+					discount={20}
+					productCount={cartContext.cart.length}
+					codeControl={codeControl}
+					ordered={orderHandler}
+				/>
+			</Col>
+		</Row>
 	);
 };
 const getBooks = () => [

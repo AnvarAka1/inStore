@@ -1,6 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const useForm = (hasValidity = false) => {
+const useForm = (
+	hasValidity = false,
+	options = {
+		placeholder: "",
+		label: null,
+		as: "input",
+		type: "text"
+	}
+) => {
 	let validityOptions = {
 		required: true,
 		minSymbols: 0
@@ -9,6 +17,7 @@ const useForm = (hasValidity = false) => {
 	const [ isTouched, setIsTouched ] = useState(false);
 	const [ isValid, setIsValid ] = useState(!hasValidity ? true : false);
 	const [ error, setError ] = useState(null);
+
 	const inputChangeHandler = event => {
 		const val = event.target.value;
 		setValue(val);
@@ -71,12 +80,12 @@ const useForm = (hasValidity = false) => {
 		}
 		setIsValid(isValidTemp);
 	};
-
 	return {
 		value,
 		isValid,
 		error,
 		isTouched,
+		options,
 		onChange: inputChangeHandler,
 		onInitValue: initValue,
 		onChangeValue: changeValue,

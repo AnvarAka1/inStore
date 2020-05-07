@@ -5,21 +5,7 @@
     padding: 15px 0 50px;
     margin-top: 20px;
 
-    .FlexColumns {
-        display: flex;
-        flex-wrap: wrap;
-        padding-left: 0;
 
-        li {
-            flex: 0 0 33.333333%;
-        }
-
-        img {
-            height: 22px;
-            object-fit: contain
-        }
-
-    }
 
     .Social {
         ul {

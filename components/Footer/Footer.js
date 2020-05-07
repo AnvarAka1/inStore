@@ -38,7 +38,7 @@ const footer = () => {
 
 							<div>
 								<h6 className="text-accent">Оплата</h6>
-								<ul className={classes.FlexColumns}>
+								<ul className="flex-columns">
 									{getImages().map((image, index) => {
 										return (
 											<li key={index}>
@@ -153,4 +153,4 @@ const getItems = () => [
 		]
 	}
 ];
-export default footer;
+export default React.memo(footer);

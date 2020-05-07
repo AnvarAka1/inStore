@@ -1,7 +1,7 @@
 import React from "react";
 import { Col } from "react-bootstrap";
 import Product from "./Product/Product";
-const products = ({ items, isVideo, md, sm, onAddRemoveItem }) => {
+const products = ({ items, title, isVideo, md, sm, onAddRemoveItem }) => {
 	const productsView = items.map(item => {
 		return (
 			<Col className="mb-4" key={item.id} md={md} sm={sm}>
@@ -13,7 +13,16 @@ const products = ({ items, isVideo, md, sm, onAddRemoveItem }) => {
 			</Col>
 		);
 	});
-	return <React.Fragment>{productsView}</React.Fragment>;
+	return (
+		<React.Fragment>
+			{title && (
+				<Col xs={12}>
+					<h2>{title}</h2>
+				</Col>
+			)}
+			{productsView}
+		</React.Fragment>
+	);
 };
 products.defaultProps = {
 	md: 3,

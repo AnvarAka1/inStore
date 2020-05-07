@@ -5,12 +5,13 @@ import { categorySelector } from "../../helpers/utils";
 import { Row, Col } from "react-bootstrap";
 import { Categories, Products } from "../../components/";
 let _selectedId = -1;
-const BooksPage = props => {
+const FavoritesPage = props => {
 	const [ categories, setCategories ] = useState([]);
 	const [ books, setBooks ] = useState({});
 	const [ loading, setLoading ] = useState(true);
 	const categoryContext = useContext(CategoryContext);
 	useEffect(() => {
+		categoryContext.onClear();
 		setCategories(props.categories);
 		setBooks(props.books);
 		setLoading(false);
@@ -29,7 +30,7 @@ const BooksPage = props => {
 				{!loading ? <Categories items={categories} onClick={categoryHandler} /> : null}
 			</Col>
 			<Col sm={9}>
-				<Row>{!loading ? <Products items={books.popular.books} title={books.popular.title} /> : null}</Row>
+				<Row>{!loading ? <Products items={books} title="Избранные" /> : null}</Row>
 			</Col>
 		</Row>
 	);
@@ -123,102 +124,95 @@ const getCategoryItems = () => [
 	}
 ];
 
-const getBooks = () => {
-	return {
-		popular: {
-			id: 0,
-			title: "Популярные",
-			books: [
-				{
-					id: 0,
-					img: "/static/images/items/books/1.png",
-					title: "Нескучные десерты",
-					author: "Истомин Виталий",
-					rate: 3,
-					currentPrice: "39 500 сум",
-					price: "55 500 сум"
-				},
-				{
-					id: 1,
-					img: "/static/images/items/books/1.png",
-					title: "Нескучные десерты",
-					author: "Истомин Виталий",
-					rate: 1,
-					currentPrice: "39 500 сум",
-					price: "55 500 сум"
-				},
-				{
-					id: 2,
-					img: "/static/images/items/books/1.png",
-					title: "Нескучные десерты",
-					author: "Истомин Виталий",
-					rate: 4,
-					currentPrice: "39 500 сум",
-					price: "55 500 сум"
-				},
-				{
-					id: 3,
-					img: "/static/images/items/books/1.png",
-					title: "Нескучные десерты",
-					author: "Истомин Виталий",
-					rate: 0,
-					currentPrice: "39 500 сум",
-					price: "55 500 сум"
-				},
-				{
-					id: 4,
-					img: "/static/images/items/books/1.png",
-					title: "Нескучные десерты",
-					author: "Истомин Виталий",
-					rate: 4,
-					currentPrice: "39 500 сум",
-					price: "55 500 сум"
-				},
-				{
-					id: 5,
-					img: "/static/images/items/books/1.png",
-					title: "Нескучные десерты",
-					author: "Истомин Виталий",
-					rate: 4,
-					currentPrice: "39 500 сум",
-					price: "55 500 сум"
-				},
-				{
-					id: 6,
-					img: "/static/images/items/books/1.png",
-					title: "Нескучные десерты",
-					author: "Истомин Виталий",
-					rate: 4,
-					currentPrice: "39 500 сум",
-					price: "55 500 сум"
-				},
-				{
-					id: 7,
-					img: "/static/images/items/books/1.png",
-					title: "Нескучные десерты",
-					author: "Истомин Виталий",
-					rate: 5,
-					currentPrice: "39 500 сум",
-					price: "55 500 сум"
-				},
-				{
-					id: 8,
-					img: "/static/images/items/books/1.png",
-					title: "Нескучные десерты",
-					author: "Истомин Виталий",
-					rate: 4,
-					currentPrice: "39 500 сум",
-					price: "55 500 сум"
-				}
-			]
-		}
-	};
-};
-BooksPage.getInitialProps = async context => {
+const getBooks = () => [
+	{
+		id: 0,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		rate: 3,
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	},
+	{
+		id: 1,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		rate: 1,
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	},
+	{
+		id: 2,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		rate: 4,
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	},
+	{
+		id: 3,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		rate: 0,
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	},
+	{
+		id: 4,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		rate: 4,
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	},
+	{
+		id: 5,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		rate: 4,
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	},
+	{
+		id: 6,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		rate: 4,
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	},
+	{
+		id: 7,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		rate: 5,
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	},
+	{
+		id: 8,
+		img: "/static/images/items/books/1.png",
+		title: "Нескучные десерты",
+		author: "Истомин Виталий",
+		rate: 4,
+		currentPrice: "39 500 сум",
+		price: "55 500 сум"
+	}
+];
+
+FavoritesPage.getInitialProps = async context => {
 	// axios
 	return {
 		categories: getCategoryItems(),
 		books: getBooks()
 	};
 };
-export default BooksPage;
+export default FavoritesPage;

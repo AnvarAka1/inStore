@@ -89,4 +89,4 @@ const CustomArrowRight = ({ onClick }) => {
 		</div>
 	);
 };
-export default sliderCarousel;
+export default React.memo(sliderCarousel);

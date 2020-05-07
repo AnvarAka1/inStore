@@ -4,7 +4,6 @@ import { useForm } from "../../hooks";
 import CartContext from "../../store/CartContext";
 import { Row, Col } from "react-bootstrap";
 import { ProductDetails, ProductDescription, Comments, ProductsCarousel } from "../../components/";
-import { Layout } from "../../layouts";
 
 const BookPage = props => {
 	const [ book, setBook ] = useState(null);
@@ -27,38 +26,34 @@ const BookPage = props => {
 		setRate(id + 1);
 	};
 	return (
-		<Layout>
-			<Row>
-				<Col sm={5}>
-					{!loading && (
-						<ProductDetails img={book.img} rate={book.rate} details={book.details} social={null} />
-					)}
-				</Col>
-				<Col sm={7}>
-					{!loading && (
-						<React.Fragment>
-							<ProductDescription
-								{...book}
-								cartClicked={() => cartContext.onAddRemoveItem(book.id)}
-								isInCart={cartContext.onFindInCart(book.id)}
-							/>
+		<Row>
+			<Col sm={5}>
+				{!loading && <ProductDetails img={book.img} rate={book.rate} details={book.details} social={null} />}
+			</Col>
+			<Col sm={7}>
+				{!loading && (
+					<React.Fragment>
+						<ProductDescription
+							{...book}
+							cartClicked={() => cartContext.onAddRemoveItem(book.id)}
+							isInCart={cartContext.onFindInCart(book.id)}
+						/>
 
-							<Comments
-								items={book.responses}
-								rate={rate}
-								onSubmit={commentSubmitHandler}
-								commentControl={commentControl}
-								rateClicked={rateHandler}
-								isAuthorized={true}
-							/>
-						</React.Fragment>
-					)}
+						<Comments
+							items={book.responses}
+							rate={rate}
+							onSubmit={commentSubmitHandler}
+							commentControl={commentControl}
+							rateClicked={rateHandler}
+							isAuthorized={true}
+						/>
+					</React.Fragment>
+				)}
 
-					<h3>Также вас может заинтересовать</h3>
-					<ProductsCarousel items={otherBooks} responsive={{ lg: 4 }} />
-				</Col>
-			</Row>
-		</Layout>
+				<h3>Также вас может заинтересовать</h3>
+				<ProductsCarousel items={otherBooks} responsive={{ lg: 4 }} />
+			</Col>
+		</Row>
 	);
 };
 

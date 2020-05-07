@@ -4,7 +4,7 @@ import Router from "next/router";
 import CategoryContext from "../store/CategoryContext";
 import { Container } from "react-bootstrap";
 import { Navbar, Footer } from "../components";
-const Layout = ({ children }) => {
+const Layout = ({ authModalShow, children }) => {
 	const categoryContext = useContext(CategoryContext);
 	const booksCategoryHandler = id => {
 		categoryContext.categoryHandler(id);
@@ -15,7 +15,11 @@ const Layout = ({ children }) => {
 			<Head>
 				<title>InStore | Библиотека книг и видеоуроков</title>
 			</Head>
-			<Navbar booksCategories={categoryContext.categories} booksCategoryClicked={booksCategoryHandler} />
+			<Navbar
+				authModalShow={authModalShow}
+				booksCategories={categoryContext.categories}
+				booksCategoryClicked={booksCategoryHandler}
+			/>
 			<main className="pt-4">
 				<Container>{children}</Container>
 			</main>

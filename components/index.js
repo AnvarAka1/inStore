@@ -21,3 +21,5 @@ export { default as ProductDescription } from "./ProductDescription/ProductDescr
 export { default as Comments } from "./Comments/Comments";
 export { default as MakeOrder } from "./MakeOrder/MakeOrder";
 export { default as Card } from "./Card/Card";
+export { default as Modal } from "./Modal/Modal";
+export { default as AuthModal } from "./AuthModal/AuthModal";

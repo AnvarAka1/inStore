@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
-const makeOrder = ({ codeController, isValidCode, productCount, price, discount, ordered }) => {
+const makeOrder = ({ codeControl, isValidCode, productCount, price, discount, ordered }) => {
 	return (
 		<div>
 			<h6>Сумма</h6>
@@ -17,7 +17,7 @@ const makeOrder = ({ codeController, isValidCode, productCount, price, discount,
 				</tbody>
 			</table>
 			<Form>
-				<Form.Control value={codeController.value} onChange={codeController.onChange} />
+				<Form.Control value={codeControl.value} onChange={codeControl.onChange} />
 				<p className="text-xs">
 					Информация о промо-коде:{" "}
 					{isValidCode ? (
@@ -39,7 +39,7 @@ const makeOrder = ({ codeController, isValidCode, productCount, price, discount,
 makeOrder.defaultProps = {
 	discount: 0,
 	price: 0,
-	codeController: {
+	codeControl: {
 		value: "",
 		onChange: null
 	}

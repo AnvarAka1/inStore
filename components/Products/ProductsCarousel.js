@@ -15,4 +15,4 @@ const productsCarousel = ({ items, responsive }) => {
 	return <SliderCarousel items={resp}>{productsView}</SliderCarousel>;
 };
 
-export default productsCarousel;
+export default React.memo(productsCarousel);
