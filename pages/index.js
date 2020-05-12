@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm, useModal } from "../hooks";
-import { Layout } from "../layouts";
+import Link from "next/link";
 import { Row, Col, Carousel, Button, Form } from "react-bootstrap";
 import {
 	Heading,
@@ -13,7 +13,8 @@ import {
 	PopularHeader,
 	Modal,
 	Card,
-	Stars
+	Stars,
+	TopImage
 } from "../components";
 import { FormGroup } from "../components/UI";
 
@@ -23,6 +24,7 @@ const IndexPage = React.memo(props => {
 	const mailControl = useForm();
 	const phoneControl = useForm();
 	const reviewControl = useForm();
+
 	const speakerModal = useModal();
 	const reviewModal = useModal();
 	// Functions
@@ -90,6 +92,13 @@ const IndexPage = React.memo(props => {
 			<Row className="mb-4">
 				<Col>
 					<section>
+						<TopImage
+							title="Электронные книги и Видео уроки"
+							img="/static/images/main/books/carousel1.png"
+							link="/"
+						/>
+					</section>
+					{/* <section>
 						<Carousel>
 							{getCarouselItems().map(item => {
 								return (
@@ -97,13 +106,12 @@ const IndexPage = React.memo(props => {
 										<img className="d-block w-100" src={item.img} alt={item.title} />
 										<Carousel.Caption>
 											<h3>{item.title}</h3>
-											{/* <p>{item.text}</p> */}
 										</Carousel.Caption>
 									</Carousel.Item>
 								);
 							})}
 						</Carousel>
-					</section>
+					</section> */}
 				</Col>
 			</Row>
 			<Row>

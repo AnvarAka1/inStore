@@ -1,8 +1,12 @@
 import React from "react";
 import Category from "./Category/Category";
-const categories = ({ items, isVideo, onClick, isStatic }) => {
+const categories = ({ items, isVideo, isStatic }) => {
 	const categoriesView = items.map(item => {
-		return <Category key={item.id} {...item} onClick={() => onClick(item.id)} isStatic={isStatic} />;
+		return (
+			<Category key={item.id} icon={item.icon} id={item.id} href={item.href} isStatic={isStatic}>
+				{item.title}
+			</Category>
+		);
 	});
 	return (
 		<React.Fragment>

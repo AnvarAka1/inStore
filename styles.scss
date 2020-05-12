@@ -20,7 +20,6 @@ img {
 }
 
 
-
 p {
     color: #777777;
 }
@@ -62,6 +61,10 @@ p {
 
     &-md {
         font-size: .9rem;
+    }
+
+    &-lg {
+        font-size: 1.1rem;
     }
 
     &-big {
@@ -195,4 +198,46 @@ p {
         object-fit: contain
     }
 
+}
+
+.list a.active {
+    .category__tick {
+        display: block;
+    }
+
+    p {
+        color: var(--accent);
+
+    }
+
+    img {
+        filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);
+    }
+
+}
+
+.list a {
+    * {
+        transition: .25s ease all;
+    }
+
+    img {
+        transition: none
+    }
+
+    &:hover {
+        text-decoration: none;
+
+        img {
+            filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);
+        }
+
+        * {
+            color: var(--accent)
+        }
+    }
+}
+
+.category__tick {
+    display: none;
 }

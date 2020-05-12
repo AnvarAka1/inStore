@@ -20,7 +20,6 @@ const OrderPage = props => {
 	const commentControl = useForm();
 	const codeControl = useForm();
 	useEffect(() => {
-		console.log(props.query);
 		codeControl.onChangeValue(props.query.code);
 	}, []);
 	return (

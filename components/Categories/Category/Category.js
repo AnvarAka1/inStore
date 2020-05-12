@@ -1,17 +1,26 @@
 import React from "react";
 import classes from "./Category.module.scss";
-const category = ({ title, onClick, isActive, imgs, isStatic }) => {
+// import {useRouter} from 'next/router';
+import { Link } from "../../";
+const category = ({ id, children, icon, href, isStatic }) => {
 	return (
-		<li className={[ classes.Category, isActive && classes.Active ].join(" ")} onClick={onClick}>
-			<div className="d-flex align-items-center">
-				{isStatic && <img src={imgs[isActive ? 1 : 0]} alt={title} className="icon icon-sm mr-1" />}
-				<p className={`${isStatic && classes.Big}`}>{title}</p>
-			</div>
-			{isActive && (
-				<div className="ml-1">
-					<img src="/static/images/icons/tick.png" className="icon icon-sm" alt="active" />
-				</div>
-			)}
+		<li className={`${classes.Category} mt-2 list`}>
+			<Link
+				href={{ pathname: "/books/categories/[id]", query: !isStatic && { janra: id } }}
+				as={isStatic ? `/books/categories/${id}` : `${id}`}
+			>
+				<a>
+					<div className="d-flex align-items-center">
+						<div className="d-flex align-items-center">
+							{isStatic && <img src={icon} alt={children} className="icon icon-sm mr-2" />}
+							<p className={`${isStatic && "text-lg"} mr-1`}>{children}</p>
+						</div>
+						<div className="category__tick">
+							<img src="/static/images/icons/tick.png" className="icon icon-sm" alt="active" />
+						</div>
+					</div>
+				</a>
+			</Link>
 		</li>
 	);
 };

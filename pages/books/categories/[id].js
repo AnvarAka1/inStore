@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import CategoryContext from "../../store/CategoryContext";
-import { CategoriesLayout } from "../../layouts";
-import { categorySelector } from "../../helpers/utils";
+import CategoryContext from "../../../store/CategoryContext";
+import { CategoriesLayout } from "../../../layouts";
+import { categorySelector } from "../../../helpers/utils";
 import { Row, Col } from "react-bootstrap";
-import { Categories, Products } from "../../components/";
+import { Categories, Products } from "../../../components/";
 let _selectedId = -1;
 const BooksPage = props => {
 	const [ categories, setCategories ] = useState([]);

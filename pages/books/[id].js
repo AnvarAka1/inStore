@@ -16,7 +16,6 @@ const BookPage = props => {
 		setBook(props.book);
 		setOtherBooks(props.otherBooks);
 		setLoading(false);
-		console.log(props.query);
 	}, []);
 	const commentSubmitHandler = event => {
 		event.preventDefault();

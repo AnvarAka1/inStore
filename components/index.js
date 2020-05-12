@@ -23,3 +23,6 @@ export { default as MakeOrder } from "./MakeOrder/MakeOrder";
 export { default as Card } from "./Card/Card";
 export { default as Modal } from "./Modal/Modal";
 export { default as AuthModal } from "./AuthModal/AuthModal";
+export { default as TopImage } from "./TopImage/TopImage";
+export { default as Link } from "./Link/Link";
+export { default as NavigationItems } from "./ProfileNavigation/NavigationItems";

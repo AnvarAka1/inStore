@@ -31,8 +31,7 @@ const useSearch = () => {
 		const filter = filtersCopy.find(f => {
 			return f.id === id;
 		});
-		console.log(id);
-		console.log(filtersCopy);
+
 		selectedFiltersCopy.push(filter);
 		setSelectedFilters(selectedFiltersCopy);
 	};

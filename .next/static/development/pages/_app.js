@@ -13,13 +13,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _AuthModal_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AuthModal.module.scss */ "./components/AuthModal/AuthModal.module.scss");
 /* harmony import */ var _AuthModal_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_AuthModal_module_scss__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ */ "./components/index.js");
-/* harmony import */ var _UI__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../UI */ "./components/UI/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ */ "./components/index.js");
+/* harmony import */ var _UI__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../UI */ "./components/UI/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\AuthModal\\AuthModal.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -32,13 +35,14 @@ var authModal = function authModal(_ref) {
       isSignUp = _ref.isSignUp,
       modeHandler = _ref.modeHandler,
       controls = _ref.controls,
-      submitted = _ref.submitted;
+      submitted = _ref.submitted,
+      checkboxControl = _ref.checkboxControl;
 
   var title = __jsx("h2", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 9,
       columnNumber: 16
     }
   }, isSignUp ? "Регистрация" : "Авторизация");
@@ -47,7 +51,7 @@ var authModal = function authModal(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 11,
       columnNumber: 3
     }
   }, "\u0423 \u0432\u0430\u0441 \u0438\u043C\u0435\u0435\u0442\u0441\u044F \u0430\u043A\u043A\u0430\u0443\u043D\u0442?", " ", __jsx("span", {
@@ -58,14 +62,14 @@ var authModal = function authModal(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 13,
       columnNumber: 4
     }
   }, "\u0412\u043E\u0439\u0434\u0438\u0442\u0435")) : __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 18,
       columnNumber: 3
     }
   }, "\u0423 \u0432\u0430\u0441 \u0435\u0449\u0435 \u043D\u0435\u0442 \u0430\u043A\u043A\u0430\u0443\u043D\u0442\u0430? \u041F\u0440\u043E\u0439\u0434\u0438\u0442\u0435", " ", __jsx("span", {
@@ -76,94 +80,138 @@ var authModal = function authModal(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 20,
       columnNumber: 4
     }
   }, "\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044E"));
-  console.log(controls);
   var form = controls[+isSignUp].map(function (control, index) {
-    console.log(control);
-    return __jsx(_UI__WEBPACK_IMPORTED_MODULE_3__["FormGroup"], {
+    return __jsx(_UI__WEBPACK_IMPORTED_MODULE_4__["FormGroup"], {
       key: index,
       control: control,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 29,
+        lineNumber: 28,
         columnNumber: 4
       }
     }, control.options.label);
   });
-  return __jsx(___WEBPACK_IMPORTED_MODULE_2__["Modal"], {
+  return __jsx(___WEBPACK_IMPORTED_MODULE_3__["Modal"], {
     modal: modal,
+    size: "lg",
     onHide: onHide,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 35,
       columnNumber: 3
     }
-  }, __jsx(___WEBPACK_IMPORTED_MODULE_2__["Card"], {
+  }, __jsx(___WEBPACK_IMPORTED_MODULE_3__["Card"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 4
+    }
+  }, __jsx(___WEBPACK_IMPORTED_MODULE_3__["Card"].Body, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 37,
-      columnNumber: 4
+      columnNumber: 5
     }
-  }, __jsx(___WEBPACK_IMPORTED_MODULE_2__["Card"].Body, {
+  }, __jsx("div", {
+    className: "d-flex align-items-center ",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 38,
-      columnNumber: 5
+      columnNumber: 6
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], {
+  }, __jsx("div", {
+    className: "w-100",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 39,
-      columnNumber: 6
-    }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
-    sm: 6,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40,
       columnNumber: 7
     }
   }, title, text, __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 42,
       columnNumber: 8
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Form"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Form"], {
     onSubmit: submitted,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
+      lineNumber: 43,
       columnNumber: 9
     }
-  }, form, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
-    type: "submit",
+  }, form, !isSignUp && __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Form"].Group, {
+    controlId: "formBasicCheckbox",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 46,
-      columnNumber: 10
+      columnNumber: 11
     }
-  }, isSignUp ? "Зарегистрироваться" : "Войти")), __jsx("div", {
-    className: _AuthModal_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Social,
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Form"].Check, {
+    type: "checkbox",
+    on: true,
+    label: "\u0417\u0430\u043F\u043E\u043C\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C",
+    value: checkboxControl.value,
+    onChange: checkboxControl.onChange,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
-      columnNumber: 9
+      lineNumber: 47,
+      columnNumber: 12
     }
-  })))))));
+  })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Button"], {
+    type: "submit",
+    className: "float-right",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56,
+      columnNumber: 10
+    }
+  }, isSignUp ? "Зарегистрироваться" : "Войти"), !isSignUp && __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 60,
+      columnNumber: 11
+    }
+  }, __jsx("a", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61,
+      columnNumber: 12
+    }
+  }, "\u041D\u0435 \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u0434\u043E\u0441\u0442\u0443\u043F?"))))), __jsx("div", {
+    className: "".concat(_AuthModal_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Social, " w-100"),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 67,
+      columnNumber: 7
+    }
+  }, __jsx("p", {
+    className: "text-small",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68,
+      columnNumber: 8
+    }
+  }, isSignUp ? "Регистрация" : "Авторизация", " \u0447\u0435\u0440\u0435\u0437:"))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (authModal);
@@ -523,45 +571,40 @@ var bookCategories = function bookCategories() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Category_Category__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Category/Category */ "./components/Categories/Category/Category.js");
-
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Category_Category__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Category/Category */ "./components/Categories/Category/Category.js");
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Categories\\Categories.js";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 var categories = function categories(_ref) {
   var items = _ref.items,
       isVideo = _ref.isVideo,
-      _onClick = _ref.onClick,
       isStatic = _ref.isStatic;
   var categoriesView = items.map(function (item) {
-    return __jsx(_Category_Category__WEBPACK_IMPORTED_MODULE_2__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-      key: item.id
-    }, item, {
-      onClick: function onClick() {
-        return _onClick(item.id);
-      },
+    return __jsx(_Category_Category__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: item.id,
+      icon: item.icon,
+      id: item.id,
+      href: item.href,
       isStatic: isStatic,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 5,
-        columnNumber: 10
+        lineNumber: 6,
+        columnNumber: 4
       }
-    }));
+    }, item.title);
   });
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, {
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 12,
       columnNumber: 3
     }
   }, !isStatic && __jsx("div", {
@@ -569,7 +612,7 @@ var categories = function categories(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 14,
       columnNumber: 5
     }
   }, __jsx("img", {
@@ -579,7 +622,7 @@ var categories = function categories(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
+      lineNumber: 15,
       columnNumber: 6
     }
   }), __jsx("h5", {
@@ -587,14 +630,14 @@ var categories = function categories(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 16,
       columnNumber: 6
     }
   }, !isVideo ? "Жанры" : "Категории")), __jsx("ul", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 19,
       columnNumber: 4
     }
   }, categoriesView), __jsx("hr", {
@@ -602,7 +645,7 @@ var categories = function categories(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 20,
       columnNumber: 4
     }
   }));
@@ -625,61 +668,92 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Category_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Category.module.scss */ "./components/Categories/Category/Category.module.scss");
 /* harmony import */ var _Category_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Category_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../ */ "./components/index.js");
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Categories\\Category\\Category.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+ // import {useRouter} from 'next/router';
+
 
 
 var category = function category(_ref) {
-  var title = _ref.title,
-      onClick = _ref.onClick,
-      isActive = _ref.isActive,
-      imgs = _ref.imgs,
+  var id = _ref.id,
+      children = _ref.children,
+      icon = _ref.icon,
+      href = _ref.href,
       isStatic = _ref.isStatic;
   return __jsx("li", {
-    className: [_Category_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Category, isActive && _Category_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Active].join(" "),
-    onClick: onClick,
+    className: "".concat(_Category_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Category, " mt-2 list"),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5,
+      lineNumber: 7,
       columnNumber: 3
+    }
+  }, __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    href: {
+      pathname: "/books/categories/[id]",
+      query: !isStatic && {
+        janra: id
+      }
+    },
+    as: isStatic ? "/books/categories/".concat(id) : "".concat(id),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 4
+    }
+  }, __jsx("a", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 5
     }
   }, __jsx("div", {
     className: "d-flex align-items-center",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
-      columnNumber: 4
+      lineNumber: 13,
+      columnNumber: 6
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-center",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14,
+      columnNumber: 7
     }
   }, isStatic && __jsx("img", {
-    src: imgs[isActive ? 1 : 0],
-    alt: title,
-    className: "icon icon-sm mr-1",
+    src: icon,
+    alt: children,
+    className: "icon icon-sm mr-2",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
-      columnNumber: 18
+      lineNumber: 15,
+      columnNumber: 21
     }
   }), __jsx("p", {
-    className: "".concat(isStatic && _Category_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Big),
+    className: "".concat(isStatic && "text-lg", " mr-1"),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
-      columnNumber: 5
+      lineNumber: 16,
+      columnNumber: 8
     }
-  }, title)), isActive && __jsx("div", {
-    className: "ml-1",
+  }, children)), __jsx("div", {
+    className: "category__tick",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 5
+      lineNumber: 18,
+      columnNumber: 7
     }
   }, __jsx("img", {
     src: "/static/images/icons/tick.png",
@@ -688,10 +762,10 @@ var category = function category(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 6
+      lineNumber: 19,
+      columnNumber: 8
     }
-  })));
+  }))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (category);
@@ -2271,6 +2345,82 @@ var imagesCarousel = function imagesCarousel(_ref) {
 
 /***/ }),
 
+/***/ "./components/Link/Link.js":
+/*!*********************************!*\
+  !*** ./components/Link/Link.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
+var _this = undefined,
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Link\\Link.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+ // import classes from './Link.module.scss';
+
+
+
+
+var CustomLink = function CustomLink(_ref) {
+  var children = _ref.children,
+      className = _ref.className,
+      href = _ref.href,
+      as = _ref.as;
+  var router = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])();
+  var baseUrl = as.split("?")[0];
+  var routerBaseUrl = router.asPath.split("?")[0];
+  var classNames = className || "";
+  var hasSuchQuery = false;
+
+  if (href.query) {
+    for (var key in href.query) {
+      if (href.query[key] === router.query[key]) {
+        hasSuchQuery = true;
+      }
+    }
+  } else {
+    console.log(as + " " + href + baseUrl + " " + routerBaseUrl + " query = " + href.query);
+
+    if (baseUrl === routerBaseUrl) {
+      classNames = "".concat(className, " active");
+    }
+  } // if base url is the same as "as", then highlight
+  // if query url is the same as "as", then highlight
+  // console.log(href.query);
+  // console.log(router);
+  // const currentRoute = as ? as : href;
+  // const route = as ? router.asPath : router.pathname;
+  // if (route === currentRoute) {
+  // 	classNames = `${className} active`;
+  // }
+
+
+  return __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: href,
+    as: as,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 3
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(children, {
+    className: classNames
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CustomLink);
+
+/***/ }),
+
 /***/ "./components/Logo/Logo.js":
 /*!*********************************!*\
   !*** ./components/Logo/Logo.js ***!
@@ -2627,11 +2777,13 @@ var modal = function modal(_ref) {
   var modal = _ref.modal,
       onHide = _ref.onHide,
       children = _ref.children,
-      className = _ref.className;
+      className = _ref.className,
+      size = _ref.size;
   return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
     show: modal.show,
     onHide: onHide ? onHide : modal.onHide,
     className: className,
+    size: size,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -4216,6 +4368,232 @@ var productsCarousel = function productsCarousel(_ref) {
 
 /***/ }),
 
+/***/ "./components/ProfileNavigation/NavigationItem/NavigationItem.js":
+/*!***********************************************************************!*\
+  !*** ./components/ProfileNavigation/NavigationItem/NavigationItem.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _NavigationItem_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavigationItem.module.scss */ "./components/ProfileNavigation/NavigationItem/NavigationItem.module.scss");
+/* harmony import */ var _NavigationItem_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_NavigationItem_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../ */ "./components/index.js");
+var _this = undefined,
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\ProfileNavigation\\NavigationItem\\NavigationItem.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+var navigationItem = function navigationItem(_ref) {
+  var href = _ref.href,
+      children = _ref.children,
+      icon = _ref.icon;
+  return __jsx("li", {
+    className: "".concat(_NavigationItem_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.NavigationItem, " list mt-2"),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 3
+    }
+  }, __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    href: href,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 4
+    }
+  }, __jsx("a", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-center",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 6
+    }
+  }, __jsx("img", {
+    src: icon,
+    alt: children,
+    className: "icon icon-sm mr-2",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 7
+    }
+  }), __jsx("p", {
+    className: "text-lg",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 7
+    }
+  }, children)))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (navigationItem);
+
+/***/ }),
+
+/***/ "./components/ProfileNavigation/NavigationItem/NavigationItem.module.scss":
+/*!********************************************************************************!*\
+  !*** ./components/ProfileNavigation/NavigationItem/NavigationItem.module.scss ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./NavigationItem.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/ProfileNavigation/NavigationItem/NavigationItem.module.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = function(element){// These elements should always exist. If they do not,
+// this code should fail.
+var anchorElement=document.querySelector('#__next_css__DO_NOT_USE__');var parentNode=anchorElement.parentNode;// Normally <head>
+// Each style tag should be placed right before our
+// anchor. By inserting before and not after, we do not
+// need to track the last inserted element.
+parentNode.insertBefore(element,anchorElement)// Remember: this is development only code.
+//
+// After styles are injected, we need to remove the
+// <style> tags that set `body { display: none; }`.
+//
+// We use `requestAnimationFrame` as a way to defer
+// this operation since there may be multiple style
+// tags.
+;(self.requestAnimationFrame||setTimeout)(function(){for(var x=document.querySelectorAll('[data-next-hide-fouc]'),i=x.length;i--;){x[i].parentNode.removeChild(x[i]);}});};
+options.singleton = false;
+
+var update = api(content, options);
+
+
+if (true) {
+  if (!content.locals || module.hot.invalidate) {
+    var isEqualLocals = function isEqualLocals(a, b) {
+  if (!a && b || a && !b) {
+    return false;
+  }
+
+  var p;
+
+  for (p in a) {
+    if (a[p] !== b[p]) {
+      return false;
+    }
+  }
+
+  for (p in b) {
+    if (!a[p]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+    var oldLocals = content.locals;
+
+    module.hot.accept(
+      /*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./NavigationItem.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/ProfileNavigation/NavigationItem/NavigationItem.module.scss",
+      function () {
+        var newContent = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./NavigationItem.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/ProfileNavigation/NavigationItem/NavigationItem.module.scss");
+
+              newContent = newContent.__esModule ? newContent.default : newContent;
+
+              if (typeof newContent === 'string') {
+                newContent = [[module.i, newContent, '']];
+              }
+
+              if (!isEqualLocals(oldLocals, newContent.locals)) {
+                module.hot.invalidate();
+
+                return;
+              }
+
+              oldLocals = newContent.locals;
+
+              update(newContent);
+      }
+    )
+  }
+
+  module.hot.dispose(function() {
+    update();
+  });
+}
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./components/ProfileNavigation/NavigationItems.js":
+/*!*********************************************************!*\
+  !*** ./components/ProfileNavigation/NavigationItems.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _NavigationItem_NavigationItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavigationItem/NavigationItem */ "./components/ProfileNavigation/NavigationItem/NavigationItem.js");
+var _this = undefined,
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\ProfileNavigation\\NavigationItems.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+var NavigationItems = function NavigationItems(_ref) {
+  var items = _ref.items;
+  var NavigationItemsView = items.map(function (item) {
+    return __jsx(_NavigationItem_NavigationItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      href: item.href,
+      key: item.id,
+      icon: item.icon,
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 7,
+        columnNumber: 4
+      }
+    }, item.title);
+  });
+  return __jsx("ul", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 9
+    }
+  }, NavigationItemsView);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (NavigationItems);
+
+/***/ }),
+
 /***/ "./components/Reviews/Review/Review.js":
 /*!*********************************************!*\
   !*** ./components/Reviews/Review/Review.js ***!
@@ -5171,6 +5549,183 @@ var stars = function stars(_ref) {
 
 /***/ }),
 
+/***/ "./components/TopImage/TopImage.js":
+/*!*****************************************!*\
+  !*** ./components/TopImage/TopImage.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _TopImage_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TopImage.module.scss */ "./components/TopImage/TopImage.module.scss");
+/* harmony import */ var _TopImage_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_TopImage_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+var _this = undefined,
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\TopImage\\TopImage.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+var topImage = function topImage(_ref) {
+  var title = _ref.title,
+      img = _ref.img,
+      link = _ref.link;
+  return __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: link,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 3
+    }
+  }, __jsx("a", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 4
+    }
+  }, __jsx("div", {
+    className: _TopImage_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.TopImage,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 5
+    }
+  }, __jsx("img", {
+    className: "d-block w-100",
+    src: "/static/images/main/books/carousel1.png",
+    alt: "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u0435 \u043A\u043D\u0438\u0433\u0438 \u0438 \u0412\u0438\u0434\u0435\u043E \u0443\u0440\u043E\u043A\u0438",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 6
+    }
+  }), __jsx("div", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14,
+      columnNumber: 6
+    }
+  }, __jsx("h3", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 7
+    }
+  }, "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u0435 \u043A\u043D\u0438\u0433\u0438 \u0438 \u0412\u0438\u0434\u0435\u043E \u0443\u0440\u043E\u043A\u0438")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (topImage);
+
+/***/ }),
+
+/***/ "./components/TopImage/TopImage.module.scss":
+/*!**************************************************!*\
+  !*** ./components/TopImage/TopImage.module.scss ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./TopImage.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/TopImage/TopImage.module.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = function(element){// These elements should always exist. If they do not,
+// this code should fail.
+var anchorElement=document.querySelector('#__next_css__DO_NOT_USE__');var parentNode=anchorElement.parentNode;// Normally <head>
+// Each style tag should be placed right before our
+// anchor. By inserting before and not after, we do not
+// need to track the last inserted element.
+parentNode.insertBefore(element,anchorElement)// Remember: this is development only code.
+//
+// After styles are injected, we need to remove the
+// <style> tags that set `body { display: none; }`.
+//
+// We use `requestAnimationFrame` as a way to defer
+// this operation since there may be multiple style
+// tags.
+;(self.requestAnimationFrame||setTimeout)(function(){for(var x=document.querySelectorAll('[data-next-hide-fouc]'),i=x.length;i--;){x[i].parentNode.removeChild(x[i]);}});};
+options.singleton = false;
+
+var update = api(content, options);
+
+
+if (true) {
+  if (!content.locals || module.hot.invalidate) {
+    var isEqualLocals = function isEqualLocals(a, b) {
+  if (!a && b || a && !b) {
+    return false;
+  }
+
+  var p;
+
+  for (p in a) {
+    if (a[p] !== b[p]) {
+      return false;
+    }
+  }
+
+  for (p in b) {
+    if (!a[p]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+    var oldLocals = content.locals;
+
+    module.hot.accept(
+      /*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./TopImage.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/TopImage/TopImage.module.scss",
+      function () {
+        var newContent = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!../../node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!../../node_modules/resolve-url-loader??ref--5-oneOf-3-3!../../node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./TopImage.module.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/TopImage/TopImage.module.scss");
+
+              newContent = newContent.__esModule ? newContent.default : newContent;
+
+              if (typeof newContent === 'string') {
+                newContent = [[module.i, newContent, '']];
+              }
+
+              if (!isEqualLocals(oldLocals, newContent.locals)) {
+                module.hot.invalidate();
+
+                return;
+              }
+
+              oldLocals = newContent.locals;
+
+              update(newContent);
+      }
+    )
+  }
+
+  module.hot.dispose(function() {
+    update();
+  });
+}
+
+module.exports = content.locals || {};
+
+/***/ }),
+
 /***/ "./components/UI/FormGroup/FormGroup.js":
 /*!**********************************************!*\
   !*** ./components/UI/FormGroup/FormGroup.js ***!
@@ -5200,13 +5755,12 @@ var formGroup = function formGroup(_ref) {
       as = _ref.as,
       type = _ref.type,
       placeholder = _ref.placeholder;
-  console.log(control);
   return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-    className: "mt-3",
+    className: "mt-2 mb-2",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 6,
       columnNumber: 3
     }
   }, children && __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
@@ -5214,7 +5768,7 @@ var formGroup = function formGroup(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 7,
       columnNumber: 17
     }
   }, children), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
@@ -5227,7 +5781,7 @@ var formGroup = function formGroup(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
+      lineNumber: 8,
       columnNumber: 4
     }
   }));
@@ -5362,7 +5916,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************!*\
   !*** ./components/index.js ***!
   \*****************************/
-/*! exports provided: Navbar, Footer, Logo, Heading, PreCarousel, SliderCarousel, Compilations, CompilationsCarousel, Products, ProductsCarousel, ImagesCarousel, Speaker, ReviewsCarousel, Reviews, Stars, PopularHeader, BookCategories, Categories, ProductDetails, ProductDescription, Comments, MakeOrder, Card, Modal, AuthModal */
+/*! exports provided: Navbar, Footer, Logo, Heading, PreCarousel, SliderCarousel, Compilations, CompilationsCarousel, Products, ProductsCarousel, ImagesCarousel, Speaker, ReviewsCarousel, Reviews, Stars, PopularHeader, BookCategories, Categories, ProductDetails, ProductDescription, Comments, MakeOrder, Card, Modal, AuthModal, TopImage, Link, NavigationItems */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5441,6 +5995,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _AuthModal_AuthModal__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./AuthModal/AuthModal */ "./components/AuthModal/AuthModal.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AuthModal", function() { return _AuthModal_AuthModal__WEBPACK_IMPORTED_MODULE_24__["default"]; });
+
+/* harmony import */ var _TopImage_TopImage__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./TopImage/TopImage */ "./components/TopImage/TopImage.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TopImage", function() { return _TopImage_TopImage__WEBPACK_IMPORTED_MODULE_25__["default"]; });
+
+/* harmony import */ var _Link_Link__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./Link/Link */ "./components/Link/Link.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return _Link_Link__WEBPACK_IMPORTED_MODULE_26__["default"]; });
+
+/* harmony import */ var _ProfileNavigation_NavigationItems__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./ProfileNavigation/NavigationItems */ "./components/ProfileNavigation/NavigationItems.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NavigationItems", function() { return _ProfileNavigation_NavigationItems__WEBPACK_IMPORTED_MODULE_27__["default"]; });
+
+
+
 
 
 
@@ -5775,8 +6341,7 @@ var useForm = function useForm() {
 
     var _validityOptions = validityOptions,
         required = _validityOptions.required,
-        minSymbols = _validityOptions.minSymbols; // console.log(required, minSymbols);
-
+        minSymbols = _validityOptions.minSymbols;
     var isValidTemp = true;
 
     if (required && isValidTemp && val.length === 0) {
@@ -6060,8 +6625,6 @@ var useSearch = function useSearch() {
     var filter = filtersCopy.find(function (f) {
       return f.id === id;
     });
-    console.log(id);
-    console.log(filtersCopy);
     selectedFiltersCopy.push(filter);
     setSelectedFilters(selectedFiltersCopy);
   };
@@ -6239,6 +6802,154 @@ var useTable = function useTable() {
 
 /***/ }),
 
+/***/ "./layouts/CategoriesLayout.js":
+/*!*************************************!*\
+  !*** ./layouts/CategoriesLayout.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
+var _this = undefined,
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\layouts\\CategoriesLayout.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+var CategoriesLayout = function CategoriesLayout(props) {
+  return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 3
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    sm: 3,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 4
+    }
+  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Categories"], {
+    items: getStaticCats(),
+    isStatic: true,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 5
+    }
+  }), __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Categories"], {
+    items: getCategoryItems(),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 5
+    }
+  })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    sm: 9,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 4
+    }
+  }, props.children));
+};
+
+var getStaticCats = function getStaticCats() {
+  return [{
+    id: 0,
+    title: "Все",
+    icon: "/static/images/icons/all.png"
+  }, {
+    id: 1,
+    title: "Сборники",
+    icon: "/static/images/icons/compilations.png"
+  }, {
+    id: 2,
+    title: "Аудиокниги",
+    icon: "/static/images/icons/audio.png"
+  }, {
+    id: 3,
+    title: "Печатные книги",
+    icon: "/static/images/icons/book.png"
+  }, {
+    id: 4,
+    title: "Электронные книги",
+    icon: "/static/images/icons/pdf.png"
+  }];
+};
+
+var getCategoryItems = function getCategoryItems() {
+  return [{
+    id: 0,
+    title: "Деловая литература"
+  }, {
+    id: 1,
+    title: "Детективы и Триллеры"
+  }, {
+    id: 2,
+    title: "Документальная литература"
+  }, {
+    id: 3,
+    title: "Дом, ремесла, досуг, хобби"
+  }, {
+    id: 4,
+    title: "Драматургия"
+  }, {
+    id: 5,
+    title: "Искусство, Искусствоведение, Дизайн"
+  }, {
+    id: 6,
+    title: "Компьютеры и Интернет"
+  }, {
+    id: 7,
+    title: "Литература для детей"
+  }, {
+    id: 8,
+    title: "Любовные романы"
+  }, {
+    id: 9,
+    title: "Наука, Образование"
+  }, {
+    id: 10,
+    title: "Поэзия"
+  }, {
+    id: 11,
+    title: "Приключения"
+  }, {
+    id: 12,
+    title: "Проза"
+  }, {
+    id: 13,
+    title: "Прочее"
+  }, {
+    id: 14,
+    title: "Религия, духовность, эзотерика"
+  }, {
+    id: 15,
+    title: "Справочная литература"
+  }, {
+    id: 16,
+    title: "Старинное"
+  }];
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CategoriesLayout);
+
+/***/ }),
+
 /***/ "./layouts/Layout.js":
 /*!***************************!*\
   !*** ./layouts/Layout.js ***!
@@ -6338,17 +7049,120 @@ var Layout = function Layout(_ref) {
 
 /***/ }),
 
+/***/ "./layouts/ProfileLayout.js":
+/*!**********************************!*\
+  !*** ./layouts/ProfileLayout.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
+var _this = undefined,
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\layouts\\ProfileLayout.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+var ProfileLayout = function ProfileLayout(props) {
+  return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 3
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    sm: 3,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 4
+    }
+  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["NavigationItems"], {
+    items: getNavigationItems(),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 5
+    }
+  })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    sm: 9,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 4
+    }
+  }, props.children));
+};
+
+var getNavigationItems = function getNavigationItems() {
+  return [{
+    id: 0,
+    icon: "/static/images/icons/story.png",
+    title: "История заказов: 29",
+    href: "/profile/orders"
+  }, {
+    id: 1,
+    icon: "/static/images/icons/video.png",
+    title: "Видеоуроки: 19",
+    href: "/profile/videolessons"
+  }, {
+    id: 2,
+    icon: "/static/images/icons/book.png",
+    title: "Моя библиотека: 10",
+    href: "/profile/library"
+  }, {
+    id: 3,
+    icon: "/static/images/icons/star.png",
+    title: "Избанные: 4",
+    href: "/profile/favourite"
+  }, {
+    id: 4,
+    icon: "/static/images/icons/cart.png",
+    title: "Корзина: 3",
+    href: "/cart"
+  }, {
+    id: 5,
+    icon: "/static/images/icons/settings.png",
+    title: "Настройки",
+    href: "/profile/settings",
+    className: "mt-auto"
+  }];
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ProfileLayout);
+
+/***/ }),
+
 /***/ "./layouts/index.js":
 /*!**************************!*\
   !*** ./layouts/index.js ***!
   \**************************/
-/*! exports provided: Layout */
+/*! exports provided: Layout, ProfileLayout, CategoriesLayout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Layout */ "./layouts/Layout.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Layout", function() { return _Layout__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _ProfileLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfileLayout */ "./layouts/ProfileLayout.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProfileLayout", function() { return _ProfileLayout__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _CategoriesLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CategoriesLayout */ "./layouts/CategoriesLayout.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CategoriesLayout", function() { return _CategoriesLayout__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+
 
 
 
@@ -10328,6 +11142,24 @@ module.exports = exports;
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/ProfileNavigation/NavigationItem/NavigationItem.module.scss":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/resolve-url-loader??ref--5-oneOf-3-3!./node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./components/ProfileNavigation/NavigationItem/NavigationItem.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(true);
+// Module
+exports.push([module.i, "", "",{"version":3,"sources":[],"names":[],"mappings":"","file":"NavigationItem.module.scss"}]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/Reviews/Review/Review.module.scss":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/resolve-url-loader??ref--5-oneOf-3-3!./node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./components/Reviews/Review/Review.module.scss ***!
@@ -10418,6 +11250,27 @@ module.exports = exports;
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/TopImage/TopImage.module.scss":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/resolve-url-loader??ref--5-oneOf-3-3!./node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./components/TopImage/TopImage.module.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(true);
+// Module
+exports.push([module.i, ".TopImage_TopImage__3h2Il {\n  position: relative; }\n  .TopImage_TopImage__3h2Il div {\n    width: 300px;\n    position: absolute;\n    display: flex;\n    align-items: center;\n    text-align: left;\n    bottom: 0;\n    top: 0;\n    left: 15%; }\n", "",{"version":3,"sources":["TopImage.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAkB,EAAA;EADtB;IAKQ,YAAY;IACZ,kBAAkB;IAClB,aAAa;IACb,mBAAmB;IACnB,gBAAgB;IAChB,SAAS;IACT,MAAM;IACN,SAAS,EAAA","file":"TopImage.module.scss","sourcesContent":[".TopImage {\r\n    position: relative;\r\n\r\n\r\n    div {\r\n        width: 300px;\r\n        position: absolute;\r\n        display: flex;\r\n        align-items: center;\r\n        text-align: left;\r\n        bottom: 0;\r\n        top: 0;\r\n        left: 15%;\r\n    }\r\n}"]}]);
+// Exports
+exports.locals = {
+	"TopImage": "TopImage_TopImage__3h2Il"
+};
+module.exports = exports;
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/resolve-url-loader/index.js?!./node_modules/sass-loader/dist/cjs.js?!./components/UI/FormGroup/FormGroup.module.scss":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-3-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/resolve-url-loader??ref--5-oneOf-3-3!./node_modules/sass-loader/dist/cjs.js??ref--5-oneOf-3-4!./components/UI/FormGroup/FormGroup.module.scss ***!
@@ -10450,7 +11303,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ":root {\n  --accent: #024E8F;\n  --secondary: #777\r\n; }\n\n@font-face {\n  font-family: \"OpenSans\";\n  src: url(\"/static/fonts/opensans/OpenSans-Regular.ttf\"); }\n\nbody {\n  font-size: 16px;\n  position: relative;\n  font-family: \"OpenSans\", sans-serif !important; }\n\nimg {\n  width: 100%; }\n\np {\n  color: #777777; }\n\ndiv h1,\ndiv h2,\ndiv h3,\ndiv h4,\ndiv h5,\ndiv h6 {\n  font-weight: bold; }\n\ndiv p {\n  margin-bottom: 0; }\n\nul {\n  margin: 0;\n  padding: 0; }\n  ul li {\n    list-style-type: none; }\n\n.text-small {\n  font-size: .75rem; }\n\n.text-md {\n  font-size: .9rem; }\n\n.text-big {\n  font-size: 1.2rem; }\n\n.text-underline {\n  text-decoration: underline; }\n\n.text-normal {\n  font-weight: normal; }\n\n.text-bold {\n  font-weight: bold; }\n\n.text-accent {\n  color: var(--accent); }\n\n.text-crossed {\n  text-decoration: line-through; }\n\n.text-secondary {\n  color: var(--secondary); }\n\n.text-black {\n  color: #000; }\n\n.text-light {\n  color: #CCCCCC; }\n\n.text-xsmall {\n  font-size: .5rem; }\n\n.icon {\n  height: 0.75rem;\n  width: auto; }\n  .icon-sm {\n    height: 1.2rem; }\n  .icon-md {\n    height: 1.5rem; }\n  .icon-big {\n    height: 2rem; }\n\n.img-small {\n  width: 50px;\n  height: 50px;\n  -o-object-fit: contain;\n     object-fit: contain; }\n\n.carousel-caption {\n  right: auto;\n  text-align: left;\n  bottom: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: left;\n  justify-content: center;\n  width: 300px;\n  color: var(--accent); }\n\n.carousel-control-prev, .carousel-control-next {\n  display: none; }\n\n.carousel-indicators {\n  right: auto; }\n  .carousel-indicators li {\n    width: 15px;\n    height: 15px;\n    border-radius: 50%;\n    background: transparent;\n    border: 1px solid #004A8B;\n    box-sizing: border-box; }\n    .carousel-indicators li.active {\n      background: #014C8D; }\n\n.react-multi-carousel-list {\n  box-sizing: border-box; }\n\n.radius {\n  border-radius: 50%; }\n\n.flex-columns {\n  display: flex;\n  flex-wrap: wrap;\n  padding-left: 0; }\n  .flex-columns li {\n    flex: 0 0 33.333333%; }\n  .flex-columns img {\n    height: 22px;\n    -o-object-fit: contain;\n       object-fit: contain; }\n", "",{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA;EACI,iBAAS;EACT;AAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uDAAuD,EAAA;;AAG3D;EACI,eAAe;EACf,kBAAkB;EAClB,8CAA8C,EAAA;;AAIlD;EACI,WAAW,EAAA;;AAKf;EACI,cAAc,EAAA;;AAGlB;;;;;;EAQQ,iBAAiB,EAAA;;AARzB;EAYQ,gBAAgB,EAAA;;AAIxB;EACI,SAAS;EACT,UAAU,EAAA;EAFd;IAKQ,qBAAqB,EAAA;;AAUzB;EACI,iBAAiB,EAAA;;AAGrB;EACI,gBAAgB,EAAA;;AAGpB;EACI,iBAAiB,EAAA;;AAGrB;EACI,0BAA0B,EAAA;;AAG9B;EACI,mBAAmB,EAAA;;AAGvB;EACI,iBAAiB,EAAA;;AAGrB;EACI,oBAAoB,EAAA;;AAGxB;EACI,6BAA6B,EAAA;;AAGjC;EACI,uBAAuB,EAAA;;AAG3B;EACI,WAAW,EAAA;;AAGf;EACI,cAAc,EAAA;;AAIlB;EACI,gBAAgB,EAAA;;AAIxB;EACI,eAAe;EACf,WAAW,EAAA;EAEX;IACI,cAAc,EAAA;EAGlB;IACI,cACJ,EAAA;EAEA;IACI,YAAY,EAAA;;AAKhB;EACI,WAAW;EACX,YAAY;EACZ,sBAAmB;KAAnB,mBAAmB,EAAA;;AAO3B;EACI,WAAW;EACX,gBAAgB;EAChB,SAAS;EACT,MAAM;EACN,aAAa;EACb,sBAAsB;EACtB,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,oBAAoB,EAAA;;AAKpB;EAEI,aAAa,EAAA;;AAIrB;EACI,WAAW,EAAA;EADf;IAIQ,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,uBAAuB;IACvB,yBAAyB;IACzB,sBAAsB,EAAA;IAT9B;MAYY,mBAAmB,EAAA;;AAM/B;EACI,sBAAsB,EAAA;;AAG1B;EACI,kBAAkB,EAAA;;AAGtB;EACI,aAAa;EACb,eAAe;EACf,eAAe,EAAA;EAHnB;IAMQ,oBAAoB,EAAA;EAN5B;IAUQ,YAAY;IACZ,sBACJ;OADI,mBACJ,EAAA","file":"styles.scss","sourcesContent":[":root {\r\n    --accent: #024E8F;\r\n    --secondary: #777\r\n}\r\n\r\n@font-face {\r\n    font-family: \"OpenSans\";\r\n    src: url(\"/static/fonts/opensans/OpenSans-Regular.ttf\");\r\n}\r\n\r\nbody {\r\n    font-size: 16px;\r\n    position: relative;\r\n    font-family: \"OpenSans\", sans-serif !important;\r\n}\r\n\r\n\r\nimg {\r\n    width: 100%;\r\n}\r\n\r\n\r\n\r\np {\r\n    color: #777777;\r\n}\r\n\r\ndiv {\r\n\r\n    h1,\r\n    h2,\r\n    h3,\r\n    h4,\r\n    h5,\r\n    h6 {\r\n        font-weight: bold;\r\n    }\r\n\r\n    p {\r\n        margin-bottom: 0;\r\n    }\r\n}\r\n\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n\r\n    li {\r\n        list-style-type: none;\r\n    }\r\n}\r\n\r\np {\r\n    // line-height: normal;\r\n}\r\n\r\n.text {\r\n\r\n    &-small {\r\n        font-size: .75rem;\r\n    }\r\n\r\n    &-md {\r\n        font-size: .9rem;\r\n    }\r\n\r\n    &-big {\r\n        font-size: 1.2rem;\r\n    }\r\n\r\n    &-underline {\r\n        text-decoration: underline;\r\n    }\r\n\r\n    &-normal {\r\n        font-weight: normal;\r\n    }\r\n\r\n    &-bold {\r\n        font-weight: bold;\r\n    }\r\n\r\n    &-accent {\r\n        color: var(--accent)\r\n    }\r\n\r\n    &-crossed {\r\n        text-decoration: line-through;\r\n    }\r\n\r\n    &-secondary {\r\n        color: var(--secondary)\r\n    }\r\n\r\n    &-black {\r\n        color: #000;\r\n    }\r\n\r\n    &-light {\r\n        color: #CCCCCC;\r\n    }\r\n\r\n\r\n    &-xsmall {\r\n        font-size: .5rem;\r\n    }\r\n}\r\n\r\n.icon {\r\n    height: 0.75rem;\r\n    width: auto;\r\n\r\n    &-sm {\r\n        height: 1.2rem;\r\n    }\r\n\r\n    &-md {\r\n        height: 1.5rem\r\n    }\r\n\r\n    &-big {\r\n        height: 2rem;\r\n    }\r\n}\r\n\r\n.img {\r\n    &-small {\r\n        width: 50px;\r\n        height: 50px;\r\n        object-fit: contain;\r\n    }\r\n\r\n}\r\n\r\n// Carousel\r\n// Dots\r\n.carousel-caption {\r\n    right: auto;\r\n    text-align: left;\r\n    bottom: 0;\r\n    top: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: left;\r\n    justify-content: center;\r\n    width: 300px;\r\n    color: var(--accent);\r\n}\r\n\r\n.carousel-control {\r\n\r\n    &-prev,\r\n    &-next {\r\n        display: none;\r\n    }\r\n}\r\n\r\n.carousel-indicators {\r\n    right: auto;\r\n\r\n    li {\r\n        width: 15px;\r\n        height: 15px;\r\n        border-radius: 50%;\r\n        background: transparent;\r\n        border: 1px solid #004A8B;\r\n        box-sizing: border-box;\r\n\r\n        &.active {\r\n            background: #014C8D;\r\n        }\r\n    }\r\n}\r\n\r\n// Slider Carousel\r\n.react-multi-carousel-list {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.radius {\r\n    border-radius: 50%;\r\n}\r\n\r\n.flex-columns {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    padding-left: 0;\r\n\r\n    li {\r\n        flex: 0 0 33.333333%;\r\n    }\r\n\r\n    img {\r\n        height: 22px;\r\n        object-fit: contain\r\n    }\r\n\r\n}"]}]);
+exports.push([module.i, ":root {\n  --accent: #024E8F;\n  --secondary: #777\r\n; }\n\n@font-face {\n  font-family: \"OpenSans\";\n  src: url(\"/static/fonts/opensans/OpenSans-Regular.ttf\"); }\n\nbody {\n  font-size: 16px;\n  position: relative;\n  font-family: \"OpenSans\", sans-serif !important; }\n\nimg {\n  width: 100%; }\n\np {\n  color: #777777; }\n\ndiv h1,\ndiv h2,\ndiv h3,\ndiv h4,\ndiv h5,\ndiv h6 {\n  font-weight: bold; }\n\ndiv p {\n  margin-bottom: 0; }\n\nul {\n  margin: 0;\n  padding: 0; }\n  ul li {\n    list-style-type: none; }\n\n.text-small {\n  font-size: .75rem; }\n\n.text-md {\n  font-size: .9rem; }\n\n.text-lg {\n  font-size: 1.1rem; }\n\n.text-big {\n  font-size: 1.2rem; }\n\n.text-underline {\n  text-decoration: underline; }\n\n.text-normal {\n  font-weight: normal; }\n\n.text-bold {\n  font-weight: bold; }\n\n.text-accent {\n  color: var(--accent); }\n\n.text-crossed {\n  text-decoration: line-through; }\n\n.text-secondary {\n  color: var(--secondary); }\n\n.text-black {\n  color: #000; }\n\n.text-light {\n  color: #CCCCCC; }\n\n.text-xsmall {\n  font-size: .5rem; }\n\n.icon {\n  height: 0.75rem;\n  width: auto; }\n  .icon-sm {\n    height: 1.2rem; }\n  .icon-md {\n    height: 1.5rem; }\n  .icon-big {\n    height: 2rem; }\n\n.img-small {\n  width: 50px;\n  height: 50px;\n  -o-object-fit: contain;\n     object-fit: contain; }\n\n.carousel-caption {\n  right: auto;\n  text-align: left;\n  bottom: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: left;\n  justify-content: center;\n  width: 300px;\n  color: var(--accent); }\n\n.carousel-control-prev, .carousel-control-next {\n  display: none; }\n\n.carousel-indicators {\n  right: auto; }\n  .carousel-indicators li {\n    width: 15px;\n    height: 15px;\n    border-radius: 50%;\n    background: transparent;\n    border: 1px solid #004A8B;\n    box-sizing: border-box; }\n    .carousel-indicators li.active {\n      background: #014C8D; }\n\n.react-multi-carousel-list {\n  box-sizing: border-box; }\n\n.radius {\n  border-radius: 50%; }\n\n.flex-columns {\n  display: flex;\n  flex-wrap: wrap;\n  padding-left: 0; }\n  .flex-columns li {\n    flex: 0 0 33.333333%; }\n  .flex-columns img {\n    height: 22px;\n    -o-object-fit: contain;\n       object-fit: contain; }\n\n.list a.active .category__tick {\n  display: block; }\n\n.list a.active p {\n  color: var(--accent); }\n\n.list a.active img {\n  -webkit-filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\n          filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%); }\n\n.list a * {\n  transition: .25s ease all; }\n\n.list a img {\n  transition: none; }\n\n.list a:hover {\n  text-decoration: none; }\n  .list a:hover img {\n    -webkit-filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\n            filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%); }\n  .list a:hover * {\n    color: var(--accent); }\n\n.category__tick {\n  display: none; }\n", "",{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA;EACI,iBAAS;EACT;AAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uDAAuD,EAAA;;AAG3D;EACI,eAAe;EACf,kBAAkB;EAClB,8CAA8C,EAAA;;AAIlD;EACI,WAAW,EAAA;;AAIf;EACI,cAAc,EAAA;;AAGlB;;;;;;EAQQ,iBAAiB,EAAA;;AARzB;EAYQ,gBAAgB,EAAA;;AAIxB;EACI,SAAS;EACT,UAAU,EAAA;EAFd;IAKQ,qBAAqB,EAAA;;AAUzB;EACI,iBAAiB,EAAA;;AAGrB;EACI,gBAAgB,EAAA;;AAGpB;EACI,iBAAiB,EAAA;;AAGrB;EACI,iBAAiB,EAAA;;AAGrB;EACI,0BAA0B,EAAA;;AAG9B;EACI,mBAAmB,EAAA;;AAGvB;EACI,iBAAiB,EAAA;;AAGrB;EACI,oBAAoB,EAAA;;AAGxB;EACI,6BAA6B,EAAA;;AAGjC;EACI,uBAAuB,EAAA;;AAG3B;EACI,WAAW,EAAA;;AAGf;EACI,cAAc,EAAA;;AAIlB;EACI,gBAAgB,EAAA;;AAIxB;EACI,eAAe;EACf,WAAW,EAAA;EAEX;IACI,cAAc,EAAA;EAGlB;IACI,cACJ,EAAA;EAEA;IACI,YAAY,EAAA;;AAKhB;EACI,WAAW;EACX,YAAY;EACZ,sBAAmB;KAAnB,mBAAmB,EAAA;;AAO3B;EACI,WAAW;EACX,gBAAgB;EAChB,SAAS;EACT,MAAM;EACN,aAAa;EACb,sBAAsB;EACtB,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,oBAAoB,EAAA;;AAKpB;EAEI,aAAa,EAAA;;AAIrB;EACI,WAAW,EAAA;EADf;IAIQ,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,uBAAuB;IACvB,yBAAyB;IACzB,sBAAsB,EAAA;IAT9B;MAYY,mBAAmB,EAAA;;AAM/B;EACI,sBAAsB,EAAA;;AAG1B;EACI,kBAAkB,EAAA;;AAGtB;EACI,aAAa;EACb,eAAe;EACf,eAAe,EAAA;EAHnB;IAMQ,oBAAoB,EAAA;EAN5B;IAUQ,YAAY;IACZ,sBACJ;OADI,mBACJ,EAAA;;AAIJ;EAEQ,cAAc,EAAA;;AAFtB;EAMQ,oBAAoB,EAAA;;AAN5B;EAWQ,wGAAgG;UAAhG,gGAAgG,EAAA;;AAKxG;EAEQ,yBAAyB,EAAA;;AAFjC;EAMQ,gBACJ,EAAA;;AAPJ;EAUQ,qBAAqB,EAAA;EAV7B;IAaY,wGAAgG;YAAhG,gGAAgG,EAAA;EAb5G;IAiBY,oBAAoB,EAAA;;AAKhC;EACI,aAAa,EAAA","file":"styles.scss","sourcesContent":[":root {\r\n    --accent: #024E8F;\r\n    --secondary: #777\r\n}\r\n\r\n@font-face {\r\n    font-family: \"OpenSans\";\r\n    src: url(\"/static/fonts/opensans/OpenSans-Regular.ttf\");\r\n}\r\n\r\nbody {\r\n    font-size: 16px;\r\n    position: relative;\r\n    font-family: \"OpenSans\", sans-serif !important;\r\n}\r\n\r\n\r\nimg {\r\n    width: 100%;\r\n}\r\n\r\n\r\np {\r\n    color: #777777;\r\n}\r\n\r\ndiv {\r\n\r\n    h1,\r\n    h2,\r\n    h3,\r\n    h4,\r\n    h5,\r\n    h6 {\r\n        font-weight: bold;\r\n    }\r\n\r\n    p {\r\n        margin-bottom: 0;\r\n    }\r\n}\r\n\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n\r\n    li {\r\n        list-style-type: none;\r\n    }\r\n}\r\n\r\np {\r\n    // line-height: normal;\r\n}\r\n\r\n.text {\r\n\r\n    &-small {\r\n        font-size: .75rem;\r\n    }\r\n\r\n    &-md {\r\n        font-size: .9rem;\r\n    }\r\n\r\n    &-lg {\r\n        font-size: 1.1rem;\r\n    }\r\n\r\n    &-big {\r\n        font-size: 1.2rem;\r\n    }\r\n\r\n    &-underline {\r\n        text-decoration: underline;\r\n    }\r\n\r\n    &-normal {\r\n        font-weight: normal;\r\n    }\r\n\r\n    &-bold {\r\n        font-weight: bold;\r\n    }\r\n\r\n    &-accent {\r\n        color: var(--accent)\r\n    }\r\n\r\n    &-crossed {\r\n        text-decoration: line-through;\r\n    }\r\n\r\n    &-secondary {\r\n        color: var(--secondary)\r\n    }\r\n\r\n    &-black {\r\n        color: #000;\r\n    }\r\n\r\n    &-light {\r\n        color: #CCCCCC;\r\n    }\r\n\r\n\r\n    &-xsmall {\r\n        font-size: .5rem;\r\n    }\r\n}\r\n\r\n.icon {\r\n    height: 0.75rem;\r\n    width: auto;\r\n\r\n    &-sm {\r\n        height: 1.2rem;\r\n    }\r\n\r\n    &-md {\r\n        height: 1.5rem\r\n    }\r\n\r\n    &-big {\r\n        height: 2rem;\r\n    }\r\n}\r\n\r\n.img {\r\n    &-small {\r\n        width: 50px;\r\n        height: 50px;\r\n        object-fit: contain;\r\n    }\r\n\r\n}\r\n\r\n// Carousel\r\n// Dots\r\n.carousel-caption {\r\n    right: auto;\r\n    text-align: left;\r\n    bottom: 0;\r\n    top: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: left;\r\n    justify-content: center;\r\n    width: 300px;\r\n    color: var(--accent);\r\n}\r\n\r\n.carousel-control {\r\n\r\n    &-prev,\r\n    &-next {\r\n        display: none;\r\n    }\r\n}\r\n\r\n.carousel-indicators {\r\n    right: auto;\r\n\r\n    li {\r\n        width: 15px;\r\n        height: 15px;\r\n        border-radius: 50%;\r\n        background: transparent;\r\n        border: 1px solid #004A8B;\r\n        box-sizing: border-box;\r\n\r\n        &.active {\r\n            background: #014C8D;\r\n        }\r\n    }\r\n}\r\n\r\n// Slider Carousel\r\n.react-multi-carousel-list {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.radius {\r\n    border-radius: 50%;\r\n}\r\n\r\n.flex-columns {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    padding-left: 0;\r\n\r\n    li {\r\n        flex: 0 0 33.333333%;\r\n    }\r\n\r\n    img {\r\n        height: 22px;\r\n        object-fit: contain\r\n    }\r\n\r\n}\r\n\r\n.list a.active {\r\n    .category__tick {\r\n        display: block;\r\n    }\r\n\r\n    p {\r\n        color: var(--accent);\r\n\r\n    }\r\n\r\n    img {\r\n        filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\r\n    }\r\n\r\n}\r\n\r\n.list a {\r\n    * {\r\n        transition: .25s ease all;\r\n    }\r\n\r\n    img {\r\n        transition: none\r\n    }\r\n\r\n    &:hover {\r\n        text-decoration: none;\r\n\r\n        img {\r\n            filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\r\n        }\r\n\r\n        * {\r\n            color: var(--accent)\r\n        }\r\n    }\r\n}\r\n\r\n.category__tick {\r\n    display: none;\r\n}"]}]);
 // Exports
 module.exports = exports;
 
@@ -27937,6 +28790,7 @@ function MyApp(_ref) {
     label: "Введите пароль",
     type: "password"
   });
+  var checkboxControl = Object(_hooks__WEBPACK_IMPORTED_MODULE_3__["useForm"])();
 
   var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])([]),
       cart = _useState2[0],
@@ -28082,6 +28936,7 @@ function MyApp(_ref) {
     ,
     submitted: authHandler,
     modeHandler: modeHandler,
+    checkboxControl: checkboxControl,
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -28092,7 +28947,7 @@ function MyApp(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 153,
+      lineNumber: 154,
       columnNumber: 6
     }
   })))));

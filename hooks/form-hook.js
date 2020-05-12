@@ -63,7 +63,6 @@ const useForm = (
 		// else check the validity
 		const { required, minSymbols } = validityOptions;
 
-		// console.log(required, minSymbols);
 		let isValidTemp = true;
 		if (required && isValidTemp && val.length === 0) {
 			isValidTemp = false;

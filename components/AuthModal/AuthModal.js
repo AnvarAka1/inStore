@@ -1,10 +1,11 @@
 import React from "react";
 import classes from "./AuthModal.module.scss";
+import Link from "next/link";
 import { Modal, Card } from "../";
 
 import { FormGroup } from "../UI";
-import { Button, Form, Row, Col } from "react-bootstrap";
-const authModal = ({ modal, onHide, isSignUp, modeHandler, controls, submitted }) => {
+import { Button, Form } from "react-bootstrap";
+const authModal = ({ modal, onHide, isSignUp, modeHandler, controls, submitted, checkboxControl }) => {
 	const title = <h2>{isSignUp ? "Регистрация" : "Авторизация"}</h2>;
 	const text = isSignUp ? (
 		<p>
@@ -22,9 +23,7 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, controls, submitted }
 		</p>
 	);
 
-	console.log(controls);
 	const form = controls[+isSignUp].map((control, index) => {
-		console.log(control);
 		return (
 			<FormGroup key={index} control={control}>
 				{control.options.label}
@@ -33,22 +32,42 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, controls, submitted }
 	});
 
 	return (
-		<Modal modal={modal} onHide={onHide}>
+		<Modal modal={modal} size="lg" onHide={onHide}>
 			<Card>
 				<Card.Body>
-					<Row>
-						<Col sm={6}>
+					<div className="d-flex align-items-center ">
+						<div className="w-100">
 							{title}
 							{text}
 							<div>
 								<Form onSubmit={submitted}>
 									{form}
-									<Button type="submit">{isSignUp ? "Зарегистрироваться" : "Войти"}</Button>
+									{!isSignUp && (
+										<Form.Group controlId="formBasicCheckbox">
+											<Form.Check
+												type="checkbox"
+												on
+												label="Запомнить пароль"
+												value={checkboxControl.value}
+												onChange={checkboxControl.onChange}
+											/>
+										</Form.Group>
+									)}
+									<Button type="submit" className="float-right">
+										{isSignUp ? "Зарегистрироваться" : "Войти"}
+									</Button>
+									{!isSignUp && (
+										<Link href="/">
+											<a>Не можете получить доступ?</a>
+										</Link>
+									)}
 								</Form>
-								<div className={classes.Social}>{/*  */}</div>
 							</div>
-						</Col>
-					</Row>
+						</div>
+						<div className={`${classes.Social} w-100`}>
+							<p className="text-small">{isSignUp ? "Регистрация" : "Авторизация"} через:</p>
+						</div>
+					</div>
 				</Card.Body>
 			</Card>
 		</Modal>

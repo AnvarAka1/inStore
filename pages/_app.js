@@ -38,7 +38,7 @@ export default function MyApp({ Component, pageProps }) {
 		label: "Введите пароль",
 		type: "password"
 	});
-
+	const checkboxControl = useForm();
 	const [ cart, setCart ] = useState([]);
 	const [ categories, setCategories ] = useState([
 		{
@@ -149,6 +149,7 @@ export default function MyApp({ Component, pageProps }) {
 						// onHide={}
 						submitted={authHandler}
 						modeHandler={modeHandler}
+						checkboxControl={checkboxControl}
 					/>
 					<Component {...pageProps} />
 				</Layout>
