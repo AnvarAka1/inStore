@@ -8,7 +8,7 @@ const topImage = ({ title, img, link }) => {
 				<div className={classes.TopImage}>
 					<img
 						className="d-block w-100"
-						src="/static/images/main/books/carousel1.png"
+						src="/images/main/books/carousel1.png"
 						alt="Электронные книги и Видео уроки"
 					/>
 					<div>

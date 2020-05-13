@@ -127,7 +127,7 @@ const getCategoryItems = () => [
 const getBooks = () => [
 	{
 		id: 0,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 3,
@@ -136,7 +136,7 @@ const getBooks = () => [
 	},
 	{
 		id: 1,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 1,
@@ -145,7 +145,7 @@ const getBooks = () => [
 	},
 	{
 		id: 2,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,
@@ -154,7 +154,7 @@ const getBooks = () => [
 	},
 	{
 		id: 3,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 0,
@@ -163,7 +163,7 @@ const getBooks = () => [
 	},
 	{
 		id: 4,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,
@@ -172,7 +172,7 @@ const getBooks = () => [
 	},
 	{
 		id: 5,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,
@@ -181,7 +181,7 @@ const getBooks = () => [
 	},
 	{
 		id: 6,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,
@@ -190,7 +190,7 @@ const getBooks = () => [
 	},
 	{
 		id: 7,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 5,
@@ -199,7 +199,7 @@ const getBooks = () => [
 	},
 	{
 		id: 8,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,

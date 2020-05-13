@@ -8,18 +8,14 @@ const stars = ({ rate, isBig, onClick }) => {
 	for (let i = 0; i < MAX_STARS; i++) {
 		starsArray.push(
 			<div key={i} className="mr-1" onClick={onClick ? () => onClick(i) : null}>
-				<img src="/static/images/icons/star.png" className={`icon ${isBig && "icon-md"}`} alt="star" />
+				<img src="/images/icons/star.png" className={`icon ${isBig && "icon-md"}`} alt="star" />
 			</div>
 		);
 	}
 	for (let i = 0; i < rate; i++) {
 		starsArray[i] = (
 			<div key={i} className="mr-1" onClick={onClick ? () => onClick(i) : null}>
-				<img
-					src="/static/images/icons/star-gold.png"
-					className={`icon ${isBig && "icon-md"}`}
-					alt="star-gold"
-				/>
+				<img src="/images/icons/star-gold.png" className={`icon ${isBig && "icon-md"}`} alt="star-gold" />
 			</div>
 		);
 	}

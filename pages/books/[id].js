@@ -62,7 +62,7 @@ const getBook = () => {
 		date: "2019",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		type: 0,
 		description:
 			'"Нескучные десерты" - вторая книга от шеф-повара популярных ресторанов "Техникум" и "Сахалин". Веселый и обаятельный Виталий Истомин давно покорил кулинарный Олимп и теперь настроен помочь нам достичь тех же вершин. В новой книге автор познакомит нас с лучшими рецептами выпечки и классическими десертами, откроет свои лайфхаки по работе с капризными ингредиентами, а также ненавязчиво поделится обрывками своих наблюдений на многие темы: любовь, отношения и поиск себя.',
@@ -127,7 +127,7 @@ const getBook = () => {
 const getPopularBooks = () => [
 	{
 		id: 0,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 3,
@@ -136,7 +136,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 1,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 1,
@@ -145,7 +145,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 2,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,
@@ -154,7 +154,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 3,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 0,
@@ -163,7 +163,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 4,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,
@@ -172,7 +172,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 5,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,
@@ -181,7 +181,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 6,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,
@@ -190,7 +190,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 7,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 5,
@@ -199,7 +199,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 8,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,

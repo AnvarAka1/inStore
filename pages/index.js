@@ -94,7 +94,7 @@ const IndexPage = React.memo(props => {
 					<section>
 						<TopImage
 							title="Электронные книги и Видео уроки"
-							img="/static/images/main/books/carousel1.png"
+							img="/images/main/books/carousel1.png"
 							link="/"
 						/>
 					</section>
@@ -117,7 +117,7 @@ const IndexPage = React.memo(props => {
 			<Row>
 				<Col>
 					<div>
-						<img src="/static/images/main/books/first.png" alt="Электронные и печатные книги" />
+						<img src="/images/main/books/first.png" alt="Электронные и печатные книги" />
 					</div>
 				</Col>
 				<Col>
@@ -148,7 +148,7 @@ const IndexPage = React.memo(props => {
 				</Col>
 				<Col>
 					<div>
-						<img src="/static/images/main/books/second.png" alt="Электронные и печатные книги" />
+						<img src="/images/main/books/second.png" alt="Электронные и печатные книги" />
 					</div>
 				</Col>
 			</Row>
@@ -207,19 +207,19 @@ const IndexPage = React.memo(props => {
 const getCarouselItems = () => [
 	{
 		id: 0,
-		img: "/static/images/main/books/carousel1.png",
+		img: "/images/main/books/carousel1.png",
 		title: "Электронные книги и Видео уроки"
 		// text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
 	},
 	{
 		id: 1,
-		img: "/static/images/main/books/carousel1.png",
+		img: "/images/main/books/carousel1.png",
 		title: "Электронные книги и Видео уроки"
 		// text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
 	},
 	{
 		id: 2,
-		img: "/static/images/main/books/carousel1.png",
+		img: "/images/main/books/carousel1.png",
 		title: "Электронные книги и Видео уроки"
 		// text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
 	}
@@ -227,24 +227,24 @@ const getCarouselItems = () => [
 const getBookCarouselItems = () => [
 	{
 		id: 0,
-		img: "/static/images/main/books/slider-carousel/1.png",
+		img: "/images/main/books/slider-carousel/1.png",
 		text: "ТОП-10 романов"
 	},
 	{
 		id: 1,
-		img: "/static/images/main/books/slider-carousel/2.png",
+		img: "/images/main/books/slider-carousel/2.png",
 		text: "На досуге"
 	},
 	{
 		id: 2,
-		img: "/static/images/main/books/slider-carousel/3.png",
+		img: "/images/main/books/slider-carousel/3.png",
 		text: "Бестселлеры"
 	}
 ];
 const getPopularBooks = () => [
 	{
 		id: 0,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 3,
@@ -253,7 +253,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 1,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 1,
@@ -262,7 +262,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 2,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,
@@ -271,7 +271,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 3,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 0,
@@ -280,7 +280,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 4,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,
@@ -289,7 +289,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 5,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,
@@ -298,7 +298,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 6,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,
@@ -307,7 +307,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 7,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 5,
@@ -316,7 +316,7 @@ const getPopularBooks = () => [
 	},
 	{
 		id: 8,
-		img: "/static/images/items/books/1.png",
+		img: "/images/items/books/1.png",
 		title: "Нескучные десерты",
 		author: "Истомин Виталий",
 		rate: 4,
@@ -327,7 +327,7 @@ const getPopularBooks = () => [
 const getSpeakers = () => [
 	{
 		id: 0,
-		img: "/static/images/main/books/person.png",
+		img: "/images/main/books/person.png",
 		name: "Валерия Филиппова",
 		role: "Писатель",
 		quote:
@@ -335,7 +335,7 @@ const getSpeakers = () => [
 	},
 	{
 		id: 1,
-		img: "/static/images/main/books/person.png",
+		img: "/images/main/books/person.png",
 		name: "Валерия Леонтьева",
 		role: "Спикер",
 		quote:
@@ -343,7 +343,7 @@ const getSpeakers = () => [
 	},
 	{
 		id: 2,
-		img: "/static/images/main/books/person.png",
+		img: "/images/main/books/person.png",
 		name: "Валерия Филиппова",
 		role: "Писатель",
 		quote:
@@ -353,7 +353,7 @@ const getSpeakers = () => [
 const getReviewsItems = () => [
 	{
 		id: 0,
-		img: "/static/images/main/books/person.png",
+		img: "/images/main/books/person.png",
 		name: "Антон Алексеев",
 		rate: 4,
 		text:
@@ -361,7 +361,7 @@ const getReviewsItems = () => [
 	},
 	{
 		id: 1,
-		img: "/static/images/main/books/person.png",
+		img: "/images/main/books/person.png",
 		name: "Антон Алексеев",
 		rate: 4,
 		text:
@@ -369,7 +369,7 @@ const getReviewsItems = () => [
 	},
 	{
 		id: 2,
-		img: "/static/images/main/books/person.png",
+		img: "/images/main/books/person.png",
 		name: "Антон Алексеев",
 		rate: 4,
 		text:
@@ -377,7 +377,7 @@ const getReviewsItems = () => [
 	},
 	{
 		id: 3,
-		img: "/static/images/main/books/person.png",
+		img: "/images/main/books/person.png",
 		name: "Антон Алексеев",
 		rate: 4,
 		text:

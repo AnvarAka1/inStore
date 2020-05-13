@@ -23,26 +23,6 @@ const sliderCarousel = ({ className, children, items, arrows = true, autoPlay = 
 			items: items ? (items.xs ? items.xs : 1) : 1
 		}
 	};
-	// const icons = {
-	// 	arrowLeft: (
-
-	// 	),
-	// 	arrowLeftDisabled: (
-	// 		<div className={[ classes.Icon, classes.Disabled ].join(" ")}>
-	// 			<img className="icon" src="/static/images/icons/arrow-left.png" alt="left" />
-	// 		</div>
-	// 	),
-	// 	arrowRight: (
-	// 		<div className={[ classes.Icon, classes.Right ].join(" ")}>
-	// 			<img className="icon" src="/static/images/icons/arrow-right.png" alt="right" />
-	// 		</div>
-	// 	),
-	// 	arrowRightDisabled: (
-	// 		<div className={[ classes.Icon, classes.Disabled ].join(" ")}>
-	// 			<img className="icon" src="/static/images/icons/arrow-right.png" alt="right" />
-	// 		</div>
-	// 	)
-	// };
 
 	return (
 		<div className={classes.Carousel}>
@@ -74,7 +54,7 @@ const sliderCarousel = ({ className, children, items, arrows = true, autoPlay = 
 const CustomArrowLeft = ({ onClick }) => {
 	return (
 		<div onClick={() => onClick()} className={[ classes.Icon, classes.Left ].join(" ")}>
-			<img className="icon" src="/static/images/icons/arrow-left.png" alt="left" />
+			<img className="icon" src="/images/icons/arrow-left.png" alt="left" />
 		</div>
 	);
 };
@@ -85,7 +65,7 @@ const CustomArrowRight = ({ onClick }) => {
 			className={[ classes.Icon, classes.Right ].join(" ")}
 			aria-label="Go to next slide"
 		>
-			<img className="icon" src="/static/images/icons/arrow-right.png" alt="right" />
+			<img className="icon" src="/images/icons/arrow-right.png" alt="right" />
 		</div>
 	);
 };

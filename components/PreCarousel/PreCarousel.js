@@ -7,7 +7,7 @@ const preCarousel = ({ isVideo, children, link }) => {
 			<a>
 				<div className={classes.PreCarousel}>
 					<div className={classes.Image}>
-						<img src={`/static/images/icons/${!isVideo ? "books.png" : "videos.png"}`} />
+						<img src={`/images/icons/${!isVideo ? "books.png" : "videos.png"}`} />
 					</div>
 					<h3 className="text-accent">{children}</h3>
 					<p className={`text-small mt-auto ${isVideo && "text-bold"}`}>Все сборники</p>

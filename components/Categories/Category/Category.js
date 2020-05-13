@@ -16,7 +16,7 @@ const category = ({ id, children, icon, href, isStatic }) => {
 							<p className={`${isStatic && "text-lg"} mr-1`}>{children}</p>
 						</div>
 						<div className="category__tick">
-							<img src="/static/images/icons/tick.png" className="icon icon-sm" alt="active" />
+							<img src="/images/icons/tick.png" className="icon icon-sm" alt="active" />
 						</div>
 					</div>
 				</a>

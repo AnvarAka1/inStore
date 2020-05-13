@@ -16,27 +16,27 @@ const getStaticCats = () => [
 	{
 		id: 0,
 		title: "Все",
-		icon: "/static/images/icons/all.png"
+		icon: "/images/icons/all.png"
 	},
 	{
 		id: 1,
 		title: "Сборники",
-		icon: "/static/images/icons/compilations.png"
+		icon: "/images/icons/compilations.png"
 	},
 	{
 		id: 2,
 		title: "Аудиокниги",
-		icon: "/static/images/icons/audio.png"
+		icon: "/images/icons/audio.png"
 	},
 	{
 		id: 3,
 		title: "Печатные книги",
-		icon: "/static/images/icons/book.png"
+		icon: "/images/icons/book.png"
 	},
 	{
 		id: 4,
 		title: "Электронные книги",
-		icon: "/static/images/icons/pdf.png"
+		icon: "/images/icons/pdf.png"
 	}
 ];
 const getCategoryItems = () => [

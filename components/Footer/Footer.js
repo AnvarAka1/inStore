@@ -63,18 +63,18 @@ const footer = () => {
 	);
 };
 const getSocial = () => [
-	"/static/images/social/fb.png",
-	"/static/images/social/instagram.png",
-	"/static/images/social/tg.png",
-	"/static/images/social/twitter.png"
+	"/images/social/fb.png",
+	"/images/social/instagram.png",
+	"/images/social/tg.png",
+	"/images/social/twitter.png"
 ];
 const getImages = () => [
-	"/static/images/payment/payme.png",
-	"/static/images/payment/uzcard.png",
-	"/static/images/payment/click.png",
-	"/static/images/payment/humo.png",
-	"/static/images/payment/visa.png",
-	"/static/images/payment/paynet.png"
+	"/images/payment/payme.png",
+	"/images/payment/uzcard.png",
+	"/images/payment/click.png",
+	"/images/payment/humo.png",
+	"/images/payment/visa.png",
+	"/images/payment/paynet.png"
 ];
 const getItems = () => [
 	{

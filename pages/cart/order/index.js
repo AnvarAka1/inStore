@@ -137,12 +137,12 @@ const OrderPage = props => {
 	);
 };
 const getImages = () => [
-	"/static/images/payment/payme.png",
-	"/static/images/payment/uzcard.png",
-	"/static/images/payment/click.png",
-	"/static/images/payment/humo.png",
-	"/static/images/payment/visa.png",
-	"/static/images/payment/paynet.png"
+	"/images/payment/payme.png",
+	"/images/payment/uzcard.png",
+	"/images/payment/click.png",
+	"/images/payment/humo.png",
+	"/images/payment/visa.png",
+	"/images/payment/paynet.png"
 ];
 OrderPage.getInitialProps = async context => {
 	return {

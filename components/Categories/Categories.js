@@ -12,7 +12,7 @@ const categories = ({ items, isVideo, isStatic }) => {
 		<React.Fragment>
 			{!isStatic && (
 				<div className="d-flex align-items-center mb-4">
-					<img className="icon icon-md" src="/static/images/icons/janra.png" alt="Жанры" />
+					<img className="icon icon-md" src="/images/icons/janra.png" alt="Жанры" />
 					<h5 className="ml-1 mb-0 text-secondary">{!isVideo ? "Жанры" : "Категории"}</h5>
 				</div>
 			)}

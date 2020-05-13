@@ -922,7 +922,7 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
       }
     }, __jsx("link", {
       rel: "shortcut icon",
-      href: "/static/images/favicon.ico",
+      href: "/images/favicon.ico",
       __self: this,
       __source: {
         fileName: _jsxFileName,

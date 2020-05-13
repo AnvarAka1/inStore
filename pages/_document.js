@@ -10,7 +10,7 @@ class MyDocument extends Document {
 		return (
 			<Html lang="ru">
 				<Head>
-					<link rel="shortcut icon" href="/static/images/favicon.ico" />
+					<link rel="shortcut icon" href="/images/favicon.ico" />
 					{/* <title>InStore | Библиотека книг и видеоуроков</title> */}
 				</Head>
 				<body>

@@ -1,0 +1,10 @@
+.NavItems {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+
+    div {
+        cursor: pointer;
+        margin-left: .5rem;
+    }
+}
