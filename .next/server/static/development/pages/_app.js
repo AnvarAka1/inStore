@@ -459,7 +459,7 @@ const header = ({
   className
 }) => {
   return __jsx("h5", {
-    className: `${_Card_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Header} ${className}`,
+    className: `${_Card_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Header} ${className} text-secondary`,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -620,7 +620,6 @@ const category = ({
   id,
   children,
   icon,
-  href,
   isStatic
 }) => {
   return __jsx("li", {
@@ -2174,10 +2173,11 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const navItems = ({
-  authModalShow
+  authModalShow,
+  cartCount
 }) => {
   return __jsx("div", {
-    className: _NavItems_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.NavItems,
+    className: `${_NavItems_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.NavItems} `,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -2191,69 +2191,153 @@ const navItems = ({
       lineNumber: 7,
       columnNumber: 4
     }
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "favorite",
+  }, __jsx("div", {
+    className: "list",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8,
       columnNumber: 5
     }
-  }, __jsx("a", {
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "favorite",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 9,
       columnNumber: 6
     }
-  }, "\u0418\u0437\u0431\u0440\u0430\u043D\u043D\u044B\u0435"))), __jsx("div", {
+  }, __jsx("a", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 7
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-center",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 8
+    }
+  }, __jsx("img", {
+    src: "/images/icons/star.png",
+    className: "icon icon-sm mr-1",
+    alt: "favourite",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 12,
-      columnNumber: 4
+      columnNumber: 9
     }
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/cart",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 5
-    }
-  }, __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14,
-      columnNumber: 6
-    }
-  }, __jsx("img", {
-    src: "/images/icons/cart.png",
-    className: "icon icon-sm",
-    alt: "cart",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15,
-      columnNumber: 7
-    }
-  }), __jsx("a", {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 7
-    }
-  }, "\u041A\u043E\u0440\u0437\u0438\u043D\u0430")))), __jsx("div", {
-    onClick: authModalShow,
+  }), "\u0418\u0437\u0431\u0440\u0430\u043D\u043D\u044B\u0435"))))), __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 20,
       columnNumber: 4
     }
-  }, "\u0412\u043E\u0439\u0442\u0438"));
+  }, __jsx("div", {
+    className: "list",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 5
+    }
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/cart",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22,
+      columnNumber: 6
+    }
+  }, __jsx("a", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 7
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-center",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24,
+      columnNumber: 8
+    }
+  }, __jsx("div", {
+    className: "position-relative",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25,
+      columnNumber: 9
+    }
+  }, cartCount ? __jsx("span", {
+    className: "circle",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27,
+      columnNumber: 11
+    }
+  }, __jsx("p", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 12
+    }
+  }, cartCount)) : null, __jsx("img", {
+    src: "/images/icons/cart.png",
+    className: "icon icon-sm mr-1",
+    alt: "cart",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 10
+    }
+  })), "\u041A\u043E\u0440\u0437\u0438\u043D\u0430"))))), __jsx("div", {
+    onClick: authModalShow,
+    className: "list",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 4
+    }
+  }, __jsx("a", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-center list",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41,
+      columnNumber: 6
+    }
+  }, __jsx("img", {
+    src: "/images/icons/user.png",
+    className: "icon icon-sm mr-1",
+    alt: "login",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42,
+      columnNumber: 7
+    }
+  }), "\u0412\u043E\u0439\u0442\u0438"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (navItems);
@@ -2307,7 +2391,8 @@ const navbar = ({
   booksCategories,
   booksCategoryClicked,
   authModalShow,
-  search
+  search,
+  cartCount
 }) => {
   const books = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __self: undefined,
@@ -2432,6 +2517,7 @@ const navbar = ({
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NavDropdown"], {
     title: books,
+    className: "list",
     id: "basic-nav-dropdown",
     __self: undefined,
     __source: {
@@ -2452,6 +2538,7 @@ const navbar = ({
     }, cat.title);
   }))), search, __jsx(_NavItems_NavItems__WEBPACK_IMPORTED_MODULE_3__["default"], {
     authModalShow: authModalShow,
+    cartCount: cartCount,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -5369,7 +5456,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const Layout = ({
-  children
+  children,
+  cartCount
 }) => {
   const {
     0: isSignUp,
@@ -5429,7 +5517,7 @@ const Layout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 60,
       columnNumber: 3
     }
   }, __jsx(_components___WEBPACK_IMPORTED_MODULE_6__["AuthModal"], {
@@ -5442,24 +5530,25 @@ const Layout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62,
+      lineNumber: 61,
       columnNumber: 4
     }
   }), __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 69,
       columnNumber: 4
     }
   }, __jsx("title", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 70,
       columnNumber: 5
     }
   }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components___WEBPACK_IMPORTED_MODULE_6__["Navbar"], {
+    cartCount: cartCount,
     search: __jsx(_components___WEBPACK_IMPORTED_MODULE_6__["Search"], {
       control: searchControl,
       onSearch: onSearch,
@@ -5476,7 +5565,7 @@ const Layout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73,
+      lineNumber: 72,
       columnNumber: 4
     }
   }), __jsx("main", {
@@ -7731,7 +7820,7 @@ function MyApp({
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 98,
       columnNumber: 3
     }
   }, __jsx(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_4__["default"].Provider, {
@@ -7743,21 +7832,22 @@ function MyApp({
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107,
+      lineNumber: 106,
       columnNumber: 4
     }
   }, __jsx(_layouts__WEBPACK_IMPORTED_MODULE_6__["Layout"], {
+    cartCount: cart.length,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108,
+      lineNumber: 107,
       columnNumber: 5
     }
   }, __jsx(Component, _extends({}, pageProps, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109,
+      lineNumber: 108,
       columnNumber: 6
     }
   })))));

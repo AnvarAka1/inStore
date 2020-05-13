@@ -5,7 +5,7 @@ import NavItems from "./NavItems/NavItems";
 import { Navbar, Nav, NavDropdown, Container, Row, Col } from "react-bootstrap";
 import { Logo } from "../";
 
-const navbar = ({ booksCategories, booksCategoryClicked, authModalShow, search }) => {
+const navbar = ({ booksCategories, booksCategoryClicked, authModalShow, search, cartCount }) => {
 	const books = (
 		<React.Fragment>
 			<img src="/images/icons/book.png" className="icon icon-sm mr-1" alt="Книги" />Книги
@@ -31,7 +31,7 @@ const navbar = ({ booksCategories, booksCategoryClicked, authModalShow, search }
 							<Navbar.Toggle aria-controls="basic-navbar-nav" />
 							<Navbar.Collapse id="basic-navbar-nav">
 								<Nav className="mr-auto ml-5">
-									<NavDropdown title={books} id="basic-nav-dropdown">
+									<NavDropdown title={books} className="list" id="basic-nav-dropdown">
 										{booksCategories.map(cat => {
 											return (
 												<NavDropdown.Item
@@ -53,7 +53,7 @@ const navbar = ({ booksCategories, booksCategoryClicked, authModalShow, search }
 								</Nav>
 
 								{search}
-								<NavItems authModalShow={authModalShow} />
+								<NavItems authModalShow={authModalShow} cartCount={cartCount} />
 							</Navbar.Collapse>
 						</Navbar>
 					</Col>

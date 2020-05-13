@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import InputMask from "react-input-mask";
 import { useForm, useSelect } from "../../../hooks";
 import { FormGroup } from "../../../components/UI";
 import { Card, MakeOrder } from "../../../components";
@@ -38,13 +38,17 @@ const OrderPage = props => {
 							<Card.Body>
 								<Form>
 									{/* Mask */}
-									<Form.Control
+									<InputMask
+										className="form-control form-control-sm mt-3"
+										mask="+\9\98 (99) 999-99-99"
+										maskChar="_"
+										placeholder="+998 (__) ___-__-__"
+										// alwaysShowMask={true}
+										// formatChars={{ "-": "[0-9]" }}
+										// permanents={[ 1, 5 ]} // permanents is an array of indexes of the non-editable characters in the mask
 										value={phoneControl.value}
 										onChange={phoneControl.onChange}
-										size="sm"
-										placeholder="+998 (__) ___ - __ - __"
 									/>
-									<Button type="submit">Получить код</Button>
 								</Form>
 							</Card.Body>
 						</Card>

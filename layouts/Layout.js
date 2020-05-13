@@ -6,12 +6,11 @@ import { useForm, useModal } from "../hooks/";
 import { Container } from "react-bootstrap";
 import { AuthModal } from "../components/";
 import { Navbar, Footer, Search } from "../components";
-const Layout = ({ children }) => {
+const Layout = ({ children, cartCount }) => {
 	const [ isSignUp, setIsSignUp ] = useState(true);
 	const authModal = useModal();
 	const searchControl = useForm();
 	const categoryContext = useContext(CategoryContext);
-
 	const nameControl = useForm(false, {
 		label: "Ф.И.О"
 	});
@@ -71,6 +70,7 @@ const Layout = ({ children }) => {
 				<title>InStore | Библиотека книг и видеоуроков</title>
 			</Head>
 			<Navbar
+				cartCount={cartCount}
 				search={<Search control={searchControl} onSearch={onSearch} />}
 				authModalShow={authModal.onShow}
 				booksCategories={categoryContext.categories}

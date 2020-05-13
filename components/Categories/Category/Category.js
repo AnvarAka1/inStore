@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Category.module.scss";
 // import {useRouter} from 'next/router';
 import { Link } from "../../";
-const category = ({ id, children, icon, href, isStatic }) => {
+const category = ({ id, children, icon, isStatic }) => {
 	return (
 		<li className={`${classes.Category} mt-2 list`}>
 			<Link

@@ -516,7 +516,7 @@ var header = function header(_ref) {
   var children = _ref.children,
       className = _ref.className;
   return __jsx("h5", {
-    className: "".concat(_Card_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Header, " ").concat(className),
+    className: "".concat(_Card_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Header, " ").concat(className, " text-secondary"),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -682,7 +682,6 @@ var category = function category(_ref) {
   var id = _ref.id,
       children = _ref.children,
       icon = _ref.icon,
-      href = _ref.href,
       isStatic = _ref.isStatic;
   return __jsx("li", {
     className: "".concat(_Category_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Category, " mt-2 list"),
@@ -2821,9 +2820,10 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 var navItems = function navItems(_ref) {
-  var authModalShow = _ref.authModalShow;
+  var authModalShow = _ref.authModalShow,
+      cartCount = _ref.cartCount;
   return __jsx("div", {
-    className: _NavItems_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.NavItems,
+    className: "".concat(_NavItems_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.NavItems, " "),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -2837,69 +2837,153 @@ var navItems = function navItems(_ref) {
       lineNumber: 7,
       columnNumber: 4
     }
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "favorite",
+  }, __jsx("div", {
+    className: "list",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8,
       columnNumber: 5
     }
-  }, __jsx("a", {
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "favorite",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 9,
       columnNumber: 6
     }
-  }, "\u0418\u0437\u0431\u0440\u0430\u043D\u043D\u044B\u0435"))), __jsx("div", {
+  }, __jsx("a", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 7
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-center",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 8
+    }
+  }, __jsx("img", {
+    src: "/images/icons/star.png",
+    className: "icon icon-sm mr-1",
+    alt: "favourite",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 12,
-      columnNumber: 4
+      columnNumber: 9
     }
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/cart",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 5
-    }
-  }, __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14,
-      columnNumber: 6
-    }
-  }, __jsx("img", {
-    src: "/images/icons/cart.png",
-    className: "icon icon-sm",
-    alt: "cart",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15,
-      columnNumber: 7
-    }
-  }), __jsx("a", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 7
-    }
-  }, "\u041A\u043E\u0440\u0437\u0438\u043D\u0430")))), __jsx("div", {
-    onClick: authModalShow,
+  }), "\u0418\u0437\u0431\u0440\u0430\u043D\u043D\u044B\u0435"))))), __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 20,
       columnNumber: 4
     }
-  }, "\u0412\u043E\u0439\u0442\u0438"));
+  }, __jsx("div", {
+    className: "list",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 5
+    }
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/cart",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22,
+      columnNumber: 6
+    }
+  }, __jsx("a", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 7
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-center",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24,
+      columnNumber: 8
+    }
+  }, __jsx("div", {
+    className: "position-relative",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25,
+      columnNumber: 9
+    }
+  }, cartCount ? __jsx("span", {
+    className: "circle",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27,
+      columnNumber: 11
+    }
+  }, __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 12
+    }
+  }, cartCount)) : null, __jsx("img", {
+    src: "/images/icons/cart.png",
+    className: "icon icon-sm mr-1",
+    alt: "cart",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 10
+    }
+  })), "\u041A\u043E\u0440\u0437\u0438\u043D\u0430"))))), __jsx("div", {
+    onClick: authModalShow,
+    className: "list",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 4
+    }
+  }, __jsx("a", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-center list",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41,
+      columnNumber: 6
+    }
+  }, __jsx("img", {
+    src: "/images/icons/user.png",
+    className: "icon icon-sm mr-1",
+    alt: "login",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42,
+      columnNumber: 7
+    }
+  }), "\u0412\u043E\u0439\u0442\u0438"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (navItems);
@@ -3035,7 +3119,8 @@ var navbar = function navbar(_ref) {
   var booksCategories = _ref.booksCategories,
       booksCategoryClicked = _ref.booksCategoryClicked,
       authModalShow = _ref.authModalShow,
-      search = _ref.search;
+      search = _ref.search,
+      cartCount = _ref.cartCount;
 
   var books = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __self: _this,
@@ -3160,6 +3245,7 @@ var navbar = function navbar(_ref) {
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NavDropdown"], {
     title: books,
+    className: "list",
     id: "basic-nav-dropdown",
     __self: _this,
     __source: {
@@ -3182,6 +3268,7 @@ var navbar = function navbar(_ref) {
     }, cat.title);
   }))), search, __jsx(_NavItems_NavItems__WEBPACK_IMPORTED_MODULE_3__["default"], {
     authModalShow: authModalShow,
+    cartCount: cartCount,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -7220,7 +7307,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 var Layout = function Layout(_ref) {
-  var children = _ref.children;
+  var children = _ref.children,
+      cartCount = _ref.cartCount;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
       isSignUp = _useState[0],
@@ -7280,7 +7368,7 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 60,
       columnNumber: 3
     }
   }, __jsx(_components___WEBPACK_IMPORTED_MODULE_6__["AuthModal"], {
@@ -7293,24 +7381,25 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62,
+      lineNumber: 61,
       columnNumber: 4
     }
   }), __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 69,
       columnNumber: 4
     }
   }, __jsx("title", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 70,
       columnNumber: 5
     }
   }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components___WEBPACK_IMPORTED_MODULE_6__["Navbar"], {
+    cartCount: cartCount,
     search: __jsx(_components___WEBPACK_IMPORTED_MODULE_6__["Search"], {
       control: searchControl,
       onSearch: onSearch,
@@ -7327,7 +7416,7 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73,
+      lineNumber: 72,
       columnNumber: 4
     }
   }), __jsx("main", {
@@ -11363,7 +11452,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ".NavItems_NavItems__15_nq {\n  display: flex;\n  align-items: center;\n  margin-left: 2rem; }\n  .NavItems_NavItems__15_nq div {\n    cursor: pointer;\n    margin-left: .5rem; }\n", "",{"version":3,"sources":["NavItems.module.scss"],"names":[],"mappings":"AAAA;EACI,aAAa;EACb,mBAAmB;EACnB,iBAAiB,EAAA;EAHrB;IAMQ,eAAe;IACf,kBAAkB,EAAA","file":"NavItems.module.scss","sourcesContent":[".NavItems {\r\n    display: flex;\r\n    align-items: center;\r\n    margin-left: 2rem;\r\n\r\n    div {\r\n        cursor: pointer;\r\n        margin-left: .5rem;\r\n    }\r\n}"]}]);
+exports.push([module.i, ".NavItems_NavItems__15_nq {\n  display: flex;\n  align-items: center;\n  margin-left: 2rem; }\n  .NavItems_NavItems__15_nq > div {\n    cursor: pointer;\n    margin-left: .5rem; }\n", "",{"version":3,"sources":["NavItems.module.scss"],"names":[],"mappings":"AAAA;EACI,aAAa;EACb,mBAAmB;EACnB,iBAAiB,EAAA;EAHrB;IAOQ,eAAe;IACf,kBAAkB,EAAA","file":"NavItems.module.scss","sourcesContent":[".NavItems {\r\n    display: flex;\r\n    align-items: center;\r\n    margin-left: 2rem;\r\n\r\n\r\n    &>div {\r\n        cursor: pointer;\r\n        margin-left: .5rem;\r\n    }\r\n}"]}]);
 // Exports
 exports.locals = {
 	"NavItems": "NavItems_NavItems__15_nq"
@@ -11614,7 +11703,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ".TopImage_TopImage__3h2Il {\n  position: relative; }\n  .TopImage_TopImage__3h2Il div {\n    width: 300px;\n    position: absolute;\n    display: flex;\n    align-items: center;\n    text-align: left;\n    bottom: 0;\n    top: 0;\n    left: 15%; }\n", "",{"version":3,"sources":["TopImage.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAkB,EAAA;EADtB;IAKQ,YAAY;IACZ,kBAAkB;IAClB,aAAa;IACb,mBAAmB;IACnB,gBAAgB;IAChB,SAAS;IACT,MAAM;IACN,SAAS,EAAA","file":"TopImage.module.scss","sourcesContent":[".TopImage {\r\n    position: relative;\r\n\r\n\r\n    div {\r\n        width: 300px;\r\n        position: absolute;\r\n        display: flex;\r\n        align-items: center;\r\n        text-align: left;\r\n        bottom: 0;\r\n        top: 0;\r\n        left: 15%;\r\n    }\r\n}"]}]);
+exports.push([module.i, ".TopImage_TopImage__3h2Il {\n  position: relative; }\n  .TopImage_TopImage__3h2Il div {\n    width: 300px;\n    position: absolute;\n    display: flex;\n    align-items: center;\n    text-align: left;\n    bottom: 0;\n    top: 0;\n    left: 15%; }\n    .TopImage_TopImage__3h2Il div h3 {\n      color: #014C8D; }\n", "",{"version":3,"sources":["TopImage.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAkB,EAAA;EADtB;IAKQ,YAAY;IACZ,kBAAkB;IAClB,aAAa;IACb,mBAAmB;IACnB,gBAAgB;IAChB,SAAS;IACT,MAAM;IACN,SAAS,EAAA;IAZjB;MAeY,cACJ,EAAA","file":"TopImage.module.scss","sourcesContent":[".TopImage {\r\n    position: relative;\r\n\r\n\r\n    div {\r\n        width: 300px;\r\n        position: absolute;\r\n        display: flex;\r\n        align-items: center;\r\n        text-align: left;\r\n        bottom: 0;\r\n        top: 0;\r\n        left: 15%;\r\n\r\n        h3 {\r\n            color: #014C8D\r\n        }\r\n    }\r\n}"]}]);
 // Exports
 exports.locals = {
 	"TopImage": "TopImage_TopImage__3h2Il"
@@ -11656,7 +11745,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ":root {\n  --accent: #024E8F;\n  --secondary: #777\r\n; }\n\n@font-face {\n  font-family: \"OpenSans\";\n  src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\"); }\n\nbody {\n  font-size: 16px;\n  position: relative;\n  font-family: \"OpenSans\", sans-serif !important; }\n\nimg {\n  width: 100%; }\n\np {\n  color: #777777; }\n\ndiv h1,\ndiv h2,\ndiv h3,\ndiv h4,\ndiv h5,\ndiv h6 {\n  font-weight: bold; }\n\ndiv p {\n  margin-bottom: 0; }\n\nul {\n  margin: 0;\n  padding: 0; }\n  ul li {\n    list-style-type: none; }\n\n.text-small {\n  font-size: .75rem; }\n\n.text-md {\n  font-size: .9rem; }\n\n.text-lg {\n  font-size: 1.1rem; }\n\n.text-big {\n  font-size: 1.2rem; }\n\n.text-underline {\n  text-decoration: underline; }\n\n.text-normal {\n  font-weight: normal; }\n\n.text-bold {\n  font-weight: bold; }\n\n.text-accent {\n  color: var(--accent); }\n\n.text-crossed {\n  text-decoration: line-through; }\n\n.text-secondary {\n  color: var(--secondary); }\n\n.text-black {\n  color: #000; }\n\n.text-light {\n  color: #CCCCCC; }\n\n.text-xsmall {\n  font-size: .5rem; }\n\n.icon {\n  height: 0.75rem;\n  width: auto; }\n  .icon-sm {\n    height: 1.2rem; }\n  .icon-md {\n    height: 1.5rem; }\n  .icon-big {\n    height: 2rem; }\n\n.img-small {\n  width: 50px;\n  height: 50px;\n  -o-object-fit: contain;\n     object-fit: contain; }\n\n.carousel-caption {\n  right: auto;\n  text-align: left;\n  bottom: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: left;\n  justify-content: center;\n  width: 300px;\n  color: var(--accent); }\n\n.carousel-control-prev, .carousel-control-next {\n  display: none; }\n\n.carousel-indicators {\n  right: auto; }\n  .carousel-indicators li {\n    width: 15px;\n    height: 15px;\n    border-radius: 50%;\n    background: transparent;\n    border: 1px solid #004A8B;\n    box-sizing: border-box; }\n    .carousel-indicators li.active {\n      background: #014C8D; }\n\n.react-multi-carousel-list {\n  box-sizing: border-box; }\n\n.radius {\n  border-radius: 50%; }\n\n.flex-columns {\n  display: flex;\n  flex-wrap: wrap;\n  padding-left: 0; }\n  .flex-columns li {\n    flex: 0 0 33.333333%; }\n  .flex-columns img {\n    height: 22px;\n    -o-object-fit: contain;\n       object-fit: contain; }\n\n.list a.active .category__tick {\n  display: block; }\n\n.list a.active p {\n  color: var(--accent); }\n\n.list a.active img {\n  -webkit-filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\n          filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%); }\n\n.list a * {\n  transition: .25s ease all; }\n\n.list a img {\n  transition: none; }\n\n.list a:hover {\n  text-decoration: none; }\n  .list a:hover img {\n    -webkit-filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\n            filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%); }\n  .list a:hover * {\n    color: var(--accent); }\n\n.category__tick {\n  display: none; }\n", "",{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA;EACI,iBAAS;EACT;AAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uDAAuD,EAAA;;AAG3D;EACI,eAAe;EACf,kBAAkB;EAClB,8CAA8C,EAAA;;AAIlD;EACI,WAAW,EAAA;;AAIf;EACI,cAAc,EAAA;;AAGlB;;;;;;EAQQ,iBAAiB,EAAA;;AARzB;EAYQ,gBAAgB,EAAA;;AAIxB;EACI,SAAS;EACT,UAAU,EAAA;EAFd;IAKQ,qBAAqB,EAAA;;AAUzB;EACI,iBAAiB,EAAA;;AAGrB;EACI,gBAAgB,EAAA;;AAGpB;EACI,iBAAiB,EAAA;;AAGrB;EACI,iBAAiB,EAAA;;AAGrB;EACI,0BAA0B,EAAA;;AAG9B;EACI,mBAAmB,EAAA;;AAGvB;EACI,iBAAiB,EAAA;;AAGrB;EACI,oBAAoB,EAAA;;AAGxB;EACI,6BAA6B,EAAA;;AAGjC;EACI,uBAAuB,EAAA;;AAG3B;EACI,WAAW,EAAA;;AAGf;EACI,cAAc,EAAA;;AAIlB;EACI,gBAAgB,EAAA;;AAIxB;EACI,eAAe;EACf,WAAW,EAAA;EAEX;IACI,cAAc,EAAA;EAGlB;IACI,cACJ,EAAA;EAEA;IACI,YAAY,EAAA;;AAKhB;EACI,WAAW;EACX,YAAY;EACZ,sBAAmB;KAAnB,mBAAmB,EAAA;;AAO3B;EACI,WAAW;EACX,gBAAgB;EAChB,SAAS;EACT,MAAM;EACN,aAAa;EACb,sBAAsB;EACtB,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,oBAAoB,EAAA;;AAKpB;EAEI,aAAa,EAAA;;AAIrB;EACI,WAAW,EAAA;EADf;IAIQ,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,uBAAuB;IACvB,yBAAyB;IACzB,sBAAsB,EAAA;IAT9B;MAYY,mBAAmB,EAAA;;AAM/B;EACI,sBAAsB,EAAA;;AAG1B;EACI,kBAAkB,EAAA;;AAGtB;EACI,aAAa;EACb,eAAe;EACf,eAAe,EAAA;EAHnB;IAMQ,oBAAoB,EAAA;EAN5B;IAUQ,YAAY;IACZ,sBACJ;OADI,mBACJ,EAAA;;AAIJ;EAEQ,cAAc,EAAA;;AAFtB;EAMQ,oBAAoB,EAAA;;AAN5B;EAWQ,wGAAgG;UAAhG,gGAAgG,EAAA;;AAKxG;EAEQ,yBAAyB,EAAA;;AAFjC;EAMQ,gBACJ,EAAA;;AAPJ;EAUQ,qBAAqB,EAAA;EAV7B;IAaY,wGAAgG;YAAhG,gGAAgG,EAAA;EAb5G;IAiBY,oBAAoB,EAAA;;AAKhC;EACI,aAAa,EAAA","file":"styles.scss","sourcesContent":[":root {\r\n    --accent: #024E8F;\r\n    --secondary: #777\r\n}\r\n\r\n@font-face {\r\n    font-family: \"OpenSans\";\r\n    src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\");\r\n}\r\n\r\nbody {\r\n    font-size: 16px;\r\n    position: relative;\r\n    font-family: \"OpenSans\", sans-serif !important;\r\n}\r\n\r\n\r\nimg {\r\n    width: 100%;\r\n}\r\n\r\n\r\np {\r\n    color: #777777;\r\n}\r\n\r\ndiv {\r\n\r\n    h1,\r\n    h2,\r\n    h3,\r\n    h4,\r\n    h5,\r\n    h6 {\r\n        font-weight: bold;\r\n    }\r\n\r\n    p {\r\n        margin-bottom: 0;\r\n    }\r\n}\r\n\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n\r\n    li {\r\n        list-style-type: none;\r\n    }\r\n}\r\n\r\np {\r\n    // line-height: normal;\r\n}\r\n\r\n.text {\r\n\r\n    &-small {\r\n        font-size: .75rem;\r\n    }\r\n\r\n    &-md {\r\n        font-size: .9rem;\r\n    }\r\n\r\n    &-lg {\r\n        font-size: 1.1rem;\r\n    }\r\n\r\n    &-big {\r\n        font-size: 1.2rem;\r\n    }\r\n\r\n    &-underline {\r\n        text-decoration: underline;\r\n    }\r\n\r\n    &-normal {\r\n        font-weight: normal;\r\n    }\r\n\r\n    &-bold {\r\n        font-weight: bold;\r\n    }\r\n\r\n    &-accent {\r\n        color: var(--accent)\r\n    }\r\n\r\n    &-crossed {\r\n        text-decoration: line-through;\r\n    }\r\n\r\n    &-secondary {\r\n        color: var(--secondary)\r\n    }\r\n\r\n    &-black {\r\n        color: #000;\r\n    }\r\n\r\n    &-light {\r\n        color: #CCCCCC;\r\n    }\r\n\r\n\r\n    &-xsmall {\r\n        font-size: .5rem;\r\n    }\r\n}\r\n\r\n.icon {\r\n    height: 0.75rem;\r\n    width: auto;\r\n\r\n    &-sm {\r\n        height: 1.2rem;\r\n    }\r\n\r\n    &-md {\r\n        height: 1.5rem\r\n    }\r\n\r\n    &-big {\r\n        height: 2rem;\r\n    }\r\n}\r\n\r\n.img {\r\n    &-small {\r\n        width: 50px;\r\n        height: 50px;\r\n        object-fit: contain;\r\n    }\r\n\r\n}\r\n\r\n// Carousel\r\n// Dots\r\n.carousel-caption {\r\n    right: auto;\r\n    text-align: left;\r\n    bottom: 0;\r\n    top: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: left;\r\n    justify-content: center;\r\n    width: 300px;\r\n    color: var(--accent);\r\n}\r\n\r\n.carousel-control {\r\n\r\n    &-prev,\r\n    &-next {\r\n        display: none;\r\n    }\r\n}\r\n\r\n.carousel-indicators {\r\n    right: auto;\r\n\r\n    li {\r\n        width: 15px;\r\n        height: 15px;\r\n        border-radius: 50%;\r\n        background: transparent;\r\n        border: 1px solid #004A8B;\r\n        box-sizing: border-box;\r\n\r\n        &.active {\r\n            background: #014C8D;\r\n        }\r\n    }\r\n}\r\n\r\n// Slider Carousel\r\n.react-multi-carousel-list {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.radius {\r\n    border-radius: 50%;\r\n}\r\n\r\n.flex-columns {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    padding-left: 0;\r\n\r\n    li {\r\n        flex: 0 0 33.333333%;\r\n    }\r\n\r\n    img {\r\n        height: 22px;\r\n        object-fit: contain\r\n    }\r\n\r\n}\r\n\r\n.list a.active {\r\n    .category__tick {\r\n        display: block;\r\n    }\r\n\r\n    p {\r\n        color: var(--accent);\r\n\r\n    }\r\n\r\n    img {\r\n        filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\r\n    }\r\n\r\n}\r\n\r\n.list a {\r\n    * {\r\n        transition: .25s ease all;\r\n    }\r\n\r\n    img {\r\n        transition: none\r\n    }\r\n\r\n    &:hover {\r\n        text-decoration: none;\r\n\r\n        img {\r\n            filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\r\n        }\r\n\r\n        * {\r\n            color: var(--accent)\r\n        }\r\n    }\r\n}\r\n\r\n.category__tick {\r\n    display: none;\r\n}"]}]);
+exports.push([module.i, ":root {\n  --accent: #024E8F;\n  --secondary: #777\r\n; }\n\n@font-face {\n  font-family: \"OpenSans\";\n  src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\"); }\n\nbody {\n  font-size: 16px;\n  position: relative;\n  font-family: \"OpenSans\", sans-serif !important; }\n\nimg {\n  width: 100%; }\n\np {\n  color: #777777; }\n\ndiv h1,\ndiv h2,\ndiv h3,\ndiv h4,\ndiv h5,\ndiv h6 {\n  font-weight: bold; }\n\ndiv p {\n  margin-bottom: 0; }\n\nul {\n  margin: 0;\n  padding: 0; }\n  ul li {\n    list-style-type: none; }\n\n.text-small {\n  font-size: .75rem; }\n\n.text-md {\n  font-size: .9rem; }\n\n.text-lg {\n  font-size: 1.1rem; }\n\n.text-big {\n  font-size: 1.2rem; }\n\n.text-underline {\n  text-decoration: underline; }\n\n.text-normal {\n  font-weight: normal; }\n\n.text-bold {\n  font-weight: bold; }\n\n.text-accent {\n  color: var(--accent); }\n\n.text-crossed {\n  text-decoration: line-through; }\n\n.text-secondary {\n  color: var(--secondary); }\n\n.text-black {\n  color: #000; }\n\n.text-light {\n  color: #CCCCCC; }\n\n.text-xsmall {\n  font-size: .5rem; }\n\n.icon {\n  height: 0.75rem;\n  width: auto; }\n  .icon-sm {\n    height: 1.2rem; }\n  .icon-md {\n    height: 1.5rem; }\n  .icon-big {\n    height: 2rem; }\n\n.img-small {\n  width: 50px;\n  height: 50px;\n  -o-object-fit: contain;\n     object-fit: contain; }\n\n.carousel-caption {\n  right: auto;\n  text-align: left;\n  bottom: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: left;\n  justify-content: center;\n  width: 300px;\n  color: var(--accent); }\n\n.carousel-control-prev, .carousel-control-next {\n  display: none; }\n\n.carousel-indicators {\n  right: auto; }\n  .carousel-indicators li {\n    width: 15px;\n    height: 15px;\n    border-radius: 50%;\n    background: transparent;\n    border: 1px solid #004A8B;\n    box-sizing: border-box; }\n    .carousel-indicators li.active {\n      background: #014C8D; }\n\n.react-multi-carousel-list {\n  box-sizing: border-box; }\n\n.radius {\n  border-radius: 50%; }\n\n.flex-columns {\n  display: flex;\n  flex-wrap: wrap;\n  padding-left: 0; }\n  .flex-columns li {\n    flex: 0 0 33.333333%; }\n  .flex-columns img {\n    height: 22px;\n    -o-object-fit: contain;\n       object-fit: contain; }\n\n.list a.active .category__tick {\n  display: block; }\n\n.list a.active p {\n  color: var(--accent); }\n\n.list a.active img {\n  -webkit-filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\n          filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%); }\n\n.list a * {\n  transition: .25s ease all;\n  color: #777; }\n\n.list a img {\n  -webkit-filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n          filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n  transition: none; }\n\n.list a:hover {\n  text-decoration: none;\n  color: var(--accent); }\n  .list a:hover img {\n    -webkit-filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%); }\n  .list a:hover * {\n    color: var(--accent); }\n\n.category__tick {\n  display: none; }\n\n.circle {\n  display: flex;\n  align-items: center;\n  font-size: .75rem;\n  justify-content: center;\n  background: #FF0000;\n  border-radius: 50%;\n  border: 1px solid white;\n  width: 1rem;\n  height: 1rem;\n  display: inline-block;\n  position: absolute;\n  bottom: -25%;\n  left: -25%; }\n  .circle * {\n    line-height: normal;\n    text-align: center;\n    width: 100%;\n    height: 100%;\n    color: white;\n    font-weight: bold; }\n", "",{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA;EACI,iBAAS;EACT;AAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uDAAuD,EAAA;;AAG3D;EACI,eAAe;EACf,kBAAkB;EAClB,8CAA8C,EAAA;;AAIlD;EACI,WAAW,EAAA;;AAIf;EACI,cAAc,EAAA;;AAGlB;;;;;;EAQQ,iBAAiB,EAAA;;AARzB;EAYQ,gBAAgB,EAAA;;AAIxB;EACI,SAAS;EACT,UAAU,EAAA;EAFd;IAKQ,qBAAqB,EAAA;;AAUzB;EACI,iBAAiB,EAAA;;AAGrB;EACI,gBAAgB,EAAA;;AAGpB;EACI,iBAAiB,EAAA;;AAGrB;EACI,iBAAiB,EAAA;;AAGrB;EACI,0BAA0B,EAAA;;AAG9B;EACI,mBAAmB,EAAA;;AAGvB;EACI,iBAAiB,EAAA;;AAGrB;EACI,oBAAoB,EAAA;;AAGxB;EACI,6BAA6B,EAAA;;AAGjC;EACI,uBAAuB,EAAA;;AAG3B;EACI,WAAW,EAAA;;AAGf;EACI,cAAc,EAAA;;AAIlB;EACI,gBAAgB,EAAA;;AAIxB;EACI,eAAe;EACf,WAAW,EAAA;EAEX;IACI,cAAc,EAAA;EAGlB;IACI,cACJ,EAAA;EAEA;IACI,YAAY,EAAA;;AAKhB;EACI,WAAW;EACX,YAAY;EACZ,sBAAmB;KAAnB,mBAAmB,EAAA;;AAO3B;EACI,WAAW;EACX,gBAAgB;EAChB,SAAS;EACT,MAAM;EACN,aAAa;EACb,sBAAsB;EACtB,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,oBAAoB,EAAA;;AAKpB;EAEI,aAAa,EAAA;;AAIrB;EACI,WAAW,EAAA;EADf;IAIQ,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,uBAAuB;IACvB,yBAAyB;IACzB,sBAAsB,EAAA;IAT9B;MAYY,mBAAmB,EAAA;;AAM/B;EACI,sBAAsB,EAAA;;AAG1B;EACI,kBAAkB,EAAA;;AAGtB;EACI,aAAa;EACb,eAAe;EACf,eAAe,EAAA;EAHnB;IAMQ,oBAAoB,EAAA;EAN5B;IAUQ,YAAY;IACZ,sBACJ;OADI,mBACJ,EAAA;;AAIJ;EAEQ,cAAc,EAAA;;AAFtB;EAMQ,oBAAoB,EAAA;;AAN5B;EAWQ,wGAAgG;UAAhG,gGAAgG,EAAA;;AAKxG;EAEQ,yBAAyB;EACzB,WAAW,EAAA;;AAHnB;EAOQ,sGAA8F;UAA9F,8FAA8F;EAC9F,gBACJ,EAAA;;AATJ;EAYQ,qBAAqB;EACrB,oBAAoB,EAAA;EAb5B;IAgBY,uGAA+F;YAA/F,+FAA+F,EAAA;EAhB3G;IAoBY,oBAAoB,EAAA;;AAKhC;EACI,aAAa,EAAA;;AAGjB;EACI,aAAa;EACb,mBAAmB;EACnB,iBAAiB;EACjB,uBAAuB;EACvB,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,WAAW;EACX,YAAY;EACZ,qBAAqB;EACrB,kBAAkB;EAClB,YAAY;EACZ,UAAU,EAAA;EAbd;IAgBQ,mBAAmB;IACnB,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,iBAAiB,EAAA","file":"styles.scss","sourcesContent":[":root {\r\n    --accent: #024E8F;\r\n    --secondary: #777\r\n}\r\n\r\n@font-face {\r\n    font-family: \"OpenSans\";\r\n    src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\");\r\n}\r\n\r\nbody {\r\n    font-size: 16px;\r\n    position: relative;\r\n    font-family: \"OpenSans\", sans-serif !important;\r\n}\r\n\r\n\r\nimg {\r\n    width: 100%;\r\n}\r\n\r\n\r\np {\r\n    color: #777777;\r\n}\r\n\r\ndiv {\r\n\r\n    h1,\r\n    h2,\r\n    h3,\r\n    h4,\r\n    h5,\r\n    h6 {\r\n        font-weight: bold;\r\n    }\r\n\r\n    p {\r\n        margin-bottom: 0;\r\n    }\r\n}\r\n\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n\r\n    li {\r\n        list-style-type: none;\r\n    }\r\n}\r\n\r\np {\r\n    // line-height: normal;\r\n}\r\n\r\n.text {\r\n\r\n    &-small {\r\n        font-size: .75rem;\r\n    }\r\n\r\n    &-md {\r\n        font-size: .9rem;\r\n    }\r\n\r\n    &-lg {\r\n        font-size: 1.1rem;\r\n    }\r\n\r\n    &-big {\r\n        font-size: 1.2rem;\r\n    }\r\n\r\n    &-underline {\r\n        text-decoration: underline;\r\n    }\r\n\r\n    &-normal {\r\n        font-weight: normal;\r\n    }\r\n\r\n    &-bold {\r\n        font-weight: bold;\r\n    }\r\n\r\n    &-accent {\r\n        color: var(--accent)\r\n    }\r\n\r\n    &-crossed {\r\n        text-decoration: line-through;\r\n    }\r\n\r\n    &-secondary {\r\n        color: var(--secondary)\r\n    }\r\n\r\n    &-black {\r\n        color: #000;\r\n    }\r\n\r\n    &-light {\r\n        color: #CCCCCC;\r\n    }\r\n\r\n\r\n    &-xsmall {\r\n        font-size: .5rem;\r\n    }\r\n}\r\n\r\n.icon {\r\n    height: 0.75rem;\r\n    width: auto;\r\n\r\n    &-sm {\r\n        height: 1.2rem;\r\n    }\r\n\r\n    &-md {\r\n        height: 1.5rem\r\n    }\r\n\r\n    &-big {\r\n        height: 2rem;\r\n    }\r\n}\r\n\r\n.img {\r\n    &-small {\r\n        width: 50px;\r\n        height: 50px;\r\n        object-fit: contain;\r\n    }\r\n\r\n}\r\n\r\n// Carousel\r\n// Dots\r\n.carousel-caption {\r\n    right: auto;\r\n    text-align: left;\r\n    bottom: 0;\r\n    top: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: left;\r\n    justify-content: center;\r\n    width: 300px;\r\n    color: var(--accent);\r\n}\r\n\r\n.carousel-control {\r\n\r\n    &-prev,\r\n    &-next {\r\n        display: none;\r\n    }\r\n}\r\n\r\n.carousel-indicators {\r\n    right: auto;\r\n\r\n    li {\r\n        width: 15px;\r\n        height: 15px;\r\n        border-radius: 50%;\r\n        background: transparent;\r\n        border: 1px solid #004A8B;\r\n        box-sizing: border-box;\r\n\r\n        &.active {\r\n            background: #014C8D;\r\n        }\r\n    }\r\n}\r\n\r\n// Slider Carousel\r\n.react-multi-carousel-list {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.radius {\r\n    border-radius: 50%;\r\n}\r\n\r\n.flex-columns {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    padding-left: 0;\r\n\r\n    li {\r\n        flex: 0 0 33.333333%;\r\n    }\r\n\r\n    img {\r\n        height: 22px;\r\n        object-fit: contain\r\n    }\r\n\r\n}\r\n\r\n.list a.active {\r\n    .category__tick {\r\n        display: block;\r\n    }\r\n\r\n    p {\r\n        color: var(--accent);\r\n\r\n    }\r\n\r\n    img {\r\n        filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\r\n    }\r\n\r\n}\r\n\r\n.list a {\r\n    * {\r\n        transition: .25s ease all;\r\n        color: #777;\r\n    }\r\n\r\n    img {\r\n        filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\r\n        transition: none\r\n    }\r\n\r\n    &:hover {\r\n        text-decoration: none;\r\n        color: var(--accent);\r\n\r\n        img {\r\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\r\n        }\r\n\r\n        * {\r\n            color: var(--accent)\r\n        }\r\n    }\r\n}\r\n\r\n.category__tick {\r\n    display: none;\r\n}\r\n\r\n.circle {\r\n    display: flex;\r\n    align-items: center;\r\n    font-size: .75rem;\r\n    justify-content: center;\r\n    background: #FF0000;\r\n    border-radius: 50%;\r\n    border: 1px solid white;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    display: inline-block;\r\n    position: absolute;\r\n    bottom: -25%;\r\n    left: -25%;\r\n\r\n    * {\r\n        line-height: normal;\r\n        text-align: center;\r\n        width: 100%;\r\n        height: 100%;\r\n        color: white;\r\n        font-weight: bold;\r\n    }\r\n}"]}]);
 // Exports
 module.exports = exports;
 
@@ -29212,7 +29301,7 @@ function MyApp(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 98,
       columnNumber: 3
     }
   }, __jsx(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_6__["default"].Provider, {
@@ -29224,21 +29313,22 @@ function MyApp(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107,
+      lineNumber: 106,
       columnNumber: 4
     }
   }, __jsx(_layouts__WEBPACK_IMPORTED_MODULE_8__["Layout"], {
+    cartCount: cart.length,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108,
+      lineNumber: 107,
       columnNumber: 5
     }
   }, __jsx(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, pageProps, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109,
+      lineNumber: 108,
       columnNumber: 6
     }
   })))));

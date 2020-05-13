@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { CategoriesLayout } from "../../layouts/";
 import CategoryContext from "../../store/CategoryContext";
 
 import { categorySelector } from "../../helpers/utils";
@@ -9,30 +10,33 @@ const FavoritesPage = props => {
 	const [ categories, setCategories ] = useState([]);
 	const [ books, setBooks ] = useState({});
 	const [ loading, setLoading ] = useState(true);
-	const categoryContext = useContext(CategoryContext);
+	// const categoryContext = useContext(CategoryContext);
 	useEffect(() => {
-		categoryContext.onClear();
+		// categoryContext.onClear();
 		setCategories(props.categories);
 		setBooks(props.books);
 		setLoading(false);
 	}, []);
-	const categoryHandler = id => {
-		const cats = categorySelector(id, [ ...categories ], _selectedId);
-		if (cats) {
-			setCategories(cats.categories);
-			_selectedId = cats._selectedId;
-		}
-	};
+	// const categoryHandler = id => {
+	// 	const cats = categorySelector(id, [ ...categories ], _selectedId);
+	// 	if (cats) {
+	// 		setCategories(cats.categories);
+	// 		_selectedId = cats._selectedId;
+	// 	}
+	// };
 	return (
-		<Row>
-			<Col sm={3}>
-				<Categories items={categoryContext.categories} onClick={categoryContext.categoryHandler} isStatic />
-				{!loading ? <Categories items={categories} onClick={categoryHandler} /> : null}
-			</Col>
-			<Col sm={9}>
-				<Row>{!loading ? <Products items={books} title="Избранные" /> : null}</Row>
-			</Col>
-		</Row>
+		<CategoriesLayout>
+			<Row>{!loading ? <Products items={books} title="Избранные" /> : null}</Row>
+		</CategoriesLayout>
+		// <Row>
+		// 	<Col sm={3}>
+		// 		<Categories items={categoryContext.categories} onClick={categoryContext.categoryHandler} isStatic />
+		// 		{!loading ? <Categories items={categories} onClick={categoryHandler} /> : null}
+		// 	</Col>
+		// 	<Col sm={9}>
+		// 		<Row>{!loading ? <Products items={books} title="Избранные" /> : null}</Row>
+		// 	</Col>
+		// </Row>
 	);
 };
 

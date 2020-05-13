@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-multi-carousel/lib/styles.css";
 import "../styles.scss";
@@ -105,7 +104,7 @@ export default function MyApp({ Component, pageProps }) {
 			}}
 		>
 			<CategoryContext.Provider value={{ categories, categoryHandler, onClear: categoriesClearHandler }}>
-				<Layout>
+				<Layout cartCount={cart.length}>
 					<Component {...pageProps} />
 				</Layout>
 			</CategoryContext.Provider>
