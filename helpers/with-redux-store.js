@@ -25,8 +25,6 @@ export default App => {
 
 			// Provide the store to getInitialProps of pages
 			appContext.ctx.store = store;
-			console.log("object");
-			console.log(App.getInitialProps);
 			return {
 				...(App.getInitialProps ? await App.getInitialProps(appContext) : {}),
 				// ...(appContext.Component.getInitialProps ? await appContext.Component.getInitialProps(appContext) : {}),

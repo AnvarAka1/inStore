@@ -16,7 +16,7 @@ const makeOrder = ({ codeControl, isValidCode, productCount, price, discount, or
 					</tr>
 				</tbody>
 			</table>
-			<Form>
+			{/* <Form>
 				<Form.Control value={codeControl.value} onChange={codeControl.onChange} />
 				<p className="text-xs">
 					Информация о промо-коде:{" "}
@@ -26,13 +26,15 @@ const makeOrder = ({ codeControl, isValidCode, productCount, price, discount, or
 						<span className="text-primary">Не действителен</span>
 					)}
 				</p>
-			</Form>
+			</Form> */}
 			<hr />
 			<div className="d-flex justify-content-between align-items-center">
 				<h6>Итого:</h6>
 				<h6>{price - discount * price}</h6>
 			</div>
-			<Button onClick={ordered}>Оформить заказ</Button>
+			<Button onClick={ordered} type="submit">
+				Оформить заказ
+			</Button>
 		</div>
 	);
 };

@@ -4,7 +4,7 @@ import { Link } from "../../";
 const navigationItem = ({ href, children, icon }) => {
 	return (
 		<li className={`${classes.NavigationItem} list mt-2`}>
-			<Link href={href}>
+			<Link href={href} as="">
 				<a>
 					<div className="d-flex align-items-center">
 						<img src={icon} alt={children} className="icon icon-sm mr-2" />

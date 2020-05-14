@@ -2016,47 +2016,7 @@ const makeOrder = ({
       lineNumber: 15,
       columnNumber: 7
     }
-  }, -1 * discount * 0.01 * price, " \u0441\u0443\u043C")))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19,
-      columnNumber: 4
-    }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-    value: codeControl.value,
-    onChange: codeControl.onChange,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20,
-      columnNumber: 5
-    }
-  }), __jsx("p", {
-    className: "text-xs",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21,
-      columnNumber: 5
-    }
-  }, "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043E \u043F\u0440\u043E\u043C\u043E-\u043A\u043E\u0434\u0435:", " ", isValidCode ? __jsx("span", {
-    className: "text-success",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24,
-      columnNumber: 7
-    }
-  }, "\u0423\u0441\u043F\u0435\u0448\u043D\u043E, \u0432\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u0438 ", discount, "% \u0441\u043A\u0438\u0434\u043A\u0438") : __jsx("span", {
-    className: "text-primary",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26,
-      columnNumber: 7
-    }
-  }, "\u041D\u0435 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u0435\u043D"))), __jsx("hr", {
+  }, -1 * discount * 0.01 * price, " \u0441\u0443\u043C")))), __jsx("hr", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -2087,6 +2047,7 @@ const makeOrder = ({
     }
   }, price - discount * price)), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     onClick: ordered,
+    type: "submit",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -3426,6 +3387,7 @@ const navigationItem = ({
     }
   }, __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"], {
     href: href,
+    as: "",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -4405,17 +4367,142 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./components/UI/FormikGroup/FormGroup.module.scss":
+/*!*********************************************************!*\
+  !*** ./components/UI/FormikGroup/FormGroup.module.scss ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Exports
+module.exports = {
+	"Sm": "FormGroup_Sm__1YQN4"
+};
+
+
+/***/ }),
+
+/***/ "./components/UI/FormikGroup/FormikGroup.js":
+/*!**************************************************!*\
+  !*** ./components/UI/FormikGroup/FormikGroup.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _FormGroup_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormGroup.module.scss */ "./components/UI/FormikGroup/FormGroup.module.scss");
+/* harmony import */ var _FormGroup_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_FormGroup_module_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! formik */ "formik");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(formik__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__);
+var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\UI\\FormikGroup\\FormikGroup.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+const formikGroup = ({
+  children,
+  onChange,
+  value,
+  size,
+  as,
+  type,
+  name,
+  placeholder,
+  options
+}) => {
+  return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
+    className: "mt-2 mb-2",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 3
+    }
+  }, children && __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
+    className: size === "sm" && _FormGroup_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Sm,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 17
+    }
+  }, children), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Control, {
+    value: value,
+    type: type,
+    name: name,
+    placeholder: placeholder,
+    onChange: onChange,
+    className: size === "sm" && _FormGroup_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Sm,
+    as: as,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 4
+    }
+  }, options ? options.map((option, index) => {
+    return __jsx("option", {
+      key: index,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 20,
+        columnNumber: 14
+      }
+    }, option);
+  }) : null), __jsx("span", {
+    className: "text-danger text-small",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24,
+      columnNumber: 4
+    }
+  }, __jsx(formik__WEBPACK_IMPORTED_MODULE_2__["ErrorMessage"], {
+    name: name,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25,
+      columnNumber: 5
+    }
+  })));
+};
+
+formikGroup.defaultProps = {
+  value: "",
+  type: "text",
+  name: "",
+  placeholder: "",
+  onChange: null,
+  className: ""
+};
+/* harmony default export */ __webpack_exports__["default"] = (formikGroup);
+
+/***/ }),
+
 /***/ "./components/UI/index.js":
 /*!********************************!*\
   !*** ./components/UI/index.js ***!
   \********************************/
-/*! exports provided: FormGroup */
+/*! exports provided: FormGroup, FormikGroup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormGroup_FormGroup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormGroup/FormGroup */ "./components/UI/FormGroup/FormGroup.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormGroup", function() { return _FormGroup_FormGroup__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _FormikGroup_FormikGroup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormikGroup/FormikGroup */ "./components/UI/FormikGroup/FormikGroup.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormikGroup", function() { return _FormikGroup_FormikGroup__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
 
 
 
@@ -4655,8 +4742,6 @@ function getOrCreateStore(initialState) {
       const store = getOrCreateStore(); // Provide the store to getInitialProps of pages
 
       appContext.ctx.store = store;
-      console.log("object");
-      console.log(App.getInitialProps);
       return _objectSpread({}, App.getInitialProps ? await App.getInitialProps(appContext) : {}, {
         // ...(appContext.Component.getInitialProps ? await appContext.Component.getInitialProps(appContext) : {}),
         initialReduxState: store.getState()
@@ -4673,7 +4758,7 @@ function getOrCreateStore(initialState) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40,
+          lineNumber: 38,
           columnNumber: 11
         }
       }));
@@ -8336,6 +8421,17 @@ __webpack_require__.r(__webpack_exports__);
 
 module.exports = __webpack_require__(/*! private-next-pages/_app.js */"./pages/_app.js");
 
+
+/***/ }),
+
+/***/ "formik":
+/*!*************************!*\
+  !*** external "formik" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("formik");
 
 /***/ }),
 

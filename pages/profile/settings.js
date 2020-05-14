@@ -1,20 +1,18 @@
 import React from "react";
-import { useForm, useSelect, useFile } from "../../hooks";
-import { Button, Form, Row, Col } from "react-bootstrap";
-import { FormGroup } from "../../components/UI";
-
+// import { useForm, useSelect, useFile } from "../../hooks";
+import { Button, Row, Col } from "react-bootstrap";
+import { FormikGroup } from "../../components/UI";
+import { Form, Formik } from "formik";
+import { array, boolean, mixed, number, object, string, date } from "yup";
 import { ProfileLayout } from "../../layouts";
 // import {} from '../../components'
 const SettingsPage = props => {
-	const nameControl = useForm();
-	const dateControl = useForm();
-	const genderSelect = useSelect();
-	const phoneControl = useForm();
-	//
-	const mailControl = useForm();
-	const currentPassControl = useForm();
-	const newPassControl = useForm();
-	const sNewPassControl = useForm();
+	const initialValues1 = {
+		name: "",
+		dob: "",
+		gender: "",
+		phone: ""
+	};
 	return (
 		<ProfileLayout>
 			<Row>
@@ -26,41 +24,127 @@ const SettingsPage = props => {
 			<Row>
 				<Col md={4} sm={6}>
 					<h6 className="text-md">Персональные данные</h6>
-					<Form onSubmit={null}>
+					<Formik
+						initialValues={initialValues1}
+						onSubmit={(values, { setSubmitting, resetForm }) => {
+							setSubmitting(true);
+							setTimeout(() => {
+								console.log(JSON.stringify(values, null, 2));
+								resetForm();
+								setSubmitting(false);
+							}, 500);
+						}}
+						validationSchema={object({
+							name: string()
+								.min(2, "Имя должно содержать минимум 2 буквы")
+								.max(100, "Name is too long")
+								.required("Name is required!"),
+							dob: date().required(),
+							gender: string().required("*Email is required"),
+							phone: string()
+						})}
+					>
+						{({ values, handleChange, handleSubmit, isSubmitting, isValidating }) => (
+							<Form onSubmit={handleSubmit}>
+								<FormikGroup name="name" onChange={handleChange} value={values.name} size="sm">
+									Ф.И.О
+								</FormikGroup>
+								{/* <ErrorMessage name="name" /> */}
+								<FormikGroup
+									name="dob"
+									onChange={handleChange}
+									value={values.dob}
+									type="date"
+									size="sm"
+								>
+									Дата рождения
+								</FormikGroup>
+								<FormikGroup
+									name="gender"
+									onChange={handleChange}
+									value={values.gender}
+									as="select"
+									size="sm"
+									options={[ "Мужчина", "Женщина" ]}
+								>
+									Ваш пол
+								</FormikGroup>
+								<FormikGroup name="phone" onChange={handleChange} value={values.phone} size="sm">
+									Номер телефона
+								</FormikGroup>
+								<Button type="submit" disable={isSubmitting || isValidating}>
+									Сохранить
+								</Button>
+							</Form>
+						)}
 						{/* avatar */}
-
-						<FormGroup control={nameControl} size="sm">
-							Ф.И.О
-						</FormGroup>
-						<FormGroup control={dateControl} type="date" size="sm">
-							Дата рождения
-						</FormGroup>
-						<FormGroup control={genderSelect} as="select" size="sm">
-							Ваш пол
-						</FormGroup>
-						<FormGroup control={phoneControl} size="sm">
-							Номер телефона
-						</FormGroup>
-						<Button type="submit">Сохранить</Button>
-					</Form>
+					</Formik>
 				</Col>
 				<Col md={4} sm={6}>
 					<h6 className="text-md">Защита</h6>
-					<Form onSubmit={null}>
-						<FormGroup control={mailControl} type="mail" size="sm">
-							Эл. почта
-						</FormGroup>
-						<FormGroup control={currentPassControl} type="password" size="sm">
-							Текущий пароль
-						</FormGroup>
-						<FormGroup control={newPassControl} type="password" size="sm">
-							Новый пароль
-						</FormGroup>
-						<FormGroup control={sNewPassControl} type="password" size="sm">
-							Подтвердите пароль
-						</FormGroup>
-						<Button type="submit">Сохранить</Button>
-					</Form>
+					<Formik
+						initialValues={initialValues1}
+						onSubmit={(values, { setSubmitting, resetForm }) => {
+							setSubmitting(true);
+							setTimeout(() => {
+								console.log(JSON.stringify(values, null, 2));
+								resetForm();
+								setSubmitting(false);
+							}, 500);
+						}}
+						validationSchema={object({
+							email: string().email(),
+							curPassword: string().min(8).max(20),
+							newPassword: string().min(8).max(20),
+							repPassword: string().min(8).max(20)
+						})}
+					>
+						{({ values, handleChange, handleSubmit, isSubmitting, isValidating }) => (
+							<Form onSubmit={handleSubmit}>
+								<FormikGroup
+									name="email"
+									onChange={handleChange}
+									value={values.email}
+									type="email"
+									size="sm"
+								>
+									Эл. почта
+								</FormikGroup>
+								<FormikGroup
+									name="curPassword"
+									type="password"
+									onChange={handleChange}
+									value={values.curPassword}
+									size="sm"
+								>
+									Текущий пароль
+								</FormikGroup>
+								<FormikGroup
+									name="newPassword"
+									type="password"
+									onChange={handleChange}
+									value={values.newPassword}
+									size="sm"
+								>
+									Новый пароль
+								</FormikGroup>
+								<FormikGroup
+									name="repPassword"
+									type="password"
+									onChange={handleChange}
+									value={values.repPassword}
+									size="sm"
+								>
+									Подтвердите пароль
+								</FormikGroup>
+
+								<Button type="submit" disable={isSubmitting || isValidating}>
+									Сохранить
+								</Button>
+							</Form>
+						)}
+						{/* avatar */}
+					</Formik>
 				</Col>
 			</Row>
 		</ProfileLayout>
