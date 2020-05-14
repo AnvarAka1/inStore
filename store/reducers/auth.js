@@ -2,11 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
 	token: null,
-	// id: null,
-	username: null,
 	name: null,
-	avatar: null,
-	position: null,
 	error: null,
 	loading: true
 };
@@ -16,12 +12,7 @@ const authSuccess = (state, action) => {
 	return {
 		...state,
 		token: action.token,
-		// id: action.id,
 		name: action.name,
-		username: action.username,
-		position: action.position,
-		avatar: action.avatar,
-		password: action.password,
 		error: null,
 		loading: false
 	};
@@ -50,12 +41,9 @@ const authLogout = (state, action) => {
 	return {
 		...state,
 		token: null,
-		// id: null,
 		name: null,
-		username: null,
-		position: null,
-		avatar: null,
-		email: null
+		error: null,
+		loading: false
 	};
 };
 const stopLoading = (state, action) => {

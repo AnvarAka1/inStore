@@ -7,14 +7,11 @@ export const authStart = () => {
 	};
 };
 
-export const authSuccess = (token, username, name, position, avatar) => {
+export const authSuccess = (token, name) => {
 	return {
 		type: actionTypes.AUTH_SUCCESS,
 		token: token,
-		username: username,
-		name: name,
-		position: position,
-		avatar: avatar
+		name: name
 	};
 };
 
@@ -26,12 +23,7 @@ export const authFail = error => {
 };
 export const logout = () => {
 	localStorage.removeItem("token");
-	localStorage.removeItem("expirationDate");
 	localStorage.removeItem("name");
-	localStorage.removeItem("src");
-	localStorage.removeItem("avatar");
-	localStorage.removeItem("position");
-	localStorage.removeItem("file");
 	return {
 		type: actionTypes.AUTH_LOGOUT
 	};
@@ -41,48 +33,33 @@ export const stopLoading = () => {
 		type: actionTypes.STOP_LOADING
 	};
 };
-export const auth = (userName, name, password, position, isSignup) => {
-	// positions:
-	// 0 - staff,
-	// 1 - teacher,
-	// 2 - student
-
-	userName = userName.trim();
+export const auth = (name, email, phone, password, isSignup) => {
 	name = name.trim();
+	email = email.trim();
 	return dispatch => {
 		// clear error
 		dispatch(authStart());
 		const formData = new FormData();
-		formData.append("username", userName);
-		formData.append("name", name);
+		formData.append("email", email);
 		formData.append("password", password);
-		formData.append("position", position);
-		const urls = [
-			[ "/staff-login", "/staff-register" ],
-			[ "/teacher-login", "/teacher-register" ],
-			[ "/student-login", "/student-register" ]
-		];
-		const positionType = [ "staff", "teacher", "student" ];
-
+		if (isSignup) {
+			formData.append("phone", phone);
+			formData.append("name", name);
+		}
+		const urls = [ "/login", "/register" ];
 		axios
-			.post(urls[+position][+isSignup], formData)
+			.post(urls[+isSignup], formData)
 			.then(response => {
 				const data = response.data.data;
-				const person = response.data[positionType[position]];
-
+				console.log(data);
 				// expiration date in milliseconds
 				const expirationDate = new Date(new Date().getTime() + data.expires_in * 1000);
 				localStorage.setItem("token", data.access_token);
-				localStorage.setItem("name", person.name);
-				localStorage.setItem("avatar", person.avatar);
-				localStorage.setItem("position", position);
-				localStorage.setItem("file_assignment", "http://origami.computer/assignments/");
-				localStorage.setItem("file_assignment_submission", "http://origami.computer/assignment-submission/");
-				localStorage.setItem("src", "https://origami.computer/avatars/");
+				localStorage.setItem("name", data.name);
 				localStorage.setItem("expirationDate", expirationDate);
 
 				// save user state
-				dispatch(authSuccess(data.access_token, userName, name, position, person.avatar));
+				dispatch(authSuccess(data.access_token, name));
 				dispatch(checkAuthTimeout(data.expires_in));
 			})
 			.catch(error => {
@@ -110,9 +87,7 @@ export const authCheckState = () => {
 			} else {
 				const token = localStorage.getItem("token");
 				const name = localStorage.getItem("name");
-				const avatar = localStorage.getItem("avatar");
-				const position = localStorage.getItem("position");
-				dispatch(authSuccess(token, null, name, position, avatar));
+				dispatch(authSuccess(token, name));
 				dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
 			}
 		}

@@ -13,6 +13,8 @@ const CartPage = props => {
 	const codeControl = useForm();
 	useEffect(() => {
 		setBooks(props.books);
+		console.log("set");
+		console.log(props);
 		setPrice(props.price);
 		setLoading(false);
 	}, []);

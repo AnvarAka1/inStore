@@ -22,7 +22,7 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
-    "/cart/order": [
+    "/cart": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

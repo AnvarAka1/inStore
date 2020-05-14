@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "react-multi-carousel/lib/styles.css";
-import "../styles.scss";
-
+import { Provider } from "react-redux";
+import withReduxStore from "../helpers/with-redux-store";
+// import withRedux from "next-redux-wrapper";
 import CategoryContext from "../store/CategoryContext";
 import CartContext from "../store/CartContext";
 import { Layout } from "../layouts";
 import { categorySelector } from "../helpers/utils";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-multi-carousel/lib/styles.css";
+import "../styles.scss";
+import App from "next/app";
+// import { combineReducers, createStore } from "redux";
+// import AuthReducer from "../store/reducers/auth";
 
 let _selectedId = 0;
-export default function MyApp({ Component, pageProps }) {
+// const reducers = combineReducers({
+// 	auth: AuthReducer
+// });
+// const makeStore = (initialState, options) => {
+// 	return createStore(AuthReducer, initialState);
+// };
+
+const MyComponent = ({ children }) => {
 	const [ cart, setCart ] = useState([]);
 	const [ categories, setCategories ] = useState([
 		{
@@ -93,7 +105,6 @@ export default function MyApp({ Component, pageProps }) {
 		setCart([]);
 		localStorage.removeItem("cart");
 	};
-
 	return (
 		<CartContext.Provider
 			value={{
@@ -104,10 +115,33 @@ export default function MyApp({ Component, pageProps }) {
 			}}
 		>
 			<CategoryContext.Provider value={{ categories, categoryHandler, onClear: categoriesClearHandler }}>
-				<Layout cartCount={cart.length}>
-					<Component {...pageProps} />
-				</Layout>
+				<Layout cartCount={cart.length}>{children}</Layout>
 			</CategoryContext.Provider>
 		</CartContext.Provider>
 	);
+};
+class myApp extends App {
+	render() {
+		const { Component, pageProps, store } = this.props;
+		return (
+			<Provider store={store}>
+				<MyComponent>
+					<Component {...pageProps} />
+				</MyComponent>
+			</Provider>
+		);
+	}
 }
+// myApp.App = App;
+// myApp.getInitialProps = ctx => {
+// 	console.log(ctx);
+// 	return {};
+// };
+// myApp.getInitialProps = async ({ Component, ctx }) => {
+// 	const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
+// 	return {
+// 		pageProps
+// 	};
+// };
+export default withReduxStore(myApp);
+// export default withRedux(makeStore)(myApp);
