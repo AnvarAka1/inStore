@@ -290,7 +290,6 @@ const authModal = ({
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Form"].Check, {
     type: "checkbox",
-    on: true,
     label: "\u0417\u0430\u043F\u043E\u043C\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C",
     value: checkboxControl.value,
     onChange: checkboxControl.onChange,
@@ -306,7 +305,7 @@ const authModal = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 55,
       columnNumber: 10
     }
   }, isSignUp ? "Зарегистрироваться" : "Войти"), !isSignUp && __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -314,14 +313,14 @@ const authModal = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
+      lineNumber: 59,
       columnNumber: 11
     }
   }, __jsx("a", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 60,
       columnNumber: 12
     }
   }, "\u041D\u0435 \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u0434\u043E\u0441\u0442\u0443\u043F?"))))), __jsx("div", {
@@ -329,7 +328,7 @@ const authModal = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 66,
       columnNumber: 7
     }
   }, __jsx("p", {
@@ -337,7 +336,7 @@ const authModal = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 67,
       columnNumber: 8
     }
   }, isSignUp ? "Регистрация" : "Авторизация", " \u0447\u0435\u0440\u0435\u0437:"))))));
@@ -5589,15 +5588,18 @@ const getStaticCats = () => [{
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/head */ "next/head");
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _store_CategoryContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/CategoryContext */ "./store/CategoryContext.js");
-/* harmony import */ var _hooks___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/ */ "./hooks/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _store_actions_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/actions/index */ "./store/actions/index.js");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/head */ "next/head");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _store_CategoryContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/CategoryContext */ "./store/CategoryContext.js");
+/* harmony import */ var _hooks___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/ */ "./hooks/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\layouts\\Layout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -5609,42 +5611,45 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
+
 const Layout = ({
   children,
-  cartCount
+  cartCount,
+  onAuth
 }) => {
   const {
     0: isSignUp,
     1: setIsSignUp
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true);
-  const authModal = Object(_hooks___WEBPACK_IMPORTED_MODULE_4__["useModal"])();
-  const searchControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_4__["useForm"])();
-  const categoryContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_3__["default"]);
-  const nameControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_4__["useForm"])(false, {
+  const authModal = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useModal"])();
+  const searchControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])();
+  const categoryContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_5__["default"]);
+  const nameControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Ф.И.О"
   });
-  const emailControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_4__["useForm"])(false, {
+  const emailControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Эл. почта"
   });
-  const phoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_4__["useForm"])(false, {
+  const phoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Номер телефона"
   });
-  const fPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_4__["useForm"])(false, {
+  const fPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Введите пароль",
     type: "password"
   });
-  const sPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_4__["useForm"])(false, {
+  const sPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Подтвердите пароль",
     type: "password"
   });
-  const emailPhoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_4__["useForm"])(false, {
+  const emailPhoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Электронная почта или номер телефона"
   });
-  const passwordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_4__["useForm"])(false, {
+  const passwordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Введите пароль",
     type: "password"
   });
-  const checkboxControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_4__["useForm"])();
+  const checkboxControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])();
 
   const modeHandler = mode => {
     setIsSignUp(mode);
@@ -5655,12 +5660,13 @@ const Layout = ({
 
   const authHandler = event => {
     event.preventDefault();
+    onAuth(nameControl.value, isSignUp ? emailControl.value : emailPhoneControl.value, phoneControl.value, isSignUp ? fPasswordControl.value : passwordControl.value, isSignUp);
     console.log("Auth submitted!");
   };
 
   const booksCategoryHandler = id => {
     categoryContext.categoryHandler(id);
-    next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push("/books");
+    next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push("/books");
   };
 
   const onSearch = event => {
@@ -5671,10 +5677,10 @@ const Layout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
+      lineNumber: 69,
       columnNumber: 3
     }
-  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_6__["AuthModal"], {
+  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["AuthModal"], {
     controls: [authControls, regControls],
     isSignUp: isSignUp,
     modal: authModal,
@@ -5684,32 +5690,32 @@ const Layout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 70,
       columnNumber: 4
     }
-  }), __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  }), __jsx(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 78,
       columnNumber: 4
     }
   }, __jsx("title", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 79,
       columnNumber: 5
     }
-  }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components___WEBPACK_IMPORTED_MODULE_6__["Navbar"], {
+  }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Navbar"], {
     cartCount: cartCount,
-    search: __jsx(_components___WEBPACK_IMPORTED_MODULE_6__["Search"], {
+    search: __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Search"], {
       control: searchControl,
       onSearch: onSearch,
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 74,
+        lineNumber: 83,
         columnNumber: 13
       }
     }),
@@ -5719,7 +5725,7 @@ const Layout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72,
+      lineNumber: 81,
       columnNumber: 4
     }
   }), __jsx("main", {
@@ -5727,27 +5733,39 @@ const Layout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 79,
+      lineNumber: 88,
       columnNumber: 4
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Container"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["Container"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80,
+      lineNumber: 89,
       columnNumber: 5
     }
-  }, children)), __jsx(_components___WEBPACK_IMPORTED_MODULE_6__["Footer"], {
+  }, children)), __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Footer"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82,
+      lineNumber: 91,
       columnNumber: 4
     }
   }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Layout);
+const mapStateToProps = state => {
+  return {
+    isAuthorized: state.auth.token !== null
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAuth: (name, email, phone, password, isSignup) => dispatch(_store_actions_index__WEBPACK_IMPORTED_MODULE_2__["auth"](name, email, phone, password, isSignup))
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(Layout));
 
 /***/ }),
 
@@ -7994,21 +8012,22 @@ if (false) {} else {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _helpers_with_redux_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../helpers/with-redux-store */ "./helpers/with-redux-store.js");
-/* harmony import */ var _store_CategoryContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/CategoryContext */ "./store/CategoryContext.js");
-/* harmony import */ var _store_CartContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/CartContext */ "./store/CartContext.js");
-/* harmony import */ var _layouts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../layouts */ "./layouts/index.js");
-/* harmony import */ var _helpers_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../helpers/utils */ "./helpers/utils.js");
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-multi-carousel/lib/styles.css */ "./node_modules/react-multi-carousel/lib/styles.css");
-/* harmony import */ var react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../styles.scss */ "./styles.scss");
-/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_styles_scss__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
-/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _store_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/actions */ "./store/actions/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _helpers_with_redux_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../helpers/with-redux-store */ "./helpers/with-redux-store.js");
+/* harmony import */ var _store_CategoryContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/CategoryContext */ "./store/CategoryContext.js");
+/* harmony import */ var _store_CartContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/CartContext */ "./store/CartContext.js");
+/* harmony import */ var _layouts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../layouts */ "./layouts/index.js");
+/* harmony import */ var _helpers_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../helpers/utils */ "./helpers/utils.js");
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-multi-carousel/lib/styles.css */ "./node_modules/react-multi-carousel/lib/styles.css");
+/* harmony import */ var react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../styles.scss */ "./styles.scss");
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_styles_scss__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
+/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_11__);
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\pages\\_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -8016,7 +8035,6 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
- // import withRedux from "next-redux-wrapper";
 
 
 
@@ -8025,18 +8043,13 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
- // import { combineReducers, createStore } from "redux";
-// import AuthReducer from "../store/reducers/auth";
 
-let _selectedId = 0; // const reducers = combineReducers({
-// 	auth: AuthReducer
-// });
-// const makeStore = (initialState, options) => {
-// 	return createStore(AuthReducer, initialState);
-// };
+
+let _selectedId = 0;
 
 const MyComponent = ({
-  children
+  children,
+  store
 }) => {
   const {
     0: cart,
@@ -8072,13 +8085,17 @@ const MyComponent = ({
     isActive: false
   }]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    // if(store.getState().auth.token === null){
+    // }
+    store.dispatch(_store_actions__WEBPACK_IMPORTED_MODULE_1__["authCheckState"]());
+
     if (localStorage.getItem("cart")) {
       setCart(JSON.parse(localStorage.getItem("cart")));
     }
   }, []);
 
   const categoryHandler = id => {
-    const cats = Object(_helpers_utils__WEBPACK_IMPORTED_MODULE_6__["categorySelector"])(id, [...categories], _selectedId);
+    const cats = Object(_helpers_utils__WEBPACK_IMPORTED_MODULE_7__["categorySelector"])(id, [...categories], _selectedId);
 
     if (cats) {
       _selectedId = cats._selectedId;
@@ -8092,21 +8109,25 @@ const MyComponent = ({
       c.isActive = false;
     });
     setCategories(cats);
-  };
+  }; // adds product to cart
 
-  const addRemoveItemFromCart = id => {
-    let cartCopy = [...cart];
+
+  const addRemoveItemFromCart = product => {
+    let cartCopy = [...cart]; // is the product in the cart already?
+
     const item = cartCopy.find(item => {
-      return item === id;
-    });
+      return item.id === product.id;
+    }); // this product is not in the cart. push it to the array
 
     if (item === undefined) {
-      cartCopy.push(id);
+      cartCopy.push(product);
     } else {
+      // just remove this product from the cart
       cartCopy = cartCopy.filter(item => {
-        return item !== id;
+        return item.id !== product.id;
       });
-    }
+    } //  save it
+
 
     localStorage.setItem("cart", JSON.stringify(cartCopy));
     setCart(cartCopy);
@@ -8115,7 +8136,7 @@ const MyComponent = ({
   const findItemInCart = id => {
     let cartCopy = [...cart];
     const item = cartCopy.find(item => {
-      return item === id;
+      return item.id === id;
     });
     if (item !== undefined) return true;
     return false;
@@ -8127,7 +8148,7 @@ const MyComponent = ({
     localStorage.removeItem("cart");
   };
 
-  return __jsx(_store_CartContext__WEBPACK_IMPORTED_MODULE_4__["default"].Provider, {
+  return __jsx(_store_CartContext__WEBPACK_IMPORTED_MODULE_5__["default"].Provider, {
     value: {
       cart,
       onAddRemoveItem: addRemoveItemFromCart,
@@ -8137,10 +8158,10 @@ const MyComponent = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109,
+      lineNumber: 110,
       columnNumber: 3
     }
-  }, __jsx(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_3__["default"].Provider, {
+  }, __jsx(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_4__["default"].Provider, {
     value: {
       categories,
       categoryHandler,
@@ -8149,66 +8170,56 @@ const MyComponent = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 117,
+      lineNumber: 118,
       columnNumber: 4
     }
-  }, __jsx(_layouts__WEBPACK_IMPORTED_MODULE_5__["Layout"], {
+  }, __jsx(_layouts__WEBPACK_IMPORTED_MODULE_6__["Layout"], {
     cartCount: cart.length,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118,
+      lineNumber: 119,
       columnNumber: 5
     }
   }, children)));
 };
 
-class myApp extends next_app__WEBPACK_IMPORTED_MODULE_10___default.a {
+class myApp extends next_app__WEBPACK_IMPORTED_MODULE_11___default.a {
   render() {
     const {
       Component,
       pageProps,
       store
     } = this.props;
-    return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_1__["Provider"], {
+    return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
       store: store,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 127,
+        lineNumber: 128,
         columnNumber: 4
       }
     }, __jsx(MyComponent, {
+      store: store,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 128,
+        lineNumber: 129,
         columnNumber: 5
       }
     }, __jsx(Component, _extends({}, pageProps, {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 129,
+        lineNumber: 130,
         columnNumber: 6
       }
     }))));
   }
 
-} // myApp.App = App;
-// myApp.getInitialProps = ctx => {
-// 	console.log(ctx);
-// 	return {};
-// };
-// myApp.getInitialProps = async ({ Component, ctx }) => {
-// 	const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-// 	return {
-// 		pageProps
-// 	};
-// };
+}
 
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(_helpers_with_redux_store__WEBPACK_IMPORTED_MODULE_2__["default"])(myApp)); // export default withRedux(makeStore)(myApp);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_helpers_with_redux_store__WEBPACK_IMPORTED_MODULE_3__["default"])(myApp));
 
 /***/ }),
 
@@ -8265,6 +8276,151 @@ const AUTH_SUCCESS = "AUTH_SUCCESS";
 const AUTH_FAIL = "AUTH_FAIL";
 const AUTH_LOGOUT = "AUTH_LOGOUT";
 const STOP_LOADING = "STOP_LOADING";
+
+/***/ }),
+
+/***/ "./store/actions/auth.js":
+/*!*******************************!*\
+  !*** ./store/actions/auth.js ***!
+  \*******************************/
+/*! exports provided: authStart, authSuccess, authFail, logout, stopLoading, auth, checkAuthTimeout, authCheckState */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authStart", function() { return authStart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authSuccess", function() { return authSuccess; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authFail", function() { return authFail; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stopLoading", function() { return stopLoading; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "auth", function() { return auth; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "checkAuthTimeout", function() { return checkAuthTimeout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authCheckState", function() { return authCheckState; });
+/* harmony import */ var _actionTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actionTypes */ "./store/actions/actionTypes.js");
+/* harmony import */ var _axios_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../axios-api */ "./axios-api.js");
+
+
+const authStart = () => {
+  return {
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["AUTH_START"]
+  };
+};
+const authSuccess = (token, name) => {
+  return {
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["AUTH_SUCCESS"],
+    token: token,
+    name: name
+  };
+};
+const authFail = error => {
+  return {
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["AUTH_FAIL"],
+    error: error
+  };
+};
+const logout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("name");
+  return {
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["AUTH_LOGOUT"]
+  };
+};
+const stopLoading = () => {
+  return {
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["STOP_LOADING"]
+  };
+};
+const auth = (name, email, phone, password, isSignup) => {
+  name = name.trim();
+  email = email.trim();
+  return dispatch => {
+    // clear error
+    dispatch(authStart());
+    const formData = new FormData();
+
+    if (!isSignup) {
+      formData.append("username", email);
+    }
+
+    formData.append("password", password);
+
+    if (isSignup) {
+      const profile = {
+        fio: name,
+        phone: phone
+      };
+      formData.append("email", email);
+      formData.append("profile", JSON.stringify(profile));
+    }
+
+    const urls = ["/login", "/register"];
+    _axios_api__WEBPACK_IMPORTED_MODULE_1__["default"].post(`accounts${urls[+isSignup]}`, formData).then(response => {
+      console.log(response); // expiration date in milliseconds
+      // const expirationDate = new Date(new Date().getTime() + data.expires_in * 1000);
+
+      console.log(response.data.token);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("name", response.data.name); // localStorage.setItem("expirationDate", expirationDate);
+      // save user state
+
+      dispatch(authSuccess(response.token, name)); // dispatch(checkAuthTimeout(response.expires_in));
+    }).catch(error => {
+      console.log(error);
+      dispatch(authFail(error.response && error.response.data && error.response.data.message));
+    });
+  };
+};
+const checkAuthTimeout = expirationTime => {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(logout());
+    }, expirationTime * 1000);
+  };
+};
+const authCheckState = () => {
+  return dispatch => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      dispatch(logout());
+    } else {
+      const token = localStorage.getItem("token");
+      const name = localStorage.getItem("name");
+      dispatch(authSuccess(token, name)); // uncomment when expiration date comes in
+      // const expirationDate = new Date(localStorage.getItem("expirationDate"));
+      // if (new Date() > expirationDate) {
+      // 	dispatch(logout());
+      // } else {
+      // 	const token = localStorage.getItem("token");
+      // 	const name = localStorage.getItem("name");
+      // 	dispatch(authSuccess(token, name));
+      // 	dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
+      // }
+    }
+  };
+};
+
+/***/ }),
+
+/***/ "./store/actions/index.js":
+/*!********************************!*\
+  !*** ./store/actions/index.js ***!
+  \********************************/
+/*! exports provided: auth, logout, authCheckState, stopLoading */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./auth */ "./store/actions/auth.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "auth", function() { return _auth__WEBPACK_IMPORTED_MODULE_0__["auth"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return _auth__WEBPACK_IMPORTED_MODULE_0__["logout"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "authCheckState", function() { return _auth__WEBPACK_IMPORTED_MODULE_0__["authCheckState"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "stopLoading", function() { return _auth__WEBPACK_IMPORTED_MODULE_0__["stopLoading"]; });
+
+
 
 /***/ }),
 

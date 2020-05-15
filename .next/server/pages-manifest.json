@@ -1,1 +1,1 @@
-{"/_app":"static/development/pages/_app.js","/_document":"static/development/pages/_document.js","/_error":"static/development/pages/_error.js","/books/categories/[id]":"static/development/pages/books/categories/[id].js","/profile/settings":"static/development/pages/profile/settings.js"}
+{"/_app":"static/development/pages/_app.js","/_document":"static/development/pages/_document.js","/_error":"static/development/pages/_error.js","/cart":"static/development/pages/cart.js","/profile/library":"static/development/pages/profile/library.js"}

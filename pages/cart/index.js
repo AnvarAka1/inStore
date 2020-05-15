@@ -7,15 +7,20 @@ import { Row, Col, Button } from "react-bootstrap";
 import { Products, MakeOrder } from "../../components";
 const CartPage = props => {
 	const [ price, setPrice ] = useState(0);
-	const [ books, setBooks ] = useState([]);
+
 	const [ loading, setLoading ] = useState(true);
 	const cartContext = useContext(CartContext);
 	const codeControl = useForm();
-	useEffect(() => {
-		setBooks(props.books);
-		setPrice(props.price);
-		setLoading(false);
-	}, []);
+	useEffect(
+		() => {
+			const price = cartContext.cart.reduce((sum, product) => {
+				return sum + +product.price;
+			}, 0);
+			setPrice(price);
+			setLoading(false);
+		},
+		[ cartContext ]
+	);
 
 	const orderHandler = () => {
 		// when the api is ready, it will be easier to know
@@ -53,7 +58,7 @@ const CartPage = props => {
 					</Col>
 				</Row>
 				<Row className="mt-3">
-					{!loading && <Products items={books} onAddRemoveItem={cartContext.onAddRemoveItem} />}
+					{!loading && <Products items={cartContext.cart} onAddRemoveItem={cartContext.onAddRemoveItem} />}
 				</Row>
 			</Col>
 			<Col md={3}>
@@ -69,100 +74,93 @@ const CartPage = props => {
 		</Row>
 	);
 };
-const getBooks = () => [
-	{
-		id: 0,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 3,
-		currentPrice: "39500",
-		price: "55000"
-	},
-	{
-		id: 1,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 1,
-		currentPrice: "39500",
-		price: "55000"
-	},
-	{
-		id: 2,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 4,
-		currentPrice: "39500",
-		price: "55000"
-	},
-	{
-		id: 3,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 0,
-		currentPrice: "39500",
-		price: "55000"
-	},
-	{
-		id: 4,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 4,
-		currentPrice: "39500",
-		price: "55000"
-	},
-	{
-		id: 5,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 4,
-		currentPrice: "39500",
-		price: "55000"
-	},
-	{
-		id: 6,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 4,
-		currentPrice: "39500",
-		price: "55000"
-	},
-	{
-		id: 7,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 5,
-		currentPrice: "39500",
-		price: "55000"
-	},
-	{
-		id: 8,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 4,
-		currentPrice: "39500",
-		price: "55000"
-	}
-];
+// const getBooks = () => [
+// 	{
+// 		id: 0,
+// 		img: "/images/items/books/1.png",
+// 		title: "Нескучные десерты",
+// 		author: "Истомин Виталий",
+// 		rate: 3,
+// 		currentPrice: "39500",
+// 		price: "55000"
+// 	},
+// 	{
+// 		id: 1,
+// 		img: "/images/items/books/1.png",
+// 		title: "Нескучные десерты",
+// 		author: "Истомин Виталий",
+// 		rate: 1,
+// 		currentPrice: "39500",
+// 		price: "55000"
+// 	},
+// 	{
+// 		id: 2,
+// 		img: "/images/items/books/1.png",
+// 		title: "Нескучные десерты",
+// 		author: "Истомин Виталий",
+// 		rate: 4,
+// 		currentPrice: "39500",
+// 		price: "55000"
+// 	},
+// 	{
+// 		id: 3,
+// 		img: "/images/items/books/1.png",
+// 		title: "Нескучные десерты",
+// 		author: "Истомин Виталий",
+// 		rate: 0,
+// 		currentPrice: "39500",
+// 		price: "55000"
+// 	},
+// 	{
+// 		id: 4,
+// 		img: "/images/items/books/1.png",
+// 		title: "Нескучные десерты",
+// 		author: "Истомин Виталий",
+// 		rate: 4,
+// 		currentPrice: "39500",
+// 		price: "55000"
+// 	},
+// 	{
+// 		id: 5,
+// 		img: "/images/items/books/1.png",
+// 		title: "Нескучные десерты",
+// 		author: "Истомин Виталий",
+// 		rate: 4,
+// 		currentPrice: "39500",
+// 		price: "55000"
+// 	},
+// 	{
+// 		id: 6,
+// 		img: "/images/items/books/1.png",
+// 		title: "Нескучные десерты",
+// 		author: "Истомин Виталий",
+// 		rate: 4,
+// 		currentPrice: "39500",
+// 		price: "55000"
+// 	},
+// 	{
+// 		id: 7,
+// 		img: "/images/items/books/1.png",
+// 		title: "Нескучные десерты",
+// 		author: "Истомин Виталий",
+// 		rate: 5,
+// 		currentPrice: "39500",
+// 		price: "55000"
+// 	},
+// 	{
+// 		id: 8,
+// 		img: "/images/items/books/1.png",
+// 		title: "Нескучные десерты",
+// 		author: "Истомин Виталий",
+// 		rate: 4,
+// 		currentPrice: "39500",
+// 		price: "55000"
+// 	}
+// ];
 
 CartPage.getInitialProps = async context => {
-	const books = getBooks();
-	const price = books.reduce((sum, book) => {
-		return sum + +book.price;
-	}, 0);
-
 	return {
-		pathname: context.pathname,
-		price,
-		books
+		pathname: context.pathname
 	};
 };
 export default CartPage;

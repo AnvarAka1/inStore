@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import * as actions from "../store/actions";
 import { Provider } from "react-redux";
 import withReduxStore from "../helpers/with-redux-store";
-// import withRedux from "next-redux-wrapper";
 import CategoryContext from "../store/CategoryContext";
 import CartContext from "../store/CartContext";
 import { Layout } from "../layouts";
@@ -10,18 +10,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-multi-carousel/lib/styles.css";
 import "../styles.scss";
 import App from "next/app";
-// import { combineReducers, createStore } from "redux";
-// import AuthReducer from "../store/reducers/auth";
 
 let _selectedId = 0;
-// const reducers = combineReducers({
-// 	auth: AuthReducer
-// });
-// const makeStore = (initialState, options) => {
-// 	return createStore(AuthReducer, initialState);
-// };
 
-const MyComponent = ({ children }) => {
+const MyComponent = ({ children, store }) => {
 	const [ cart, setCart ] = useState([]);
 	const [ categories, setCategories ] = useState([
 		{
@@ -56,6 +48,10 @@ const MyComponent = ({ children }) => {
 		}
 	]);
 	useEffect(() => {
+		// if(store.getState().auth.token === null){
+
+		// }
+		store.dispatch(actions.authCheckState());
 		if (localStorage.getItem("cart")) {
 			setCart(JSON.parse(localStorage.getItem("cart")));
 		}
@@ -75,19 +71,24 @@ const MyComponent = ({ children }) => {
 		});
 		setCategories(cats);
 	};
-	const addRemoveItemFromCart = id => {
+	// adds product to cart
+	const addRemoveItemFromCart = product => {
 		let cartCopy = [ ...cart ];
+		// is the product in the cart already?
 		const item = cartCopy.find(item => {
-			return item === id;
+			return item.id === product.id;
 		});
 
+		// this product is not in the cart. push it to the array
 		if (item === undefined) {
-			cartCopy.push(id);
+			cartCopy.push(product);
 		} else {
+			// just remove this product from the cart
 			cartCopy = cartCopy.filter(item => {
-				return item !== id;
+				return item.id !== product.id;
 			});
 		}
+		//  save it
 		localStorage.setItem("cart", JSON.stringify(cartCopy));
 
 		setCart(cartCopy);
@@ -95,7 +96,7 @@ const MyComponent = ({ children }) => {
 	const findItemInCart = id => {
 		let cartCopy = [ ...cart ];
 		const item = cartCopy.find(item => {
-			return item === id;
+			return item.id === id;
 		});
 		if (item !== undefined) return true;
 		return false;
@@ -125,23 +126,12 @@ class myApp extends App {
 		const { Component, pageProps, store } = this.props;
 		return (
 			<Provider store={store}>
-				<MyComponent>
+				<MyComponent store={store}>
 					<Component {...pageProps} />
 				</MyComponent>
 			</Provider>
 		);
 	}
 }
-// myApp.App = App;
-// myApp.getInitialProps = ctx => {
-// 	console.log(ctx);
-// 	return {};
-// };
-// myApp.getInitialProps = async ({ Component, ctx }) => {
-// 	const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-// 	return {
-// 		pageProps
-// 	};
-// };
+
 export default withReduxStore(myApp);
-// export default withRedux(makeStore)(myApp);

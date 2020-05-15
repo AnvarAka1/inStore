@@ -22,11 +22,11 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
-    "/books/categories/[id]": [
+    "/cart": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/profile/settings": [
+    "/profile/library": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

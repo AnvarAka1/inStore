@@ -40,29 +40,35 @@ export const auth = (name, email, phone, password, isSignup) => {
 		// clear error
 		dispatch(authStart());
 		const formData = new FormData();
-		formData.append("email", email);
+		if (!isSignup) {
+			formData.append("username", email);
+		}
 		formData.append("password", password);
 		if (isSignup) {
-			formData.append("phone", phone);
-			formData.append("name", name);
+			const profile = {
+				fio: name,
+				phone: phone
+			};
+			formData.append("email", email);
+			formData.append("profile", JSON.stringify(profile));
 		}
 		const urls = [ "/login", "/register" ];
 		axios
-			.post(urls[+isSignup], formData)
+			.post(`accounts${urls[+isSignup]}`, formData)
 			.then(response => {
-				const data = response.data.data;
-				console.log(data);
+				console.log(response);
 				// expiration date in milliseconds
-				const expirationDate = new Date(new Date().getTime() + data.expires_in * 1000);
-				localStorage.setItem("token", data.access_token);
-				localStorage.setItem("name", data.name);
-				localStorage.setItem("expirationDate", expirationDate);
-
+				// const expirationDate = new Date(new Date().getTime() + data.expires_in * 1000);
+				console.log(response.data.token);
+				localStorage.setItem("token", response.data.token);
+				localStorage.setItem("name", response.data.name);
+				// localStorage.setItem("expirationDate", expirationDate);
 				// save user state
-				dispatch(authSuccess(data.access_token, name));
-				dispatch(checkAuthTimeout(data.expires_in));
+				dispatch(authSuccess(response.token, name));
+				// dispatch(checkAuthTimeout(response.expires_in));
 			})
 			.catch(error => {
+				console.log(error);
 				dispatch(authFail(error.response && error.response.data && error.response.data.message));
 			});
 	};
@@ -81,15 +87,20 @@ export const authCheckState = () => {
 		if (!token) {
 			dispatch(logout());
 		} else {
-			const expirationDate = new Date(localStorage.getItem("expirationDate"));
-			if (new Date() > expirationDate) {
-				dispatch(logout());
-			} else {
-				const token = localStorage.getItem("token");
-				const name = localStorage.getItem("name");
-				dispatch(authSuccess(token, name));
-				dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
-			}
+			const token = localStorage.getItem("token");
+			const name = localStorage.getItem("name");
+			dispatch(authSuccess(token, name));
+
+			// uncomment when expiration date comes in
+			// const expirationDate = new Date(localStorage.getItem("expirationDate"));
+			// if (new Date() > expirationDate) {
+			// 	dispatch(logout());
+			// } else {
+			// 	const token = localStorage.getItem("token");
+			// 	const name = localStorage.getItem("name");
+			// 	dispatch(authSuccess(token, name));
+			// 	dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
+			// }
 		}
 	};
 };

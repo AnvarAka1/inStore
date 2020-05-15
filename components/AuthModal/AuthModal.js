@@ -46,7 +46,6 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, controls, submitted, 
 										<Form.Group controlId="formBasicCheckbox">
 											<Form.Check
 												type="checkbox"
-												on
 												label="Запомнить пароль"
 												value={checkboxControl.value}
 												onChange={checkboxControl.onChange}

@@ -1,4 +1,6 @@
 import React, { useState, useContext } from "react";
+import { connect } from "react-redux";
+import * as actions from "../store/actions/index";
 import Head from "next/head";
 import Router from "next/router";
 import CategoryContext from "../store/CategoryContext";
@@ -6,7 +8,7 @@ import { useForm, useModal } from "../hooks/";
 import { Container } from "react-bootstrap";
 import { AuthModal } from "../components/";
 import { Navbar, Footer, Search } from "../components";
-const Layout = ({ children, cartCount }) => {
+const Layout = ({ children, cartCount, onAuth }) => {
 	const [ isSignUp, setIsSignUp ] = useState(true);
 	const authModal = useModal();
 	const searchControl = useForm();
@@ -46,6 +48,13 @@ const Layout = ({ children, cartCount }) => {
 
 	const authHandler = event => {
 		event.preventDefault();
+		onAuth(
+			nameControl.value,
+			isSignUp ? emailControl.value : emailPhoneControl.value,
+			phoneControl.value,
+			isSignUp ? fPasswordControl.value : passwordControl.value,
+			isSignUp
+		);
 		console.log("Auth submitted!");
 	};
 
@@ -83,5 +92,15 @@ const Layout = ({ children, cartCount }) => {
 		</div>
 	);
 };
-
-export default Layout;
+const mapStateToProps = state => {
+	return {
+		isAuthorized: state.auth.token !== null
+	};
+};
+const mapDispatchToProps = dispatch => {
+	return {
+		onAuth: (name, email, phone, password, isSignup) =>
+			dispatch(actions.auth(name, email, phone, password, isSignup))
+	};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);
