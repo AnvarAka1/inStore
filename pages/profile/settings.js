@@ -1,18 +1,77 @@
-import React from "react";
-// import { useForm, useSelect, useFile } from "../../hooks";
+import React, { useEffect, useRef } from "react";
+import { convertFrontToBackDate, convertBackToFrontDate } from "../../helpers/utils";
+import axios from "../../axios-api";
 import { Button, Row, Col } from "react-bootstrap";
 import { FormikGroup } from "../../components/UI";
 import { Form, Formik } from "formik";
-import { array, boolean, mixed, number, object, string, date } from "yup";
+import { object, string, date } from "yup";
 import { ProfileLayout } from "../../layouts";
-// import {} from '../../components'
+// can make static page also
 const SettingsPage = props => {
-	const initialValues1 = {
+	const personalInfoRef = useRef();
+	const passwordRef = useRef();
+	let personalInfoInitialValues = {
 		name: "",
 		dob: "",
 		gender: "",
 		phone: ""
 	};
+	let passwordInitialValues = {
+		curPassword: "",
+		newPassword: "",
+		repPassword: ""
+	};
+	useEffect(() => {
+		axios
+			.get("/profile", {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("token")}`
+					// Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo4LCJ1c2VybmFtZSI6InRlc3RAbWFpbC5ydSIsImV4cCI6MTU4OTQxNzc3MCwiZW1haWwiOiJ0ZXN0QG1haWwucnUifQ.zguTX9TmBYOGitCcpXOZf6WF0MzIFF0ZYwOHhD-qcWs`
+				}
+			})
+			.then(res => {
+				console.log("Works!");
+				console.log(res);
+				if (personalInfoRef.current) {
+					personalInfoRef.current.setFieldValue("name", res.data.fio);
+					personalInfoRef.current.setFieldValue("phone", res.data.phone);
+					personalInfoRef.current.setFieldValue("dob", convertBackToFrontDate(res.data.dob));
+					personalInfoRef.current.setFieldValue("gender", res.data.gender);
+					// personalInfoRef.current.setFieldValue("avatar", res.data.avatar);
+				}
+				if (passwordRef.current) {
+					passwordRef.current.setFieldValue("email", res.data.email);
+				}
+			})
+			.catch(err => console.log(err));
+	}, []);
+	const updatePersonalInformationHandler = values => {
+		const formData = new FormData();
+		formData.append("fio", values.name);
+		const dob = convertFrontToBackDate(values.dob);
+		formData.append("dob", dob);
+		formData.append("gender", values.gender);
+		formData.append("phone", values.phone);
+		formData.append("avatar", values.phone);
+
+		return axios.patch("profile/", formData, {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem("token")}`
+			}
+		});
+	};
+	const updatePasswordHandler = () => {
+		const formData = new FormData();
+		formData.append("old_password", values.curPassword);
+		formData.append("new_password", values.newPassword);
+
+		return axios.put("profile/password", formData, {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem("token")}`
+			}
+		});
+	};
+
 	return (
 		<ProfileLayout>
 			<Row>
@@ -25,14 +84,18 @@ const SettingsPage = props => {
 				<Col md={4} sm={6}>
 					<h6 className="text-md">Персональные данные</h6>
 					<Formik
-						initialValues={initialValues1}
-						onSubmit={(values, { setSubmitting, resetForm }) => {
+						innerRef={personalInfoRef}
+						initialValues={personalInfoInitialValues}
+						onSubmit={(values, { setSubmitting }) => {
 							setSubmitting(true);
-							setTimeout(() => {
-								console.log(JSON.stringify(values, null, 2));
-								resetForm();
-								setSubmitting(false);
-							}, 500);
+							updatePersonalInformationHandler(values)
+								.then(res => {
+									console.log(res);
+								})
+								.catch(err => console.log(err))
+								.finally(() => {
+									setSubmitting(false);
+								});
 						}}
 						validationSchema={object({
 							name: string()
@@ -40,7 +103,7 @@ const SettingsPage = props => {
 								.max(100, "Name is too long")
 								.required("Name is required!"),
 							dob: date().required(),
-							gender: string().required("*Email is required"),
+							gender: string().required(),
 							phone: string()
 						})}
 					>
@@ -65,14 +128,14 @@ const SettingsPage = props => {
 									value={values.gender}
 									as="select"
 									size="sm"
-									options={[ "Мужчина", "Женщина" ]}
+									options={[ { value: "m", title: "Мужчина" }, { value: "f", title: "Женщина" } ]}
 								>
 									Ваш пол
 								</FormikGroup>
 								<FormikGroup name="phone" onChange={handleChange} value={values.phone} size="sm">
 									Номер телефона
 								</FormikGroup>
-								<Button type="submit" disable={isSubmitting || isValidating}>
+								<Button type="submit" disabled={isSubmitting || isValidating}>
 									Сохранить
 								</Button>
 							</Form>
@@ -83,14 +146,18 @@ const SettingsPage = props => {
 				<Col md={4} sm={6}>
 					<h6 className="text-md">Защита</h6>
 					<Formik
-						initialValues={initialValues1}
+						innerRef={passwordRef}
+						initialValues={passwordInitialValues}
 						onSubmit={(values, { setSubmitting, resetForm }) => {
 							setSubmitting(true);
-							setTimeout(() => {
-								console.log(JSON.stringify(values, null, 2));
-								resetForm();
-								setSubmitting(false);
-							}, 500);
+							updatePasswordHandler(values)
+								.then(res => {
+									console.log(res);
+								})
+								.catch(err => console.log(err))
+								.finally(() => {
+									setSubmitting(false);
+								});
 						}}
 						validationSchema={object({
 							email: string().email(),
@@ -103,10 +170,11 @@ const SettingsPage = props => {
 							<Form onSubmit={handleSubmit}>
 								<FormikGroup
 									name="email"
-									onChange={handleChange}
+									onChange={null}
 									value={values.email}
 									type="email"
 									size="sm"
+									disabled
 								>
 									Эл. почта
 								</FormikGroup>
@@ -138,7 +206,7 @@ const SettingsPage = props => {
 									Подтвердите пароль
 								</FormikGroup>
 
-								<Button type="submit" disable={isSubmitting || isValidating}>
+								<Button type="submit" disabled={isSubmitting || isValidating}>
 									Сохранить
 								</Button>
 							</Form>

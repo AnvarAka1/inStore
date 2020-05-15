@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import { Row, Col } from "react-bootstrap";
 import { Categories } from "../components/";
+import axios from "../axios-api";
+let _isMounted = false;
 const CategoriesLayout = props => {
+	const [ categories, setCategories ] = useState([]);
+	const [ loading, setLoading ] = useState(true);
+	useEffect(() => {
+		_isMounted = true;
+		axios
+			.get("genres")
+			.then(res => {
+				if (_isMounted) setCategories(res.data.results);
+			})
+			.catch(err => {
+				console.log(err);
+			})
+			.finally(() => {
+				if (_isMounted) setLoading(false);
+			});
+		return () => (_isMounted = false);
+	}, []);
 	return (
 		<Row>
 			<Col sm={3}>
 				<Categories items={getStaticCats()} isStatic={true} />
-				<Categories items={getCategoryItems()} />
+				{!loading && <Categories items={categories} />}
 			</Col>
 			<Col sm={9}>{props.children}</Col>
 		</Row>
 	);
 };
+
 const getStaticCats = () => [
 	{
 		id: 0,
@@ -37,76 +58,6 @@ const getStaticCats = () => [
 		id: 4,
 		title: "Электронные книги",
 		icon: "/images/icons/pdf.png"
-	}
-];
-const getCategoryItems = () => [
-	{
-		id: 0,
-		title: "Деловая литература"
-	},
-	{
-		id: 1,
-		title: "Детективы и Триллеры"
-	},
-	{
-		id: 2,
-		title: "Документальная литература"
-	},
-	{
-		id: 3,
-		title: "Дом, ремесла, досуг, хобби"
-	},
-	{
-		id: 4,
-		title: "Драматургия"
-	},
-	{
-		id: 5,
-		title: "Искусство, Искусствоведение, Дизайн"
-	},
-	{
-		id: 6,
-		title: "Компьютеры и Интернет"
-	},
-	{
-		id: 7,
-		title: "Литература для детей"
-	},
-	{
-		id: 8,
-		title: "Любовные романы"
-	},
-	{
-		id: 9,
-		title: "Наука, Образование"
-	},
-	{
-		id: 10,
-		title: "Поэзия"
-	},
-	{
-		id: 11,
-		title: "Приключения"
-	},
-	{
-		id: 12,
-		title: "Проза"
-	},
-	{
-		id: 13,
-		title: "Прочее"
-	},
-	{
-		id: 14,
-		title: "Религия, духовность, эзотерика"
-	},
-	{
-		id: 15,
-		title: "Справочная литература"
-	},
-	{
-		id: 16,
-		title: "Старинное"
 	}
 ];
 

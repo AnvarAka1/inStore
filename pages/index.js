@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "../axios-api";
 import { useForm, useModal } from "../hooks";
 import Link from "next/link";
 import { Row, Col, Carousel, Button, Form } from "react-bootstrap";
@@ -18,7 +19,8 @@ import {
 } from "../components";
 import { FormGroup } from "../components/UI";
 
-const IndexPage = React.memo(props => {
+const LandingPage = React.memo(props => {
+	const [ loading, setLoading ] = useState(false);
 	const [ rate, setRate ] = useState(4);
 	const nameControl = useForm();
 	const mailControl = useForm();
@@ -128,9 +130,7 @@ const IndexPage = React.memo(props => {
 				<Col sm={4}>
 					<PreCarousel link="/#">Сборники книг</PreCarousel>
 				</Col>
-				<Col sm={8}>
-					<CompilationsCarousel items={getBookCarouselItems()} />
-				</Col>
+				<Col sm={8}>{!loading && <CompilationsCarousel items={getBookCarouselItems()} />}</Col>
 			</Row>
 			<Row>
 				<Col>
@@ -138,9 +138,7 @@ const IndexPage = React.memo(props => {
 				</Col>
 			</Row>
 			<Row>
-				<Col>
-					<ProductsCarousel items={getPopularBooks()} />
-				</Col>
+				<Col>{!loading && <ProductsCarousel items={getPopularBooks()} />}</Col>
 			</Row>
 			<Row className="mt-5 pt-4 mb-5 pb-4">
 				<Col>
@@ -156,9 +154,7 @@ const IndexPage = React.memo(props => {
 				<Col sm={4}>
 					<PreCarousel link="/#">Сборники аудиокниг</PreCarousel>
 				</Col>
-				<Col sm={8}>
-					<CompilationsCarousel items={getBookCarouselItems()} />
-				</Col>
+				<Col sm={8}>{!loading && <CompilationsCarousel items={getBookCarouselItems()} />}</Col>
 			</Row>
 			<Row className="mt-5 pt-4">
 				<Col>
@@ -166,9 +162,7 @@ const IndexPage = React.memo(props => {
 				</Col>
 			</Row>
 			<Row>
-				<Col>
-					<ProductsCarousel items={getPopularBooks()} />
-				</Col>
+				<Col>{!loading && <ProductsCarousel items={getPopularBooks()} />}</Col>
 			</Row>
 			<Row className="mb-4  mt-5 pt-3">
 				<Col>
@@ -189,9 +183,7 @@ const IndexPage = React.memo(props => {
 				</Col>
 			</Row>
 			<Row>
-				<Col>
-					<ReviewsCarousel items={getReviewsItems()} />
-				</Col>
+				<Col>{!loading && <ReviewsCarousel items={getReviewsItems()} />}</Col>
 			</Row>
 			<Row className="mt-3 mb-5 pb-4">
 				<Col>
@@ -203,7 +195,15 @@ const IndexPage = React.memo(props => {
 		</React.Fragment>
 	);
 });
+// LandingPage.getInitialProps = async ctx => {
+// 	let books =
+// 	axios.get("collections").then(res=>{
 
+// 	})
+// 	return {
+
+// 	}
+// }
 const getCarouselItems = () => [
 	{
 		id: 0,
@@ -384,4 +384,4 @@ const getReviewsItems = () => [
 			"“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
 	}
 ];
-export default IndexPage;
+export default LandingPage;

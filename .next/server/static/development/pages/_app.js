@@ -115,6 +115,25 @@ module.exports = require("next/dist/next-server/lib/utils.js");
 
 /***/ }),
 
+/***/ "./axios-api.js":
+/*!**********************!*\
+  !*** ./axios-api.js ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+const instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
+  baseURL: "http://api.in-study.uz/"
+});
+/* harmony default export */ __webpack_exports__["default"] = (instance);
+
+/***/ }),
+
 /***/ "./components/AuthModal/AuthModal.js":
 /*!*******************************************!*\
   !*** ./components/AuthModal/AuthModal.js ***!
@@ -1823,8 +1842,7 @@ const CustomLink = ({
       }
     }
   } else {
-    console.log(as + " " + href + baseUrl + " " + routerBaseUrl + " query = " + href.query);
-
+    // console.log(as + " " + href + baseUrl + " " + routerBaseUrl + " query = " + href.query);
     if (baseUrl === routerBaseUrl) {
       classNames = `${className} active`;
     }
@@ -3038,11 +3056,11 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const product = ({
   id,
-  img,
+  image,
   title,
   author,
   rate,
-  currentPrice,
+  current_price,
   price,
   isVideo,
   onAddRemoveItem
@@ -3087,7 +3105,7 @@ const product = ({
       columnNumber: 7
     }
   }, __jsx("img", {
-    src: img,
+    src: image,
     alt: title,
     __self: undefined,
     __source: {
@@ -3128,7 +3146,7 @@ const product = ({
       columnNumber: 7
     }
   }, author), __jsx(___WEBPACK_IMPORTED_MODULE_2__["Stars"], {
-    rate: rate,
+    rate: Math.round(rate),
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -3167,7 +3185,7 @@ const product = ({
       lineNumber: 27,
       columnNumber: 8
     }
-  }, currentPrice), " ", __jsx("p", {
+  }, current_price), " ", __jsx("p", {
     className: "text-xsmall text-crossed",
     __self: undefined,
     __source: {
@@ -4415,7 +4433,8 @@ const formikGroup = ({
   type,
   name,
   placeholder,
-  options
+  options,
+  disabled
 }) => {
   return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
     className: "mt-2 mb-2",
@@ -4437,6 +4456,7 @@ const formikGroup = ({
     value: value,
     type: type,
     name: name,
+    disabled: disabled,
     placeholder: placeholder,
     onChange: onChange,
     className: size === "sm" && _FormGroup_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Sm,
@@ -4450,19 +4470,20 @@ const formikGroup = ({
   }, options ? options.map((option, index) => {
     return __jsx("option", {
       key: index,
+      value: option.value ? option.value : option.title,
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20,
-        columnNumber: 14
+        lineNumber: 22,
+        columnNumber: 8
       }
-    }, option);
+    }, option.title);
   }) : null), __jsx("span", {
     className: "text-danger text-small",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 29,
       columnNumber: 4
     }
   }, __jsx(formik__WEBPACK_IMPORTED_MODULE_2__["ErrorMessage"], {
@@ -4470,7 +4491,7 @@ const formikGroup = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 30,
       columnNumber: 5
     }
   })));
@@ -4482,7 +4503,8 @@ formikGroup.defaultProps = {
   name: "",
   placeholder: "",
   onChange: null,
-  className: ""
+  className: "",
+  disabled: false
 };
 /* harmony default export */ __webpack_exports__["default"] = (formikGroup);
 
@@ -5458,18 +5480,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
+/* harmony import */ var _axios_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../axios-api */ "./axios-api.js");
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\layouts\\CategoriesLayout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
+let _isMounted = false;
+
 const CategoriesLayout = props => {
+  const {
+    0: categories,
+    1: setCategories
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const {
+    0: loading,
+    1: setLoading
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    _isMounted = true;
+    _axios_api__WEBPACK_IMPORTED_MODULE_3__["default"].get("genres").then(res => {
+      if (_isMounted) setCategories(res.data.results);
+    }).catch(err => {
+      console.log(err);
+    }).finally(() => {
+      if (_isMounted) setLoading(false);
+    });
+    return () => _isMounted = false;
+  }, []);
   return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
+      lineNumber: 26,
       columnNumber: 3
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -5477,7 +5521,7 @@ const CategoriesLayout = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 27,
       columnNumber: 4
     }
   }, __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Categories"], {
@@ -5486,23 +5530,23 @@ const CategoriesLayout = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 28,
       columnNumber: 5
     }
-  }), __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Categories"], {
-    items: getCategoryItems(),
+  }), !loading && __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Categories"], {
+    items: categories,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 5
+      lineNumber: 29,
+      columnNumber: 18
     }
   })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     sm: 9,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
+      lineNumber: 31,
       columnNumber: 4
     }
   }, props.children));
@@ -5528,59 +5572,6 @@ const getStaticCats = () => [{
   id: 4,
   title: "Электронные книги",
   icon: "/images/icons/pdf.png"
-}];
-
-const getCategoryItems = () => [{
-  id: 0,
-  title: "Деловая литература"
-}, {
-  id: 1,
-  title: "Детективы и Триллеры"
-}, {
-  id: 2,
-  title: "Документальная литература"
-}, {
-  id: 3,
-  title: "Дом, ремесла, досуг, хобби"
-}, {
-  id: 4,
-  title: "Драматургия"
-}, {
-  id: 5,
-  title: "Искусство, Искусствоведение, Дизайн"
-}, {
-  id: 6,
-  title: "Компьютеры и Интернет"
-}, {
-  id: 7,
-  title: "Литература для детей"
-}, {
-  id: 8,
-  title: "Любовные романы"
-}, {
-  id: 9,
-  title: "Наука, Образование"
-}, {
-  id: 10,
-  title: "Поэзия"
-}, {
-  id: 11,
-  title: "Приключения"
-}, {
-  id: 12,
-  title: "Проза"
-}, {
-  id: 13,
-  title: "Прочее"
-}, {
-  id: 14,
-  title: "Религия, духовность, эзотерика"
-}, {
-  id: 15,
-  title: "Справочная литература"
-}, {
-  id: 16,
-  title: "Старинное"
 }];
 
 /* harmony default export */ __webpack_exports__["default"] = (CategoriesLayout);
@@ -8421,6 +8412,17 @@ __webpack_require__.r(__webpack_exports__);
 
 module.exports = __webpack_require__(/*! private-next-pages/_app.js */"./pages/_app.js");
 
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
 
 /***/ }),
 

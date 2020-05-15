@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./FormGroup.module.scss";
 import { ErrorMessage } from "formik";
 import { Form } from "react-bootstrap";
-const formikGroup = ({ children, onChange, value, size, as, type, name, placeholder, options }) => {
+const formikGroup = ({ children, onChange, value, size, as, type, name, placeholder, options, disabled }) => {
 	return (
 		<Form.Group className="mt-2 mb-2">
 			{children && <Form.Label className={size === "sm" && classes.Sm}>{children}</Form.Label>}
@@ -10,6 +10,7 @@ const formikGroup = ({ children, onChange, value, size, as, type, name, placehol
 				value={value}
 				type={type}
 				name={name}
+				disabled={disabled}
 				placeholder={placeholder}
 				onChange={onChange}
 				className={size === "sm" && classes.Sm}
@@ -17,7 +18,11 @@ const formikGroup = ({ children, onChange, value, size, as, type, name, placehol
 			>
 				{options ? (
 					options.map((option, index) => {
-						return <option key={index}>{option}</option>;
+						return (
+							<option key={index} value={option.value ? option.value : option.title}>
+								{option.title}
+							</option>
+						);
 					})
 				) : null}
 			</Form.Control>
@@ -33,6 +38,7 @@ formikGroup.defaultProps = {
 	name: "",
 	placeholder: "",
 	onChange: null,
-	className: ""
+	className: "",
+	disabled: false
 };
 export default formikGroup;

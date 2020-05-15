@@ -17,7 +17,7 @@ const CustomLink = ({ children, className, href, as }) => {
 			}
 		}
 	} else {
-		console.log(as + " " + href + baseUrl + " " + routerBaseUrl + " query = " + href.query);
+		// console.log(as + " " + href + baseUrl + " " + routerBaseUrl + " query = " + href.query);
 		if (baseUrl === routerBaseUrl) {
 			classNames = `${className} active`;
 		}
