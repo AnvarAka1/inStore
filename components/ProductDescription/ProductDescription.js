@@ -1,21 +1,37 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import classes from "./ProductDescription.module.scss";
-const productDescription = ({ date, title, author, type, description, price, currentPrice, isInCart, cartClicked }) => {
+const productDescription = ({
+	publish_year,
+	title,
+	author,
+	book_type,
+	description,
+	price,
+	currentPrice,
+	isInCart,
+	cartClicked
+}) => {
+	const bookTypes = [ "Аудиокнига", "Печатное издание", "Электронная книга" ];
 	return (
 		<div className={classes.ProductDescription}>
-			<p>{date}</p>
+			<p>{publish_year}</p>
 			<h2>{title}</h2>
-			<div className="d-flex justify-content-between align-items-center">
-				<h3>{author}</h3>
+			<div className="d-flex justify-content-start align-items-center">
+				<h4 className="text-secondary mb-0">{author}</h4>
 				<div>
-					{/* Избранное */}
-					{/* Печатное издание */}
-					{type}
+					<Button>
+						<div className="d-flex align-items-center">
+							<img src="/images/icons/star.png" className="icon mr-1" />Избранное
+						</div>
+					</Button>
 				</div>
+				<div>{bookTypes[+book_type]}</div>
 			</div>
-			<h5>Аннотация к книге "{title}"</h5>
-			<p>
+			<p className="text-md">
+				<strong>Аннотация к книге "{title}"</strong>
+			</p>
+			<p className="text-md">
 				{/* should be openable */}
 				{description}
 			</p>

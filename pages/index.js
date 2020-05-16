@@ -11,7 +11,7 @@ import {
 	Speaker,
 	ImagesCarousel,
 	ReviewsCarousel,
-	PopularHeader,
+	NewHeader,
 	Modal,
 	Card,
 	Stars,
@@ -19,7 +19,11 @@ import {
 } from "../components";
 import { FormGroup } from "../components/UI";
 
-const LandingPage = React.memo(props => {
+const LandingPage = ({ feedback, bookCollections, audioCollections, speakers }) => {
+	// const [ feedback, setFeedback ] = useState(feedbackProps);
+	// const [ bookCollections, setBookCollections ] = useState(bookCollectionsProps);
+	// const [ audioCollections, setAudioCollections ] = useState(audioCollectionsProps);
+	// const [ speakers, setSpeakers ] = useState(speakersProps);
 	const [ loading, setLoading ] = useState(false);
 	const [ rate, setRate ] = useState(4);
 	const nameControl = useForm();
@@ -29,7 +33,9 @@ const LandingPage = React.memo(props => {
 
 	const speakerModal = useModal();
 	const reviewModal = useModal();
+	useEffect(() => {}, []);
 	// Functions
+
 	const rateChangedHandler = id => {
 		setRate(id);
 	};
@@ -130,11 +136,11 @@ const LandingPage = React.memo(props => {
 				<Col sm={4}>
 					<PreCarousel link="/#">Сборники книг</PreCarousel>
 				</Col>
-				<Col sm={8}>{!loading && <CompilationsCarousel items={getBookCarouselItems()} />}</Col>
+				<Col sm={8}>{!loading && <CompilationsCarousel items={bookCollections} />}</Col>
 			</Row>
 			<Row>
 				<Col>
-					<PopularHeader link="/books/popular">книги</PopularHeader>
+					<NewHeader link="/books/popular">книги</NewHeader>
 				</Col>
 			</Row>
 			<Row>
@@ -154,11 +160,11 @@ const LandingPage = React.memo(props => {
 				<Col sm={4}>
 					<PreCarousel link="/#">Сборники аудиокниг</PreCarousel>
 				</Col>
-				<Col sm={8}>{!loading && <CompilationsCarousel items={getBookCarouselItems()} />}</Col>
+				<Col sm={8}>{!loading && <CompilationsCarousel items={audioCollections} />}</Col>
 			</Row>
 			<Row className="mt-5 pt-4">
 				<Col>
-					<PopularHeader link="/audio/popular">аудиокниги</PopularHeader>
+					<NewHeader link="/audio/popular">аудиокниги</NewHeader>
 				</Col>
 			</Row>
 			<Row>
@@ -171,10 +177,10 @@ const LandingPage = React.memo(props => {
 			</Row>
 			<Row>
 				<Col sm={5}>
-					<ImagesCarousel items={getSpeakers()} />
+					<ImagesCarousel items={speakers} />
 				</Col>
 				<Col sm={7}>
-					<Speaker onClick={speakerModal.onShow} {...getSpeakers()[0]} />
+					<Speaker onClick={speakerModal.onShow} {...speakers[0]} />
 				</Col>
 			</Row>
 			<Row className="mb-4  mt-5 pt-3">
@@ -183,7 +189,7 @@ const LandingPage = React.memo(props => {
 				</Col>
 			</Row>
 			<Row>
-				<Col>{!loading && <ReviewsCarousel items={getReviewsItems()} />}</Col>
+				<Col>{!loading && <ReviewsCarousel items={feedback} />}</Col>
 			</Row>
 			<Row className="mt-3 mb-5 pb-4">
 				<Col>
@@ -194,7 +200,7 @@ const LandingPage = React.memo(props => {
 			</Row>
 		</React.Fragment>
 	);
-});
+};
 // LandingPage.getInitialProps = async ctx => {
 // 	let books =
 // 	axios.get("collections").then(res=>{
@@ -384,4 +390,17 @@ const getReviewsItems = () => [
 			"“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
 	}
 ];
-export default LandingPage;
+export const getStaticProps = async ctx => {
+	const res = await axios.get("home");
+	const { feedback, book_collections, audio_book_collections, speakers } = res.data;
+	console.log(res.data);
+	return {
+		props: {
+			feedback,
+			bookCollections: book_collections,
+			audioCollections: audio_book_collections,
+			speakers
+		}
+	};
+};
+export default React.memo(LandingPage);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "../../axios-api";
-import Link from "next/link";
+import { connect } from "react-redux";
 import { useForm } from "../../hooks";
 import CartContext from "../../store/CartContext";
 import { Row, Col } from "react-bootstrap";
@@ -15,8 +15,8 @@ const BookPage = props => {
 	const commentControl = useForm();
 	useEffect(() => {
 		setBook(props.book);
-		setOtherBooks(props.otherBooks);
-		// setLoading(false);
+		setOtherBooks(props.book.related);
+		setLoading(false);
 	}, []);
 	const commentSubmitHandler = event => {
 		event.preventDefault();
@@ -27,9 +27,7 @@ const BookPage = props => {
 	};
 	return (
 		<Row>
-			<Col sm={5}>
-				{!loading && <ProductDetails img={book.img} rate={book.rate} details={book.details} social={null} />}
-			</Col>
+			<Col sm={5}>{!loading && <ProductDetails {...book} social={null} />}</Col>
 			<Col sm={7}>
 				{!loading && (
 					<React.Fragment>
@@ -40,12 +38,12 @@ const BookPage = props => {
 						/>
 
 						<Comments
-							items={book.responses}
+							items={book.feedback}
 							rate={rate}
 							onSubmit={commentSubmitHandler}
 							commentControl={commentControl}
 							rateClicked={rateHandler}
-							isAuthorized={true}
+							isAuthorized={props.isAuthorized}
 						/>
 					</React.Fragment>
 				)}
@@ -65,4 +63,9 @@ export const getServerSideProps = async ({ query }) => {
 		}
 	};
 };
-export default BookPage;
+const mapStateToProps = state => {
+	return {
+		isAuthorized: state.auth.token !== null
+	};
+};
+export default connect(mapStateToProps)(BookPage);

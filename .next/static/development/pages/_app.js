@@ -906,10 +906,10 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var comment = function comment(_ref) {
   var id = _ref.id,
-      name = _ref.name,
+      user = _ref.user,
       rate = _ref.rate,
       text = _ref.text,
-      date = _ref.date;
+      created_at = _ref.created_at;
   return __jsx("li", {
     __self: _this,
     __source: {
@@ -933,7 +933,7 @@ var comment = function comment(_ref) {
       lineNumber: 7,
       columnNumber: 5
     }
-  }, name), __jsx(___WEBPACK_IMPORTED_MODULE_1__["Stars"], {
+  }, user.fio), __jsx(___WEBPACK_IMPORTED_MODULE_1__["Stars"], {
     rate: rate,
     isBig: true,
     __self: _this,
@@ -957,7 +957,7 @@ var comment = function comment(_ref) {
       lineNumber: 11,
       columnNumber: 4
     }
-  }, date));
+  }, created_at));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (comment);
@@ -1238,7 +1238,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 var compilation = function compilation(_ref) {
   var className = _ref.className,
       text = _ref.text,
-      img = _ref.img;
+      image = _ref.image;
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
     href: "/#",
     __self: _this,
@@ -1263,7 +1263,7 @@ var compilation = function compilation(_ref) {
       columnNumber: 5
     }
   }, __jsx("img", {
-    src: img,
+    src: image,
     alt: text,
     __self: _this,
     __source: {
@@ -1470,8 +1470,8 @@ var CompilationsCarousel = function CompilationsCarousel(_ref) {
       onClick: function onClick() {
         return _onClick(item.id);
       },
-      text: item.text,
-      img: item.img,
+      text: item.title,
+      image: item.image,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
@@ -2323,8 +2323,8 @@ var imagesCarousel = function imagesCarousel(_ref) {
         columnNumber: 4
       }
     }, __jsx("img", {
-      src: item.img,
-      alt: item.name,
+      src: item.image,
+      alt: item.fio,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
@@ -2789,6 +2789,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavItems_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_NavItems_module_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Navigation\\NavItems\\NavItems.js";
 
@@ -2797,54 +2798,58 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
 var navItems = function navItems(_ref) {
   var authModalShow = _ref.authModalShow,
-      cartCount = _ref.cartCount;
+      cartCount = _ref.cartCount,
+      name = _ref.name,
+      isAuthorized = _ref.isAuthorized,
+      onLogout = _ref.onLogout;
   return __jsx("div", {
     className: "".concat(_NavItems_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.NavItems, " "),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
+      lineNumber: 7,
       columnNumber: 3
     }
-  }, __jsx("div", {
+  }, !isAuthorized && __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
-      columnNumber: 4
+      lineNumber: 10,
+      columnNumber: 5
     }
   }, __jsx("div", {
     className: "list",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
-      columnNumber: 5
+      lineNumber: 11,
+      columnNumber: 6
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
     href: "favorite",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 6
+      lineNumber: 12,
+      columnNumber: 7
     }
   }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
-      columnNumber: 7
+      lineNumber: 13,
+      columnNumber: 8
     }
   }, __jsx("div", {
     className: "d-flex align-items-center",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 8
+      lineNumber: 14,
+      columnNumber: 9
     }
   }, __jsx("img", {
     src: "/images/icons/star.png",
@@ -2853,14 +2858,14 @@ var navItems = function navItems(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 9
+      lineNumber: 15,
+      columnNumber: 10
     }
   }), "\u0418\u0437\u0431\u0440\u0430\u043D\u043D\u044B\u0435"))))), __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 24,
       columnNumber: 4
     }
   }, __jsx("div", {
@@ -2868,7 +2873,7 @@ var navItems = function navItems(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 25,
       columnNumber: 5
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -2876,14 +2881,14 @@ var navItems = function navItems(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 26,
       columnNumber: 6
     }
   }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 27,
       columnNumber: 7
     }
   }, __jsx("div", {
@@ -2891,15 +2896,15 @@ var navItems = function navItems(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 28,
       columnNumber: 8
     }
   }, __jsx("div", {
-    className: "position-relative",
+    className: "position-relative ".concat(isAuthorized && _NavItems_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.CartRadius),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 29,
       columnNumber: 9
     }
   }, cartCount ? __jsx("span", {
@@ -2907,49 +2912,58 @@ var navItems = function navItems(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 31,
       columnNumber: 11
     }
   }, __jsx("p", {
+    className: "text-white",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 32,
       columnNumber: 12
     }
   }, cartCount)) : null, __jsx("img", {
     src: "/images/icons/cart.png",
-    className: "icon icon-sm mr-1",
+    className: "icon icon-sm",
     alt: "cart",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 35,
       columnNumber: 10
     }
-  })), "\u041A\u043E\u0440\u0437\u0438\u043D\u0430"))))), __jsx("div", {
+  })), !isAuthorized && __jsx("p", {
+    className: "ml-1",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37,
+      columnNumber: 27
+    }
+  }, "\u041A\u043E\u0440\u0437\u0438\u043D\u0430")))))), !isAuthorized && __jsx("div", {
     onClick: authModalShow,
     className: "list",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
-      columnNumber: 4
+      lineNumber: 44,
+      columnNumber: 5
     }
   }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 5
+      lineNumber: 45,
+      columnNumber: 6
     }
   }, __jsx("div", {
     className: "d-flex align-items-center list",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
-      columnNumber: 6
+      lineNumber: 46,
+      columnNumber: 7
     }
   }, __jsx("img", {
     src: "/images/icons/user.png",
@@ -2958,10 +2972,34 @@ var navItems = function navItems(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
-      columnNumber: 7
+      lineNumber: 47,
+      columnNumber: 8
     }
-  }), "\u0412\u043E\u0439\u0442\u0438"))));
+  }), "\u0412\u043E\u0439\u0442\u0438"))), isAuthorized && __jsx("div", {
+    className: "flex-column justify-content-end align-items-between text-right",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 5
+    }
+  }, __jsx("p", {
+    className: "color-accent",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
+      columnNumber: 6
+    }
+  }, name), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+    onClick: onLogout,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55,
+      columnNumber: 6
+    }
+  }, "\u0412\u044B\u0439\u0442\u0438")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (navItems);
@@ -3079,9 +3117,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Navbar_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Navbar_module_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _NavItems_NavItems__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NavItems/NavItems */ "./components/Navigation/NavItems/NavItems.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../ */ "./components/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ */ "./components/index.js");
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Navigation\\Navbar.js";
 
@@ -3092,13 +3129,11 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-
 var navbar = function navbar(_ref) {
   var booksCategories = _ref.booksCategories,
       booksCategoryClicked = _ref.booksCategoryClicked,
-      authModalShow = _ref.authModalShow,
       search = _ref.search,
-      cartCount = _ref.cartCount;
+      navItems = _ref.navItems;
 
   var books = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __self: _this,
@@ -3117,26 +3152,12 @@ var navbar = function navbar(_ref) {
       lineNumber: 11,
       columnNumber: 4
     }
-  }), "\u041A\u043D\u0438\u0433\u0438");
+  }), "\u041A\u043D\u0438\u0433\u0438"); // const videolessons = (
+  // 	<React.Fragment>
+  // 		<img src="/images/icons/video.png" className="icon icon-sm mr-1" alt="Видеокурсы" />Видеокурсы
+  // 	</React.Fragment>
+  // );
 
-  var videolessons = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15,
-      columnNumber: 3
-    }
-  }, __jsx("img", {
-    src: "/images/icons/video.png",
-    className: "icon icon-sm mr-1",
-    alt: "\u0412\u0438\u0434\u0435\u043E\u043A\u0443\u0440\u0441\u044B",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 4
-    }
-  }), "\u0412\u0438\u0434\u0435\u043E\u043A\u0443\u0440\u0441\u044B");
 
   return __jsx("header", {
     className: _Navbar_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Navbar,
@@ -3146,28 +3167,28 @@ var navbar = function navbar(_ref) {
       lineNumber: 20,
       columnNumber: 3
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 21,
       columnNumber: 4
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 22,
       columnNumber: 5
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 23,
       columnNumber: 6
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Navbar"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"], {
     expand: "lg",
     __self: _this,
     __source: {
@@ -3190,14 +3211,14 @@ var navbar = function navbar(_ref) {
       lineNumber: 26,
       columnNumber: 9
     }
-  }, __jsx(___WEBPACK_IMPORTED_MODULE_5__["Logo"], {
+  }, __jsx(___WEBPACK_IMPORTED_MODULE_4__["Logo"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 27,
       columnNumber: 10
     }
-  }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Navbar"].Toggle, {
+  }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"].Toggle, {
     "aria-controls": "basic-navbar-nav",
     __self: _this,
     __source: {
@@ -3205,7 +3226,7 @@ var navbar = function navbar(_ref) {
       lineNumber: 31,
       columnNumber: 8
     }
-  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Navbar"].Collapse, {
+  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"].Collapse, {
     id: "basic-navbar-nav",
     __self: _this,
     __source: {
@@ -3213,7 +3234,7 @@ var navbar = function navbar(_ref) {
       lineNumber: 32,
       columnNumber: 8
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Nav"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"], {
     className: "mr-auto ml-5",
     __self: _this,
     __source: {
@@ -3221,7 +3242,7 @@ var navbar = function navbar(_ref) {
       lineNumber: 33,
       columnNumber: 9
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NavDropdown"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"], {
     title: books,
     className: "list",
     id: "basic-nav-dropdown",
@@ -3232,7 +3253,7 @@ var navbar = function navbar(_ref) {
       columnNumber: 10
     }
   }, booksCategories.map(function (cat) {
-    return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NavDropdown"].Item, {
+    return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Item, {
       key: cat.id,
       onClick: function onClick() {
         return booksCategoryClicked(cat.id);
@@ -3244,16 +3265,7 @@ var navbar = function navbar(_ref) {
         columnNumber: 13
       }
     }, cat.title);
-  }))), search, __jsx(_NavItems_NavItems__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    authModalShow: authModalShow,
-    cartCount: cartCount,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 56,
-      columnNumber: 9
-    }
-  })))))));
+  }))), search, navItems))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(navbar));
@@ -3356,10 +3368,10 @@ module.exports = content.locals || {};
 
 /***/ }),
 
-/***/ "./components/PopularHeader/PopularHeader.js":
-/*!***************************************************!*\
-  !*** ./components/PopularHeader/PopularHeader.js ***!
-  \***************************************************/
+/***/ "./components/NewHeader/NewHeader.js":
+/*!*******************************************!*\
+  !*** ./components/NewHeader/NewHeader.js ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3370,13 +3382,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 var _this = undefined,
-    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\PopularHeader\\PopularHeader.js";
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\NewHeader\\NewHeader.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-var popularHeader = function popularHeader(_ref) {
+var newHeader = function newHeader(_ref) {
   var children = _ref.children,
       link = _ref.link;
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
@@ -3410,7 +3422,7 @@ var popularHeader = function popularHeader(_ref) {
       lineNumber: 8,
       columnNumber: 6
     }
-  }, "\u041F\u043E\u043F\u0443\u043B\u044F\u0440\u043D\u044B\u0435 ", children), __jsx("p", {
+  }, "\u041D\u043E\u0432\u044B\u0435 ", children), __jsx("p", {
     className: "mb-0 text-small text-secondary",
     __self: _this,
     __source: {
@@ -3421,7 +3433,7 @@ var popularHeader = function popularHeader(_ref) {
   }, "\u041F\u0435\u0440\u0435\u0439\u0442\u0438 \u0432 \u0441\u043F\u0438\u0441\u043E\u043A \xBB"))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (popularHeader);
+/* harmony default export */ __webpack_exports__["default"] = (newHeader);
 
 /***/ }),
 
@@ -3633,71 +3645,113 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 var productDescription = function productDescription(_ref) {
-  var date = _ref.date,
+  var publish_year = _ref.publish_year,
       title = _ref.title,
       author = _ref.author,
-      type = _ref.type,
+      book_type = _ref.book_type,
       description = _ref.description,
       price = _ref.price,
       currentPrice = _ref.currentPrice,
       isInCart = _ref.isInCart,
       cartClicked = _ref.cartClicked;
+  var bookTypes = ["Аудиокнига", "Печатное издание", "Электронная книга"];
   return __jsx("div", {
     className: _ProductDescription_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.ProductDescription,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
+      lineNumber: 17,
       columnNumber: 3
     }
   }, __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 18,
       columnNumber: 4
     }
-  }, date), __jsx("h2", {
+  }, publish_year), __jsx("h2", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 19,
       columnNumber: 4
     }
   }, title), __jsx("div", {
-    className: "d-flex justify-content-between align-items-center",
+    className: "d-flex justify-content-start align-items-center",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
+      lineNumber: 20,
       columnNumber: 4
     }
-  }, __jsx("h3", {
+  }, __jsx("h4", {
+    className: "text-secondary mb-0",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 21,
       columnNumber: 5
     }
   }, author), __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
+      lineNumber: 22,
       columnNumber: 5
     }
-  }, type)), __jsx("h5", {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 23,
+      columnNumber: 6
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-center",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24,
+      columnNumber: 7
+    }
+  }, __jsx("img", {
+    src: "/images/icons/star.png",
+    className: "icon mr-1",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25,
+      columnNumber: 8
+    }
+  }), "\u0418\u0437\u0431\u0440\u0430\u043D\u043D\u043E\u0435"))), __jsx("div", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29,
+      columnNumber: 5
+    }
+  }, bookTypes[+book_type])), __jsx("p", {
+    className: "text-md",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
       columnNumber: 4
     }
-  }, "\u0410\u043D\u043D\u043E\u0442\u0430\u0446\u0438\u044F \u043A \u043A\u043D\u0438\u0433\u0435 \"", title, "\""), __jsx("p", {
+  }, __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 32,
+      columnNumber: 5
+    }
+  }, "\u0410\u043D\u043D\u043E\u0442\u0430\u0446\u0438\u044F \u043A \u043A\u043D\u0438\u0433\u0435 \"", title, "\"")), __jsx("p", {
+    className: "text-md",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
       columnNumber: 4
     }
   }, description), __jsx("div", {
@@ -3705,28 +3759,28 @@ var productDescription = function productDescription(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 38,
       columnNumber: 4
     }
   }, __jsx("h2", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 39,
       columnNumber: 5
     }
   }, currentPrice, " \u0441\u0443\u043C"), __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 40,
       columnNumber: 5
     }
   }, __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 41,
       columnNumber: 6
     }
   }, __jsx("p", {
@@ -3734,7 +3788,7 @@ var productDescription = function productDescription(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 42,
       columnNumber: 7
     }
   }, price, " \u0441\u0443\u043C")))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
@@ -3742,7 +3796,7 @@ var productDescription = function productDescription(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 48,
       columnNumber: 4
     }
   }, isInCart ? "Удалить из корзины" : "Добавить в корзину"));
@@ -3870,48 +3924,30 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-var productDetails = function productDetails(_ref) {
-  var img = _ref.img,
-      title = _ref.title,
-      rate = _ref.rate,
-      details = _ref.details,
-      social = _ref.social;
-  var firstColumn = ["ID товара: ", "ISBN: ", "Страниц: ", "Оформление: ", "Иллюстрации: ", "Масса: ", "Размеры: ", "Подробнее: "];
-  var rows = []; // ATTENTION. The number of columns in both arrays must be the same!
-  // ELSE it will not display all rows
-
-  var j = 0;
-
-  for (var i in details) {
-    if (j < firstColumn.length) rows.push({
-      first: firstColumn[j],
-      second: details[i]
-    });
-    j++;
-  }
-
+var productDetails = function productDetails(props) {
+  var rows = [["ID товара: ", props.id], ["ISBN: ", props.isbn], ["Страниц: ", props.page_count], ["Оформление: ", props.formalization], ["Иллюстрации: ", props.illustration], ["Масса: ", props.mass], ["Размеры: ", props.size], ["Подробнее: ", props.link]];
   return __jsx("div", {
     className: _ProductDetails_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.ProductDetails,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 16,
       columnNumber: 3
     }
   }, __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 17,
       columnNumber: 4
     }
   }, __jsx("img", {
-    src: img,
-    alt: title,
+    src: props.image,
+    alt: props.title,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 18,
       columnNumber: 5
     }
   })), __jsx("div", {
@@ -3919,7 +3955,7 @@ var productDetails = function productDetails(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 20,
       columnNumber: 4
     }
   }, __jsx("h3", {
@@ -3927,37 +3963,37 @@ var productDetails = function productDetails(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 21,
       columnNumber: 5
     }
   }, "\u0420\u0435\u0439\u0442\u0438\u043D\u0433 \u043A\u043D\u0438\u0433\u0438"), __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["Stars"], {
-    rate: rate,
+    rate: Math.round(props.rate),
     isBig: true,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 22,
       columnNumber: 5
     }
   })), __jsx("table", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 25,
       columnNumber: 4
     }
   }, __jsx("thead", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 26,
       columnNumber: 5
     }
   }), __jsx("tbody", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 27,
       columnNumber: 5
     }
   }, rows.map(function (row, index) {
@@ -3966,24 +4002,24 @@ var productDetails = function productDetails(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 38,
+        lineNumber: 30,
         columnNumber: 8
       }
     }, __jsx("td", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 39,
+        lineNumber: 31,
         columnNumber: 9
       }
-    }, row.first), __jsx("td", {
+    }, row[0]), __jsx("td", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 40,
+        lineNumber: 32,
         columnNumber: 9
       }
-    }, row.second));
+    }, row[1]));
   }))));
 };
 
@@ -4767,12 +4803,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var review = function review(_ref) {
   var id = _ref.id,
-      img = _ref.img,
+      image = _ref.image,
       name = _ref.name,
       rate = _ref.rate,
-      text = _ref.text;
+      text = _ref.text,
+      user = _ref.user;
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    href: "/users/".concat(id),
+    href: "/users/".concat(user),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -4811,7 +4848,7 @@ var review = function review(_ref) {
       columnNumber: 7
     }
   }, __jsx("img", {
-    src: img,
+    src: image,
     alt: name,
     className: "img-small radius",
     __self: _this,
@@ -5591,8 +5628,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 var speaker = function speaker(_ref) {
-  var name = _ref.name,
-      role = _ref.role,
+  var fio = _ref.fio,
+      occupation = _ref.occupation,
       quote = _ref.quote,
       onClick = _ref.onClick;
   return __jsx("div", {
@@ -5610,14 +5647,14 @@ var speaker = function speaker(_ref) {
       lineNumber: 8,
       columnNumber: 4
     }
-  }, name), __jsx("p", {
+  }, fio), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 9,
       columnNumber: 4
     }
-  }, role), __jsx("p", {
+  }, occupation), __jsx("p", {
     className: _Speaker_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.Quote,
     __self: _this,
     __source: {
@@ -6424,7 +6461,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************!*\
   !*** ./components/index.js ***!
   \*****************************/
-/*! exports provided: Navbar, Footer, Logo, Heading, PreCarousel, SliderCarousel, Compilations, CompilationsCarousel, Products, ProductsCarousel, ImagesCarousel, Speaker, ReviewsCarousel, Reviews, Stars, PopularHeader, BookCategories, Categories, ProductDetails, ProductDescription, Comments, MakeOrder, Card, Modal, AuthModal, TopImage, Link, NavigationItems, Search */
+/*! exports provided: Navbar, Footer, Logo, Heading, PreCarousel, SliderCarousel, Compilations, CompilationsCarousel, Products, ProductsCarousel, ImagesCarousel, Speaker, ReviewsCarousel, Reviews, Stars, NewHeader, BookCategories, Categories, ProductDetails, ProductDescription, Comments, MakeOrder, Card, Modal, AuthModal, TopImage, Link, NavigationItems, NavItems, Search */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6474,8 +6511,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Stars_Stars__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Stars/Stars */ "./components/Stars/Stars.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Stars", function() { return _Stars_Stars__WEBPACK_IMPORTED_MODULE_14__["default"]; });
 
-/* harmony import */ var _PopularHeader_PopularHeader__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./PopularHeader/PopularHeader */ "./components/PopularHeader/PopularHeader.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PopularHeader", function() { return _PopularHeader_PopularHeader__WEBPACK_IMPORTED_MODULE_15__["default"]; });
+/* harmony import */ var _NewHeader_NewHeader__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./NewHeader/NewHeader */ "./components/NewHeader/NewHeader.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NewHeader", function() { return _NewHeader_NewHeader__WEBPACK_IMPORTED_MODULE_15__["default"]; });
 
 /* harmony import */ var _Categories_BookCategories_BookCategories__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./Categories/BookCategories/BookCategories */ "./components/Categories/BookCategories/BookCategories.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BookCategories", function() { return _Categories_BookCategories_BookCategories__WEBPACK_IMPORTED_MODULE_16__["default"]; });
@@ -6513,8 +6550,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ProfileNavigation_NavigationItems__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./ProfileNavigation/NavigationItems */ "./components/ProfileNavigation/NavigationItems.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NavigationItems", function() { return _ProfileNavigation_NavigationItems__WEBPACK_IMPORTED_MODULE_27__["default"]; });
 
-/* harmony import */ var _Search_Search__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./Search/Search */ "./components/Search/Search.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Search", function() { return _Search_Search__WEBPACK_IMPORTED_MODULE_28__["default"]; });
+/* harmony import */ var _Navigation_NavItems_NavItems__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./Navigation/NavItems/NavItems */ "./components/Navigation/NavItems/NavItems.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NavItems", function() { return _Navigation_NavItems_NavItems__WEBPACK_IMPORTED_MODULE_28__["default"]; });
+
+/* harmony import */ var _Search_Search__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./Search/Search */ "./components/Search/Search.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Search", function() { return _Search_Search__WEBPACK_IMPORTED_MODULE_29__["default"]; });
+
 
 
 
@@ -7604,11 +7645,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-
 var Layout = function Layout(_ref) {
   var children = _ref.children,
       cartCount = _ref.cartCount,
-      onAuth = _ref.onAuth;
+      onAuth = _ref.onAuth,
+      onLogout = _ref.onLogout,
+      isAuthorized = _ref.isAuthorized,
+      name = _ref.name;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
       isSignUp = _useState[0],
@@ -7665,11 +7708,25 @@ var Layout = function Layout(_ref) {
     event.preventDefault();
   };
 
+  var navItems = __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["NavItems"], {
+    name: name,
+    authModalShow: authModal.onShow,
+    cartCount: cartCount,
+    isAuthorized: isAuthorized,
+    onLogout: onLogout,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71,
+      columnNumber: 3
+    }
+  });
+
   return __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 80,
       columnNumber: 3
     }
   }, __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["AuthModal"], {
@@ -7682,24 +7739,26 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 81,
       columnNumber: 4
     }
   }), __jsx(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78,
+      lineNumber: 89,
       columnNumber: 4
     }
   }, __jsx("title", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 79,
+      lineNumber: 90,
       columnNumber: 5
     }
   }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Navbar"], {
+    name: name,
+    isAuthorized: isAuthorized,
     cartCount: cartCount,
     search: __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Search"], {
       control: searchControl,
@@ -7707,17 +7766,17 @@ var Layout = function Layout(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 83,
+        lineNumber: 96,
         columnNumber: 13
       }
     }),
-    authModalShow: authModal.onShow,
     booksCategories: categoryContext.categories,
     booksCategoryClicked: booksCategoryHandler,
+    navItems: navItems,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81,
+      lineNumber: 92,
       columnNumber: 4
     }
   }), __jsx("main", {
@@ -7725,21 +7784,21 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88,
+      lineNumber: 101,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["Container"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89,
+      lineNumber: 102,
       columnNumber: 5
     }
   }, children)), __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Footer"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91,
+      lineNumber: 104,
       columnNumber: 4
     }
   }));
@@ -7747,7 +7806,8 @@ var Layout = function Layout(_ref) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    isAuthorized: state.auth.token !== null
+    isAuthorized: state.auth.token !== null,
+    name: state.auth.name
   };
 };
 
@@ -7755,6 +7815,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     onAuth: function onAuth(name, email, phone, password, isSignup) {
       return dispatch(_store_actions_index__WEBPACK_IMPORTED_MODULE_2__["auth"](name, email, phone, password, isSignup));
+    },
+    onLogout: function onLogout() {
+      return dispatch(_store_actions_index__WEBPACK_IMPORTED_MODULE_2__["logout"]());
     }
   };
 };
@@ -13779,10 +13842,11 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ".NavItems_NavItems__15_nq {\n  display: flex;\n  align-items: center;\n  margin-left: 2rem; }\n  .NavItems_NavItems__15_nq > div {\n    cursor: pointer;\n    margin-left: .5rem; }\n", "",{"version":3,"sources":["NavItems.module.scss"],"names":[],"mappings":"AAAA;EACI,aAAa;EACb,mBAAmB;EACnB,iBAAiB,EAAA;EAHrB;IAOQ,eAAe;IACf,kBAAkB,EAAA","file":"NavItems.module.scss","sourcesContent":[".NavItems {\r\n    display: flex;\r\n    align-items: center;\r\n    margin-left: 2rem;\r\n\r\n\r\n    &>div {\r\n        cursor: pointer;\r\n        margin-left: .5rem;\r\n    }\r\n}"]}]);
+exports.push([module.i, ".NavItems_NavItems__15_nq {\n  display: flex;\n  align-items: center;\n  margin-left: 2rem; }\n  .NavItems_NavItems__15_nq > div {\n    cursor: pointer;\n    margin-left: .5rem; }\n\n.NavItems_CartRadius__13bTV {\n  background: #FFFFFF;\n  border: 0.5px solid #CCCCCC;\n  box-sizing: border-box;\n  border-radius: 50%;\n  padding: 6px;\n  text-align: center;\n  line-height: normal;\n  box-shadow: -5px -5px 10px #EDEDED, 5px 5px 10px rgba(0, 0, 0, 0.25), inset -2px -2px 3px rgba(117, 117, 117, 0.25); }\n", "",{"version":3,"sources":["NavItems.module.scss"],"names":[],"mappings":"AAAA;EACI,aAAa;EACb,mBAAmB;EACnB,iBAAiB,EAAA;EAHrB;IAOQ,eAAe;IACf,kBAAkB,EAAA;;AAI1B;EACI,mBAAmB;EACnB,2BAA2B;EAC3B,sBAAsB;EACtB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,mHAAmH,EAAA","file":"NavItems.module.scss","sourcesContent":[".NavItems {\r\n    display: flex;\r\n    align-items: center;\r\n    margin-left: 2rem;\r\n\r\n\r\n    &>div {\r\n        cursor: pointer;\r\n        margin-left: .5rem;\r\n    }\r\n}\r\n\r\n.CartRadius {\r\n    background: #FFFFFF;\r\n    border: 0.5px solid #CCCCCC;\r\n    box-sizing: border-box;\r\n    border-radius: 50%;\r\n    padding: 6px;\r\n    text-align: center;\r\n    line-height: normal;\r\n    box-shadow: -5px -5px 10px #EDEDED, 5px 5px 10px rgba(0, 0, 0, 0.25), inset -2px -2px 3px rgba(117, 117, 117, 0.25);\r\n\r\n}"]}]);
 // Exports
 exports.locals = {
-	"NavItems": "NavItems_NavItems__15_nq"
+	"NavItems": "NavItems_NavItems__15_nq",
+	"CartRadius": "NavItems_CartRadius__13bTV"
 };
 module.exports = exports;
 
@@ -14093,7 +14157,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ":root {\n  --accent: #024E8F;\n  --secondary: #777\r\n; }\n\n@font-face {\n  font-family: \"OpenSans\";\n  src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\"); }\n\nbody {\n  font-size: 16px;\n  position: relative;\n  font-family: \"OpenSans\", sans-serif !important; }\n\nimg {\n  width: 100%; }\n\np {\n  color: #777777; }\n\ndiv h1,\ndiv h2,\ndiv h3,\ndiv h4,\ndiv h5,\ndiv h6 {\n  font-weight: bold; }\n\ndiv p {\n  margin-bottom: 0; }\n\nul {\n  margin: 0;\n  padding: 0; }\n  ul li {\n    list-style-type: none; }\n\n.text-small {\n  font-size: .75rem; }\n\n.text-md {\n  font-size: .9rem; }\n\n.text-lg {\n  font-size: 1.1rem; }\n\n.text-big {\n  font-size: 1.2rem; }\n\n.text-underline {\n  text-decoration: underline; }\n\n.text-normal {\n  font-weight: normal; }\n\n.text-bold {\n  font-weight: bold; }\n\n.text-accent {\n  color: var(--accent); }\n\n.text-crossed {\n  text-decoration: line-through; }\n\n.text-secondary {\n  color: var(--secondary); }\n\n.text-black {\n  color: #000; }\n\n.text-light {\n  color: #CCCCCC; }\n\n.text-xsmall {\n  font-size: .5rem; }\n\n.icon {\n  height: 0.75rem;\n  width: auto; }\n  .icon-sm {\n    height: 1.2rem; }\n  .icon-md {\n    height: 1.5rem; }\n  .icon-big {\n    height: 2rem; }\n\n.img-small {\n  width: 50px;\n  height: 50px;\n  -o-object-fit: contain;\n     object-fit: contain; }\n\n.carousel-caption {\n  right: auto;\n  text-align: left;\n  bottom: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: left;\n  justify-content: center;\n  width: 300px;\n  color: var(--accent); }\n\n.carousel-control-prev, .carousel-control-next {\n  display: none; }\n\n.carousel-indicators {\n  right: auto; }\n  .carousel-indicators li {\n    width: 15px;\n    height: 15px;\n    border-radius: 50%;\n    background: transparent;\n    border: 1px solid #004A8B;\n    box-sizing: border-box; }\n    .carousel-indicators li.active {\n      background: #014C8D; }\n\n.react-multi-carousel-list {\n  box-sizing: border-box; }\n\n.radius {\n  border-radius: 50%; }\n\n.flex-columns {\n  display: flex;\n  flex-wrap: wrap;\n  padding-left: 0; }\n  .flex-columns li {\n    flex: 0 0 33.333333%; }\n  .flex-columns img {\n    height: 22px;\n    -o-object-fit: contain;\n       object-fit: contain; }\n\n.list a.active .category__tick {\n  display: block; }\n\n.list a.active p {\n  color: var(--accent); }\n\n.list a.active img {\n  -webkit-filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\n          filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%); }\n\n.list a * {\n  transition: .25s ease all;\n  color: #777; }\n\n.list a img {\n  -webkit-filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n          filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n  transition: none; }\n\n.list a:hover {\n  text-decoration: none;\n  color: var(--accent); }\n  .list a:hover img {\n    -webkit-filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%); }\n  .list a:hover * {\n    color: var(--accent); }\n\n.category__tick {\n  display: none; }\n\n.circle {\n  display: flex;\n  align-items: center;\n  font-size: .75rem;\n  justify-content: center;\n  background: #FF0000;\n  border-radius: 50%;\n  border: 1px solid white;\n  width: 1rem;\n  height: 1rem;\n  display: inline-block;\n  position: absolute;\n  bottom: -25%;\n  left: -25%; }\n  .circle * {\n    line-height: normal;\n    text-align: center;\n    width: 100%;\n    height: 100%;\n    color: white;\n    font-weight: bold; }\n", "",{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA;EACI,iBAAS;EACT;AAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uDAAuD,EAAA;;AAG3D;EACI,eAAe;EACf,kBAAkB;EAClB,8CAA8C,EAAA;;AAIlD;EACI,WAAW,EAAA;;AAIf;EACI,cAAc,EAAA;;AAGlB;;;;;;EAQQ,iBAAiB,EAAA;;AARzB;EAYQ,gBAAgB,EAAA;;AAIxB;EACI,SAAS;EACT,UAAU,EAAA;EAFd;IAKQ,qBAAqB,EAAA;;AAUzB;EACI,iBAAiB,EAAA;;AAGrB;EACI,gBAAgB,EAAA;;AAGpB;EACI,iBAAiB,EAAA;;AAGrB;EACI,iBAAiB,EAAA;;AAGrB;EACI,0BAA0B,EAAA;;AAG9B;EACI,mBAAmB,EAAA;;AAGvB;EACI,iBAAiB,EAAA;;AAGrB;EACI,oBAAoB,EAAA;;AAGxB;EACI,6BAA6B,EAAA;;AAGjC;EACI,uBAAuB,EAAA;;AAG3B;EACI,WAAW,EAAA;;AAGf;EACI,cAAc,EAAA;;AAIlB;EACI,gBAAgB,EAAA;;AAIxB;EACI,eAAe;EACf,WAAW,EAAA;EAEX;IACI,cAAc,EAAA;EAGlB;IACI,cACJ,EAAA;EAEA;IACI,YAAY,EAAA;;AAKhB;EACI,WAAW;EACX,YAAY;EACZ,sBAAmB;KAAnB,mBAAmB,EAAA;;AAO3B;EACI,WAAW;EACX,gBAAgB;EAChB,SAAS;EACT,MAAM;EACN,aAAa;EACb,sBAAsB;EACtB,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,oBAAoB,EAAA;;AAKpB;EAEI,aAAa,EAAA;;AAIrB;EACI,WAAW,EAAA;EADf;IAIQ,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,uBAAuB;IACvB,yBAAyB;IACzB,sBAAsB,EAAA;IAT9B;MAYY,mBAAmB,EAAA;;AAM/B;EACI,sBAAsB,EAAA;;AAG1B;EACI,kBAAkB,EAAA;;AAGtB;EACI,aAAa;EACb,eAAe;EACf,eAAe,EAAA;EAHnB;IAMQ,oBAAoB,EAAA;EAN5B;IAUQ,YAAY;IACZ,sBACJ;OADI,mBACJ,EAAA;;AAIJ;EAEQ,cAAc,EAAA;;AAFtB;EAMQ,oBAAoB,EAAA;;AAN5B;EAWQ,wGAAgG;UAAhG,gGAAgG,EAAA;;AAKxG;EAEQ,yBAAyB;EACzB,WAAW,EAAA;;AAHnB;EAOQ,sGAA8F;UAA9F,8FAA8F;EAC9F,gBACJ,EAAA;;AATJ;EAYQ,qBAAqB;EACrB,oBAAoB,EAAA;EAb5B;IAgBY,uGAA+F;YAA/F,+FAA+F,EAAA;EAhB3G;IAoBY,oBAAoB,EAAA;;AAKhC;EACI,aAAa,EAAA;;AAGjB;EACI,aAAa;EACb,mBAAmB;EACnB,iBAAiB;EACjB,uBAAuB;EACvB,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,WAAW;EACX,YAAY;EACZ,qBAAqB;EACrB,kBAAkB;EAClB,YAAY;EACZ,UAAU,EAAA;EAbd;IAgBQ,mBAAmB;IACnB,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,iBAAiB,EAAA","file":"styles.scss","sourcesContent":[":root {\r\n    --accent: #024E8F;\r\n    --secondary: #777\r\n}\r\n\r\n@font-face {\r\n    font-family: \"OpenSans\";\r\n    src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\");\r\n}\r\n\r\nbody {\r\n    font-size: 16px;\r\n    position: relative;\r\n    font-family: \"OpenSans\", sans-serif !important;\r\n}\r\n\r\n\r\nimg {\r\n    width: 100%;\r\n}\r\n\r\n\r\np {\r\n    color: #777777;\r\n}\r\n\r\ndiv {\r\n\r\n    h1,\r\n    h2,\r\n    h3,\r\n    h4,\r\n    h5,\r\n    h6 {\r\n        font-weight: bold;\r\n    }\r\n\r\n    p {\r\n        margin-bottom: 0;\r\n    }\r\n}\r\n\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n\r\n    li {\r\n        list-style-type: none;\r\n    }\r\n}\r\n\r\np {\r\n    // line-height: normal;\r\n}\r\n\r\n.text {\r\n\r\n    &-small {\r\n        font-size: .75rem;\r\n    }\r\n\r\n    &-md {\r\n        font-size: .9rem;\r\n    }\r\n\r\n    &-lg {\r\n        font-size: 1.1rem;\r\n    }\r\n\r\n    &-big {\r\n        font-size: 1.2rem;\r\n    }\r\n\r\n    &-underline {\r\n        text-decoration: underline;\r\n    }\r\n\r\n    &-normal {\r\n        font-weight: normal;\r\n    }\r\n\r\n    &-bold {\r\n        font-weight: bold;\r\n    }\r\n\r\n    &-accent {\r\n        color: var(--accent)\r\n    }\r\n\r\n    &-crossed {\r\n        text-decoration: line-through;\r\n    }\r\n\r\n    &-secondary {\r\n        color: var(--secondary)\r\n    }\r\n\r\n    &-black {\r\n        color: #000;\r\n    }\r\n\r\n    &-light {\r\n        color: #CCCCCC;\r\n    }\r\n\r\n\r\n    &-xsmall {\r\n        font-size: .5rem;\r\n    }\r\n}\r\n\r\n.icon {\r\n    height: 0.75rem;\r\n    width: auto;\r\n\r\n    &-sm {\r\n        height: 1.2rem;\r\n    }\r\n\r\n    &-md {\r\n        height: 1.5rem\r\n    }\r\n\r\n    &-big {\r\n        height: 2rem;\r\n    }\r\n}\r\n\r\n.img {\r\n    &-small {\r\n        width: 50px;\r\n        height: 50px;\r\n        object-fit: contain;\r\n    }\r\n\r\n}\r\n\r\n// Carousel\r\n// Dots\r\n.carousel-caption {\r\n    right: auto;\r\n    text-align: left;\r\n    bottom: 0;\r\n    top: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: left;\r\n    justify-content: center;\r\n    width: 300px;\r\n    color: var(--accent);\r\n}\r\n\r\n.carousel-control {\r\n\r\n    &-prev,\r\n    &-next {\r\n        display: none;\r\n    }\r\n}\r\n\r\n.carousel-indicators {\r\n    right: auto;\r\n\r\n    li {\r\n        width: 15px;\r\n        height: 15px;\r\n        border-radius: 50%;\r\n        background: transparent;\r\n        border: 1px solid #004A8B;\r\n        box-sizing: border-box;\r\n\r\n        &.active {\r\n            background: #014C8D;\r\n        }\r\n    }\r\n}\r\n\r\n// Slider Carousel\r\n.react-multi-carousel-list {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.radius {\r\n    border-radius: 50%;\r\n}\r\n\r\n.flex-columns {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    padding-left: 0;\r\n\r\n    li {\r\n        flex: 0 0 33.333333%;\r\n    }\r\n\r\n    img {\r\n        height: 22px;\r\n        object-fit: contain\r\n    }\r\n\r\n}\r\n\r\n.list a.active {\r\n    .category__tick {\r\n        display: block;\r\n    }\r\n\r\n    p {\r\n        color: var(--accent);\r\n\r\n    }\r\n\r\n    img {\r\n        filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\r\n    }\r\n\r\n}\r\n\r\n.list a {\r\n    * {\r\n        transition: .25s ease all;\r\n        color: #777;\r\n    }\r\n\r\n    img {\r\n        filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\r\n        transition: none\r\n    }\r\n\r\n    &:hover {\r\n        text-decoration: none;\r\n        color: var(--accent);\r\n\r\n        img {\r\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\r\n        }\r\n\r\n        * {\r\n            color: var(--accent)\r\n        }\r\n    }\r\n}\r\n\r\n.category__tick {\r\n    display: none;\r\n}\r\n\r\n.circle {\r\n    display: flex;\r\n    align-items: center;\r\n    font-size: .75rem;\r\n    justify-content: center;\r\n    background: #FF0000;\r\n    border-radius: 50%;\r\n    border: 1px solid white;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    display: inline-block;\r\n    position: absolute;\r\n    bottom: -25%;\r\n    left: -25%;\r\n\r\n    * {\r\n        line-height: normal;\r\n        text-align: center;\r\n        width: 100%;\r\n        height: 100%;\r\n        color: white;\r\n        font-weight: bold;\r\n    }\r\n}"]}]);
+exports.push([module.i, ":root {\n  --accent: #024E8F;\n  --secondary: #777\r\n; }\n\n@font-face {\n  font-family: \"OpenSans\";\n  src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\"); }\n\nbody {\n  font-size: 16px;\n  position: relative;\n  font-family: \"OpenSans\", sans-serif !important; }\n\nimg {\n  width: 100%; }\n\np {\n  color: #777777; }\n\ndiv h1,\ndiv h2,\ndiv h3,\ndiv h4,\ndiv h5,\ndiv h6 {\n  font-weight: bold; }\n\ndiv p {\n  margin-bottom: 0; }\n\nul {\n  margin: 0;\n  padding: 0; }\n  ul li {\n    list-style-type: none; }\n\n.text-small {\n  font-size: .75rem; }\n\n.text-md {\n  font-size: .9rem; }\n\n.text-lg {\n  font-size: 1.1rem; }\n\n.text-big {\n  font-size: 1.2rem; }\n\n.text-underline {\n  text-decoration: underline; }\n\n.text-normal {\n  font-weight: normal; }\n\n.text-bold {\n  font-weight: bold; }\n\n.text-accent {\n  color: var(--accent); }\n\n.text-crossed {\n  text-decoration: line-through; }\n\n.text-secondary {\n  color: var(--secondary); }\n\n.text-black {\n  color: #000; }\n\n.text-light {\n  color: #CCCCCC; }\n\n.text-xsmall {\n  font-size: .5rem; }\n\n.icon {\n  height: 0.75rem;\n  width: auto; }\n  .icon-sm {\n    height: 1.2rem; }\n  .icon-md {\n    height: 1.5rem; }\n  .icon-big {\n    height: 2rem; }\n\n.img-small {\n  width: 50px;\n  height: 50px;\n  -o-object-fit: contain;\n     object-fit: contain; }\n\n.carousel-caption {\n  right: auto;\n  text-align: left;\n  bottom: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: left;\n  justify-content: center;\n  width: 300px;\n  color: var(--accent); }\n\n.carousel-control-prev, .carousel-control-next {\n  display: none; }\n\n.carousel-indicators {\n  right: auto; }\n  .carousel-indicators li {\n    width: 15px;\n    height: 15px;\n    border-radius: 50%;\n    background: transparent;\n    border: 1px solid #004A8B;\n    box-sizing: border-box; }\n    .carousel-indicators li.active {\n      background: #014C8D; }\n\n.react-multi-carousel-list {\n  box-sizing: border-box; }\n\n.radius {\n  border-radius: 50%; }\n\n.flex-columns {\n  display: flex;\n  flex-wrap: wrap;\n  padding-left: 0; }\n  .flex-columns li {\n    flex: 0 0 33.333333%; }\n  .flex-columns img {\n    height: 22px;\n    -o-object-fit: contain;\n       object-fit: contain; }\n\n.list a.active .category__tick {\n  display: block; }\n\n.list a.active p {\n  color: var(--accent); }\n\n.list a.active img {\n  -webkit-filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\n          filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%); }\n\n.list a * {\n  transition: .25s ease all;\n  color: #777; }\n\n.list a img {\n  -webkit-filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n          filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n  transition: none; }\n\n.list a:hover {\n  text-decoration: none;\n  color: var(--accent); }\n  .list a:hover img {\n    -webkit-filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%); }\n  .list a:hover * {\n    color: var(--accent); }\n\n.category__tick {\n  display: none; }\n\n.circle {\n  display: flex;\n  align-items: center;\n  font-size: .75rem;\n  justify-content: center;\n  background: #FF0000;\n  border-radius: 50%;\n  border: 1px solid white;\n  width: 1rem;\n  height: 1rem;\n  z-index: 4;\n  display: inline-block;\n  position: absolute;\n  bottom: -4px;\n  left: -4px;\n  padding: 1px 0;\n  line-height: normal; }\n  .circle * {\n    line-height: normal;\n    text-align: center;\n    width: 100%;\n    height: 100%;\n    color: white;\n    font-weight: bold; }\n", "",{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA;EACI,iBAAS;EACT;AAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uDAAuD,EAAA;;AAG3D;EACI,eAAe;EACf,kBAAkB;EAClB,8CAA8C,EAAA;;AAIlD;EACI,WAAW,EAAA;;AAIf;EACI,cAAc,EAAA;;AAGlB;;;;;;EAQQ,iBAAiB,EAAA;;AARzB;EAYQ,gBAAgB,EAAA;;AAIxB;EACI,SAAS;EACT,UAAU,EAAA;EAFd;IAKQ,qBAAqB,EAAA;;AAUzB;EACI,iBAAiB,EAAA;;AAGrB;EACI,gBAAgB,EAAA;;AAGpB;EACI,iBAAiB,EAAA;;AAGrB;EACI,iBAAiB,EAAA;;AAGrB;EACI,0BAA0B,EAAA;;AAG9B;EACI,mBAAmB,EAAA;;AAGvB;EACI,iBAAiB,EAAA;;AAGrB;EACI,oBAAoB,EAAA;;AAGxB;EACI,6BAA6B,EAAA;;AAGjC;EACI,uBAAuB,EAAA;;AAG3B;EACI,WAAW,EAAA;;AAGf;EACI,cAAc,EAAA;;AAIlB;EACI,gBAAgB,EAAA;;AAIxB;EACI,eAAe;EACf,WAAW,EAAA;EAEX;IACI,cAAc,EAAA;EAGlB;IACI,cACJ,EAAA;EAEA;IACI,YAAY,EAAA;;AAKhB;EACI,WAAW;EACX,YAAY;EACZ,sBAAmB;KAAnB,mBAAmB,EAAA;;AAO3B;EACI,WAAW;EACX,gBAAgB;EAChB,SAAS;EACT,MAAM;EACN,aAAa;EACb,sBAAsB;EACtB,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,oBAAoB,EAAA;;AAKpB;EAEI,aAAa,EAAA;;AAIrB;EACI,WAAW,EAAA;EADf;IAIQ,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,uBAAuB;IACvB,yBAAyB;IACzB,sBAAsB,EAAA;IAT9B;MAYY,mBAAmB,EAAA;;AAM/B;EACI,sBAAsB,EAAA;;AAG1B;EACI,kBAAkB,EAAA;;AAGtB;EACI,aAAa;EACb,eAAe;EACf,eAAe,EAAA;EAHnB;IAMQ,oBAAoB,EAAA;EAN5B;IAUQ,YAAY;IACZ,sBACJ;OADI,mBACJ,EAAA;;AAIJ;EAEQ,cAAc,EAAA;;AAFtB;EAMQ,oBAAoB,EAAA;;AAN5B;EAWQ,wGAAgG;UAAhG,gGAAgG,EAAA;;AAKxG;EAEQ,yBAAyB;EACzB,WAAW,EAAA;;AAHnB;EAOQ,sGAA8F;UAA9F,8FAA8F;EAC9F,gBACJ,EAAA;;AATJ;EAYQ,qBAAqB;EACrB,oBAAoB,EAAA;EAb5B;IAgBY,uGAA+F;YAA/F,+FAA+F,EAAA;EAhB3G;IAoBY,oBAAoB,EAAA;;AAKhC;EACI,aAAa,EAAA;;AAGjB;EACI,aAAa;EACb,mBAAmB;EACnB,iBAAiB;EACjB,uBAAuB;EACvB,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,WAAW;EACX,YAAY;EACZ,UAAU;EACV,qBAAqB;EACrB,kBAAkB;EAClB,YAAY;EACZ,UAAU;EACV,cAAc;EACd,mBAAmB,EAAA;EAhBvB;IAmBQ,mBAAmB;IACnB,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,iBAAiB,EAAA","file":"styles.scss","sourcesContent":[":root {\r\n    --accent: #024E8F;\r\n    --secondary: #777\r\n}\r\n\r\n@font-face {\r\n    font-family: \"OpenSans\";\r\n    src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\");\r\n}\r\n\r\nbody {\r\n    font-size: 16px;\r\n    position: relative;\r\n    font-family: \"OpenSans\", sans-serif !important;\r\n}\r\n\r\n\r\nimg {\r\n    width: 100%;\r\n}\r\n\r\n\r\np {\r\n    color: #777777;\r\n}\r\n\r\ndiv {\r\n\r\n    h1,\r\n    h2,\r\n    h3,\r\n    h4,\r\n    h5,\r\n    h6 {\r\n        font-weight: bold;\r\n    }\r\n\r\n    p {\r\n        margin-bottom: 0;\r\n    }\r\n}\r\n\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n\r\n    li {\r\n        list-style-type: none;\r\n    }\r\n}\r\n\r\np {\r\n    // line-height: normal;\r\n}\r\n\r\n.text {\r\n\r\n    &-small {\r\n        font-size: .75rem;\r\n    }\r\n\r\n    &-md {\r\n        font-size: .9rem;\r\n    }\r\n\r\n    &-lg {\r\n        font-size: 1.1rem;\r\n    }\r\n\r\n    &-big {\r\n        font-size: 1.2rem;\r\n    }\r\n\r\n    &-underline {\r\n        text-decoration: underline;\r\n    }\r\n\r\n    &-normal {\r\n        font-weight: normal;\r\n    }\r\n\r\n    &-bold {\r\n        font-weight: bold;\r\n    }\r\n\r\n    &-accent {\r\n        color: var(--accent)\r\n    }\r\n\r\n    &-crossed {\r\n        text-decoration: line-through;\r\n    }\r\n\r\n    &-secondary {\r\n        color: var(--secondary)\r\n    }\r\n\r\n    &-black {\r\n        color: #000;\r\n    }\r\n\r\n    &-light {\r\n        color: #CCCCCC;\r\n    }\r\n\r\n\r\n    &-xsmall {\r\n        font-size: .5rem;\r\n    }\r\n}\r\n\r\n.icon {\r\n    height: 0.75rem;\r\n    width: auto;\r\n\r\n    &-sm {\r\n        height: 1.2rem;\r\n    }\r\n\r\n    &-md {\r\n        height: 1.5rem\r\n    }\r\n\r\n    &-big {\r\n        height: 2rem;\r\n    }\r\n}\r\n\r\n.img {\r\n    &-small {\r\n        width: 50px;\r\n        height: 50px;\r\n        object-fit: contain;\r\n    }\r\n\r\n}\r\n\r\n// Carousel\r\n// Dots\r\n.carousel-caption {\r\n    right: auto;\r\n    text-align: left;\r\n    bottom: 0;\r\n    top: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: left;\r\n    justify-content: center;\r\n    width: 300px;\r\n    color: var(--accent);\r\n}\r\n\r\n.carousel-control {\r\n\r\n    &-prev,\r\n    &-next {\r\n        display: none;\r\n    }\r\n}\r\n\r\n.carousel-indicators {\r\n    right: auto;\r\n\r\n    li {\r\n        width: 15px;\r\n        height: 15px;\r\n        border-radius: 50%;\r\n        background: transparent;\r\n        border: 1px solid #004A8B;\r\n        box-sizing: border-box;\r\n\r\n        &.active {\r\n            background: #014C8D;\r\n        }\r\n    }\r\n}\r\n\r\n// Slider Carousel\r\n.react-multi-carousel-list {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.radius {\r\n    border-radius: 50%;\r\n}\r\n\r\n.flex-columns {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    padding-left: 0;\r\n\r\n    li {\r\n        flex: 0 0 33.333333%;\r\n    }\r\n\r\n    img {\r\n        height: 22px;\r\n        object-fit: contain\r\n    }\r\n\r\n}\r\n\r\n.list a.active {\r\n    .category__tick {\r\n        display: block;\r\n    }\r\n\r\n    p {\r\n        color: var(--accent);\r\n\r\n    }\r\n\r\n    img {\r\n        filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\r\n    }\r\n\r\n}\r\n\r\n.list a {\r\n    * {\r\n        transition: .25s ease all;\r\n        color: #777;\r\n    }\r\n\r\n    img {\r\n        filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\r\n        transition: none\r\n    }\r\n\r\n    &:hover {\r\n        text-decoration: none;\r\n        color: var(--accent);\r\n\r\n        img {\r\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\r\n        }\r\n\r\n        * {\r\n            color: var(--accent)\r\n        }\r\n    }\r\n}\r\n\r\n.category__tick {\r\n    display: none;\r\n}\r\n\r\n.circle {\r\n    display: flex;\r\n    align-items: center;\r\n    font-size: .75rem;\r\n    justify-content: center;\r\n    background: #FF0000;\r\n    border-radius: 50%;\r\n    border: 1px solid white;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    z-index: 4;\r\n    display: inline-block;\r\n    position: absolute;\r\n    bottom: -4px;\r\n    left: -4px;\r\n    padding: 1px 0;\r\n    line-height: normal;\r\n\r\n    * {\r\n        line-height: normal;\r\n        text-align: center;\r\n        width: 100%;\r\n        height: 100%;\r\n        color: white;\r\n        font-weight: bold;\r\n    }\r\n}"]}]);
 // Exports
 module.exports = exports;
 

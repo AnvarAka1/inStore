@@ -5,7 +5,7 @@ const imagesCarousel = ({ items, nextClicked, prevClicked }) => {
 	const imagesView = items.map(item => {
 		return (
 			<div key={item.id} className={classes.Image}>
-				<img src={item.img} alt={item.name} />
+				<img src={item.image} alt={item.fio} />
 				<div />
 			</div>
 		);
