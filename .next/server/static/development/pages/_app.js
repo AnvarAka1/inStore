@@ -637,6 +637,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 const category = ({
   id,
   children,
+  link,
   icon,
   isStatic
 }) => {
@@ -648,14 +649,10 @@ const category = ({
       lineNumber: 7,
       columnNumber: 3
     }
-  }, __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"], {
-    href: {
-      pathname: "/books/categories/[id]",
-      query: !isStatic && {
-        janra: id
-      }
-    },
-    as: isStatic ? `/books/categories/${id}` : `${id}`,
+  }, __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"] // href={{ pathname: "/books/categories/[id]", query: !isStatic && { janra: id } }}
+  , {
+    href: link // as={isStatic ? `/books/categories/${id}` : `${id}`}
+    ,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -666,7 +663,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 13,
       columnNumber: 5
     }
   }, __jsx("div", {
@@ -674,7 +671,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 14,
       columnNumber: 6
     }
   }, __jsx("div", {
@@ -682,7 +679,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 15,
       columnNumber: 7
     }
   }, isStatic && __jsx("img", {
@@ -692,7 +689,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 16,
       columnNumber: 21
     }
   }), __jsx("p", {
@@ -700,7 +697,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 17,
       columnNumber: 8
     }
   }, children)), __jsx("div", {
@@ -708,7 +705,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 19,
       columnNumber: 7
     }
   }, __jsx("img", {
@@ -718,7 +715,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 20,
       columnNumber: 8
     }
   }))))));
@@ -2405,7 +2402,6 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const navbar = ({
   booksCategories,
-  booksCategoryClicked,
   search,
   navItems
 }) => {
@@ -2426,40 +2422,35 @@ const navbar = ({
       lineNumber: 11,
       columnNumber: 4
     }
-  }), "\u041A\u043D\u0438\u0433\u0438"); // const videolessons = (
-  // 	<React.Fragment>
-  // 		<img src="/images/icons/video.png" className="icon icon-sm mr-1" alt="Видеокурсы" />Видеокурсы
-  // 	</React.Fragment>
-  // );
-
+  }), "\u041A\u043D\u0438\u0433\u0438");
 
   return __jsx("header", {
     className: _Navbar_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Navbar,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 16,
       columnNumber: 3
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 17,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 18,
       columnNumber: 5
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 19,
       columnNumber: 6
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"], {
@@ -2467,7 +2458,7 @@ const navbar = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 20,
       columnNumber: 7
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -2475,21 +2466,21 @@ const navbar = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 21,
       columnNumber: 8
     }
   }, __jsx("a", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 22,
       columnNumber: 9
     }
   }, __jsx(___WEBPACK_IMPORTED_MODULE_4__["Logo"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 23,
       columnNumber: 10
     }
   }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"].Toggle, {
@@ -2497,7 +2488,7 @@ const navbar = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 27,
       columnNumber: 8
     }
   }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"].Collapse, {
@@ -2505,7 +2496,7 @@ const navbar = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 28,
       columnNumber: 8
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"], {
@@ -2513,7 +2504,7 @@ const navbar = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 29,
       columnNumber: 9
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"], {
@@ -2523,20 +2514,34 @@ const navbar = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 30,
       columnNumber: 10
     }
   }, booksCategories.map(cat => {
     return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Item, {
       key: cat.id,
-      onClick: () => booksCategoryClicked(cat.id),
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 37,
+        lineNumber: 33,
         columnNumber: 13
       }
-    }, cat.title);
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      href: cat.id < 0 ? "/books/categories" : `/books/categories/${cat.id}`,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 34,
+        columnNumber: 14
+      }
+    }, __jsx("a", {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 43,
+        columnNumber: 15
+      }
+    }, cat.title)));
   }))), search, navItems))))));
 };
 
@@ -3305,7 +3310,7 @@ const products = ({
       }
     }, __jsx(_Product_Product__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, item, {
       isVideo: isVideo,
-      onAddRemoveItem: onAddRemoveItem ? () => onAddRemoveItem(item.id) : null,
+      onAddRemoveItem: onAddRemoveItem ? () => onAddRemoveItem(item) : null,
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
@@ -3573,14 +3578,12 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const review = ({
   id,
-  image,
-  name,
   rate,
   text,
   user
 }) => {
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    href: `/users/${user}`,
+    href: `/users/${user.id}`,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -3619,8 +3622,8 @@ const review = ({
       columnNumber: 7
     }
   }, __jsx("img", {
-    src: image,
-    alt: name,
+    src: user.avatar,
+    alt: user.name,
     className: "img-small radius",
     __self: undefined,
     __source: {
@@ -3644,7 +3647,7 @@ const review = ({
       lineNumber: 15,
       columnNumber: 8
     }
-  }, name), __jsx(___WEBPACK_IMPORTED_MODULE_2__["Stars"], {
+  }, user.fio), __jsx(___WEBPACK_IMPORTED_MODULE_2__["Stars"], {
     rate: rate,
     __self: undefined,
     __source: {
@@ -4471,6 +4474,7 @@ const formikGroup = ({
   name,
   placeholder,
   options,
+  autoComplete,
   disabled
 }) => {
   return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
@@ -4478,7 +4482,7 @@ const formikGroup = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 19,
       columnNumber: 3
     }
   }, children && __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
@@ -4486,12 +4490,13 @@ const formikGroup = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 20,
       columnNumber: 17
     }
   }, children), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Control, {
     value: value,
     type: type,
+    autoComplete: autoComplete,
     name: name,
     disabled: disabled,
     placeholder: placeholder,
@@ -4501,7 +4506,7 @@ const formikGroup = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
+      lineNumber: 21,
       columnNumber: 4
     }
   }, options ? options.map((option, index) => {
@@ -4511,7 +4516,7 @@ const formikGroup = ({
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22,
+        lineNumber: 35,
         columnNumber: 8
       }
     }, option.title);
@@ -4520,7 +4525,7 @@ const formikGroup = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 42,
       columnNumber: 4
     }
   }, __jsx(formik__WEBPACK_IMPORTED_MODULE_2__["ErrorMessage"], {
@@ -4528,7 +4533,7 @@ const formikGroup = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 43,
       columnNumber: 5
     }
   })));
@@ -4703,15 +4708,23 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./helpers/utils.js ***!
   \**************************/
-/*! exports provided: categorySelector, convertFrontToBackDate, convertBackToFrontDate, formCheckValidity */
+/*! exports provided: parseCookies, categorySelector, convertFrontToBackDate, convertBackToFrontDate, formCheckValidity */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseCookies", function() { return parseCookies; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "categorySelector", function() { return categorySelector; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "convertFrontToBackDate", function() { return convertFrontToBackDate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "convertBackToFrontDate", function() { return convertBackToFrontDate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "formCheckValidity", function() { return formCheckValidity; });
+/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cookie */ "cookie");
+/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cookie__WEBPACK_IMPORTED_MODULE_0__);
+
+const parseCookies = req => {
+  // isServer ? "" : ""
+  return cookie__WEBPACK_IMPORTED_MODULE_0___default.a.parse(req ? req.headers.cookie || "" : document.cookie);
+};
 const categorySelector = (id, categories, _selectedId) => {
   if (id === _selectedId) return null;
 
@@ -4741,6 +4754,10 @@ const convertFrontToBackDate = date => {
   return `${day}-${month}-${year}`;
 };
 const convertBackToFrontDate = date => {
+  if (!date) {
+    return "";
+  }
+
   const year = date.substring(6, 10);
   const month = date.substring(3, 5);
   const day = date.substring(0, 2);
@@ -5518,12 +5535,14 @@ const useTable = (isLoading = false) => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
-/* harmony import */ var _axios_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../axios-api */ "./axios-api.js");
+/* harmony import */ var _lib_categories__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/categories */ "./lib/categories.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
+/* harmony import */ var _axios_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../axios-api */ "./axios-api.js");
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\layouts\\CategoriesLayout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -5541,7 +5560,7 @@ const CategoriesLayout = props => {
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     _isMounted = true;
-    _axios_api__WEBPACK_IMPORTED_MODULE_3__["default"].get("genres").then(res => {
+    _axios_api__WEBPACK_IMPORTED_MODULE_4__["default"].get("genres").then(res => {
       if (_isMounted) setCategories(res.data.results);
     }).catch(err => {
       console.log(err);
@@ -5550,14 +5569,14 @@ const CategoriesLayout = props => {
     });
     return () => _isMounted = false;
   }, []);
-  return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+  return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 26,
       columnNumber: 3
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
     sm: 3,
     __self: undefined,
     __source: {
@@ -5565,8 +5584,8 @@ const CategoriesLayout = props => {
       lineNumber: 27,
       columnNumber: 4
     }
-  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Categories"], {
-    items: getStaticCats(),
+  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_3__["Categories"], {
+    items: Object(_lib_categories__WEBPACK_IMPORTED_MODULE_1__["getStaticCategories"])(),
     isStatic: true,
     __self: undefined,
     __source: {
@@ -5574,7 +5593,7 @@ const CategoriesLayout = props => {
       lineNumber: 28,
       columnNumber: 5
     }
-  }), !loading && __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Categories"], {
+  }), !loading && __jsx(_components___WEBPACK_IMPORTED_MODULE_3__["Categories"], {
     items: categories,
     __self: undefined,
     __source: {
@@ -5582,7 +5601,7 @@ const CategoriesLayout = props => {
       lineNumber: 29,
       columnNumber: 18
     }
-  })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+  })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
     sm: 9,
     __self: undefined,
     __source: {
@@ -5592,28 +5611,6 @@ const CategoriesLayout = props => {
     }
   }, props.children));
 };
-
-const getStaticCats = () => [{
-  id: 0,
-  title: "Все",
-  icon: "/images/icons/all.png"
-}, {
-  id: 1,
-  title: "Сборники",
-  icon: "/images/icons/compilations.png"
-}, {
-  id: 2,
-  title: "Аудиокниги",
-  icon: "/images/icons/audio.png"
-}, {
-  id: 3,
-  title: "Печатные книги",
-  icon: "/images/icons/book.png"
-}, {
-  id: 4,
-  title: "Электронные книги",
-  icon: "/images/icons/pdf.png"
-}];
 
 /* harmony default export */ __webpack_exports__["default"] = (CategoriesLayout);
 
@@ -5633,17 +5630,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_actions_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/actions/index */ "./store/actions/index.js");
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/head */ "next/head");
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _store_CategoryContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/CategoryContext */ "./store/CategoryContext.js");
-/* harmony import */ var _hooks___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/ */ "./hooks/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
+/* harmony import */ var _lib_categories__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/categories */ "./lib/categories.js");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/head */ "next/head");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _store_CategoryContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store/CategoryContext */ "./store/CategoryContext.js");
+/* harmony import */ var _hooks___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/ */ "./hooks/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\layouts\\Layout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -5666,34 +5665,33 @@ const Layout = ({
     0: isSignUp,
     1: setIsSignUp
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true);
-  const authModal = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useModal"])();
-  const searchControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])();
-  const categoryContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_5__["default"]);
-  const nameControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  const authModal = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useModal"])();
+  const searchControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])();
+  const nameControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Ф.И.О"
   });
-  const emailControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  const emailControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Эл. почта"
   });
-  const phoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  const phoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Номер телефона"
   });
-  const fPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  const fPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Введите пароль",
     type: "password"
   });
-  const sPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  const sPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Подтвердите пароль",
     type: "password"
   });
-  const emailPhoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  const emailPhoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Электронная почта или номер телефона"
   });
-  const passwordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  const passwordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Введите пароль",
     type: "password"
   });
-  const checkboxControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])();
+  const checkboxControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])();
 
   const modeHandler = mode => {
     setIsSignUp(mode);
@@ -5708,16 +5706,11 @@ const Layout = ({
     console.log("Auth submitted!");
   };
 
-  const booksCategoryHandler = id => {
-    categoryContext.categoryHandler(id);
-    next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push("/books");
-  };
-
   const onSearch = event => {
     event.preventDefault();
   };
 
-  const navItems = __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["NavItems"], {
+  const navItems = __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["NavItems"], {
     name: name,
     authModalShow: authModal.onShow,
     cartCount: cartCount,
@@ -5726,7 +5719,7 @@ const Layout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 66,
       columnNumber: 3
     }
   });
@@ -5735,10 +5728,10 @@ const Layout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80,
+      lineNumber: 75,
       columnNumber: 3
     }
-  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["AuthModal"], {
+  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["AuthModal"], {
     controls: [authControls, regControls],
     isSignUp: isSignUp,
     modal: authModal,
@@ -5748,44 +5741,43 @@ const Layout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81,
+      lineNumber: 76,
       columnNumber: 4
     }
-  }), __jsx(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, {
+  }), __jsx(next_head__WEBPACK_IMPORTED_MODULE_4___default.a, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89,
+      lineNumber: 84,
       columnNumber: 4
     }
   }, __jsx("title", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90,
+      lineNumber: 85,
       columnNumber: 5
     }
-  }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Navbar"], {
+  }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["Navbar"], {
     name: name,
     isAuthorized: isAuthorized,
     cartCount: cartCount,
-    search: __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Search"], {
+    search: __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["Search"], {
       control: searchControl,
       onSearch: onSearch,
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 96,
+        lineNumber: 91,
         columnNumber: 13
       }
     }),
-    booksCategories: categoryContext.categories,
-    booksCategoryClicked: booksCategoryHandler,
+    booksCategories: Object(_lib_categories__WEBPACK_IMPORTED_MODULE_3__["getStaticCategories"])(),
     navItems: navItems,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92,
+      lineNumber: 87,
       columnNumber: 4
     }
   }), __jsx("main", {
@@ -5793,21 +5785,21 @@ const Layout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101,
+      lineNumber: 95,
       columnNumber: 4
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["Container"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["Container"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102,
+      lineNumber: 96,
       columnNumber: 5
     }
-  }, children)), __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Footer"], {
+  }, children)), __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["Footer"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 104,
+      lineNumber: 98,
       columnNumber: 4
     }
   }));
@@ -5944,6 +5936,45 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+/***/ }),
+
+/***/ "./lib/categories.js":
+/*!***************************!*\
+  !*** ./lib/categories.js ***!
+  \***************************/
+/*! exports provided: getStaticCategories */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStaticCategories", function() { return getStaticCategories; });
+const getStaticCategories = () => [{
+  id: 0,
+  link: "/all",
+  title: "Все",
+  icon: "/images/icons/all.png"
+}, {
+  id: 1,
+  link: "/collections",
+  title: "Сборники",
+  icon: "/images/icons/compilations.png"
+}, {
+  id: 2,
+  link: "/audio-books",
+  title: "Аудиокниги",
+  icon: "/images/icons/audio.png"
+}, {
+  id: 3,
+  link: "/printed-books",
+  title: "Печатные книги",
+  icon: "/images/icons/book.png"
+}, {
+  id: 4,
+  link: "/e-books",
+  title: "Электронные книги",
+  icon: "/images/icons/pdf.png"
+}];
 
 /***/ }),
 
@@ -8360,6 +8391,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authCheckState", function() { return authCheckState; });
 /* harmony import */ var _actionTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actionTypes */ "./store/actions/actionTypes.js");
 /* harmony import */ var _axios_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../axios-api */ "./axios-api.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "js-cookie");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 const authStart = () => {
@@ -8381,6 +8415,7 @@ const authFail = error => {
   };
 };
 const logout = () => {
+  js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.remove("token");
   localStorage.removeItem("token");
   localStorage.removeItem("name");
   return {
@@ -8421,11 +8456,12 @@ const auth = (name, email, phone, password, isSignup) => {
       // const expirationDate = new Date(new Date().getTime() + data.expires_in * 1000);
 
       console.log(response.data.token);
+      js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.set("token", response.data.token);
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("name", response.data.name); // localStorage.setItem("expirationDate", expirationDate);
+      localStorage.setItem("name", response.data.fio); // localStorage.setItem("expirationDate", expirationDate);
       // save user state
 
-      dispatch(authSuccess(response.token, name)); // dispatch(checkAuthTimeout(response.expires_in));
+      dispatch(authSuccess(response.token, response.data.fio)); // dispatch(checkAuthTimeout(response.expires_in));
     }).catch(error => {
       console.log(error);
       dispatch(authFail(error.response && error.response.data && error.response.data.message));
@@ -8644,6 +8680,17 @@ module.exports = require("axios");
 
 /***/ }),
 
+/***/ "cookie":
+/*!*************************!*\
+  !*** external "cookie" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("cookie");
+
+/***/ }),
+
 /***/ "formik":
 /*!*************************!*\
   !*** external "formik" ***!
@@ -8652,6 +8699,17 @@ module.exports = require("axios");
 /***/ (function(module, exports) {
 
 module.exports = require("formik");
+
+/***/ }),
+
+/***/ "js-cookie":
+/*!****************************!*\
+  !*** external "js-cookie" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("js-cookie");
 
 /***/ }),
 

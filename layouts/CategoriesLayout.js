@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { getStaticCategories } from "../lib/categories";
 import { Row, Col } from "react-bootstrap";
 import { Categories } from "../components/";
 import axios from "../axios-api";
@@ -25,40 +25,12 @@ const CategoriesLayout = props => {
 	return (
 		<Row>
 			<Col sm={3}>
-				<Categories items={getStaticCats()} isStatic={true} />
+				<Categories items={getStaticCategories()} isStatic={true} />
 				{!loading && <Categories items={categories} />}
 			</Col>
 			<Col sm={9}>{props.children}</Col>
 		</Row>
 	);
 };
-
-const getStaticCats = () => [
-	{
-		id: 0,
-		title: "Все",
-		icon: "/images/icons/all.png"
-	},
-	{
-		id: 1,
-		title: "Сборники",
-		icon: "/images/icons/compilations.png"
-	},
-	{
-		id: 2,
-		title: "Аудиокниги",
-		icon: "/images/icons/audio.png"
-	},
-	{
-		id: 3,
-		title: "Печатные книги",
-		icon: "/images/icons/book.png"
-	},
-	{
-		id: 4,
-		title: "Электронные книги",
-		icon: "/images/icons/pdf.png"
-	}
-];
 
 export default CategoriesLayout;

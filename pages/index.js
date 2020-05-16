@@ -19,11 +19,7 @@ import {
 } from "../components";
 import { FormGroup } from "../components/UI";
 
-const LandingPage = ({ feedback, bookCollections, audioCollections, speakers }) => {
-	// const [ feedback, setFeedback ] = useState(feedbackProps);
-	// const [ bookCollections, setBookCollections ] = useState(bookCollectionsProps);
-	// const [ audioCollections, setAudioCollections ] = useState(audioCollectionsProps);
-	// const [ speakers, setSpeakers ] = useState(speakersProps);
+const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollections, speakers }) => {
 	const [ loading, setLoading ] = useState(false);
 	const [ rate, setRate ] = useState(4);
 	const nameControl = useForm();
@@ -144,7 +140,7 @@ const LandingPage = ({ feedback, bookCollections, audioCollections, speakers }) 
 				</Col>
 			</Row>
 			<Row>
-				<Col>{!loading && <ProductsCarousel items={getPopularBooks()} />}</Col>
+				<Col>{!loading && <ProductsCarousel items={books} />}</Col>
 			</Row>
 			<Row className="mt-5 pt-4 mb-5 pb-4">
 				<Col>
@@ -168,7 +164,7 @@ const LandingPage = ({ feedback, bookCollections, audioCollections, speakers }) 
 				</Col>
 			</Row>
 			<Row>
-				<Col>{!loading && <ProductsCarousel items={getPopularBooks()} />}</Col>
+				<Col>{!loading && <ProductsCarousel items={audioBooks} />}</Col>
 			</Row>
 			<Row className="mb-4  mt-5 pt-3">
 				<Col>
@@ -201,202 +197,16 @@ const LandingPage = ({ feedback, bookCollections, audioCollections, speakers }) 
 		</React.Fragment>
 	);
 };
-// LandingPage.getInitialProps = async ctx => {
-// 	let books =
-// 	axios.get("collections").then(res=>{
 
-// 	})
-// 	return {
-
-// 	}
-// }
-const getCarouselItems = () => [
-	{
-		id: 0,
-		img: "/images/main/books/carousel1.png",
-		title: "Электронные книги и Видео уроки"
-		// text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
-	},
-	{
-		id: 1,
-		img: "/images/main/books/carousel1.png",
-		title: "Электронные книги и Видео уроки"
-		// text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
-	},
-	{
-		id: 2,
-		img: "/images/main/books/carousel1.png",
-		title: "Электронные книги и Видео уроки"
-		// text: "Nulla vitae elit libero, a pharetra augue mollis interdum"
-	}
-];
-const getBookCarouselItems = () => [
-	{
-		id: 0,
-		img: "/images/main/books/slider-carousel/1.png",
-		text: "ТОП-10 романов"
-	},
-	{
-		id: 1,
-		img: "/images/main/books/slider-carousel/2.png",
-		text: "На досуге"
-	},
-	{
-		id: 2,
-		img: "/images/main/books/slider-carousel/3.png",
-		text: "Бестселлеры"
-	}
-];
-const getPopularBooks = () => [
-	{
-		id: 0,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 3,
-		currentPrice: "39 500 сум",
-		price: "55 500 сум"
-	},
-	{
-		id: 1,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 1,
-		currentPrice: "39 500 сум",
-		price: "55 500 сум"
-	},
-	{
-		id: 2,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 4,
-		currentPrice: "39 500 сум",
-		price: "55 500 сум"
-	},
-	{
-		id: 3,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 0,
-		currentPrice: "39 500 сум",
-		price: "55 500 сум"
-	},
-	{
-		id: 4,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 4,
-		currentPrice: "39 500 сум",
-		price: "55 500 сум"
-	},
-	{
-		id: 5,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 4,
-		currentPrice: "39 500 сум",
-		price: "55 500 сум"
-	},
-	{
-		id: 6,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 4,
-		currentPrice: "39 500 сум",
-		price: "55 500 сум"
-	},
-	{
-		id: 7,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 5,
-		currentPrice: "39 500 сум",
-		price: "55 500 сум"
-	},
-	{
-		id: 8,
-		img: "/images/items/books/1.png",
-		title: "Нескучные десерты",
-		author: "Истомин Виталий",
-		rate: 4,
-		currentPrice: "39 500 сум",
-		price: "55 500 сум"
-	}
-];
-const getSpeakers = () => [
-	{
-		id: 0,
-		img: "/images/main/books/person.png",
-		name: "Валерия Филиппова",
-		role: "Писатель",
-		quote:
-			"“Скрытый смысл, не учитывая количества слогов, стоящих между ударениями, многопланово аннигилирует былинный реформаторский пафос. Мифопоэтическое пространство вызывает амфибрахий.”"
-	},
-	{
-		id: 1,
-		img: "/images/main/books/person.png",
-		name: "Валерия Леонтьева",
-		role: "Спикер",
-		quote:
-			"“Скрытый умысел, не учитывая количества слогов, стоящих между ударениями, многопланово аннигилирует былинный реформаторский пафос. Мифопоэтическое пространство вызывает амфибрахий.”"
-	},
-	{
-		id: 2,
-		img: "/images/main/books/person.png",
-		name: "Валерия Филиппова",
-		role: "Писатель",
-		quote:
-			"“Скрытый смысл, не учитывая количества слогов, стоящих между ударениями, многопланово аннигилирует былинный реформаторский пафос. Мифопоэтическое пространство вызывает амфибрахий.”"
-	}
-];
-const getReviewsItems = () => [
-	{
-		id: 0,
-		img: "/images/main/books/person.png",
-		name: "Антон Алексеев",
-		rate: 4,
-		text:
-			"“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
-	},
-	{
-		id: 1,
-		img: "/images/main/books/person.png",
-		name: "Антон Алексеев",
-		rate: 4,
-		text:
-			"“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
-	},
-	{
-		id: 2,
-		img: "/images/main/books/person.png",
-		name: "Антон Алексеев",
-		rate: 4,
-		text:
-			"“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
-	},
-	{
-		id: 3,
-		img: "/images/main/books/person.png",
-		name: "Антон Алексеев",
-		rate: 4,
-		text:
-			"“Не все рецепты точны и выверены, но Виталию можно прощать ошибочки почти бесконечно! Обожаю его и его рецепты.”"
-	}
-];
-export const getStaticProps = async ctx => {
+export const getServerSideProps = async ctx => {
 	const res = await axios.get("home");
-	const { feedback, book_collections, audio_book_collections, speakers } = res.data;
-	console.log(res.data);
+	const { feedback, books, audio_books, book_collections, audio_book_collections, speakers } = res.data;
+
 	return {
 		props: {
 			feedback,
+			books,
+			audioBooks: audio_books,
 			bookCollections: book_collections,
 			audioCollections: audio_book_collections,
 			speakers

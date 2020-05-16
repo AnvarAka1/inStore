@@ -699,6 +699,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 var category = function category(_ref) {
   var id = _ref.id,
       children = _ref.children,
+      link = _ref.link,
       icon = _ref.icon,
       isStatic = _ref.isStatic;
   return __jsx("li", {
@@ -709,14 +710,10 @@ var category = function category(_ref) {
       lineNumber: 7,
       columnNumber: 3
     }
-  }, __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"], {
-    href: {
-      pathname: "/books/categories/[id]",
-      query: !isStatic && {
-        janra: id
-      }
-    },
-    as: isStatic ? "/books/categories/".concat(id) : "".concat(id),
+  }, __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"] // href={{ pathname: "/books/categories/[id]", query: !isStatic && { janra: id } }}
+  , {
+    href: link // as={isStatic ? `/books/categories/${id}` : `${id}`}
+    ,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -727,7 +724,7 @@ var category = function category(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 13,
       columnNumber: 5
     }
   }, __jsx("div", {
@@ -735,7 +732,7 @@ var category = function category(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 14,
       columnNumber: 6
     }
   }, __jsx("div", {
@@ -743,7 +740,7 @@ var category = function category(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 15,
       columnNumber: 7
     }
   }, isStatic && __jsx("img", {
@@ -753,7 +750,7 @@ var category = function category(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 16,
       columnNumber: 21
     }
   }), __jsx("p", {
@@ -761,7 +758,7 @@ var category = function category(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 17,
       columnNumber: 8
     }
   }, children)), __jsx("div", {
@@ -769,7 +766,7 @@ var category = function category(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 19,
       columnNumber: 7
     }
   }, __jsx("img", {
@@ -779,7 +776,7 @@ var category = function category(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 20,
       columnNumber: 8
     }
   }))))));
@@ -3131,7 +3128,6 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var navbar = function navbar(_ref) {
   var booksCategories = _ref.booksCategories,
-      booksCategoryClicked = _ref.booksCategoryClicked,
       search = _ref.search,
       navItems = _ref.navItems;
 
@@ -3152,40 +3148,35 @@ var navbar = function navbar(_ref) {
       lineNumber: 11,
       columnNumber: 4
     }
-  }), "\u041A\u043D\u0438\u0433\u0438"); // const videolessons = (
-  // 	<React.Fragment>
-  // 		<img src="/images/icons/video.png" className="icon icon-sm mr-1" alt="Видеокурсы" />Видеокурсы
-  // 	</React.Fragment>
-  // );
-
+  }), "\u041A\u043D\u0438\u0433\u0438");
 
   return __jsx("header", {
     className: _Navbar_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Navbar,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 16,
       columnNumber: 3
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 17,
       columnNumber: 4
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 18,
       columnNumber: 5
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 19,
       columnNumber: 6
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"], {
@@ -3193,7 +3184,7 @@ var navbar = function navbar(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 20,
       columnNumber: 7
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -3201,21 +3192,21 @@ var navbar = function navbar(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 21,
       columnNumber: 8
     }
   }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 22,
       columnNumber: 9
     }
   }, __jsx(___WEBPACK_IMPORTED_MODULE_4__["Logo"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 23,
       columnNumber: 10
     }
   }))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"].Toggle, {
@@ -3223,7 +3214,7 @@ var navbar = function navbar(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 27,
       columnNumber: 8
     }
   }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"].Collapse, {
@@ -3231,7 +3222,7 @@ var navbar = function navbar(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 28,
       columnNumber: 8
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"], {
@@ -3239,7 +3230,7 @@ var navbar = function navbar(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 29,
       columnNumber: 9
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"], {
@@ -3249,22 +3240,34 @@ var navbar = function navbar(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 30,
       columnNumber: 10
     }
   }, booksCategories.map(function (cat) {
     return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Item, {
       key: cat.id,
-      onClick: function onClick() {
-        return booksCategoryClicked(cat.id);
-      },
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 37,
+        lineNumber: 33,
         columnNumber: 13
       }
-    }, cat.title);
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      href: cat.id < 0 ? "/books/categories" : "/books/categories/".concat(cat.id),
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 34,
+        columnNumber: 14
+      }
+    }, __jsx("a", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 43,
+        columnNumber: 15
+      }
+    }, cat.title)));
   }))), search, navItems))))));
 };
 
@@ -4446,7 +4449,7 @@ var products = function products(_ref) {
     }, __jsx(_Product_Product__WEBPACK_IMPORTED_MODULE_3__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, item, {
       isVideo: isVideo,
       onAddRemoveItem: onAddRemoveItem ? function () {
-        return onAddRemoveItem(item.id);
+        return onAddRemoveItem(item);
       } : null,
       __self: _this,
       __source: {
@@ -4803,13 +4806,11 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var review = function review(_ref) {
   var id = _ref.id,
-      image = _ref.image,
-      name = _ref.name,
       rate = _ref.rate,
       text = _ref.text,
       user = _ref.user;
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    href: "/users/".concat(user),
+    href: "/users/".concat(user.id),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -4848,8 +4849,8 @@ var review = function review(_ref) {
       columnNumber: 7
     }
   }, __jsx("img", {
-    src: image,
-    alt: name,
+    src: user.avatar,
+    alt: user.name,
     className: "img-small radius",
     __self: _this,
     __source: {
@@ -4873,7 +4874,7 @@ var review = function review(_ref) {
       lineNumber: 15,
       columnNumber: 8
     }
-  }, name), __jsx(___WEBPACK_IMPORTED_MODULE_2__["Stars"], {
+  }, user.fio), __jsx(___WEBPACK_IMPORTED_MODULE_2__["Stars"], {
     rate: rate,
     __self: _this,
     __source: {
@@ -6362,13 +6363,14 @@ var formikGroup = function formikGroup(_ref) {
       name = _ref.name,
       placeholder = _ref.placeholder,
       options = _ref.options,
+      autoComplete = _ref.autoComplete,
       disabled = _ref.disabled;
   return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
     className: "mt-2 mb-2",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 19,
       columnNumber: 3
     }
   }, children && __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
@@ -6376,12 +6378,13 @@ var formikGroup = function formikGroup(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 20,
       columnNumber: 17
     }
   }, children), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Control, {
     value: value,
     type: type,
+    autoComplete: autoComplete,
     name: name,
     disabled: disabled,
     placeholder: placeholder,
@@ -6391,7 +6394,7 @@ var formikGroup = function formikGroup(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
+      lineNumber: 21,
       columnNumber: 4
     }
   }, options ? options.map(function (option, index) {
@@ -6401,7 +6404,7 @@ var formikGroup = function formikGroup(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22,
+        lineNumber: 35,
         columnNumber: 8
       }
     }, option.title);
@@ -6410,7 +6413,7 @@ var formikGroup = function formikGroup(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 42,
       columnNumber: 4
     }
   }, __jsx(formik__WEBPACK_IMPORTED_MODULE_2__["ErrorMessage"], {
@@ -6418,7 +6421,7 @@ var formikGroup = function formikGroup(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 43,
       columnNumber: 5
     }
   })));
@@ -6593,15 +6596,23 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./helpers/utils.js ***!
   \**************************/
-/*! exports provided: categorySelector, convertFrontToBackDate, convertBackToFrontDate, formCheckValidity */
+/*! exports provided: parseCookies, categorySelector, convertFrontToBackDate, convertBackToFrontDate, formCheckValidity */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseCookies", function() { return parseCookies; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "categorySelector", function() { return categorySelector; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "convertFrontToBackDate", function() { return convertFrontToBackDate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "convertBackToFrontDate", function() { return convertBackToFrontDate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "formCheckValidity", function() { return formCheckValidity; });
+/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cookie */ "./node_modules/cookie/index.js");
+/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cookie__WEBPACK_IMPORTED_MODULE_0__);
+
+var parseCookies = function parseCookies(req) {
+  // isServer ? "" : ""
+  return cookie__WEBPACK_IMPORTED_MODULE_0___default.a.parse(req ? req.headers.cookie || "" : document.cookie);
+};
 var categorySelector = function categorySelector(id, categories, _selectedId) {
   if (id === _selectedId) return null;
 
@@ -6631,6 +6642,10 @@ var convertFrontToBackDate = function convertFrontToBackDate(date) {
   return "".concat(day, "-").concat(month, "-").concat(year);
 };
 var convertBackToFrontDate = function convertBackToFrontDate(date) {
+  if (!date) {
+    return "";
+  }
+
   var year = date.substring(6, 10);
   var month = date.substring(3, 5);
   var day = date.substring(0, 2);
@@ -7504,13 +7519,15 @@ var useTable = function useTable() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
-/* harmony import */ var _axios_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../axios-api */ "./axios-api.js");
+/* harmony import */ var _lib_categories__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/categories */ "./lib/categories.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
+/* harmony import */ var _axios_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../axios-api */ "./axios-api.js");
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\layouts\\CategoriesLayout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -7528,7 +7545,7 @@ var CategoriesLayout = function CategoriesLayout(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     _isMounted = true;
-    _axios_api__WEBPACK_IMPORTED_MODULE_3__["default"].get("genres").then(function (res) {
+    _axios_api__WEBPACK_IMPORTED_MODULE_4__["default"].get("genres").then(function (res) {
       if (_isMounted) setCategories(res.data.results);
     })["catch"](function (err) {
       console.log(err);
@@ -7539,14 +7556,14 @@ var CategoriesLayout = function CategoriesLayout(props) {
       return _isMounted = false;
     };
   }, []);
-  return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+  return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 26,
       columnNumber: 3
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
     sm: 3,
     __self: _this,
     __source: {
@@ -7554,8 +7571,8 @@ var CategoriesLayout = function CategoriesLayout(props) {
       lineNumber: 27,
       columnNumber: 4
     }
-  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Categories"], {
-    items: getStaticCats(),
+  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_3__["Categories"], {
+    items: Object(_lib_categories__WEBPACK_IMPORTED_MODULE_1__["getStaticCategories"])(),
     isStatic: true,
     __self: _this,
     __source: {
@@ -7563,7 +7580,7 @@ var CategoriesLayout = function CategoriesLayout(props) {
       lineNumber: 28,
       columnNumber: 5
     }
-  }), !loading && __jsx(_components___WEBPACK_IMPORTED_MODULE_2__["Categories"], {
+  }), !loading && __jsx(_components___WEBPACK_IMPORTED_MODULE_3__["Categories"], {
     items: categories,
     __self: _this,
     __source: {
@@ -7571,7 +7588,7 @@ var CategoriesLayout = function CategoriesLayout(props) {
       lineNumber: 29,
       columnNumber: 18
     }
-  })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+  })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
     sm: 9,
     __self: _this,
     __source: {
@@ -7580,30 +7597,6 @@ var CategoriesLayout = function CategoriesLayout(props) {
       columnNumber: 4
     }
   }, props.children));
-};
-
-var getStaticCats = function getStaticCats() {
-  return [{
-    id: 0,
-    title: "Все",
-    icon: "/images/icons/all.png"
-  }, {
-    id: 1,
-    title: "Сборники",
-    icon: "/images/icons/compilations.png"
-  }, {
-    id: 2,
-    title: "Аудиокниги",
-    icon: "/images/icons/audio.png"
-  }, {
-    id: 3,
-    title: "Печатные книги",
-    icon: "/images/icons/book.png"
-  }, {
-    id: 4,
-    title: "Электронные книги",
-    icon: "/images/icons/pdf.png"
-  }];
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CategoriesLayout);
@@ -7623,18 +7616,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_actions_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/actions/index */ "./store/actions/index.js");
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/head */ "./node_modules/next/dist/next-server/lib/head.js");
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _store_CategoryContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/CategoryContext */ "./store/CategoryContext.js");
-/* harmony import */ var _hooks___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/ */ "./hooks/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
+/* harmony import */ var _lib_categories__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/categories */ "./lib/categories.js");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/head */ "./node_modules/next/dist/next-server/lib/head.js");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _store_CategoryContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store/CategoryContext */ "./store/CategoryContext.js");
+/* harmony import */ var _hooks___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/ */ "./hooks/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\layouts\\Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -7657,34 +7652,33 @@ var Layout = function Layout(_ref) {
       isSignUp = _useState[0],
       setIsSignUp = _useState[1];
 
-  var authModal = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useModal"])();
-  var searchControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])();
-  var categoryContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_5__["default"]);
-  var nameControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var authModal = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useModal"])();
+  var searchControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])();
+  var nameControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Ф.И.О"
   });
-  var emailControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var emailControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Эл. почта"
   });
-  var phoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var phoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Номер телефона"
   });
-  var fPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var fPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Введите пароль",
     type: "password"
   });
-  var sPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var sPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Подтвердите пароль",
     type: "password"
   });
-  var emailPhoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var emailPhoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Электронная почта или номер телефона"
   });
-  var passwordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var passwordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Введите пароль",
     type: "password"
   });
-  var checkboxControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])();
+  var checkboxControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])();
 
   var modeHandler = function modeHandler(mode) {
     setIsSignUp(mode);
@@ -7699,16 +7693,11 @@ var Layout = function Layout(_ref) {
     console.log("Auth submitted!");
   };
 
-  var booksCategoryHandler = function booksCategoryHandler(id) {
-    categoryContext.categoryHandler(id);
-    next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push("/books");
-  };
-
   var onSearch = function onSearch(event) {
     event.preventDefault();
   };
 
-  var navItems = __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["NavItems"], {
+  var navItems = __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["NavItems"], {
     name: name,
     authModalShow: authModal.onShow,
     cartCount: cartCount,
@@ -7717,7 +7706,7 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 66,
       columnNumber: 3
     }
   });
@@ -7726,10 +7715,10 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80,
+      lineNumber: 75,
       columnNumber: 3
     }
-  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["AuthModal"], {
+  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["AuthModal"], {
     controls: [authControls, regControls],
     isSignUp: isSignUp,
     modal: authModal,
@@ -7739,44 +7728,43 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81,
+      lineNumber: 76,
       columnNumber: 4
     }
-  }), __jsx(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, {
+  }), __jsx(next_head__WEBPACK_IMPORTED_MODULE_4___default.a, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89,
+      lineNumber: 84,
       columnNumber: 4
     }
   }, __jsx("title", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90,
+      lineNumber: 85,
       columnNumber: 5
     }
-  }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Navbar"], {
+  }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["Navbar"], {
     name: name,
     isAuthorized: isAuthorized,
     cartCount: cartCount,
-    search: __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Search"], {
+    search: __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["Search"], {
       control: searchControl,
       onSearch: onSearch,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 96,
+        lineNumber: 91,
         columnNumber: 13
       }
     }),
-    booksCategories: categoryContext.categories,
-    booksCategoryClicked: booksCategoryHandler,
+    booksCategories: Object(_lib_categories__WEBPACK_IMPORTED_MODULE_3__["getStaticCategories"])(),
     navItems: navItems,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92,
+      lineNumber: 87,
       columnNumber: 4
     }
   }), __jsx("main", {
@@ -7784,21 +7772,21 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101,
+      lineNumber: 95,
       columnNumber: 4
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["Container"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["Container"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102,
+      lineNumber: 96,
       columnNumber: 5
     }
-  }, children)), __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Footer"], {
+  }, children)), __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["Footer"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 104,
+      lineNumber: 98,
       columnNumber: 4
     }
   }));
@@ -7942,6 +7930,47 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+/***/ }),
+
+/***/ "./lib/categories.js":
+/*!***************************!*\
+  !*** ./lib/categories.js ***!
+  \***************************/
+/*! exports provided: getStaticCategories */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStaticCategories", function() { return getStaticCategories; });
+var getStaticCategories = function getStaticCategories() {
+  return [{
+    id: 0,
+    link: "/all",
+    title: "Все",
+    icon: "/images/icons/all.png"
+  }, {
+    id: 1,
+    link: "/collections",
+    title: "Сборники",
+    icon: "/images/icons/compilations.png"
+  }, {
+    id: 2,
+    link: "/audio-books",
+    title: "Аудиокниги",
+    icon: "/images/icons/audio.png"
+  }, {
+    id: 3,
+    link: "/printed-books",
+    title: "Печатные книги",
+    icon: "/images/icons/book.png"
+  }, {
+    id: 4,
+    link: "/e-books",
+    title: "Электронные книги",
+    icon: "/images/icons/pdf.png"
+  }];
+};
 
 /***/ }),
 
@@ -13599,6 +13628,220 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+/***/ "./node_modules/cookie/index.js":
+/*!**************************************!*\
+  !*** ./node_modules/cookie/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * cookie
+ * Copyright(c) 2012-2014 Roman Shtylman
+ * Copyright(c) 2015 Douglas Christopher Wilson
+ * MIT Licensed
+ */
+
+
+
+/**
+ * Module exports.
+ * @public
+ */
+
+exports.parse = parse;
+exports.serialize = serialize;
+
+/**
+ * Module variables.
+ * @private
+ */
+
+var decode = decodeURIComponent;
+var encode = encodeURIComponent;
+var pairSplitRegExp = /; */;
+
+/**
+ * RegExp to match field-content in RFC 7230 sec 3.2
+ *
+ * field-content = field-vchar [ 1*( SP / HTAB ) field-vchar ]
+ * field-vchar   = VCHAR / obs-text
+ * obs-text      = %x80-FF
+ */
+
+var fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
+
+/**
+ * Parse a cookie header.
+ *
+ * Parse the given cookie header string into an object
+ * The object has the various cookies as keys(names) => values
+ *
+ * @param {string} str
+ * @param {object} [options]
+ * @return {object}
+ * @public
+ */
+
+function parse(str, options) {
+  if (typeof str !== 'string') {
+    throw new TypeError('argument str must be a string');
+  }
+
+  var obj = {}
+  var opt = options || {};
+  var pairs = str.split(pairSplitRegExp);
+  var dec = opt.decode || decode;
+
+  for (var i = 0; i < pairs.length; i++) {
+    var pair = pairs[i];
+    var eq_idx = pair.indexOf('=');
+
+    // skip things that don't look like key=value
+    if (eq_idx < 0) {
+      continue;
+    }
+
+    var key = pair.substr(0, eq_idx).trim()
+    var val = pair.substr(++eq_idx, pair.length).trim();
+
+    // quoted values
+    if ('"' == val[0]) {
+      val = val.slice(1, -1);
+    }
+
+    // only assign once
+    if (undefined == obj[key]) {
+      obj[key] = tryDecode(val, dec);
+    }
+  }
+
+  return obj;
+}
+
+/**
+ * Serialize data into a cookie header.
+ *
+ * Serialize the a name value pair into a cookie string suitable for
+ * http headers. An optional options object specified cookie parameters.
+ *
+ * serialize('foo', 'bar', { httpOnly: true })
+ *   => "foo=bar; httpOnly"
+ *
+ * @param {string} name
+ * @param {string} val
+ * @param {object} [options]
+ * @return {string}
+ * @public
+ */
+
+function serialize(name, val, options) {
+  var opt = options || {};
+  var enc = opt.encode || encode;
+
+  if (typeof enc !== 'function') {
+    throw new TypeError('option encode is invalid');
+  }
+
+  if (!fieldContentRegExp.test(name)) {
+    throw new TypeError('argument name is invalid');
+  }
+
+  var value = enc(val);
+
+  if (value && !fieldContentRegExp.test(value)) {
+    throw new TypeError('argument val is invalid');
+  }
+
+  var str = name + '=' + value;
+
+  if (null != opt.maxAge) {
+    var maxAge = opt.maxAge - 0;
+
+    if (isNaN(maxAge) || !isFinite(maxAge)) {
+      throw new TypeError('option maxAge is invalid')
+    }
+
+    str += '; Max-Age=' + Math.floor(maxAge);
+  }
+
+  if (opt.domain) {
+    if (!fieldContentRegExp.test(opt.domain)) {
+      throw new TypeError('option domain is invalid');
+    }
+
+    str += '; Domain=' + opt.domain;
+  }
+
+  if (opt.path) {
+    if (!fieldContentRegExp.test(opt.path)) {
+      throw new TypeError('option path is invalid');
+    }
+
+    str += '; Path=' + opt.path;
+  }
+
+  if (opt.expires) {
+    if (typeof opt.expires.toUTCString !== 'function') {
+      throw new TypeError('option expires is invalid');
+    }
+
+    str += '; Expires=' + opt.expires.toUTCString();
+  }
+
+  if (opt.httpOnly) {
+    str += '; HttpOnly';
+  }
+
+  if (opt.secure) {
+    str += '; Secure';
+  }
+
+  if (opt.sameSite) {
+    var sameSite = typeof opt.sameSite === 'string'
+      ? opt.sameSite.toLowerCase() : opt.sameSite;
+
+    switch (sameSite) {
+      case true:
+        str += '; SameSite=Strict';
+        break;
+      case 'lax':
+        str += '; SameSite=Lax';
+        break;
+      case 'strict':
+        str += '; SameSite=Strict';
+        break;
+      case 'none':
+        str += '; SameSite=None';
+        break;
+      default:
+        throw new TypeError('option sameSite is invalid');
+    }
+  }
+
+  return str;
+}
+
+/**
+ * Try decoding a string using a decoding function.
+ *
+ * @param {string} str
+ * @param {function} decode
+ * @private
+ */
+
+function tryDecode(str, decode) {
+  try {
+    return decode(str);
+  } catch (e) {
+    return str;
+  }
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/bootstrap/dist/css/bootstrap.min.css":
 /*!**************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-5-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/bootstrap/dist/css/bootstrap.min.css ***!
@@ -17376,6 +17619,184 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 };
 
 module.exports = invariant;
+
+
+/***/ }),
+
+/***/ "./node_modules/js-cookie/src/js.cookie.js":
+/*!*************************************************!*\
+  !*** ./node_modules/js-cookie/src/js.cookie.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * JavaScript Cookie v2.2.1
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+	var registeredInModuleLoader;
+	if (true) {
+		!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		registeredInModuleLoader = true;
+	}
+	if (true) {
+		module.exports = factory();
+		registeredInModuleLoader = true;
+	}
+	if (!registeredInModuleLoader) {
+		var OldCookies = window.Cookies;
+		var api = window.Cookies = factory();
+		api.noConflict = function () {
+			window.Cookies = OldCookies;
+			return api;
+		};
+	}
+}(function () {
+	function extend () {
+		var i = 0;
+		var result = {};
+		for (; i < arguments.length; i++) {
+			var attributes = arguments[ i ];
+			for (var key in attributes) {
+				result[key] = attributes[key];
+			}
+		}
+		return result;
+	}
+
+	function decode (s) {
+		return s.replace(/(%[0-9A-Z]{2})+/g, decodeURIComponent);
+	}
+
+	function init (converter) {
+		function api() {}
+
+		function set (key, value, attributes) {
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			attributes = extend({
+				path: '/'
+			}, api.defaults, attributes);
+
+			if (typeof attributes.expires === 'number') {
+				attributes.expires = new Date(new Date() * 1 + attributes.expires * 864e+5);
+			}
+
+			// We're using "expires" because "max-age" is not supported by IE
+			attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
+
+			try {
+				var result = JSON.stringify(value);
+				if (/^[\{\[]/.test(result)) {
+					value = result;
+				}
+			} catch (e) {}
+
+			value = converter.write ?
+				converter.write(value, key) :
+				encodeURIComponent(String(value))
+					.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+
+			key = encodeURIComponent(String(key))
+				.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
+				.replace(/[\(\)]/g, escape);
+
+			var stringifiedAttributes = '';
+			for (var attributeName in attributes) {
+				if (!attributes[attributeName]) {
+					continue;
+				}
+				stringifiedAttributes += '; ' + attributeName;
+				if (attributes[attributeName] === true) {
+					continue;
+				}
+
+				// Considers RFC 6265 section 5.2:
+				// ...
+				// 3.  If the remaining unparsed-attributes contains a %x3B (";")
+				//     character:
+				// Consume the characters of the unparsed-attributes up to,
+				// not including, the first %x3B (";") character.
+				// ...
+				stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
+			}
+
+			return (document.cookie = key + '=' + value + stringifiedAttributes);
+		}
+
+		function get (key, json) {
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			var jar = {};
+			// To prevent the for loop in the first place assign an empty array
+			// in case there are no cookies at all.
+			var cookies = document.cookie ? document.cookie.split('; ') : [];
+			var i = 0;
+
+			for (; i < cookies.length; i++) {
+				var parts = cookies[i].split('=');
+				var cookie = parts.slice(1).join('=');
+
+				if (!json && cookie.charAt(0) === '"') {
+					cookie = cookie.slice(1, -1);
+				}
+
+				try {
+					var name = decode(parts[0]);
+					cookie = (converter.read || converter)(cookie, name) ||
+						decode(cookie);
+
+					if (json) {
+						try {
+							cookie = JSON.parse(cookie);
+						} catch (e) {}
+					}
+
+					jar[name] = cookie;
+
+					if (key === name) {
+						break;
+					}
+				} catch (e) {}
+			}
+
+			return key ? jar[key] : jar;
+		}
+
+		api.set = set;
+		api.get = function (key) {
+			return get(key, false /* read as raw */);
+		};
+		api.getJSON = function (key) {
+			return get(key, true /* read as json */);
+		};
+		api.remove = function (key, attributes) {
+			set(key, '', extend(attributes, {
+				expires: -1
+			}));
+		};
+
+		api.defaults = {};
+
+		api.withConverter = init;
+
+		return api;
+	}
+
+	return init(function () {});
+}));
 
 
 /***/ }),
@@ -42973,6 +43394,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authCheckState", function() { return authCheckState; });
 /* harmony import */ var _actionTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actionTypes */ "./store/actions/actionTypes.js");
 /* harmony import */ var _axios_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../axios-api */ "./axios-api.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 var authStart = function authStart() {
@@ -42994,6 +43418,7 @@ var authFail = function authFail(error) {
   };
 };
 var logout = function logout() {
+  js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.remove("token");
   localStorage.removeItem("token");
   localStorage.removeItem("name");
   return {
@@ -43034,11 +43459,12 @@ var auth = function auth(name, email, phone, password, isSignup) {
       // const expirationDate = new Date(new Date().getTime() + data.expires_in * 1000);
 
       console.log(response.data.token);
+      js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.set("token", response.data.token);
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("name", response.data.name); // localStorage.setItem("expirationDate", expirationDate);
+      localStorage.setItem("name", response.data.fio); // localStorage.setItem("expirationDate", expirationDate);
       // save user state
 
-      dispatch(authSuccess(response.token, name)); // dispatch(checkAuthTimeout(response.expires_in));
+      dispatch(authSuccess(response.token, response.data.fio)); // dispatch(checkAuthTimeout(response.expires_in));
     })["catch"](function (error) {
       console.log(error);
       dispatch(authFail(error.response && error.response.data && error.response.data.message));

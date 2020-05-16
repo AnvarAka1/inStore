@@ -2,12 +2,13 @@ import React from "react";
 import classes from "./Category.module.scss";
 // import {useRouter} from 'next/router';
 import { Link } from "../../";
-const category = ({ id, children, icon, isStatic }) => {
+const category = ({ id, children, link, icon, isStatic }) => {
 	return (
 		<li className={`${classes.Category} mt-2 list`}>
 			<Link
-				href={{ pathname: "/books/categories/[id]", query: !isStatic && { janra: id } }}
-				as={isStatic ? `/books/categories/${id}` : `${id}`}
+				// href={{ pathname: "/books/categories/[id]", query: !isStatic && { janra: id } }}
+				href={link}
+				// as={isStatic ? `/books/categories/${id}` : `${id}`}
 			>
 				<a>
 					<div className="d-flex align-items-center">

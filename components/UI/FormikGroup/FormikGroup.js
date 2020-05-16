@@ -2,13 +2,26 @@ import React from "react";
 import classes from "./FormGroup.module.scss";
 import { ErrorMessage } from "formik";
 import { Form } from "react-bootstrap";
-const formikGroup = ({ children, onChange, value, size, as, type, name, placeholder, options, disabled }) => {
+const formikGroup = ({
+	children,
+	onChange,
+	value,
+	size,
+	as,
+	type,
+	name,
+	placeholder,
+	options,
+	autoComplete,
+	disabled
+}) => {
 	return (
 		<Form.Group className="mt-2 mb-2">
 			{children && <Form.Label className={size === "sm" && classes.Sm}>{children}</Form.Label>}
 			<Form.Control
 				value={value}
 				type={type}
+				autoComplete={autoComplete}
 				name={name}
 				disabled={disabled}
 				placeholder={placeholder}

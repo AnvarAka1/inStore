@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { connect } from "react-redux";
 import * as actions from "../store/actions/index";
-
+import { getStaticCategories } from "../lib/categories";
 import Head from "next/head";
 import Router from "next/router";
 import CategoryContext from "../store/CategoryContext";
@@ -13,7 +13,6 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 	const [ isSignUp, setIsSignUp ] = useState(true);
 	const authModal = useModal();
 	const searchControl = useForm();
-	const categoryContext = useContext(CategoryContext);
 	const nameControl = useForm(false, {
 		label: "Ф.И.О"
 	});
@@ -59,10 +58,6 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 		console.log("Auth submitted!");
 	};
 
-	const booksCategoryHandler = id => {
-		categoryContext.categoryHandler(id);
-		Router.push("/books");
-	};
 	const onSearch = event => {
 		event.preventDefault();
 	};
@@ -94,8 +89,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 				isAuthorized={isAuthorized}
 				cartCount={cartCount}
 				search={<Search control={searchControl} onSearch={onSearch} />}
-				booksCategories={categoryContext.categories}
-				booksCategoryClicked={booksCategoryHandler}
+				booksCategories={getStaticCategories()}
 				navItems={navItems}
 			/>
 			<main className="pt-4">

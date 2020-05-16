@@ -1,3 +1,10 @@
+import cookie from "cookie";
+
+export const parseCookies = req => {
+	// isServer ? "" : ""
+	return cookie.parse(req ? req.headers.cookie || "" : document.cookie);
+};
+
 export const categorySelector = (id, categories, _selectedId) => {
 	if (id === _selectedId) return null;
 	if (_selectedId != -1) {
@@ -25,6 +32,9 @@ export const convertFrontToBackDate = date => {
 	return `${day}-${month}-${year}`;
 };
 export const convertBackToFrontDate = date => {
+	if (!date) {
+		return "";
+	}
 	const year = date.substring(6, 10);
 	const month = date.substring(3, 5);
 	const day = date.substring(0, 2);

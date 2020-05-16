@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { convertFrontToBackDate, convertBackToFrontDate } from "../../helpers/utils";
+import { convertFrontToBackDate, convertBackToFrontDate, parseCookies } from "../../helpers/utils";
 import axios from "../../axios-api";
 import { Button, Row, Col } from "react-bootstrap";
 import { FormikGroup } from "../../components/UI";
@@ -7,44 +7,19 @@ import { Form, Formik } from "formik";
 import { object, string, date } from "yup";
 import { ProfileLayout } from "../../layouts";
 // can make static page also
-const SettingsPage = props => {
-	const personalInfoRef = useRef();
-	const passwordRef = useRef();
+const SettingsPage = ({ userData }) => {
 	let personalInfoInitialValues = {
-		name: "",
-		dob: "",
-		gender: "",
-		phone: ""
+		name: userData.fio,
+		dob: convertBackToFrontDate(userData.dob),
+		gender: userData.gender ? userData.gender : "m",
+		phone: userData.phone
 	};
 	let passwordInitialValues = {
 		curPassword: "",
 		newPassword: "",
 		repPassword: ""
 	};
-	useEffect(() => {
-		axios
-			.get("/profile", {
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem("token")}`
-					// Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo4LCJ1c2VybmFtZSI6InRlc3RAbWFpbC5ydSIsImV4cCI6MTU4OTQxNzc3MCwiZW1haWwiOiJ0ZXN0QG1haWwucnUifQ.zguTX9TmBYOGitCcpXOZf6WF0MzIFF0ZYwOHhD-qcWs`
-				}
-			})
-			.then(res => {
-				console.log("Works!");
-				console.log(res);
-				if (personalInfoRef.current) {
-					personalInfoRef.current.setFieldValue("name", res.data.fio);
-					personalInfoRef.current.setFieldValue("phone", res.data.phone);
-					personalInfoRef.current.setFieldValue("dob", convertBackToFrontDate(res.data.dob));
-					personalInfoRef.current.setFieldValue("gender", res.data.gender);
-					// personalInfoRef.current.setFieldValue("avatar", res.data.avatar);
-				}
-				if (passwordRef.current) {
-					passwordRef.current.setFieldValue("email", res.data.email);
-				}
-			})
-			.catch(err => console.log(err));
-	}, []);
+
 	const updatePersonalInformationHandler = values => {
 		const formData = new FormData();
 		formData.append("fio", values.name);
@@ -77,14 +52,13 @@ const SettingsPage = props => {
 			<Row>
 				<Col sm={12}>
 					<h2>Настройки</h2>
-					<p className="mb-5">ID пользователя: {props.id}</p>
+					<p className="mb-5">ID пользователя: {userData.id}</p>
 				</Col>
 			</Row>
 			<Row>
 				<Col md={4} sm={6}>
 					<h6 className="text-md">Персональные данные</h6>
 					<Formik
-						innerRef={personalInfoRef}
 						initialValues={personalInfoInitialValues}
 						onSubmit={(values, { setSubmitting }) => {
 							setSubmitting(true);
@@ -146,7 +120,6 @@ const SettingsPage = props => {
 				<Col md={4} sm={6}>
 					<h6 className="text-md">Защита</h6>
 					<Formik
-						innerRef={passwordRef}
 						initialValues={passwordInitialValues}
 						onSubmit={(values, { setSubmitting, resetForm }) => {
 							setSubmitting(true);
@@ -171,7 +144,8 @@ const SettingsPage = props => {
 								<FormikGroup
 									name="email"
 									onChange={null}
-									value={values.email}
+									autoComplete="username"
+									value={userData.email}
 									type="email"
 									size="sm"
 									disabled
@@ -181,6 +155,7 @@ const SettingsPage = props => {
 								<FormikGroup
 									name="curPassword"
 									type="password"
+									autoComplete="current-password"
 									onChange={handleChange}
 									value={values.curPassword}
 									size="sm"
@@ -190,6 +165,7 @@ const SettingsPage = props => {
 								<FormikGroup
 									name="newPassword"
 									type="password"
+									autoComplete="new-password"
 									onChange={handleChange}
 									value={values.newPassword}
 									size="sm"
@@ -199,6 +175,7 @@ const SettingsPage = props => {
 								<FormikGroup
 									name="repPassword"
 									type="password"
+									autoComplete="new-password"
 									onChange={handleChange}
 									value={values.repPassword}
 									size="sm"
@@ -219,4 +196,17 @@ const SettingsPage = props => {
 	);
 };
 
+export const getServerSideProps = async ({ req }) => {
+	const res = await axios.get("/profile", {
+		headers: {
+			Authorization: `Bearer ${parseCookies(req).token}`
+		}
+	});
+	const userData = res.data;
+	return {
+		props: {
+			userData
+		}
+	};
+};
 export default SettingsPage;

@@ -33,7 +33,7 @@ const BookPage = props => {
 					<React.Fragment>
 						<ProductDescription
 							{...book}
-							cartClicked={() => cartContext.onAddRemoveItem(book.id)}
+							cartClicked={() => cartContext.onAddRemoveItem(book)}
 							isInCart={cartContext.onFindInCart(book.id)}
 						/>
 

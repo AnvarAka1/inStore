@@ -8,7 +8,7 @@ const products = ({ items, title, isVideo, md, sm, onAddRemoveItem }) => {
 				<Product
 					{...item}
 					isVideo={isVideo}
-					onAddRemoveItem={onAddRemoveItem ? () => onAddRemoveItem(item.id) : null}
+					onAddRemoveItem={onAddRemoveItem ? () => onAddRemoveItem(item) : null}
 				/>
 			</Col>
 		);

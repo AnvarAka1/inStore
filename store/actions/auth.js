@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
 import axios from "../../axios-api";
+import Cookie from "js-cookie";
 
 export const authStart = () => {
 	return {
@@ -22,6 +23,8 @@ export const authFail = error => {
 	};
 };
 export const logout = () => {
+	Cookie.remove("token");
+
 	localStorage.removeItem("token");
 	localStorage.removeItem("name");
 	return {
@@ -60,11 +63,12 @@ export const auth = (name, email, phone, password, isSignup) => {
 				// expiration date in milliseconds
 				// const expirationDate = new Date(new Date().getTime() + data.expires_in * 1000);
 				console.log(response.data.token);
+				Cookie.set("token", response.data.token);
 				localStorage.setItem("token", response.data.token);
-				localStorage.setItem("name", response.data.name);
+				localStorage.setItem("name", response.data.fio);
 				// localStorage.setItem("expirationDate", expirationDate);
 				// save user state
-				dispatch(authSuccess(response.token, name));
+				dispatch(authSuccess(response.token, response.data.fio));
 				// dispatch(checkAuthTimeout(response.expires_in));
 			})
 			.catch(error => {
