@@ -30,19 +30,11 @@ const navbar = ({ booksCategories, search, navItems }) => {
 									<NavDropdown title={books} className="list" id="basic-nav-dropdown">
 										{booksCategories.map(cat => {
 											return (
-												<NavDropdown.Item key={cat.id}>
-													<Link
-														href={
-															cat.id < 0 ? (
-																"/books/categories"
-															) : (
-																`/books/categories/${cat.id}`
-															)
-														}
-													>
+												<li key={cat.id}>
+													<Link href={`/books/categories${cat.link}`}>
 														<a>{cat.title}</a>
 													</Link>
-												</NavDropdown.Item>
+												</li>
 											);
 										})}
 									</NavDropdown>

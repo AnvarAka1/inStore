@@ -20,6 +20,7 @@ const CategoriesLayout = props => {
 			.finally(() => {
 				if (_isMounted) setLoading(false);
 			});
+
 		return () => (_isMounted = false);
 	}, []);
 	return (

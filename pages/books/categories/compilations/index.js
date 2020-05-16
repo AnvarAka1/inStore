@@ -1,32 +1,17 @@
 import React, { useState, useEffect } from "react";
-import axios from "../../../axios-api";
-import { CategoriesLayout } from "../../../layouts";
+import axios from "../../../../axios-api";
+import { CategoriesLayout } from "../../../../layouts";
 import { Row, Col } from "react-bootstrap";
-import { Products } from "../../../components";
-// ?pk=1
-const BooksPage = props => {
+import { Compilations } from "../../../../components";
+
+const CompilationsPage = props => {
 	const [ loading, setLoading ] = useState(true);
 	useEffect(() => {
 		setLoading(false);
 	}, []);
-
 	return (
 		<CategoriesLayout>
-			{props.books &&
-			!loading && (
-				<React.Fragment>
-					<Row>
-						<Col>
-							<h2>{props.title}</h2>
-						</Col>
-					</Row>
-					<Row>
-						<Products items={props.books} />
-					</Row>
-				</React.Fragment>
-			)}
-			{props.results &&
-				!loading &&
+			{!loading &&
 				props.results.map(result => (
 					<React.Fragment key={result.id}>
 						<Row>
@@ -34,18 +19,17 @@ const BooksPage = props => {
 								<h2>{result.title}</h2>
 							</Col>
 						</Row>
-						<Row>
-							<Products items={result.books} />
+						<Row className="mb-5 mt-1">
+							<Compilations items={result.collections} />
 						</Row>
 					</React.Fragment>
 				))}
 		</CategoriesLayout>
 	);
 };
-
 export const getServerSideProps = async context => {
 	// axios
-	const res = await axios.get("categories/books");
+	const res = await axios.get("categories/collections");
 	const { results } = res.data;
 
 	return {
@@ -54,4 +38,4 @@ export const getServerSideProps = async context => {
 		}
 	};
 };
-export default BooksPage;
+export default CompilationsPage;

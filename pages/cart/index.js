@@ -58,7 +58,13 @@ const CartPage = props => {
 					</Col>
 				</Row>
 				<Row className="mt-3">
-					{!loading && <Products items={cartContext.cart} onAddRemoveItem={cartContext.onAddRemoveItem} />}
+					{!loading && cartContext.cart.length ? (
+						<Products items={cartContext.cart} onAddRemoveItem={cartContext.onAddRemoveItem} />
+					) : (
+						<Col>
+							<h4 className="text-secondary">Корзина пуста</h4>
+						</Col>
+					)}
 				</Row>
 			</Col>
 			<Col md={3}>
@@ -74,89 +80,6 @@ const CartPage = props => {
 		</Row>
 	);
 };
-// const getBooks = () => [
-// 	{
-// 		id: 0,
-// 		img: "/images/items/books/1.png",
-// 		title: "Нескучные десерты",
-// 		author: "Истомин Виталий",
-// 		rate: 3,
-// 		currentPrice: "39500",
-// 		price: "55000"
-// 	},
-// 	{
-// 		id: 1,
-// 		img: "/images/items/books/1.png",
-// 		title: "Нескучные десерты",
-// 		author: "Истомин Виталий",
-// 		rate: 1,
-// 		currentPrice: "39500",
-// 		price: "55000"
-// 	},
-// 	{
-// 		id: 2,
-// 		img: "/images/items/books/1.png",
-// 		title: "Нескучные десерты",
-// 		author: "Истомин Виталий",
-// 		rate: 4,
-// 		currentPrice: "39500",
-// 		price: "55000"
-// 	},
-// 	{
-// 		id: 3,
-// 		img: "/images/items/books/1.png",
-// 		title: "Нескучные десерты",
-// 		author: "Истомин Виталий",
-// 		rate: 0,
-// 		currentPrice: "39500",
-// 		price: "55000"
-// 	},
-// 	{
-// 		id: 4,
-// 		img: "/images/items/books/1.png",
-// 		title: "Нескучные десерты",
-// 		author: "Истомин Виталий",
-// 		rate: 4,
-// 		currentPrice: "39500",
-// 		price: "55000"
-// 	},
-// 	{
-// 		id: 5,
-// 		img: "/images/items/books/1.png",
-// 		title: "Нескучные десерты",
-// 		author: "Истомин Виталий",
-// 		rate: 4,
-// 		currentPrice: "39500",
-// 		price: "55000"
-// 	},
-// 	{
-// 		id: 6,
-// 		img: "/images/items/books/1.png",
-// 		title: "Нескучные десерты",
-// 		author: "Истомин Виталий",
-// 		rate: 4,
-// 		currentPrice: "39500",
-// 		price: "55000"
-// 	},
-// 	{
-// 		id: 7,
-// 		img: "/images/items/books/1.png",
-// 		title: "Нескучные десерты",
-// 		author: "Истомин Виталий",
-// 		rate: 5,
-// 		currentPrice: "39500",
-// 		price: "55000"
-// 	},
-// 	{
-// 		id: 8,
-// 		img: "/images/items/books/1.png",
-// 		title: "Нескучные десерты",
-// 		author: "Истомин Виталий",
-// 		rate: 4,
-// 		currentPrice: "39500",
-// 		price: "55000"
-// 	}
-// ];
 
 CartPage.getInitialProps = async context => {
 	return {

@@ -7,14 +7,13 @@ import { Row, Col } from "react-bootstrap";
 import { ProductDetails, ProductDescription, Comments, ProductsCarousel } from "../../components/";
 
 const BookPage = props => {
-	const [ book, setBook ] = useState(null);
+	// const [ book, setBook ] = useState(null);
 	const [ otherBooks, setOtherBooks ] = useState([]);
 	const [ rate, setRate ] = useState(0);
 	const [ loading, setLoading ] = useState(true);
 	const cartContext = useContext(CartContext);
 	const commentControl = useForm();
 	useEffect(() => {
-		setBook(props.book);
 		setOtherBooks(props.book.related);
 		setLoading(false);
 	}, []);
@@ -27,18 +26,18 @@ const BookPage = props => {
 	};
 	return (
 		<Row>
-			<Col sm={5}>{!loading && <ProductDetails {...book} social={null} />}</Col>
+			<Col sm={5}>{!loading && <ProductDetails {...props.book} social={null} />}</Col>
 			<Col sm={7}>
 				{!loading && (
 					<React.Fragment>
 						<ProductDescription
-							{...book}
-							cartClicked={() => cartContext.onAddRemoveItem(book)}
-							isInCart={cartContext.onFindInCart(book.id)}
+							{...props.book}
+							cartClicked={() => cartContext.onAddRemoveItem(props.book)}
+							isInCart={cartContext.onFindInCart(props.book.id)}
 						/>
 
 						<Comments
-							items={book.feedback}
+							items={props.book.feedback}
 							rate={rate}
 							onSubmit={commentSubmitHandler}
 							commentControl={commentControl}

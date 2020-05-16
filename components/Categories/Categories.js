@@ -3,7 +3,7 @@ import Category from "./Category/Category";
 const categories = ({ items, isVideo, isStatic }) => {
 	const categoriesView = items.map(item => {
 		return (
-			<Category key={item.id} icon={item.icon} id={item.id} href={item.href} isStatic={isStatic}>
+			<Category key={item.id} icon={item.icon} id={item.id} href={item.link} isStatic={isStatic}>
 				{item.title}
 			</Category>
 		);

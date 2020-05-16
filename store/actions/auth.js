@@ -59,16 +59,15 @@ export const auth = (name, email, phone, password, isSignup) => {
 		axios
 			.post(`accounts${urls[+isSignup]}`, formData)
 			.then(response => {
-				console.log(response);
 				// expiration date in milliseconds
 				// const expirationDate = new Date(new Date().getTime() + data.expires_in * 1000);
-				console.log(response.data.token);
+				const fio = +isSignup ? response.data.profile.fio : response.data.fio;
 				Cookie.set("token", response.data.token);
 				localStorage.setItem("token", response.data.token);
-				localStorage.setItem("name", response.data.fio);
+				localStorage.setItem("name", fio);
 				// localStorage.setItem("expirationDate", expirationDate);
 				// save user state
-				dispatch(authSuccess(response.token, response.data.fio));
+				dispatch(authSuccess(response.token, fio));
 				// dispatch(checkAuthTimeout(response.expires_in));
 			})
 			.catch(error => {

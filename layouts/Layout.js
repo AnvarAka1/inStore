@@ -92,7 +92,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 				booksCategories={getStaticCategories()}
 				navItems={navItems}
 			/>
-			<main className="pt-4">
+			<main className="pt-4 page">
 				<Container>{children}</Container>
 			</main>
 			<Footer />

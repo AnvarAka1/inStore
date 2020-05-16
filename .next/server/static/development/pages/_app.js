@@ -548,7 +548,7 @@ const categories = ({
       key: item.id,
       icon: item.icon,
       id: item.id,
-      href: item.href,
+      href: item.link,
       isStatic: isStatic,
       __self: undefined,
       __source: {
@@ -626,7 +626,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Category_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Category.module.scss */ "./components/Categories/Category/Category.module.scss");
 /* harmony import */ var _Category_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Category_module_scss__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../ */ "./components/index.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Categories\\Category\\Category.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -637,7 +638,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 const category = ({
   id,
   children,
-  link,
+  href,
   icon,
   isStatic
 }) => {
@@ -649,9 +650,10 @@ const category = ({
       lineNumber: 7,
       columnNumber: 3
     }
-  }, __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"] // href={{ pathname: "/books/categories/[id]", query: !isStatic && { janra: id } }}
-  , {
-    href: link // as={isStatic ? `/books/categories/${id}` : `${id}`}
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: `/books/categories${href !== undefined ? href : "/" + id.toString()}` // href={{ pathname: "/books/categories/[id]", query: !isStatic && { janra: id } }}
+    // as={href}
+    // as={isStatic ? `/books/categories/${id}` : `${id}`}
     ,
     __self: undefined,
     __source: {
@@ -663,7 +665,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 14,
       columnNumber: 5
     }
   }, __jsx("div", {
@@ -671,7 +673,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 15,
       columnNumber: 6
     }
   }, __jsx("div", {
@@ -679,7 +681,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 16,
       columnNumber: 7
     }
   }, isStatic && __jsx("img", {
@@ -689,7 +691,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 17,
       columnNumber: 21
     }
   }), __jsx("p", {
@@ -697,7 +699,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 18,
       columnNumber: 8
     }
   }, children)), __jsx("div", {
@@ -705,7 +707,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 20,
       columnNumber: 7
     }
   }, __jsx("img", {
@@ -715,7 +717,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 21,
       columnNumber: 8
     }
   }))))));
@@ -1010,11 +1012,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const compilation = ({
   className,
-  text,
+  id,
+  title,
   image
 }) => {
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/#",
+    href: `/books/categories/compilations/[id]`,
+    as: `/books/categories/compilations/${id}`,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -1038,7 +1042,7 @@ const compilation = ({
     }
   }, __jsx("img", {
     src: image,
-    alt: text,
+    alt: title,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -1059,7 +1063,7 @@ const compilation = ({
       lineNumber: 11,
       columnNumber: 7
     }
-  }, text)))));
+  }, title)))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (compilation);
@@ -1093,8 +1097,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Compilation_Compilation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Compilation/Compilation */ "./components/Compilations/Compilation/Compilation.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "react-bootstrap");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Compilations\\Compilations.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
 
 
 
@@ -1103,24 +1113,31 @@ const compilations = ({
   onClick
 }) => {
   const compilationsView = items.map(item => {
-    return __jsx(_Compilation_Compilation__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      key: item.id,
-      onClick: () => onClick(item.id),
-      text: item.text,
-      img: item.img,
+    return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+      md: 4,
+      sm: 6,
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 6,
-        columnNumber: 10
+        lineNumber: 7,
+        columnNumber: 4
       }
-    });
+    }, __jsx(_Compilation_Compilation__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
+      key: item.id
+    }, item, {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8,
+        columnNumber: 5
+      }
+    })));
   });
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 12,
       columnNumber: 9
     }
   }, compilationsView);
@@ -1146,6 +1163,9 @@ __webpack_require__.r(__webpack_exports__);
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Compilations\\CompilationsCarousel.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
 
 
 
@@ -1154,18 +1174,17 @@ const CompilationsCarousel = ({
   onClick
 }) => {
   const compilationsView = items.map(item => {
-    return __jsx(_Compilation_Compilation__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    return __jsx(_Compilation_Compilation__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
       key: item.id,
-      onClick: () => onClick(item.id),
-      text: item.title,
-      image: item.image,
+      onClick: () => onClick(item.id)
+    }, item, {
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 6,
         columnNumber: 10
       }
-    });
+    }));
   });
   return __jsx(___WEBPACK_IMPORTED_MODULE_1__["SliderCarousel"], {
     __self: undefined,
@@ -2518,7 +2537,7 @@ const navbar = ({
       columnNumber: 10
     }
   }, booksCategories.map(cat => {
-    return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NavDropdown"].Item, {
+    return __jsx("li", {
       key: cat.id,
       __self: undefined,
       __source: {
@@ -2527,7 +2546,7 @@ const navbar = ({
         columnNumber: 13
       }
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-      href: cat.id < 0 ? "/books/categories" : `/books/categories/${cat.id}`,
+      href: `/books/categories${cat.link}`,
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
@@ -2538,7 +2557,7 @@ const navbar = ({
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43,
+        lineNumber: 35,
         columnNumber: 15
       }
     }, cat.title)));
@@ -5573,7 +5592,7 @@ const CategoriesLayout = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 27,
       columnNumber: 3
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
@@ -5581,7 +5600,7 @@ const CategoriesLayout = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 28,
       columnNumber: 4
     }
   }, __jsx(_components___WEBPACK_IMPORTED_MODULE_3__["Categories"], {
@@ -5590,7 +5609,7 @@ const CategoriesLayout = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 29,
       columnNumber: 5
     }
   }), !loading && __jsx(_components___WEBPACK_IMPORTED_MODULE_3__["Categories"], {
@@ -5598,7 +5617,7 @@ const CategoriesLayout = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 30,
       columnNumber: 18
     }
   })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
@@ -5606,7 +5625,7 @@ const CategoriesLayout = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 32,
       columnNumber: 4
     }
   }, props.children));
@@ -5781,7 +5800,7 @@ const Layout = ({
       columnNumber: 4
     }
   }), __jsx("main", {
-    className: "pt-4",
+    className: "pt-4 page",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -5951,12 +5970,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStaticCategories", function() { return getStaticCategories; });
 const getStaticCategories = () => [{
   id: 0,
-  link: "/all",
+  link: "",
   title: "Все",
   icon: "/images/icons/all.png"
 }, {
   id: 1,
-  link: "/collections",
+  link: "/compilations",
   title: "Сборники",
   icon: "/images/icons/compilations.png"
 }, {
@@ -8452,16 +8471,15 @@ const auth = (name, email, phone, password, isSignup) => {
 
     const urls = ["/login", "/register"];
     _axios_api__WEBPACK_IMPORTED_MODULE_1__["default"].post(`accounts${urls[+isSignup]}`, formData).then(response => {
-      console.log(response); // expiration date in milliseconds
+      // expiration date in milliseconds
       // const expirationDate = new Date(new Date().getTime() + data.expires_in * 1000);
-
-      console.log(response.data.token);
+      const fio = +isSignup ? response.data.profile.fio : response.data.fio;
       js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.set("token", response.data.token);
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("name", response.data.fio); // localStorage.setItem("expirationDate", expirationDate);
+      localStorage.setItem("name", fio); // localStorage.setItem("expirationDate", expirationDate);
       // save user state
 
-      dispatch(authSuccess(response.token, response.data.fio)); // dispatch(checkAuthTimeout(response.expires_in));
+      dispatch(authSuccess(response.token, fio)); // dispatch(checkAuthTimeout(response.expires_in));
     }).catch(error => {
       console.log(error);
       dispatch(authFail(error.response && error.response.data && error.response.data.message));
