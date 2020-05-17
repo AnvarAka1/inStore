@@ -35,7 +35,7 @@ const getNavigationItems = () => [
 		id: 3,
 		icon: "/images/icons/star.png",
 		title: "Избанные: 4",
-		href: "/profile/favourite"
+		href: "/profile/favourites"
 	},
 	{
 		id: 4,

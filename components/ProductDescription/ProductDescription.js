@@ -8,11 +8,16 @@ const productDescription = ({
 	book_type,
 	description,
 	price,
-	currentPrice,
+	current_price,
 	isInCart,
-	cartClicked
+	cartClicked,
+	favouriteClicked,
+	in_favourites
 }) => {
 	const bookTypes = [ "Аудиокнига", "Печатное издание", "Электронная книга" ];
+	const getDiscount = () => {
+		return ((1 - current_price / price) * 100).toFixed(2);
+	};
 	return (
 		<div className={classes.ProductDescription}>
 			<p>{publish_year}</p>
@@ -20,9 +25,10 @@ const productDescription = ({
 			<div className="d-flex justify-content-start align-items-center">
 				<h4 className="text-secondary mb-0">{author}</h4>
 				<div>
-					<Button>
+					<Button onClick={favouriteClicked}>
 						<div className="d-flex align-items-center">
-							<img src="/images/icons/star.png" className="icon mr-1" />Избранное
+							<img src="/images/icons/star.png" className="icon mr-1" />
+							{in_favourites ? "Убрать из избранного" : "Избранное"}
 						</div>
 					</Button>
 				</div>
@@ -36,11 +42,11 @@ const productDescription = ({
 				{description}
 			</p>
 			<div className="d-flex justify-content-between align-items-end">
-				<h2>{currentPrice} сум</h2>
+				<h2>{current_price} сум</h2>
 				<div>
 					<div>
 						<p className="text-crossed">{price} сум</p>
-						{/* скидка */}
+						<p className="text-secondary">Скидка {getDiscount()}</p>
 					</div>
 					{/* Читать фрагмент */}
 				</div>
@@ -49,5 +55,4 @@ const productDescription = ({
 		</div>
 	);
 };
-
 export default productDescription;

@@ -48,9 +48,6 @@ const MyComponent = ({ children, store }) => {
 		}
 	]);
 	useEffect(() => {
-		// if(store.getState().auth.token === null){
-
-		// }
 		store.dispatch(actions.authCheckState());
 		if (localStorage.getItem("cart")) {
 			setCart(JSON.parse(localStorage.getItem("cart")));

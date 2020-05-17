@@ -51,7 +51,9 @@ const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout }) =>
 			)}
 			{isAuthorized && (
 				<div className="flex-column justify-content-end align-items-between text-right">
-					<p className="color-accent">{name}</p>
+					<Link href="/profile/settings">
+						<p className="color-accent">{name}</p>
+					</Link>
 					<Button onClick={onLogout}>Выйти</Button>
 				</div>
 			)}

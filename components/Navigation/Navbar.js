@@ -30,7 +30,7 @@ const navbar = ({ booksCategories, search, navItems }) => {
 									<NavDropdown title={books} className="list" id="basic-nav-dropdown">
 										{booksCategories.map(cat => {
 											return (
-												<li key={cat.id}>
+												<li key={cat.id} className={classes.CategoryItem}>
 													<Link href={`/books/categories${cat.link}`}>
 														<a>{cat.title}</a>
 													</Link>

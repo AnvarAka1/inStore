@@ -2,8 +2,9 @@ import React from "react";
 import { parseCookies } from "../../helpers/utils";
 import axios from "../../axios-api";
 import { Row, Col } from "react-bootstrap";
+import { Products } from "../../components";
 import { ProfileLayout } from "../../layouts";
-const FavoritesPage = ({ products }) => {
+const FavouritesPage = ({ products }) => {
 	return (
 		<ProfileLayout>
 			<Row>
@@ -38,4 +39,4 @@ export const getServerSideProps = async ctx => {
 	};
 };
 
-export default FavoritesPage;
+export default FavouritesPage;

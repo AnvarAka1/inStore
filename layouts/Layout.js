@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as actions from "../store/actions/index";
 import { getStaticCategories } from "../lib/categories";
 import Head from "next/head";
+// import Link from "next/link";
 import Router from "next/router";
-import CategoryContext from "../store/CategoryContext";
 import { useForm, useModal } from "../hooks/";
 import { Container } from "react-bootstrap";
 import { AuthModal, NavItems, Navbar, Footer, Search } from "../components/";
@@ -60,8 +60,9 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 
 	const onSearch = event => {
 		event.preventDefault();
+		Router.push(`/search?q=${searchControl.value}`);
 	};
-
+	const search = <Search control={searchControl} onSearch={onSearch} />;
 	const navItems = (
 		<NavItems
 			name={name}
@@ -88,7 +89,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 				name={name}
 				isAuthorized={isAuthorized}
 				cartCount={cartCount}
-				search={<Search control={searchControl} onSearch={onSearch} />}
+				search={search}
 				booksCategories={getStaticCategories()}
 				navItems={navItems}
 			/>

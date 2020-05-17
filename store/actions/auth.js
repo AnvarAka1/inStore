@@ -91,6 +91,7 @@ export const authCheckState = () => {
 			dispatch(logout());
 		} else {
 			const token = localStorage.getItem("token");
+			if (token) Cookie.set("token", token);
 			const name = localStorage.getItem("name");
 			dispatch(authSuccess(token, name));
 

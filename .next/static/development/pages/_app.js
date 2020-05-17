@@ -686,64 +686,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Category_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Category.module.scss */ "./components/Categories/Category/Category.module.scss");
 /* harmony import */ var _Category_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Category_module_scss__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../ */ "./components/index.js");
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Categories\\Category\\Category.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
- // import {useRouter} from 'next/router';
 
 
 
 var category = function category(_ref) {
   var id = _ref.id,
+      pathname = _ref.pathname,
       children = _ref.children,
       href = _ref.href,
       icon = _ref.icon,
       isStatic = _ref.isStatic;
-  return __jsx("li", {
-    className: "".concat(_Category_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Category, " mt-2 list"),
+
+  var item = __jsx("a", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 3
+    }
+  }, __jsx("div", {
+    className: "d-flex align-items-center",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7,
-      columnNumber: 3
+      columnNumber: 4
     }
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/books/categories".concat(href !== undefined ? href : "/" + id.toString()) // href={{ pathname: "/books/categories/[id]", query: !isStatic && { janra: id } }}
-    // as={href}
-    // as={isStatic ? `/books/categories/${id}` : `${id}`}
-    ,
+  }, __jsx("div", {
+    className: "d-flex align-items-center",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8,
-      columnNumber: 4
-    }
-  }, __jsx("a", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14,
       columnNumber: 5
-    }
-  }, __jsx("div", {
-    className: "d-flex align-items-center",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15,
-      columnNumber: 6
-    }
-  }, __jsx("div", {
-    className: "d-flex align-items-center",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 7
     }
   }, isStatic && __jsx("img", {
     src: icon,
@@ -752,24 +733,24 @@ var category = function category(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 21
+      lineNumber: 9,
+      columnNumber: 19
     }
   }), __jsx("p", {
     className: "".concat(isStatic && "text-lg", " mr-1"),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
-      columnNumber: 8
+      lineNumber: 10,
+      columnNumber: 6
     }
   }, children)), __jsx("div", {
     className: "category__tick",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
-      columnNumber: 7
+      lineNumber: 12,
+      columnNumber: 5
     }
   }, __jsx("img", {
     src: "/images/icons/tick.png",
@@ -778,10 +759,41 @@ var category = function category(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
-      columnNumber: 8
+      lineNumber: 13,
+      columnNumber: 6
     }
-  }))))));
+  }))));
+
+  return __jsx("li", {
+    className: "".concat(_Category_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Category, " mt-2 list"),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 3
+    }
+  }, href ? __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    href: "/books/categories".concat(href),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 5
+    }
+  }, item) : __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    href: {
+      pathname: "/books/categories/".concat(pathname),
+      query: {
+        genre: id
+      }
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 5
+    }
+  }, item));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (category);
@@ -1414,21 +1426,19 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 var compilations = function compilations(_ref) {
-  var items = _ref.items,
-      onClick = _ref.onClick;
+  var items = _ref.items;
   var compilationsView = items.map(function (item) {
     return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
       md: 4,
       sm: 6,
+      key: item.id,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 7,
         columnNumber: 4
       }
-    }, __jsx(_Compilation_Compilation__WEBPACK_IMPORTED_MODULE_2__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-      key: item.id
-    }, item, {
+    }, __jsx(_Compilation_Compilation__WEBPACK_IMPORTED_MODULE_2__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, item, {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
@@ -2402,44 +2412,21 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 var CustomLink = function CustomLink(_ref) {
   var children = _ref.children,
       className = _ref.className,
-      href = _ref.href,
-      as = _ref.as;
+      href = _ref.href;
   var router = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])();
-  var baseUrl = as.split("?")[0];
-  var routerBaseUrl = router.asPath.split("?")[0];
   var classNames = className || "";
-  var hasSuchQuery = false;
 
-  if (href.query) {
-    for (var key in href.query) {
-      if (href.query[key] === router.query[key]) {
-        hasSuchQuery = true;
-      }
-    }
-  } else {
-    // console.log(as + " " + href + baseUrl + " " + routerBaseUrl + " query = " + href.query);
-    if (baseUrl === routerBaseUrl) {
-      classNames = "".concat(className, " active");
-    }
-  } // if base url is the same as "as", then highlight
-  // if query url is the same as "as", then highlight
-  // console.log(href.query);
-  // console.log(router);
-  // const currentRoute = as ? as : href;
-  // const route = as ? router.asPath : router.pathname;
-  // if (route === currentRoute) {
-  // 	classNames = `${className} active`;
-  // }
-
+  if (href === router.pathname) {
+    classNames = "".concat(className, " active");
+  }
 
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: href,
-    as: as,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 3
+      lineNumber: 13,
+      columnNumber: 9
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(children, {
     className: classNames
@@ -2996,20 +2983,28 @@ var navItems = function navItems(_ref) {
       lineNumber: 53,
       columnNumber: 5
     }
-  }, __jsx("p", {
-    className: "color-accent",
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/profile/settings",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 54,
       columnNumber: 6
     }
-  }, name), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-    onClick: onLogout,
+  }, __jsx("p", {
+    className: "color-accent",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 55,
+      columnNumber: 7
+    }
+  }, name)), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+    onClick: onLogout,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57,
       columnNumber: 6
     }
   }, "\u0412\u044B\u0439\u0442\u0438")));
@@ -3262,6 +3257,7 @@ var navbar = function navbar(_ref) {
   }, booksCategories.map(function (cat) {
     return __jsx("li", {
       key: cat.id,
+      className: _Navbar_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.CategoryItem,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
@@ -3670,30 +3666,37 @@ var productDescription = function productDescription(_ref) {
       book_type = _ref.book_type,
       description = _ref.description,
       price = _ref.price,
-      currentPrice = _ref.currentPrice,
+      current_price = _ref.current_price,
       isInCart = _ref.isInCart,
-      cartClicked = _ref.cartClicked;
+      cartClicked = _ref.cartClicked,
+      favouriteClicked = _ref.favouriteClicked,
+      in_favourites = _ref.in_favourites;
   var bookTypes = ["Аудиокнига", "Печатное издание", "Электронная книга"];
+
+  var getDiscount = function getDiscount() {
+    return ((1 - current_price / price) * 100).toFixed(2);
+  };
+
   return __jsx("div", {
     className: _ProductDescription_module_scss__WEBPACK_IMPORTED_MODULE_2___default.a.ProductDescription,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 22,
       columnNumber: 3
     }
   }, __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 23,
       columnNumber: 4
     }
   }, publish_year), __jsx("h2", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 24,
       columnNumber: 4
     }
   }, title), __jsx("div", {
@@ -3701,7 +3704,7 @@ var productDescription = function productDescription(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 25,
       columnNumber: 4
     }
   }, __jsx("h4", {
@@ -3709,21 +3712,22 @@ var productDescription = function productDescription(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 26,
       columnNumber: 5
     }
   }, author), __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 27,
       columnNumber: 5
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    onClick: favouriteClicked,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 28,
       columnNumber: 6
     }
   }, __jsx("div", {
@@ -3731,7 +3735,7 @@ var productDescription = function productDescription(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 29,
       columnNumber: 7
     }
   }, __jsx("img", {
@@ -3740,14 +3744,14 @@ var productDescription = function productDescription(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 30,
       columnNumber: 8
     }
-  }), "\u0418\u0437\u0431\u0440\u0430\u043D\u043D\u043E\u0435"))), __jsx("div", {
+  }), in_favourites ? "Убрать из избранного" : "Избранное"))), __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 35,
       columnNumber: 5
     }
   }, bookTypes[+book_type])), __jsx("p", {
@@ -3755,14 +3759,14 @@ var productDescription = function productDescription(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 37,
       columnNumber: 4
     }
   }, __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 38,
       columnNumber: 5
     }
   }, "\u0410\u043D\u043D\u043E\u0442\u0430\u0446\u0438\u044F \u043A \u043A\u043D\u0438\u0433\u0435 \"", title, "\"")), __jsx("p", {
@@ -3770,7 +3774,7 @@ var productDescription = function productDescription(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 40,
       columnNumber: 4
     }
   }, description), __jsx("div", {
@@ -3778,28 +3782,28 @@ var productDescription = function productDescription(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 44,
       columnNumber: 4
     }
   }, __jsx("h2", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 45,
       columnNumber: 5
     }
-  }, currentPrice, " \u0441\u0443\u043C"), __jsx("div", {
+  }, current_price, " \u0441\u0443\u043C"), __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 46,
       columnNumber: 5
     }
   }, __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 47,
       columnNumber: 6
     }
   }, __jsx("p", {
@@ -3807,15 +3811,23 @@ var productDescription = function productDescription(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
+      lineNumber: 48,
       columnNumber: 7
     }
-  }, price, " \u0441\u0443\u043C")))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+  }, price, " \u0441\u0443\u043C"), __jsx("p", {
+    className: "text-secondary",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49,
+      columnNumber: 7
+    }
+  }, "\u0421\u043A\u0438\u0434\u043A\u0430 ", getDiscount())))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     onClick: cartClicked,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 54,
       columnNumber: 4
     }
   }, isInCart ? "Удалить из корзины" : "Добавить в корзину"));
@@ -4604,7 +4616,6 @@ var navigationItem = function navigationItem(_ref) {
     }
   }, __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"], {
     href: href,
-    as: "",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -7637,10 +7648,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _store_CategoryContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store/CategoryContext */ "./store/CategoryContext.js");
-/* harmony import */ var _hooks___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/ */ "./hooks/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
+/* harmony import */ var _hooks___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/ */ "./hooks/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\layouts\\Layout.js";
 
@@ -7649,7 +7659,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-
+ // import Link from "next/link";
 
 
 
@@ -7668,33 +7678,33 @@ var Layout = function Layout(_ref) {
       isSignUp = _useState[0],
       setIsSignUp = _useState[1];
 
-  var authModal = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useModal"])();
-  var searchControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])();
-  var nameControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
+  var authModal = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useModal"])();
+  var searchControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])();
+  var nameControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Ф.И.О"
   });
-  var emailControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
+  var emailControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Эл. почта"
   });
-  var phoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
+  var phoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Номер телефона"
   });
-  var fPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
+  var fPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Введите пароль",
     type: "password"
   });
-  var sPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
+  var sPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Подтвердите пароль",
     type: "password"
   });
-  var emailPhoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
+  var emailPhoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Электронная почта или номер телефона"
   });
-  var passwordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
+  var passwordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
     label: "Введите пароль",
     type: "password"
   });
-  var checkboxControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])();
+  var checkboxControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])();
 
   var modeHandler = function modeHandler(mode) {
     setIsSignUp(mode);
@@ -7711,9 +7721,21 @@ var Layout = function Layout(_ref) {
 
   var onSearch = function onSearch(event) {
     event.preventDefault();
+    next_router__WEBPACK_IMPORTED_MODULE_5___default.a.push("/search?q=".concat(searchControl.value));
   };
 
-  var navItems = __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["NavItems"], {
+  var search = __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Search"], {
+    control: searchControl,
+    onSearch: onSearch,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65,
+      columnNumber: 17
+    }
+  });
+
+  var navItems = __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["NavItems"], {
     name: name,
     authModalShow: authModal.onShow,
     cartCount: cartCount,
@@ -7722,7 +7744,7 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 67,
       columnNumber: 3
     }
   });
@@ -7731,10 +7753,10 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75,
+      lineNumber: 76,
       columnNumber: 3
     }
-  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["AuthModal"], {
+  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["AuthModal"], {
     controls: [authControls, regControls],
     isSignUp: isSignUp,
     modal: authModal,
@@ -7744,43 +7766,34 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
+      lineNumber: 77,
       columnNumber: 4
     }
   }), __jsx(next_head__WEBPACK_IMPORTED_MODULE_4___default.a, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84,
+      lineNumber: 85,
       columnNumber: 4
     }
   }, __jsx("title", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85,
+      lineNumber: 86,
       columnNumber: 5
     }
-  }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["Navbar"], {
+  }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Navbar"], {
     name: name,
     isAuthorized: isAuthorized,
     cartCount: cartCount,
-    search: __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["Search"], {
-      control: searchControl,
-      onSearch: onSearch,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 91,
-        columnNumber: 13
-      }
-    }),
+    search: search,
     booksCategories: Object(_lib_categories__WEBPACK_IMPORTED_MODULE_3__["getStaticCategories"])(),
     navItems: navItems,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87,
+      lineNumber: 88,
       columnNumber: 4
     }
   }), __jsx("main", {
@@ -7788,21 +7801,21 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95,
+      lineNumber: 96,
       columnNumber: 4
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["Container"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["Container"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96,
+      lineNumber: 97,
       columnNumber: 5
     }
-  }, children)), __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["Footer"], {
+  }, children)), __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Footer"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98,
+      lineNumber: 99,
       columnNumber: 4
     }
   }));
@@ -7906,7 +7919,7 @@ var getNavigationItems = function getNavigationItems() {
     id: 3,
     icon: "/images/icons/star.png",
     title: "Избанные: 4",
-    href: "/profile/favourite"
+    href: "/profile/favourites"
   }, {
     id: 4,
     icon: "/images/icons/cart.png",
@@ -14123,10 +14136,11 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ".Navbar_Navbar__2O_ie {\n  background: #FFFFFF;\n  box-shadow: 0px 5px 10px rgba(204, 204, 204, 0.5);\n  min-height: 72px;\n  display: flex;\n  align-items: center; }\n", "",{"version":3,"sources":["Navbar.module.scss"],"names":[],"mappings":"AAAA;EACI,mBAAmB;EACnB,iDAAiD;EACjD,gBAAgB;EAChB,aAAa;EACb,mBAAmB,EAAA","file":"Navbar.module.scss","sourcesContent":[".Navbar {\r\n    background: #FFFFFF;\r\n    box-shadow: 0px 5px 10px rgba(204, 204, 204, 0.5);\r\n    min-height: 72px;\r\n    display: flex;\r\n    align-items: center;\r\n}"]}]);
+exports.push([module.i, ".Navbar_Navbar__2O_ie {\n  background: #FFFFFF;\n  box-shadow: 0px 5px 10px rgba(204, 204, 204, 0.5);\n  min-height: 72px;\n  display: flex;\n  align-items: center; }\n\n.Navbar_CategoryItem__3WTOP {\n  padding: 10px 0;\n  border-bottom: 1px #97B8FF dashed; }\n  .Navbar_CategoryItem__3WTOP a {\n    transition: all .25s ease;\n    color: var(--secondary); }\n", "",{"version":3,"sources":["Navbar.module.scss"],"names":[],"mappings":"AAAA;EACI,mBAAmB;EACnB,iDAAiD;EACjD,gBAAgB;EAChB,aAAa;EACb,mBAAmB,EAAA;;AAGvB;EACI,eAAe;EAEf,iCAAiC,EAAA;EAHrC;IAMQ,yBAAyB;IACzB,uBAAuB,EAAA","file":"Navbar.module.scss","sourcesContent":[".Navbar {\r\n    background: #FFFFFF;\r\n    box-shadow: 0px 5px 10px rgba(204, 204, 204, 0.5);\r\n    min-height: 72px;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n.CategoryItem {\r\n    padding: 10px 0;\r\n\r\n    border-bottom: 1px #97B8FF dashed;\r\n\r\n    a {\r\n        transition: all .25s ease;\r\n        color: var(--secondary);\r\n    }\r\n}"]}]);
 // Exports
 exports.locals = {
-	"Navbar": "Navbar_Navbar__2O_ie"
+	"Navbar": "Navbar_Navbar__2O_ie",
+	"CategoryItem": "Navbar_CategoryItem__3WTOP"
 };
 module.exports = exports;
 
@@ -14416,7 +14430,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ":root {\n  --accent: #024E8F;\n  --secondary: #777\r\n; }\n\n@font-face {\n  font-family: \"OpenSans\";\n  src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\"); }\n\nbody {\n  min-height: 700px;\n  font-size: 16px;\n  position: relative;\n  font-family: \"OpenSans\", sans-serif !important; }\n\n.page {\n  min-height: 600px; }\n\nimg {\n  width: 100%; }\n\np {\n  color: #777777; }\n\ndiv h1,\ndiv h2,\ndiv h3,\ndiv h4,\ndiv h5,\ndiv h6 {\n  font-weight: bold; }\n\ndiv p {\n  margin-bottom: 0; }\n\nul {\n  margin: 0;\n  padding: 0; }\n  ul li {\n    list-style-type: none; }\n\n.text-small {\n  font-size: .75rem; }\n\n.text-md {\n  font-size: .9rem; }\n\n.text-lg {\n  font-size: 1.1rem; }\n\n.text-big {\n  font-size: 1.2rem; }\n\n.text-underline {\n  text-decoration: underline; }\n\n.text-normal {\n  font-weight: normal; }\n\n.text-bold {\n  font-weight: bold; }\n\n.text-accent {\n  color: var(--accent); }\n\n.text-crossed {\n  text-decoration: line-through; }\n\n.text-secondary {\n  color: var(--secondary); }\n\n.text-black {\n  color: #000; }\n\n.text-light {\n  color: #CCCCCC; }\n\n.text-xsmall {\n  font-size: .5rem; }\n\n.icon {\n  height: 0.75rem;\n  width: auto; }\n  .icon-sm {\n    height: 1.2rem; }\n  .icon-md {\n    height: 1.5rem; }\n  .icon-big {\n    height: 2rem; }\n\n.img-small {\n  width: 50px;\n  height: 50px;\n  -o-object-fit: contain;\n     object-fit: contain; }\n\n.carousel-caption {\n  right: auto;\n  text-align: left;\n  bottom: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: left;\n  justify-content: center;\n  width: 300px;\n  color: var(--accent); }\n\n.carousel-control-prev, .carousel-control-next {\n  display: none; }\n\n.carousel-indicators {\n  right: auto; }\n  .carousel-indicators li {\n    width: 15px;\n    height: 15px;\n    border-radius: 50%;\n    background: transparent;\n    border: 1px solid #004A8B;\n    box-sizing: border-box; }\n    .carousel-indicators li.active {\n      background: #014C8D; }\n\n.react-multi-carousel-list {\n  box-sizing: border-box; }\n\n.radius {\n  border-radius: 50%; }\n\n.flex-columns {\n  display: flex;\n  flex-wrap: wrap;\n  padding-left: 0; }\n  .flex-columns li {\n    flex: 0 0 33.333333%; }\n  .flex-columns img {\n    height: 22px;\n    -o-object-fit: contain;\n       object-fit: contain; }\n\n.list a.active .category__tick {\n  display: block; }\n\n.list a.active p {\n  color: var(--accent); }\n\n.list a.active img {\n  -webkit-filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\n          filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%); }\n\n.list a * {\n  transition: .25s ease all;\n  color: #777; }\n\n.list a img {\n  -webkit-filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n          filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n  transition: none; }\n\n.list a:hover {\n  text-decoration: none;\n  color: var(--accent); }\n  .list a:hover img {\n    -webkit-filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%); }\n  .list a:hover * {\n    color: var(--accent); }\n\n.category__tick {\n  display: none; }\n\n.circle {\n  display: flex;\n  align-items: center;\n  font-size: .75rem;\n  justify-content: center;\n  background: #FF0000;\n  border-radius: 50%;\n  border: 1px solid white;\n  width: 1rem;\n  height: 1rem;\n  z-index: 4;\n  display: inline-block;\n  position: absolute;\n  bottom: -4px;\n  left: -4px;\n  padding: 1px 0;\n  line-height: normal; }\n  .circle * {\n    line-height: normal;\n    text-align: center;\n    width: 100%;\n    height: 100%;\n    color: white;\n    font-weight: bold; }\n", "",{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA;EACI,iBAAS;EACT;AAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uDAAuD,EAAA;;AAG3D;EACI,iBAAiB;EACjB,eAAe;EACf,kBAAkB;EAClB,8CAA8C,EAAA;;AAGlD;EACI,iBAAiB,EAAA;;AAGrB;EACI,WAAW,EAAA;;AAIf;EACI,cAAc,EAAA;;AAGlB;;;;;;EAQQ,iBAAiB,EAAA;;AARzB;EAYQ,gBAAgB,EAAA;;AAIxB;EACI,SAAS;EACT,UAAU,EAAA;EAFd;IAKQ,qBAAqB,EAAA;;AAUzB;EACI,iBAAiB,EAAA;;AAGrB;EACI,gBAAgB,EAAA;;AAGpB;EACI,iBAAiB,EAAA;;AAGrB;EACI,iBAAiB,EAAA;;AAGrB;EACI,0BAA0B,EAAA;;AAG9B;EACI,mBAAmB,EAAA;;AAGvB;EACI,iBAAiB,EAAA;;AAGrB;EACI,oBAAoB,EAAA;;AAGxB;EACI,6BAA6B,EAAA;;AAGjC;EACI,uBAAuB,EAAA;;AAG3B;EACI,WAAW,EAAA;;AAGf;EACI,cAAc,EAAA;;AAIlB;EACI,gBAAgB,EAAA;;AAIxB;EACI,eAAe;EACf,WAAW,EAAA;EAEX;IACI,cAAc,EAAA;EAGlB;IACI,cACJ,EAAA;EAEA;IACI,YAAY,EAAA;;AAKhB;EACI,WAAW;EACX,YAAY;EACZ,sBAAmB;KAAnB,mBAAmB,EAAA;;AAO3B;EACI,WAAW;EACX,gBAAgB;EAChB,SAAS;EACT,MAAM;EACN,aAAa;EACb,sBAAsB;EACtB,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,oBAAoB,EAAA;;AAKpB;EAEI,aAAa,EAAA;;AAIrB;EACI,WAAW,EAAA;EADf;IAIQ,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,uBAAuB;IACvB,yBAAyB;IACzB,sBAAsB,EAAA;IAT9B;MAYY,mBAAmB,EAAA;;AAM/B;EACI,sBAAsB,EAAA;;AAG1B;EACI,kBAAkB,EAAA;;AAGtB;EACI,aAAa;EACb,eAAe;EACf,eAAe,EAAA;EAHnB;IAMQ,oBAAoB,EAAA;EAN5B;IAUQ,YAAY;IACZ,sBACJ;OADI,mBACJ,EAAA;;AAIJ;EAEQ,cAAc,EAAA;;AAFtB;EAMQ,oBAAoB,EAAA;;AAN5B;EAWQ,wGAAgG;UAAhG,gGAAgG,EAAA;;AAKxG;EAEQ,yBAAyB;EACzB,WAAW,EAAA;;AAHnB;EAOQ,sGAA8F;UAA9F,8FAA8F;EAC9F,gBACJ,EAAA;;AATJ;EAYQ,qBAAqB;EACrB,oBAAoB,EAAA;EAb5B;IAgBY,uGAA+F;YAA/F,+FAA+F,EAAA;EAhB3G;IAoBY,oBAAoB,EAAA;;AAKhC;EACI,aAAa,EAAA;;AAGjB;EACI,aAAa;EACb,mBAAmB;EACnB,iBAAiB;EACjB,uBAAuB;EACvB,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,WAAW;EACX,YAAY;EACZ,UAAU;EACV,qBAAqB;EACrB,kBAAkB;EAClB,YAAY;EACZ,UAAU;EACV,cAAc;EACd,mBAAmB,EAAA;EAhBvB;IAmBQ,mBAAmB;IACnB,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,iBAAiB,EAAA","file":"styles.scss","sourcesContent":[":root {\r\n    --accent: #024E8F;\r\n    --secondary: #777\r\n}\r\n\r\n@font-face {\r\n    font-family: \"OpenSans\";\r\n    src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\");\r\n}\r\n\r\nbody {\r\n    min-height: 700px;\r\n    font-size: 16px;\r\n    position: relative;\r\n    font-family: \"OpenSans\", sans-serif !important;\r\n}\r\n\r\n.page {\r\n    min-height: 600px;\r\n}\r\n\r\nimg {\r\n    width: 100%;\r\n}\r\n\r\n\r\np {\r\n    color: #777777;\r\n}\r\n\r\ndiv {\r\n\r\n    h1,\r\n    h2,\r\n    h3,\r\n    h4,\r\n    h5,\r\n    h6 {\r\n        font-weight: bold;\r\n    }\r\n\r\n    p {\r\n        margin-bottom: 0;\r\n    }\r\n}\r\n\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n\r\n    li {\r\n        list-style-type: none;\r\n    }\r\n}\r\n\r\np {\r\n    // line-height: normal;\r\n}\r\n\r\n.text {\r\n\r\n    &-small {\r\n        font-size: .75rem;\r\n    }\r\n\r\n    &-md {\r\n        font-size: .9rem;\r\n    }\r\n\r\n    &-lg {\r\n        font-size: 1.1rem;\r\n    }\r\n\r\n    &-big {\r\n        font-size: 1.2rem;\r\n    }\r\n\r\n    &-underline {\r\n        text-decoration: underline;\r\n    }\r\n\r\n    &-normal {\r\n        font-weight: normal;\r\n    }\r\n\r\n    &-bold {\r\n        font-weight: bold;\r\n    }\r\n\r\n    &-accent {\r\n        color: var(--accent)\r\n    }\r\n\r\n    &-crossed {\r\n        text-decoration: line-through;\r\n    }\r\n\r\n    &-secondary {\r\n        color: var(--secondary)\r\n    }\r\n\r\n    &-black {\r\n        color: #000;\r\n    }\r\n\r\n    &-light {\r\n        color: #CCCCCC;\r\n    }\r\n\r\n\r\n    &-xsmall {\r\n        font-size: .5rem;\r\n    }\r\n}\r\n\r\n.icon {\r\n    height: 0.75rem;\r\n    width: auto;\r\n\r\n    &-sm {\r\n        height: 1.2rem;\r\n    }\r\n\r\n    &-md {\r\n        height: 1.5rem\r\n    }\r\n\r\n    &-big {\r\n        height: 2rem;\r\n    }\r\n}\r\n\r\n.img {\r\n    &-small {\r\n        width: 50px;\r\n        height: 50px;\r\n        object-fit: contain;\r\n    }\r\n\r\n}\r\n\r\n// Carousel\r\n// Dots\r\n.carousel-caption {\r\n    right: auto;\r\n    text-align: left;\r\n    bottom: 0;\r\n    top: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: left;\r\n    justify-content: center;\r\n    width: 300px;\r\n    color: var(--accent);\r\n}\r\n\r\n.carousel-control {\r\n\r\n    &-prev,\r\n    &-next {\r\n        display: none;\r\n    }\r\n}\r\n\r\n.carousel-indicators {\r\n    right: auto;\r\n\r\n    li {\r\n        width: 15px;\r\n        height: 15px;\r\n        border-radius: 50%;\r\n        background: transparent;\r\n        border: 1px solid #004A8B;\r\n        box-sizing: border-box;\r\n\r\n        &.active {\r\n            background: #014C8D;\r\n        }\r\n    }\r\n}\r\n\r\n// Slider Carousel\r\n.react-multi-carousel-list {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.radius {\r\n    border-radius: 50%;\r\n}\r\n\r\n.flex-columns {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    padding-left: 0;\r\n\r\n    li {\r\n        flex: 0 0 33.333333%;\r\n    }\r\n\r\n    img {\r\n        height: 22px;\r\n        object-fit: contain\r\n    }\r\n\r\n}\r\n\r\n.list a.active {\r\n    .category__tick {\r\n        display: block;\r\n    }\r\n\r\n    p {\r\n        color: var(--accent);\r\n\r\n    }\r\n\r\n    img {\r\n        filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\r\n    }\r\n\r\n}\r\n\r\n.list a {\r\n    * {\r\n        transition: .25s ease all;\r\n        color: #777;\r\n    }\r\n\r\n    img {\r\n        filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\r\n        transition: none\r\n    }\r\n\r\n    &:hover {\r\n        text-decoration: none;\r\n        color: var(--accent);\r\n\r\n        img {\r\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\r\n        }\r\n\r\n        * {\r\n            color: var(--accent)\r\n        }\r\n    }\r\n}\r\n\r\n.category__tick {\r\n    display: none;\r\n}\r\n\r\n.circle {\r\n    display: flex;\r\n    align-items: center;\r\n    font-size: .75rem;\r\n    justify-content: center;\r\n    background: #FF0000;\r\n    border-radius: 50%;\r\n    border: 1px solid white;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    z-index: 4;\r\n    display: inline-block;\r\n    position: absolute;\r\n    bottom: -4px;\r\n    left: -4px;\r\n    padding: 1px 0;\r\n    line-height: normal;\r\n\r\n    * {\r\n        line-height: normal;\r\n        text-align: center;\r\n        width: 100%;\r\n        height: 100%;\r\n        color: white;\r\n        font-weight: bold;\r\n    }\r\n}"]}]);
+exports.push([module.i, ":root {\n  --accent: #024E8F;\n  --secondary: #777\r\n; }\n\n@font-face {\n  font-family: \"OpenSans\";\n  src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\"); }\n\nbody {\n  min-height: 700px;\n  font-size: 16px;\n  position: relative;\n  font-family: \"OpenSans\", sans-serif !important; }\n\n.page {\n  min-height: 600px; }\n\nimg {\n  width: 100%; }\n\np {\n  color: #777777; }\n\ndiv h1,\ndiv h2,\ndiv h3,\ndiv h4,\ndiv h5,\ndiv h6 {\n  font-weight: bold; }\n\ndiv p {\n  margin-bottom: 0; }\n\nul {\n  margin: 0;\n  padding: 0; }\n  ul li {\n    list-style-type: none; }\n\n.text-small {\n  font-size: .75rem; }\n\n.text-md {\n  font-size: .9rem; }\n\n.text-lg {\n  font-size: 1.1rem; }\n\n.text-big {\n  font-size: 1.2rem; }\n\n.text-underline {\n  text-decoration: underline; }\n\n.text-normal {\n  font-weight: normal; }\n\n.text-bold {\n  font-weight: bold; }\n\n.text-accent {\n  color: var(--accent); }\n\n.text-crossed {\n  text-decoration: line-through; }\n\n.text-secondary {\n  color: var(--secondary); }\n\n.text-black {\n  color: #000; }\n\n.text-light {\n  color: #CCCCCC; }\n\n.text-xsmall {\n  font-size: .5rem; }\n\n.icon {\n  height: 0.75rem;\n  width: auto; }\n  .icon-sm {\n    height: 1.2rem; }\n  .icon-md {\n    height: 1.5rem; }\n  .icon-big {\n    height: 2rem; }\n\n.img-small {\n  width: 50px;\n  height: 50px;\n  -o-object-fit: contain;\n     object-fit: contain; }\n\n.carousel-caption {\n  right: auto;\n  text-align: left;\n  bottom: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: left;\n  justify-content: center;\n  width: 300px;\n  color: var(--accent); }\n\n.carousel-control-prev, .carousel-control-next {\n  display: none; }\n\n.carousel-indicators {\n  right: auto; }\n  .carousel-indicators li {\n    width: 15px;\n    height: 15px;\n    border-radius: 50%;\n    background: transparent;\n    border: 1px solid #004A8B;\n    box-sizing: border-box; }\n    .carousel-indicators li.active {\n      background: #014C8D; }\n\n.react-multi-carousel-list {\n  box-sizing: border-box; }\n\n.radius {\n  border-radius: 50%; }\n\n.flex-columns {\n  display: flex;\n  flex-wrap: wrap;\n  padding-left: 0; }\n  .flex-columns li {\n    flex: 0 0 33.333333%; }\n  .flex-columns img {\n    height: 22px;\n    -o-object-fit: contain;\n       object-fit: contain; }\n\n.list a.active .category__tick {\n  display: block; }\n\n.list a.active p {\n  color: var(--accent); }\n\n.list a.active img {\n  -webkit-filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\n          filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%); }\n\n.list a * {\n  transition: .25s ease all;\n  color: #777; }\n\n.list a img {\n  -webkit-filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n          filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n  transition: none; }\n\n.list a:hover {\n  text-decoration: none;\n  color: var(--accent); }\n  .list a:hover img {\n    -webkit-filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%); }\n  .list a:hover * {\n    color: var(--accent); }\n\n.category__tick {\n  display: none; }\n\n.circle {\n  display: flex;\n  align-items: center;\n  font-size: .75rem;\n  justify-content: center;\n  background: #FF0000;\n  border-radius: 50%;\n  border: 1px solid white;\n  width: 1rem;\n  height: 1rem;\n  z-index: 4;\n  display: inline-block;\n  position: absolute;\n  bottom: -4px;\n  left: -4px;\n  padding: 1px 0;\n  line-height: normal; }\n  .circle * {\n    line-height: normal;\n    text-align: center;\n    width: 100%;\n    height: 100%;\n    color: white;\n    font-weight: bold; }\n\n.dropdown-menu.show {\n  padding-left: 10px;\n  padding-right: 10px; }\n", "",{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA;EACI,iBAAS;EACT;AAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uDAAuD,EAAA;;AAG3D;EACI,iBAAiB;EACjB,eAAe;EACf,kBAAkB;EAClB,8CAA8C,EAAA;;AAGlD;EACI,iBAAiB,EAAA;;AAGrB;EACI,WAAW,EAAA;;AAIf;EACI,cAAc,EAAA;;AAGlB;;;;;;EAQQ,iBAAiB,EAAA;;AARzB;EAYQ,gBAAgB,EAAA;;AAIxB;EACI,SAAS;EACT,UAAU,EAAA;EAFd;IAKQ,qBAAqB,EAAA;;AAUzB;EACI,iBAAiB,EAAA;;AAGrB;EACI,gBAAgB,EAAA;;AAGpB;EACI,iBAAiB,EAAA;;AAGrB;EACI,iBAAiB,EAAA;;AAGrB;EACI,0BAA0B,EAAA;;AAG9B;EACI,mBAAmB,EAAA;;AAGvB;EACI,iBAAiB,EAAA;;AAGrB;EACI,oBAAoB,EAAA;;AAGxB;EACI,6BAA6B,EAAA;;AAGjC;EACI,uBAAuB,EAAA;;AAG3B;EACI,WAAW,EAAA;;AAGf;EACI,cAAc,EAAA;;AAIlB;EACI,gBAAgB,EAAA;;AAIxB;EACI,eAAe;EACf,WAAW,EAAA;EAEX;IACI,cAAc,EAAA;EAGlB;IACI,cACJ,EAAA;EAEA;IACI,YAAY,EAAA;;AAKhB;EACI,WAAW;EACX,YAAY;EACZ,sBAAmB;KAAnB,mBAAmB,EAAA;;AAO3B;EACI,WAAW;EACX,gBAAgB;EAChB,SAAS;EACT,MAAM;EACN,aAAa;EACb,sBAAsB;EACtB,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,oBAAoB,EAAA;;AAKpB;EAEI,aAAa,EAAA;;AAIrB;EACI,WAAW,EAAA;EADf;IAIQ,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,uBAAuB;IACvB,yBAAyB;IACzB,sBAAsB,EAAA;IAT9B;MAYY,mBAAmB,EAAA;;AAM/B;EACI,sBAAsB,EAAA;;AAG1B;EACI,kBAAkB,EAAA;;AAGtB;EACI,aAAa;EACb,eAAe;EACf,eAAe,EAAA;EAHnB;IAMQ,oBAAoB,EAAA;EAN5B;IAUQ,YAAY;IACZ,sBACJ;OADI,mBACJ,EAAA;;AAIJ;EAEQ,cAAc,EAAA;;AAFtB;EAMQ,oBAAoB,EAAA;;AAN5B;EAWQ,wGAAgG;UAAhG,gGAAgG,EAAA;;AAKxG;EAEQ,yBAAyB;EACzB,WAAW,EAAA;;AAHnB;EAOQ,sGAA8F;UAA9F,8FAA8F;EAC9F,gBACJ,EAAA;;AATJ;EAYQ,qBAAqB;EACrB,oBAAoB,EAAA;EAb5B;IAgBY,uGAA+F;YAA/F,+FAA+F,EAAA;EAhB3G;IAoBY,oBAAoB,EAAA;;AAKhC;EACI,aAAa,EAAA;;AAGjB;EACI,aAAa;EACb,mBAAmB;EACnB,iBAAiB;EACjB,uBAAuB;EACvB,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,WAAW;EACX,YAAY;EACZ,UAAU;EACV,qBAAqB;EACrB,kBAAkB;EAClB,YAAY;EACZ,UAAU;EACV,cAAc;EACd,mBAAmB,EAAA;EAhBvB;IAmBQ,mBAAmB;IACnB,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,iBAAiB,EAAA;;AAIzB;EACI,kBAAkB;EAClB,mBAAmB,EAAA","file":"styles.scss","sourcesContent":[":root {\r\n    --accent: #024E8F;\r\n    --secondary: #777\r\n}\r\n\r\n@font-face {\r\n    font-family: \"OpenSans\";\r\n    src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\");\r\n}\r\n\r\nbody {\r\n    min-height: 700px;\r\n    font-size: 16px;\r\n    position: relative;\r\n    font-family: \"OpenSans\", sans-serif !important;\r\n}\r\n\r\n.page {\r\n    min-height: 600px;\r\n}\r\n\r\nimg {\r\n    width: 100%;\r\n}\r\n\r\n\r\np {\r\n    color: #777777;\r\n}\r\n\r\ndiv {\r\n\r\n    h1,\r\n    h2,\r\n    h3,\r\n    h4,\r\n    h5,\r\n    h6 {\r\n        font-weight: bold;\r\n    }\r\n\r\n    p {\r\n        margin-bottom: 0;\r\n    }\r\n}\r\n\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n\r\n    li {\r\n        list-style-type: none;\r\n    }\r\n}\r\n\r\np {\r\n    // line-height: normal;\r\n}\r\n\r\n.text {\r\n\r\n    &-small {\r\n        font-size: .75rem;\r\n    }\r\n\r\n    &-md {\r\n        font-size: .9rem;\r\n    }\r\n\r\n    &-lg {\r\n        font-size: 1.1rem;\r\n    }\r\n\r\n    &-big {\r\n        font-size: 1.2rem;\r\n    }\r\n\r\n    &-underline {\r\n        text-decoration: underline;\r\n    }\r\n\r\n    &-normal {\r\n        font-weight: normal;\r\n    }\r\n\r\n    &-bold {\r\n        font-weight: bold;\r\n    }\r\n\r\n    &-accent {\r\n        color: var(--accent)\r\n    }\r\n\r\n    &-crossed {\r\n        text-decoration: line-through;\r\n    }\r\n\r\n    &-secondary {\r\n        color: var(--secondary)\r\n    }\r\n\r\n    &-black {\r\n        color: #000;\r\n    }\r\n\r\n    &-light {\r\n        color: #CCCCCC;\r\n    }\r\n\r\n\r\n    &-xsmall {\r\n        font-size: .5rem;\r\n    }\r\n}\r\n\r\n.icon {\r\n    height: 0.75rem;\r\n    width: auto;\r\n\r\n    &-sm {\r\n        height: 1.2rem;\r\n    }\r\n\r\n    &-md {\r\n        height: 1.5rem\r\n    }\r\n\r\n    &-big {\r\n        height: 2rem;\r\n    }\r\n}\r\n\r\n.img {\r\n    &-small {\r\n        width: 50px;\r\n        height: 50px;\r\n        object-fit: contain;\r\n    }\r\n\r\n}\r\n\r\n// Carousel\r\n// Dots\r\n.carousel-caption {\r\n    right: auto;\r\n    text-align: left;\r\n    bottom: 0;\r\n    top: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: left;\r\n    justify-content: center;\r\n    width: 300px;\r\n    color: var(--accent);\r\n}\r\n\r\n.carousel-control {\r\n\r\n    &-prev,\r\n    &-next {\r\n        display: none;\r\n    }\r\n}\r\n\r\n.carousel-indicators {\r\n    right: auto;\r\n\r\n    li {\r\n        width: 15px;\r\n        height: 15px;\r\n        border-radius: 50%;\r\n        background: transparent;\r\n        border: 1px solid #004A8B;\r\n        box-sizing: border-box;\r\n\r\n        &.active {\r\n            background: #014C8D;\r\n        }\r\n    }\r\n}\r\n\r\n// Slider Carousel\r\n.react-multi-carousel-list {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.radius {\r\n    border-radius: 50%;\r\n}\r\n\r\n.flex-columns {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    padding-left: 0;\r\n\r\n    li {\r\n        flex: 0 0 33.333333%;\r\n    }\r\n\r\n    img {\r\n        height: 22px;\r\n        object-fit: contain\r\n    }\r\n\r\n}\r\n\r\n.list a.active {\r\n    .category__tick {\r\n        display: block;\r\n    }\r\n\r\n    p {\r\n        color: var(--accent);\r\n\r\n    }\r\n\r\n    img {\r\n        filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\r\n    }\r\n\r\n}\r\n\r\n.list a {\r\n    * {\r\n        transition: .25s ease all;\r\n        color: #777;\r\n    }\r\n\r\n    img {\r\n        filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\r\n        transition: none\r\n    }\r\n\r\n    &:hover {\r\n        text-decoration: none;\r\n        color: var(--accent);\r\n\r\n        img {\r\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\r\n        }\r\n\r\n        * {\r\n            color: var(--accent)\r\n        }\r\n    }\r\n}\r\n\r\n.category__tick {\r\n    display: none;\r\n}\r\n\r\n.circle {\r\n    display: flex;\r\n    align-items: center;\r\n    font-size: .75rem;\r\n    justify-content: center;\r\n    background: #FF0000;\r\n    border-radius: 50%;\r\n    border: 1px solid white;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    z-index: 4;\r\n    display: inline-block;\r\n    position: absolute;\r\n    bottom: -4px;\r\n    left: -4px;\r\n    padding: 1px 0;\r\n    line-height: normal;\r\n\r\n    * {\r\n        line-height: normal;\r\n        text-align: center;\r\n        width: 100%;\r\n        height: 100%;\r\n        color: white;\r\n        font-weight: bold;\r\n    }\r\n}\r\n\r\n.dropdown-menu.show {\r\n    padding-left: 10px;\r\n    padding-right: 10px;\r\n}"]}]);
 // Exports
 module.exports = exports;
 
@@ -43181,8 +43195,6 @@ var MyComponent = function MyComponent(_ref) {
       setCategories = _useState2[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_7__["useEffect"])(function () {
-    // if(store.getState().auth.token === null){
-    // }
     store.dispatch(_store_actions__WEBPACK_IMPORTED_MODULE_8__["authCheckState"]());
 
     if (localStorage.getItem("cart")) {
@@ -43257,7 +43269,7 @@ var MyComponent = function MyComponent(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110,
+      lineNumber: 107,
       columnNumber: 3
     }
   }, __jsx(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_11__["default"].Provider, {
@@ -43269,7 +43281,7 @@ var MyComponent = function MyComponent(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118,
+      lineNumber: 115,
       columnNumber: 4
     }
   }, __jsx(_layouts__WEBPACK_IMPORTED_MODULE_13__["Layout"], {
@@ -43277,7 +43289,7 @@ var MyComponent = function MyComponent(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119,
+      lineNumber: 116,
       columnNumber: 5
     }
   }, children)));
@@ -43306,7 +43318,7 @@ var myApp = /*#__PURE__*/function (_App) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 128,
+          lineNumber: 125,
           columnNumber: 4
         }
       }, __jsx(MyComponent, {
@@ -43314,14 +43326,14 @@ var myApp = /*#__PURE__*/function (_App) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 129,
+          lineNumber: 126,
           columnNumber: 5
         }
       }, __jsx(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, pageProps, {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 130,
+          lineNumber: 127,
           columnNumber: 6
         }
       }))));
@@ -43502,6 +43514,7 @@ var authCheckState = function authCheckState() {
     } else {
       var _token = localStorage.getItem("token");
 
+      if (_token) js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.set("token", _token);
       var name = localStorage.getItem("name");
       dispatch(authSuccess(_token, name)); // uncomment when expiration date comes in
       // const expirationDate = new Date(localStorage.getItem("expirationDate"));
