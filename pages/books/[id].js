@@ -11,6 +11,7 @@ import { ProductDetails, ProductDescription, Comments, ProductsCarousel } from "
 const BookPage = ({ bookProps, isAuthorized }) => {
 	const [ book, setBook ] = useState(bookProps);
 	const [ rate, setRate ] = useState(0);
+	const [ isDescriptionExpanded, setIsDescriptionExpanded ] = useState(false);
 	const cartContext = useContext(CartContext);
 	const authModalContext = useContext(AuthModalContext);
 	const commentControl = useForm();
@@ -20,6 +21,9 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 		},
 		[ bookProps ]
 	);
+	const expandDescription = () => {
+		setIsDescriptionExpanded(true);
+	};
 	const commentSubmitHandler = event => {
 		event.preventDefault();
 		const formData = new FormData();
@@ -69,6 +73,8 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 					<Col md={10}>
 						<ProductDescription
 							{...book}
+							expandDescription={expandDescription}
+							isDescriptionExpanded={isDescriptionExpanded}
 							cartClicked={() => cartContext.onAddRemoveItem(book)}
 							isInCart={cartContext.onFindInCart(book.id)}
 							favouriteClicked={favouriteHandler}

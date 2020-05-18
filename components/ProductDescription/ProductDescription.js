@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import classes from "./ProductDescription.module.scss";
+const MAX_LENGTH = 5;
 const productDescription = ({
 	publish_year,
 	title,
@@ -13,12 +14,28 @@ const productDescription = ({
 	cartClicked,
 	favouriteClicked,
 	in_favourites,
-	isAuthorized
+	isAuthorized,
+	isDescriptionExpanded,
+	expandDescription,
+	book_format
 }) => {
 	const bookTypes = [ "Аудиокнига", "Печатное издание", "Электронная книга" ];
 	const getDiscount = () => {
 		return ((1 - current_price / price) * 100).toFixed(2);
 	};
+	let desc = description;
+	if (desc.length > MAX_LENGTH) {
+		desc = !isDescriptionExpanded ? (
+			<React.Fragment>
+				{description.substr(0, MAX_LENGTH)}
+				<a role="button" className="text-accent ml-2" style={{ cursor: "pointer" }} onClick={expandDescription}>
+					Подробнее »
+				</a>
+			</React.Fragment>
+		) : (
+			description
+		);
+	}
 	return (
 		<div className={classes.ProductDescription}>
 			<p>{publish_year}</p>
@@ -34,16 +51,15 @@ const productDescription = ({
 							</div>
 						</Button>
 					)}
-					<p className="text-small btn btn-secondary">{bookTypes[+book_type - 1]}</p>
+					<p className="text-small btn btn-secondary">
+						{book_format ? book_format : bookTypes[+book_type - 1]}
+					</p>
 				</div>
 			</div>
 			<p className="text-md mt-3">
 				<strong>Аннотация к книге "{title}"</strong>
 			</p>
-			<p className="text-md">
-				{/* should be openable */}
-				{description}
-			</p>
+			<p className="text-md">{desc}</p>
 			<div className="d-flex justify-content-between align-items-end mt-2 mb-4">
 				<h2 className="mb-0 text-accent">{current_price} сум</h2>
 				<div className="d-flex align-items-end ml-4">

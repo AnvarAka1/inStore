@@ -17,13 +17,15 @@
         border-radius: 5px;
     }
 
-    &:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 55px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 78.12%);
+    &.BottomBox {
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 55px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 78.12%);
+        }
     }
 }

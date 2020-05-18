@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { connect } from "react-redux";
 import * as actions from "../store/actions/index";
 import { getStaticCategories } from "../lib/categories";
@@ -7,41 +7,53 @@ import { AuthModalContext } from "../store";
 import Router from "next/router";
 import { useForm } from "../hooks/";
 import { Container } from "react-bootstrap";
+import { Form, Formik, useFormik } from "formik";
+import { string, object } from "yup";
 import { AuthModal, NavItems, Navbar, Footer, Search } from "../components/";
 
 const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) => {
 	const [ isSignUp, setIsSignUp ] = useState(true);
+	const [ showInputMask, setShowInputMask ] = useState(false);
+	const formikRegister = useFormik({
+		initialValues: {
+			name: "",
+			email: "",
+			phone: "",
+			fPassword: "",
+			sPassword: ""
+		},
+		validationSchema: object({
+			name: string().min(2).required(),
+			email: string().email().min(4).required(),
+			phone: string().min(9).max(9).required(),
+			fPassword: string().min(6).max(20).required(),
+			sPassword: string().min(6).max(20).required()
+		}),
+		onSubmit: values => {
+			onAuth(values.name, values.email, values.phone, values.fPassword, isSignUp);
+		}
+	});
+	const formikLogin = useFormik({
+		initialValues: {
+			emailPhone: "",
+			password: "",
+			checkbox: ""
+		},
+		validationSchema: object({
+			emailPhone: string().min(2).required(),
+			password: string().email().min(4).required(),
+			checkbox: string().min(9).max(9).required()
+		}),
+		onSubmit: values => {
+			onAuth(null, values.emailPhone, null, values.password, isSignUp);
+		}
+	});
 	const authModalContext = useContext(AuthModalContext);
-	const nameControl = useForm(false, {
-		label: "Ф.И.О"
-	});
-	const emailControl = useForm(false, {
-		label: "Эл. почта"
-	});
-	const phoneControl = useForm(false, {
-		label: "Номер телефона"
-	});
-	const fPasswordControl = useForm(false, {
-		label: "Введите пароль",
-		type: "password"
-	});
-	const sPasswordControl = useForm(false, {
-		label: "Подтвердите пароль",
-		type: "password"
-	});
-
-	const emailPhoneControl = useForm(false, {
-		label: "Электронная почта или номер телефона"
-	});
-	const passwordControl = useForm(false, {
-		label: "Введите пароль",
-		type: "password"
-	});
 	const checkboxControl = useForm();
-
 	const searchControl = useForm();
-	const regControls = [ nameControl, emailControl, phoneControl, fPasswordControl, sPasswordControl ];
-	const authControls = [ emailPhoneControl, passwordControl ];
+	useEffect(() => {
+		setShowInputMask(true);
+	}, []);
 	const modeHandler = mode => {
 		setIsSignUp(mode);
 	};
@@ -75,7 +87,9 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 	return (
 		<div>
 			<AuthModal
-				controls={[ authControls, regControls ]}
+				showInputMask={showInputMask}
+				login={formikLogin}
+				register={formikRegister}
 				isSignUp={isSignUp}
 				modal={authModalContext.authModal}
 				submitted={authHandler}

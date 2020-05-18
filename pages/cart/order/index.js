@@ -43,7 +43,7 @@ const OrderPage = props => {
 		setShowInputMask(true);
 	}, []);
 	return (
-		<Formik>
+	<Formik>
 			<Form onSubmit={formik.handleSubmit}>
 				<CartLayout isOrderPage>
 						<Row>
@@ -159,7 +159,7 @@ const OrderPage = props => {
 							</Row>
 				</CartLayout>
 			</Form>
-		</Formik>
+			</Formik>
 	);
 };
 const getImages = () => [

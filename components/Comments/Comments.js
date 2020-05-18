@@ -35,9 +35,9 @@ const comments = ({ items, rate, commentControl, isAuthorized, rateClicked, onSu
 
 			<h3 className="mt-4">Отзывы</h3>
 			{items.length ? (
-				<ul className={classes.Comments}>{commentsView}</ul>
+				<ul className={`${classes.Comments} ${items.length > 20 && classes.BottomBox}`}>{commentsView}</ul>
 			) : (
-				<h5 className="text-secondary">Пока нет отзывов</h5>
+				<p className="text-secondary">Пока нет отзывов</p>
 			)}
 		</React.Fragment>
 	);

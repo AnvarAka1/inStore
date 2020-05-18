@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default as User } from \"./User/User\";","map":{"version":3,"sources":["D:/Anvar/Projects/React/React.js/ssr/components/index.js"],"names":["default","User"],"mappings":"AAAA,SAASA,OAAO,IAAIC,IAApB,QAAgC,aAAhC","sourcesContent":["export { default as User } from \"./User/User\";\r\n"]},"metadata":{},"sourceType":"module"}
