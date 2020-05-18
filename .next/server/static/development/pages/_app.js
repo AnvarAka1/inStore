@@ -128,9 +128,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 const instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL: "http://api.in-study.uz/"
+  baseURL: "https://api.in-study.uz/"
 });
-/* harmony default export */ __webpack_exports__["default"] = (instance);
+/* harmony default export */ __webpack_exports__["default"] = (instance); // "dev": "cross-env NODE_OPTIONS='--inspect' next",
 
 /***/ }),
 
@@ -541,7 +541,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 const categories = ({
   items,
   isVideo,
-  isStatic
+  isStatic,
+  pathname
 }) => {
   const categoriesView = items.map(item => {
     return __jsx(_Category_Category__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -549,6 +550,7 @@ const categories = ({
       icon: item.icon,
       id: item.id,
       href: item.link,
+      pathname: pathname,
       isStatic: isStatic,
       __self: undefined,
       __source: {
@@ -562,7 +564,7 @@ const categories = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 19,
       columnNumber: 3
     }
   }, !isStatic && __jsx("div", {
@@ -570,7 +572,7 @@ const categories = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 21,
       columnNumber: 5
     }
   }, __jsx("img", {
@@ -580,7 +582,7 @@ const categories = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 22,
       columnNumber: 6
     }
   }), __jsx("h5", {
@@ -588,14 +590,14 @@ const categories = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 23,
       columnNumber: 6
     }
   }, !isVideo ? "Жанры" : "Категории")), __jsx("ul", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 26,
       columnNumber: 4
     }
   }, categoriesView), __jsx("hr", {
@@ -603,7 +605,7 @@ const categories = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 27,
       columnNumber: 4
     }
   }));
@@ -645,7 +647,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
+      lineNumber: 7,
       columnNumber: 3
     }
   }, __jsx("div", {
@@ -653,7 +655,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 8,
       columnNumber: 4
     }
   }, __jsx("div", {
@@ -661,7 +663,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 9,
       columnNumber: 5
     }
   }, isStatic && __jsx("img", {
@@ -671,7 +673,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
+      lineNumber: 10,
       columnNumber: 19
     }
   }), __jsx("p", {
@@ -679,7 +681,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 11,
       columnNumber: 6
     }
   }, children)), __jsx("div", {
@@ -687,7 +689,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 13,
       columnNumber: 5
     }
   }, __jsx("img", {
@@ -697,7 +699,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 14,
       columnNumber: 6
     }
   }))));
@@ -707,20 +709,20 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 20,
       columnNumber: 3
     }
-  }, href ? __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"], {
+  }, href !== undefined ? __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"], {
     href: `/books/categories${href}`,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 22,
       columnNumber: 5
     }
   }, item) : __jsx(___WEBPACK_IMPORTED_MODULE_2__["Link"], {
     href: {
-      pathname: `/books/categories/${pathname}`,
+      pathname: pathname,
       query: {
         genre: id
       }
@@ -728,7 +730,7 @@ const category = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 24,
       columnNumber: 5
     }
   }, item));
@@ -1852,10 +1854,30 @@ const CustomLink = ({
   className,
   href
 }) => {
+  let hasQueries = true;
   const router = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])();
-  let classNames = className || "";
+  let classNames = className || ""; // if the link has the query param like /books/categories/audio-books?genre=1
 
-  if (href === router.pathname) {
+  if (href.query) {
+    // check whether the current route has any queries
+    if (!isEmpty(router.query)) {
+      // go through all queries in current route
+      for (let key in router.query) {
+        // chech whether there is a value in link's query
+        // check whether there is a match between current route's and link's queries
+        if (!href.query[key] || router.query[key] !== href.query[key].toString()) {
+          hasQueries = false;
+          break;
+        }
+      } // if the pathnames are different, then it is also mismatch
+      // else just add active class to link
+
+
+      if (href.pathname === router.pathname && hasQueries) {
+        classNames = `${className} active`;
+      }
+    }
+  } else if (href === router.pathname) {
     classNames = `${className} active`;
   }
 
@@ -1864,12 +1886,20 @@ const CustomLink = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 33,
       columnNumber: 9
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(children, {
     className: classNames
   }));
+};
+
+const isEmpty = obj => {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) return false;
+  }
+
+  return true;
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CustomLink);
@@ -2783,7 +2813,8 @@ const productDescription = ({
   isInCart,
   cartClicked,
   favouriteClicked,
-  in_favourites
+  in_favourites,
+  isAuthorized
 }) => {
   const bookTypes = ["Аудиокнига", "Печатное издание", "Электронная книга"];
 
@@ -2796,21 +2827,21 @@ const productDescription = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 23,
       columnNumber: 3
     }
   }, __jsx("p", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 24,
       columnNumber: 4
     }
   }, publish_year), __jsx("h2", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 25,
       columnNumber: 4
     }
   }, title), __jsx("div", {
@@ -2818,7 +2849,7 @@ const productDescription = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 26,
       columnNumber: 4
     }
   }, __jsx("h4", {
@@ -2826,31 +2857,31 @@ const productDescription = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 27,
       columnNumber: 5
     }
   }, author), __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 28,
       columnNumber: 5
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+  }, isAuthorized && __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     onClick: favouriteClicked,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 6
+      lineNumber: 30,
+      columnNumber: 7
     }
   }, __jsx("div", {
     className: "d-flex align-items-center",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
-      columnNumber: 7
+      lineNumber: 31,
+      columnNumber: 8
     }
   }, __jsx("img", {
     src: "/images/icons/star.png",
@@ -2858,14 +2889,14 @@ const productDescription = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 8
+      lineNumber: 32,
+      columnNumber: 9
     }
   }), in_favourites ? "Убрать из избранного" : "Избранное"))), __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 38,
       columnNumber: 5
     }
   }, bookTypes[+book_type])), __jsx("p", {
@@ -2873,14 +2904,14 @@ const productDescription = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 40,
       columnNumber: 4
     }
   }, __jsx("strong", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 41,
       columnNumber: 5
     }
   }, "\u0410\u043D\u043D\u043E\u0442\u0430\u0446\u0438\u044F \u043A \u043A\u043D\u0438\u0433\u0435 \"", title, "\"")), __jsx("p", {
@@ -2888,7 +2919,7 @@ const productDescription = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 43,
       columnNumber: 4
     }
   }, description), __jsx("div", {
@@ -2896,28 +2927,28 @@ const productDescription = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
+      lineNumber: 47,
       columnNumber: 4
     }
   }, __jsx("h2", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 48,
       columnNumber: 5
     }
   }, current_price, " \u0441\u0443\u043C"), __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 49,
       columnNumber: 5
     }
   }, __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 50,
       columnNumber: 6
     }
   }, __jsx("p", {
@@ -2925,7 +2956,7 @@ const productDescription = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 51,
       columnNumber: 7
     }
   }, price, " \u0441\u0443\u043C"), __jsx("p", {
@@ -2933,7 +2964,7 @@ const productDescription = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49,
+      lineNumber: 52,
       columnNumber: 7
     }
   }, "\u0421\u043A\u0438\u0434\u043A\u0430 ", getDiscount())))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
@@ -2941,7 +2972,7 @@ const productDescription = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 57,
       columnNumber: 4
     }
   }, isInCart ? "Удалить из корзины" : "Добавить в корзину"));
@@ -5570,6 +5601,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
 /* harmony import */ var _axios_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../axios-api */ "./axios-api.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
 var _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\layouts\\CategoriesLayout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -5577,9 +5610,17 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
 let _isMounted = false;
 
-const CategoriesLayout = props => {
+const CategoriesLayout = ({
+  children,
+  withoutGenre
+}) => {
+  const {
+    0: pathname,
+    1: setPathname
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])();
   const {
     0: categories,
     1: setCategories
@@ -5588,6 +5629,7 @@ const CategoriesLayout = props => {
     0: loading,
     1: setLoading
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true);
+  const router = Object(next_router__WEBPACK_IMPORTED_MODULE_5__["useRouter"])();
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     _isMounted = true;
     _axios_api__WEBPACK_IMPORTED_MODULE_4__["default"].get("genres").then(res => {
@@ -5597,13 +5639,18 @@ const CategoriesLayout = props => {
     }).finally(() => {
       if (_isMounted) setLoading(false);
     });
-    return () => _isMounted = false;
+    return () => {
+      _isMounted = false;
+    };
   }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    setPathname(router.pathname);
+  }, [router.pathname]);
   return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 38,
       columnNumber: 3
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
@@ -5611,7 +5658,7 @@ const CategoriesLayout = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 39,
       columnNumber: 4
     }
   }, __jsx(_components___WEBPACK_IMPORTED_MODULE_3__["Categories"], {
@@ -5620,26 +5667,27 @@ const CategoriesLayout = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 40,
       columnNumber: 5
     }
-  }), !loading && __jsx(_components___WEBPACK_IMPORTED_MODULE_3__["Categories"], {
+  }), !withoutGenre && !loading && __jsx(_components___WEBPACK_IMPORTED_MODULE_3__["Categories"], {
     items: categories,
+    pathname: pathname,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 18
+      lineNumber: 41,
+      columnNumber: 35
     }
   })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
     sm: 9,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 43,
       columnNumber: 4
     }
-  }, props.children));
+  }, children));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CategoriesLayout);

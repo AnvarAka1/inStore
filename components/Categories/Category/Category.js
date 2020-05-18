@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./Category.module.scss";
 import { Link } from "../../";
+
 const category = ({ id, pathname, children, href, icon, isStatic }) => {
 	const item = (
 		<a>
@@ -17,10 +18,10 @@ const category = ({ id, pathname, children, href, icon, isStatic }) => {
 	);
 	return (
 		<li className={`${classes.Category} mt-2 list`}>
-			{href ? (
+			{href !== undefined ? (
 				<Link href={`/books/categories${href}`}>{item}</Link>
 			) : (
-				<Link href={{ pathname: `/books/categories/${pathname}`, query: { genre: id } }}>{item}</Link>
+				<Link href={{ pathname: pathname, query: { genre: id } }}>{item}</Link>
 			)}
 		</li>
 	);

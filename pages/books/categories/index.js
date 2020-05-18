@@ -3,31 +3,80 @@ import axios from "../../../axios-api";
 import { CategoriesLayout } from "../../../layouts";
 import { Row, Col } from "react-bootstrap";
 import { Products } from "../../../components";
+import { useRouter } from "next/router";
 // ?pk=1
-const BooksPage = props => {
-	const [ loading, setLoading ] = useState(true);
+let initialPageLoad = true;
+let _isMounted = false;
+const BooksPage = ({ title, booksProps, resultsProps, url }) => {
+	const [ books, setBooks ] = useState(booksProps);
+	const [ results, setResults ] = useState(resultsProps);
+	const router = useRouter();
 	useEffect(() => {
-		setLoading(false);
+		_isMounted = true;
+		return () => (_isMounted = false);
 	}, []);
+	useEffect(
+		() => {
+			_isMounted = true;
+			if (!initialPageLoad && router.query.genre) {
+				axios
+					.get(url + "?g=" + router.query.genre)
+					.then(res => {
+						updateValues(res);
+					})
+					.catch(err => console.log(err));
+			} else if (!initialPageLoad && !router.query.genre) {
+				axios.get(url).then(res => {
+					updateValues(res);
+				});
+			} else {
+				initialPageLoad = false;
+			}
+			return () => (_isMounted = false);
+		},
+		[ router.query.genre ]
+	);
 
+	useEffect(
+		() => {
+			_isMounted = true;
+			if (!initialPageLoad) {
+				axios.get(url).then(res => {
+					updateValues(res);
+				});
+			}
+			return () => (_isMounted = false);
+		},
+		[ router.pathname ]
+	);
+
+	const updateValues = res => {
+		if (_isMounted) {
+			if (booksProps) {
+				setBooks(res.data.results);
+			} else {
+				setResults(res.data.results);
+			}
+		}
+	};
 	return (
 		<CategoriesLayout>
-			{props.books &&
-			!loading && (
+			{booksProps &&
+			books && (
 				<React.Fragment>
 					<Row>
 						<Col>
-							<h2>{props.title}</h2>
+							<h2>{title}</h2>
 						</Col>
 					</Row>
 					<Row>
-						<Products items={props.books} />
+						<Products items={books} />
 					</Row>
 				</React.Fragment>
 			)}
-			{props.results &&
-				!loading &&
-				props.results.map(result => (
+			{resultsProps &&
+				results &&
+				results.map(result => (
 					<React.Fragment key={result.id}>
 						<Row>
 							<Col>
@@ -45,12 +94,14 @@ const BooksPage = props => {
 
 export const getServerSideProps = async context => {
 	// axios
-	const res = await axios.get("categories/books");
+	const url = "categories/books";
+	const res = await axios.get(url);
 	const { results } = res.data;
 
 	return {
 		props: {
-			results: results
+			url,
+			resultsProps: results
 		}
 	};
 };

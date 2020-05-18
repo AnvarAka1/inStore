@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../axios-api";
 import { useForm, useModal } from "../hooks";
-import Link from "next/link";
+import { parseCookies } from "../helpers/utils";
 import { Row, Col, Carousel, Button, Form } from "react-bootstrap";
 import {
 	Heading,
@@ -44,7 +44,17 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 
 	const reviewSubmitHandler = event => {
 		event.preventDefault();
-		console.log("Review submitted");
+		const formData = new FormData();
+		formData.append("text", reviewControl.value);
+		formData.append("rate", rate);
+		axios
+			.post("/feedback", formData, {
+				headers: {
+					Authorization: `Bearer ${parseCookies(null).token}`
+				}
+			})
+			.then(res => console.log(res))
+			.catch(err => console.log(err));
 	};
 	const speakerCard = (
 		<Card>

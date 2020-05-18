@@ -69,6 +69,7 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 						cartClicked={() => cartContext.onAddRemoveItem(book)}
 						isInCart={cartContext.onFindInCart(book.id)}
 						favouriteClicked={favouriteHandler}
+						isAuthorized={isAuthorized}
 					/>
 
 					<Comments
@@ -87,8 +88,15 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 	);
 };
 
-export const getServerSideProps = async ({ query }) => {
-	const res = await axios.get("books/" + query.id);
+export const getServerSideProps = async ({ query, req }) => {
+	const token = parseCookies(req).token;
+	const res = await axios.get("books/" + query.id, {
+		headers: token
+			? {
+					Authorization: `Bearer ${token}`
+				}
+			: null
+	});
 	return {
 		props: {
 			bookProps: res.data

@@ -26,11 +26,39 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
+    "/books/[id]": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/books/categories": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/books/categories/audio-books": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
+    "/books/categories/compilations": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/books/categories/e-books": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/books/categories/printed-books": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/cart": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/index": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/profile/settings": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

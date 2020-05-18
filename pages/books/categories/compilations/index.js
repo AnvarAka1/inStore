@@ -10,7 +10,7 @@ const CompilationsPage = props => {
 		setLoading(false);
 	}, []);
 	return (
-		<CategoriesLayout>
+		<CategoriesLayout withoutGenre>
 			{!loading &&
 				props.results.map(result => (
 					<React.Fragment key={result.id}>

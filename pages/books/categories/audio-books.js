@@ -3,12 +3,14 @@ import BooksPage from "./";
 
 export default BooksPage;
 export const getServerSideProps = async ctx => {
-	const res = await axios.get("books/type/1");
+	const url = "books/type/1";
+	const res = await axios.get(url);
 	const books = res.data.results;
 	return {
 		props: {
 			title: "Аудиокниги",
-			books
+			url,
+			booksProps: books
 		}
 	};
 };

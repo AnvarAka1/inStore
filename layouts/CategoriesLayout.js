@@ -3,10 +3,13 @@ import { getStaticCategories } from "../lib/categories";
 import { Row, Col } from "react-bootstrap";
 import { Categories } from "../components/";
 import axios from "../axios-api";
+import { useRouter } from "next/router";
 let _isMounted = false;
-const CategoriesLayout = props => {
+const CategoriesLayout = ({ children, withoutGenre }) => {
+	const [ pathname, setPathname ] = useState();
 	const [ categories, setCategories ] = useState([]);
 	const [ loading, setLoading ] = useState(true);
+	const router = useRouter();
 	useEffect(() => {
 		_isMounted = true;
 		axios
@@ -21,15 +24,23 @@ const CategoriesLayout = props => {
 				if (_isMounted) setLoading(false);
 			});
 
-		return () => (_isMounted = false);
+		return () => {
+			_isMounted = false;
+		};
 	}, []);
+	useEffect(
+		() => {
+			setPathname(router.pathname);
+		},
+		[ router.pathname ]
+	);
 	return (
 		<Row>
 			<Col sm={3}>
 				<Categories items={getStaticCategories()} isStatic={true} />
-				{!loading && <Categories items={categories} />}
+				{!withoutGenre && !loading && <Categories items={categories} pathname={pathname} />}
 			</Col>
-			<Col sm={9}>{props.children}</Col>
+			<Col sm={9}>{children}</Col>
 		</Row>
 	);
 };

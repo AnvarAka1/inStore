@@ -12,7 +12,8 @@ const productDescription = ({
 	isInCart,
 	cartClicked,
 	favouriteClicked,
-	in_favourites
+	in_favourites,
+	isAuthorized
 }) => {
 	const bookTypes = [ "Аудиокнига", "Печатное издание", "Электронная книга" ];
 	const getDiscount = () => {
@@ -25,12 +26,14 @@ const productDescription = ({
 			<div className="d-flex justify-content-start align-items-center">
 				<h4 className="text-secondary mb-0">{author}</h4>
 				<div>
-					<Button onClick={favouriteClicked}>
-						<div className="d-flex align-items-center">
-							<img src="/images/icons/star.png" className="icon mr-1" />
-							{in_favourites ? "Убрать из избранного" : "Избранное"}
-						</div>
-					</Button>
+					{isAuthorized && (
+						<Button onClick={favouriteClicked}>
+							<div className="d-flex align-items-center">
+								<img src="/images/icons/star.png" className="icon mr-1" />
+								{in_favourites ? "Убрать из избранного" : "Избранное"}
+							</div>
+						</Button>
+					)}
 				</div>
 				<div>{bookTypes[+book_type]}</div>
 			</div>
