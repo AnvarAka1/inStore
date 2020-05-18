@@ -56,53 +56,33 @@ var authModal = function authModal(_ref) {
       controls = _ref.controls,
       submitted = _ref.submitted,
       checkboxControl = _ref.checkboxControl;
+  var titles = ["Авторизация", "Регистрация"];
+  var texts = ["У вас еще нет аккаунта? Пройдите ", "У вас имеется аккаунт? "];
+  var actions = ["Регистрацию", "Войдите"];
 
-  var title = __jsx("h2", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 16
-    }
-  }, isSignUp ? "Регистрация" : "Авторизация");
-
-  var text = isSignUp ? __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 3
-    }
-  }, "\u0423 \u0432\u0430\u0441 \u0438\u043C\u0435\u0435\u0442\u0441\u044F \u0430\u043A\u043A\u0430\u0443\u043D\u0442?", " ", __jsx("span", {
-    className: "text-accent",
-    onClick: function onClick() {
-      return modeHandler(false);
-    },
+  var text = __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 13,
-      columnNumber: 4
-    }
-  }, "\u0412\u043E\u0439\u0434\u0438\u0442\u0435")) : __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18,
       columnNumber: 3
     }
-  }, "\u0423 \u0432\u0430\u0441 \u0435\u0449\u0435 \u043D\u0435\u0442 \u0430\u043A\u043A\u0430\u0443\u043D\u0442\u0430? \u041F\u0440\u043E\u0439\u0434\u0438\u0442\u0435", " ", __jsx("span", {
+  }, texts[+isSignUp], __jsx("span", {
     className: "text-accent",
+    style: {
+      cursor: "pointer"
+    },
     onClick: function onClick() {
-      return modeHandler(true);
+      return modeHandler(isSignUp ? false : true);
     },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 15,
       columnNumber: 4
     }
-  }, "\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044E"));
+  }, actions[+isSignUp]));
+
   var form = controls[+isSignUp].map(function (control, index) {
     return __jsx(_UI__WEBPACK_IMPORTED_MODULE_4__["FormGroup"], {
       key: index,
@@ -110,7 +90,7 @@ var authModal = function authModal(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 28,
+        lineNumber: 27,
         columnNumber: 4
       }
     }, control.options.label);
@@ -122,21 +102,21 @@ var authModal = function authModal(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 34,
       columnNumber: 3
     }
   }, __jsx(___WEBPACK_IMPORTED_MODULE_3__["Card"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 35,
       columnNumber: 4
     }
   }, __jsx(___WEBPACK_IMPORTED_MODULE_3__["Card"].Body, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 36,
       columnNumber: 5
     }
   }, __jsx("div", {
@@ -144,7 +124,7 @@ var authModal = function authModal(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 37,
       columnNumber: 6
     }
   }, __jsx("div", {
@@ -152,14 +132,21 @@ var authModal = function authModal(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 38,
       columnNumber: 7
     }
-  }, title, text, __jsx("div", {
+  }, __jsx("h2", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
+      lineNumber: 39,
+      columnNumber: 8
+    }
+  }, titles[+isSignUp]), text, __jsx("div", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41,
       columnNumber: 8
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Form"], {
@@ -167,7 +154,7 @@ var authModal = function authModal(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 42,
       columnNumber: 9
     }
   }, form, !isSignUp && __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Form"].Group, {
@@ -175,7 +162,7 @@ var authModal = function authModal(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 45,
       columnNumber: 11
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Form"].Check, {
@@ -186,7 +173,7 @@ var authModal = function authModal(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 46,
       columnNumber: 12
     }
   })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Button"], {
@@ -195,7 +182,7 @@ var authModal = function authModal(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 54,
       columnNumber: 10
     }
   }, isSignUp ? "Зарегистрироваться" : "Войти"), !isSignUp && __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -203,14 +190,14 @@ var authModal = function authModal(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 58,
       columnNumber: 11
     }
   }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
+      lineNumber: 59,
       columnNumber: 12
     }
   }, "\u041D\u0435 \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u0434\u043E\u0441\u0442\u0443\u043F?"))))), __jsx("div", {
@@ -218,7 +205,7 @@ var authModal = function authModal(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 65,
       columnNumber: 7
     }
   }, __jsx("p", {
@@ -226,7 +213,7 @@ var authModal = function authModal(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 66,
       columnNumber: 8
     }
   }, isSignUp ? "Регистрация" : "Авторизация", " \u0447\u0435\u0440\u0435\u0437:"))))));
@@ -1012,7 +999,8 @@ var comments = function comments(_ref) {
       commentControl = _ref.commentControl,
       isAuthorized = _ref.isAuthorized,
       rateClicked = _ref.rateClicked,
-      onSubmit = _ref.onSubmit;
+      onSubmit = _ref.onSubmit,
+      onAuth = _ref.onAuth;
   var commentsView = items.map(function (item) {
     return __jsx(_Comment_Comment__WEBPACK_IMPORTED_MODULE_4__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
       key: item.id
@@ -1020,8 +1008,8 @@ var comments = function comments(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 9,
-        columnNumber: 10
+        lineNumber: 8,
+        columnNumber: 41
       }
     }));
   });
@@ -1029,14 +1017,15 @@ var comments = function comments(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 10,
       columnNumber: 3
     }
   }, __jsx("h2", {
+    className: "mt-5 mb-2",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 11,
       columnNumber: 4
     }
   }, "\u041E\u0441\u0442\u0430\u0432\u0438\u0442\u044C \u043E\u0442\u0437\u044B\u0432"), isAuthorized ? __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], {
@@ -1044,7 +1033,7 @@ var comments = function comments(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 13,
       columnNumber: 5
     }
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
@@ -1055,15 +1044,15 @@ var comments = function comments(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 14,
       columnNumber: 6
     }
   }), __jsx("div", {
-    className: "d-flex justify-content-between align-items-end",
+    className: "d-flex justify-content-between align-items-center mt-2",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 20,
       columnNumber: 6
     }
   }, __jsx(___WEBPACK_IMPORTED_MODULE_5__["Stars"], {
@@ -1073,18 +1062,20 @@ var comments = function comments(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 21,
       columnNumber: 7
     }
   }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
     type: "submit",
+    className: "text-small",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 22,
       columnNumber: 7
     }
-  }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C"))) : __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, {
+  }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C"))) : __jsx("div", {
+    className: "mt-4",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -1100,7 +1091,10 @@ var comments = function comments(_ref) {
     }
   }), "\u041F\u0440\u043E\u0439\u0442\u0438 ", " ", __jsx("span", {
     className: "text-accent text-bold",
-    onClick: null,
+    style: {
+      cursor: "pointer"
+    },
+    onClick: onAuth,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -1108,21 +1102,30 @@ var comments = function comments(_ref) {
       columnNumber: 6
     }
   }, "\u0410\u0412\u0422\u041E\u0420\u0418\u0417\u0410\u0426\u0418\u042E")), __jsx("h3", {
+    className: "mt-4",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 36,
       columnNumber: 4
     }
-  }, "\u041E\u0442\u0437\u044B\u0432\u044B"), __jsx("ul", {
+  }, "\u041E\u0442\u0437\u044B\u0432\u044B"), items.length ? __jsx("ul", {
     className: _Comments_module_scss__WEBPACK_IMPORTED_MODULE_3___default.a.Comments,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 4
+      lineNumber: 38,
+      columnNumber: 5
     }
-  }, commentsView));
+  }, commentsView) : __jsx("h5", {
+    className: "text-secondary",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40,
+      columnNumber: 5
+    }
+  }, "\u041F\u043E\u043A\u0430 \u043D\u0435\u0442 \u043E\u0442\u0437\u044B\u0432\u043E\u0432"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (comments);
@@ -2068,6 +2071,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Heading_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Heading.module.scss */ "./components/Heading/Heading.module.scss");
 /* harmony import */ var _Heading_module_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Heading_module_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\components\\Heading\\Heading.js";
 
@@ -2076,24 +2081,25 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
 var heading = function heading(_ref) {
   var className = _ref.className,
       children = _ref.children,
       text = _ref.text,
-      clicked = _ref.clicked;
+      href = _ref.href;
   return __jsx("div", {
     className: [className, _Heading_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.Heading].join(" "),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
+      lineNumber: 7,
       columnNumber: 3
     }
   }, __jsx("h3", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 8,
       columnNumber: 4
     }
   }, children), __jsx("h5", {
@@ -2101,20 +2107,37 @@ var heading = function heading(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
-      columnNumber: 4
-    }
-  }, text), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-    onClick: clicked,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 9,
       columnNumber: 4
     }
-  }, "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0432\u0435\u0441\u044C \u0441\u043F\u0438\u0441\u043E\u043A"));
+  }, text), __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    href: href,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 4
+    }
+  }, __jsx("a", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 5
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 6
+    }
+  }, "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0432\u0435\u0441\u044C \u0441\u043F\u0438\u0441\u043E\u043A"))));
 };
 
+heading.defaultProps = {
+  href: "#"
+};
 /* harmony default export */ __webpack_exports__["default"] = (heading);
 
 /***/ }),
@@ -2634,8 +2657,8 @@ var makeOrder = function makeOrder(_ref) {
   var codeControl = _ref.codeControl,
       isValidCode = _ref.isValidCode,
       productCount = _ref.productCount,
-      price = _ref.price,
-      discount = _ref.discount,
+      currentPrice = _ref.currentPrice,
+      oldPrice = _ref.oldPrice,
       ordered = _ref.ordered;
   return __jsx("div", {
     __self: _this,
@@ -2687,7 +2710,7 @@ var makeOrder = function makeOrder(_ref) {
       lineNumber: 11,
       columnNumber: 7
     }
-  }, price, " \u0441\u0443\u043C")), __jsx("tr", {
+  }, oldPrice, " \u0441\u0443\u043C")), __jsx("tr", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -2708,7 +2731,7 @@ var makeOrder = function makeOrder(_ref) {
       lineNumber: 15,
       columnNumber: 7
     }
-  }, -1 * discount * 0.01 * price, " \u0441\u0443\u043C")))), __jsx("hr", {
+  }, currentPrice - oldPrice, " \u0441\u0443\u043C")))), __jsx("hr", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -2737,7 +2760,7 @@ var makeOrder = function makeOrder(_ref) {
       lineNumber: 33,
       columnNumber: 5
     }
-  }, price - discount * price)), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+  }, currentPrice)), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     onClick: ordered,
     type: "submit",
     __self: _this,
@@ -3029,15 +3052,25 @@ var navItems = function navItems(_ref) {
       lineNumber: 55,
       columnNumber: 7
     }
-  }, name)), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+  }, name)), __jsx("div", {
     onClick: onLogout,
+    className: "text-secondary text-small",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 57,
       columnNumber: 6
     }
-  }, "\u0412\u044B\u0439\u0442\u0438")));
+  }, __jsx("img", {
+    src: "/images/icons/logout.png",
+    className: "icon mr-1",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58,
+      columnNumber: 7
+    }
+  }), "\u0412\u044B\u0439\u0442\u0438")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (navItems);
@@ -3435,9 +3468,9 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var newHeader = function newHeader(_ref) {
   var children = _ref.children,
-      link = _ref.link;
+      href = _ref.href;
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: link,
+    href: href,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -3731,7 +3764,7 @@ var productDescription = function productDescription(_ref) {
       columnNumber: 4
     }
   }, title), __jsx("div", {
-    className: "d-flex justify-content-start align-items-center",
+    className: "d-flex justify-content-between align-items-center",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -3747,6 +3780,7 @@ var productDescription = function productDescription(_ref) {
       columnNumber: 5
     }
   }, author), __jsx("div", {
+    className: "d-flex ml-4",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -3755,6 +3789,8 @@ var productDescription = function productDescription(_ref) {
     }
   }, isAuthorized && __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     onClick: favouriteClicked,
+    className: "text-small mr-2",
+    variant: "secondary",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -3778,15 +3814,16 @@ var productDescription = function productDescription(_ref) {
       lineNumber: 32,
       columnNumber: 9
     }
-  }), in_favourites ? "Убрать из избранного" : "Избранное"))), __jsx("div", {
+  }), in_favourites ? "Убрать из избранного" : "Избранное")), __jsx("p", {
+    className: "text-small btn btn-secondary",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
-      columnNumber: 5
+      lineNumber: 37,
+      columnNumber: 6
     }
-  }, bookTypes[+book_type])), __jsx("p", {
-    className: "text-md",
+  }, bookTypes[+book_type - 1]))), __jsx("p", {
+    className: "text-md mt-3",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -3809,7 +3846,7 @@ var productDescription = function productDescription(_ref) {
       columnNumber: 4
     }
   }, description), __jsx("div", {
-    className: "d-flex justify-content-between align-items-end",
+    className: "d-flex justify-content-between align-items-end mt-2 mb-4",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -3817,6 +3854,7 @@ var productDescription = function productDescription(_ref) {
       columnNumber: 4
     }
   }, __jsx("h2", {
+    className: "mb-0 text-accent",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -3824,6 +3862,7 @@ var productDescription = function productDescription(_ref) {
       columnNumber: 5
     }
   }, current_price, " \u0441\u0443\u043C"), __jsx("div", {
+    className: "d-flex align-items-end ml-4",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -3831,6 +3870,7 @@ var productDescription = function productDescription(_ref) {
       columnNumber: 5
     }
   }, __jsx("div", {
+    className: "text-center",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -3838,7 +3878,7 @@ var productDescription = function productDescription(_ref) {
       columnNumber: 6
     }
   }, __jsx("p", {
-    className: "text-crossed",
+    className: "text-crossed text-small text-black",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -3846,22 +3886,42 @@ var productDescription = function productDescription(_ref) {
       columnNumber: 7
     }
   }, price, " \u0441\u0443\u043C"), __jsx("p", {
-    className: "text-secondary",
+    className: "btn btn-primary text-small",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 52,
       columnNumber: 7
     }
-  }, "\u0421\u043A\u0438\u0434\u043A\u0430 ", getDiscount())))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    onClick: cartClicked,
+  }, getDiscount(), "% \u0421\u043A\u0438\u0434\u043A\u0430")), +book_type === 3 && __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    onClick: null,
+    className: "text-small ml-2",
+    variant: "secondary",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 56,
+      columnNumber: 7
+    }
+  }, "\u0427\u0438\u0442\u0430\u0442\u044C \u0444\u0440\u0430\u0433\u043C\u0435\u043D\u0442"))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    onClick: cartClicked,
+    className: "w-100",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 62,
       columnNumber: 4
     }
-  }, isInCart ? "Удалить из корзины" : "Добавить в корзину"));
+  }, __jsx("img", {
+    src: "/images/icons/cart-white.png",
+    className: "icon icon-sm mr-1",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63,
+      columnNumber: 5
+    }
+  }), isInCart ? "Удалить из корзины" : "Добавить в корзину"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (productDescription);
@@ -3987,7 +4047,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 var productDetails = function productDetails(props) {
-  var rows = [["ID товара: ", props.id], ["ISBN: ", props.isbn], ["Страниц: ", props.page_count], ["Оформление: ", props.formalization], ["Иллюстрации: ", props.illustration], ["Масса: ", props.mass], ["Размеры: ", props.size], ["Подробнее: ", props.link]];
+  var rows = [["ID товара: ", props.book_id], ["ISBN: ", props.isbn], ["Страниц: ", props.page_count], ["Оформление: ", props.formalization], ["Иллюстрации: ", props.illustration], ["Масса: ", props.mass], ["Размеры: ", props.size], ["Подробнее: ", props.link]];
   return __jsx("div", {
     className: _ProductDetails_module_scss__WEBPACK_IMPORTED_MODULE_1___default.a.ProductDetails,
     __self: _this,
@@ -6650,76 +6710,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./helpers/utils.js":
-/*!**************************!*\
-  !*** ./helpers/utils.js ***!
-  \**************************/
-/*! exports provided: parseCookies, categorySelector, convertFrontToBackDate, convertBackToFrontDate, formCheckValidity */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseCookies", function() { return parseCookies; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "categorySelector", function() { return categorySelector; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "convertFrontToBackDate", function() { return convertFrontToBackDate; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "convertBackToFrontDate", function() { return convertBackToFrontDate; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "formCheckValidity", function() { return formCheckValidity; });
-/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cookie */ "./node_modules/cookie/index.js");
-/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cookie__WEBPACK_IMPORTED_MODULE_0__);
-
-var parseCookies = function parseCookies(req) {
-  // isServer ? "" : ""
-  return cookie__WEBPACK_IMPORTED_MODULE_0___default.a.parse(req ? req.headers.cookie || "" : document.cookie);
-};
-var categorySelector = function categorySelector(id, categories, _selectedId) {
-  if (id === _selectedId) return null;
-
-  if (_selectedId != -1) {
-    categories.forEach(function (el) {
-      if (_selectedId === el.id) {
-        el.isActive = false;
-      }
-    });
-  }
-
-  categories.forEach(function (el) {
-    if (el.id === id) {
-      el.isActive = true;
-    }
-  });
-  _selectedId = id;
-  return {
-    _selectedId: _selectedId,
-    categories: categories
-  };
-};
-var convertFrontToBackDate = function convertFrontToBackDate(date) {
-  var year = date.substring(0, 4);
-  var month = date.substring(5, 7);
-  var day = date.substring(8, 10);
-  return "".concat(day, "-").concat(month, "-").concat(year);
-};
-var convertBackToFrontDate = function convertBackToFrontDate(date) {
-  if (!date) {
-    return "";
-  }
-
-  var year = date.substring(6, 10);
-  var month = date.substring(3, 5);
-  var day = date.substring(0, 2);
-  return "".concat(year, "-").concat(month, "-").concat(day);
-};
-var formCheckValidity = function formCheckValidity() {
-  var formControls = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var isFormValid = true;
-  formControls.forEach(function (c) {
-    isFormValid = isFormValid && c.isValid;
-  });
-  return isFormValid;
-};
-
-/***/ }),
-
 /***/ "./helpers/with-redux-store.js":
 /*!*************************************!*\
   !*** ./helpers/with-redux-store.js ***!
@@ -7566,6 +7556,112 @@ var useTable = function useTable() {
 
 /***/ }),
 
+/***/ "./layouts/CartLayout.js":
+/*!*******************************!*\
+  !*** ./layouts/CartLayout.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks */ "./hooks/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./store/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components */ "./components/index.js");
+var _this = undefined,
+    _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\layouts\\CartLayout.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+
+var CartLayout = function CartLayout(_ref) {
+  var children = _ref.children,
+      isOrderPage = _ref.isOrderPage;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      currentPrice = _useState[0],
+      setCurrentPrice = _useState[1];
+
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      oldPrice = _useState2[0],
+      setOldPrice = _useState2[1];
+
+  var cartContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store__WEBPACK_IMPORTED_MODULE_3__["CartContext"]);
+  var codeControl = Object(_hooks__WEBPACK_IMPORTED_MODULE_2__["useForm"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var oldPrice = cartContext.cart.reduce(function (sum, product) {
+      return sum + +product.price;
+    }, 0);
+    var currentPrice = cartContext.cart.reduce(function (sum, product) {
+      return sum + +product.current_price;
+    }, 0);
+    setOldPrice(oldPrice);
+    setCurrentPrice(currentPrice);
+  }, [cartContext]);
+
+  var orderHandler = function orderHandler() {
+    if (isOrderPage) {
+      console.log("Order is done!");
+    } else {
+      next_router__WEBPACK_IMPORTED_MODULE_1___default.a.push({
+        pathname: "/cart/order"
+      });
+    }
+  };
+
+  return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37,
+      columnNumber: 3
+    }
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+    md: 9,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 4
+    }
+  }, children), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+    md: 3,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 4
+    }
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_5__["MakeOrder"], {
+    isValidCode: true,
+    currentPrice: currentPrice,
+    oldPrice: oldPrice,
+    productCount: cartContext.cart.length,
+    codeControl: codeControl,
+    ordered: orderHandler,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40,
+      columnNumber: 5
+    }
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CartLayout);
+
+/***/ }),
+
 /***/ "./layouts/CategoriesLayout.js":
 /*!*************************************!*\
   !*** ./layouts/CategoriesLayout.js ***!
@@ -7692,11 +7788,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_categories__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/categories */ "./lib/categories.js");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/head */ "./node_modules/next/dist/next-server/lib/head.js");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _hooks___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/ */ "./hooks/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store */ "./store/index.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _hooks___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/ */ "./hooks/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/ */ "./components/index.js");
 var _this = undefined,
     _jsxFileName = "D:\\Anvar\\Projects\\React\\React.js\\inStore\\layouts\\Layout.js";
 
@@ -7705,7 +7802,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
- // import Link from "next/link";
+
 
 
 
@@ -7724,40 +7821,39 @@ var Layout = function Layout(_ref) {
       isSignUp = _useState[0],
       setIsSignUp = _useState[1];
 
-  var authModal = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useModal"])();
-  var searchControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])();
-  var nameControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var authModalContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store__WEBPACK_IMPORTED_MODULE_5__["AuthModalContext"]);
+  var nameControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Ф.И.О"
   });
-  var emailControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var emailControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Эл. почта"
   });
-  var phoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var phoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Номер телефона"
   });
-  var fPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var fPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Введите пароль",
     type: "password"
   });
-  var sPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var sPasswordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Подтвердите пароль",
     type: "password"
   });
-  var emailPhoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var emailPhoneControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Электронная почта или номер телефона"
   });
-  var passwordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])(false, {
+  var passwordControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])(false, {
     label: "Введите пароль",
     type: "password"
   });
-  var checkboxControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_6__["useForm"])();
+  var checkboxControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])();
+  var searchControl = Object(_hooks___WEBPACK_IMPORTED_MODULE_7__["useForm"])();
+  var regControls = [nameControl, emailControl, phoneControl, fPasswordControl, sPasswordControl];
+  var authControls = [emailPhoneControl, passwordControl];
 
   var modeHandler = function modeHandler(mode) {
     setIsSignUp(mode);
   };
-
-  var regControls = [nameControl, emailControl, phoneControl, fPasswordControl, sPasswordControl];
-  var authControls = [emailPhoneControl, passwordControl];
 
   var authHandler = function authHandler(event) {
     event.preventDefault();
@@ -7767,23 +7863,25 @@ var Layout = function Layout(_ref) {
 
   var onSearch = function onSearch(event) {
     event.preventDefault();
-    next_router__WEBPACK_IMPORTED_MODULE_5___default.a.push("/search?q=".concat(searchControl.value));
+    searchControl.clear();
+    next_router__WEBPACK_IMPORTED_MODULE_6___default.a.push("/search?q=".concat(encodeURI(searchControl.value)));
   };
 
-  var search = __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Search"], {
+  var search = __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["Search"], {
     control: searchControl,
     onSearch: onSearch,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 64,
       columnNumber: 17
     }
-  });
+  }); // Right side of navbar with cart, login/logout
 
-  var navItems = __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["NavItems"], {
+
+  var navItems = __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["NavItems"], {
     name: name,
-    authModalShow: authModal.onShow,
+    authModalShow: authModalContext.authModal.onShow,
     cartCount: cartCount,
     isAuthorized: isAuthorized,
     onLogout: onLogout,
@@ -7802,10 +7900,10 @@ var Layout = function Layout(_ref) {
       lineNumber: 76,
       columnNumber: 3
     }
-  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["AuthModal"], {
+  }, __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["AuthModal"], {
     controls: [authControls, regControls],
     isSignUp: isSignUp,
-    modal: authModal,
+    modal: authModalContext.authModal,
     submitted: authHandler,
     modeHandler: modeHandler,
     checkboxControl: checkboxControl,
@@ -7829,7 +7927,7 @@ var Layout = function Layout(_ref) {
       lineNumber: 86,
       columnNumber: 5
     }
-  }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Navbar"], {
+  }, "InStore | \u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043A\u043D\u0438\u0433 \u0438 \u0432\u0438\u0434\u0435\u043E\u0443\u0440\u043E\u043A\u043E\u0432")), __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["Navbar"], {
     name: name,
     isAuthorized: isAuthorized,
     cartCount: cartCount,
@@ -7850,14 +7948,14 @@ var Layout = function Layout(_ref) {
       lineNumber: 96,
       columnNumber: 4
     }
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["Container"], {
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["Container"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 97,
       columnNumber: 5
     }
-  }, children)), __jsx(_components___WEBPACK_IMPORTED_MODULE_8__["Footer"], {
+  }, children)), __jsx(_components___WEBPACK_IMPORTED_MODULE_9__["Footer"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -7988,7 +8086,7 @@ var getNavigationItems = function getNavigationItems() {
 /*!**************************!*\
   !*** ./layouts/index.js ***!
   \**************************/
-/*! exports provided: Layout, ProfileLayout, CategoriesLayout */
+/*! exports provided: Layout, ProfileLayout, CategoriesLayout, CartLayout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8001,6 +8099,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _CategoriesLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CategoriesLayout */ "./layouts/CategoriesLayout.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CategoriesLayout", function() { return _CategoriesLayout__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _CartLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CartLayout */ "./layouts/CartLayout.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CartLayout", function() { return _CartLayout__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
 
 
 
@@ -13703,220 +13805,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
-/***/ "./node_modules/cookie/index.js":
-/*!**************************************!*\
-  !*** ./node_modules/cookie/index.js ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*!
- * cookie
- * Copyright(c) 2012-2014 Roman Shtylman
- * Copyright(c) 2015 Douglas Christopher Wilson
- * MIT Licensed
- */
-
-
-
-/**
- * Module exports.
- * @public
- */
-
-exports.parse = parse;
-exports.serialize = serialize;
-
-/**
- * Module variables.
- * @private
- */
-
-var decode = decodeURIComponent;
-var encode = encodeURIComponent;
-var pairSplitRegExp = /; */;
-
-/**
- * RegExp to match field-content in RFC 7230 sec 3.2
- *
- * field-content = field-vchar [ 1*( SP / HTAB ) field-vchar ]
- * field-vchar   = VCHAR / obs-text
- * obs-text      = %x80-FF
- */
-
-var fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
-
-/**
- * Parse a cookie header.
- *
- * Parse the given cookie header string into an object
- * The object has the various cookies as keys(names) => values
- *
- * @param {string} str
- * @param {object} [options]
- * @return {object}
- * @public
- */
-
-function parse(str, options) {
-  if (typeof str !== 'string') {
-    throw new TypeError('argument str must be a string');
-  }
-
-  var obj = {}
-  var opt = options || {};
-  var pairs = str.split(pairSplitRegExp);
-  var dec = opt.decode || decode;
-
-  for (var i = 0; i < pairs.length; i++) {
-    var pair = pairs[i];
-    var eq_idx = pair.indexOf('=');
-
-    // skip things that don't look like key=value
-    if (eq_idx < 0) {
-      continue;
-    }
-
-    var key = pair.substr(0, eq_idx).trim()
-    var val = pair.substr(++eq_idx, pair.length).trim();
-
-    // quoted values
-    if ('"' == val[0]) {
-      val = val.slice(1, -1);
-    }
-
-    // only assign once
-    if (undefined == obj[key]) {
-      obj[key] = tryDecode(val, dec);
-    }
-  }
-
-  return obj;
-}
-
-/**
- * Serialize data into a cookie header.
- *
- * Serialize the a name value pair into a cookie string suitable for
- * http headers. An optional options object specified cookie parameters.
- *
- * serialize('foo', 'bar', { httpOnly: true })
- *   => "foo=bar; httpOnly"
- *
- * @param {string} name
- * @param {string} val
- * @param {object} [options]
- * @return {string}
- * @public
- */
-
-function serialize(name, val, options) {
-  var opt = options || {};
-  var enc = opt.encode || encode;
-
-  if (typeof enc !== 'function') {
-    throw new TypeError('option encode is invalid');
-  }
-
-  if (!fieldContentRegExp.test(name)) {
-    throw new TypeError('argument name is invalid');
-  }
-
-  var value = enc(val);
-
-  if (value && !fieldContentRegExp.test(value)) {
-    throw new TypeError('argument val is invalid');
-  }
-
-  var str = name + '=' + value;
-
-  if (null != opt.maxAge) {
-    var maxAge = opt.maxAge - 0;
-
-    if (isNaN(maxAge) || !isFinite(maxAge)) {
-      throw new TypeError('option maxAge is invalid')
-    }
-
-    str += '; Max-Age=' + Math.floor(maxAge);
-  }
-
-  if (opt.domain) {
-    if (!fieldContentRegExp.test(opt.domain)) {
-      throw new TypeError('option domain is invalid');
-    }
-
-    str += '; Domain=' + opt.domain;
-  }
-
-  if (opt.path) {
-    if (!fieldContentRegExp.test(opt.path)) {
-      throw new TypeError('option path is invalid');
-    }
-
-    str += '; Path=' + opt.path;
-  }
-
-  if (opt.expires) {
-    if (typeof opt.expires.toUTCString !== 'function') {
-      throw new TypeError('option expires is invalid');
-    }
-
-    str += '; Expires=' + opt.expires.toUTCString();
-  }
-
-  if (opt.httpOnly) {
-    str += '; HttpOnly';
-  }
-
-  if (opt.secure) {
-    str += '; Secure';
-  }
-
-  if (opt.sameSite) {
-    var sameSite = typeof opt.sameSite === 'string'
-      ? opt.sameSite.toLowerCase() : opt.sameSite;
-
-    switch (sameSite) {
-      case true:
-        str += '; SameSite=Strict';
-        break;
-      case 'lax':
-        str += '; SameSite=Lax';
-        break;
-      case 'strict':
-        str += '; SameSite=Strict';
-        break;
-      case 'none':
-        str += '; SameSite=None';
-        break;
-      default:
-        throw new TypeError('option sameSite is invalid');
-    }
-  }
-
-  return str;
-}
-
-/**
- * Try decoding a string using a decoding function.
- *
- * @param {string} str
- * @param {function} decode
- * @private
- */
-
-function tryDecode(str, decode) {
-  try {
-    return decode(str);
-  } catch (e) {
-    return str;
-  }
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/index.js?!./node_modules/bootstrap/dist/css/bootstrap.min.css":
 /*!**************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-5-1!./node_modules/next/dist/compiled/postcss-loader??__nextjs_postcss!./node_modules/bootstrap/dist/css/bootstrap.min.css ***!
@@ -14476,7 +14364,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ":root {\n  --accent: #024E8F;\n  --secondary: #777\r\n; }\n\n@font-face {\n  font-family: \"OpenSans\";\n  src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\"); }\n\nbody {\n  min-height: 700px;\n  font-size: 16px;\n  position: relative;\n  font-family: \"OpenSans\", sans-serif !important; }\n\n.page {\n  min-height: 600px; }\n\nimg {\n  width: 100%; }\n\np {\n  color: #777777; }\n\ndiv h1,\ndiv h2,\ndiv h3,\ndiv h4,\ndiv h5,\ndiv h6 {\n  font-weight: bold; }\n\ndiv p {\n  margin-bottom: 0; }\n\nul {\n  margin: 0;\n  padding: 0; }\n  ul li {\n    list-style-type: none; }\n\n.text-small {\n  font-size: .75rem; }\n\n.text-md {\n  font-size: .9rem; }\n\n.text-lg {\n  font-size: 1.1rem; }\n\n.text-big {\n  font-size: 1.2rem; }\n\n.text-underline {\n  text-decoration: underline; }\n\n.text-normal {\n  font-weight: normal; }\n\n.text-bold {\n  font-weight: bold; }\n\n.text-accent {\n  color: var(--accent); }\n\n.text-crossed {\n  text-decoration: line-through; }\n\n.text-secondary {\n  color: var(--secondary); }\n\n.text-black {\n  color: #000; }\n\n.text-light {\n  color: #CCCCCC; }\n\n.text-xsmall {\n  font-size: .5rem; }\n\n.icon {\n  height: 0.75rem;\n  width: auto; }\n  .icon-sm {\n    height: 1.2rem; }\n  .icon-md {\n    height: 1.5rem; }\n  .icon-big {\n    height: 2rem; }\n\n.img-small {\n  width: 50px;\n  height: 50px;\n  -o-object-fit: contain;\n     object-fit: contain; }\n\n.carousel-caption {\n  right: auto;\n  text-align: left;\n  bottom: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: left;\n  justify-content: center;\n  width: 300px;\n  color: var(--accent); }\n\n.carousel-control-prev, .carousel-control-next {\n  display: none; }\n\n.carousel-indicators {\n  right: auto; }\n  .carousel-indicators li {\n    width: 15px;\n    height: 15px;\n    border-radius: 50%;\n    background: transparent;\n    border: 1px solid #004A8B;\n    box-sizing: border-box; }\n    .carousel-indicators li.active {\n      background: #014C8D; }\n\n.react-multi-carousel-list {\n  box-sizing: border-box; }\n\n.radius {\n  border-radius: 50%; }\n\n.flex-columns {\n  display: flex;\n  flex-wrap: wrap;\n  padding-left: 0; }\n  .flex-columns li {\n    flex: 0 0 33.333333%; }\n  .flex-columns img {\n    height: 22px;\n    -o-object-fit: contain;\n       object-fit: contain; }\n\n.list a.active .category__tick {\n  display: block; }\n\n.list a.active p {\n  color: var(--accent); }\n\n.list a.active img {\n  -webkit-filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\n          filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%); }\n\n.list a * {\n  transition: .25s ease all;\n  color: #777; }\n\n.list a img {\n  -webkit-filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n          filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n  transition: none; }\n\n.list a:hover {\n  text-decoration: none;\n  color: var(--accent); }\n  .list a:hover img {\n    -webkit-filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%); }\n  .list a:hover * {\n    color: var(--accent); }\n\n.category__tick {\n  display: none; }\n\n.circle {\n  display: flex;\n  align-items: center;\n  font-size: .75rem;\n  justify-content: center;\n  background: #FF0000;\n  border-radius: 50%;\n  border: 1px solid white;\n  width: 1rem;\n  height: 1rem;\n  z-index: 4;\n  display: inline-block;\n  position: absolute;\n  bottom: -4px;\n  left: -4px;\n  padding: 1px 0;\n  line-height: normal; }\n  .circle * {\n    line-height: normal;\n    text-align: center;\n    width: 100%;\n    height: 100%;\n    color: white;\n    font-weight: bold; }\n\n.dropdown-menu.show {\n  padding-left: 10px;\n  padding-right: 10px; }\n", "",{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA;EACI,iBAAS;EACT;AAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uDAAuD,EAAA;;AAG3D;EACI,iBAAiB;EACjB,eAAe;EACf,kBAAkB;EAClB,8CAA8C,EAAA;;AAGlD;EACI,iBAAiB,EAAA;;AAGrB;EACI,WAAW,EAAA;;AAIf;EACI,cAAc,EAAA;;AAGlB;;;;;;EAQQ,iBAAiB,EAAA;;AARzB;EAYQ,gBAAgB,EAAA;;AAIxB;EACI,SAAS;EACT,UAAU,EAAA;EAFd;IAKQ,qBAAqB,EAAA;;AAUzB;EACI,iBAAiB,EAAA;;AAGrB;EACI,gBAAgB,EAAA;;AAGpB;EACI,iBAAiB,EAAA;;AAGrB;EACI,iBAAiB,EAAA;;AAGrB;EACI,0BAA0B,EAAA;;AAG9B;EACI,mBAAmB,EAAA;;AAGvB;EACI,iBAAiB,EAAA;;AAGrB;EACI,oBAAoB,EAAA;;AAGxB;EACI,6BAA6B,EAAA;;AAGjC;EACI,uBAAuB,EAAA;;AAG3B;EACI,WAAW,EAAA;;AAGf;EACI,cAAc,EAAA;;AAIlB;EACI,gBAAgB,EAAA;;AAIxB;EACI,eAAe;EACf,WAAW,EAAA;EAEX;IACI,cAAc,EAAA;EAGlB;IACI,cACJ,EAAA;EAEA;IACI,YAAY,EAAA;;AAKhB;EACI,WAAW;EACX,YAAY;EACZ,sBAAmB;KAAnB,mBAAmB,EAAA;;AAO3B;EACI,WAAW;EACX,gBAAgB;EAChB,SAAS;EACT,MAAM;EACN,aAAa;EACb,sBAAsB;EACtB,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,oBAAoB,EAAA;;AAKpB;EAEI,aAAa,EAAA;;AAIrB;EACI,WAAW,EAAA;EADf;IAIQ,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,uBAAuB;IACvB,yBAAyB;IACzB,sBAAsB,EAAA;IAT9B;MAYY,mBAAmB,EAAA;;AAM/B;EACI,sBAAsB,EAAA;;AAG1B;EACI,kBAAkB,EAAA;;AAGtB;EACI,aAAa;EACb,eAAe;EACf,eAAe,EAAA;EAHnB;IAMQ,oBAAoB,EAAA;EAN5B;IAUQ,YAAY;IACZ,sBACJ;OADI,mBACJ,EAAA;;AAIJ;EAEQ,cAAc,EAAA;;AAFtB;EAMQ,oBAAoB,EAAA;;AAN5B;EAWQ,wGAAgG;UAAhG,gGAAgG,EAAA;;AAKxG;EAEQ,yBAAyB;EACzB,WAAW,EAAA;;AAHnB;EAOQ,sGAA8F;UAA9F,8FAA8F;EAC9F,gBACJ,EAAA;;AATJ;EAYQ,qBAAqB;EACrB,oBAAoB,EAAA;EAb5B;IAgBY,uGAA+F;YAA/F,+FAA+F,EAAA;EAhB3G;IAoBY,oBAAoB,EAAA;;AAKhC;EACI,aAAa,EAAA;;AAGjB;EACI,aAAa;EACb,mBAAmB;EACnB,iBAAiB;EACjB,uBAAuB;EACvB,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,WAAW;EACX,YAAY;EACZ,UAAU;EACV,qBAAqB;EACrB,kBAAkB;EAClB,YAAY;EACZ,UAAU;EACV,cAAc;EACd,mBAAmB,EAAA;EAhBvB;IAmBQ,mBAAmB;IACnB,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,iBAAiB,EAAA;;AAIzB;EACI,kBAAkB;EAClB,mBAAmB,EAAA","file":"styles.scss","sourcesContent":[":root {\r\n    --accent: #024E8F;\r\n    --secondary: #777\r\n}\r\n\r\n@font-face {\r\n    font-family: \"OpenSans\";\r\n    src: url(\"/public/fonts/opensans/OpenSans-Regular.ttf\");\r\n}\r\n\r\nbody {\r\n    min-height: 700px;\r\n    font-size: 16px;\r\n    position: relative;\r\n    font-family: \"OpenSans\", sans-serif !important;\r\n}\r\n\r\n.page {\r\n    min-height: 600px;\r\n}\r\n\r\nimg {\r\n    width: 100%;\r\n}\r\n\r\n\r\np {\r\n    color: #777777;\r\n}\r\n\r\ndiv {\r\n\r\n    h1,\r\n    h2,\r\n    h3,\r\n    h4,\r\n    h5,\r\n    h6 {\r\n        font-weight: bold;\r\n    }\r\n\r\n    p {\r\n        margin-bottom: 0;\r\n    }\r\n}\r\n\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n\r\n    li {\r\n        list-style-type: none;\r\n    }\r\n}\r\n\r\np {\r\n    // line-height: normal;\r\n}\r\n\r\n.text {\r\n\r\n    &-small {\r\n        font-size: .75rem;\r\n    }\r\n\r\n    &-md {\r\n        font-size: .9rem;\r\n    }\r\n\r\n    &-lg {\r\n        font-size: 1.1rem;\r\n    }\r\n\r\n    &-big {\r\n        font-size: 1.2rem;\r\n    }\r\n\r\n    &-underline {\r\n        text-decoration: underline;\r\n    }\r\n\r\n    &-normal {\r\n        font-weight: normal;\r\n    }\r\n\r\n    &-bold {\r\n        font-weight: bold;\r\n    }\r\n\r\n    &-accent {\r\n        color: var(--accent)\r\n    }\r\n\r\n    &-crossed {\r\n        text-decoration: line-through;\r\n    }\r\n\r\n    &-secondary {\r\n        color: var(--secondary)\r\n    }\r\n\r\n    &-black {\r\n        color: #000;\r\n    }\r\n\r\n    &-light {\r\n        color: #CCCCCC;\r\n    }\r\n\r\n\r\n    &-xsmall {\r\n        font-size: .5rem;\r\n    }\r\n}\r\n\r\n.icon {\r\n    height: 0.75rem;\r\n    width: auto;\r\n\r\n    &-sm {\r\n        height: 1.2rem;\r\n    }\r\n\r\n    &-md {\r\n        height: 1.5rem\r\n    }\r\n\r\n    &-big {\r\n        height: 2rem;\r\n    }\r\n}\r\n\r\n.img {\r\n    &-small {\r\n        width: 50px;\r\n        height: 50px;\r\n        object-fit: contain;\r\n    }\r\n\r\n}\r\n\r\n// Carousel\r\n// Dots\r\n.carousel-caption {\r\n    right: auto;\r\n    text-align: left;\r\n    bottom: 0;\r\n    top: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: left;\r\n    justify-content: center;\r\n    width: 300px;\r\n    color: var(--accent);\r\n}\r\n\r\n.carousel-control {\r\n\r\n    &-prev,\r\n    &-next {\r\n        display: none;\r\n    }\r\n}\r\n\r\n.carousel-indicators {\r\n    right: auto;\r\n\r\n    li {\r\n        width: 15px;\r\n        height: 15px;\r\n        border-radius: 50%;\r\n        background: transparent;\r\n        border: 1px solid #004A8B;\r\n        box-sizing: border-box;\r\n\r\n        &.active {\r\n            background: #014C8D;\r\n        }\r\n    }\r\n}\r\n\r\n// Slider Carousel\r\n.react-multi-carousel-list {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.radius {\r\n    border-radius: 50%;\r\n}\r\n\r\n.flex-columns {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    padding-left: 0;\r\n\r\n    li {\r\n        flex: 0 0 33.333333%;\r\n    }\r\n\r\n    img {\r\n        height: 22px;\r\n        object-fit: contain\r\n    }\r\n\r\n}\r\n\r\n.list a.active {\r\n    .category__tick {\r\n        display: block;\r\n    }\r\n\r\n    p {\r\n        color: var(--accent);\r\n\r\n    }\r\n\r\n    img {\r\n        filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\r\n    }\r\n\r\n}\r\n\r\n.list a {\r\n    * {\r\n        transition: .25s ease all;\r\n        color: #777;\r\n    }\r\n\r\n    img {\r\n        filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\r\n        transition: none\r\n    }\r\n\r\n    &:hover {\r\n        text-decoration: none;\r\n        color: var(--accent);\r\n\r\n        img {\r\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\r\n        }\r\n\r\n        * {\r\n            color: var(--accent)\r\n        }\r\n    }\r\n}\r\n\r\n.category__tick {\r\n    display: none;\r\n}\r\n\r\n.circle {\r\n    display: flex;\r\n    align-items: center;\r\n    font-size: .75rem;\r\n    justify-content: center;\r\n    background: #FF0000;\r\n    border-radius: 50%;\r\n    border: 1px solid white;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    z-index: 4;\r\n    display: inline-block;\r\n    position: absolute;\r\n    bottom: -4px;\r\n    left: -4px;\r\n    padding: 1px 0;\r\n    line-height: normal;\r\n\r\n    * {\r\n        line-height: normal;\r\n        text-align: center;\r\n        width: 100%;\r\n        height: 100%;\r\n        color: white;\r\n        font-weight: bold;\r\n    }\r\n}\r\n\r\n.dropdown-menu.show {\r\n    padding-left: 10px;\r\n    padding-right: 10px;\r\n}"]}]);
+exports.push([module.i, ":root {\n  --accent: #024E8F;\n  --secondary: #777\r\n; }\n\n@font-face {\n  font-family: \"OpenSans\";\n  src: url(\"/fonts/opensans/OpenSans-Regular.ttf\"); }\n\nbody {\n  min-height: 700px;\n  font-size: 16px;\n  position: relative;\n  font-family: \"OpenSans\", sans-serif !important; }\n\n.page {\n  min-height: 600px; }\n\nimg {\n  width: 100%; }\n\np {\n  color: #777777; }\n\ndiv h1,\ndiv h2,\ndiv h3,\ndiv h4,\ndiv h5,\ndiv h6 {\n  font-weight: bold; }\n\ndiv p {\n  margin-bottom: 0; }\n\nul {\n  margin: 0;\n  padding: 0; }\n  ul li {\n    list-style-type: none; }\n\n.text-small {\n  font-size: .75rem; }\n\n.text-md {\n  font-size: .9rem; }\n\n.text-lg {\n  font-size: 1.1rem; }\n\n.text-big {\n  font-size: 1.2rem; }\n\n.text-underline {\n  text-decoration: underline; }\n\n.text-normal {\n  font-weight: normal; }\n\n.text-bold {\n  font-weight: bold; }\n\n.text-accent {\n  color: var(--accent); }\n\n.text-crossed {\n  text-decoration: line-through; }\n\n.text-secondary {\n  color: var(--secondary); }\n\n.text-black {\n  color: #000; }\n\n.text-light {\n  color: #CCCCCC; }\n\n.text-xsmall {\n  font-size: .5rem; }\n\n.icon {\n  height: 0.75rem;\n  width: auto; }\n  .icon-sm {\n    height: 1.2rem; }\n  .icon-md {\n    height: 1.5rem; }\n  .icon-big {\n    height: 2rem; }\n\n.img-small {\n  width: 50px;\n  height: 50px;\n  -o-object-fit: contain;\n     object-fit: contain; }\n\n.carousel-caption {\n  right: auto;\n  text-align: left;\n  bottom: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  align-items: left;\n  justify-content: center;\n  width: 300px;\n  color: var(--accent); }\n\n.carousel-control-prev, .carousel-control-next {\n  display: none; }\n\n.carousel-indicators {\n  right: auto; }\n  .carousel-indicators li {\n    width: 15px;\n    height: 15px;\n    border-radius: 50%;\n    background: transparent;\n    border: 1px solid #004A8B;\n    box-sizing: border-box; }\n    .carousel-indicators li.active {\n      background: #014C8D; }\n\n.react-multi-carousel-list {\n  box-sizing: border-box; }\n\n.radius {\n  border-radius: 50%; }\n\n.flex-columns {\n  display: flex;\n  flex-wrap: wrap;\n  padding-left: 0; }\n  .flex-columns li {\n    flex: 0 0 33.333333%; }\n  .flex-columns img {\n    height: 22px;\n    -o-object-fit: contain;\n       object-fit: contain; }\n\n.list a.active .category__tick {\n  display: block; }\n\n.list a.active p {\n  color: var(--accent); }\n\n.list a.active img {\n  -webkit-filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\n          filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%); }\n\n.list a * {\n  transition: .25s ease all;\n  color: #777; }\n\n.list a img {\n  -webkit-filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n          filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\n  transition: none; }\n\n.list a:hover {\n  text-decoration: none;\n  color: var(--accent); }\n  .list a:hover img {\n    -webkit-filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%); }\n  .list a:hover * {\n    color: var(--accent); }\n\n.category__tick {\n  display: none; }\n\n.circle {\n  display: flex;\n  align-items: center;\n  font-size: .75rem;\n  justify-content: center;\n  background: #FF0000;\n  border-radius: 50%;\n  border: 1px solid white;\n  width: 1rem;\n  height: 1rem;\n  z-index: 4;\n  display: inline-block;\n  position: absolute;\n  bottom: -4px;\n  left: -4px;\n  padding: 1px 0;\n  line-height: normal; }\n  .circle * {\n    line-height: normal;\n    text-align: center;\n    width: 100%;\n    height: 100%;\n    color: white;\n    font-weight: bold; }\n\n.dropdown-menu.show {\n  padding-left: 10px;\n  padding-right: 10px; }\n\n.btn {\n  white-space: nowrap; }\n  .btn.btn-primary {\n    background: var(--accent);\n    border: none; }\n  .btn.btn-secondary {\n    font-weight: bold;\n    color: var(--secondary);\n    background: #CCCCCC;\n    border: #BBBBBB 1px solid; }\n    .btn.btn-secondary:hover {\n      background-color: #e0e0e0; }\n", "",{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA;EACI,iBAAS;EACT;AAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,gDAAgD,EAAA;;AAGpD;EACI,iBAAiB;EACjB,eAAe;EACf,kBAAkB;EAClB,8CAA8C,EAAA;;AAGlD;EACI,iBAAiB,EAAA;;AAGrB;EACI,WAAW,EAAA;;AAIf;EACI,cAAc,EAAA;;AAGlB;;;;;;EAQQ,iBAAiB,EAAA;;AARzB;EAYQ,gBAAgB,EAAA;;AAIxB;EACI,SAAS;EACT,UAAU,EAAA;EAFd;IAKQ,qBAAqB,EAAA;;AAUzB;EACI,iBAAiB,EAAA;;AAGrB;EACI,gBAAgB,EAAA;;AAGpB;EACI,iBAAiB,EAAA;;AAGrB;EACI,iBAAiB,EAAA;;AAGrB;EACI,0BAA0B,EAAA;;AAG9B;EACI,mBAAmB,EAAA;;AAGvB;EACI,iBAAiB,EAAA;;AAGrB;EACI,oBAAoB,EAAA;;AAGxB;EACI,6BAA6B,EAAA;;AAGjC;EACI,uBAAuB,EAAA;;AAG3B;EACI,WAAW,EAAA;;AAGf;EACI,cAAc,EAAA;;AAIlB;EACI,gBAAgB,EAAA;;AAIxB;EACI,eAAe;EACf,WAAW,EAAA;EAEX;IACI,cAAc,EAAA;EAGlB;IACI,cACJ,EAAA;EAEA;IACI,YAAY,EAAA;;AAKhB;EACI,WAAW;EACX,YAAY;EACZ,sBAAmB;KAAnB,mBAAmB,EAAA;;AAO3B;EACI,WAAW;EACX,gBAAgB;EAChB,SAAS;EACT,MAAM;EACN,aAAa;EACb,sBAAsB;EACtB,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,oBAAoB,EAAA;;AAKpB;EAEI,aAAa,EAAA;;AAIrB;EACI,WAAW,EAAA;EADf;IAIQ,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,uBAAuB;IACvB,yBAAyB;IACzB,sBAAsB,EAAA;IAT9B;MAYY,mBAAmB,EAAA;;AAM/B;EACI,sBAAsB,EAAA;;AAG1B;EACI,kBAAkB,EAAA;;AAGtB;EACI,aAAa;EACb,eAAe;EACf,eAAe,EAAA;EAHnB;IAMQ,oBAAoB,EAAA;EAN5B;IAUQ,YAAY;IACZ,sBACJ;OADI,mBACJ,EAAA;;AAIJ;EAEQ,cAAc,EAAA;;AAFtB;EAMQ,oBAAoB,EAAA;;AAN5B;EAWQ,wGAAgG;UAAhG,gGAAgG,EAAA;;AAKxG;EAEQ,yBAAyB;EACzB,WAAW,EAAA;;AAHnB;EAOQ,sGAA8F;UAA9F,8FAA8F;EAC9F,gBACJ,EAAA;;AATJ;EAYQ,qBAAqB;EACrB,oBAAoB,EAAA;EAb5B;IAgBY,uGAA+F;YAA/F,+FAA+F,EAAA;EAhB3G;IAoBY,oBAAoB,EAAA;;AAKhC;EACI,aAAa,EAAA;;AAGjB;EACI,aAAa;EACb,mBAAmB;EACnB,iBAAiB;EACjB,uBAAuB;EACvB,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,WAAW;EACX,YAAY;EACZ,UAAU;EACV,qBAAqB;EACrB,kBAAkB;EAClB,YAAY;EACZ,UAAU;EACV,cAAc;EACd,mBAAmB,EAAA;EAhBvB;IAmBQ,mBAAmB;IACnB,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,iBAAiB,EAAA;;AAIzB;EACI,kBAAkB;EAClB,mBAAmB,EAAA;;AAGvB;EACI,mBAAmB,EAAA;EADvB;IAIQ,yBAAyB;IACzB,YAAY,EAAA;EALpB;IASQ,iBAAiB;IACjB,uBAAuB;IACvB,mBAAmB;IACnB,yBAAyB,EAAA;IAZjC;MAeY,yBAAyB,EAAA","file":"styles.scss","sourcesContent":[":root {\r\n    --accent: #024E8F;\r\n    --secondary: #777\r\n}\r\n\r\n@font-face {\r\n    font-family: \"OpenSans\";\r\n    src: url(\"/fonts/opensans/OpenSans-Regular.ttf\");\r\n}\r\n\r\nbody {\r\n    min-height: 700px;\r\n    font-size: 16px;\r\n    position: relative;\r\n    font-family: \"OpenSans\", sans-serif !important;\r\n}\r\n\r\n.page {\r\n    min-height: 600px;\r\n}\r\n\r\nimg {\r\n    width: 100%;\r\n}\r\n\r\n\r\np {\r\n    color: #777777;\r\n}\r\n\r\ndiv {\r\n\r\n    h1,\r\n    h2,\r\n    h3,\r\n    h4,\r\n    h5,\r\n    h6 {\r\n        font-weight: bold;\r\n    }\r\n\r\n    p {\r\n        margin-bottom: 0;\r\n    }\r\n}\r\n\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n\r\n    li {\r\n        list-style-type: none;\r\n    }\r\n}\r\n\r\np {\r\n    // line-height: normal;\r\n}\r\n\r\n.text {\r\n\r\n    &-small {\r\n        font-size: .75rem;\r\n    }\r\n\r\n    &-md {\r\n        font-size: .9rem;\r\n    }\r\n\r\n    &-lg {\r\n        font-size: 1.1rem;\r\n    }\r\n\r\n    &-big {\r\n        font-size: 1.2rem;\r\n    }\r\n\r\n    &-underline {\r\n        text-decoration: underline;\r\n    }\r\n\r\n    &-normal {\r\n        font-weight: normal;\r\n    }\r\n\r\n    &-bold {\r\n        font-weight: bold;\r\n    }\r\n\r\n    &-accent {\r\n        color: var(--accent)\r\n    }\r\n\r\n    &-crossed {\r\n        text-decoration: line-through;\r\n    }\r\n\r\n    &-secondary {\r\n        color: var(--secondary)\r\n    }\r\n\r\n    &-black {\r\n        color: #000;\r\n    }\r\n\r\n    &-light {\r\n        color: #CCCCCC;\r\n    }\r\n\r\n\r\n    &-xsmall {\r\n        font-size: .5rem;\r\n    }\r\n}\r\n\r\n.icon {\r\n    height: 0.75rem;\r\n    width: auto;\r\n\r\n    &-sm {\r\n        height: 1.2rem;\r\n    }\r\n\r\n    &-md {\r\n        height: 1.5rem\r\n    }\r\n\r\n    &-big {\r\n        height: 2rem;\r\n    }\r\n}\r\n\r\n.img {\r\n    &-small {\r\n        width: 50px;\r\n        height: 50px;\r\n        object-fit: contain;\r\n    }\r\n\r\n}\r\n\r\n// Carousel\r\n// Dots\r\n.carousel-caption {\r\n    right: auto;\r\n    text-align: left;\r\n    bottom: 0;\r\n    top: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: left;\r\n    justify-content: center;\r\n    width: 300px;\r\n    color: var(--accent);\r\n}\r\n\r\n.carousel-control {\r\n\r\n    &-prev,\r\n    &-next {\r\n        display: none;\r\n    }\r\n}\r\n\r\n.carousel-indicators {\r\n    right: auto;\r\n\r\n    li {\r\n        width: 15px;\r\n        height: 15px;\r\n        border-radius: 50%;\r\n        background: transparent;\r\n        border: 1px solid #004A8B;\r\n        box-sizing: border-box;\r\n\r\n        &.active {\r\n            background: #014C8D;\r\n        }\r\n    }\r\n}\r\n\r\n// Slider Carousel\r\n.react-multi-carousel-list {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.radius {\r\n    border-radius: 50%;\r\n}\r\n\r\n.flex-columns {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    padding-left: 0;\r\n\r\n    li {\r\n        flex: 0 0 33.333333%;\r\n    }\r\n\r\n    img {\r\n        height: 22px;\r\n        object-fit: contain\r\n    }\r\n\r\n}\r\n\r\n.list a.active {\r\n    .category__tick {\r\n        display: block;\r\n    }\r\n\r\n    p {\r\n        color: var(--accent);\r\n\r\n    }\r\n\r\n    img {\r\n        filter: invert(19%) sepia(99%) saturate(1604%) hue-rotate(189deg) brightness(93%) contrast(102%);\r\n    }\r\n\r\n}\r\n\r\n.list a {\r\n    * {\r\n        transition: .25s ease all;\r\n        color: #777;\r\n    }\r\n\r\n    img {\r\n        filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);\r\n        transition: none\r\n    }\r\n\r\n    &:hover {\r\n        text-decoration: none;\r\n        color: var(--accent);\r\n\r\n        img {\r\n            filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);\r\n        }\r\n\r\n        * {\r\n            color: var(--accent)\r\n        }\r\n    }\r\n}\r\n\r\n.category__tick {\r\n    display: none;\r\n}\r\n\r\n.circle {\r\n    display: flex;\r\n    align-items: center;\r\n    font-size: .75rem;\r\n    justify-content: center;\r\n    background: #FF0000;\r\n    border-radius: 50%;\r\n    border: 1px solid white;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    z-index: 4;\r\n    display: inline-block;\r\n    position: absolute;\r\n    bottom: -4px;\r\n    left: -4px;\r\n    padding: 1px 0;\r\n    line-height: normal;\r\n\r\n    * {\r\n        line-height: normal;\r\n        text-align: center;\r\n        width: 100%;\r\n        height: 100%;\r\n        color: white;\r\n        font-weight: bold;\r\n    }\r\n}\r\n\r\n.dropdown-menu.show {\r\n    padding-left: 10px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.btn {\r\n    white-space: nowrap;\r\n\r\n    &.btn-primary {\r\n        background: var(--accent);\r\n        border: none;\r\n    }\r\n\r\n    &.btn-secondary {\r\n        font-weight: bold;\r\n        color: var(--secondary);\r\n        background: #CCCCCC;\r\n        border: #BBBBBB 1px solid;\r\n\r\n        &:hover {\r\n            background-color: #e0e0e0;\r\n        }\r\n\r\n    }\r\n}"]}]);
 // Exports
 module.exports = exports;
 
@@ -43159,19 +43047,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _store_actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../store/actions */ "./store/actions/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _helpers_with_redux_store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../helpers/with-redux-store */ "./helpers/with-redux-store.js");
-/* harmony import */ var _store_CategoryContext__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../store/CategoryContext */ "./store/CategoryContext.js");
-/* harmony import */ var _store_CartContext__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../store/CartContext */ "./store/CartContext.js");
+/* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../hooks */ "./hooks/index.js");
+/* harmony import */ var _helpers_with_redux_store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../helpers/with-redux-store */ "./helpers/with-redux-store.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../store */ "./store/index.js");
 /* harmony import */ var _layouts__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../layouts */ "./layouts/index.js");
-/* harmony import */ var _helpers_utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../helpers/utils */ "./helpers/utils.js");
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-multi-carousel/lib/styles.css */ "./node_modules/react-multi-carousel/lib/styles.css");
-/* harmony import */ var react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../styles.scss */ "./styles.scss");
-/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_styles_scss__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
-/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-multi-carousel/lib/styles.css */ "./node_modules/react-multi-carousel/lib/styles.css");
+/* harmony import */ var react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_multi_carousel_lib_styles_css__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../styles.scss */ "./styles.scss");
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_styles_scss__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
+/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_17__);
 
 
 
@@ -43201,8 +43088,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
-var _selectedId = 0;
-
 var MyComponent = function MyComponent(_ref) {
   var children = _ref.children,
       store = _ref.store;
@@ -43211,61 +43096,14 @@ var MyComponent = function MyComponent(_ref) {
       cart = _useState[0],
       setCart = _useState[1];
 
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_7__["useState"])([{
-    id: 0,
-    title: "Все",
-    imgs: ["/images/icons/all.png", "/images/icons/all-active.png"],
-    isActive: true
-  }, {
-    id: 1,
-    title: "Сборники",
-    imgs: ["/images/icons/compilations.png", "/images/icons/compilations-active.png"],
-    isActive: false
-  }, {
-    id: 2,
-    title: "Аудиокниги",
-    imgs: ["/images/icons/audio.png", "/images/icons/audio-active.png"],
-    isActive: false
-  }, {
-    id: 3,
-    title: "Печатные книги",
-    imgs: ["/images/icons/book.png", "/images/icons/book-active.png"],
-    isActive: false
-  }, {
-    id: 4,
-    title: "Электронные книги",
-    imgs: ["/images/icons/pdf.png", "/images/icons/pdf-active.png"],
-    isActive: false
-  }]),
-      categories = _useState2[0],
-      setCategories = _useState2[1];
-
+  var authModal = Object(_hooks__WEBPACK_IMPORTED_MODULE_10__["useModal"])();
   Object(react__WEBPACK_IMPORTED_MODULE_7__["useEffect"])(function () {
     store.dispatch(_store_actions__WEBPACK_IMPORTED_MODULE_8__["authCheckState"]());
 
     if (localStorage.getItem("cart")) {
       setCart(JSON.parse(localStorage.getItem("cart")));
     }
-  }, []);
-
-  var categoryHandler = function categoryHandler(id) {
-    var cats = Object(_helpers_utils__WEBPACK_IMPORTED_MODULE_14__["categorySelector"])(id, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_6__["default"])(categories), _selectedId);
-
-    if (cats) {
-      _selectedId = cats._selectedId;
-      setCategories(cats.categories);
-    }
-  };
-
-  var categoriesClearHandler = function categoriesClearHandler() {
-    var cats = Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_6__["default"])(categories);
-
-    cats.forEach(function (c) {
-      c.isActive = false;
-    });
-    setCategories(cats);
-  }; // adds product to cart
-
+  }, []); // adds product to cart
 
   var addRemoveItemFromCart = function addRemoveItemFromCart(product) {
     var cartCopy = Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_6__["default"])(cart); // is the product in the cart already?
@@ -43305,7 +43143,17 @@ var MyComponent = function MyComponent(_ref) {
     localStorage.removeItem("cart");
   };
 
-  return __jsx(_store_CartContext__WEBPACK_IMPORTED_MODULE_12__["default"].Provider, {
+  return __jsx(_store__WEBPACK_IMPORTED_MODULE_12__["AuthModalContext"].Provider, {
+    value: {
+      authModal: authModal
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61,
+      columnNumber: 3
+    }
+  }, __jsx(_store__WEBPACK_IMPORTED_MODULE_12__["CartContext"].Provider, {
     value: {
       cart: cart,
       onAddRemoveItem: addRemoveItemFromCart,
@@ -43315,19 +43163,7 @@ var MyComponent = function MyComponent(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107,
-      columnNumber: 3
-    }
-  }, __jsx(_store_CategoryContext__WEBPACK_IMPORTED_MODULE_11__["default"].Provider, {
-    value: {
-      categories: categories,
-      categoryHandler: categoryHandler,
-      onClear: categoriesClearHandler
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 115,
+      lineNumber: 62,
       columnNumber: 4
     }
   }, __jsx(_layouts__WEBPACK_IMPORTED_MODULE_13__["Layout"], {
@@ -43335,7 +43171,7 @@ var MyComponent = function MyComponent(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 116,
+      lineNumber: 70,
       columnNumber: 5
     }
   }, children)));
@@ -43364,7 +43200,7 @@ var myApp = /*#__PURE__*/function (_App) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 125,
+          lineNumber: 79,
           columnNumber: 4
         }
       }, __jsx(MyComponent, {
@@ -43372,14 +43208,14 @@ var myApp = /*#__PURE__*/function (_App) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 126,
+          lineNumber: 80,
           columnNumber: 5
         }
       }, __jsx(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, pageProps, {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 127,
+          lineNumber: 81,
           columnNumber: 6
         }
       }))));
@@ -43387,9 +43223,26 @@ var myApp = /*#__PURE__*/function (_App) {
   }]);
 
   return myApp;
-}(next_app__WEBPACK_IMPORTED_MODULE_18___default.a);
+}(next_app__WEBPACK_IMPORTED_MODULE_17___default.a);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_helpers_with_redux_store__WEBPACK_IMPORTED_MODULE_10__["default"])(myApp));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_helpers_with_redux_store__WEBPACK_IMPORTED_MODULE_11__["default"])(myApp));
+
+/***/ }),
+
+/***/ "./store/AuthModalContext.js":
+/*!***********************************!*\
+  !*** ./store/AuthModalContext.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var AuthModalContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])();
+/* harmony default export */ __webpack_exports__["default"] = (AuthModalContext);
 
 /***/ }),
 
@@ -43407,23 +43260,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var cartContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])();
 /* harmony default export */ __webpack_exports__["default"] = (cartContext);
-
-/***/ }),
-
-/***/ "./store/CategoryContext.js":
-/*!**********************************!*\
-  !*** ./store/CategoryContext.js ***!
-  \**********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-var CategoryContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])();
-/* harmony default export */ __webpack_exports__["default"] = (CategoryContext);
 
 /***/ }),
 
@@ -43595,6 +43431,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "authCheckState", function() { return _auth__WEBPACK_IMPORTED_MODULE_0__["authCheckState"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "stopLoading", function() { return _auth__WEBPACK_IMPORTED_MODULE_0__["stopLoading"]; });
+
+
+
+/***/ }),
+
+/***/ "./store/index.js":
+/*!************************!*\
+  !*** ./store/index.js ***!
+  \************************/
+/*! exports provided: CartContext, AuthModalContext */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CartContext__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CartContext */ "./store/CartContext.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CartContext", function() { return _CartContext__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _AuthModalContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AuthModalContext */ "./store/AuthModalContext.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AuthModalContext", function() { return _AuthModalContext__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
 
 
 

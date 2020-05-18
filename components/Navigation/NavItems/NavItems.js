@@ -54,7 +54,9 @@ const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout }) =>
 					<Link href="/profile/settings">
 						<p className="color-accent">{name}</p>
 					</Link>
-					<Button onClick={onLogout}>Выйти</Button>
+					<div onClick={onLogout} className="text-secondary text-small">
+						<img src="/images/icons/logout.png" className="icon mr-1" />Выйти
+					</div>
 				</div>
 			)}
 		</div>

@@ -4,13 +4,11 @@ import { Form, Button } from "react-bootstrap";
 import classes from "./Comments.module.scss";
 import Comment from "./Comment/Comment";
 import { Stars } from "../";
-const comments = ({ items, rate, commentControl, isAuthorized, rateClicked, onSubmit }) => {
-	const commentsView = items.map(item => {
-		return <Comment key={item.id} {...item} />;
-	});
+const comments = ({ items, rate, commentControl, isAuthorized, rateClicked, onSubmit, onAuth }) => {
+	const commentsView = items.map(item => <Comment key={item.id} {...item} />);
 	return (
 		<React.Fragment>
-			<h2>Оставить отзыв</h2>
+			<h2 className="mt-5 mb-2">Оставить отзыв</h2>
 			{isAuthorized ? (
 				<Form onSubmit={onSubmit}>
 					<Form.Control
@@ -19,22 +17,28 @@ const comments = ({ items, rate, commentControl, isAuthorized, rateClicked, onSu
 						onChange={commentControl.onChange}
 						placeholder="Ваш отзыв"
 					/>
-					<div className="d-flex justify-content-between align-items-end">
+					<div className="d-flex justify-content-between align-items-center mt-2">
 						<Stars rate={rate} isBig onClick={rateClicked} />
-						<Button type="submit">Отправить</Button>
+						<Button type="submit" className="text-small">
+							Отправить
+						</Button>
 					</div>
 				</Form>
 			) : (
-				<React.Fragment>
+				<div className="mt-4">
 					Отзыв могут отправить авторизованные пользователи. <br />Пройти {" "}
-					<span className="text-accent text-bold" onClick={null}>
+					<span className="text-accent text-bold" style={{ cursor: "pointer" }} onClick={onAuth}>
 						АВТОРИЗАЦИЮ
 					</span>
-				</React.Fragment>
+				</div>
 			)}
 
-			<h3>Отзывы</h3>
-			<ul className={classes.Comments}>{commentsView}</ul>
+			<h3 className="mt-4">Отзывы</h3>
+			{items.length ? (
+				<ul className={classes.Comments}>{commentsView}</ul>
+			) : (
+				<h5 className="text-secondary">Пока нет отзывов</h5>
+			)}
 		</React.Fragment>
 	);
 };

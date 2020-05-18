@@ -3,7 +3,7 @@ import classes from "./ProductDetails.module.scss";
 import { Stars } from "../../components";
 const productDetails = props => {
 	const rows = [
-		[ "ID товара: ", props.id ],
+		[ "ID товара: ", props.book_id ],
 		[ "ISBN: ", props.isbn ],
 		[ "Страниц: ", props.page_count ],
 		[ "Оформление: ", props.formalization ],

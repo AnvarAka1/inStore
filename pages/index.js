@@ -18,7 +18,7 @@ import {
 	TopImage
 } from "../components";
 import { FormGroup } from "../components/UI";
-
+import Router from "next/router";
 const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollections, speakers }) => {
 	const [ loading, setLoading ] = useState(false);
 	const [ rate, setRate ] = useState(4);
@@ -135,18 +135,20 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 					</div>
 				</Col>
 				<Col>
-					<Heading text="книги на любой вкус">Электронные и печатные</Heading>
+					<Heading text="книги на любой вкус" href="/books/categories">
+						Электронные и печатные
+					</Heading>
 				</Col>
 			</Row>
 			<Row className="mt-4 mb-4 pt-4 pb-4">
 				<Col sm={4}>
-					<PreCarousel link="/#">Сборники книг</PreCarousel>
+					<PreCarousel link="/books/categories/compilations">Сборники книг</PreCarousel>
 				</Col>
 				<Col sm={8}>{!loading && <CompilationsCarousel items={bookCollections} />}</Col>
 			</Row>
 			<Row>
 				<Col>
-					<NewHeader link="/books/popular">книги</NewHeader>
+					<NewHeader href="/books/categories">книги</NewHeader>
 				</Col>
 			</Row>
 			<Row>
@@ -154,7 +156,9 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 			</Row>
 			<Row className="mt-5 pt-4 mb-5 pb-4">
 				<Col>
-					<Heading text="слушайте когда и где угодно">Аудиокниги</Heading>
+					<Heading text="слушайте когда и где угодно" href="/books/categories/audio-books">
+						Аудиокниги
+					</Heading>
 				</Col>
 				<Col>
 					<div>
@@ -164,13 +168,13 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 			</Row>
 			<Row>
 				<Col sm={4}>
-					<PreCarousel link="/#">Сборники аудиокниг</PreCarousel>
+					<PreCarousel link="/books/categories/compilations">Сборники аудиокниг</PreCarousel>
 				</Col>
 				<Col sm={8}>{!loading && <CompilationsCarousel items={audioCollections} />}</Col>
 			</Row>
 			<Row className="mt-5 pt-4">
 				<Col>
-					<NewHeader link="/audio/popular">аудиокниги</NewHeader>
+					<NewHeader href="/books/categories/audio-books">аудиокниги</NewHeader>
 				</Col>
 			</Row>
 			<Row>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
-const makeOrder = ({ codeControl, isValidCode, productCount, price, discount, ordered }) => {
+const makeOrder = ({ codeControl, isValidCode, productCount, currentPrice, oldPrice, ordered }) => {
 	return (
 		<div>
 			<h6>Сумма</h6>
@@ -8,11 +8,11 @@ const makeOrder = ({ codeControl, isValidCode, productCount, price, discount, or
 				<tbody>
 					<tr>
 						<th>{productCount} товара на сумму</th>
-						<th>{price} сум</th>
+						<th>{oldPrice} сум</th>
 					</tr>
 					<tr>
 						<th>Все скидки</th>
-						<th>{-1 * discount * 0.01 * price} сум</th>
+						<th>{currentPrice - oldPrice} сум</th>
 					</tr>
 				</tbody>
 			</table>
@@ -30,7 +30,7 @@ const makeOrder = ({ codeControl, isValidCode, productCount, price, discount, or
 			<hr />
 			<div className="d-flex justify-content-between align-items-center">
 				<h6>Итого:</h6>
-				<h6>{price - discount * price}</h6>
+				<h6>{currentPrice}</h6>
 			</div>
 			<Button onClick={ordered} type="submit">
 				Оформить заказ

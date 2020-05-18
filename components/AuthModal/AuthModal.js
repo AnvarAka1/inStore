@@ -6,19 +6,18 @@ import { Modal, Card } from "../";
 import { FormGroup } from "../UI";
 import { Button, Form } from "react-bootstrap";
 const authModal = ({ modal, onHide, isSignUp, modeHandler, controls, submitted, checkboxControl }) => {
-	const title = <h2>{isSignUp ? "Регистрация" : "Авторизация"}</h2>;
-	const text = isSignUp ? (
+	const titles = [ "Авторизация", "Регистрация" ];
+	const texts = [ "У вас еще нет аккаунта? Пройдите ", "У вас имеется аккаунт? " ];
+	const actions = [ "Регистрацию", "Войдите" ];
+	const text = (
 		<p>
-			У вас имеется аккаунт?{" "}
-			<span className="text-accent" onClick={() => modeHandler(false)}>
-				Войдите
-			</span>
-		</p>
-	) : (
-		<p>
-			У вас еще нет аккаунта? Пройдите{" "}
-			<span className="text-accent" onClick={() => modeHandler(true)}>
-				Регистрацию
+			{texts[+isSignUp]}
+			<span
+				className="text-accent"
+				style={{ cursor: "pointer" }}
+				onClick={() => modeHandler(isSignUp ? false : true)}
+			>
+				{actions[+isSignUp]}
 			</span>
 		</p>
 	);
@@ -37,7 +36,7 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, controls, submitted, 
 				<Card.Body>
 					<div className="d-flex align-items-center ">
 						<div className="w-100">
-							{title}
+							<h2>{titles[+isSignUp]}</h2>
 							{text}
 							<div>
 								<Form onSubmit={submitted}>

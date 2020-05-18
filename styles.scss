@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: "OpenSans";
-    src: url("/public/fonts/opensans/OpenSans-Regular.ttf");
+    src: url("/fonts/opensans/OpenSans-Regular.ttf");
 }
 
 body {
@@ -280,4 +280,25 @@ p {
 .dropdown-menu.show {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.btn {
+    white-space: nowrap;
+
+    &.btn-primary {
+        background: var(--accent);
+        border: none;
+    }
+
+    &.btn-secondary {
+        font-weight: bold;
+        color: var(--secondary);
+        background: #CCCCCC;
+        border: #BBBBBB 1px solid;
+
+        &:hover {
+            background-color: #e0e0e0;
+        }
+
+    }
 }

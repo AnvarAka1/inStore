@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { connect } from "react-redux";
 import * as actions from "../store/actions/index";
 import { getStaticCategories } from "../lib/categories";
 import Head from "next/head";
-// import Link from "next/link";
+import { AuthModalContext } from "../store";
 import Router from "next/router";
-import { useForm, useModal } from "../hooks/";
+import { useForm } from "../hooks/";
 import { Container } from "react-bootstrap";
 import { AuthModal, NavItems, Navbar, Footer, Search } from "../components/";
 
 const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) => {
 	const [ isSignUp, setIsSignUp ] = useState(true);
-	const authModal = useModal();
-	const searchControl = useForm();
+	const authModalContext = useContext(AuthModalContext);
 	const nameControl = useForm(false, {
 		label: "Ф.И.О"
 	});
@@ -40,12 +39,12 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 	});
 	const checkboxControl = useForm();
 
+	const searchControl = useForm();
+	const regControls = [ nameControl, emailControl, phoneControl, fPasswordControl, sPasswordControl ];
+	const authControls = [ emailPhoneControl, passwordControl ];
 	const modeHandler = mode => {
 		setIsSignUp(mode);
 	};
-	const regControls = [ nameControl, emailControl, phoneControl, fPasswordControl, sPasswordControl ];
-	const authControls = [ emailPhoneControl, passwordControl ];
-
 	const authHandler = event => {
 		event.preventDefault();
 		onAuth(
@@ -57,16 +56,17 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 		);
 		console.log("Auth submitted!");
 	};
-
 	const onSearch = event => {
 		event.preventDefault();
-		Router.push(`/search?q=${searchControl.value}`);
+		searchControl.clear();
+		Router.push(`/search?q=${encodeURI(searchControl.value)}`);
 	};
 	const search = <Search control={searchControl} onSearch={onSearch} />;
+	// Right side of navbar with cart, login/logout
 	const navItems = (
 		<NavItems
 			name={name}
-			authModalShow={authModal.onShow}
+			authModalShow={authModalContext.authModal.onShow}
 			cartCount={cartCount}
 			isAuthorized={isAuthorized}
 			onLogout={onLogout}
@@ -77,7 +77,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 			<AuthModal
 				controls={[ authControls, regControls ]}
 				isSignUp={isSignUp}
-				modal={authModal}
+				modal={authModalContext.authModal}
 				submitted={authHandler}
 				modeHandler={modeHandler}
 				checkboxControl={checkboxControl}

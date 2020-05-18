@@ -1,22 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import InputMask from "react-input-mask";
-
+import {cities, districts} from '../../../lib/locations'
+import { parseCookies } from "../../../helpers/utils";
+import axios from "../../../axios-api";
 import { Form, Formik, useFormik } from "formik";
-import { array, boolean, mixed, number, object, string, date } from "yup";
+import {  object, string } from "yup";
 import { FormikGroup } from "../../../components/UI";
-
-import { Card, MakeOrder } from "../../../components";
+import { Card } from "../../../components";
 import { Row, Col, Button } from "react-bootstrap";
-// make with query params because the user can modify the cart outside this page unintentionally
-// but the query params cannot be changed by this way
-// only developer would do that, and do that intentionally, so it is safer
+import { CartLayout } from "../../../layouts";
 const OrderPage = props => {
+	const [showInputMask, setShowInputMask] = useState(false);
 	const formik = useFormik({
 		initialValues: {
-			phone: "",
-			lastName: "",
-			firstName: "",
-			email: "",
+			phone: props.profile?.phone || "",
+			lastName: props.profile?.fio || "",
+			firstName: props.profile?.fio || "",
+			email: props.profile?.email || "",
 			city: "",
 			district: "",
 			street: "",
@@ -40,13 +40,12 @@ const OrderPage = props => {
 		}
 	});
 	useEffect(() => {
-		// codeControl.onChangeValue(props.query.code);
+		setShowInputMask(true);
 	}, []);
 	return (
 		<Formik>
 			<Form onSubmit={formik.handleSubmit}>
-				<Row>
-					<Col md={9}>
+				<CartLayout isOrderPage>
 						<Row>
 							<Col>
 								<h2>Оформить заказ</h2>
@@ -58,18 +57,15 @@ const OrderPage = props => {
 								<Card className="mb-3">
 									<Card.Header>Номера телефона*</Card.Header>
 									<Card.Body>
-										{/* Mask */}
-										{/* <InputMask
+										{showInputMask && <InputMask
 													className="form-control form-control-sm mt-3"
 													mask="+\9\98 (99) 999-99-99"
-													maskChar="_"
+													name="phone"
 													placeholder="+998 (__) ___-__-__"
-													// alwaysShowMask={true}
-													// formatChars={{ "-": "[0-9]" }}
-													// permanents={[ 1, 5 ]} // permanents is an array of indexes of the non-editable characters in the mask
+													alwaysShowMask={true}
 													value={formik.getFieldProps("phone").value}
 													onChange={formik.getFieldProps("phone").onChange}
-												/> */}
+												/>}
 									</Card.Body>
 								</Card>
 							</Col>
@@ -120,6 +116,7 @@ const OrderPage = props => {
 											options={null}
 											{...formik.getFieldProps("city")}
 											size="sm"
+											options={cities()}
 										>
 											Выберите город*
 										</FormikGroup>
@@ -129,6 +126,7 @@ const OrderPage = props => {
 											options={null}
 											{...formik.getFieldProps("district")}
 											size="sm"
+											options={districts()}
 										>
 											Выберите район*
 										</FormikGroup>
@@ -158,15 +156,8 @@ const OrderPage = props => {
 									</Card.Body>
 								</Card>
 							</Col>
-						</Row>
-						<Row>
-							<Col md={5} />
-						</Row>
-					</Col>
-					<Col md={3}>
-						<MakeOrder />
-					</Col>
-				</Row>
+							</Row>
+				</CartLayout>
 			</Form>
 		</Formik>
 	);
@@ -179,10 +170,21 @@ const getImages = () => [
 	"/images/payment/visa.png",
 	"/images/payment/paynet.png"
 ];
-OrderPage.getInitialProps = async context => {
+export const getServerSideProps = async context => {
+	let profile = null;
+	const token = parseCookies(context.req).token;
+	if (token) {
+		profile = await axios.get("profile", {
+			headers: {
+				Authorization: `Bearer ${token}`
+			}
+		});
+		profile = profile.data;
+	}
 	return {
-		params: context.params,
-		query: context.query
+		props: {
+			profile
+		}
 	};
 };
 export default OrderPage;
