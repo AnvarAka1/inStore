@@ -30,7 +30,9 @@ const CategoriesLayout = ({ children, withoutGenre }) => {
 	}, []);
 	useEffect(
 		() => {
-			setPathname(router.pathname);
+			_isMounted = true;
+			if (_isMounted) setPathname(router.pathname);
+			return () => (_isMounted = false);
 		},
 		[ router.pathname ]
 	);

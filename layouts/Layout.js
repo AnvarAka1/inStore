@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { connect } from "react-redux";
 import * as actions from "../store/actions/index";
 import { getStaticCategories } from "../lib/categories";
@@ -15,46 +15,20 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 	const [ isSignUp, setIsSignUp ] = useState(true);
 	const [ isBooksOpen, setIsBooksOpen ] = useState(false);
 	const [ showInputMask, setShowInputMask ] = useState(false);
-	// const formikRegister = useFormik({
-	// 	initialValues: {
-	// 		name: "",
-	// 		email: "",
-	// 		phone: "",
-	// 		fPassword: "",
-	// 		sPassword: ""
-	// 	},
-	// 	validationSchema: object({
-	// 		name: string().min(2).required(),
-	// 		email: string().email().min(4).required(),
-	// 		phone: string().min(9).max(9).required(),
-	// 		fPassword: string().min(6).max(20).required(),
-	// 		sPassword: string().min(6).max(20).required()
-	// 	}),
-	// 	onSubmit: values => {
-	// 		onAuth(values.name, values.email, values.phone, values.fPassword, isSignUp);
-	// 	}
-	// });
-	// const formikLogin = useFormik({
-	// 	initialValues: {
-	// 		emailPhone: "",
-	// 		password: "",
-	// 		checkbox: ""
-	// 	},
-	// 	validationSchema: object({
-	// 		emailPhone: string().min(2).required(),
-	// 		password: string().email().min(4).required(),
-	// 		checkbox: string().min(9).max(9).required()
-	// 	}),
-	// 	onSubmit: values => {
-	// 		onAuth(null, values.emailPhone, null, values.password, isSignUp);
-	// 	}
-	// });
+	const bookCatsRef = useRef(null);
 	const authModalContext = useContext(AuthModalContext);
 	const checkboxControl = useForm();
 	const searchControl = useForm();
+
 	useEffect(() => {
+		document.addEventListener("click", handleClick);
 		setShowInputMask(true);
+		return () => document.removeEventListener("click", handleClick);
 	}, []);
+	// click outside the categories => the dropdown is closed
+	const handleClick = event => {
+		if (!bookCatsRef.current.contains(event.target)) setIsBooksOpen(false);
+	};
 	const booksToggleHandler = state => {
 		setIsBooksOpen(state);
 	};
@@ -90,21 +64,22 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 	);
 	return (
 		<div>
-			<AuthModal
-				onAuth={onAuth}
-				showInputMask={showInputMask}
-				// login={formikLogin}
-				// register={formikRegister}
-				isSignUp={isSignUp}
-				modal={authModalContext.authModal}
-				submitted={authHandler}
-				modeHandler={modeHandler}
-				checkboxControl={checkboxControl}
-			/>
+			{!isAuthorized && (
+				<AuthModal
+					onAuth={onAuth}
+					showInputMask={showInputMask}
+					isSignUp={isSignUp}
+					modal={authModalContext.authModal}
+					submitted={authHandler}
+					modeHandler={modeHandler}
+					checkboxControl={checkboxControl}
+				/>
+			)}
 			<Head>
 				<title>InStore | Библиотека книг и видеоуроков</title>
 			</Head>
 			<Navbar
+				ref={bookCatsRef}
 				isBooksOpen={isBooksOpen}
 				booksToggle={booksToggleHandler}
 				name={name}

@@ -16,7 +16,7 @@ const CompilationsPage = props => {
 					<React.Fragment key={result.id}>
 						<Row>
 							<Col>
-								<h2>{result.title}</h2>
+								<h2 className="mb-3">{result.title}</h2>
 							</Col>
 						</Row>
 						<Row className="mb-5 mt-1">

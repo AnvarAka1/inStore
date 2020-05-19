@@ -9,7 +9,7 @@ const CompilationPage = ({ title, books }) => {
 				<React.Fragment>
 					<Row>
 						<Col>
-							<h2>{title}</h2>
+							<h2 className="mb-3">{title}</h2>
 						</Col>
 					</Row>
 					<Row>

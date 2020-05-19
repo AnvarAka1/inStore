@@ -6,7 +6,7 @@ const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout }) =>
 	return (
 		<div className={`${classes.NavItems} `}>
 			{/* if the user is authorized, then the "favourites are not displayed in navbar" */}
-			{!isAuthorized && (
+			{/* {!isAuthorized && (
 				<div>
 					<div className="list">
 						<Link href="favorite">
@@ -19,7 +19,7 @@ const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout }) =>
 						</Link>
 					</div>
 				</div>
-			)}
+			)} */}
 
 			<div>
 				<div className="list">

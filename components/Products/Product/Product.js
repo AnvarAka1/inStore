@@ -31,7 +31,7 @@ const product = ({ id, image, title, author, rate, current_price, price, isVideo
 				</Link>
 			</div>
 			{onAddRemoveItem && (
-				<Button onClick={onAddRemoveItem} className="mt-2">
+				<Button onClick={onAddRemoveItem} variant="secondary text-small" className="mt-2">
 					Удалить из корзины
 				</Button>
 			)}

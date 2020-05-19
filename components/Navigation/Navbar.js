@@ -5,10 +5,14 @@ import Link from "next/link";
 import { Navbar, Nav, NavDropdown, Container, Row, Col } from "react-bootstrap";
 import { Logo } from "../";
 
-const navbar = ({ booksCategories, search, navItems, isBooksOpen, booksToggle }) => {
+const navbar = React.forwardRef(({ booksCategories, search, navItems, isBooksOpen, booksToggle }, bookCatsRef) => {
 	const booksTitle = (
 		<React.Fragment>
-			<img src="/images/icons/book.png" className="icon icon-sm mr-1" alt="Книги" />Книги
+			<img src="/images/icons/book.png" className="icon icon-sm mr-1" alt="Книги" />Книги{" "}
+			<img
+				src="/images/icons/caret.png"
+				className={`icon ${classes.Rotatable} ${isBooksOpen && classes.Rotate}`}
+			/>
 		</React.Fragment>
 	);
 
@@ -26,8 +30,14 @@ const navbar = ({ booksCategories, search, navItems, isBooksOpen, booksToggle })
 
 							<Navbar.Toggle aria-controls="basic-navbar-nav" />
 							<Navbar.Collapse id="basic-navbar-nav">
-								<Nav className="mr-auto ml-5">
-									<a role="button" onClick={() => booksToggle(!isBooksOpen)} className="list">
+								<Nav className="mr-auto list ml-5 position-relative">
+									<a
+										role="button"
+										style={{ cursor: "pointer" }}
+										onClick={() => booksToggle(!isBooksOpen)}
+										className={classes.ButtonForToggle}
+										ref={bookCatsRef}
+									>
 										{booksTitle}
 									</a>
 									{isBooksOpen && (
@@ -54,6 +64,5 @@ const navbar = ({ booksCategories, search, navItems, isBooksOpen, booksToggle })
 			</Container>
 		</header>
 	);
-};
-
+});
 export default React.memo(navbar);

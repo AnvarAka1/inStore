@@ -17,7 +17,9 @@ const CartPage = props => {
 				<Col>
 					<div className="d-flex align-items-center">
 						<h3 className="text-normal mb-0 mr-3">Всего в корзине {cartContext.cart.length}</h3>
-						<Button onClick={cartContext.onClearCart}>Сбросить корзину</Button>
+						<Button variant="secondary text-small" onClick={cartContext.onClearCart}>
+							Сбросить корзину
+						</Button>
 					</div>
 				</Col>
 			</Row>

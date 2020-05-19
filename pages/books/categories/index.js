@@ -4,7 +4,7 @@ import { CategoriesLayout } from "../../../layouts";
 import { Row, Col } from "react-bootstrap";
 import { Products } from "../../../components";
 import { useRouter } from "next/router";
-// ?pk=1
+
 let initialPageLoad = true;
 let _isMounted = false;
 const BooksPage = ({ title, booksProps, resultsProps, url }) => {
@@ -66,7 +66,7 @@ const BooksPage = ({ title, booksProps, resultsProps, url }) => {
 				<React.Fragment>
 					<Row>
 						<Col>
-							<h2>{title}</h2>
+							<h2 className="mb-3">{title}</h2>
 						</Col>
 					</Row>
 					<Row>
@@ -80,7 +80,7 @@ const BooksPage = ({ title, booksProps, resultsProps, url }) => {
 					<React.Fragment key={result.id}>
 						<Row>
 							<Col>
-								<h2>{result.title}</h2>
+								<h2 className="mb-3">{result.title}</h2>
 							</Col>
 						</Row>
 						<Row>

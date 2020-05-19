@@ -133,6 +133,16 @@ p {
         height: 50px;
         object-fit: contain;
     }
+
+    &-gray {
+        cursor: pointer;
+        filter: grayscale(100%);
+        transition: all .25s ease;
+
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
 }
 
 // Carousel
@@ -194,7 +204,7 @@ p {
     }
 
     img {
-        height: 22px;
+        height: 35px;
         object-fit: contain;
     }
 }
@@ -315,4 +325,20 @@ p {
             background-color: #fd4848;
         }
     }
+
+    &.inactive {
+        background: transparent;
+        border: 1px #777777 solid;
+        color: #777777;
+        transition: all .25s ease;
+
+        &:hover,
+        &.green-active {
+            border: 1px #00C708 solid;
+            background: transparent;
+            color: #00C708;
+        }
+    }
+
+
 }

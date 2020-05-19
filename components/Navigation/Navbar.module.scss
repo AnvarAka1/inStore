@@ -16,3 +16,31 @@
         color: var(--secondary);
     }
 }
+
+.ButtonForToggle {
+    position: relative;
+
+    &~ul {
+        background: white;
+        position: absolute;
+        top: calc(100% + 24px);
+        // width: 300px;
+        padding: 0 10px 10px;
+        border: 1px #e0e0e0 solid;
+        left: 0;
+        z-index: 20;
+
+        li {
+            white-space: nowrap;
+        }
+    }
+}
+
+.Rotatable {
+    transition: all .25s ease !important;
+}
+
+.Rotate {
+
+    transform: rotateZ(-180deg)
+}
