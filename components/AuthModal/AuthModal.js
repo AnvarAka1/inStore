@@ -3,16 +3,16 @@ import classes from "./AuthModal.module.scss";
 import Link from "next/link";
 import { Modal, Card } from "../";
 import { FormikGroup } from "../UI";
-import { Button } from "react-bootstrap";
+import { Button, FormCheck, FormGroup } from "react-bootstrap";
 import InputMask from "react-input-mask";
-import { Form, Formik } from "formik";
+import { Form, Formik, ErrorMessage } from "formik";
 import { string, object } from "yup";
 const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkboxControl, onAuth }) => {
 	const titles = [ "Авторизация", "Регистрация" ];
 	const texts = [ "У вас еще нет аккаунта? Пройдите ", "У вас имеется аккаунт? " ];
 	const actions = [ "Регистрацию", "Войдите" ];
 	const text = (
-		<p>
+		<p className="text-small">
 			{texts[+isSignUp]}
 			<span
 				className="text-accent"
@@ -25,6 +25,7 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkb
 	);
 	const form = isSignUp ? (
 		<Formik
+			key={0}
 			initialValues={{
 				name: "",
 				email: "",
@@ -35,19 +36,12 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkb
 			validationSchema={object({
 				name: string().min(2).required(),
 				email: string().email().min(4).required(),
-				phone: string().min(9).max(9).required(),
+				phone: string().required(),
 				fPassword: string().min(6).max(20).required(),
 				sPassword: string().min(6).max(20).required()
 			})}
-			onSubmit={(values, { setSubmitting }) => {
-				onAuth(values.name, values.email, values.phone, values.fPassword, isSignUp)
-					.then(res => {})
-					.catch(err => {
-						console.log(err);
-					})
-					.finally(() => {
-						setSubmitting(false);
-					});
+			onSubmit={values => {
+				onAuth(values.name, values.email, values.phone, values.fPassword, isSignUp);
 			}}
 		>
 			{register => (
@@ -59,23 +53,28 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkb
 						Эл. почта
 					</FormikGroup>
 					{showInputMask && (
-						<InputMask
-							className="form-control form-control-sm mt-3"
-							mask="+\9\98 (99) 999-99-99"
-							name="phone"
-							placeholder="+998 (__) ___-__-__"
-							alwaysShowMask={true}
-							value={register.getFieldProps("phone").value}
-							onChange={register.getFieldProps("phone").onChange}
-						/>
+						<FormGroup>
+							<InputMask
+								className="form-control form-control-sm mt-3"
+								mask="+\9\98 (99) 999-99-99"
+								name="phone"
+								placeholder="+998 (__) ___-__-__"
+								alwaysShowMask={true}
+								value={register.getFieldProps("phone").value}
+								onChange={register.getFieldProps("phone").onChange}
+							/>
+							<span className="text-danger text-small">
+								<ErrorMessage name="phone" />
+							</span>
+						</FormGroup>
 					)}
-					<FormikGroup name="fPassword" {...register.getFieldProps("fPassword")} size="sm">
+					<FormikGroup name="fPassword" {...register.getFieldProps("fPassword")} type="password" size="sm">
 						Введите пароль
 					</FormikGroup>
-					<FormikGroup name="sPassword" {...register.getFieldProps("sPassword")} size="sm">
+					<FormikGroup name="sPassword" {...register.getFieldProps("sPassword")} type="password" size="sm">
 						Подтвердите пароль
 					</FormikGroup>
-					<Button type="submit" className="float-right" disabled={login.isSubmitting}>
+					<Button type="submit" className="float-right" disabled={register.isSubmitting}>
 						Зарегистрироваться
 					</Button>
 				</Form>
@@ -83,49 +82,44 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkb
 		</Formik>
 	) : (
 		<Formik
+			key={1}
 			initialValues={{
 				emailPhone: "",
 				password: "",
 				checkbox: ""
 			}}
 			validationSchema={object({
-				emailPhone: string().min(2).required(),
-				password: string().email().min(4).required(),
-				checkbox: string().min(9).max(9).required()
+				emailPhone: string().min(6, "Слишком мало символов").required("Введите email или номер телефона"),
+				password: string()
+					.min(6, "Пароль должен содержать минимум 6 символов")
+					.max(20, "Пароль должен содержать максимум 20 символов")
+					.required("Введите пароль")
 			})}
 			onSubmit={(values, { setSubmitting }) => {
-				setSubmitting(true);
-				onAuth(null, values.emailPhone, null, values.password, isSignUp)
-					.then(res => {})
-					.catch(err => {
-						console.log(err);
-					})
-					.finally(() => {
-						setSubmitting(false);
-					});
+				onAuth(null, values.emailPhone, null, values.password, isSignUp);
 			}}
 		>
 			{login => (
 				<Form onSubmit={login.handleSubmit}>
-					<FormikGroup name="email" {...login.getFieldProps("email")} size="sm">
+					<FormikGroup name="emailPhone" {...login.getFieldProps("emailPhone")} size="sm">
 						Электронная почта или номер телефона
 					</FormikGroup>
-					<FormikGroup name="password" {...login.getFieldProps("password")} size="sm">
+					<FormikGroup name="password" {...login.getFieldProps("password")} type="password" size="sm">
 						Введите пароль
 					</FormikGroup>
-					<FormGroup controlId="formBasicCheckbox">
-						<Form.Check
-							type="checkbox"
-							label="Запомнить пароль"
-							value={checkboxControl.value}
-							onChange={checkboxControl.onChange}
-						/>
-					</FormGroup>
+
+					<FormCheck
+						type="checkbox"
+						label="Запомнить пароль"
+						value={checkboxControl.value}
+						onChange={checkboxControl.onChange}
+					/>
+
 					<Button type="submit" className="float-right" disabled={login.isSubmitting}>
 						Войти
 					</Button>
 					<Link href="/">
-						<a>Не можете получить доступ?</a>
+						<a className="text-small">Не можете получить доступ?</a>
 					</Link>
 				</Form>
 			)}
@@ -136,20 +130,22 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkb
 			<Card>
 				<Card.Body>
 					<div className="d-flex align-items-center ">
-						<div className="w-100">
+						<div className="w-100 pl-2 pr-4">
 							<h2>{titles[+isSignUp]}</h2>
 							{text}
 							{form}
 						</div>
-						<div className={`${classes.Social} w-100`}>
-							<p className="text-small">{isSignUp ? "Регистрация" : "Авторизация"} через:</p>
-							<Button variant="primary" onClick={null}>
+						<div className={`${classes.Social} pl-4 pr-2 w-100`}>
+							<p className="text-small text-bold mb-3">
+								{isSignUp ? "Регистрация" : "Авторизация"} через:
+							</p>
+							<Button className="w-100 text-small" variant="primary" onClick={null}>
 								<strong>Facebook</strong>
 							</Button>
-							<Button variant="danger" onClick={null}>
+							<Button className="w-100 mt-2 text-small" variant="danger" onClick={null}>
 								<strong>Google</strong>
 							</Button>
-							<Button variant="warning" onClick={null}>
+							<Button className="w-100 mt-2 text-small text-white" variant="warning" onClick={null}>
 								<strong>Одноклассники</strong>
 							</Button>
 						</div>

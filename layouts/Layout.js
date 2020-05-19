@@ -93,8 +93,8 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 			<AuthModal
 				onAuth={onAuth}
 				showInputMask={showInputMask}
-				login={formikLogin}
-				register={formikRegister}
+				// login={formikLogin}
+				// register={formikRegister}
 				isSignUp={isSignUp}
 				modal={authModalContext.authModal}
 				submitted={authHandler}

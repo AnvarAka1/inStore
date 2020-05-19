@@ -4,7 +4,7 @@ import { useForm, useModal } from "../hooks";
 import { parseCookies } from "../helpers/utils";
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
-import { Row, Col, Carousel, Button, Form } from "react-bootstrap";
+import { Row, Col, Carousel, Button } from "react-bootstrap";
 import {
 	Heading,
 	PreCarousel,

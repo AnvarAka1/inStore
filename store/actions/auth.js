@@ -37,7 +37,6 @@ export const stopLoading = () => {
 	};
 };
 export const auth = (name, email, phone, password, isSignup) => {
-	name = name.trim();
 	email = email.trim();
 	return dispatch => {
 		// clear error
@@ -69,7 +68,6 @@ export const auth = (name, email, phone, password, isSignup) => {
 				// save user state
 				dispatch(authSuccess(response.token, fio));
 				// dispatch(checkAuthTimeout(response.expires_in));
-				return true;
 			})
 			.catch(error => {
 				console.log(error);

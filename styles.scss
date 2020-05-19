@@ -281,6 +281,10 @@ p {
     &.btn-primary {
         background: var(--accent);
         border: none;
+
+        &:hover {
+            background-color: #035ead
+        }
     }
 
     &.btn-secondary {
@@ -291,6 +295,24 @@ p {
 
         &:hover {
             background-color: #e0e0e0;
+        }
+    }
+
+    &.btn-warning {
+        background-color: #FF932C;
+        border: none;
+
+        &:hover {
+            background-color: #ffa149;
+        }
+    }
+
+    &.btn-danger {
+        background-color: #FF0000;
+        border: none;
+
+        &:hover {
+            background-color: #fd4848;
         }
     }
 }
