@@ -7,53 +7,57 @@ import { AuthModalContext } from "../store";
 import Router from "next/router";
 import { useForm } from "../hooks/";
 import { Container } from "react-bootstrap";
-import { Form, Formik, useFormik } from "formik";
-import { string, object } from "yup";
+// import { Form, Formik, useFormik } from "formik";
+// import { string, object } from "yup";
 import { AuthModal, NavItems, Navbar, Footer, Search } from "../components/";
 
 const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) => {
 	const [ isSignUp, setIsSignUp ] = useState(true);
+	const [ isBooksOpen, setIsBooksOpen ] = useState(false);
 	const [ showInputMask, setShowInputMask ] = useState(false);
-	const formikRegister = useFormik({
-		initialValues: {
-			name: "",
-			email: "",
-			phone: "",
-			fPassword: "",
-			sPassword: ""
-		},
-		validationSchema: object({
-			name: string().min(2).required(),
-			email: string().email().min(4).required(),
-			phone: string().min(9).max(9).required(),
-			fPassword: string().min(6).max(20).required(),
-			sPassword: string().min(6).max(20).required()
-		}),
-		onSubmit: values => {
-			onAuth(values.name, values.email, values.phone, values.fPassword, isSignUp);
-		}
-	});
-	const formikLogin = useFormik({
-		initialValues: {
-			emailPhone: "",
-			password: "",
-			checkbox: ""
-		},
-		validationSchema: object({
-			emailPhone: string().min(2).required(),
-			password: string().email().min(4).required(),
-			checkbox: string().min(9).max(9).required()
-		}),
-		onSubmit: values => {
-			onAuth(null, values.emailPhone, null, values.password, isSignUp);
-		}
-	});
+	// const formikRegister = useFormik({
+	// 	initialValues: {
+	// 		name: "",
+	// 		email: "",
+	// 		phone: "",
+	// 		fPassword: "",
+	// 		sPassword: ""
+	// 	},
+	// 	validationSchema: object({
+	// 		name: string().min(2).required(),
+	// 		email: string().email().min(4).required(),
+	// 		phone: string().min(9).max(9).required(),
+	// 		fPassword: string().min(6).max(20).required(),
+	// 		sPassword: string().min(6).max(20).required()
+	// 	}),
+	// 	onSubmit: values => {
+	// 		onAuth(values.name, values.email, values.phone, values.fPassword, isSignUp);
+	// 	}
+	// });
+	// const formikLogin = useFormik({
+	// 	initialValues: {
+	// 		emailPhone: "",
+	// 		password: "",
+	// 		checkbox: ""
+	// 	},
+	// 	validationSchema: object({
+	// 		emailPhone: string().min(2).required(),
+	// 		password: string().email().min(4).required(),
+	// 		checkbox: string().min(9).max(9).required()
+	// 	}),
+	// 	onSubmit: values => {
+	// 		onAuth(null, values.emailPhone, null, values.password, isSignUp);
+	// 	}
+	// });
 	const authModalContext = useContext(AuthModalContext);
 	const checkboxControl = useForm();
 	const searchControl = useForm();
 	useEffect(() => {
 		setShowInputMask(true);
 	}, []);
+	const booksToggleHandler = state => {
+		setIsBooksOpen(state);
+	};
 	const modeHandler = mode => {
 		setIsSignUp(mode);
 	};
@@ -87,6 +91,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 	return (
 		<div>
 			<AuthModal
+				onAuth={onAuth}
 				showInputMask={showInputMask}
 				login={formikLogin}
 				register={formikRegister}
@@ -100,6 +105,8 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 				<title>InStore | Библиотека книг и видеоуроков</title>
 			</Head>
 			<Navbar
+				isBooksOpen={isBooksOpen}
+				booksToggle={booksToggleHandler}
 				name={name}
 				isAuthorized={isAuthorized}
 				cartCount={cartCount}

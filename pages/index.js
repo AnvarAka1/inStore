@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "../axios-api";
 import { useForm, useModal } from "../hooks";
 import { parseCookies } from "../helpers/utils";
+import { Formik, Form } from "formik";
+import { object, string } from "yup";
 import { Row, Col, Carousel, Button, Form } from "react-bootstrap";
 import {
 	Heading,
@@ -17,7 +19,7 @@ import {
 	Stars,
 	TopImage
 } from "../components";
-import { FormGroup } from "../components/UI";
+import { FormikGroup } from "../components/UI";
 import Router from "next/router";
 const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollections, speakers }) => {
 	const [ loading, setLoading ] = useState(false);
@@ -60,18 +62,45 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 		<Card>
 			<Card.Header>Стать спикером</Card.Header>
 			<Card.Body>
-				<Form onSubmit={speakerSubmitHandler}>
-					<FormGroup placeholder="Ф.И.О" control={nameControl}>
-						Ф.И.О
-					</FormGroup>
-					<FormGroup placeholder="example@mail.com" control={mailControl}>
-						Эл. почта
-					</FormGroup>
-					<FormGroup placeholder="+998 (__) ___ - __ - __" control={phoneControl}>
-						Номер телефона
-					</FormGroup>
-					<Button type="submit">Отправить</Button>
-				</Form>
+				<Formik
+					initialValues={{
+						name: "",
+						mail: "",
+						phone: ""
+					}}
+					validationSchema={object({
+						name: string().min(2).required(),
+						email: string().email().min(4).required(),
+						phone: string().min(9).max(9).required()
+					})}
+					onSubmit={(values, { setSubmitting }) => {
+						setSubmitting();
+						speakerSubmitHandler().then(res => {}).catch(err => console.log(err)).finally(() => {
+							setSubmitting(false);
+						});
+					}}
+				>
+					{formik => (
+						<Form onSubmit={formik.handleSubmit}>
+							<FormikGroup placeholder="Ф.И.О" name="name" {...formik.getFieldProps("name")}>
+								Ф.И.О
+							</FormikGroup>
+							<FormikGroup placeholder="example@mail.com" name="email" {...formik.getFieldProps("email")}>
+								Эл. почта
+							</FormikGroup>
+							<FormikGroup
+								placeholder="+998 (__) ___ - __ - __"
+								name="phone"
+								{...formik.getFieldProps("phone")}
+							>
+								Номер телефона
+							</FormikGroup>
+							<Button type="submit" disabled={formik.isSubmitting}>
+								Отправить
+							</Button>
+						</Form>
+					)}
+				</Formik>
 			</Card.Body>
 		</Card>
 	);
@@ -80,22 +109,39 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 		<Card>
 			<Card.Header>Оставить отзыв</Card.Header>
 			<Card.Body>
-				<Form onSubmit={reviewSubmitHandler}>
-					<Form.Group>
-						<Form.Label>Ваша оценка</Form.Label>
-						<Stars isBig onClick={rateChangedHandler} rate={rate} />
-					</Form.Group>
-					<FormGroup
-						as="textarea"
-						placeholder="Напишите тут (максимум 1000 символов)"
-						size="sm"
-						control={reviewControl}
-					>
-						Ваш отзыв
-					</FormGroup>
+				<Formik
+					initialValues={{
+						text: ""
+					}}
+					validationSchema={object({
+						text: string().max(1000).required()
+					})}
+					onSubmit={(values, { setSubmitting }) => {
+						setSubmitting();
+						reviewSubmitHandler().then(res => {}).catch(err => console.log(err)).finally(() => {
+							setSubmitting(false);
+						});
+					}}
+				>
+					{formik => (
+						<Form onSubmit={formik.handleSubmit}>
+							<Form.Group>
+								<Form.Label>Ваша оценка</Form.Label>
+								<Stars isBig onClick={rateChangedHandler} rate={rate} />
+							</Form.Group>
+							<FormikGroup
+								as="textarea"
+								placeholder="Напишите тут (максимум 1000 символов)"
+								size="sm"
+								control={reviewControl}
+							>
+								Ваш отзыв
+							</FormikGroup>
 
-					<Button type="submit">Оставить отзыв</Button>
-				</Form>
+							<Button type="submit">Оставить отзыв</Button>
+						</Form>
+					)}
+				</Formik>
 			</Card.Body>
 		</Card>
 	);
