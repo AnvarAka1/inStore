@@ -38,10 +38,10 @@ const footer = () => {
 
 							<div>
 								<h6 className="text-accent">Оплата</h6>
-								<ul className="flex-columns">
+								<ul>
 									{getImages().map((image, index) => {
 										return (
-											<li key={index}>
+											<li className="w-75 mb-2" key={index}>
 												<img src={image} alt="payment" />
 											</li>
 										);
@@ -70,11 +70,11 @@ const getSocial = () => [
 ];
 const getImages = () => [
 	"/images/payment/payme.png",
-	"/images/payment/uzcard.png",
-	"/images/payment/click.png",
-	"/images/payment/humo.png",
-	"/images/payment/visa.png",
-	"/images/payment/paynet.png"
+	// "/images/payment/uzcard.png",
+	"/images/payment/click.png"
+	// "/images/payment/humo.png",
+	// "/images/payment/visa.png",
+	// "/images/payment/paynet.png"
 ];
 const getItems = () => [
 	{

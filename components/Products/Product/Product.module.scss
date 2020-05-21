@@ -4,4 +4,12 @@
     border: 1px solid #CCCCCC;
     box-sizing: border-box;
     border-radius: 4px;
+    overflow-x: hidden;
+
+    h5,
+    a>p {
+        text-overflow: ellipsis;
+        width: 100%;
+        overflow: hidden;
+    }
 }

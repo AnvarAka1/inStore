@@ -1,7 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import classes from "./PreCarousel.module.scss";
-const preCarousel = ({ isVideo, children, link }) => {
+const preCarousel = ({ isVideo, children, link, lang }) => {
+	const content = {
+		texts: [ "Все сборники", "All compilations", "Uzb" ]
+	};
 	return (
 		<Link href={link}>
 			<a>
@@ -10,7 +13,7 @@ const preCarousel = ({ isVideo, children, link }) => {
 						<img src={`/images/icons/${!isVideo ? "books.png" : "videos.png"}`} />
 					</div>
 					<h3 className="text-accent">{children}</h3>
-					<p className={`text-small mt-auto ${isVideo && "text-bold"}`}>Все сборники</p>
+					<p className={`text-small mt-auto ${isVideo && "text-bold"}`}>{content.texts[lang]}</p>
 				</div>
 			</a>
 		</Link>

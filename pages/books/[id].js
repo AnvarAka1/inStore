@@ -67,10 +67,10 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 	};
 	return (
 		<Row>
-			<Col sm={5}>{<ProductDetails {...book} social={null} />}</Col>
-			<Col sm={7}>
+			<Col sm={4}>{<ProductDetails {...book} social={null} />}</Col>
+			<Col sm={8}>
 				<Row>
-					<Col md={10}>
+					<Col md={7}>
 						<ProductDescription
 							{...book}
 							expandDescription={expandDescription}
@@ -93,7 +93,7 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 					</Col>
 				</Row>
 				<h3 className="mt-5">Также вас может заинтересовать</h3>
-				<ProductsCarousel items={book.related} responsive={{ lg: 4 }} />
+				<ProductsCarousel items={book.related} responsive={{ lg: 4, xl: 4, sm: 4 }} />
 			</Col>
 		</Row>
 	);

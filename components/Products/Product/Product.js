@@ -3,7 +3,10 @@ import { Button } from "react-bootstrap";
 import { Stars } from "../../";
 import classes from "./Product.module.scss";
 import Link from "next/link";
-const product = ({ id, image, title, author, rate, current_price, price, isVideo, onAddRemoveItem }) => {
+const product = ({ id, image, title, author, rate, current_price, price, isVideo, onAddRemoveItem, lang }) => {
+	const content = {
+		remove: [ "Удалить из корзины", "Remove from cart", "Uzb" ]
+	};
 	return (
 		<React.Fragment>
 			<div className={classes.Product}>
@@ -16,7 +19,7 @@ const product = ({ id, image, title, author, rate, current_price, price, isVideo
 				</Link>
 				<Link href={`/${isVideo ? "videos" : "books"}/[id]`} as={`/${isVideo ? "videos" : "books"}/${id}`}>
 					<a>
-						<h5 className="text-black mb-1">{title}</h5>
+						<h5 className="text-black mb-1 mt-2">{title}</h5>
 						<p className="text-small">{author}</p>
 						<Stars rate={Math.round(rate)} />
 					</a>
@@ -32,7 +35,7 @@ const product = ({ id, image, title, author, rate, current_price, price, isVideo
 			</div>
 			{onAddRemoveItem && (
 				<Button onClick={onAddRemoveItem} variant="secondary text-small" className="mt-2">
-					Удалить из корзины
+					{content.remove[lang]}
 				</Button>
 			)}
 		</React.Fragment>

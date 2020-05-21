@@ -1,6 +1,6 @@
 import React from "react";
 import Category from "./Category/Category";
-const categories = ({ items, isVideo, isStatic, pathname }) => {
+const categories = ({ items, isVideo, isStatic, lang, pathname }) => {
 	const categoriesView = items.map(item => {
 		return (
 			<Category
@@ -11,7 +11,7 @@ const categories = ({ items, isVideo, isStatic, pathname }) => {
 				pathname={pathname}
 				isStatic={isStatic}
 			>
-				{item.title}
+				{isStatic ? item.titles[lang] : item.title}
 			</Category>
 		);
 	});

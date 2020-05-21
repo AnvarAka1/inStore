@@ -1,13 +1,14 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { NavigationItems } from "../components/";
-const ProfileLayout = props => {
+const ProfileLayout = ({ children, lang }) => {
+	lang = lang || 0;
 	return (
 		<Row>
 			<Col sm={3}>
-				<NavigationItems items={getNavigationItems()} />
+				<NavigationItems lang={lang} items={getNavigationItems()} />
 			</Col>
-			<Col sm={9}>{props.children}</Col>
+			<Col sm={9}>{children}</Col>
 		</Row>
 	);
 };
@@ -16,37 +17,32 @@ const getNavigationItems = () => [
 	{
 		id: 0,
 		icon: "/images/icons/story.png",
-		title: "История заказов: 29",
+		titles: [ "История заказов", "Order history", "Uzb" ],
 		href: "/profile/orders"
 	},
+
 	{
 		id: 1,
-		icon: "/images/icons/video.png",
-		title: "Видеоуроки: 19",
-		href: "/profile/videolessons"
-	},
-	{
-		id: 2,
 		icon: "/images/icons/book.png",
-		title: "Моя библиотека: 10",
+		titles: [ "Моя библиотека", "My library", "Uzb" ],
 		href: "/profile/library"
 	},
 	{
-		id: 3,
+		id: 2,
 		icon: "/images/icons/star.png",
-		title: "Избанные: 4",
+		titles: [ "Избанные", "Favourites", "Uzb" ],
 		href: "/profile/favourites"
 	},
 	{
-		id: 4,
+		id: 3,
 		icon: "/images/icons/cart.png",
-		title: "Корзина: 3",
+		titles: [ "Корзина", "Cart", "Uzb" ],
 		href: "/cart"
 	},
 	{
-		id: 5,
+		id: 4,
 		icon: "/images/icons/settings.png",
-		title: "Настройки",
+		titles: [ "Настройки", "Settings", "Uzb" ],
 		href: "/profile/settings",
 		className: "mt-auto"
 	}

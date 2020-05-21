@@ -3,7 +3,7 @@ import Carousel from "react-multi-carousel";
 import classes from "./SliderCarousel.module.scss";
 // import Carousel from "@brainhubeu/react-carousel";
 // import Carousel from "react-slick";
-const sliderCarousel = ({ className, children, items, arrows = true, autoPlay = false }) => {
+const sliderCarousel = ({ className, children, items, arrows = true, autoPlay = false, beforeChange = null }) => {
 	const responsive = {
 		superLargeDesktop: {
 			// the naming can be any, depends on you.
@@ -31,6 +31,7 @@ const sliderCarousel = ({ className, children, items, arrows = true, autoPlay = 
 				draggable={true}
 				arrows={arrows}
 				showDots={false}
+				beforeChange={beforeChange}
 				// partialVisbile={true}
 				responsive={responsive}
 				ssr={true} // means to render carousel on server-side.
