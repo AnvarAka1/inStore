@@ -1,6 +1,9 @@
 import React from "react";
 import Category from "./Category/Category";
 const categories = ({ items, isVideo, isStatic, lang, pathname }) => {
+	const content = {
+		genres: [ "Жанры", "Genges", "Uzb" ]
+	};
 	const categoriesView = items.map(item => {
 		return (
 			<Category
@@ -20,7 +23,7 @@ const categories = ({ items, isVideo, isStatic, lang, pathname }) => {
 			{!isStatic && (
 				<div className="d-flex align-items-center mb-4">
 					<img className="icon icon-md" src="/images/icons/janra.png" alt="Жанры" />
-					<h5 className="ml-1 mb-0 text-secondary">{!isVideo ? "Жанры" : "Категории"}</h5>
+					<h5 className="ml-1 mb-0 text-secondary">{!isVideo ? content.genres[lang] : "Категории"}</h5>
 				</div>
 			)}
 			<ul>{categoriesView}</ul>

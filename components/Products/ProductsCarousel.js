@@ -2,7 +2,7 @@ import React from "react";
 import Product from "./Product/Product";
 import { SliderCarousel } from "../";
 
-const productsCarousel = ({ items, responsive }) => {
+const productsCarousel = ({ items, responsive, lang }) => {
 	const resp = {
 		xl: responsive ? (responsive.xl ? responsive.xl : 8) : 8,
 		lg: responsive ? (responsive.lg ? responsive.lg : 6) : 6,

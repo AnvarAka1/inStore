@@ -6,7 +6,7 @@ import { useForm } from "../../hooks";
 import { CartContext, AuthModalContext } from "../../store";
 
 import { Row, Col } from "react-bootstrap";
-import { ProductDetails, ProductDescription, Comments, ProductsCarousel } from "../../components/";
+import { ProductDetails, ProductDescription, Comments, ProductsCarousel, lang } from "../../components/";
 
 const BookPage = ({ bookProps, isAuthorized }) => {
 	const [ book, setBook ] = useState(bookProps);
@@ -65,6 +65,11 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 	const rateHandler = id => {
 		setRate(id + 1);
 	};
+	// JSX
+	lang = lang || 0;
+	const content = {
+		headers: [ "Также вас может заинтересовать", "This may be interesting for you", "Uzb" ]
+	};
 	return (
 		<Row>
 			<Col sm={4}>{<ProductDetails {...book} social={null} />}</Col>
@@ -82,6 +87,7 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 						/>
 
 						<Comments
+							lang={lang}
 							items={book.feedback}
 							rate={rate}
 							onSubmit={commentSubmitHandler}
@@ -92,8 +98,8 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 						/>
 					</Col>
 				</Row>
-				<h3 className="mt-5">Также вас может заинтересовать</h3>
-				<ProductsCarousel items={book.related} responsive={{ lg: 4, xl: 4, sm: 4 }} />
+				<h3 className="mt-5">{content.headers[lang]}</h3>
+				<ProductsCarousel items={book.related} lang={lang} responsive={{ lg: 4, xl: 4, sm: 4 }} />
 			</Col>
 		</Row>
 	);

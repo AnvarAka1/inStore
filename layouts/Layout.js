@@ -3,18 +3,19 @@ import { connect } from "react-redux";
 import * as actions from "../store/actions/index";
 import { getStaticCategories } from "../lib/categories";
 import Head from "next/head";
-import { AuthModalContext } from "../store";
+import { AuthModalContext, LangContext } from "../store";
 import Router from "next/router";
 import { useForm } from "../hooks/";
 import { Container } from "react-bootstrap";
 import { AuthModal, NavItems, Navbar, Footer, Search } from "../components/";
 
-const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, lang }) => {
+const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) => {
 	const [ isSignUp, setIsSignUp ] = useState(true);
 	const [ isBooksOpen, setIsBooksOpen ] = useState(false);
 	const [ showInputMask, setShowInputMask ] = useState(false);
 	const bookCatsRef = useRef(null);
 	const authModalContext = useContext(AuthModalContext);
+	const langContext = useContext(LangContext);
 	const checkboxControl = useForm();
 	const searchControl = useForm();
 
@@ -50,7 +51,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, lan
 		Router.push(`/search?q=${encodeURI(searchControl.value)}`);
 	};
 	// JSX
-	lang = lang || 1;
+	const lang = langContext.lang;
 	const content = {
 		titles: [ "Библиотека книг и видеоуроков", "Library of books and videolessons", "Uzb" ]
 	};
@@ -58,6 +59,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, lan
 	// Right side of navbar with cart, login/logout
 	const navItems = (
 		<NavItems
+			onChangeLang={langContext.onChangeLang}
 			name={name}
 			lang={lang}
 			authModalShow={authModalContext.authModal.onShow}
@@ -70,6 +72,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, lan
 		<div>
 			{!isAuthorized && (
 				<AuthModal
+					lang={lang}
 					onAuth={onAuth}
 					showInputMask={showInputMask}
 					isSignUp={isSignUp}
@@ -99,7 +102,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, lan
 					{children}
 				</Container>
 			</main>
-			<Footer />
+			<Footer lang={lang} />
 		</div>
 	);
 };

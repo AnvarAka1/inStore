@@ -342,3 +342,33 @@ p {
 
 
 }
+
+.dropdown-hover {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    text-align: right;
+
+    ul {
+        display: none;
+        z-index: 20;
+        position: absolute;
+        left: 0px;
+        top: 100%;
+        width: 100%;
+        background-color: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        padding-bottom: 2px;
+
+        li {
+            text-align: center;
+            padding: 2px 1px;
+            border-bottom: 1px dashed var(--accent)
+        }
+    }
+
+    &:hover ul {
+        display: block;
+    }
+}

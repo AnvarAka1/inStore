@@ -1,0 +1,72 @@
+.TopButtons {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    text-align: center;
+
+    &>a {
+        transition: .5s ease background, .5s ease color;
+        cursor: pointer;
+        width: 100%;
+        padding: 20px 0;
+
+        &.Active {
+            background: var(--accent);
+            color: white;
+        }
+
+        &:hover {
+            background-color: var(--accent);
+            color: white !important;
+        }
+    }
+}
+.Social{
+    .Fb, .Vk, .Google{
+        cursor: pointer;
+        border-radius: 50%;
+        background: var(--accent);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: .5s ease opacity;
+    &:hover{
+        opacity:.8;
+    }
+    }
+    .Vk{
+        background: #4d75a1;
+        margin: 0 1rem;
+    }
+    .Google{
+        background: #db4d41;
+    }
+    
+}
+.Or{
+    color: var(--secondary);
+    margin-top: 1rem;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    &:before, &:after{
+        content: "";
+        top: 50%;
+        position: absolute;
+        width: 50%;
+        right: calc(50% + 30px);
+        background: #e0e0e0;
+        height: 1px;
+    }
+    &:after{
+        right: auto;
+        left: calc(50% + 30px);
+
+    }
+}

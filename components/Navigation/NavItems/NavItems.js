@@ -2,12 +2,13 @@ import React from "react";
 import classes from "./NavItems.module.scss";
 import Link from "next/link";
 
-const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout, lang }) => {
+const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout, onChangeLang, lang }) => {
 	const content = {
 		favourites: [ "Избранные", "Favourites", "Uzb" ],
 		carts: [ "Корзина", "Cart", "Uzb" ],
 		logins: [ "Войти", "Login", "Uzb" ],
-		logouts: [ "Выйти", "Logout", "Uzb" ]
+		logouts: [ "Выйти", "Logout", "Uzb" ],
+		language: [ "Язык", "Language", "Til" ]
 	};
 	return (
 		<div className={`${classes.NavItems} `}>
@@ -67,6 +68,25 @@ const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout, lang
 					</div>
 				</div>
 			)}
+			<div className="position-relative">
+				<a role="button" className="dropdown-hover text-secondary">
+					{content.language[lang]}
+
+					<ul>
+						{[ "Ру", "En", "Uz" ].map((language, index) => (
+							<li key={language}>
+								<span
+									role="button"
+									className={`${index === lang && "text-accent"}`}
+									onClick={() => onChangeLang(index)}
+								>
+									{language}
+								</span>
+							</li>
+						))}
+					</ul>
+				</a>
+			</div>
 		</div>
 	);
 };

@@ -1,13 +1,13 @@
 import React from "react";
 import FooterItem from "./FooterItem/FooterItem";
 
-const footerItems = ({ title, items }) => {
+const footerItems = ({ titles, items, lang }) => {
 	const footerItemsView = items.map((item, index) => {
-		return <FooterItem key={index} title={item.title} link={item.link} />;
+		return <FooterItem key={index} title={item.titles[lang]} link={item.link} />;
 	});
 	return (
 		<div>
-			<h6 className="text-accent">{title}</h6>
+			<h6 className="text-accent">{titles}</h6>
 			<ul>{footerItemsView}</ul>
 		</div>
 	);

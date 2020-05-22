@@ -1,13 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { convertFrontToBackDate, convertBackToFrontDate, parseCookies } from "../../helpers/utils";
 import axios from "../../axios-api";
+import ErrorPage from "../404";
 import { Button, Row, Col } from "react-bootstrap";
 import { FormikGroup } from "../../components/UI";
 import { Form, Formik } from "formik";
 import { object, string, date } from "yup";
 import { ProfileLayout } from "../../layouts";
 // can make static page also
-const SettingsPage = ({ userData }) => {
+const SettingsPage = ({ userData, error }) => {
+	if (error) {
+		return <ErrorPage />;
+	}
 	let personalInfoInitialValues = {
 		name: userData.fio,
 		dob: convertBackToFrontDate(userData.dob),
@@ -19,7 +23,6 @@ const SettingsPage = ({ userData }) => {
 		newPassword: "",
 		repPassword: ""
 	};
-
 	const updatePersonalInformationHandler = values => {
 		const formData = new FormData();
 		formData.append("fio", values.name);
@@ -197,15 +200,23 @@ const SettingsPage = ({ userData }) => {
 };
 
 export const getServerSideProps = async ({ req }) => {
-	const res = await axios.get("/profile", {
-		headers: {
-			Authorization: `Bearer ${parseCookies(req).token}`
-		}
-	});
-	const userData = res.data;
+	let res = null;
+	let error = null;
+	try {
+		res = await axios.get("/profile", {
+			headers: {
+				Authorization: `Bearer ${parseCookies(req).token}`
+			}
+		});
+		res = res.data;
+	} catch (err) {
+		error = "Error";
+	}
+
 	return {
 		props: {
-			userData
+			userData: res,
+			error: error
 		}
 	};
 };

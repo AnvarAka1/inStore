@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "../axios-api";
+import { LangContext } from "../store";
 import { useForm, useModal } from "../hooks";
 import { parseCookies } from "../helpers/utils";
 import { Formik, Form } from "formik";
@@ -21,9 +22,9 @@ import { FormikGroup } from "../components/UI";
 const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollections, speakers, lang }) => {
 	const [ loading, setLoading ] = useState(false);
 	const [ rate, setRate ] = useState(4);
-	const reviewControl = useForm();
-	const reviewModal = useModal();
 
+	const reviewModal = useModal();
+	const langContext = useContext(LangContext);
 	const rateChangedHandler = id => {
 		setRate(id + 1);
 	};
@@ -44,7 +45,7 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 	//  JSX
 
 	// multilang
-	lang = lang || 1;
+	lang = langContext.lang;
 	const content = {
 		eBook: {
 			titles: [ "Электронные и печатные", "Printed and e-books", "Uzb" ],

@@ -3,7 +3,12 @@ import classes from "./Footer.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import { Logo } from "../";
 import FooterItems from "./FooterItems/FooterItems";
-const footer = () => {
+const footer = ({ lang }) => {
+	const content = {
+		supports: [ "Служба поддержки", "Support service", "Uzb" ],
+		socials: [ "Мы в социальных сетях", "We are at social media", "Uzb" ],
+		payments: [ "Оплата", "Payment", "Uzb" ]
+	};
 	return (
 		<footer className={`${classes.Footer} text-left`}>
 			<Container>
@@ -18,10 +23,10 @@ const footer = () => {
 							<div className="w-50 mr-5">
 								<p className="mb-2 text-small text-bold">+998 90 000 00 00</p>
 								<p className="mb-2 text-small text-bold">+998 90 000 00 00</p>
-								<p className="mb-2 text-small">Служба поддержки</p>
+								<p className="mb-2 text-small">{content.supports[lang]}</p>
 
 								<div className={classes.Social}>
-									<h6 className="text-accent mt-5">Мы в социальных сетях</h6>
+									<h6 className="text-accent mt-5">{content.socials[lang]}</h6>
 									<ul>
 										{getSocial().map((social, index) => {
 											return (
@@ -37,7 +42,7 @@ const footer = () => {
 							</div>
 
 							<div>
-								<h6 className="text-accent">Оплата</h6>
+								<h6 className="text-accent">{content.payments[lang]}</h6>
 								<ul>
 									{getImages().map((image, index) => {
 										return (
@@ -53,7 +58,14 @@ const footer = () => {
 					<Col sm={{ span: 7 }}>
 						<div className="d-flex justify-content-between align-items-start w-100">
 							{getItems().map(item => {
-								return <FooterItems key={item.title} title={item.title} items={item.items} />;
+								return (
+									<FooterItems
+										key={item.titles[lang]}
+										titles={item.titles[lang]}
+										items={item.items}
+										lang={lang}
+									/>
+								);
 							})}
 						</div>
 					</Col>
@@ -78,76 +90,76 @@ const getImages = () => [
 ];
 const getItems = () => [
 	{
-		title: "О нас",
+		titles: [ "О нас", "About us", "Uzb1" ],
 		items: [
 			{
-				title: "Часто задаваемые вопросы",
+				titles: [ "Часто задаваемые вопросы", "F.A.Q", "Uzb" ],
 				link: "/"
 			},
 			{
-				title: "Помощь",
+				titles: [ "Помощь", "Help", "Uzb" ],
 				link: "/"
 			},
 			{
-				title: "Правила и условия",
+				titles: [ "Правила и условия", "Rules and conditions", "Uzb" ],
 				link: "/"
 			},
 			{
-				title: "Электронный билет",
+				titles: [ "Электронный билет", "E-ticket", "Uzb" ],
 				link: "/"
 			},
 			{
-				title: "Возврат и обмен",
+				titles: [ "Возврат и обмен", "Return and exchange", "Uzb" ],
 				link: "/"
 			},
 			{
-				title: "Политика конфиденциальности",
+				titles: [ "Политика конфиденциальности", "Privacy policy", "Uzb" ],
 				link: "/"
 			}
 		]
 	},
 	{
-		title: "Сотрудничество",
+		titles: [ "Сотрудничество", "Partnership", "Uzb2" ],
 		items: [
 			{
-				title: "Издательствам",
+				titles: [ "Издательствам", "For publishers", "Uzb" ],
 				link: "/"
 			},
 			{
-				title: "Авторам",
+				titles: [ "Авторам", "For authors", "Uzb" ],
 				link: "/"
 			},
 			{
-				title: "Библиотекам",
+				titles: [ "Библиотекам", "To libraries", "Uzb" ],
 				link: "/"
 			},
 			{
-				title: "Партнёрам",
+				titles: [ "Партнёрам", "For partners", "Uzb" ],
 				link: "/"
 			},
 			{
-				title: "Стать спикером",
+				titles: [ "Стать спикером", "Become a speaker", "Uzb" ],
 				link: "/"
 			}
 		]
 	},
 	{
-		title: "Что почитать?",
+		titles: [ "Что почитать?", "What to read?", "Uzb3" ],
 		items: [
 			{
-				title: "Бестселлеры",
+				titles: [ "Бестселлеры", "Best sellers", "Uzb" ],
 				link: "/"
 			},
 			{
-				title: "Скоро в продаже",
+				titles: [ "Скоро в продаже", "Coming soon", "Uzb" ],
 				link: "/"
 			},
 			{
-				title: "Публичная оферта",
+				titles: [ "Публичная оферта", "Public offer", "Uzb" ],
 				link: "/"
 			},
 			{
-				title: "Конфиденциальность",
+				titles: [ "Конфиденциальность", "Confidentiality", "Uzb" ],
 				link: "/"
 			}
 		]

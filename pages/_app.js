@@ -3,7 +3,7 @@ import * as actions from "../store/actions";
 import { Provider } from "react-redux";
 import { useModal } from "../hooks";
 import withReduxStore from "../helpers/with-redux-store";
-import { CartContext, AuthModalContext } from "../store";
+import { CartContext, AuthModalContext, LangContext } from "../store";
 import { Layout } from "../layouts";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-multi-carousel/lib/styles.css";
@@ -12,15 +12,19 @@ import App from "next/app";
 
 const MyComponent = ({ children, store }) => {
 	const [ cart, setCart ] = useState([]);
-	const authModal = useModal();
+	const [ lang, setLang ] = useState(0);
+	const authModal = useModal(false);
 
 	useEffect(() => {
 		store.dispatch(actions.authCheckState());
-		if (localStorage.getItem("cart")) {
-			setCart(JSON.parse(localStorage.getItem("cart")));
-		}
+		if (localStorage.getItem("cart")) setCart(JSON.parse(localStorage.getItem("cart")));
+		if (localStorage.getItem("lang")) setLang(localStorage.getItem("lang"));
 	}, []);
 
+	const changeLangHandler = language => {
+		setLang(language);
+		localStorage.setItem("lang", language);
+	};
 	// adds product to cart
 	const addRemoveItemFromCart = product => {
 		let cartCopy = [ ...cart ];
@@ -58,18 +62,20 @@ const MyComponent = ({ children, store }) => {
 	};
 
 	return (
-		<AuthModalContext.Provider value={{ authModal }}>
-			<CartContext.Provider
-				value={{
-					cart,
-					onAddRemoveItem: addRemoveItemFromCart,
-					onFindInCart: findItemInCart,
-					onClearCart: clearCartHandler
-				}}
-			>
-				<Layout cartCount={cart.length}>{children}</Layout>
-			</CartContext.Provider>
-		</AuthModalContext.Provider>
+		<LangContext.Provider value={{ lang, onChangeLang: changeLangHandler }}>
+			<AuthModalContext.Provider value={{ authModal }}>
+				<CartContext.Provider
+					value={{
+						cart,
+						onAddRemoveItem: addRemoveItemFromCart,
+						onFindInCart: findItemInCart,
+						onClearCart: clearCartHandler
+					}}
+				>
+					<Layout cartCount={cart.length}>{children}</Layout>
+				</CartContext.Provider>
+			</AuthModalContext.Provider>
+		</LangContext.Provider>
 	);
 };
 class myApp extends App {

@@ -10,6 +10,14 @@
     "static/development/_ssgManifest.js"
   ],
   "pages": {
+    "/": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/404": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/_app": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
@@ -22,11 +30,15 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
-    "/books/[id]": [
+    "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/books/categories/compilations": [
+    "/profile/favourites": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/profile/library": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

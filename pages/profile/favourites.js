@@ -1,10 +1,12 @@
 import React from "react";
 import { parseCookies } from "../../helpers/utils";
 import axios from "../../axios-api";
+import ErrorPage from "../404";
 import { Row, Col } from "react-bootstrap";
 import { Products } from "../../components";
 import { ProfileLayout } from "../../layouts";
-const FavouritesPage = ({ products }) => {
+const FavouritesPage = ({ products, error }) => {
+	if (error) return <ErrorPage />;
 	return (
 		<ProfileLayout>
 			<Row>
@@ -25,13 +27,23 @@ const FavouritesPage = ({ products }) => {
 	);
 };
 export const getServerSideProps = async ctx => {
-	const res = await axios.get("profile/favourites", {
-		headers: {
-			Authorization: `Bearer ${parseCookies(ctx.req).token}`
-		}
-	});
+	let res = null;
+	let error = null;
+	try {
+		res = await axios.get("profile/favourites", {
+			headers: {
+				Authorization: `Bearer ${parseCookies(ctx.req).token}`
+			}
+		});
+	} catch (err) {
+		error = "Error";
+		return {
+			props: {
+				error
+			}
+		};
+	}
 	const products = res.data.results;
-	console.log(products);
 	return {
 		props: {
 			products

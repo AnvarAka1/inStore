@@ -14,7 +14,6 @@ export { default as ReviewsCarousel } from "./Reviews/ReviewsCarousel";
 export { default as Reviews } from "./Reviews/Reviews";
 export { default as Stars } from "./Stars/Stars";
 export { default as NewHeader } from "./NewHeader/NewHeader";
-export { default as BookCategories } from "./Categories/BookCategories/BookCategories";
 export { default as Categories } from "./Categories/Categories";
 export { default as ProductDetails } from "./ProductDetails/ProductDetails";
 export { default as ProductDescription } from "./ProductDescription/ProductDescription";
