@@ -4,14 +4,14 @@ import { Stars } from "../../components";
 const productDetails = props => {
 	const { lang } = props;
 	const rows = [
-		[ "ID товара: ", props.book_id ],
-		[ "ISBN: ", props.isbn ],
-		[ "Страниц: ", props.page_count ],
-		[ "Оформление: ", props.formalizations[lang] ],
-		[ "Иллюстрации: ", props.illustrations[lang] ],
-		[ "Масса: ", props.masses[lang] ],
-		[ "Размеры: ", props.size ],
-		[ "Подробнее: ", props.links[lang] ]
+		["ID товара: ", props.book_id],
+		["ISBN: ", props.isbn],
+		["Страниц: ", props.page_count],
+		["Оформление: ", props.formalization],
+		["Иллюстрации: ", props.illustration],
+		["Масса: ", props.mass],
+		["Размеры: ", props.size],
+		["Подробнее: ", props.link]
 	];
 	return (
 		<div className={classes.ProductDetails}>

@@ -5,7 +5,7 @@ import classes from "./Product.module.scss";
 import Link from "next/link";
 const product = ({ id, image, title, author, rate, current_price, price, isVideo, onAddRemoveItem, lang }) => {
 	const content = {
-		remove: [ "Удалить из корзины", "Remove from cart", "Uzb" ]
+		remove: ["Удалить из корзины", "Remove from cart", "Uzb"]
 	};
 	return (
 		<React.Fragment>
@@ -34,7 +34,7 @@ const product = ({ id, image, title, author, rate, current_price, price, isVideo
 				</Link>
 			</div>
 			{onAddRemoveItem && (
-				<Button onClick={onAddRemoveItem} variant="secondary text-small" className="mt-2">
+				<Button onClick={onAddRemoveItem} variant="secondary text-small w-100" className="mt-2">
 					{content.remove[lang]}
 				</Button>
 			)}

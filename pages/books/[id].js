@@ -9,19 +9,16 @@ import { Row, Col } from "react-bootstrap";
 import { ProductDetails, ProductDescription, Comments, ProductsCarousel } from "../../components/";
 
 const BookPage = ({ bookProps, isAuthorized }) => {
-	const [ book, setBook ] = useState(bookProps);
-	const [ rate, setRate ] = useState(0);
-	const [ isDescriptionExpanded, setIsDescriptionExpanded ] = useState(false);
+	const [book, setBook] = useState(bookProps);
+	const [rate, setRate] = useState(0);
+	const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 	const cartContext = useContext(CartContext);
 	const langContext = useContext(LangContext);
 	const authModalContext = useContext(AuthModalContext);
 	const commentControl = useForm();
-	useEffect(
-		() => {
-			setBook(bookProps);
-		},
-		[ bookProps ]
-	);
+	useEffect(() => {
+		setBook(bookProps);
+	}, [bookProps]);
 	const expandDescription = () => {
 		setIsDescriptionExpanded(true);
 	};
@@ -69,7 +66,7 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 	// JSX
 	const lang = langContext.lang;
 	const content = {
-		headers: [ "Также вас может заинтересовать", "This may be interesting for you", "Uzb" ]
+		headers: ["Также вас может заинтересовать", "This may be interesting for you", "Uzb"]
 	};
 	return (
 		<Row>
@@ -117,7 +114,7 @@ export const getServerSideProps = async ({ query, req }) => {
 			headers: token
 				? {
 						Authorization: `Bearer ${token}`
-					}
+				  }
 				: null
 		});
 	} catch (error) {
@@ -127,17 +124,7 @@ export const getServerSideProps = async ({ query, req }) => {
 			}
 		};
 	}
-	const { data } = res;
-	const bookProps = {
-		...data,
-		titles: [ data.title_ru, data.title_en, data.title_uz ],
-		authors: [ data.author_ru, data.author_en, data.author_uz ],
-		descriptions: [ data.description_ru, data.description_en, data.description_uz ],
-		formalizations: [ data.formalization_ru, data.formalization_en, data.formalization_uz ],
-		illustrations: [ data.illustration_ru, data.illustration_en, data.illustration_uz ],
-		links: [ data.link_ru, data.link_en, data.link_uz ],
-		masses: [ data.mass_ru, data.mass_en, data.mass_uz ]
-	};
+	const bookProps = res.data;
 
 	return {
 		props: {

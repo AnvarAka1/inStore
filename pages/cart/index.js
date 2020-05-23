@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { CartLayout } from "../../layouts";
-import { CartContext } from "../../store";
+import { CartContext, LangContext } from "../../store";
 import { Row, Col, Button } from "react-bootstrap";
 import { Products } from "../../components";
+
 const CartPage = props => {
 	const cartContext = useContext(CartContext);
-
+	const langContext = useContext(LangContext);
+	const lang = langContext.lang;
 	return (
 		<CartLayout>
 			<Row>
@@ -25,7 +27,7 @@ const CartPage = props => {
 			</Row>
 			<Row className="mt-3">
 				{cartContext.cart.length ? (
-					<Products items={cartContext.cart} onAddRemoveItem={cartContext.onAddRemoveItem} />
+					<Products items={cartContext.cart} onAddRemoveItem={cartContext.onAddRemoveItem} lang={lang} />
 				) : (
 					<Col>
 						<h4 className="text-secondary">Корзина пуста</h4>

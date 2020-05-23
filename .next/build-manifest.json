@@ -14,6 +14,10 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
+    "/404": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/_app": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
@@ -26,11 +30,19 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
-    "/cart": [
+    "/books/[id]": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/cart/order": [
+    "/books/categories": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/books/categories/compilations": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/cart": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
@@ -38,7 +50,7 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/profile/settings": [
+    "/next/dist/pages/_error": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

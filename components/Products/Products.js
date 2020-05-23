@@ -1,11 +1,12 @@
 import React from "react";
 import { Col } from "react-bootstrap";
 import Product from "./Product/Product";
-const products = ({ items, title, isVideo, md, sm, onAddRemoveItem }) => {
+const products = ({ items, title, isVideo, md, sm, onAddRemoveItem, lang }) => {
 	const productsView = items.map(item => {
 		return (
 			<Col className="mb-4" key={item.id} md={md} sm={sm}>
 				<Product
+					lang={lang}
 					{...item}
 					isVideo={isVideo}
 					onAddRemoveItem={onAddRemoveItem ? () => onAddRemoveItem(item) : null}
