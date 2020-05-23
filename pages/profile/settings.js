@@ -8,14 +8,15 @@ import { Form, Formik } from "formik";
 import { object, string, date } from "yup";
 import { ProfileLayout } from "../../layouts";
 // can make static page also
+const defaultImage = "/images/avatar.png";
 const SettingsPage = ({ userData, error }) => {
-	const [avatar, setAvatar] = useState(userData.avatar);
+	const [avatar, setAvatar] = useState(userData.avatar ? userData.avatar : defaultImage);
 	if (error) {
 		return <ErrorPage />;
 	}
 
 	let personalInfoInitialValues = {
-		avatar: userData.avatar ? userData.avatar : null,
+		avatar: null,
 		name: userData.fio,
 		dob: userData.dob,
 		gender: userData.gender ? userData.gender : "m",
@@ -29,10 +30,9 @@ const SettingsPage = ({ userData, error }) => {
 
 	const updatePersonalInformationHandler = values => {
 		const formData = new FormData();
-		console.log(values);
-		formData.append("avatar", values.avatar);
+		if (values.avatar) formData.append("avatar", values.avatar);
 		formData.append("fio", values.name);
-		formData.append("dob", values.dob);
+		if (values.dob) formData.append("dob", values.dob);
 		formData.append("gender", values.gender);
 		formData.append("phone", convertPhoneForBackend(values.phone));
 
@@ -90,19 +90,21 @@ const SettingsPage = ({ userData, error }) => {
 								.min(2, "Имя должно содержать минимум 2 буквы")
 								.max(100, "Name is too long")
 								.required("Name is required!"),
-							dob: date().required(),
+							dob: date(),
 							gender: string().required(),
 							phone: string()
 						})}
 					>
 						{({ values, handleChange, handleSubmit, isSubmitting, isValidating, setFieldValue }) => (
 							<Form onSubmit={handleSubmit}>
-								<FormGroup>
+								<FormGroup className="mb-0">
 									<FormLabel htmlFor="upload-button">
-										Фотография профиля
-										<div>
-											{console.log(values.file)}
-											<img src={avatar} alt="avatar"></img>
+										<p className="text-small">Фотография профиля</p>
+										<div className="d-flex align-items-center justify-content-start mt-2">
+											<div className="avatar">
+												<img src={avatar} className="image" alt="avatar"></img>
+											</div>
+											<p className="ml-1 text-small">Выбрать файл</p>
 										</div>
 									</FormLabel>
 									<input
@@ -116,7 +118,6 @@ const SettingsPage = ({ userData, error }) => {
 								<FormikGroup name="name" onChange={handleChange} value={values.name} size="sm">
 									Ф.И.О
 								</FormikGroup>
-								{/* <ErrorMessage name="name" /> */}
 								<FormikGroup
 									name="dob"
 									onChange={handleChange}

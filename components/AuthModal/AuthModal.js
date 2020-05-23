@@ -3,31 +3,32 @@ import classes from "./AuthModal.module.scss";
 import Link from "next/link";
 import { Modal, Card } from "../";
 import { FormikGroup } from "../UI";
-import { Button, FormCheck, FormGroup, FormLabel } from "react-bootstrap";
+import { convertPhoneForBackend } from "../../helpers/utils";
+import { Button, FormCheck, FormGroup, FormLabel, Alert } from "react-bootstrap";
 import InputMask from "react-input-mask";
 import { Form, Formik, ErrorMessage } from "formik";
 import { string, object } from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookSquare, faVk, faGoogle } from "@fortawesome/free-brands-svg-icons";
-const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkboxControl, onAuth, lang = 0 }) => {
+const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkboxControl, onAuth, lang, error }) => {
 	const content = {
-		login: [ "Войти", "Login", "Kirish" ],
-		register: [ "Регистрация", "Register", "Uzb" ],
+		login: ["Войти", "Login", "Kirish"],
+		register: ["Регистрация", "Register", "Uzb"],
 		regForm: {
-			titles: [ "Зарегистрируйтесь через социальные сети", "Register via social media", "Uzb" ],
-			fios: [ "Ф.И.О", "Full name", "Uzb" ],
-			phones: [ "Номер телефона", "Phone number", "Uzb" ],
-			fPasswords: [ "Введите пароль", "Enter password", "Uzb" ],
-			sPasswords: [ "Подтвердите пароль", "Confirm password", "Uzb" ],
-			buttons: [ "Зарегистрироваться", "Register", "Uzb" ]
+			titles: ["Зарегистрируйтесь через социальные сети", "Register via social media", "Uzb"],
+			fios: ["Ф.И.О", "Full name", "Uzb"],
+			phones: ["Номер телефона", "Phone number", "Uzb"],
+			fPasswords: ["Введите пароль", "Enter password", "Uzb"],
+			sPasswords: ["Подтвердите пароль", "Confirm password", "Uzb"],
+			buttons: ["Зарегистрироваться", "Register", "Uzb"]
 		},
 		loginForm: {
-			titles: [ "Войдите через социальные сети", "Login via social media", "Uzb" ],
-			emails: [ "Электронная почта или номер телефона", "Email or phone number", "Uzb" ],
-			passwords: [ "Введите пароль", "Enter password", "Uzb" ],
-			buttons: [ "Войти", "Login", "Uzb" ],
-			accesses: [ "Не можете получить доступ?", "Can't access?", "Uzb" ],
-			rememberPasswords: [ "Запомнить пароль", "Remember password", "Uzb" ]
+			titles: ["Войдите через социальные сети", "Login via social media", "Uzb"],
+			emails: ["Электронная почта или номер телефона", "Email or phone number", "Uzb"],
+			passwords: ["Введите пароль", "Enter password", "Uzb"],
+			buttons: ["Войти", "Login", "Uzb"],
+			accesses: ["Не можете получить доступ?", "Can't access?", "Uzb"],
+			rememberPasswords: ["Запомнить пароль", "Remember password", "Uzb"]
 		}
 	};
 
@@ -42,14 +43,27 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkb
 				sPassword: ""
 			}}
 			validationSchema={object({
-				name: string().min(2).required(),
-				email: string().email().min(4).required(),
+				name: string()
+					.min(2)
+					.required(),
+				email: string()
+					.email()
+					.min(4)
+					.required(),
 				phone: string().required(),
-				fPassword: string().min(6).max(20).required(),
-				sPassword: string().min(6).max(20).required()
+				fPassword: string()
+					.min(6)
+					.max(20)
+					.required(),
+				sPassword: string()
+					.min(6)
+					.max(20)
+					.required()
 			})}
-			onSubmit={values => {
-				onAuth(values.name, values.email, values.phone, values.fPassword, isSignUp);
+			onSubmit={(values, { setSubmitting }) => {
+				setSubmitting(true);
+				const phone = convertPhoneForBackend(values.phone);
+				onAuth(values.name, values.email, phone, values.fPassword, isSignUp, () => setSubmitting(false));
 			}}
 		>
 			{register => (
@@ -98,14 +112,17 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkb
 				checkbox: ""
 			}}
 			validationSchema={object({
-				emailPhone: string().min(6, "Слишком мало символов").required("Введите email или номер телефона"),
+				emailPhone: string()
+					.min(6, "Слишком мало символов")
+					.required("Введите email или номер телефона"),
 				password: string()
 					.min(6, "Пароль должен содержать минимум 6 символов")
 					.max(20, "Пароль должен содержать максимум 20 символов")
 					.required("Введите пароль")
 			})}
 			onSubmit={(values, { setSubmitting }) => {
-				onAuth(null, values.emailPhone, null, values.password, isSignUp);
+				setSubmitting(true);
+				onAuth(null, values.emailPhone, null, values.password, isSignUp, () => setSubmitting(false));
 			}}
 		>
 			{login => (
@@ -139,10 +156,14 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkb
 			<Card>
 				<Card.Header>
 					<div className={classes.TopButtons}>
-						<a role="button" className={!isSignUp && classes.Active} onClick={() => modeHandler(false)}>
+						<a
+							role="button"
+							className={!isSignUp ? classes.Active : null}
+							onClick={() => modeHandler(false)}
+						>
 							{content.login[lang].toUpperCase()}
 						</a>
-						<a role="button" className={isSignUp && classes.Active} onClick={() => modeHandler(true)}>
+						<a role="button" className={isSignUp ? classes.Active : null} onClick={() => modeHandler(true)}>
 							{content.register[lang].toUpperCase()}
 						</a>
 					</div>
@@ -164,19 +185,10 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkb
 										<FontAwesomeIcon icon={faGoogle} />
 									</div>
 								</div>
-								{/* <Button className="w-100 text-small" variant="primary" onClick={null}>
-									<strong>Facebook</strong>
-								</Button>
-								<Button className="w-100 mt-2 text-small" variant="danger" onClick={null}>
-									<strong>Google</strong>
-								</Button>
-								<Button className="w-100 mt-2 text-small text-white" variant="warning" onClick={null}>
-									<strong>Одноклассники</strong>
-								</Button> */}
 							</div>
 
 							<h5 className={classes.Or}>or</h5>
-
+							{error && <Alert variant="danger">{error[lang]}</Alert>}
 							{form}
 						</div>
 					</div>

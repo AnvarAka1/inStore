@@ -9,10 +9,10 @@ import { useForm } from "../hooks/";
 import { Container } from "react-bootstrap";
 import { AuthModal, NavItems, Navbar, Footer, Search } from "../components/";
 
-const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) => {
-	const [ isSignUp, setIsSignUp ] = useState(true);
-	const [ isBooksOpen, setIsBooksOpen ] = useState(false);
-	const [ showInputMask, setShowInputMask ] = useState(false);
+const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, error }) => {
+	const [isSignUp, setIsSignUp] = useState(true);
+	const [isBooksOpen, setIsBooksOpen] = useState(false);
+	const [showInputMask, setShowInputMask] = useState(false);
 	const bookCatsRef = useRef(null);
 	const authModalContext = useContext(AuthModalContext);
 	const langContext = useContext(LangContext);
@@ -53,7 +53,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 	// JSX
 	const lang = langContext.lang;
 	const content = {
-		titles: [ "Библиотека книг и видеоуроков", "Library of books and videolessons", "Uzb" ]
+		titles: ["Библиотека книг и видеоуроков", "Library of books and videolessons", "Uzb"]
 	};
 	const search = <Search control={searchControl} lang={lang} onSearch={onSearch} />;
 	// Right side of navbar with cart, login/logout
@@ -72,6 +72,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 		<div>
 			{!isAuthorized && (
 				<AuthModal
+					error={error}
 					lang={lang}
 					onAuth={onAuth}
 					showInputMask={showInputMask}
@@ -109,13 +110,14 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name }) =
 const mapStateToProps = state => {
 	return {
 		isAuthorized: state.auth.token !== null,
-		name: state.auth.name
+		name: state.auth.name,
+		error: state.auth.error
 	};
 };
 const mapDispatchToProps = dispatch => {
 	return {
-		onAuth: (name, email, phone, password, isSignup) =>
-			dispatch(actions.auth(name, email, phone, password, isSignup)),
+		onAuth: (name, email, phone, password, isSignup, setSubmitting) =>
+			dispatch(actions.auth(name, email, phone, password, isSignup, setSubmitting)),
 		onLogout: () => dispatch(actions.logout())
 	};
 };

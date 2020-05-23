@@ -36,8 +36,9 @@ export const stopLoading = () => {
 		type: actionTypes.STOP_LOADING
 	};
 };
-export const auth = (name, email, phone, password, isSignup) => {
+export const auth = (name, email, phone, password, isSignup, setSubmitting) => {
 	email = email.trim();
+
 	return dispatch => {
 		// clear error
 		dispatch(authStart());
@@ -54,7 +55,7 @@ export const auth = (name, email, phone, password, isSignup) => {
 			formData.append("email", email);
 			formData.append("profile", JSON.stringify(profile));
 		}
-		const urls = [ "/login", "/register" ];
+		const urls = ["/login", "/register"];
 		axios
 			.post(`accounts${urls[+isSignup]}`, formData)
 			.then(response => {
@@ -70,8 +71,18 @@ export const auth = (name, email, phone, password, isSignup) => {
 				// dispatch(checkAuthTimeout(response.expires_in));
 			})
 			.catch(error => {
-				console.log(error);
-				dispatch(authFail(error.response && error.response.data && error.response.data.message));
+				if (isSignup) dispatch(authFail(["Такой пользователь уже существует", "User already exists", "Uzb"]));
+				else
+					dispatch(
+						authFail([
+							"Неверный email (номер телефона) или пароль",
+							"Wrong email (phone number) or password",
+							"Uzb"
+						])
+					);
+			})
+			.finally(() => {
+				setSubmitting();
 			});
 	};
 };
