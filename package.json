@@ -45,5 +45,8 @@
 		"sass": "^1.26.5",
 		"slick-carousel": "^1.8.1",
 		"yup": "^0.28.5"
+	},
+	"devDependencies": {
+		"prettier-eslint": "^10.1.0"
 	}
 }

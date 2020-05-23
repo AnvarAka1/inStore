@@ -4,10 +4,10 @@ import classes from "./ProductDescription.module.scss";
 const MAX_LENGTH = 5;
 const productDescription = ({
 	publish_year,
-	title,
-	author,
+	titles,
+	authors,
 	book_type,
-	description,
+	descriptions,
 	price,
 	current_price,
 	isInCart,
@@ -17,14 +17,15 @@ const productDescription = ({
 	isAuthorized,
 	isDescriptionExpanded,
 	expandDescription,
-	book_format
+	book_format,
+	lang
 }) => {
 	const bookTypes = [ "Аудиокнига", "Печатное издание", "Электронная книга" ];
 	const getDiscount = () => {
 		return ((1 - current_price / price) * 100).toFixed(2);
 	};
-	let desc = description;
-	if (desc.length > MAX_LENGTH) {
+	let desc = descriptions[lang];
+	if (desc && desc.length > MAX_LENGTH) {
 		desc = !isDescriptionExpanded ? (
 			<React.Fragment>
 				{description.substr(0, MAX_LENGTH)}
@@ -39,9 +40,9 @@ const productDescription = ({
 	return (
 		<div className={classes.ProductDescription}>
 			<p>{publish_year}</p>
-			<h2>{title}</h2>
+			<h2>{titles[lang]}</h2>
 			<div className="d-flex justify-content-between align-items-center">
-				<h4 className="text-secondary mb-0">{author}</h4>
+				<h4 className="text-secondary mb-0">{authors[lang]}</h4>
 				<div className="d-flex ml-4">
 					{isAuthorized && (
 						<Button onClick={favouriteClicked} className="text-small mr-2" variant="secondary">
@@ -57,7 +58,7 @@ const productDescription = ({
 				</div>
 			</div>
 			<p className="text-md mt-3">
-				<strong>Аннотация к книге "{title}"</strong>
+				<strong>Аннотация к книге "{titles[lang]}"</strong>
 			</p>
 			<p className="text-md">{desc}</p>
 			<div className="d-flex justify-content-between align-items-end mt-2 mb-4">

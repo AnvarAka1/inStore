@@ -70,8 +70,7 @@ const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout, onCh
 			)}
 			<div className="position-relative">
 				<a role="button" className="dropdown-hover text-secondary">
-					{content.language[lang]}
-
+					| {content.language[lang]}
 					<ul>
 						{[ "Ру", "En", "Uz" ].map((language, index) => (
 							<li key={language}>

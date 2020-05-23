@@ -1,20 +1,23 @@
-import React from "react";
-import { convertFrontToBackDate, convertBackToFrontDate, parseCookies } from "../../helpers/utils";
+import React, { useState, useEffect } from "react";
+import { convertPhoneForBackend, convertBackToFrontDate, parseCookies } from "../../helpers/utils";
 import axios from "../../axios-api";
 import ErrorPage from "../404";
-import { Button, Row, Col } from "react-bootstrap";
+import { Button, Row, Col, FormLabel, FormGroup } from "react-bootstrap";
 import { FormikGroup } from "../../components/UI";
 import { Form, Formik } from "formik";
 import { object, string, date } from "yup";
 import { ProfileLayout } from "../../layouts";
 // can make static page also
 const SettingsPage = ({ userData, error }) => {
+	const [avatar, setAvatar] = useState(userData.avatar);
 	if (error) {
 		return <ErrorPage />;
 	}
+
 	let personalInfoInitialValues = {
+		avatar: userData.avatar ? userData.avatar : null,
 		name: userData.fio,
-		dob: convertBackToFrontDate(userData.dob),
+		dob: userData.dob,
 		gender: userData.gender ? userData.gender : "m",
 		phone: userData.phone
 	};
@@ -23,20 +26,28 @@ const SettingsPage = ({ userData, error }) => {
 		newPassword: "",
 		repPassword: ""
 	};
+
 	const updatePersonalInformationHandler = values => {
 		const formData = new FormData();
+		console.log(values);
+		formData.append("avatar", values.avatar);
 		formData.append("fio", values.name);
-		const dob = convertFrontToBackDate(values.dob);
-		formData.append("dob", dob);
+		formData.append("dob", values.dob);
 		formData.append("gender", values.gender);
-		formData.append("phone", values.phone);
-		formData.append("avatar", values.phone);
+		formData.append("phone", convertPhoneForBackend(values.phone));
 
-		return axios.patch("profile/", formData, {
-			headers: {
-				Authorization: `Bearer ${localStorage.getItem("token")}`
-			}
-		});
+		return axios
+			.patch("profile/", formData, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("token")}`
+				}
+			})
+			.then(res => {
+				setAvatar(res.data.avatar);
+			})
+			.catch(err => {
+				console.log(err);
+			});
 	};
 	const updatePasswordHandler = () => {
 		const formData = new FormData();
@@ -84,8 +95,24 @@ const SettingsPage = ({ userData, error }) => {
 							phone: string()
 						})}
 					>
-						{({ values, handleChange, handleSubmit, isSubmitting, isValidating }) => (
+						{({ values, handleChange, handleSubmit, isSubmitting, isValidating, setFieldValue }) => (
 							<Form onSubmit={handleSubmit}>
+								<FormGroup>
+									<FormLabel htmlFor="upload-button">
+										Фотография профиля
+										<div>
+											{console.log(values.file)}
+											<img src={avatar} alt="avatar"></img>
+										</div>
+									</FormLabel>
+									<input
+										type="file"
+										style={{ display: "none" }}
+										id="upload-button"
+										name="avatar"
+										onChange={event => setFieldValue("avatar", event.currentTarget.files[0])}
+									/>
+								</FormGroup>
 								<FormikGroup name="name" onChange={handleChange} value={values.name} size="sm">
 									Ф.И.О
 								</FormikGroup>
@@ -105,7 +132,10 @@ const SettingsPage = ({ userData, error }) => {
 									value={values.gender}
 									as="select"
 									size="sm"
-									options={[ { value: "m", title: "Мужчина" }, { value: "f", title: "Женщина" } ]}
+									options={[
+										{ value: "m", title: "Мужчина" },
+										{ value: "f", title: "Женщина" }
+									]}
 								>
 									Ваш пол
 								</FormikGroup>
@@ -137,9 +167,15 @@ const SettingsPage = ({ userData, error }) => {
 						}}
 						validationSchema={object({
 							email: string().email(),
-							curPassword: string().min(8).max(20),
-							newPassword: string().min(8).max(20),
-							repPassword: string().min(8).max(20)
+							curPassword: string()
+								.min(8)
+								.max(20),
+							newPassword: string()
+								.min(8)
+								.max(20),
+							repPassword: string()
+								.min(8)
+								.max(20)
 						})}
 					>
 						{({ values, handleChange, handleSubmit, isSubmitting, isValidating }) => (

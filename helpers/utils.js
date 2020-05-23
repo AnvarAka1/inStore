@@ -25,6 +25,12 @@ export const categorySelector = (id, categories, _selectedId) => {
 		categories
 	};
 };
+export const convertPhoneForBackend = phone => {
+	const symbols = /[+-\s()]/g;
+	let phoneNumber = phone;
+	phoneNumber = phoneNumber.replace(symbols, "");
+	return phoneNumber;
+};
 export const convertFrontToBackDate = date => {
 	const year = date.substring(0, 4);
 	const month = date.substring(5, 7);

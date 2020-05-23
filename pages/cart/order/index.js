@@ -1,50 +1,62 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { LangContext } from "../../../store/";
 import InputMask from "react-input-mask";
-import {cities, districts} from '../../../lib/locations'
+import { cities, districts } from "../../../lib/locations";
 import { parseCookies } from "../../../helpers/utils";
 import axios from "../../../axios-api";
 import { Form, Formik, useFormik } from "formik";
-import {  object, string } from "yup";
+import { object, string } from "yup";
 import { FormikGroup } from "../../../components/UI";
 import { Card } from "../../../components";
 import { Row, Col, Button } from "react-bootstrap";
 import { CartLayout } from "../../../layouts";
 const OrderPage = props => {
 	const [showInputMask, setShowInputMask] = useState(false);
+	const [percentage, setPercentage] = useState(null);
 	const [methodOfPayment, setMethodOfPayment] = useState(0);
+	const langContext = useContext(LangContext);
 	useEffect(() => {
 		setShowInputMask(true);
 	}, []);
-	return (
-	<Formik
-	initialValues={ {
-		phone: props.profile?.phone || "",
-		name: props.profile?.fio || "",
-		email: props.profile?.email || "",
-		city: "",
-		district: "",
-		street: "",
-		house: "",
-		address: "",
-		comment: ""
-	}}
-	validationSchema={ object({
-		phone: string().required("Введите номер"),
-		name:string().required("Имя обязательно"),
-		email: string().email(),
-		street: string().required("Введите улицу"),
-		house: string().required("Введите номер дома"),
-		address: string().required("Заполните это поле"),
-	})}
-	onSubmit={ values => {
-		alert(JSON.stringify(values, null, 2));
-		console.log("Hey!");
-	}}
-	>
-		{formik=>(
 
-			<Form onSubmit={formik.handleSubmit}>
-				<CartLayout isOrderPage>
+	const methodOfPaymentHandler = (id, percent) => {
+		if (percent) {
+			setPercentage(percent);
+		} else {
+			setPercentage(null);
+		}
+		setMethodOfPayment(id);
+	};
+	const lang = langContext.lang;
+	return (
+		<Formik
+			initialValues={{
+				phone: props.profile?.phone || "",
+				name: props.profile?.fio || "",
+				email: props.profile?.email || "",
+				city: "",
+				district: "",
+				street: "",
+				house: "",
+				address: "",
+				comment: ""
+			}}
+			validationSchema={object({
+				phone: string().required("Введите номер"),
+				name: string().required("Имя обязательно"),
+				email: string().email(),
+				street: string().required("Введите улицу"),
+				house: string().required("Введите номер дома"),
+				address: string().required("Заполните это поле")
+			})}
+			onSubmit={values => {
+				alert(JSON.stringify(values, null, 2));
+				console.log("Hey!");
+			}}
+		>
+			{formik => (
+				<Form onSubmit={formik.handleSubmit}>
+					<CartLayout isOrderPage>
 						<Row>
 							<Col>
 								<h2>Оформить заказ</h2>
@@ -56,15 +68,17 @@ const OrderPage = props => {
 								<Card className="mb-3">
 									<Card.Header>Номера телефона*</Card.Header>
 									<Card.Body>
-										{showInputMask && <InputMask
-													className="form-control form-control-sm mt-3"
-													mask="+\9\98 (99) 999-99-99"
-													name="phone"
-													placeholder="+998 (__) ___-__-__"
-													alwaysShowMask={true}
-													value={formik.getFieldProps("phone").value}
-													onChange={formik.getFieldProps("phone").onChange}
-													/>}
+										{showInputMask && (
+											<InputMask
+												className="form-control form-control-sm mt-3"
+												mask="+\9\98 (99) 999-99-99"
+												name="phone"
+												placeholder="+998 (__) ___-__-__"
+												alwaysShowMask={true}
+												value={formik.getFieldProps("phone").value}
+												onChange={formik.getFieldProps("phone").onChange}
+											/>
+										)}
 									</Card.Body>
 								</Card>
 							</Col>
@@ -85,32 +99,20 @@ const OrderPage = props => {
 								<Card className="mt-3">
 									<Card.Header>СПОСОБ ОПЛАТЫ</Card.Header>
 									<Card.Body>
-										<div >
-											<Button 
-												onClick={()=>setMethodOfPayment(0)} 
-												className={`inactive w-100 mt-2 text-small ${methodOfPayment === 0 && "green-active"}`}>
-													НАЛИЧНЫЕ ДЕНЬГИ
-											</Button>
-											<Button 
-												onClick={()=>setMethodOfPayment(1)} 
-												className={`inactive w-100 mt-2 text-small ${methodOfPayment === 1 && "green-active"}`}>
-													ПЛАСТИКОВАЯ КАРТА
-											</Button>
+										<div>
+											{getMethodsOfPayment().map(method => (
+												<Button
+													onClick={() =>
+														methodOfPaymentHandler(method.id, method.percent || null)
+													}
+													className={`inactive w-100 mt-2 text-small ${methodOfPayment ===
+														method.id && "green-active"}`}
+												>
+													{method.titles[lang].toUpperCase()}
+												</Button>
+											))}
+											{/* {percentage && <h6 className=" mt-2 text-danger text-small">Взимается {percentage}%</h6>} */}
 										</div>
-										<p className="text-small mt-3 mb-3">Платежные системы</p>
-										<ul className="flex-columns">
-											{getImages().map((image, index) => {
-												return (
-													<li key={index} className="mt-2">
-														<img src={image} 
-															alt="payment" 
-															onClick={()=>setMethodOfPayment(index + 2)} 
-															className={`${methodOfPayment !== index + 2 && "img-gray"}`} 
-															/>
-													</li>
-												);
-											})}
-										</ul>
 									</Card.Body>
 								</Card>
 							</Col>
@@ -125,7 +127,7 @@ const OrderPage = props => {
 											{...formik.getFieldProps("city")}
 											size="sm"
 											options={cities()}
-											>
+										>
 											Выберите город*
 										</FormikGroup>
 										<FormikGroup
@@ -135,7 +137,7 @@ const OrderPage = props => {
 											{...formik.getFieldProps("district")}
 											size="sm"
 											options={districts()}
-											>
+										>
 											Выберите район*
 										</FormikGroup>
 										<FormikGroup name="street" {...formik.getFieldProps("street")} size="sm">
@@ -158,26 +160,40 @@ const OrderPage = props => {
 											placeholder="Ориентир, дополнительный номер и т.д"
 											{...formik.getFieldProps("comment")}
 											size="sm"
-											>
+										>
 											Комментарий
 										</FormikGroup>
 									</Card.Body>
 								</Card>
 							</Col>
-							</Row>
-				</CartLayout>
-			</Form>
+						</Row>
+					</CartLayout>
+				</Form>
 			)}
-			</Formik>
+		</Formik>
 	);
 };
-const getImages = () => [
-	"/images/payment/payme.png",
-	"/images/payment/uzcard.png",
-	"/images/payment/click.png",
-	"/images/payment/humo.png",
-	"/images/payment/visa.png",
-	// "/images/payment/paynet.png"
+
+const getMethodsOfPayment = () => [
+	{
+		id: 0,
+		titles: ["Наличные деньги", "Cash", "Uzb"]
+	},
+	{
+		id: 1,
+		titles: ["Пластиковая карта", "Plastic card", "Uzb"]
+	},
+	{
+		id: 2,
+		titles: ["Payme", "Payme", "Payme"],
+		percent: "2"
+	},
+
+	{
+		id: 3,
+		titles: ["Click", "Click", "Click"],
+		percent: "3.2"
+	}
 ];
 export const getServerSideProps = async context => {
 	let profile = null;

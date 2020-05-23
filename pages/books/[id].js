@@ -3,16 +3,17 @@ import { parseCookies } from "../../helpers/utils";
 import axios from "../../axios-api";
 import { connect } from "react-redux";
 import { useForm } from "../../hooks";
-import { CartContext, AuthModalContext } from "../../store";
+import { CartContext, AuthModalContext, LangContext } from "../../store";
 
 import { Row, Col } from "react-bootstrap";
-import { ProductDetails, ProductDescription, Comments, ProductsCarousel, lang } from "../../components/";
+import { ProductDetails, ProductDescription, Comments, ProductsCarousel } from "../../components/";
 
 const BookPage = ({ bookProps, isAuthorized }) => {
 	const [ book, setBook ] = useState(bookProps);
 	const [ rate, setRate ] = useState(0);
 	const [ isDescriptionExpanded, setIsDescriptionExpanded ] = useState(false);
 	const cartContext = useContext(CartContext);
+	const langContext = useContext(LangContext);
 	const authModalContext = useContext(AuthModalContext);
 	const commentControl = useForm();
 	useEffect(
@@ -66,7 +67,7 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 		setRate(id + 1);
 	};
 	// JSX
-	lang = lang || 0;
+	const lang = langContext.lang;
 	const content = {
 		headers: [ "Также вас может заинтересовать", "This may be interesting for you", "Uzb" ]
 	};
@@ -78,6 +79,7 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 					<Col md={7}>
 						<ProductDescription
 							{...book}
+							lang={lang}
 							expandDescription={expandDescription}
 							isDescriptionExpanded={isDescriptionExpanded}
 							cartClicked={() => cartContext.onAddRemoveItem(book)}
@@ -106,17 +108,40 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 };
 
 export const getServerSideProps = async ({ query, req }) => {
+	let res = null;
+
 	const token = parseCookies(req).token;
-	const res = await axios.get("books/" + query.id, {
-		headers: token
-			? {
-					Authorization: `Bearer ${token}`
-				}
-			: null
-	});
+
+	try {
+		res = await axios.get("books/" + query.id, {
+			headers: token
+				? {
+						Authorization: `Bearer ${token}`
+					}
+				: null
+		});
+	} catch (error) {
+		return {
+			props: {
+				error: "Error"
+			}
+		};
+	}
+	const { data } = res;
+	const bookProps = {
+		...data,
+		titles: [ data.title_ru, data.title_en, data.title_uz ],
+		authors: [ data.author_ru, data.author_en, data.author_uz ],
+		descriptions: [ data.description_ru, data.description_en, data.description_uz ],
+		formalizations: [ data.formalization_ru, data.formalization_en, data.formalization_uz ],
+		illustrations: [ data.illustration_ru, data.illustration_en, data.illustration_uz ],
+		links: [ data.link_ru, data.link_en, data.link_uz ],
+		masses: [ data.mass_ru, data.mass_en, data.mass_uz ]
+	};
+
 	return {
 		props: {
-			bookProps: res.data
+			bookProps
 		}
 	};
 };

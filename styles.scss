@@ -346,7 +346,8 @@ p {
 .dropdown-hover {
     position: relative;
     display: inline-block;
-    width: 60px;
+    width: 80px;
+    white-space: nowrap;
     text-align: right;
 
     ul {
