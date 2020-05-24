@@ -105,6 +105,7 @@ const OrderPage = props => {
 													onClick={() =>
 														methodOfPaymentHandler(method.id, method.percent || null)
 													}
+													key={method.id}
 													className={`inactive w-100 mt-2 text-small ${methodOfPayment ===
 														method.id && "green-active"}`}
 												>

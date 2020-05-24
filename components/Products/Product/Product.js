@@ -10,21 +10,30 @@ const product = ({ id, image, title, author, rate, current_price, price, isVideo
 	return (
 		<React.Fragment>
 			<div className={classes.Product}>
-				<Link href={`/${isVideo ? "videos" : "books"}/[id]`} as={`/${isVideo ? "videos" : "books"}/${id}`}>
+				<Link
+					href={`/${isVideo ? "videos" : "books"}/[id]?l=${lang}`}
+					as={`/${isVideo ? "videos" : "books"}/${id}?l=${lang}`}
+				>
 					<a>
 						<div className={classes.Image}>
 							<img src={image} alt={title} />
 						</div>
 					</a>
 				</Link>
-				<Link href={`/${isVideo ? "videos" : "books"}/[id]`} as={`/${isVideo ? "videos" : "books"}/${id}`}>
+				<Link
+					href={`/${isVideo ? "videos" : "books"}/[id]?l=${lang}`}
+					as={`/${isVideo ? "videos" : "books"}/${id}?l=${lang}`}
+				>
 					<a>
 						<h5 className="text-black mb-1 mt-2">{title}</h5>
 						<p className="text-small">{author}</p>
 						<Stars rate={Math.round(rate)} />
 					</a>
 				</Link>
-				<Link href={`/${isVideo ? "videos" : "books"}/[id]`} as={`/${isVideo ? "videos" : "books"}/${id}`}>
+				<Link
+					href={`/${isVideo ? "videos" : "books"}/[id]?l=${lang}`}
+					as={`/${isVideo ? "videos" : "books"}/${id}?l=${lang}`}
+				>
 					<a>
 						<div className="d-flex align-items-end mt-1">
 							<p className="text-danger text-bold mb-0 mr-1 text-md">{current_price}</p>{" "}

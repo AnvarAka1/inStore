@@ -9,10 +9,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-multi-carousel/lib/styles.css";
 import "../styles.scss";
 import App from "next/app";
+import Router from "next/router";
 
 const MyComponent = ({ children, store }) => {
-	const [ cart, setCart ] = useState([]);
-	const [ lang, setLang ] = useState(0);
+	const [cart, setCart] = useState([]);
+	const [lang, setLang] = useState(0);
 	const authModal = useModal(false);
 
 	useEffect(() => {
@@ -27,7 +28,7 @@ const MyComponent = ({ children, store }) => {
 	};
 	// adds product to cart
 	const addRemoveItemFromCart = product => {
-		let cartCopy = [ ...cart ];
+		let cartCopy = [...cart];
 		// is the product in the cart already?
 		const item = cartCopy.find(item => {
 			return item.id === product.id;
@@ -48,7 +49,7 @@ const MyComponent = ({ children, store }) => {
 		setCart(cartCopy);
 	};
 	const findItemInCart = id => {
-		let cartCopy = [ ...cart ];
+		let cartCopy = [...cart];
 		const item = cartCopy.find(item => {
 			return item.id === id;
 		});
@@ -62,7 +63,7 @@ const MyComponent = ({ children, store }) => {
 	};
 
 	return (
-		<LangContext.Provider value={{ lang, onChangeLang: changeLangHandler }}>
+		<LangContext.Provider value={{ lang, langs: ["ru", "en", "uz"], onChangeLang: changeLangHandler }}>
 			<AuthModalContext.Provider value={{ authModal }}>
 				<CartContext.Provider
 					value={{

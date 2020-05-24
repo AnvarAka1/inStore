@@ -2,11 +2,12 @@ import React from "react";
 import Category from "./Category/Category";
 const categories = ({ items, isVideo, isStatic, lang, pathname }) => {
 	const content = {
-		genres: [ "Жанры", "Genges", "Uzb" ]
+		genres: ["Жанры", "Genges", "Uzb"]
 	};
 	const categoriesView = items.map(item => {
 		return (
 			<Category
+				lang={lang}
 				key={item.id}
 				icon={item.icon}
 				id={item.id}

@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Category.module.scss";
 import { Link } from "../../";
 
-const category = ({ id, pathname, children, href, icon, isStatic }) => {
+const category = ({ id, pathname, children, href, icon, isStatic, lang }) => {
 	const item = (
 		<a>
 			<div className="d-flex align-items-center">
@@ -19,9 +19,9 @@ const category = ({ id, pathname, children, href, icon, isStatic }) => {
 	return (
 		<li className={`${classes.Category} mt-2 list`}>
 			{href !== undefined ? (
-				<Link href={`/books/categories${href}`}>{item}</Link>
+				<Link href={`/books/categories${href}?l=${lang}`}>{item}</Link>
 			) : (
-				<Link href={{ pathname: pathname, query: { genre: id } }}>{item}</Link>
+				<Link href={{ pathname: pathname, query: { genre: id, l: lang } }}>{item}</Link>
 			)}
 		</li>
 	);

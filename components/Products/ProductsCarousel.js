@@ -10,7 +10,7 @@ const productsCarousel = ({ items, responsive, lang }) => {
 		xs: responsive ? (responsive.xs ? responsive.xs : 3) : 3
 	};
 	const productsView = items.map(item => {
-		return <Product key={item.id} {...item} />;
+		return <Product key={item.id} {...item} lang={lang} />;
 	});
 	return <SliderCarousel items={resp}>{productsView}</SliderCarousel>;
 };

@@ -8,7 +8,7 @@ import { Logo } from "../";
 const navbar = React.forwardRef(
 	({ booksCategories, search, navItems, isBooksOpen, booksToggle, lang = 0 }, bookCatsRef) => {
 		const content = {
-			books: [ "Книги", "Books", "Uzb" ]
+			books: ["Книги", "Books", "Uzb"]
 		};
 		const booksTitle = (
 			<React.Fragment>
@@ -50,7 +50,7 @@ const navbar = React.forwardRef(
 												{booksCategories.map(cat => {
 													return (
 														<li key={cat.id} className={classes.CategoryItem}>
-															<Link href={`/books/categories${cat.link}`}>
+															<Link href={`/books/categories${cat.link}?l=${lang}`}>
 																<a onClick={() => booksToggle(false)}>
 																	{cat.titles[lang]}
 																</a>

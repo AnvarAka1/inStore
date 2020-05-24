@@ -1,7 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "../axios-api";
 import { LangContext } from "../store";
-import { useForm, useModal } from "../hooks";
+import Router from "next/router";
+import { useModal } from "../hooks";
 import { parseCookies } from "../helpers/utils";
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
@@ -19,12 +20,20 @@ import {
 } from "../components";
 import { FormikGroup } from "../components/UI";
 
-const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollections, speakers, lang }) => {
-	const [ loading, setLoading ] = useState(false);
-	const [ rate, setRate ] = useState(4);
+const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollections, lang, error }) => {
+	const [loading, setLoading] = useState(false);
+	const [rate, setRate] = useState(4);
 
 	const reviewModal = useModal();
 	const langContext = useContext(LangContext);
+
+	useEffect(() => {
+		Router.replace(Router.pathname, `/?l=${langContext.lang}`);
+	}, [langContext.lang]);
+	// Return error instead of page if there is an error while fetching data from database
+	if (error) return <h3>{error}</h3>;
+
+	// Functions
 	const rateChangedHandler = id => {
 		setRate(id + 1);
 	};
@@ -48,25 +57,25 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 	lang = langContext.lang;
 	const content = {
 		eBook: {
-			titles: [ "Электронные и печатные", "Printed and e-books", "Uzb" ],
-			texts: [ "книги на любой вкус", "for any taste", "Uzb" ]
+			titles: ["Электронные и печатные", "Printed and e-books", "Uzb"],
+			texts: ["книги на любой вкус", "for any taste", "Uzb"]
 		},
 
-		booksCompilations: [ "Сборники книг", "Books compilation", "Uzb" ],
+		booksCompilations: ["Сборники книг", "Books compilation", "Uzb"],
 
-		newBooks: [ "книги", "books", "Uzb" ],
+		newBooks: ["книги", "books", "Uzb"],
 		audiobook: {
-			titles: [ "Аудиокниги", "Audiobooks", "Uzb" ],
-			texts: [ "слушайте когда и где угодно", "Listen whenever and wherever you are", "Uzb" ]
+			titles: ["Аудиокниги", "Audiobooks", "Uzb"],
+			texts: ["слушайте когда и где угодно", "Listen whenever and wherever you are", "Uzb"]
 		},
-		audiobooksCompilations: [ "Сборники аудиокниг", "Audiobooks compilation", "Uzb" ],
+		audiobooksCompilations: ["Сборники аудиокниг", "Audiobooks compilation", "Uzb"],
 
-		newAudiobooks: [ "Новые аудиокниги", "New audiobooks", "Uzb" ],
+		newAudiobooks: ["Новые аудиокниги", "New audiobooks", "Uzb"],
 		review: {
-			headers: [ "Отзывы пользователей", "Users' reviews", "Uzb" ],
-			leaveReviews: [ "Оставить отзыв", "Leave review", "Uzb" ],
-			ratings: [ "Ваша оценка", "Your rate", "Uzb" ],
-			reviews: [ "Ваш отзыв", "Your review", "Uzb" ]
+			headers: ["Отзывы пользователей", "Users' reviews", "Uzb"],
+			leaveReviews: ["Оставить отзыв", "Leave review", "Uzb"],
+			ratings: ["Ваша оценка", "Your rate", "Uzb"],
+			reviews: ["Ваш отзыв", "Your review", "Uzb"]
 		}
 	};
 	const reviewCard = (
@@ -78,13 +87,18 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 						text: ""
 					}}
 					validationSchema={object({
-						text: string().max(1000).required()
+						text: string()
+							.max(1000)
+							.required()
 					})}
 					onSubmit={(values, { setSubmitting }) => {
 						setSubmitting();
-						reviewSubmitHandler(values.text).then(res => {}).catch(err => console.log(err)).finally(() => {
-							setSubmitting(false);
-						});
+						reviewSubmitHandler(values.text)
+							.then(res => {})
+							.catch(err => console.log(err))
+							.finally(() => {
+								setSubmitting(false);
+							});
 					}}
 				>
 					{formik => (
@@ -137,20 +151,25 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 					</div>
 				</Col>
 				<Col>
-					<Heading text={content.eBook.titles[lang]} lang={lang} href="/books/categories">
+					{/* E-books and printed books show full list */}
+					<Heading text={content.eBook.titles[lang]} lang={lang} href={`/books/categories?l=${lang}`}>
 						{content.eBook.titles[lang]}
 					</Heading>
 				</Col>
 			</Row>
 			<Row className="mt-4 mb-4 pt-4 pb-4">
+				{/* Books compilation */}
 				<Col sm={4}>
-					<PreCarousel link="/books/categories/compilations">{content.booksCompilations[lang]}</PreCarousel>
+					<PreCarousel link={`/books/categories/compilations?l=${lang}`}>
+						{content.booksCompilations[lang]}
+					</PreCarousel>
 				</Col>
 				<Col sm={8}>{!loading && <CompilationsCarousel lang={lang} items={bookCollections} />}</Col>
 			</Row>
 			<Row>
 				<Col>
-					<NewHeader href="/books/categories" lang={lang}>
+					{/* New books */}
+					<NewHeader href={`/books/categories?l=${lang}`} lang={lang}>
 						{content.newBooks[lang]}
 					</NewHeader>
 				</Col>
@@ -160,7 +179,12 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 			</Row>
 			<Row className="mt-5 pt-4 mb-5 pb-4">
 				<Col>
-					<Heading lang={lang} text={content.audiobook.texts[lang]} href="/books/categories/audio-books">
+					{/* Audio books show full list */}
+					<Heading
+						lang={lang}
+						text={content.audiobook.texts[lang]}
+						href={`/books/categories/audio-books?l=${lang}`}
+					>
 						{content.audiobook.titles[lang]}
 					</Heading>
 				</Col>
@@ -172,7 +196,7 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 			</Row>
 			<Row>
 				<Col sm={4}>
-					<PreCarousel link="/books/categories/compilations">
+					<PreCarousel link={`/books/categories/compilations?l=${lang}`}>
 						{content.audiobooksCompilations[lang]}
 					</PreCarousel>
 				</Col>
@@ -180,7 +204,7 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 			</Row>
 			<Row className="mt-5 pt-4">
 				<Col>
-					<NewHeader href="/books/categories/audio-books" lang={lang}>
+					<NewHeader href={`/books/categories/audio-books?l=${lang}`} lang={lang}>
 						{content.newAudiobooks[lang]}
 					</NewHeader>
 				</Col>
@@ -209,21 +233,34 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 const getCarouselItems = () => [
 	{
 		id: 0,
-		titles: [ "Электронные книги и Видео уроки", "E-books and Videolessons", "Uzb" ],
+		titles: ["Электронные книги и Видео уроки", "E-books and Videolessons", "Uzb"],
 		img: "/images/main/books/carousel1.png",
 		link: "/"
 	},
 
 	{
 		id: 1,
-		titles: [ "Электронные книги и Видео уроки", "E-books and Videolessons", "Uzb" ],
+		titles: ["Электронные книги и Видео уроки", "E-books and Videolessons", "Uzb"],
 		img: "/images/main/books/carousel1.png",
 		link: "/"
 	}
 ];
-export const getServerSideProps = async ctx => {
-	const res = await axios.get("home");
-	const { feedback, books, audio_books, book_collections, audio_book_collections, speakers } = res.data;
+export const getServerSideProps = async ({ query }) => {
+	const lang = ["ru", "en", "uz"];
+	let res = null;
+	let error = null;
+	try {
+		res = await axios.get(lang[+query.l || 0] + "/home");
+	} catch (err) {
+		error = "Error";
+		return {
+			props: {
+				error
+			}
+		};
+	}
+
+	const { feedback, books, audio_books, book_collections, audio_book_collections } = res.data;
 
 	return {
 		props: {
@@ -232,7 +269,7 @@ export const getServerSideProps = async ctx => {
 			audioBooks: audio_books,
 			bookCollections: book_collections,
 			audioCollections: audio_book_collections,
-			speakers
+			error
 		}
 	};
 };

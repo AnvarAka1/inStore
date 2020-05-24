@@ -7,8 +7,9 @@ import { CartContext, AuthModalContext, LangContext } from "../../store";
 
 import { Row, Col } from "react-bootstrap";
 import { ProductDetails, ProductDescription, Comments, ProductsCarousel } from "../../components/";
+import Router from "next/router";
 
-const BookPage = ({ bookProps, isAuthorized }) => {
+const BookPage = ({ bookProps, isAuthorized, query }) => {
 	const [book, setBook] = useState(bookProps);
 	const [rate, setRate] = useState(0);
 	const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
@@ -19,6 +20,23 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 	useEffect(() => {
 		setBook(bookProps);
 	}, [bookProps]);
+	useEffect(() => {
+		Router.replace(Router.pathname, `/books/${query.id}?l=${langContext.lang}`);
+		// const token = parseCookies(null).token;
+		// axios
+		// 	.get(langContext.langs[langContext.lang] + "/books/" + query.id, {
+		// 		headers: token
+		// 			? {
+		// 					Authorization: `Bearer ${token}`
+		// 			  }
+		// 			: null
+		// 	})
+		// 	.then(res => {
+		// 		setBook(res.data);
+		// 	})
+		// 	.catch(err => console.log(err))
+		// 	.finally(() => {});
+	}, [langContext.lang]);
 	const expandDescription = () => {
 		setIsDescriptionExpanded(true);
 	};
@@ -104,13 +122,12 @@ const BookPage = ({ bookProps, isAuthorized }) => {
 	);
 };
 
-export const getServerSideProps = async ({ query, req }) => {
+export const getServerSideProps = async ({ query, params, req }) => {
 	let res = null;
-
+	const lang = ["ru", "en", "uz"];
 	const token = parseCookies(req).token;
-
 	try {
-		res = await axios.get("books/" + query.id, {
+		res = await axios.get(lang[+query.l || 0] + "/books/" + query.id, {
 			headers: token
 				? {
 						Authorization: `Bearer ${token}`
@@ -128,7 +145,8 @@ export const getServerSideProps = async ({ query, req }) => {
 
 	return {
 		props: {
-			bookProps
+			bookProps,
+			query
 		}
 	};
 };

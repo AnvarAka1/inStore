@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getStaticCategories } from "../lib/categories";
 import { Row, Col } from "react-bootstrap";
 import { Categories } from "../components/";
 import axios from "../axios-api";
+import { LangContext } from "../store";
 import { useRouter } from "next/router";
 let _isMounted = false;
 const CategoriesLayout = ({ children, withoutGenre, lang }) => {
-	const [ pathname, setPathname ] = useState();
-	const [ categories, setCategories ] = useState([]);
-	const [ loading, setLoading ] = useState(true);
+	const [pathname, setPathname] = useState();
+	const [categories, setCategories] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const router = useRouter();
+	const langContext = useContext(LangContext);
+
 	useEffect(() => {
 		_isMounted = true;
 		axios
@@ -28,20 +31,19 @@ const CategoriesLayout = ({ children, withoutGenre, lang }) => {
 			_isMounted = false;
 		};
 	}, []);
-	useEffect(
-		() => {
-			_isMounted = true;
-			if (_isMounted) setPathname(router.pathname);
-			return () => (_isMounted = false);
-		},
-		[ router.pathname ]
-	);
+	useEffect(() => {
+		_isMounted = true;
+		if (_isMounted) setPathname(router.pathname);
+		return () => (_isMounted = false);
+	}, [router.pathname]);
 	lang = lang || 1;
 	return (
 		<Row>
 			<Col sm={3}>
-				<Categories items={getStaticCategories()} lang={lang} isStatic={true} />
-				{!withoutGenre && !loading && <Categories items={categories} pathname={pathname} />}
+				<Categories items={getStaticCategories()} lang={langContext.lang} isStatic={true} />
+				{!withoutGenre && !loading && (
+					<Categories items={categories} lang={langContext.lang} pathname={pathname} />
+				)}
 			</Col>
 			<Col sm={9}>{children}</Col>
 		</Row>

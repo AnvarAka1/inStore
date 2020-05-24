@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "../../../axios-api";
+import Router from "next/router";
+import { LangContext } from "../../../store/";
 import { CategoriesLayout } from "../../../layouts";
 import { Row, Col } from "react-bootstrap";
 import { Products } from "../../../components";
@@ -8,48 +10,47 @@ import { useRouter } from "next/router";
 let initialPageLoad = true;
 let _isMounted = false;
 const BooksPage = ({ title, booksProps, resultsProps, url }) => {
-	const [ books, setBooks ] = useState(booksProps);
-	const [ results, setResults ] = useState(resultsProps);
+	const [books, setBooks] = useState(booksProps);
+	const [results, setResults] = useState(resultsProps);
+	const langContext = useContext(LangContext);
 	const router = useRouter();
 	useEffect(() => {
 		_isMounted = true;
 		return () => (_isMounted = false);
 	}, []);
-	useEffect(
-		() => {
-			_isMounted = true;
-			if (!initialPageLoad && router.query.genre) {
-				axios
-					.get(url + "?g=" + router.query.genre)
-					.then(res => {
-						updateValues(res);
-					})
-					.catch(err => console.log(err));
-			} else if (!initialPageLoad && !router.query.genre) {
-				axios.get(url).then(res => {
-					updateValues(res);
-				});
-			} else {
-				initialPageLoad = false;
-			}
-			return () => (_isMounted = false);
-		},
-		[ router.query.genre ]
-	);
 
-	useEffect(
-		() => {
-			_isMounted = true;
-			if (!initialPageLoad) {
-				axios.get(url).then(res => {
+	//
+	useEffect(() => {
+		_isMounted = true;
+		if (!initialPageLoad && router.query.genre) {
+			axios
+				.get(url + "?g=" + router.query.genre)
+				.then(res => {
 					updateValues(res);
-				});
-			}
-			return () => (_isMounted = false);
-		},
-		[ router.pathname ]
-	);
+				})
+				.catch(err => console.log(err));
+		} else if (!initialPageLoad && !router.query.genre) {
+			axios.get(url).then(res => {
+				updateValues(res);
+			});
+		} else {
+			initialPageLoad = false;
+		}
+		return () => (_isMounted = false);
+	}, [router.query.genre]);
 
+	useEffect(() => {
+		_isMounted = true;
+		if (!initialPageLoad) {
+			axios.get(url).then(res => {
+				updateValues(res);
+			});
+		}
+		return () => (_isMounted = false);
+	}, [router.pathname]);
+	useEffect(() => {
+		Router.replace(Router.pathname, `/?l=${langContext.lang}`);
+	}, [langContext.lang]);
 	const updateValues = res => {
 		if (_isMounted) {
 			if (booksProps) {
@@ -61,8 +62,7 @@ const BooksPage = ({ title, booksProps, resultsProps, url }) => {
 	};
 	return (
 		<CategoriesLayout>
-			{booksProps &&
-			books && (
+			{booksProps && books && (
 				<React.Fragment>
 					<Row>
 						<Col>
@@ -92,10 +92,22 @@ const BooksPage = ({ title, booksProps, resultsProps, url }) => {
 	);
 };
 
-export const getServerSideProps = async context => {
+export const getServerSideProps = async ({ query }) => {
 	// axios
-	const url = "categories/books";
-	const res = await axios.get(url);
+	const lang = ["ru", "en", "uz"];
+	const url = lang[+query.l || 0] + "/categories/books";
+	let res = null;
+	let error = null;
+	try {
+		res = await axios.get(url);
+	} catch (err) {
+		error = "Error";
+		return {
+			props: {
+				error
+			}
+		};
+	}
 	const { results } = res.data;
 
 	return {
