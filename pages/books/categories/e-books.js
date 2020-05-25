@@ -3,12 +3,25 @@ import BooksPage from "./";
 
 export default BooksPage;
 export const getServerSideProps = async ({ query }) => {
-	const url = "books/type/3";
-	const res = await axios.get(url);
+	const lang = ["ru", "en", "uz"];
+	const url = lang[+query.l || 0] + "/books/type/3";
+	console.log(url);
+	let res = null;
+	let error = null;
+	try {
+		res = await axios.get(url);
+	} catch (err) {
+		error = "Error";
+		return {
+			props: {
+				error
+			}
+		};
+	}
 	const books = res.data.results;
 	return {
 		props: {
-			title: "Электронные книги",
+			title: ["Электронные книги", "E-books", "Uzb"],
 			booksProps: books,
 			url
 		}

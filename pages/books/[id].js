@@ -22,20 +22,6 @@ const BookPage = ({ bookProps, isAuthorized, query }) => {
 	}, [bookProps]);
 	useEffect(() => {
 		Router.replace(Router.pathname, `/books/${query.id}?l=${langContext.lang}`);
-		// const token = parseCookies(null).token;
-		// axios
-		// 	.get(langContext.langs[langContext.lang] + "/books/" + query.id, {
-		// 		headers: token
-		// 			? {
-		// 					Authorization: `Bearer ${token}`
-		// 			  }
-		// 			: null
-		// 	})
-		// 	.then(res => {
-		// 		setBook(res.data);
-		// 	})
-		// 	.catch(err => console.log(err))
-		// 	.finally(() => {});
 	}, [langContext.lang]);
 	const expandDescription = () => {
 		setIsDescriptionExpanded(true);

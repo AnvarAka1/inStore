@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "../../../../axios-api";
 import { CategoriesLayout } from "../../../../layouts";
 import { Row, Col } from "react-bootstrap";
 import { Compilations } from "../../../../components";
-
+import Router from "next/router";
+import { LangContext } from "../../../../store";
 const CompilationsPage = props => {
-	const [ loading, setLoading ] = useState(true);
+	const langContext = useContext(LangContext);
 	useEffect(() => {
-		setLoading(false);
-	}, []);
+		Router.replace(`${Router.pathname}?l=${langContext.lang}`);
+	}, [langContext.lang]);
 	return (
 		<CategoriesLayout withoutGenre>
-			{!loading &&
+			{props.results &&
 				props.results.map(result => (
 					<React.Fragment key={result.id}>
 						<Row>
@@ -27,15 +28,28 @@ const CompilationsPage = props => {
 		</CategoriesLayout>
 	);
 };
-export const getServerSideProps = async context => {
+export const getServerSideProps = async ({ query }) => {
 	// axios
-	const res = await axios.get("categories/collections");
-	const { results } = res.data;
+	const lang = ["ru", "en", "uz"];
+	let res = null;
+	let error = null;
 
+	try {
+		res = await axios.get(`${lang[query.l || 0]}/categories/collections`);
+	} catch (err) {
+		error = "Error";
+		return {
+			props: {
+				error
+			}
+		};
+	}
+	const { results } = res.data;
 	return {
 		props: {
 			results: results
 		}
 	};
 };
+
 export default CompilationsPage;

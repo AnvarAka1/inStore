@@ -38,7 +38,12 @@ const BooksPage = ({ title, booksProps, resultsProps, url }) => {
 		}
 		return () => (_isMounted = false);
 	}, [router.query.genre]);
-
+	useEffect(() => {
+		setBooks(booksProps);
+	}, [booksProps]);
+	useEffect(() => {
+		setResults(resultsProps);
+	}, [resultsProps]);
 	useEffect(() => {
 		_isMounted = true;
 		if (!initialPageLoad) {
@@ -49,7 +54,7 @@ const BooksPage = ({ title, booksProps, resultsProps, url }) => {
 		return () => (_isMounted = false);
 	}, [router.pathname]);
 	useEffect(() => {
-		Router.replace(Router.pathname, `/?l=${langContext.lang}`);
+		Router.replace(`${Router.pathname}?l=${langContext.lang}`);
 	}, [langContext.lang]);
 	const updateValues = res => {
 		if (_isMounted) {
@@ -66,7 +71,7 @@ const BooksPage = ({ title, booksProps, resultsProps, url }) => {
 				<React.Fragment>
 					<Row>
 						<Col>
-							<h2 className="mb-3">{title}</h2>
+							<h2 className="mb-3">{title[langContext.lang]}</h2>
 						</Col>
 					</Row>
 					<Row>
@@ -94,6 +99,7 @@ const BooksPage = ({ title, booksProps, resultsProps, url }) => {
 
 export const getServerSideProps = async ({ query }) => {
 	// axios
+	console.log(query);
 	const lang = ["ru", "en", "uz"];
 	const url = lang[+query.l || 0] + "/categories/books";
 	let res = null;

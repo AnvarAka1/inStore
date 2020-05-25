@@ -9,11 +9,7 @@ export const getServerSideProps = async ({ query, req }) => {
 	let res = null;
 	let error = null;
 	try {
-		res = await axios.get(url, {
-			headers: {
-				Authorization: `Bearer ${parseCookies(req).token}`
-			}
-		});
+		res = await axios.get(url);
 	} catch (err) {
 		error = "Error";
 		return {
@@ -25,7 +21,7 @@ export const getServerSideProps = async ({ query, req }) => {
 	const books = res.data.results;
 	return {
 		props: {
-			title: "Аудиокниги",
+			title: ["Аудиокниги", "Audiobooks", "Uzb"],
 			url,
 			booksProps: books
 		}
