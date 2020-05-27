@@ -11,7 +11,6 @@ const FavouritesPage = ({ productsProps, error }) => {
 	const [products, setProducts] = useState(productsProps);
 	const langContext = useContext(LangContext);
 	useEffect(() => {
-		console.log(Router.pathname);
 		Router.replace(Router.pathname, `?l=${langContext.lang}`);
 	}, [langContext.lang]);
 	if (error) return <ErrorPage />;
@@ -38,7 +37,6 @@ export const getServerSideProps = async ({ query, req }) => {
 	const lang = ["ru", "en", "uz"];
 	let res = null;
 	let error = null;
-	console.log(query);
 	try {
 		res = await axios.get(lang[+query.l || 0] + "/profile/favourites", {
 			headers: {
@@ -46,7 +44,6 @@ export const getServerSideProps = async ({ query, req }) => {
 			}
 		});
 	} catch (err) {
-		console.log("ERROR");
 		error = "Error";
 		return {
 			props: {
@@ -55,7 +52,6 @@ export const getServerSideProps = async ({ query, req }) => {
 		};
 	}
 	const products = res.data.results;
-	console.log(products);
 	return {
 		props: {
 			productsProps: products,

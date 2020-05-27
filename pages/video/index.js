@@ -21,9 +21,9 @@ import {
 import { FormikGroup } from "../../components/UI";
 
 const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollections, speakers, lang }) => {
-	const [ loading, setLoading ] = useState(false);
-	const [ rate, setRate ] = useState(4);
-	const [ speakerNumber, setSpeakerNumber ] = useState(0);
+	const [loading, setLoading] = useState(false);
+	const [rate, setRate] = useState(4);
+	const [speakerNumber, setSpeakerNumber] = useState(0);
 	const reviewControl = useForm();
 	const speakerModal = useModal();
 	const reviewModal = useModal();
@@ -32,10 +32,6 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 		// setRate(id + 1);
 	};
 	const speakerBeforeChange = (nextSlide, { currentSlide, onMove }) => {
-		// console.log("nextSlide", nextSlide);
-		// console.log("currentSlide", currentSlide);
-		// console.log("onMove", onMove);
-
 		if (nextSlide > currentSlide) {
 			// right
 			setSpeakerNumber((speakerNumber + 1) % speakers.length);
@@ -74,17 +70,17 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 	lang = lang || 0;
 	const content = {
 		speaker: {
-			header: [ "Стать спикером", "Become a speaker", "Uzb" ],
-			fio: [ "Ф.И.О", "Full name", "Uzb" ],
-			email: [ "Электронная почта", "E-mail", "Uzb" ],
-			phone: [ "Номер телефона", "Phone number", "Uzb" ],
-			send: [ "Отправить", "Submit", "Uzb" ]
+			header: ["Стать спикером", "Become a speaker", "Uzb"],
+			fio: ["Ф.И.О", "Full name", "Uzb"],
+			email: ["Электронная почта", "E-mail", "Uzb"],
+			phone: ["Номер телефона", "Phone number", "Uzb"],
+			send: ["Отправить", "Submit", "Uzb"]
 		},
 
 		review: {
-			leaveReview: [ "Оставить отзыв", "Leave review", "Uzb" ],
-			rating: [ "Ваша оценка", "Your rate", "Uzb" ],
-			review: [ "Ваш отзыв", "Your review", "Uzb" ]
+			leaveReview: ["Оставить отзыв", "Leave review", "Uzb"],
+			rating: ["Ваша оценка", "Your rate", "Uzb"],
+			review: ["Ваш отзыв", "Your review", "Uzb"]
 		}
 	};
 	const speakerCard = (
@@ -98,15 +94,26 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 						phone: ""
 					}}
 					validationSchema={object({
-						name: string().min(2).required(),
-						email: string().email().min(4).required(),
-						phone: string().min(9).max(9).required()
+						name: string()
+							.min(2)
+							.required(),
+						email: string()
+							.email()
+							.min(4)
+							.required(),
+						phone: string()
+							.min(9)
+							.max(9)
+							.required()
 					})}
 					onSubmit={(values, { setSubmitting }) => {
 						setSubmitting();
-						speakerSubmitHandler().then(res => {}).catch(err => console.log(err)).finally(() => {
-							setSubmitting(false);
-						});
+						speakerSubmitHandler()
+							.then(res => {})
+							.catch(err => console.log(err))
+							.finally(() => {
+								setSubmitting(false);
+							});
 					}}
 				>
 					{formik => (
@@ -143,13 +150,18 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 						text: ""
 					}}
 					validationSchema={object({
-						text: string().max(1000).required()
+						text: string()
+							.max(1000)
+							.required()
 					})}
 					onSubmit={(values, { setSubmitting }) => {
 						setSubmitting();
-						reviewSubmitHandler().then(res => {}).catch(err => console.log(err)).finally(() => {
-							setSubmitting(false);
-						});
+						reviewSubmitHandler()
+							.then(res => {})
+							.catch(err => console.log(err))
+							.finally(() => {
+								setSubmitting(false);
+							});
 					}}
 				>
 					{formik => (

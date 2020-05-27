@@ -365,7 +365,13 @@ p {
         li {
             text-align: center;
             padding: 2px 1px;
-            border-bottom: 1px dashed var(--accent)
+            border-bottom: 1px dashed var(--accent);
+
+            span {
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 

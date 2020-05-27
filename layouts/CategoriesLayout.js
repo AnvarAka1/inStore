@@ -6,7 +6,7 @@ import axios from "../axios-api";
 import { LangContext } from "../store";
 import { useRouter } from "next/router";
 let _isMounted = false;
-const CategoriesLayout = ({ children, withoutGenre, lang }) => {
+const CategoriesLayout = ({ children, withoutGenre }) => {
 	const [pathname, setPathname] = useState();
 	const [categories, setCategories] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -15,8 +15,9 @@ const CategoriesLayout = ({ children, withoutGenre, lang }) => {
 
 	useEffect(() => {
 		_isMounted = true;
+		const langs = ["ru", "en", "uz"];
 		axios
-			.get("genres")
+			.get(langs[langContext.lang] + "/genres")
 			.then(res => {
 				if (_isMounted) setCategories(res.data.results);
 			})
@@ -30,13 +31,13 @@ const CategoriesLayout = ({ children, withoutGenre, lang }) => {
 		return () => {
 			_isMounted = false;
 		};
-	}, []);
+	}, [langContext.lang]);
 	useEffect(() => {
 		_isMounted = true;
 		if (_isMounted) setPathname(router.pathname);
 		return () => (_isMounted = false);
 	}, [router.pathname]);
-	lang = lang || 1;
+
 	return (
 		<Row>
 			<Col sm={3}>

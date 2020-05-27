@@ -57,7 +57,6 @@ const MyComponent = ({ children, store }) => {
 		return false;
 	};
 	const clearCartHandler = () => {
-		console.log("Cleared");
 		setCart([]);
 		localStorage.removeItem("cart");
 	};

@@ -51,7 +51,6 @@ const OrderPage = props => {
 			})}
 			onSubmit={values => {
 				alert(JSON.stringify(values, null, 2));
-				console.log("Hey!");
 			}}
 		>
 			{formik => (

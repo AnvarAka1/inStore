@@ -5,7 +5,6 @@ export default BooksPage;
 export const getServerSideProps = async ({ query }) => {
 	const lang = ["ru", "en", "uz"];
 	const url = lang[+query.l || 0] + "/books/type/2";
-	console.log(url);
 	let res = null;
 	let error = null;
 	try {

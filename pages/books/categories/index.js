@@ -54,7 +54,9 @@ const BooksPage = ({ title, booksProps, resultsProps, url }) => {
 		return () => (_isMounted = false);
 	}, [router.pathname]);
 	useEffect(() => {
-		Router.replace(`${Router.pathname}?l=${langContext.lang}`);
+		Router.replace(
+			`${Router.pathname}?${Router.query.genre ? "genre=" + Router.query.genre + "&" : ""}l=${langContext.lang}`
+		);
 	}, [langContext.lang]);
 	const updateValues = res => {
 		if (_isMounted) {
@@ -99,7 +101,6 @@ const BooksPage = ({ title, booksProps, resultsProps, url }) => {
 
 export const getServerSideProps = async ({ query }) => {
 	// axios
-	console.log(query);
 	const lang = ["ru", "en", "uz"];
 	const url = lang[+query.l || 0] + "/categories/books";
 	let res = null;

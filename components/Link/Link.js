@@ -12,21 +12,27 @@ const CustomLink = ({ children, className, href }) => {
 		// check whether the current route has any queries
 		if (!isEmpty(router.query)) {
 			// go through all queries in current route
-			for (let key in router.query) {
-				// chech whether there is a value in link's query
-				// check whether there is a match between current route's and link's queries
-				if (!href.query[key] || router.query[key] !== href.query[key].toString()) {
-					hasQueries = false;
-					break;
+			if (Object.keys(router.query).length === 1) hasQueries = false;
+			else {
+				for (let key in router.query) {
+					// chech whether there is a value in link's query
+					// check whether there is a match between current route's and link's queries
+					if ((key !== "l" && !href.query[key]) || router.query[key] !== href.query[key].toString()) {
+						hasQueries = false;
+						break;
+					}
 				}
 			}
 			// if the pathnames are different, then it is also mismatch
 			// else just add active class to link
+			// FOR DYNAMIC ONLY
 			if (href.pathname === router.pathname && hasQueries) {
 				classNames = `${className} active`;
 			}
 		}
-	} else if (href === router.pathname) {
+	}
+	//  FOR STATIC LINK ONLY
+	else if (href === `${router.pathname}?l=${router.query.l}`) {
 		classNames = `${className} active`;
 	}
 

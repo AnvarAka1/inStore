@@ -34,7 +34,6 @@ export default App => {
 
 		render() {
 			const { initialReduxState } = this.props;
-			// console.log(this.props);
 			return <App {...this.props} store={getOrCreateStore(initialReduxState)} />;
 		}
 	};
