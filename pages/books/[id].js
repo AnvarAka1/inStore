@@ -121,6 +121,7 @@ export const getServerSideProps = async ({ query, params, req }) => {
 				: null
 		});
 	} catch (error) {
+		console.log(error);
 		return {
 			props: {
 				error: "Error"
@@ -128,6 +129,7 @@ export const getServerSideProps = async ({ query, params, req }) => {
 		};
 	}
 	const bookProps = res.data;
+	console.log("Res", res);
 
 	return {
 		props: {

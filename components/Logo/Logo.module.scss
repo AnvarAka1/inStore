@@ -1,3 +1,22 @@
 .Logo {
     width: 145px;
+
+    @media (max-width: 600px) {
+        width: 100px
+    }
+}
+
+.Mobile {
+    display: none;
+
+    @media(max-width: 600px) {
+        display: block;
+        width: 40px
+    }
+}
+
+.Desktop {
+    @media(max-width: 600px) {
+        display: none;
+    }
 }

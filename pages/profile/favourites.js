@@ -54,8 +54,7 @@ export const getServerSideProps = async ({ query, req }) => {
 	const products = res.data.results;
 	return {
 		props: {
-			productsProps: products,
-			error
+			productsProps: products
 		}
 	};
 };

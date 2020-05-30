@@ -6,27 +6,22 @@ import { Row, Col } from "react-bootstrap";
 import { MakeOrder } from "../components";
 
 const CartLayout = ({ children, isOrderPage }) => {
-	const [ currentPrice, setCurrentPrice ] = useState(0);
-	const [ oldPrice, setOldPrice ] = useState(0);
+	const [currentPrice, setCurrentPrice] = useState(0);
+	const [oldPrice, setOldPrice] = useState(0);
 	const cartContext = useContext(CartContext);
 	const codeControl = useForm();
-	useEffect(
-		() => {
-			const oldPrice = cartContext.cart.reduce((sum, product) => {
-				return sum + +product.price;
-			}, 0);
-			const currentPrice = cartContext.cart.reduce((sum, product) => {
-				return sum + +product.current_price;
-			}, 0);
-			setOldPrice(oldPrice);
-			setCurrentPrice(currentPrice);
-		},
-		[ cartContext ]
-	);
+	useEffect(() => {
+		const oldPrice = cartContext.cart.reduce((sum, product) => {
+			return sum + +product.price;
+		}, 0);
+		const currentPrice = cartContext.cart.reduce((sum, product) => {
+			return sum + +product.current_price;
+		}, 0);
+		setOldPrice(oldPrice);
+		setCurrentPrice(currentPrice);
+	}, [cartContext]);
 	const orderHandler = () => {
-		if (isOrderPage) {
-			console.log("Order is done!");
-		} else {
+		if (!isOrderPage) {
 			Router.push({
 				pathname: "/cart/order"
 			});

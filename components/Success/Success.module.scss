@@ -1,0 +1,40 @@
+.Success {
+    text-align: center;
+    width: 100%;
+    padding: 15px 40px 10px;
+
+    h3 {
+        margin-top: 20px;
+        // width: 70%;
+
+        font-weight: normal;
+        display: inline-block;
+
+    }
+
+    img {
+        width: 64px;
+        height: 64px;
+    }
+
+
+    div {
+        width: 100%;
+        margin-top: 10px;
+
+        a {
+            display: block;
+            color: #777;
+            cursor: pointer;
+
+            &:first-child {
+                margin-bottom: 10px;
+                color: black;
+                text-decoration: underline;
+                font-weight: bold;
+
+            }
+        }
+
+    }
+}

@@ -57,6 +57,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, err
 	};
 	const search = <Search control={searchControl} lang={lang} onSearch={onSearch} />;
 	// Right side of navbar with cart, login/logout
+
 	const navItems = (
 		<NavItems
 			onChangeLang={langContext.onChangeLang}

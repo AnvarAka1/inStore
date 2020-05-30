@@ -18,9 +18,15 @@ const productDescription = ({
 	isDescriptionExpanded,
 	expandDescription,
 	book_format,
+	bought,
 	lang
 }) => {
 	const bookTypes = ["Аудиокнига", "Печатное издание", "Электронная книга"];
+	const content = {
+		removeFromCarts: ["Удалить из корзины", "Remove from cart", "Uzb"],
+		addToCarts: ["Добавить в корзину", "Add to cart", "Uzb"],
+		boughts: ["Куплено", "Bought", "Uzb"]
+	};
 	const getDiscount = () => {
 		return ((1 - current_price / price) * 100).toFixed(2);
 	};
@@ -76,10 +82,16 @@ const productDescription = ({
 					)}
 				</div>
 			</div>
-			<Button onClick={cartClicked} className="w-100">
-				<img src="/images/icons/cart-white.png" className="icon icon-sm mr-1" />
-				{isInCart ? "Удалить из корзины" : "Добавить в корзину"}
-			</Button>
+			{!bought ? (
+				<Button onClick={cartClicked} className="w-100">
+					<img src="/images/icons/cart-white.png" className="icon icon-sm mr-1" />
+					{isInCart ? content.removeFromCarts[lang] : content.addToCarts[lang]}
+				</Button>
+			) : (
+				<Button className="w-100" disabled>
+					{content.boughts[lang]}
+				</Button>
+			)}
 		</div>
 	);
 };

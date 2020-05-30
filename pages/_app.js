@@ -60,6 +60,9 @@ const MyComponent = ({ children, store }) => {
 		setCart([]);
 		localStorage.removeItem("cart");
 	};
+	const getIds = () => {
+		return cart.map(c => c.id).join(",");
+	};
 
 	return (
 		<LangContext.Provider value={{ lang, langs: ["ru", "en", "uz"], onChangeLang: changeLangHandler }}>
@@ -69,7 +72,8 @@ const MyComponent = ({ children, store }) => {
 						cart,
 						onAddRemoveItem: addRemoveItemFromCart,
 						onFindInCart: findItemInCart,
-						onClearCart: clearCartHandler
+						onClearCart: clearCartHandler,
+						getIds
 					}}
 				>
 					<Layout cartCount={cart.length}>{children}</Layout>

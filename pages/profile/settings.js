@@ -10,13 +10,13 @@ import { ProfileLayout } from "../../layouts";
 // can make static page also
 const defaultImage = "/images/avatar.png";
 const SettingsPage = ({ userData, error }) => {
-	const [avatar, setAvatar] = useState(userData.avatar ? userData.avatar : defaultImage);
+	const [avatar, setAvatar] = useState(userData && userData.avatar ? userData.avatar : defaultImage);
 	if (error) {
 		return <ErrorPage />;
 	}
 
 	let personalInfoInitialValues = {
-		avatar: null,
+		avatar: "",
 		name: userData.fio,
 		dob: userData.dob,
 		gender: userData.gender ? userData.gender : "m",
@@ -248,12 +248,16 @@ export const getServerSideProps = async ({ req }) => {
 		res = res.data;
 	} catch (err) {
 		error = "Error";
+		return {
+			props: {
+				error
+			}
+		};
 	}
 
 	return {
 		props: {
-			userData: res,
-			error: error
+			userData: res
 		}
 	};
 };

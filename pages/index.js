@@ -69,63 +69,10 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 			texts: ["слушайте когда и где угодно", "Listen whenever and wherever you are", "Uzb"]
 		},
 		audiobooksCompilations: ["Сборники аудиокниг", "Audiobooks compilation", "Uzb"],
-
-		newAudiobooks: ["Новые аудиокниги", "New audiobooks", "Uzb"],
-		review: {
-			headers: ["Отзывы пользователей", "Users' reviews", "Uzb"],
-			leaveReviews: ["Оставить отзыв", "Leave review", "Uzb"],
-			ratings: ["Ваша оценка", "Your rate", "Uzb"],
-			reviews: ["Ваш отзыв", "Your review", "Uzb"]
-		}
+		newAudiobooks: ["аудиокниги", "audiobooks", "Uzb"]
 	};
-	const reviewCard = (
-		<Card>
-			<Card.Header>{content.review.leaveReviews[lang]}</Card.Header>
-			<Card.Body>
-				<Formik
-					initialValues={{
-						text: ""
-					}}
-					validationSchema={object({
-						text: string()
-							.max(1000)
-							.required()
-					})}
-					onSubmit={(values, { setSubmitting }) => {
-						setSubmitting();
-						reviewSubmitHandler(values.text)
-							.then(res => {})
-							.catch(err => console.log(err))
-							.finally(() => {
-								setSubmitting(false);
-							});
-					}}
-				>
-					{formik => (
-						<Form onSubmit={formik.handleSubmit}>
-							<BootstrapForm.Group>
-								<BootstrapForm.Label>{content.review.ratings[lang]}</BootstrapForm.Label>
-								<Stars isBig onClick={rateChangedHandler} rate={rate} />
-							</BootstrapForm.Group>
-							<FormikGroup
-								as="textarea"
-								placeholder="Напишите тут (максимум 1000 символов)"
-								size="sm"
-								{...formik.getFieldProps("text")}
-							>
-								{content.review.reviews[lang]}
-							</FormikGroup>
-
-							<Button type="submit">{content.review.leaveReviews[lang]}</Button>
-						</Form>
-					)}
-				</Formik>
-			</Card.Body>
-		</Card>
-	);
 	return (
 		<React.Fragment>
-			<Modal modal={reviewModal}>{reviewCard}</Modal>
 			<Row className="mb-4">
 				<Col>
 					<section>
@@ -211,21 +158,6 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 			</Row>
 			<Row>
 				<Col>{!loading && <ProductsCarousel items={audioBooks} lang={lang} />}</Col>
-			</Row>
-			<Row className="mb-4  mt-5 pt-3">
-				<Col>
-					<h3 className="text-accent">{content.review.headers[lang]}</h3>
-				</Col>
-			</Row>
-			<Row>
-				<Col>{!loading && <ReviewsCarousel items={feedback} />}</Col>
-			</Row>
-			<Row className="mt-3 mb-5 pb-4">
-				<Col>
-					<div className="text-center">
-						<Button onClick={reviewModal.onShow}>{content.review.reviews[lang]}</Button>
-					</div>
-				</Col>
 			</Row>
 		</React.Fragment>
 	);

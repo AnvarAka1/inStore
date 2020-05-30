@@ -1,4 +1,46 @@
 .Form {
+    position: relative;
+
+
+
+    &>div {
+        position: relative;
+
+        @media(max-width: 992px) {
+            // position: absolute;
+            // left: 0;
+            // top: -15px;
+            // background-color: #fff;
+            // z-index: 99;
+            // display: none;
+
+            input {
+                transition: width .25s ease;
+                width: 10rem;
+            }
+
+
+
+
+        }
+    }
+
+    &>a {
+
+        &:hover,
+        &:active {
+            display: none;
+
+            ~div {
+                display: block;
+
+                input {
+                    width: 10rem;
+                }
+            }
+        }
+    }
+
     input {
         width: 20rem;
         padding-left: 35px;

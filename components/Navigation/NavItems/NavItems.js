@@ -2,16 +2,16 @@ import React from "react";
 import classes from "./NavItems.module.scss";
 import Link from "next/link";
 
-const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout, onChangeLang, lang }) => {
+const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout, onChangeLang, lang, isMobile }) => {
 	const content = {
-		favourites: [ "Избранные", "Favourites", "Uzb" ],
-		carts: [ "Корзина", "Cart", "Uzb" ],
-		logins: [ "Войти", "Login", "Uzb" ],
-		logouts: [ "Выйти", "Logout", "Uzb" ],
-		language: [ "Язык", "Language", "Til" ]
+		favourites: ["Избранные", "Favourites", "Uzb"],
+		carts: ["Корзина", "Cart", "Uzb"],
+		logins: ["Войти", "Login", "Uzb"],
+		logouts: ["Выйти", "Logout", "Uzb"],
+		language: ["Язык", "Language", "Til"]
 	};
 	return (
-		<div className={`${classes.NavItems} `}>
+		<div className={`${classes.NavItems} ${isMobile && classes.IsMobile} `}>
 			{/* if the user is authorized, then the "favourites are not displayed in navbar" */}
 			{!isAuthorized && (
 				<div>
@@ -20,7 +20,7 @@ const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout, onCh
 							<a>
 								<div className="d-flex align-items-center">
 									<img src="/images/icons/star.png" className="icon icon-sm mr-1" alt="favourite" />
-									{content.favourites[lang]}
+									<p className="text-mobile-invisible">{content.favourites[lang]}</p>
 								</div>
 							</a>
 						</Link>
@@ -41,7 +41,7 @@ const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout, onCh
 									) : null}
 									<img src="/images/icons/cart.png" className="icon icon-sm" alt="cart" />
 								</div>
-								{!isAuthorized && <p className="ml-1">{content.carts[lang]}</p>}
+								{!isAuthorized && <p className="ml-1 text-mobile-invisible">{content.carts[lang]}</p>}
 							</div>
 						</a>
 					</Link>
@@ -52,7 +52,7 @@ const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout, onCh
 					<a>
 						<div className="d-flex align-items-center list">
 							<img src="/images/icons/user.png" className="icon icon-sm mr-1" alt="login" />
-							{content.logins[lang]}
+							<p className="text-mobile-invisible">{content.logins[lang]}</p>
 						</div>
 					</a>
 				</div>
@@ -72,7 +72,7 @@ const navItems = ({ authModalShow, cartCount, name, isAuthorized, onLogout, onCh
 				<a role="button" className="dropdown-hover text-secondary">
 					| {content.language[lang]}
 					<ul>
-						{[ "Ру", "En", "Uz" ].map((language, index) => (
+						{["Ру", "En", "Uz"].map((language, index) => (
 							<li key={language}>
 								<span
 									role="button"

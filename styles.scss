@@ -1,6 +1,23 @@
 :root {
     --accent: #024e8f;
     --secondary: #777;
+    font-size: 16px;
+
+    @media(max-width: 1200px) {
+        font-size: 14px;
+    }
+
+    @media(max-width: 992px) {
+        font-size: 14px;
+    }
+
+    @media(max-width: 768px) {
+        font-size: 12px;
+    }
+
+    @media(max-width: 480px) {
+        font-size: 10px;
+    }
 }
 
 @font-face {
@@ -107,6 +124,12 @@ p {
 
     &-xsmall {
         font-size: .5rem;
+    }
+
+    &-mobile-invisible {
+        @media(max-width: 992px) {
+            display: none;
+        }
     }
 }
 
@@ -349,6 +372,10 @@ p {
     width: 80px;
     white-space: nowrap;
     text-align: right;
+
+    @media (max-width: 992px) {
+        width: auto;
+    }
 
     ul {
         display: none;

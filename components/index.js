@@ -27,3 +27,4 @@ export { default as Link } from "./Link/Link";
 export { default as NavigationItems } from "./ProfileNavigation/NavigationItems";
 export { default as NavItems } from "./Navigation/NavItems/NavItems";
 export { default as Search } from "./Search/Search";
+export { default as Success } from "./Success/Success";
