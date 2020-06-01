@@ -19,7 +19,8 @@ const productDescription = ({
 	expandDescription,
 	book_format,
 	bought,
-	lang
+	lang,
+	isMobile
 }) => {
 	const bookTypes = ["Аудиокнига", "Печатное издание", "Электронная книга"];
 	const content = {
@@ -43,8 +44,9 @@ const productDescription = ({
 			description
 		);
 	}
+
 	return (
-		<div className={classes.ProductDescription}>
+		<div className={`${classes.ProductDescription} ${isMobile ? classes.IsMobile : ""}`}>
 			<p>{publish_year}</p>
 			<h2>{title}</h2>
 			<div className="d-flex justify-content-between align-items-center">

@@ -102,12 +102,12 @@ const OrderPage = props => {
 						)
 							.then(res => {
 								cartContext.onClearCart();
-								purchaseModal.onShow();
 								if (methodOfPayment < 2) {
-									// show success modal and redirect to library
+									purchaseModal.onShow();
 								} else {
 									// redirect to another page
-									setPaymentLink(res.data.redirect_url);
+									// setPaymentLink(res.data.redirect_url);
+									location.href = res.data.redirect_url;
 								}
 							})
 							.catch(err => {

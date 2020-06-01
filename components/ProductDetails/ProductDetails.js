@@ -18,10 +18,12 @@ const productDetails = props => {
 			<div>
 				<img src={props.image} alt={props.title} />
 			</div>
+			{props.mobileProductDescription}
 			<div className="d-flex align-items-center mt-4 mb-4">
 				<h4 className="mb-0 mr-3">Рейтинг книги</h4>
 				<Stars rate={Math.round(props.rate)} isBig />
 			</div>
+
 
 			<table>
 				<thead />

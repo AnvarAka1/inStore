@@ -1,10 +1,10 @@
 import React from "react";
 import { Col } from "react-bootstrap";
 import Product from "./Product/Product";
-const products = ({ items, title, isVideo, md, sm, onAddRemoveItem, lang }) => {
+const products = ({ items, title, isVideo, md, sm, xs,onAddRemoveItem, lang }) => {
 	const productsView = items.map(item => {
 		return (
-			<Col className="mb-4" key={item.id} md={md} sm={sm}>
+			<Col className="mb-4" key={item.id} md={md} sm={sm} xs={xs}>
 				<Product
 					lang={lang}
 					{...item}
@@ -27,6 +27,7 @@ const products = ({ items, title, isVideo, md, sm, onAddRemoveItem, lang }) => {
 };
 products.defaultProps = {
 	md: 3,
-	sm: 4
+	sm: 4,
+	xs: 6
 };
 export default products;
