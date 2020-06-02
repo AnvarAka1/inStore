@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import classes from "./ProductDescription.module.scss";
-const MAX_LENGTH = 5;
+const MAX_LENGTH = 128;
 const productDescription = ({
 	publish_year,
 	title,

@@ -15,7 +15,7 @@ const productDetails = props => {
 	];
 	return (
 		<div className={classes.ProductDetails}>
-			<div>
+			<div className={classes.Image}>
 				<img src={props.image} alt={props.title} />
 			</div>
 			{props.mobileProductDescription}
@@ -38,11 +38,11 @@ const productDetails = props => {
 					})}
 				</tbody>
 			</table>
-			<div className="d-flex justify-content-start mt-5">
+			<div className="d-lg-flex justify-content-start mt-5 d-inline-block">
 				<h5>Поделиться:</h5>
-				<ul className="d-flex justify-content-between">
+				<ul className="d-lg-flex d-sm-block justify-content-between">
 					{getSocials().map(social => (
-						<li key={social.id} className="ml-3">
+						<li key={social.id} className="ml-3 d-inline-block">
 							<a href={social.href} target="_blank" rel="noopener noreferrer">
 								<img src={social.image} alt="social" className="icon icon-md" />
 							</a>

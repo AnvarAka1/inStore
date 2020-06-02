@@ -1,208 +1,207 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import axios from "../axios-api";
-import { LangContext } from "../store";
+import {LangContext} from "../store";
 import Router from "next/router";
-import { useModal } from "../hooks";
-import { parseCookies } from "../helpers/utils";
-import { Formik, Form } from "formik";
-import { object, string } from "yup";
-import { Row, Col, Carousel, Button, Form as BootstrapForm } from "react-bootstrap";
-import {
-	Heading,
-	PreCarousel,
-	CompilationsCarousel,
-	ProductsCarousel,
-	ReviewsCarousel,
-	NewHeader,
-	Modal,
-	Card,
-	Stars
-} from "../components";
-import { FormikGroup } from "../components/UI";
+import {useModal} from "../hooks";
+import {parseCookies} from "../helpers/utils";
+import Fade from 'react-reveal/Fade';
+import {Carousel, Col, Row} from "react-bootstrap";
+import {CompilationsCarousel, Heading, NewHeader, PreCarousel, ProductsCarousel} from "../components";
 
-const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollections, lang, error }) => {
-	const [loading, setLoading] = useState(false);
-	const [rate, setRate] = useState(4);
+const LandingPage = ({feedback, books, audioBooks, bookCollections, audioCollections, lang, error}) => {
+    const [loading, setLoading] = useState(false);
+    const [rate, setRate] = useState(4);
 
-	const reviewModal = useModal();
-	const langContext = useContext(LangContext);
+    const reviewModal = useModal();
+    const langContext = useContext(LangContext);
 
-	useEffect(() => {
-		Router.replace(Router.pathname, `/?l=${langContext.lang}`);
-	}, [langContext.lang]);
-	// Return error instead of page if there is an error while fetching data from database
-	if (error) return <h3>{error}</h3>;
+    useEffect(() => {
+        Router.replace(Router.pathname, `/?l=${langContext.lang}`);
+    }, [langContext.lang]);
+    // Return error instead of page if there is an error while fetching data from database
+    if (error) return <h3>{error}</h3>;
 
-	// Functions
-	const rateChangedHandler = id => {
-		setRate(id + 1);
-	};
-	const reviewSubmitHandler = text => {
-		const formData = new FormData();
-		formData.append("text", text);
-		formData.append("rate", rate);
-		axios
-			.post("/feedback", formData, {
-				headers: {
-					Authorization: `Bearer ${parseCookies(null).token}`
-				}
-			})
-			.then(res => console.log(res))
-			.catch(err => console.log(err));
-	};
+    // Functions
+    const rateChangedHandler = id => {
+        setRate(id + 1);
+    };
+    const reviewSubmitHandler = text => {
+        const formData = new FormData();
+        formData.append("text", text);
+        formData.append("rate", rate);
+        axios
+            .post("/feedback", formData, {
+                headers: {
+                    Authorization: `Bearer ${parseCookies(null).token}`
+                }
+            })
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    };
 
-	//  JSX
+    //  JSX
 
-	// multilang
-	lang = langContext.lang;
-	const content = {
-		eBook: {
-			titles: ["Электронные и печатные", "Printed and e-books", "Uzb"],
-			texts: ["книги на любой вкус", "for any taste", "Uzb"]
-		},
+    // multilang
+    lang = langContext.lang;
+    const content = {
+        eBook: {
+            titles: ["Электронные и печатные", "Printed and e-books", "Uzb"],
+            texts: ["книги на любой вкус", "for any taste", "Uzb"]
+        },
 
-		booksCompilations: ["Сборники книг", "Books compilation", "Uzb"],
+        booksCompilations: ["Сборники книг", "Books compilation", "Uzb"],
 
-		newBooks: ["книги", "books", "Uzb"],
-		audiobook: {
-			titles: ["Аудиокниги", "Audiobooks", "Uzb"],
-			texts: ["слушайте когда и где угодно", "Listen whenever and wherever you are", "Uzb"]
-		},
-		audiobooksCompilations: ["Сборники аудиокниг", "Audiobooks compilation", "Uzb"],
-		newAudiobooks: ["аудиокниги", "audiobooks", "Uzb"]
-	};
-	return (
-		<React.Fragment>
-			<Row className="mb-4">
-				<Col>
-					<section>
-						<Carousel>
-							{getCarouselItems().map(item => {
-								return (
-									<Carousel.Item key={item.id}>
-										<img className="d-block w-100" src={item.img} alt={item.titles[lang]} />
-										<Carousel.Caption>
-											<h3>{item.titles[lang]}</h3>
-										</Carousel.Caption>
-									</Carousel.Item>
-								);
-							})}
-						</Carousel>
-					</section>
-				</Col>
-			</Row>
-			<Row>
-				<Col>
-					<div>
-						<img src="/images/main/books/first.png" alt="Электронные и печатные книги" />
-					</div>
-				</Col>
-				<Col>
-					{/* E-books and printed books show full list */}
-					<Heading text={content.eBook.titles[lang]} lang={lang} href={`/books/categories?l=${lang}`}>
-						{content.eBook.titles[lang]}
-					</Heading>
-				</Col>
-			</Row>
-			<Row className="mt-4 mb-4 pt-4 pb-4">
-				{/* Books compilation */}
-				<Col sm={4}>
-					<PreCarousel link={`/books/categories/compilations?l=${lang}`}>
-						{content.booksCompilations[lang]}
-					</PreCarousel>
-				</Col>
-				<Col sm={8}>{!loading && <CompilationsCarousel lang={lang} items={bookCollections} />}</Col>
-			</Row>
-			<Row>
-				<Col>
-					{/* New books */}
-					<NewHeader href={`/books/categories?l=${lang}`} lang={lang}>
-						{content.newBooks[lang]}
-					</NewHeader>
-				</Col>
-			</Row>
-			<Row>
-				<Col>{!loading && <ProductsCarousel items={books} lang={lang} />}</Col>
-			</Row>
-			<Row className="mt-5 pt-4 mb-5 pb-4">
-				<Col>
-					{/* Audio books show full list */}
-					<Heading
-						lang={lang}
-						text={content.audiobook.texts[lang]}
-						href={`/books/categories/audio-books?l=${lang}`}
-					>
-						{content.audiobook.titles[lang]}
-					</Heading>
-				</Col>
-				<Col>
-					<div>
-						<img src="/images/main/books/second.png" alt="Электронные и печатные книги" />
-					</div>
-				</Col>
-			</Row>
-			<Row>
-				<Col sm={4}>
-					<PreCarousel link={`/books/categories/compilations?l=${lang}`}>
-						{content.audiobooksCompilations[lang]}
-					</PreCarousel>
-				</Col>
-				<Col sm={8}>{!loading && <CompilationsCarousel lang={lang} items={audioCollections} />}</Col>
-			</Row>
-			<Row className="mt-5 pt-4">
-				<Col>
-					<NewHeader href={`/books/categories/audio-books?l=${lang}`} lang={lang}>
-						{content.newAudiobooks[lang]}
-					</NewHeader>
-				</Col>
-			</Row>
-			<Row>
-				<Col>{!loading && <ProductsCarousel items={audioBooks} lang={lang} />}</Col>
-			</Row>
-		</React.Fragment>
-	);
+        newBooks: ["книги", "books", "Uzb"],
+        audiobook: {
+            titles: ["Аудиокниги", "Audiobooks", "Uzb"],
+            texts: ["слушайте когда и где угодно", "Listen whenever and wherever you are", "Uzb"]
+        },
+        audiobooksCompilations: ["Сборники аудиокниг", "Audiobooks compilation", "Uzb"],
+        newAudiobooks: ["аудиокниги", "audiobooks", "Uzb"]
+    };
+    return (
+        <React.Fragment>
+            <Row className="mb-4">
+                <Col>
+
+                    <Fade>
+                        <section>
+                            <Carousel>
+                                {getCarouselItems().map(item => {
+                                    return (
+                                        <Carousel.Item key={item.id}>
+                                            <img className="d-block w-100" src={item.img} alt={item.titles[lang]}/>
+                                            <Carousel.Caption>
+                                                <h3>{item.titles[lang]}</h3>
+                                            </Carousel.Caption>
+                                        </Carousel.Item>
+                                    );
+                                })}
+                            </Carousel>
+                        </section>
+                    </Fade>
+                </Col>
+            </Row>
+            <Row>
+
+                <Col sm={6} className="d-none d-sm-block">
+                    <Fade>
+                        <div>
+                            <img src="/images/main/books/first.png" alt="Электронные и печатные книги"/>
+                        </div>
+                    </Fade>
+                </Col>
+                <Col sm={6} xs={12}>
+
+                    {/* E-books and printed books show full list */}
+                    <Heading text={content.eBook.titles[lang]} lang={lang} href={`/books/categories?l=${lang}`}>
+                        {content.eBook.titles[lang]}
+                    </Heading>
+
+                </Col>
+            </Row>
+            <Row className="mt-4 mb-4 pt-4 pb-4">
+                {/* Books compilation */}
+                <Col sm={4}>
+                    <PreCarousel link={`/books/categories/compilations?l=${lang}`}>
+                        {content.booksCompilations[lang]}
+                    </PreCarousel>
+                </Col>
+                <Col sm={8}>{!loading && <CompilationsCarousel lang={lang} items={bookCollections}/>}</Col>
+            </Row>
+            <Row>
+                <Col>
+                    {/* New books */}
+                    <NewHeader href={`/books/categories?l=${lang}`} lang={lang}>
+                        {content.newBooks[lang]}
+                    </NewHeader>
+                </Col>
+            </Row>
+            <Row>
+                <Col><Fade right>{!loading && <ProductsCarousel items={books} lang={lang}/>}</Fade></Col>
+            </Row>
+            <Row className="mt-5 pt-4 mb-5 pb-4">
+                <Col sm={6} xs={12}>
+                    {/* Audio books show full list */}
+                    <Heading
+                        lang={lang}
+                        text={content.audiobook.texts[lang]}
+                        href={`/books/categories/audio-books?l=${lang}`}
+                    >
+                        {content.audiobook.titles[lang]}
+                    </Heading>
+                </Col>
+
+                <Col sm={6} className="d-none d-sm-block">
+                    <div>
+                        <img src="/images/main/books/second.png" alt="Электронные и печатные книги"/>
+                    </div>
+                </Col>
+
+            </Row>
+            <Row>
+                <Col sm={4}>
+                    <PreCarousel link={`/books/categories/compilations?l=${lang}`}>
+                        {content.audiobooksCompilations[lang]}
+                    </PreCarousel>
+                </Col>
+                <Col sm={8}>{!loading && <CompilationsCarousel lang={lang} items={audioCollections}/>}</Col>
+            </Row>
+
+            <Row className="mt-5 pt-4">
+                <Col>
+                    <NewHeader href={`/books/categories/audio-books?l=${lang}`} lang={lang}>
+                        {content.newAudiobooks[lang]}
+                    </NewHeader>
+                </Col>
+            </Row>
+            <Row>
+                <Col><Fade left>{!loading && <ProductsCarousel items={audioBooks} lang={lang}/>}</Fade></Col>
+            </Row>
+        </React.Fragment>
+    );
 };
 const getCarouselItems = () => [
-	{
-		id: 0,
-		titles: ["Электронные книги и Видео уроки", "E-books and Videolessons", "Uzb"],
-		img: "/images/main/books/carousel1.png",
-		link: "/"
-	},
+    {
+        id: 0,
+        titles: ["Электронные книги и Видео уроки", "E-books and Videolessons", "Uzb"],
+        img: "/images/main/books/carousel1.png",
+        link: "/"
+    },
 
-	{
-		id: 1,
-		titles: ["Электронные книги и Видео уроки", "E-books and Videolessons", "Uzb"],
-		img: "/images/main/books/carousel1.png",
-		link: "/"
-	}
+    {
+        id: 1,
+        titles: ["Электронные книги и Видео уроки", "E-books and Videolessons", "Uzb"],
+        img: "/images/main/books/carousel1.png",
+        link: "/"
+    }
 ];
-export const getServerSideProps = async ({ query }) => {
-	const lang = ["ru", "en", "uz"];
-	let res = null;
-	let error = null;
-	try {
-		res = await axios.get(lang[+query.l || 0] + "/home");
-	} catch (err) {
-		error = "Error";
-		return {
-			props: {
-				error
-			}
-		};
-	}
+export const getServerSideProps = async ({query}) => {
+    const lang = ["ru", "en", "uz"];
+    let res = null;
+    let error = null;
+    try {
+        res = await axios.get(lang[+query.l || 0] + "/home");
+    } catch (err) {
+        error = "Error";
+        return {
+            props: {
+                error
+            }
+        };
+    }
 
-	const { feedback, books, audio_books, book_collections, audio_book_collections } = res.data;
+    const {feedback, books, audio_books, book_collections, audio_book_collections} = res.data;
 
-	return {
-		props: {
-			feedback,
-			books,
-			audioBooks: audio_books,
-			bookCollections: book_collections,
-			audioCollections: audio_book_collections,
-			error
-		}
-	};
+    return {
+        props: {
+            feedback,
+            books,
+            audioBooks: audio_books,
+            bookCollections: book_collections,
+            audioCollections: audio_book_collections,
+            error
+        }
+    };
 };
 export default React.memo(LandingPage);

@@ -152,7 +152,7 @@ const SettingsPage = ({ userData, error }) => {
 					</Formik>
 				</Col>
 				<Col md={4} sm={6}>
-					<h6 className="text-md">Защита</h6>
+					<h6 className="text-md mt-4 mt-sm-0">Защита</h6>
 					<Formik
 						initialValues={passwordInitialValues}
 						onSubmit={(values, { setSubmitting, resetForm }) => {

@@ -8,8 +8,10 @@ const navigationItem = ({ href, children, icon, count }) => {
 				<a>
 					<div className="d-flex align-items-center">
 						<img src={icon} alt={children} className="icon icon-sm mr-2" />
-						<p className="text-lg">{children}</p>
-						<p>: {count}</p>
+						<p className="text-lg">
+							{children}
+							<>{count !== null && `: ${count}`}</></p>
+
 					</div>
 				</a>
 			</Link>

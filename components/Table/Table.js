@@ -11,7 +11,7 @@ const table = ({rows, lang}) => {
     ]
     return <Table striped bordered hover>
         <thead>
-           <tr> {bookCols.map(col=>(
+           <tr>{bookCols.map(col=>(
                 <th key={col[0]}>{col[lang]}</th>
             ))}</tr>
         </thead>

@@ -4,5 +4,9 @@
     align-items: flex-start;
     justify-content: center;
     height: 100%;
-    color: var(--accent)
+    color: var(--accent);
+    @media(max-width: 575px){
+        margin: 0  0 40px;
+        align-items: center;
+    }
 }

@@ -9,7 +9,9 @@ const NavigationItems = ({ items, lang }) => {
 			</NavigationItem>
 		);
 	});
-	return <ul>{NavigationItemsView}</ul>;
+	return <><ul>{NavigationItemsView}</ul>
+	<hr/>
+	</>;
 };
 
 export default NavigationItems;

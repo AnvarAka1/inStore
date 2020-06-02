@@ -17,7 +17,7 @@ const LibraryPage = ({ books, error }) => {
 				</Col>
 			</Row>
 			<Row>
-				{books.length ? (
+				{books && books.length ? (
 					<Products items={books} lang={langContext.lang} />
 				) : (
 					<Col>

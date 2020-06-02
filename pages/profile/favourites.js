@@ -8,7 +8,7 @@ import { Products } from "../../components";
 import { ProfileLayout } from "../../layouts";
 import Router from "next/router";
 const FavouritesPage = ({ productsProps, error }) => {
-	const [products, setProducts] = useState(productsProps);
+	const [products, setProducts] = useState(productsProps ? productsProps : []);
 	const langContext = useContext(LangContext);
 	useEffect(() => {
 		Router.replace(Router.pathname, `?l=${langContext.lang}`);
@@ -22,7 +22,7 @@ const FavouritesPage = ({ productsProps, error }) => {
 				</Col>
 			</Row>
 			<Row>
-				{products.length ? (
+				{products && products.length ? (
 					<Products items={products} lang={langContext.lang} />
 				) : (
 					<Col>
