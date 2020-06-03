@@ -34,7 +34,7 @@ const navbar = React.forwardRef(
 									</a>
 								</Link>
 
-								{/* {navItemsMobile} */}
+
 								<Nav className={`list position-relative d-flex ${classes.Categories}`}>
 									<a
 										role="button"

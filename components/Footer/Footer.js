@@ -11,14 +11,14 @@ const footer = ({ lang }) => {
 	};
 	return (
 		<footer className={`${classes.Footer} text-left`}>
-			<Container>
+			<Container fluid>
 				<Row>
 					<Col sm={4}>
 						<Logo />
 					</Col>
 				</Row>
 				<Row className="pt-4 pb-4">
-					<Col sm={5}>
+					<Col sm={4}>
 						<div className="d-flex justify-content-between align-items-start">
 							<div className="w-50 mr-5">
 								<p className="mb-2 text-small text-bold">+998 90 000 00 00</p>
@@ -55,8 +55,8 @@ const footer = ({ lang }) => {
 							</div>
 						</div>
 					</Col>
-					<Col sm={{ span: 7 }}>
-						<div className="d-flex justify-content-between align-items-start w-100">
+					<Col sm={{ span: 8 }}>
+						<div className="d-flex justify-content-between align-items-start flex-column flex-sm-row w-100">
 							{getItems().map(item => {
 								return (
 									<FooterItems
