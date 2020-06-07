@@ -2,17 +2,12 @@ import React, {useContext, useEffect, useState} from "react";
 import axios from "../axios-api";
 import {LangContext} from "../store";
 import Router from "next/router";
-import {useModal} from "../hooks";
-import {parseCookies} from "../helpers/utils";
 import Fade from 'react-reveal/Fade';
 import {Carousel, Col, Row} from "react-bootstrap";
 import {CompilationsCarousel, Heading, NewHeader, PreCarousel, ProductsCarousel} from "../components";
 
-const LandingPage = ({feedback, books, audioBooks, bookCollections, audioCollections, lang, error}) => {
+const LandingPage = ({ books, audioBooks, bookCollections, audioCollections, lang, error}) => {
     const [loading, setLoading] = useState(false);
-    const [rate, setRate] = useState(4);
-
-    const reviewModal = useModal();
     const langContext = useContext(LangContext);
 
     useEffect(() => {
@@ -21,25 +16,6 @@ const LandingPage = ({feedback, books, audioBooks, bookCollections, audioCollect
     // Return error instead of page if there is an error while fetching data from database
     if (error) return <h3>{error}</h3>;
 
-    // Functions
-    const rateChangedHandler = id => {
-        setRate(id + 1);
-    };
-    const reviewSubmitHandler = text => {
-        const formData = new FormData();
-        formData.append("text", text);
-        formData.append("rate", rate);
-        axios
-            .post("/feedback", formData, {
-                headers: {
-                    Authorization: `Bearer ${parseCookies(null).token}`
-                }
-            })
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
-    };
-
-    //  JSX
 
     // multilang
     lang = langContext.lang;

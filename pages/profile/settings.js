@@ -78,7 +78,7 @@ const SettingsPage = ({ userData, error }) => {
 							setSubmitting(true);
 							updatePersonalInformationHandler(values)
 								.then(res => {
-									console.log(res);
+
 								})
 								.catch(err => console.log(err))
 								.finally(() => {
@@ -159,7 +159,7 @@ const SettingsPage = ({ userData, error }) => {
 							setSubmitting(true);
 							updatePasswordHandler(values)
 								.then(res => {
-									console.log(res);
+
 								})
 								.catch(err => console.log(err))
 								.finally(() => {

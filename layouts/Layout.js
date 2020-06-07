@@ -43,7 +43,6 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, err
 			isSignUp ? fPasswordControl.value : passwordControl.value,
 			isSignUp
 		);
-		console.log("Auth submitted!");
 	};
 	const onSearch = event => {
 		event.preventDefault();

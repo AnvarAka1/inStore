@@ -37,7 +37,6 @@ const ProfileLayout = ({children}) => {
                 staticArray.forEach(el=>{
                         el.href = el.href + "?l=" + langContext.lang
                 });
-                console.log(staticArray)
                 staticArray[0].count = cartContext.cart.length;
                 finalArray = [...finalArray, ...staticArray];
                 setNavigationItems(finalArray);

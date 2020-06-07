@@ -1,0 +1,24 @@
+.PaymentMethod{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 50px 0;
+  button{
+    border-radius: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    width: 40%;
+    font-size: 1.1rem;
+    height: 120px;
+    background: #E7E7E7;
+    outline: none;
+    border: none;
+    transition: .25s ease color, .25s ease background-color;
+    &:hover{
+      background: #00C708;
+      color: white;
+    }
+  }
+}

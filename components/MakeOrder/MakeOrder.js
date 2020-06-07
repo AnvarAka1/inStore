@@ -32,7 +32,7 @@ const makeOrder = ({ codeControl, isValidCode, productCount, currentPrice, oldPr
 				<h6>Итого:</h6>
 				<h6>{currentPrice}</h6>
 			</div>
-			<Button onClick={ordered} type="submit">
+			<Button onClick={ordered} type="submit" disabled={productCount < 1}>
 				Оформить заказ
 			</Button>
 		</div>

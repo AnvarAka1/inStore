@@ -31,7 +31,6 @@ const LibraryPage = ({ books, error }) => {
 
 export const getServerSideProps = async ({ req, query }) => {
 	const lang = ["ru", "en", "uz"];
-	console.log(lang[+query.l || 0]);
 	let res = null;
 	let error = null;
 	try {

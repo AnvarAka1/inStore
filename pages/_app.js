@@ -63,7 +63,30 @@ const MyComponent = ({ children, store }) => {
 	const getIds = () => {
 		return cart.map(c => c.id).join(",");
 	};
-
+	const getCase = () => {
+		const cartLength = cart.length;
+		// type 0 => only e-books or audio books
+		// type 1 => only printed books
+		// type 2 => mixed
+		let type = 0;
+		let i = 0;
+		cart.forEach((c) => {
+			if(c.book_type === 2) i++; // counter of printed books
+		})
+		// Check for the type
+		if(i === 0) type = 0;
+		else if (i === cart.length) type = 1;
+		else type = 2;
+		return type;
+	}
+	const getBooksByType = (type) => {
+		const cartCopy = [...cart];
+		return cartCopy.filter(c => +c.book_type === type)
+	}
+	const getBooksExceptType = (type) =>{
+		const cartCopy = [...cart];
+		return cartCopy.filter(c => +c.book_type !== type)
+	}
 	return (
 		<LangContext.Provider value={{ lang, langs: ["ru", "en", "uz"], onChangeLang: changeLangHandler }}>
 			<AuthModalContext.Provider value={{ authModal }}>
@@ -73,7 +96,10 @@ const MyComponent = ({ children, store }) => {
 						onAddRemoveItem: addRemoveItemFromCart,
 						onFindInCart: findItemInCart,
 						onClearCart: clearCartHandler,
-						getIds
+						getIds,
+						getCase,
+						getBooksByType,
+						getBooksExceptType
 					}}
 				>
 					<Layout cartCount={cart.length}>{children}</Layout>

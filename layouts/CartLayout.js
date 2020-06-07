@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import Router from "next/router";
 import { useForm } from "../hooks";
-import { CartContext } from "../store";
+import {CartContext, LangContext} from "../store";
 import { Row, Col } from "react-bootstrap";
 import { MakeOrder } from "../components";
 
 const CartLayout = ({ children, isOrderPage }) => {
 	const [currentPrice, setCurrentPrice] = useState(0);
 	const [oldPrice, setOldPrice] = useState(0);
+	const [orderCase, setOrderCase] = useState(0);
 	const cartContext = useContext(CartContext);
+	const langContext = useContext(LangContext)
 	const codeControl = useForm();
 	useEffect(() => {
 		const oldPrice = cartContext.cart.reduce((sum, product) => {
@@ -19,11 +21,25 @@ const CartLayout = ({ children, isOrderPage }) => {
 		}, 0);
 		setOldPrice(oldPrice);
 		setCurrentPrice(currentPrice);
-	}, [cartContext]);
+		setOrderCase(cartContext.getCase());
+	}, [cartContext.cart]);
+	useEffect(() => {
+		Router.replace({
+			pathname: Router.pathname,
+			query:{
+				l: langContext.lang,
+				case: orderCase
+			}
+		})
+	}, [langContext.lang, orderCase])
 	const orderHandler = () => {
 		if (!isOrderPage) {
 			Router.push({
-				pathname: "/cart/order"
+				pathname: "/cart/order",
+				query: {
+					l: langContext.lang,
+					case: orderCase
+				}
 			});
 		}
 	};
