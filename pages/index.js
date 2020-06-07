@@ -141,14 +141,14 @@ const getCarouselItems = () => [
     {
         id: 0,
         titles: ["Электронные книги и Видео уроки", "E-books and Videolessons", "Uzb"],
-        img: "/images/main/books/carousel1.png",
+        img: "/images/main/books/carousel.png",
         link: "/"
     },
 
     {
         id: 1,
         titles: ["Электронные книги и Видео уроки", "E-books and Videolessons", "Uzb"],
-        img: "/images/main/books/carousel1.png",
+        img: "/images/main/books/carousel.png",
         link: "/"
     }
 ];
