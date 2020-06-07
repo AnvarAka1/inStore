@@ -49,7 +49,7 @@ const OrderPage = props => {
     }
     const submitPaymentMix = () => {
         // true - online fully
-        if(isAllOnline) purchaseHandler().then(res => location.href = res.data.redirect_url)
+        if(isAllOnline) purchaseHandler().then(res => location.href = res.data.redirect_url).catch(err => console.log(err))
         else{
         // false - separate online, audio from printed books and then submit one by one
             fData.delete('books')
@@ -57,12 +57,15 @@ const OrderPage = props => {
             const printedBooksIds = cartContext.getBooksByType(2);
             fData.append('books', printedBooksIds)
             purchaseHandler().then(res => {
+                // get online and audio books
                 const ebooksIds = cartContext.getBooksExceptType(2);
                 fData.delete('books')
                 fData.append('books', ebooksIds)
-                purchaseHandler().then(res => location.href = res.data.redirect_url).catch(err => console.log(err))
+                return purchaseHandler()
             })
-            // get online and audio books
+                .then(res => location.href = res.data.redirect_url)
+                .catch(err => console.log(err))
+
         }
     }
     const initFormData = ({phone, name, email, city, district, street, house, address, comment}) => {
