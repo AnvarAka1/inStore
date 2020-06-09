@@ -54,13 +54,19 @@ const OrderPage = props => {
         // false - separate online, audio from printed books and then submit one by one
             fData.delete('books')
             // get printed books
-            const printedBooksIds = cartContext.getBooksByType(2);
+            const printedBooksIds = cartContext.getBooksByType(2).map(el => el.id);
             fData.append('books', printedBooksIds)
+            fData.delete('payment_type')
+            fData.append('payment_type', 1)
+
             purchaseHandler().then(res => {
                 // get online and audio books
-                const ebooksIds = cartContext.getBooksExceptType(2);
+                const ebooksIds = cartContext.getBooksExceptType(2).map(el => el.id);
                 fData.delete('books')
+                fData.delete('payment_type')
                 fData.append('books', ebooksIds)
+                fData.append('payment_type', (methodOfPayment + 1).toString())
+
                 return purchaseHandler()
             })
                 .then(res => location.href = res.data.redirect_url)
