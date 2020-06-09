@@ -195,7 +195,7 @@ p {
 
   }
   @media(max-width: 480px) {
-    width: 200px;
+    width: 135px;
 
   }
 }
@@ -221,6 +221,14 @@ p {
 
     &.active {
       background: #014c8d;
+    }
+    @media(max-width: 768px){
+      width: 10px;
+      height: 10px;
+    }
+    @media(max-width: 575px){
+      width: 8px;
+      height: 8px;
     }
   }
 }
@@ -319,6 +327,9 @@ p {
     height: 100%;
     color: white;
     font-weight: bold;
+  }
+  @media(max-width: 768px){
+    padding: 1px 0 1px;
   }
 }
 

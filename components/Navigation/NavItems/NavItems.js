@@ -13,20 +13,20 @@ const navItems = ({authModalShow, cartCount, name, isAuthorized, onLogout, onCha
     return (
         <div className={`${classes.NavItems} ${isMobile && classes.IsMobile} `}>
             {/* if the user is authorized, then the "favourites are not displayed in navbar" */}
-            {!isAuthorized && (
-                <div>
-                    <div className="list">
-                        <Link href="favorite">
-                            <a>
-                                <div className="d-flex align-items-center">
-                                    <img src="/images/icons/star.png" className="icon icon-sm mr-1" alt="favourite"/>
-                                    <p className="text-mobile-invisible">{content.favourites[lang]}</p>
-                                </div>
-                            </a>
-                        </Link>
-                    </div>
-                </div>
-            )}
+            {/*{!isAuthorized && (*/}
+            {/*    <div>*/}
+            {/*        <div className="list">*/}
+            {/*            <Link href="favorite">*/}
+            {/*                <a>*/}
+            {/*                    <div className="d-flex align-items-center">*/}
+            {/*                        <img src="/images/icons/star.png" className="icon icon-sm mr-1" alt="favourite"/>*/}
+            {/*                        <p className="text-mobile-invisible">{content.favourites[lang]}</p>*/}
+            {/*                    </div>*/}
+            {/*                </a>*/}
+            {/*            </Link>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*)}*/}
 
             <div>
                 <div className="list">
