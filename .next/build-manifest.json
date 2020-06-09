@@ -26,10 +26,6 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
-    "/cart": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/cart/order": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"

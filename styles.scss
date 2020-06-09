@@ -295,7 +295,7 @@ p {
 .circle {
   display: flex;
   align-items: center;
-  font-size: .75rem;
+
   justify-content: center;
   background: #ff0000;
   border-radius: 50%;
@@ -307,9 +307,11 @@ p {
   position: absolute;
   bottom: -4px;
   left: -4px;
-  padding: 1px 0;
+  padding: 3px 0 1px;
   line-height: normal;
-
+  p{
+    font-size: .65rem;
+  }
   * {
     line-height: 100%;
     text-align: center;
