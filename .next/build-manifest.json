@@ -26,11 +26,11 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
-    "/cart/order": [
+    "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/profile/orders": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

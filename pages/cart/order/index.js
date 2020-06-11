@@ -205,10 +205,6 @@ const OrderPage = props => {
                                             )}
                                         </Card.Body>
                                     </Card>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col md={6}>
                                     <Card>
                                         <Card.Header>КОНТАКТНАЯ ИНФОРМАЦИЯ</Card.Header>
                                         <Card.Body>
@@ -237,7 +233,7 @@ const OrderPage = props => {
                                         </Card>}
                                 </Col>
                                 <Col md={6}>
-                                    <Card>
+                                    {props.queryCase !== 0 && <Card>
                                         <Card.Header>АДРЕС ДОСТАВКИ</Card.Header>
                                         <Card.Body>
                                             <FormikGroup
@@ -270,8 +266,8 @@ const OrderPage = props => {
                                                 Указать в формате КВАРТАЛ-ДОМ-КВАРТИРА
                                             </FormikGroup>
                                         </Card.Body>
-                                    </Card>
-                                    {props.queryCase !== 2 && <Card className="mt-3">
+                                    </Card>}
+                                    {props.queryCase !== 2 && <Card>
                                         <Card.Header>Оставьте комментарии</Card.Header>
                                         <Card.Body>
                                             <FormikGroup
@@ -286,6 +282,8 @@ const OrderPage = props => {
                                         </Card.Body>
                                     </Card>}
                                 </Col>
+
+
                             </Row>
                         </CartLayout>
                     </Form>
