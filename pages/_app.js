@@ -10,6 +10,13 @@ import "react-multi-carousel/lib/styles.css";
 import "../styles.scss";
 import App from "next/app";
 import Router from "next/router";
+import NProgress from 'nprogress'
+
+Router.events.on('routeChangeStart', () => {
+	NProgress.start()
+})
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
 
 const MyComponent = ({ children, store }) => {
 	const [cart, setCart] = useState([]);
