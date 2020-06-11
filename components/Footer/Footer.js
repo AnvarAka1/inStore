@@ -11,7 +11,7 @@ const footer = ({ lang }) => {
 	};
 	return (
 		<footer className={`${classes.Footer} text-left`}>
-			<Container fluid>
+			<Container fluid className="pl-5 pr-5">
 				<Row>
 					<Col sm={4}>
 						<Logo />
