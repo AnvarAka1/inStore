@@ -4,7 +4,7 @@ import axios from "../../axios-api";
 import {connect} from "react-redux";
 import {useForm} from "../../hooks";
 import {CartContext, AuthModalContext, LangContext} from "../../store";
-
+import {useSnackbar} from "../../components/Snackbar/Snackbar";
 import {Row, Col} from "react-bootstrap";
 import {ProductDetails, ProductDescription, Comments, ProductsCarousel} from "../../components/";
 import Router from "next/router";
@@ -18,6 +18,7 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
     const langContext = useContext(LangContext);
     const authModalContext = useContext(AuthModalContext);
     const commentControl = useForm();
+    const snackbarOpenHandler = useSnackbar()
     useEffect(() => {
         setBook(bookProps);
     }, [bookProps]);
@@ -27,6 +28,16 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
     const expandDescription = () => {
         setIsDescriptionExpanded(true);
     };
+    const cartHandler = (book) => {
+        const content = {
+            adds: ['Добавлено в корзину', 'Added to cart', 'Uzb'],
+            removes: ['Удалено с корзины', 'Removed from cart', 'Uzb']
+        }
+        cartContext.onAddRemoveItem(book)
+        const inCart = cartContext.onFindInCart(book.id)
+        snackbarOpenHandler(inCart ? content.adds[lang] : content.removes[lang])
+
+    }
     const commentSubmitHandler = event => {
         event.preventDefault();
         const formData = new FormData();
@@ -80,7 +91,7 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
         lang={lang}
         expandDescription={expandDescription}
         isDescriptionExpanded={isDescriptionExpanded}
-        cartClicked={() => cartContext.onAddRemoveItem(book)}
+        cartClicked={() => cartHandler(book)}
         isInCart={cartContext.onFindInCart(book.id)}
         favouriteClicked={favouriteHandler}
         isAuthorized={isAuthorized}
@@ -103,7 +114,7 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
                             lang={lang}
                             expandDescription={expandDescription}
                             isDescriptionExpanded={isDescriptionExpanded}
-                            cartClicked={() => cartContext.onAddRemoveItem(book)}
+                            cartClicked={() => cartHandler(book)}
                             isInCart={cartContext.onFindInCart(book.id)}
                             favouriteClicked={favouriteHandler}
                             isAuthorized={isAuthorized}

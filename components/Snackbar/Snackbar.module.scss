@@ -1,0 +1,35 @@
+.Snackbar{
+  min-width: 200px;
+  max-width: 300px;
+  text-align: center;
+  padding: 5px 10px;
+  font-weight: bold;
+  //background-color: rgba(0, 0, 0, 0.75);
+  background-color: green;
+  color: white;
+  z-index: 99999999;
+  position: fixed;
+  bottom: 10px;
+  //top: 5px;
+  right: 5px;
+  left: 5px;
+  margin: auto;
+  border-radius: 5px;
+
+  transition: opacity .5s ease;
+  @media(max-width: 480px){
+    max-width: 200px;
+    min-width: 100px;
+  }
+  &.Open{
+    animation: open .15s linear;
+  }
+  &.Close{
+    opacity: 0;
+  }
+  @keyframes open {
+    from { opacity: 0 }
+    to {opacity: 1}
+  }
+}
+
