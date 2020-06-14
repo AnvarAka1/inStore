@@ -87,6 +87,7 @@ const OrderPage = props => {
         formData.append("comment", comment);
         formData.append("payment_type", (methodOfPayment + 1).toString());
         formData.append("books", cartContext.getIds());
+        formData.append('source', navigator.userAgent)
         fData = formData;
     }
     const purchaseHandler = () => {
