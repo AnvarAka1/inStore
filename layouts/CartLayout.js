@@ -49,6 +49,7 @@ const CartLayout = ({ children, isOrderPage }) => {
 			<Col md={9}>{children}</Col>
 			<Col md={3}>
 				<MakeOrder
+					lang={langContext.lang}
 					isValidCode={true}
 					currentPrice={currentPrice}
 					oldPrice={oldPrice}

@@ -1,18 +1,34 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
-const makeOrder = ({ codeControl, isValidCode, productCount, currentPrice, oldPrice, ordered }) => {
+import {Button} from "react-bootstrap";
+
+const makeOrder = ({ productCount, currentPrice, oldPrice, ordered, lang }) => {
+	const content = {
+		firstRowItems: ['товара на сумму', 'products for', 'Uzb'],
+		currencies: ['сум', "so'm", "so'm"],
+		discounts: ['Все скидки','All discounts', 'Uzb'],
+		totals: ['Итого', 'Total', 'Uzb'],
+		checkouts: ['Оформить заказ', 'Checkout', 'Uzb']
+	}
 	return (
 		<div>
 			<h6>Сумма</h6>
 			<table className="w-100">
 				<tbody>
 					<tr>
-						<th>{productCount} товара на сумму</th>
-						<th>{oldPrice} сум</th>
+						<th>
+							<p>{productCount} {content.firstRowItems[lang]}</p>
+						</th>
+						<th>
+							<p className='text-right'>{oldPrice} {content.currencies[lang]}</p>
+						</th>
 					</tr>
 					<tr>
-						<th>Все скидки</th>
-						<th>{currentPrice - oldPrice} сум</th>
+						<th>
+							<p>{content.discounts[lang]}</p>
+						</th>
+						<th>
+							<p className='text-right'>{currentPrice - oldPrice} {content.currencies[lang]}</p>
+						</th>
 					</tr>
 				</tbody>
 			</table>
@@ -29,11 +45,11 @@ const makeOrder = ({ codeControl, isValidCode, productCount, currentPrice, oldPr
 			</Form> */}
 			<hr />
 			<div className="d-flex justify-content-between align-items-center">
-				<h6>Итого:</h6>
+				<h6>{content.totals[lang]}</h6>
 				<h6>{currentPrice}</h6>
 			</div>
 			<Button onClick={ordered} type="submit" disabled={productCount < 1}>
-				Оформить заказ
+				{content.checkouts[lang]}
 			</Button>
 		</div>
 	);

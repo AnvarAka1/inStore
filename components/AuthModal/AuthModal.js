@@ -141,8 +141,8 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkb
 						onChange={checkboxControl.onChange}
 					/>
 
-					<Link href="/">
-						<a className="text-small">{content.loginForm.accesses[lang]}</a>
+					<Link href="/forgot">
+						<a className="text-small" onClick={modal.onHide}>{content.loginForm.accesses[lang]}</a>
 					</Link>
 					<Button type="submit" className="w-100 mt-2 pt-3 pb-3" disabled={login.isSubmitting}>
 						<h6 className="mb-0">{content.loginForm.buttons[lang]}</h6>

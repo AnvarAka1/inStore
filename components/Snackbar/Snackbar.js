@@ -2,6 +2,10 @@ import React, {useContext, useEffect, useState} from 'react';
 import classes from './Snackbar.module.scss'
 import Context from './context'
 
+export const constants = {
+    DANGER: 'red',
+    SUCCESS: 'green'
+}
 export const useSnackbar = () => {
     const { openHandler } = useContext(Context)
     return openHandler

@@ -76,7 +76,7 @@ export const auth = (name, email, phone, password, isSignup, setSubmitting) => {
 					dispatch(
 						authFail([
 							"Неверный email (номер телефона) или пароль",
-							"Wrong email (phone number) or password",
+							"Wrong email (phone number) or restore",
 							"Uzb"
 						])
 					);

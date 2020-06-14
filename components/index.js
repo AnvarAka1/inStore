@@ -33,3 +33,4 @@ export {default as Table} from './Table/Table';
 export {default as PaymentMethod} from './Payment/PaymentMethod'
 export {default as Payment} from './Payment/Payment'
 export {default as Snackbar} from './Snackbar/Snackbar'
+export {default as AddressForm} from './Forms/AddressForm'

@@ -39,7 +39,6 @@ const LandingPage = ({ books, audioBooks, bookCollections, audioCollections, lan
         <React.Fragment>
             <Row className="mb-4">
                 <Col>
-
                     <Fade>
                         <section>
                             <Carousel>

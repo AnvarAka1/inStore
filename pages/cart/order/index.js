@@ -8,7 +8,7 @@ import axios from "../../../axios-api";
 import {Form, Formik} from "formik";
 import {object, string} from "yup";
 import {FormikGroup} from "../../../components/UI";
-import {Card, Modal, Success, Payment, PaymentMethod} from "../../../components";
+import {Card, Modal, Success, Payment, PaymentMethod, AddressForm} from "../../../components";
 import {Row, Col, Button} from "react-bootstrap";
 import {connect} from "react-redux";
 import {CartLayout} from "../../../layouts";
@@ -97,6 +97,25 @@ const OrderPage = props => {
         });
     };
     const lang = langContext.lang;
+    const initialValues = {
+        phone: props.profile?.phone || "",
+        name: props.profile?.fio || "",
+        email: props.profile?.email || "",
+        city: props.profile?.city || "Ташкент",
+        district: props.profile?.region || "Сергелийский",
+        street: props.profile?.street || "",
+        house: props.profile?.house || "",
+        address: props.profile?.full_adress || "",
+        comment: ""
+    }
+    const validationSchema = object({
+        phone: string().required("Введите номер"),
+        name: string().required("Имя обязательно"),
+        email: string().email(),
+        street: props.queryCase === 0 ? string() : string().required("Введите улицу"),
+        house: props.queryCase === 0 ? string() : string().required("Введите номер дома"),
+        address: props.queryCase === 0 ? string() : string().required("Заполните это поле")
+    })
     const paymentCard = <Card className="mt-3">
         <Card.Header>СПОСОБ ОПЛАТЫ</Card.Header>
         <Card.Body>
@@ -124,6 +143,7 @@ const OrderPage = props => {
                 <Card.Body><PaymentMethod lang={lang} clicked={paymentHandler}/></Card.Body>
             </Card>}
     </Modal>
+
     return (
         <React.Fragment>
             <Modal modal={purchaseModal}>
@@ -133,25 +153,8 @@ const OrderPage = props => {
             </Modal>
             {paymentMethodModal}
             <Formik
-                initialValues={{
-                    phone: props.profile?.phone || "",
-                    name: props.profile?.fio || "",
-                    email: props.profile?.email || "",
-                    city: "Ташкент",
-                    district: "Сергелийский",
-                    street: "",
-                    house: "",
-                    address: "",
-                    comment: ""
-                }}
-                validationSchema={object({
-                    phone: string().required("Введите номер"),
-                    name: string().required("Имя обязательно"),
-                    email: string().email(),
-                    street: props.queryCase === 0 ? string() : string().required("Введите улицу"),
-                    house: props.queryCase === 0 ? string() : string().required("Введите номер дома"),
-                    address: props.queryCase === 0 ? string() : string().required("Заполните это поле")
-                })}
+                initialValues={initialValues}
+                validationSchema={validationSchema}
                 onSubmit={values => {
                     if (props.isAuthorized) {
                         initFormData(values)
@@ -236,32 +239,7 @@ const OrderPage = props => {
                                     {props.queryCase !== 0 && <Card>
                                         <Card.Header>АДРЕС ДОСТАВКИ</Card.Header>
                                         <Card.Body>
-                                            <FormikGroup
-                                                name="city"
-                                                as="select"
-                                                options={null}
-                                                {...formik.getFieldProps("city")}
-                                                size="sm"
-                                                options={cities()}
-                                            >
-                                                Выберите город*
-                                            </FormikGroup>
-                                            <FormikGroup
-                                                name="district"
-                                                as="select"
-                                                options={null}
-                                                {...formik.getFieldProps("district")}
-                                                size="sm"
-                                                options={districts()}
-                                            >
-                                                Выберите район*
-                                            </FormikGroup>
-                                            <FormikGroup name="street" {...formik.getFieldProps("street")} size="sm">
-                                                Улица*
-                                            </FormikGroup>
-                                            <FormikGroup name="house" {...formik.getFieldProps("house")} size="sm">
-                                                Номер дома*
-                                            </FormikGroup>
+                                            <AddressForm getFieldProps={formik.getFieldProps} />
                                             <FormikGroup name="address" {...formik.getFieldProps("address")} size="sm">
                                                 Указать в формате КВАРТАЛ-ДОМ-КВАРТИРА
                                             </FormikGroup>
@@ -282,8 +260,6 @@ const OrderPage = props => {
                                         </Card.Body>
                                     </Card>}
                                 </Col>
-
-
                             </Row>
                         </CartLayout>
                     </Form>

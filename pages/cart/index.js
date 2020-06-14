@@ -8,19 +8,25 @@ const CartPage = props => {
 	const cartContext = useContext(CartContext);
 	const langContext = useContext(LangContext);
 	const lang = langContext.lang;
+	const content = {
+		titles: ['Корзина', 'Cart', 'Uzb'],
+		totals: ['Всего в корзине', 'Total in cart', 'Uzb'],
+		resets: ['Сбросить корзину', 'Reset cart', 'Uzb'],
+		empties: ['Корзина пуста', 'Cart is empty', 'Uzb']
+	}
 	return (
 		<CartLayout>
 			<Row>
 				<Col>
-					<h2>Корзина</h2>
+					<h2>{content.titles[lang]}</h2>
 				</Col>
 			</Row>
 			<Row>
 				<Col>
 					<div className="d-flex align-items-center">
-						<h3 className="text-normal mb-0 mr-3">Всего в корзине {cartContext.cart.length}</h3>
+						<h3 className="text-normal mb-0 mr-3">{content.totals[lang]} {cartContext.cart.length}</h3>
 						<Button variant="secondary text-small" onClick={cartContext.onClearCart}>
-							Сбросить корзину
+							{content.resets[lang]}
 						</Button>
 					</div>
 				</Col>
@@ -30,7 +36,7 @@ const CartPage = props => {
 					<Products items={cartContext.cart} onAddRemoveItem={cartContext.onAddRemoveItem} lang={lang} />
 				) : (
 					<Col>
-						<h4 className="text-secondary">Корзина пуста</h4>
+						<h4 className="text-secondary">{content.empties[lang]}</h4>
 					</Col>
 				)}
 			</Row>

@@ -5,10 +5,11 @@ import classes from "./Product.module.scss";
 import Link from "next/link";
 const product = ({ id, image, title, author, rate, current_price, price, isVideo, onAddRemoveItem, lang }) => {
 	const content = {
-		remove: ["Удалить из корзины", "Remove from cart", "Uzb"]
+		remove: ["Удалить из корзины", "Remove from cart", "Uzb"],
+		currency: ["сум", "so'm", "so'm"]
 	};
 	return (
-		<React.Fragment>
+		<div>
 			<div className={classes.Product}>
 				<Link
 					href={`/${isVideo ? "videos" : "books"}/[id]?l=${lang}`}
@@ -36,7 +37,7 @@ const product = ({ id, image, title, author, rate, current_price, price, isVideo
 				>
 					<a>
 						<div className="d-flex align-items-end mt-1">
-							<p className="text-danger text-bold mb-0 mr-1 text-md">{current_price}</p>{" "}
+							<p className="text-danger text-bold mb-0 mr-1 text-md">{current_price} {content.currency[lang]}</p>
 							<p className="text-xsmall text-crossed">{price}</p>
 						</div>
 					</a>
@@ -47,7 +48,7 @@ const product = ({ id, image, title, author, rate, current_price, price, isVideo
 					{content.remove[lang]}
 				</Button>
 			)}
-		</React.Fragment>
+		</div>
 	);
 };
 
