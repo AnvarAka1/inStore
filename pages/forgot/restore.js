@@ -1,23 +1,56 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {LangContext} from "../../store";
-import {Button, Col, Row} from "react-bootstrap";
+import {Button, Col, Row, Alert} from "react-bootstrap";
 import {Card} from "../../components";
 import {Form, Formik} from "formik";
 import {object, string} from "yup";
 import {FormikGroup} from "../../components/UI";
+import axios from '../../axios-api'
+import Router from "next/router";
 
-function RestorePage() {
+function RestorePage({ query }) {
+    const [count, setCount] = useState(3)
+    const [isSent, setIsSent] = useState(false)
+    const [error, setError] = useState(null)
     const langContext = useContext(LangContext)
     const lang = langContext.lang
+    useEffect(() => {
+        if(count < 1) Router.replace(`/?l=${lang}`)
+        let timer = null
+        if(isSent && !error){
+            timer = setTimeout(() => {
+                setCount(count - 1)
+            }, 1000)
+        }
+        return () => clearTimeout(timer)
+    }, [isSent, count])
+
     const content = {
         titles: ['Восстановление аккаунта', 'Restoring account', 'Uzb'],
         headers: ['Измените свой пароль', 'Change your password', 'Uzb'],
         buttons: ['Отправить', 'Submit', 'Uzb'],
         fPasswords: ['Новый пароль', 'New password', 'Uzb'],
-        sPasswords: ['Повторите пароль', 'Repeat password', 'Uzb']
+        sPasswords: ['Повторите пароль', 'Repeat password', 'Uzb'],
+        errorMessages: ['Что то пошло не так. Попробуйте еще раз', 'Something went wrong. Try again', 'Uzb'],
+        successMessages: [
+            'Получилось. Можете войти используя Ваш новый пароль',
+            'Success. You can now login with Your new password',
+            'Uzb'
+        ]
     }
     const submitHandler = (values) => {
-        console.log(values)
+        setIsSent(false)
+        setError(null)
+        const formData = new FormData()
+        formData.append('password', values.fPassword)
+        formData.append('token', query.token)
+        axios.post('/accounts/password/retrieve', formData).then(res => {
+            setIsSent(true)
+        }).catch(err => {
+            console.log(err)
+        }).finally(() => {
+            setIsSent(true)
+        })
     }
     return (
         <React.Fragment>
@@ -28,10 +61,12 @@ function RestorePage() {
             </Row>
             <Row className="mt-4">
                 <Col md={{span: '6', offset: '3'}}>
-
                     <Card>
                         <Card.Header>{content.headers[lang]}</Card.Header>
                         <Card.Body>
+                            {isSent && <Alert variant={error ? 'danger' : 'success'}>
+                                {error ? content.errorMessages[lang] : content.successMessages[lang]}
+                            </Alert>}
                             <Formik onSubmit={submitHandler}
                                     initialValues={{
                                         fPassword: '',
@@ -72,5 +107,11 @@ function RestorePage() {
         </React.Fragment>
     )
 }
-
+export const getServerSideProps = ({query}) => {
+    return {
+        props: {
+            query
+        }
+    }
+}
 export default RestorePage

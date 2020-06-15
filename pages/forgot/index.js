@@ -5,9 +5,11 @@ import {Row, Col, Button, Alert} from 'react-bootstrap'
 import {Formik, Form} from 'formik'
 import {string, object} from 'yup'
 import {LangContext} from '../../store'
+import axios from '../../axios-api'
 
 function ForgotPage() {
     const [isSent, setIsSent] = useState(false)
+    const [error, setError] = useState(null)
     const langContext = useContext(LangContext)
 
     const lang = langContext.lang
@@ -19,7 +21,17 @@ function ForgotPage() {
         buttons: ['Отправить', 'Submit', 'Uzb']
     }
     const submitHandler = (values) => {
-        console.log(values)
+        setError(null)
+        setIsSent(false)
+        const formData = new FormData()
+        formData.append('email', values.email)
+        axios.post('/accounts/password/forgot', formData).then(res => {
+        }).catch(err => {
+            setError('No such email')
+        }).finally(() => {
+            setIsSent(true)
+        })
+
     }
     return (
         <React.Fragment>
@@ -33,7 +45,7 @@ function ForgotPage() {
                     <Card>
                         <Card.Header>{content.headers[lang]}</Card.Header>
                         <Card.Body>
-                            {isSent && <Alert variant='success'>{content.messages[lang]}</Alert>}
+                            {isSent && <Alert variant={error ? 'danger' : 'success'}>{error ? error : content.messages[lang]}</Alert>}
                             <Formik onSubmit={submitHandler}
                                     initialValues={{email: ''}}
                                     validationSchema={
@@ -51,7 +63,7 @@ function ForgotPage() {
                                         >
                                             {content.labels[lang]}
                                         </FormikGroup>
-                                        <Button type='submit' className='mt-2 w-100'>{content.buttons[lang]}</Button>
+                                        <Button type='submit' className='mt-2 w-100' disabled={formik.isSubmitting}>{content.buttons[lang]}</Button>
                                     </Form>
                                 )}
                             </Formik>
