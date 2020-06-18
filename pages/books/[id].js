@@ -35,7 +35,7 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
         }
         cartContext.onAddRemoveItem(book)
         const inCart = cartContext.onFindInCart(book.id)
-        snackbarOpenHandler(inCart ? content.removes[lang] : content.adds[lang], )
+        snackbarOpenHandler(inCart ? content.removes[lang] : content.adds[lang])
 
     }
     const commentSubmitHandler = event => {

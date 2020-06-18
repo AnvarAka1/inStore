@@ -154,6 +154,12 @@ p {
   &-big {
     height: 2rem;
   }
+
+  &-cart {
+   @media(max-width: 480px){
+    height: 1.7rem
+   }
+  }
 }
 
 .img {

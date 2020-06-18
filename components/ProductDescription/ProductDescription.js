@@ -29,7 +29,11 @@ const productDescription = ({
 		boughts: ["Куплено", "Bought", "Uzb"]
 	};
 	const getDiscount = () => {
-		return ((1 - current_price / price) * 100).toFixed(2);
+		let disc = (1 - current_price / price) * 100
+		if(disc.toString().indexOf('.') !== -1){
+			return disc.toFixed(2)
+		}
+		return disc;
 	};
 	let desc = description;
 	if (desc && desc.length > MAX_LENGTH) {

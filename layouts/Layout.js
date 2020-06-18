@@ -34,16 +34,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, err
 	const modeHandler = mode => {
 		setIsSignUp(mode);
 	};
-	const authHandler = event => {
-		event.preventDefault();
-		onAuth(
-			nameControl.value,
-			isSignUp ? emailControl.value : emailPhoneControl.value,
-			phoneControl.value,
-			isSignUp ? fPasswordControl.value : passwordControl.value,
-			isSignUp
-		);
-	};
+
 	const onSearch = event => {
 		event.preventDefault();
 		searchControl.clear();
@@ -78,7 +69,6 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, err
 					showInputMask={showInputMask}
 					isSignUp={isSignUp}
 					modal={authModalContext.authModal}
-					submitted={authHandler}
 					modeHandler={modeHandler}
 					checkboxControl={checkboxControl}
 				/>
