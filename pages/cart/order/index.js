@@ -2,10 +2,9 @@ import React, {useState, useEffect, useContext} from "react";
 import {LangContext, CartContext, AuthModalContext} from "../../../store/";
 import {useModal} from "../../../hooks";
 import InputMask from "react-input-mask";
-import {cities, districts} from "../../../lib/locations";
 import {parseCookies, convertPhoneForBackend} from "../../../helpers/utils";
 import axios from "../../../axios-api";
-import {Form, Formik} from "formik";
+import {ErrorMessage, Form, Formik} from "formik";
 import {object, string} from "yup";
 import {FormikGroup} from "../../../components/UI";
 import {Card, Modal, Success, Payment, PaymentMethod, AddressForm} from "../../../components";
@@ -23,6 +22,7 @@ const OrderPage = props => {
     const authModalContext = useContext(AuthModalContext);
     const purchaseModal = useModal();
     const paymentModal = useModal();
+    const payModal = useModal();
     useEffect(() => {
         setShowInputMask(true);
         setMethodOfPayment(props.queryCase !== 1 ? 2 : 0)
@@ -48,6 +48,19 @@ const OrderPage = props => {
         setStage(stage - 1);
     }
     const submitPaymentMix = () => {
+        if (props.queryCase === 0 || props.queryCase === 1) {
+            purchaseHandler().then(res => {
+                if (methodOfPayment < 2) {
+                    cartContext.onClearCart();
+                    purchaseModal.onShow();
+                } else {
+                    // redirect to another page
+                    // setPaymentLink(res.data.redirect_url);
+                    location.href = res.data.redirect_url;
+                }
+            })
+            return
+        }
         // true - online fully
         if(isAllOnline) purchaseHandler().then(res => location.href = res.data.redirect_url).catch(err => console.log(err))
         else{
@@ -110,9 +123,9 @@ const OrderPage = props => {
         comment: ""
     }
     const validationSchema = object({
-        phone: string().required("Введите номер"),
+        phone: string().min(8).required("Введите номер"),
         name: string().required("Имя обязательно"),
-        email: string().email(),
+        email: string().email().required(),
         street: props.queryCase === 0 ? string() : string().required("Введите улицу"),
         house: props.queryCase === 0 ? string() : string().required("Введите номер дома"),
         address: props.queryCase === 0 ? string() : string().required("Заполните это поле")
@@ -127,7 +140,7 @@ const OrderPage = props => {
                 methodOfPaymentList={getMethodsOfPayment()}
                 queryCase={props.queryCase}
             />
-            {props.queryCase === 2 && <Button onClick={submitPaymentMix} className="mt-2 w-100" type="submit">
+            {<Button onClick={submitPaymentMix} className="mt-2 w-100" type="submit">
                 Оформить заказ
             </Button>}
         </Card.Body>
@@ -144,7 +157,9 @@ const OrderPage = props => {
                 <Card.Body><PaymentMethod lang={lang} clicked={paymentHandler}/></Card.Body>
             </Card>}
     </Modal>
-
+    const pModal = <Modal modal={payModal}>
+        {paymentCard}
+    </Modal>
     return (
         <React.Fragment>
             <Modal modal={purchaseModal}>
@@ -153,6 +168,7 @@ const OrderPage = props => {
                 )}
             </Modal>
             {paymentMethodModal}
+            {pModal}
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
@@ -160,22 +176,7 @@ const OrderPage = props => {
                     if (props.isAuthorized) {
                         initFormData(values)
                         if(props.queryCase !== 2){
-                            purchaseHandler()
-                            .then(res => {
-                                if (methodOfPayment < 2) {
-                                    cartContext.onClearCart();
-                                    purchaseModal.onShow();
-                                } else {
-                                    // redirect to another page
-                                    // setPaymentLink(res.data.redirect_url);
-                                    location.href = res.data.redirect_url;
-                                }
-                            })
-                            .catch(err => {
-                                console.log(err);
-                            })
-                            .finally(() => {
-                            });
+                            payModal.onShow()
                         }else{
                             setStage(stage + 1);
                         }
@@ -197,6 +198,7 @@ const OrderPage = props => {
                                         <Card.Header>Номера телефона*</Card.Header>
                                         <Card.Body>
                                             {showInputMask && (
+                                                <>
                                                 <InputMask
                                                     className="form-control form-control-sm mt-3"
                                                     mask="+\9\98 (99) 999-99-99"
@@ -205,7 +207,12 @@ const OrderPage = props => {
                                                     alwaysShowMask={true}
                                                     value={formik.getFieldProps("phone").value}
                                                     onChange={formik.getFieldProps("phone").onChange}
+
                                                 />
+                                                <span className="text-danger text-small">
+                                                    <ErrorMessage name="phone" />
+                                                </span>
+                                                </>
                                             )}
                                         </Card.Body>
                                     </Card>
@@ -220,21 +227,23 @@ const OrderPage = props => {
                                             </FormikGroup>
                                         </Card.Body>
                                     </Card>
-                                    {props.queryCase !== 2 ? paymentCard
-                                        : <Card className="mt-3">
-                                            <Card.Header>Оставьте комментарии</Card.Header>
-                                            <Card.Body>
-                                                <FormikGroup
-                                                    name="comment"
-                                                    as="textarea"
-                                                    placeholder="Ориентир, дополнительный номер и т.д"
-                                                    {...formik.getFieldProps("comment")}
-                                                    size="sm"
-                                                >
-                                                    Комментарий
-                                                </FormikGroup>
-                                            </Card.Body>
-                                        </Card>}
+                                    {props.queryCase === 2 &&
+                                        (
+                                            <Card className="mt-3">
+                                                <Card.Header>Оставьте комментарии</Card.Header>
+                                                <Card.Body>
+                                                    <FormikGroup
+                                                        name="comment"
+                                                        as="textarea"
+                                                        placeholder="Ориентир, дополнительный номер и т.д"
+                                                        {...formik.getFieldProps("comment")}
+                                                        size="sm"
+                                                    >
+                                                        Комментарий
+                                                    </FormikGroup>
+                                                </Card.Body>
+                                            </Card>
+                                        )}
                                 </Col>
                                 <Col md={6}>
                                     {props.queryCase !== 0 && <Card>

@@ -1,8 +1,9 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { Stars } from "../../";
+import { Stars, TextOverflow } from "../../";
 import classes from "./Product.module.scss";
 import Link from "next/link";
+
 const product = ({ id, image, title, author, rate, current_price, price, isVideo, onAddRemoveItem, lang }) => {
 	const content = {
 		remove: ["Удалить из корзины", "Remove from cart", "Uzb"],
@@ -45,7 +46,7 @@ const product = ({ id, image, title, author, rate, current_price, price, isVideo
 			</div>
 			{onAddRemoveItem && (
 				<Button onClick={onAddRemoveItem} variant="secondary text-small w-100" className="mt-2">
-					{content.remove[lang]}
+					<TextOverflow>{content.remove[lang]}</TextOverflow>
 				</Button>
 			)}
 		</div>

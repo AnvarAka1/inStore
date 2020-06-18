@@ -14,6 +14,12 @@ const CartPage = props => {
 		resets: ['Сбросить корзину', 'Reset cart', 'Uzb'],
 		empties: ['Корзина пуста', 'Cart is empty', 'Uzb']
 	}
+	const responsive = {
+		md: 3,
+		lg: 2,
+		sm: 3,
+		xs: 6
+	}
 	return (
 		<CartLayout>
 			<Row>
@@ -33,7 +39,7 @@ const CartPage = props => {
 			</Row>
 			<Row className="mt-3">
 				{cartContext.cart.length ? (
-					<Products items={cartContext.cart} onAddRemoveItem={cartContext.onAddRemoveItem} lang={lang} />
+					<Products {...responsive} items={cartContext.cart} onAddRemoveItem={cartContext.onAddRemoveItem} lang={lang} />
 				) : (
 					<Col>
 						<h4 className="text-secondary">{content.empties[lang]}</h4>
