@@ -11,7 +11,9 @@ import {Card, Modal, Success, Payment, PaymentMethod, AddressForm} from "../../.
 import {Row, Col, Button} from "react-bootstrap";
 import {connect} from "react-redux";
 import {CartLayout} from "../../../layouts";
+
 let fData = null;
+
 const OrderPage = props => {
     const [showInputMask, setShowInputMask] = useState(false);
     const [methodOfPayment, setMethodOfPayment] = useState(props.queryCase !== 1 ? 2 : 0);
@@ -33,11 +35,6 @@ const OrderPage = props => {
         else paymentModal.onHide()
     }, [stage])
     const methodOfPaymentHandler = (id, percent) => {
-        // if (percent) {
-        // 	setPercentage(percent);
-        // } else {
-        // 	setPercentage(null);
-        // }
         setMethodOfPayment(id);
     };
     const paymentHandler = (condition) => {

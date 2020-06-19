@@ -1,0 +1,9 @@
+.Table {
+  width: 100%;
+  th{
+    padding: 2px 0
+  }
+  th:nth-child(even){
+    text-align: right;
+  }
+}

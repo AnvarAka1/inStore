@@ -7,10 +7,10 @@ import axios from "../../axios-api";
 import {Col, Row} from "react-bootstrap";
 import {Check, Table} from '../../components/';
 
-const OrdersPage = ({ results, error }) => {
+const OrdersPage = ({results, error}) => {
 
     const langContext = useContext(LangContext);
-    if (error) return <ErrorPage />;
+    if (error) return <ErrorPage/>;
     const content = {
         header: ["История заказов", "Order history", "Uzb"]
     }
@@ -23,21 +23,19 @@ const OrdersPage = ({ results, error }) => {
             </Row>
             <Row>
                 <Col>
-
-                    {results &&  results.map((result, index) => (
-                    <div key={index} className="mb-5 overflow-auto">
-                         <Table rows={result.books} lang={langContext.lang}></Table>
-                         <Check order={result} lang={langContext.lang}/>
-                                </div>
-                ))}
+                    {results && results.map((result, index) => (
+                        <div key={index} className="mb-5 overflow-auto">
+                            <Table rows={result.books} lang={langContext.lang} />
+                            <Check order={result} lang={langContext.lang}/>
+                        </div>
+                    ))}
                 </Col>
-
             </Row>
         </ProfileLayout>
     );
 };
 
-export const getServerSideProps = async ({ req, query }) => {
+export const getServerSideProps = async ({req, query}) => {
     const lang = ["ru", "en", "uz"];
     let res = null;
     let error = null;
@@ -57,7 +55,7 @@ export const getServerSideProps = async ({ req, query }) => {
             }
         };
     }
-    const { results } = res.data;
+    const {results} = res.data;
     return {
         props: {
             results
