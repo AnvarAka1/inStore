@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./Comment.module.scss";
 import { Stars } from "../../";
+import Moment from 'react-moment'
 const comment = ({ id, user, rate, text, created_at }) => {
 	return (
 		<li className={classes.Comment}>
@@ -9,7 +10,9 @@ const comment = ({ id, user, rate, text, created_at }) => {
 				<Stars rate={rate} />
 			</div>
 			<p className="text-small mb-4">{text}</p>
-			<p className="text-small">{created_at}</p>
+			<p className="text-small">
+				<Moment format="hh:mm:ss DD/MM/YYYY">{order.created_at}</Moment>
+			</p>
 		</li>
 	);
 };

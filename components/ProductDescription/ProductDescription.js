@@ -52,7 +52,7 @@ const productDescription = ({
 
 	return (
 		<div className={`${classes.ProductDescription} ${isMobile ? classes.IsMobile : ""}`}>
-			<p>{publish_year}</p>
+
 			<h2>{title}</h2>
 			<div className="d-flex justify-content-between align-items-center">
 				<h4 className="text-secondary mb-0">{author}</h4>
