@@ -4,12 +4,12 @@ import {Provider} from "react-redux";
 import {useModal} from "../hooks";
 import withReduxStore from "../helpers/with-redux-store";
 import {CartContext, AuthModalContext, LangContext} from "../store";
-import { Snackbar } from "../components";
 import {Layout} from "../layouts";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-multi-carousel/lib/styles.css";
 import "../styles.scss";
 import App from "next/app";
+import SnackbarProvider from 'react-simple-snackbar'
 import Router from "next/router";
 import NProgress from 'nprogress'
 
@@ -99,22 +99,22 @@ const MyComponent = ({children, store}) => {
     return (
         <LangContext.Provider value={{lang, langs: ["ru", "en", "uz"], onChangeLang: changeLangHandler}}>
             <AuthModalContext.Provider value={{authModal}}>
-                <Snackbar>
-                    <CartContext.Provider
-                        value={{
-                            cart,
-                            onAddRemoveItem: addRemoveItemFromCart,
-                            onFindInCart: findItemInCart,
-                            onClearCart: clearCartHandler,
-                            getIds,
-                            getCase,
-                            getBooksByType,
-                            getBooksExceptType
-                        }}
-                    >
-                        <Layout cartCount={cart.length}>{children}</Layout>
-                    </CartContext.Provider>
-                </Snackbar>
+                    <SnackbarProvider>
+                        <CartContext.Provider
+                            value={{
+                                cart,
+                                onAddRemoveItem: addRemoveItemFromCart,
+                                onFindInCart: findItemInCart,
+                                onClearCart: clearCartHandler,
+                                getIds,
+                                getCase,
+                                getBooksByType,
+                                getBooksExceptType
+                            }}
+                        >
+                            <Layout cartCount={cart.length}>{children}</Layout>
+                        </CartContext.Provider>
+                    </SnackbarProvider>
             </AuthModalContext.Provider>
         </LangContext.Provider>
     );

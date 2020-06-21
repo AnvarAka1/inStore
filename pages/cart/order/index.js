@@ -46,6 +46,8 @@ const OrderPage = props => {
     }
     const submitPaymentMix = () => {
         if (props.queryCase === 0 || props.queryCase === 1) {
+            fData.delete('payment_type')
+            fData.append('payment_type', (methodOfPayment + 1).toString())
             purchaseHandler().then(res => {
                 if (methodOfPayment < 2) {
                     cartContext.onClearCart();
@@ -56,10 +58,11 @@ const OrderPage = props => {
                     location.href = res.data.redirect_url;
                 }
             })
-            return
         }
+        else if(isAllOnline) {
         // true - online fully
-        if(isAllOnline) purchaseHandler().then(res => location.href = res.data.redirect_url).catch(err => console.log(err))
+            purchaseHandler().then(res => location.href = res.data.redirect_url).catch(err => console.log(err))
+        }
         else{
         // false - separate online, audio from printed books and then submit one by one
             fData.delete('books')

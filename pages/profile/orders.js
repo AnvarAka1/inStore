@@ -1,24 +1,25 @@
 import React, {useContext} from "react";
 import {ProfileLayout} from "../../layouts";
-import {LangContext} from "../../store/";
+import { LangContext } from "../../store/";
 import ErrorPage from "../404";
 import {parseCookies} from "../../helpers/utils";
 import axios from "../../axios-api";
 import {Col, Row} from "react-bootstrap";
 import {Check, Table} from '../../components/';
 
-const OrdersPage = ({results, error}) => {
+const OrdersPage = ({ results, error }) => {
 
     const langContext = useContext(LangContext);
     if (error) return <ErrorPage/>;
     const content = {
-        header: ["История заказов", "Order history", "Uzb"]
+        headers: ["История заказов", "Order history", "Uzb"]
     }
+    console.log(results)
     return (
         <ProfileLayout>
             <Row>
                 <Col>
-                    <h2>{content.header[langContext.lang]}</h2>
+                    <h2>{content.headers[langContext.lang]}</h2>
                 </Col>
             </Row>
             <Row>

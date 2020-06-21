@@ -12,7 +12,7 @@ const SeachPage = ({ results }) => {
 			</Row>
 			<Row>
 				{results.length ? (
-					<Products items={results} />
+					<Products items={results} md={2} sm={3} xs={6}/>
 				) : (
 					<Col>
 						<h5 className="text-secondary">Не найдено</h5>

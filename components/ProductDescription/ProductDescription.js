@@ -22,6 +22,7 @@ const productDescription = ({
 	lang,
 	isMobile
 }) => {
+
 	const bookTypes = ["Аудиокнига", "Печатное издание", "Электронная книга"];
 	const content = {
 		removeFromCarts: ["Удалить из корзины", "Remove from cart", "Uzb"],

@@ -4,12 +4,28 @@ import axios from "../../axios-api";
 import {connect} from "react-redux";
 import {useForm} from "../../hooks";
 import {CartContext, AuthModalContext, LangContext} from "../../store";
-import {useSnackbar} from "../../components/Snackbar/Snackbar";
+import {useSnackbar} from "react-simple-snackbar";
 import {Row, Col} from "react-bootstrap";
 import {ProductDetails, ProductDescription, Comments, ProductsCarousel} from "../../components/";
 import Router from "next/router";
 import Fade from 'react-reveal/Fade'
+import Link from "next/link";
 const langs = ['ru', 'en', "uz"];
+
+const options = {
+    position: 'top-right',
+    style: {
+        backgroundColor: 'rgba(0, 0, 0, .75)',
+        color: 'white',
+        zIndex: '999999999',
+        textAlign: 'left',
+        fontSize: '1rem'
+    },
+    closeStyle: {
+        color: 'white',
+        fontSize: '16px',
+    },
+}
 const BookPage = ({bookProps, isAuthorized, query}) => {
     const [book, setBook] = useState(bookProps);
     const [rate, setRate] = useState(0);
@@ -18,7 +34,7 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
     const langContext = useContext(LangContext);
     const authModalContext = useContext(AuthModalContext);
     const commentControl = useForm();
-    const snackbarOpenHandler = useSnackbar()
+    const [openSnackbar] = useSnackbar(options)
     useEffect(() => {
         setBook(bookProps);
     }, [bookProps]);
@@ -31,12 +47,20 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
     const cartHandler = (book) => {
         const content = {
             adds: ['Добавлено в корзину', 'Added to cart', 'Uzb'],
-            removes: ['Удалено с корзины', 'Removed from cart', 'Uzb']
+            removes: ['Удалено с корзины', 'Removed from cart', 'Uzb'],
+            link: ['Перейти в корзину', 'Proceed to cart', 'Uzb']
         }
         cartContext.onAddRemoveItem(book)
         const inCart = cartContext.onFindInCart(book.id)
-        snackbarOpenHandler(inCart ? content.removes[lang] : content.adds[lang])
-
+        const add = (
+            <>
+                {content.adds[lang]}<br />
+                <Link href={`/cart/?l=${lang}`}>
+                    <a className="mt-2 d-inline-block text-warning">{content.link[lang]}</a>
+                </Link>
+            </>
+        )
+        openSnackbar(inCart ? content.removes[lang] : add)
     }
     const commentSubmitHandler = event => {
         event.preventDefault();
@@ -85,17 +109,19 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
     const content = {
         headers: ["Также вас может заинтересовать", "This may be interesting for you", "Uzb"]
     };
-    const mobileProductDescription = <ProductDescription
-        isMobile={true}
-        {...book}
-        lang={lang}
-        expandDescription={expandDescription}
-        isDescriptionExpanded={isDescriptionExpanded}
-        cartClicked={() => cartHandler(book)}
-        isInCart={cartContext.onFindInCart(book.id)}
-        favouriteClicked={favouriteHandler}
-        isAuthorized={isAuthorized}
-    />
+    const mobileProductDescription = (
+            <ProductDescription
+                isMobile={true}
+                {...book}
+                lang={lang}
+                expandDescription={expandDescription}
+                isDescriptionExpanded={isDescriptionExpanded}
+                cartClicked={() => cartHandler(book)}
+                isInCart={cartContext.onFindInCart(book.id)}
+                favouriteClicked={favouriteHandler}
+                isAuthorized={isAuthorized}
+            />
+    )
     return (
         <Row>
             <Col sm={4}>

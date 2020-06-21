@@ -5,7 +5,7 @@ const table = ({rows, lang}) => {
 
     const bookCols = [
         ["#", "#", "#"],
-         ["Книга", "Book", "Kitob"],
+        ["Книга", "Book", "Kitob"],
         ["Цена", "Price", "Uzb"],
         ["Автор", "Author", "Uzb"]
     ]
@@ -19,7 +19,11 @@ const table = ({rows, lang}) => {
         {rows.map(row=>(
             <tr key={row.id}>
                 <td>{row.id}</td>
-                <td><Link href={`/books/[id]?l=${lang}`} as={`/books/${row.id}?l=${lang}`}><a>{row.title}</a></Link></td>
+                <td>
+                    <Link href={`/books/[id]?l=${lang}`} as={`/books/${row.id}?l=${lang}`}>
+                        <a>{row.title}</a>
+                    </Link>
+                </td>
                 <td>{row.current_price}</td>
                 <td>{row.author}</td>
             </tr>

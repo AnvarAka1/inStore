@@ -4,13 +4,10 @@ import { Stars } from "../../components";
 const productDetails = props => {
 	const { lang } = props;
 	const rows = [
-		["ID товара: ", props.book_id],
 		["ISBN: ", props.isbn],
 		["Страниц: ", props.page_count],
-		["Оформление: ", props.formalization],
-		["Иллюстрации: ", props.illustration],
 		["Масса: ", props.mass],
-		["Размеры: ", props.size],
+		["Тип обложки", props.cover],
 		["Подробнее: ", props.link]
 	];
 	return (

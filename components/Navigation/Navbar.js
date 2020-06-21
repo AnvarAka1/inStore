@@ -61,8 +61,6 @@ const navbar = React.forwardRef(
 								</Nav>
 								{search}
 								{navItems}
-								{/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
-								<Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse> */}
 							</Navbar>
 						</Col>
 					</Row>
