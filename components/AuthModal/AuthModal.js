@@ -8,8 +8,8 @@ import { Button, FormCheck, FormGroup, FormLabel, Alert } from "react-bootstrap"
 import InputMask from "react-input-mask";
 import { Form, Formik, ErrorMessage } from "formik";
 import { string, object } from "yup";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookSquare, faVk, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import Social from "./Social";
+
 const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkboxControl, onAuth, lang, error }) => {
 	const content = {
 		login: ["Войти", "Login", "Kirish"],
@@ -174,17 +174,7 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkb
 							<div className={`${classes.Social}  w-100`}>
 								<p className="text-small text-bold mb-3" />
 								<h6>{isSignUp ? content.regForm.titles[lang] : content.loginForm.titles[lang]}:</h6>
-								<div className="d-flex align-items-center justify-content-center">
-									<div className={classes.Fb}>
-										<FontAwesomeIcon icon={faFacebookSquare} />
-									</div>
-									<div className={classes.Vk}>
-										<FontAwesomeIcon icon={faVk} />
-									</div>
-									<div className={classes.Google}>
-										<FontAwesomeIcon icon={faGoogle} />
-									</div>
-								</div>
+								<Social onAuth={onAuth} />
 							</div>
 
 							<h5 className={classes.Or}>or</h5>

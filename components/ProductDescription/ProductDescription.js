@@ -1,9 +1,9 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import classes from "./ProductDescription.module.scss";
+
 const MAX_LENGTH = 128;
 const productDescription = ({
-	publish_year,
 	title,
 	author,
 	book_type,
@@ -52,7 +52,6 @@ const productDescription = ({
 
 	return (
 		<div className={`${classes.ProductDescription} ${isMobile ? classes.IsMobile : ""}`}>
-
 			<h2>{title}</h2>
 			<div className="d-flex justify-content-between align-items-center">
 				<h4 className="text-secondary mb-0">{author}</h4>
@@ -77,10 +76,12 @@ const productDescription = ({
 			<div className="d-flex justify-content-between align-items-end mt-2 mb-4">
 				<h2 className="mb-0 text-accent">{current_price} сум</h2>
 				<div className="d-flex align-items-end ml-4">
-					<div className="text-center">
+					{parseInt(current_price) !== parseInt(price) && (
+						<div className="text-center">
 						<p className="text-crossed text-small text-black">{price} сум</p>
 						<p className="btn btn-primary text-small">{getDiscount()}% Скидка</p>
 					</div>
+					)}
 					{/* Читать фрагмент */}
 					{+book_type === 3 && (
 						<Button onClick={null} className="text-small ml-2" variant="secondary">

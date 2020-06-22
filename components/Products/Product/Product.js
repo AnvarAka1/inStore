@@ -39,7 +39,7 @@ const product = ({ id, image, title, author, rate, current_price, price, isVideo
 					<a>
 						<div className="d-flex align-items-end mt-1">
 							<p className="text-danger text-bold mb-0 mr-1 text-md">{current_price} {content.currency[lang]}</p>
-							<p className="text-xsmall text-crossed">{price}</p>
+							{parseInt(current_price) !== parseInt(price) && <p className="text-xsmall text-crossed">{price}</p>}
 						</div>
 					</a>
 				</Link>
