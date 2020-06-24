@@ -6,9 +6,9 @@ import FooterItems from "./FooterItems/FooterItems";
 
 const footer = ({lang}) => {
     const content = {
-        supports: ["Служба поддержки", "Support service", "Uzb"],
-        socials: ["Мы в социальных сетях", "We are at social media", "Uzb"],
-        payments: ["Оплата", "Payment", "Uzb"]
+        supports: ["Служба поддержки", "Support service", "Qo'llab-quvvatlash xizmati"],
+        socials: ["Мы в социальных сетях", "We are at social media", "Biz ijtimoiy tarmoqlarda"],
+        payments: ["Оплата", "Payment", "To'lov"]
     };
     return (
         <footer className={`${classes.Footer} text-left`}>

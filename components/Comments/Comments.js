@@ -6,15 +6,15 @@ import Comment from "./Comment/Comment";
 import { Stars } from "../";
 const comments = ({ items, rate, commentControl, isAuthorized, rateClicked, onSubmit, onAuth, lang }) => {
 	const content = {
-		reviews: [ "Оставить отзыв", "Leave review", "Uzb" ],
-		send: [ "Отправить", "Submit", "Uzb" ],
+		reviews: [ "Оставить отзыв", "Leave review", "Sharh qoldiring" ],
+		send: [ "Отправить", "Submit", "Yuborish" ],
 		unAuth: [
 			"Отзыв могут отправить авторизованные пользователи.",
 			"Only authorized users can leave reviews",
-			"Uzb"
+			"Vakolatli foydalanuvchilar sharhlarini yuborishlari mumkin"
 		],
-		auth: [ "Пройти АВТОРИЗАЦИЮ", "Login", "Uzb" ],
-		noReviews: [ "Пока нет отзывов", "No reviews yet", "Uzb" ]
+		auth: [ "Пройти АВТОРИЗАЦИЮ", "Login", "Avtorizatsiyadan o'tish" ],
+		noReviews: [ "Пока нет отзывов", "No reviews yet", "Hali sharhlar yo'q" ]
 	};
 	const commentsView = items.map(item => <Comment key={item.id} {...item} />);
 	return (
