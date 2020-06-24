@@ -5,7 +5,7 @@ import Link from "next/link";
 import Fade from 'react-reveal/Fade';
 const heading = ({ className, children, text, href, lang }) => {
 	const content = {
-		buttons: [ "Открыть весь список", "Open full list", "Uzb" ]
+		buttons: [ "Открыть весь список", "Open full list", "Barcha ro'yxatni oching" ]
 	};
 
 	return (

@@ -20,7 +20,7 @@ export const getServerSideProps = async ({ query }) => {
 	const books = res.data.results;
 	return {
 		props: {
-			title: ["Электронные книги", "E-books", "Uzb"],
+			title: ["Электронные книги", "E-books", "Elektron kitoblar"],
 			booksProps: books,
 			url
 		}

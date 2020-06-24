@@ -14,11 +14,11 @@ function ForgotPage() {
 
     const lang = langContext.lang
     const content = {
-        titles: ['Восстановление пароля', 'Restoring password', 'Uzb'],
-        headers: ['Введите Вашу электронную почту', 'Enter Your email', 'Uzb'],
-        messages: ['Успешно! Проверьте свою электронную почту', 'Success! Check your email', 'Uzb'],
-        labels: ['Эл. почта', 'Email', 'Uzb'],
-        buttons: ['Отправить', 'Submit', 'Uzb']
+        titles: ['Восстановление пароля', 'Restoring password', 'Parolni tiklash'],
+        headers: ['Введите Вашу электронную почту', 'Enter Your email', 'E-pochtangizni kiriting'],
+        messages: ['Успешно! Проверьте свою электронную почту', 'Success! Check your email', 'Muvaffaqiyatli! Elektron pochtangizni tekshiring'],
+        labels: ['Эл. почта', 'Email', 'Elektron pochta pochta idorasi'],
+        buttons: ['Отправить', 'Submit', 'Yuborish']
     }
     const submitHandler = (values) => {
         setError(null)

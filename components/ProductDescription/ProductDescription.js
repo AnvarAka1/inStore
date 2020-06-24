@@ -25,9 +25,9 @@ const productDescription = ({
 
 	const bookTypes = ["Аудиокнига", "Печатное издание", "Электронная книга"];
 	const content = {
-		removeFromCarts: ["Удалить из корзины", "Remove from cart", "Uzb"],
-		addToCarts: ["Добавить в корзину", "Add to cart", "Uzb"],
-		boughts: ["Куплено", "Bought", "Uzb"]
+		removeFromCarts: ["Удалить из корзины", "Remove from cart", "Savatdan olib tashlang"],
+		addToCarts: ["Добавить в корзину", "Add to cart", "Savatga qo'shish"],
+		boughts: ["Куплено", "Bought", "Xarid qilingan"]
 	};
 	const getDiscount = () => {
 		let disc = (1 - current_price / price) * 100

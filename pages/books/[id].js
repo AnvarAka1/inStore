@@ -46,9 +46,9 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
     };
     const cartHandler = (book) => {
         const content = {
-            adds: ['Добавлено в корзину', 'Added to cart', 'Uzb'],
-            removes: ['Удалено с корзины', 'Removed from cart', 'Uzb'],
-            link: ['Перейти в корзину', 'Proceed to cart', 'Uzb']
+            adds: ['Добавлено в корзину', 'Added to cart', 'Savatga qo\'shildi'],
+            removes: ['Удалено с корзины', 'Removed from cart', 'Axlat qutisidan chiqarildi'],
+            link: ['Перейти в корзину', 'Proceed to cart', 'Savatga o\'ting']
         }
         cartContext.onAddRemoveItem(book)
         const inCart = cartContext.onFindInCart(book.id)

@@ -8,7 +8,7 @@ import { Logo } from "../";
 const navbar = React.forwardRef(
 	({ booksCategories, search, navItems, isBooksOpen, booksToggle, lang = 0, navItemsMobile }, bookCatsRef) => {
 		const content = {
-			books: ["Книги", "Books", "Uzb"]
+			books: ["Книги", "Books", "Kitoblar"]
 		};
 		const booksTitle = (
 			<React.Fragment>

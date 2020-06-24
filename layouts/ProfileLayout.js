@@ -64,7 +64,7 @@ const getNavigationItems = () => [
         id: 0,
         key: "orders",
         icon: "/images/icons/story.png",
-        titles: ["История заказов", "Order history", "Uzb"],
+        titles: ["История заказов", "Order history", "Sotib olish tarixi"],
         count: 0,
         href: "/profile/orders"
     },
@@ -73,7 +73,7 @@ const getNavigationItems = () => [
         id: 1,
         key: "library",
         icon: "/images/icons/book.png",
-        titles: ["Моя библиотека", "My library", "Uzb"],
+        titles: ["Моя библиотека", "My library", "Mening kutubxonam"],
         count: 0,
         href: "/profile/library"
     },
@@ -81,7 +81,7 @@ const getNavigationItems = () => [
         id: 2,
         key: "favourites",
         icon: "/images/icons/star.png",
-        titles: ["Избранные", "Favourites", "Uzb"],
+        titles: ["Избранные", "Favourites", "Tanlangan"],
         count: 0,
         href: "/profile/favourites"
     },
@@ -89,14 +89,14 @@ const getNavigationItems = () => [
         id: 3,
         key: "cart",
         icon: "/images/icons/cart.png",
-        titles: ["Корзина", "Cart", "Uzb"],
+        titles: ["Корзина", "Cart", "Savat"],
         count: 0,
         href: "/cart"
     },
     {
         id: 4,
         icon: "/images/icons/settings.png",
-        titles: ["Настройки", "Settings", "Uzb"],
+        titles: ["Настройки", "Settings", "Sozlamalar"],
         href: "/profile/settings",
         count: null,
         className: "mt-auto"

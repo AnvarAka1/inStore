@@ -17,9 +17,9 @@ const SuccessPage = () => {
 	}, [count]);
 	const content = {
 		messages: [
-			"Оплата совершена успешно! Редирект через ",
+			"Оплата совершена успешно! Перенаправление через ",
 			"Successfully purchased! Redirect in ",
-			"Uzb. Redirect "
+			"To'lov muvaffaqiyatli yakunlandi! Qayta yo'naltirish "
 		]
 	};
 	return (

@@ -12,7 +12,7 @@ const OrdersPage = ({ results, error }) => {
     const langContext = useContext(LangContext);
     if (error) return <ErrorPage/>;
     const content = {
-        headers: ["История заказов", "Order history", "Uzb"]
+        headers: ["История заказов", "Order history", "Sotib olish tarixi"]
     }
     console.log(results)
     return (

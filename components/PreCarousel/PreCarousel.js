@@ -4,7 +4,7 @@ import classes from "./PreCarousel.module.scss";
 
 const preCarousel = ({isVideo, children, link, lang}) => {
     const content = {
-        texts: ["Все сборники", "All compilations", "Uzb"]
+        texts: ["Все сборники", "All compilations", "Barcha to'plamlar"]
     };
     return (
         <Link href={link}>

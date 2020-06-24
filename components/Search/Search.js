@@ -3,7 +3,7 @@ import classes from "./Search.module.scss";
 import { Form } from "react-bootstrap";
 const search = ({ control, onSearch, lang }) => {
 	const content = {
-		searches: ["Поиск", "Search", "Uzb"]
+		searches: ["Поиск", "Search", "Qidirmoq"]
 	};
 	return (
 		<Form onSubmit={onSearch} className={classes.Form}>

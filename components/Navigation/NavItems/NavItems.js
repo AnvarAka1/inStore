@@ -4,10 +4,10 @@ import Link from "next/link";
 
 const navItems = ({authModalShow, cartCount, name, isAuthorized, onLogout, onChangeLang, lang, isMobile}) => {
     const content = {
-        favourites: ["Избранные", "Favourites", "Uzb"],
-        carts: ["Корзина", "Cart", "Uzb"],
-        logins: ["Войти", "Login", "Uzb"],
-        logouts: ["Выйти", "Logout", "Uzb"],
+        favourites: ["Избранные", "Favourites", "Tanlangan"],
+        carts: ["Корзина", "Cart", "Savat"],
+        logins: ["Войти", "Login", "Kirish"],
+        logouts: ["Выйти", "Logout", "Chiqish"],
         language: ["Язык", "Language", "Til"]
     };
     return (

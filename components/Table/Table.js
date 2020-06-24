@@ -6,8 +6,8 @@ const table = ({rows, lang}) => {
     const bookCols = [
         ["#", "#", "#"],
         ["Книга", "Book", "Kitob"],
-        ["Цена", "Price", "Uzb"],
-        ["Автор", "Author", "Uzb"]
+        ["Цена", "Price", "Narxi"],
+        ["Автор", "Author", "Muallif"]
     ]
     return <Table striped bordered hover>
         <thead>

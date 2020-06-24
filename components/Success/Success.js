@@ -3,11 +3,23 @@ import classes from "./Success.module.scss";
 import Link from "next/link";
 const success = ({ lang, closed, isWithLink, paymentLink }) => {
 	const content = {
-		paymentTitles: ["Остался один шаг. Кликните по этой ссылке", "One more step. Click the link", "Uzb"],
-		linkToPaymentSystems: ["Перейти к оплате", "Proceed to payment", "Uzb"],
-		titles: ["Ваш заказ обрабатывается. Мы вам позвоним", "Your order is being proceeded. We will call you back", "Uzb"],
-		links: ["Перейти в персональный кабинет", "Proceed to personal account", "Uzb"],
-		closes: ["Закрыть", "Close", "Uzb"]
+		paymentTitles: [
+			"Остался один шаг. Кликните по этой ссылке",
+			"One more step. Click the link",
+			"Bir qadam qoldi. Ushbu havolani bosing."
+		],
+		linkToPaymentSystems: ["Перейти к оплате", "Proceed to payment", "Ro'yxatdan o'chirilishda davom etish"],
+		titles: [
+			"Ваш заказ обрабатывается. Мы вам позвоним",
+			"Your order is being proceeded. We will call you back",
+			"Buyurtmangiz qayta ishlanmoqda. Biz sizga qo'ng'iroq qilamiz"
+		],
+		links: [
+			"Перейти в персональный кабинет",
+			"Proceed to personal account",
+			"Shaxsiy kabinetga kirish"
+		],
+		closes: ["Закрыть", "Close", "Yopish"]
 	};
 	return (
 		<div className={classes.Success}>

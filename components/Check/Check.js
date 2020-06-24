@@ -3,10 +3,10 @@ import classes from './Check.module.scss'
 import Moment from 'react-moment'
 const check = ({ order,lang}) => {
     const cols =  {
-        date: ["Дата", "Date", "Uzb"],
-        amounts: ["Стоимость", "Cost", "Uzb"],
-        paymentTypes: ["Тип оплаты", "Payment type", "Uzb"],
-        paymentStatuses: ["Статус", "Status", "Uzb"]
+        date: ["Дата", "Date", "Sana"],
+        amounts: ["Стоимость", "Cost", "Narxi"],
+        paymentTypes: ["Тип оплаты", "Payment type", "To'lov turi"],
+        paymentStatuses: ["Статус", "Status", "Holat"]
     }
     return <table className={classes.Check}>
         <tbody>

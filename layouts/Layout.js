@@ -43,7 +43,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, err
 	// JSX
 	const lang = langContext.lang;
 	const content = {
-		titles: ["Библиотека книг и видеоуроков", "Library of books and videolessons", "Uzb"]
+		titles: ["Библиотека книг и видеоуроков", "Library of books and videolessons", "Kitoblar kutubxonasi va video darsliklar"]
 	};
 	const search = <Search control={searchControl} lang={lang} onSearch={onSearch} />;
 	// Right side of navbar with cart, login/logout

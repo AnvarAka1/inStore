@@ -21,19 +21,19 @@ const LandingPage = ({ books, audioBooks, bookCollections, audioCollections, lan
     lang = langContext.lang;
     const content = {
         eBook: {
-            titles: ["Электронные и печатные", "Printed and e-books", "Uzb"],
-            texts: ["книги на любой вкус", "for any taste", "Uzb"]
+            titles: ["Электронные и печатные", "Printed and e-books", "Elektron va bosma"],
+            texts: ["книги на любой вкус", "for any taste", "Har qanday lazzat uchun kitoblar"]
         },
 
-        booksCompilations: ["Сборники книг", "Books compilation", "Uzb"],
+        booksCompilations: ["Сборники книг", "Books compilation", "Kitob to'plamlari"],
 
-        newBooks: ["книги", "books", "Uzb"],
+        newBooks: ["книги", "books", "kitoblar"],
         audiobook: {
-            titles: ["Аудиокниги", "Audiobooks", "Uzb"],
-            texts: ["слушайте когда и где угодно", "Listen whenever and wherever you are", "Uzb"]
+            titles: ["Аудиокниги", "Audiobooks", "Audiokitoblar"],
+            texts: ["слушайте когда и где угодно", "Listen whenever and wherever you are", "qachon va qaerda tinglang"]
         },
-        audiobooksCompilations: ["Сборники аудиокниг", "Audiobooks compilation", "Uzb"],
-        newAudiobooks: ["аудиокниги", "audiobooks", "Uzb"]
+        audiobooksCompilations: ["Сборники аудиокниг", "Audiobooks compilation", "Audiokitoblar to'plamlari"],
+        newAudiobooks: ["аудиокниги", "audiobooks", "audio kitoblar"]
     };
     return (
         <React.Fragment>
@@ -139,14 +139,14 @@ const LandingPage = ({ books, audioBooks, bookCollections, audioCollections, lan
 const getCarouselItems = () => [
     {
         id: 0,
-        titles: ["Электронные книги и Видео уроки", "E-books and Videolessons", "Uzb"],
+        titles: ["Электронные книги и Видео уроки", "E-books and Videolessons", "Elektron darsliklar va video darsliklar"],
         img: "/images/main/books/carousel.png",
         link: "/"
     },
 
     {
         id: 1,
-        titles: ["Электронные книги и Видео уроки", "E-books and Videolessons", "Uzb"],
+        titles: ["Электронные книги и Видео уроки", "E-books and Videolessons", "Elektron darsliklar va video darsliklar"],
         img: "/images/main/books/carousel.png",
         link: "/"
     }

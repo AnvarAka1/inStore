@@ -26,16 +26,16 @@ function RestorePage({ query }) {
     }, [isSent, count])
 
     const content = {
-        titles: ['Восстановление аккаунта', 'Restoring account', 'Uzb'],
-        headers: ['Измените свой пароль', 'Change your password', 'Uzb'],
-        buttons: ['Отправить', 'Submit', 'Uzb'],
-        fPasswords: ['Новый пароль', 'New password', 'Uzb'],
-        sPasswords: ['Повторите пароль', 'Repeat password', 'Uzb'],
-        errorMessages: ['Что то пошло не так. Попробуйте еще раз', 'Something went wrong. Try again', 'Uzb'],
+        titles: ['Восстановление аккаунта', 'Restoring account', 'Hisobni tiklash'],
+        headers: ['Измените свой пароль', 'Change your password', 'Parolni o\'zgartiring'],
+        buttons: ['Отправить', 'Submit', 'Yuborish'],
+        fPasswords: ['Новый пароль', 'New password', 'Yangi parol'],
+        sPasswords: ['Повторите пароль', 'Repeat password', 'Parolni qayta kiriting'],
+        errorMessages: ['Что то пошло не так. Попробуйте еще раз', 'Something went wrong. Try again', 'Nimadir noto\'g\'ri bajarildi. yana bir bor urinib ko `ring'],
         successMessages: [
             'Получилось. Можете войти используя Ваш новый пароль',
             'Success. You can now login with Your new password',
-            'Uzb'
+            'Bo\'ldi. Siz yangi parolingizdan foydalanib tizimga kirishingiz mumkin.'
         ]
     }
     const submitHandler = (values) => {

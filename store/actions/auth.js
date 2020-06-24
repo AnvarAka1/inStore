@@ -71,13 +71,17 @@ export const auth = (name, email, phone, password, isSignup, setSubmitting) => {
 				// dispatch(checkAuthTimeout(response.expires_in));
 			})
 			.catch(error => {
-				if (isSignup) dispatch(authFail(["Такой пользователь уже существует", "User already exists", "Uzb"]));
+				if (isSignup) dispatch(authFail([
+					"Такой пользователь уже существует",
+					"User already exists",
+					"Bunday foydalanuvchi allaqachon mavjud."
+				]));
 				else
 					dispatch(
 						authFail([
 							"Неверный email (номер телефона) или пароль",
 							"Wrong email (phone number) or restore",
-							"Uzb"
+							"Noto'g'ri elektron pochta (telefon raqami) yoki parol"
 						])
 					);
 			})

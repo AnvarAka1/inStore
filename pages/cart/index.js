@@ -9,10 +9,10 @@ const CartPage = props => {
 	const langContext = useContext(LangContext);
 	const lang = langContext.lang;
 	const content = {
-		titles: ['Корзина', 'Cart', 'Uzb'],
-		totals: ['Всего в корзине', 'Total in cart', 'Uzb'],
-		resets: ['Сбросить корзину', 'Reset cart', 'Uzb'],
-		empties: ['Корзина пуста', 'Cart is empty', 'Uzb']
+		titles: ['Корзина', 'Cart', 'Savat'],
+		totals: ['Всего в корзине', 'Total in cart', 'Savatda jami'],
+		resets: ['Сбросить корзину', 'Reset cart', 'Savat bo\'shatish'],
+		empties: ['Корзина пуста', 'Cart is empty', 'Savat bo\'sh']
 	}
 	const responsive = {
 		md: 3,

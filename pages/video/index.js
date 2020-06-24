@@ -70,17 +70,17 @@ const LandingPage = ({ feedback, books, audioBooks, bookCollections, audioCollec
 	lang = lang || 0;
 	const content = {
 		speaker: {
-			header: ["Стать спикером", "Become a speaker", "Uzb"],
-			fio: ["Ф.И.О", "Full name", "Uzb"],
-			email: ["Электронная почта", "E-mail", "Uzb"],
-			phone: ["Номер телефона", "Phone number", "Uzb"],
-			send: ["Отправить", "Submit", "Uzb"]
+			header: ["Стать спикером", "Become a speaker", "Notiq bo'ling"],
+			fio: ["Ф.И.О", "Full name", "TO'LIQ ISMI SHARIF"],
+			email: ["Электронная почта", "E-mail", "Elektron pochta"],
+			phone: ["Номер телефона", "Phone number", "Telefon raqami"],
+			send: ["Отправить", "Submit", "Yuborish"]
 		},
 
 		review: {
-			leaveReview: ["Оставить отзыв", "Leave review", "Uzb"],
-			rating: ["Ваша оценка", "Your rate", "Uzb"],
-			review: ["Ваш отзыв", "Your review", "Uzb"]
+			leaveReview: ["Оставить отзыв", "Leave review", "Fikr bildiring"],
+			rating: ["Ваша оценка", "Your rate", "Sizning belgingiz"],
+			review: ["Ваш отзыв", "Your review", "Fikrlaringiz"]
 		}
 	};
 	const speakerCard = (

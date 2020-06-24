@@ -13,22 +13,22 @@ import Social from "./Social";
 const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkboxControl, onAuth, lang, error }) => {
 	const content = {
 		login: ["Войти", "Login", "Kirish"],
-		register: ["Регистрация", "Register", "Uzb"],
+		register: ["Регистрация", "Register", "Ro'yxatdan o'tish"],
 		regForm: {
-			titles: ["Зарегистрируйтесь через социальные сети", "Register via social media", "Uzb"],
-			fios: ["Ф.И.О", "Full name", "Uzb"],
-			phones: ["Номер телефона", "Phone number", "Uzb"],
-			fPasswords: ["Введите пароль", "Enter password", "Uzb"],
-			sPasswords: ["Подтвердите пароль", "Confirm password", "Uzb"],
-			buttons: ["Зарегистрироваться", "Register", "Uzb"]
+			titles: ["Зарегистрируйтесь через социальные сети", "Register via social media", "Ijtimoiy tarmoqlar orqali ro'yxatdan o'ting"],
+			fios: ["Ф.И.О", "Full name", "To'liq ismi sharif"],
+			phones: ["Номер телефона", "Phone number", "Telefon raqami"],
+			fPasswords: ["Введите пароль", "Enter password", "Parolni kiriting"],
+			sPasswords: ["Подтвердите пароль", "Confirm password", "Parolni tasdiqlang"],
+			buttons: ["Зарегистрироваться", "Register", "Ro'yxatdan o'tish"]
 		},
 		loginForm: {
-			titles: ["Войдите через социальные сети", "Login via social media", "Uzb"],
-			emails: ["Электронная почта или номер телефона", "Email or phone number", "Uzb"],
-			passwords: ["Введите пароль", "Enter password", "Uzb"],
-			buttons: ["Войти", "Login", "Uzb"],
-			accesses: ["Не можете получить доступ?", "Can't access?", "Uzb"],
-			rememberPasswords: ["Запомнить пароль", "Remember password", "Uzb"]
+			titles: ["Войдите через социальные сети", "Login via social media", "Ijtimoiy tarmoqlar orqali kiring"],
+			emails: ["Электронная почта или номер телефона", "Email or phone number", "Elektron pochta yoki telefon raqami"],
+			passwords: ["Введите пароль", "Enter password", "Parolni kiriting"],
+			buttons: ["Войти", "Login", "Kirish"],
+			accesses: ["Не можете получить доступ?", "Can't access?", "Kirish mumkin emasmi?"],
+			rememberPasswords: ["Запомнить пароль", "Remember password", "Parolni unutmang"]
 		}
 	};
 

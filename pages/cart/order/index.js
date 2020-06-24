@@ -282,11 +282,11 @@ const OrderPage = props => {
 const getMethodsOfPayment = () => [
     {
         id: 0,
-        titles: ["Наличные деньги", "Cash", "Uzb"]
+        titles: ["Наличные деньги", "Cash", "Naqd pullar"]
     },
     {
         id: 1,
-        titles: ["Пластиковая карта", "Plastic card", "Uzb"]
+        titles: ["Пластиковая карта", "Plastic card", "Plastik karta"]
     },
     {
         id: 2,

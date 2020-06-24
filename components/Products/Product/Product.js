@@ -7,7 +7,7 @@ import ClampLines from "react-clamp-lines";
 
 const product = ({id, image, title, author, rate, current_price, price, isVideo, onAddRemoveItem, lang}) => {
     const content = {
-        remove: ["Удалить из корзины", "Remove from cart", "Uzb"],
+        remove: ["Удалить из корзины", "Remove from cart", "Savatdan olib tashlash"],
         currency: ["сум", "so'm", "so'm"]
     };
     return (

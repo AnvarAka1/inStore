@@ -7,13 +7,13 @@ import {DELIVERY_COST} from '../../constants'
 const makeOrder = ({productCount, currentPrice, oldPrice, ordered, lang}) => {
     const cartContext = useContext(CartContext)
     const content = {
-        firstRowItems: ['товара на сумму', 'products for', 'Uzb'],
+        firstRowItems: ['товара на сумму', 'products for', 'tovarlar miqdori'],
         currencies: ['сум', "so'm", "so'm"],
-        discounts: ['Все скидки', 'All discounts', 'Uzb'],
-        totals: ['Итого', 'Total', 'Uzb'],
-        deliveries: ['Доставка по Ташкенту', 'Delivery in Tashkent', 'Uzb'],
-        deliveryConsiderations: ['Итого (с учетом доставки)', 'Total (With delivery)', 'Uzb'],
-        checkouts: ['Оформить заказ', 'Checkout', 'Uzb']
+        discounts: ['Все скидки', 'All discounts', 'Barcha chegirmalar'],
+        totals: ['Итого', 'Total', 'Jami'],
+        deliveries: ['Доставка по Ташкенту', 'Delivery in Tashkent', 'Toshkentda etkazib berish'],
+        deliveryConsiderations: ['Итого (с учетом доставки)', 'Total (With delivery)', 'Jami (etkazib berish bilan birga)'],
+        checkouts: ['Оформить заказ', 'Checkout', 'Tekshirib ko\'rmoq']
     }
     return (
         <div>

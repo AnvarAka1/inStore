@@ -103,76 +103,76 @@ const getImages = () => [
 ];
 const getItems = () => [
     {
-        titles: ["О нас", "About us", "Uzb1"],
+        titles: ["О нас", "About us", "Biz haqimizda"],
         items: [
             {
-                titles: ["Часто задаваемые вопросы", "F.A.Q", "Uzb"],
+                titles: ["Часто задаваемые вопросы", "F.A.Q", "Ko'p so'raladigan savollar"],
                 link: "/"
             },
             {
-                titles: ["Помощь", "Help", "Uzb"],
+                titles: ["Помощь", "Help", "Yordam"],
                 link: "/"
             },
             {
-                titles: ["Правила и условия", "Rules and conditions", "Uzb"],
+                titles: ["Правила и условия", "Rules and conditions", "Foydalanish shartlari"],
                 link: "/"
             },
             {
-                titles: ["Электронный билет", "E-ticket", "Uzb"],
+                titles: ["Электронный билет", "E-ticket", "Elektron chipta"],
                 link: "/"
             },
             {
-                titles: ["Возврат и обмен", "Return and exchange", "Uzb"],
+                titles: ["Возврат и обмен", "Return and exchange", "Qaytish va almashish"],
                 link: "/"
             },
             {
-                titles: ["Политика конфиденциальности", "Privacy policy", "Uzb"],
+                titles: ["Политика конфиденциальности", "Privacy policy", "Maxfiylik siyosati"],
                 link: "/"
             }
         ]
     },
     {
-        titles: ["Сотрудничество", "Partnership", "Uzb2"],
+        titles: ["Сотрудничество", "Partnership", "Hamkorlik"],
         items: [
             {
-                titles: ["Издательствам", "For publishers", "Uzb"],
+                titles: ["Издательствам", "For publishers", "Nashriyot"],
                 link: "/"
             },
             {
-                titles: ["Авторам", "For authors", "Uzb"],
+                titles: ["Авторам", "For authors", "Mualliflar uchun"],
                 link: "/"
             },
             {
-                titles: ["Библиотекам", "To libraries", "Uzb"],
+                titles: ["Библиотекам", "To libraries", "Kutubxonalarga"],
                 link: "/"
             },
             {
-                titles: ["Партнёрам", "For partners", "Uzb"],
+                titles: ["Партнёрам", "For partners", "Hamkorlar"],
                 link: "/"
             },
             {
-                titles: ["Стать спикером", "Become a speaker", "Uzb"],
+                titles: ["Стать спикером", "Become a speaker", "Notiq bo'ling"],
                 link: "/"
             }
         ]
     },
     {
-        titles: ["Что почитать?", "What to read?", "Uzb3"],
+        titles: ["Что почитать?", "What to read?", "Nima o'qish kerak?"],
         items: [
             {
-                titles: ["Бестселлеры", "Best sellers", "Uzb"],
+                titles: ["Бестселлеры", "Best sellers", "Eng yaxshi sotuvchilar"],
                 link: "/"
             },
             {
-                titles: ["Скоро в продаже", "Coming soon", "Uzb"],
+                titles: ["Скоро в продаже", "Coming soon", "Tez kunda"],
                 link: "/"
             },
             {
-                titles: ["Публичная оферта", "Public offer", "Uzb"],
+                titles: ["Публичная оферта", "Public offer", "Ommaviy taklif"],
                 link: "/"
             },
             {
-                titles: ["Конфиденциальность", "Confidentiality", "Uzb"],
+                titles: ["Конфиденциальность", "Confidentiality", "Maxfiylik"],
                 link: "/"
             }
         ]
