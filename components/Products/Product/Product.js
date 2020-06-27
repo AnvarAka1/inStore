@@ -31,14 +31,16 @@ const product = ({id, image, title, author, rate, current_price, price, isVideo,
                         <ClampLines
                             text={title}
                             lines={2}
-                            buttons={false}
+                            buttons={true}
+                            delay={200}
                             ellipsis="..."
-                            id={`${title[1]}${author[1]}${id}`}
+                            id={`${title[1]}${author[1]}${id}${Math.floor(Math.random() * 1000)}`}
                             innerElement="h5"
-                            style={{height: "2rem"}}
-                            className="text-black mb-1 mt-2"
+                            className={`text-black mb-1 mt-2`}
                         />
-                        <p className="text-small">{author}</p>
+                        <TextOverflow>
+                            <p className="text-small" title={author}>{author}</p>
+                        </TextOverflow>
                         <Stars rate={Math.round(rate)}/>
                     </a>
                 </Link>
@@ -47,11 +49,13 @@ const product = ({id, image, title, author, rate, current_price, price, isVideo,
                     as={`/${isVideo ? "videos" : "books"}/${id}?l=${lang}`}
                 >
                     <a>
-                        <div className="d-flex align-items-end mt-1">
+                        <TextOverflow>
+                            <div className="d-flex align-items-end mt-1">
                             <p className="text-danger text-bold mb-0 mr-1 text-md">{current_price} {content.currency[lang]}</p>
                             {parseInt(current_price) !== parseInt(price) &&
                             <p className="text-xsmall text-crossed">{price}</p>}
                         </div>
+                        </TextOverflow>
                     </a>
                 </Link>
             </div>
