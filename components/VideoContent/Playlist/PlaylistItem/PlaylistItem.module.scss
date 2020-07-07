@@ -1,0 +1,38 @@
+.PlaylistItem {
+  position: relative;
+  margin-bottom: 15px;
+  height: 175px;
+  width: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &:hover {
+    .Title {
+      background-color: rgba(0, 0, 0, .4);
+      color: rgba(255, 255, 255, 0.59);
+
+    }
+  }
+}
+.Title {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: center;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, .5);
+  transition: color .25s ease, background .25s ease;
+  * {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

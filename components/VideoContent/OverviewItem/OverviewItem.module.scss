@@ -1,0 +1,17 @@
+.OverviewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  div{
+    display: flex;
+    width: 50%;
+    align-items: center;
+    * {
+      margin-right: 5px
+    }
+    &:last-child{
+      justify-content: flex-end;
+      margin-left: 5px
+    }
+  }
+}

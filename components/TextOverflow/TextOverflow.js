@@ -1,8 +1,9 @@
 import React from 'react';
 import classes from './TextOverflow.module.scss'
-function TextOverflow ({ children }) {
+import clsx from "clsx";
+function TextOverflow ({ className, children }) {
     return (
-        <div className={classes.TextOverflow} title={children}>
+        <div className={clsx(classes.TextOverflow, className)} title={children}>
             <div>{children}</div>
         </div>
     )
