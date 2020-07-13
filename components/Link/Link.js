@@ -19,12 +19,12 @@ const CustomLink = ({children, className, href}) => {
                     // check whether there is a value in link's query
                     // check whether there is a match between current route's and link's queries
                     if (key !== 'page') {
-                            console.log(key, router.query[key].toString(), href.query[key].toString())
                         if ((key !== "l" && !href.query[key]) || router.query[key].toString() !== href.query[key].toString()) {
                             hasQueries = false;
                             break;
                         }
                     }
+
                 }
             }
             // if the pathnames are different, then it is also mismatch

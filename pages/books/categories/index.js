@@ -29,8 +29,9 @@ const BooksPage = ({title, error, booksProps, resultsProps, url, paginationProps
         _isMounted = true;
         if (!initialPageLoad && router.query.genre) {
             setLoading(true)
+            const genre = "&g=" + router.query.genre
             axios
-                .get(url + "&g=" + router.query.genre)
+                .get(url + genre)
                 .then(res => {
                     updateValues(res);
                 })
@@ -71,7 +72,7 @@ const BooksPage = ({title, error, booksProps, resultsProps, url, paginationProps
 
     useEffect(() => {
         const page = router.query.page ? router.query.page : 1
-        const genre = router.query.genre ? "genre=" + router.query.genre + "&" : "genre=-1&"
+        const genre = router.query.genre ? "genre=" + router.query.genre + "&" : "genre=nogenre&"
         router.replace(
             `${router.pathname}?${genre}l=${lang}&page=${page}`
         );
