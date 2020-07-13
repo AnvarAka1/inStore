@@ -47,6 +47,7 @@
 		"react-moment": "^0.9.7",
 		"react-multi-carousel": "^2.5.5",
 		"react-redux": "^7.2.0",
+		"react-responsive-carousel": "^3.2.9",
 		"react-reveal": "^1.2.2",
 		"react-simple-snackbar": "^1.1.10",
 		"react-slick": "^0.25.2",

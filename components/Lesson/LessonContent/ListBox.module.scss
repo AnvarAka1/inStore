@@ -1,0 +1,17 @@
+.ListBox {
+  width: 100%;
+  background: #F7F7F7;
+  padding: 1rem 2rem 2rem;
+}
+.ListBoxWrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+}
+.ListBoxItem {
+  text-align: left;
+  display: flex;
+  flex: 0 0  50%;
+
+}

@@ -1,8 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import classes from "./SliderCarousel.module.scss";
-// import Carousel from "@brainhubeu/react-carousel";
-// import Carousel from "react-slick";
+
 const sliderCarousel = ({ className, children, items, arrows = true, autoPlay = false, beforeChange = null }) => {
 	const responsive = {
 		superLargeDesktop: {
@@ -32,9 +31,8 @@ const sliderCarousel = ({ className, children, items, arrows = true, autoPlay = 
 				arrows={arrows}
 				showDots={false}
 				beforeChange={beforeChange}
-				// partialVisbile={true}
 				responsive={responsive}
-				ssr={true} // means to render carousel on server-side.
+				ssr={true}
 				infinite={true}
 				className="pb-2 pt-2"
 				containerClass="carousel-container"
@@ -42,8 +40,6 @@ const sliderCarousel = ({ className, children, items, arrows = true, autoPlay = 
 				itemClass={[ classes.Item, className ].join(" ")}
 				autoPlay={autoPlay}
 				autoPlaySpeed={5000}
-				// transitionDuration={300}
-				// deviceType={this.props.deviceType}
 				customLeftArrow={<CustomArrowLeft />}
 				customRightArrow={<CustomArrowRight />}
 			>

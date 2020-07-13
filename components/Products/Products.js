@@ -1,8 +1,10 @@
 import React from "react";
 import { Col } from "react-bootstrap";
 import Product from "./Product/Product";
-const products = ({ items, title, isVideo, md, sm, xs,onAddRemoveItem, lang }) => {
-	const productsView = items.map(item => {
+const products = ({ items, title, isVideo, md, sm, xs,onAddRemoveItem, limit = -1, lang }) => {
+
+	const productsView = items.map((item, index) => {
+		if(index > limit && limit > -1) return;
 		return (
 			<Col className="mb-4" key={item.id} md={md} sm={sm} xs={xs}>
 				<Product
