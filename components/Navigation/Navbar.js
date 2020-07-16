@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 import { Logo } from "../";
+import clsx from "clsx";
 
 const navbar = React.forwardRef(
 	({ booksCategories, search, navItems, isBooksOpen, booksToggle, lang = 0, navItemsMobile }, bookCatsRef) => {
@@ -11,14 +12,18 @@ const navbar = React.forwardRef(
 			books: ["Книги", "Books", "Kitoblar"]
 		};
 		const booksTitle = (
-			<React.Fragment>
-				<img src="/images/icons/book.png" className="icon icon-sm mr-1" alt="Книги" />
-				<span className="text-mobile-invisible ">{content.books[lang]} </span>
+			<div className={classes.CategoriesDropdown}>
+				<img src="/images/icons/book.png" className="icon icon-sm mr-1 img" alt="Книги" />
+				<span className="text-mobile-invisible">{content.books[lang]} </span>
 				<img
 					src="/images/icons/caret.png"
-					className={`icon ${classes.Rotatable} ${isBooksOpen && classes.Rotate}`}
+					className={clsx(
+						"icon img",
+						classes.Rotatable, {
+						[classes.Rotate]: isBooksOpen
+					})}
 				/>
-			</React.Fragment>
+			</div>
 		);
 
 		return (

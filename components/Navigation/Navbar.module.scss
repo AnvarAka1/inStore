@@ -1,82 +1,111 @@
 .Navbar {
-    background: #FFFFFF;
-    box-shadow: 0px 5px 10px rgba(204, 204, 204, 0.5);
-    min-height: 72px;
-    display: flex;
-    align-items: center;
-    @media(max-width: 575px){
-        min-height: 55px;
-    } @media(max-width: 480px){
-        min-height: 50px;
-    }
+  background: #FFFFFF;
+  box-shadow: 0px 5px 10px rgba(204, 204, 204, 0.5);
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  @media(max-width: 575px) {
+    min-height: 55px;
+  }
+  @media(max-width: 480px) {
+    min-height: 50px;
+  }
 }
 
 .CategoryItem {
-    padding: 10px 0;
-    border-bottom: 1px #97B8FF dashed;
+  padding: 10px 0;
+  border-bottom: 1px #97B8FF dashed;
 
-    a {
-        transition: all .25s ease;
-        color: var(--secondary);
-        font-size: 1rem;
-    }
-    @media(max-width: 992px){
-        padding: 5px 0;
-    }
-    @media(max-width: 575px){
-        padding: 0px 0;
-    }
+  a {
+    transition: all .25s ease;
+    color: var(--secondary);
+    font-size: 1rem;
+  }
+
+  @media(max-width: 992px) {
+    padding: 5px 0;
+  }
+  @media(max-width: 575px) {
+    padding: 0px 0;
+  }
 
 }
 
 .ButtonForToggle {
-    position: relative;
+  position: relative;
 
-    &~ul {
-        background: white;
-        position: absolute;
-        top: calc(100% + 24px);
-        // width: 300px;
-        padding: 0 10px 10px;
-        border: 1px #e0e0e0 solid;
-        left: 0;
-        z-index: 20;
-        @media(max-width: 575px){
-            top: calc(100% + 16px);
-        }
-        @media(max-width: 480px){
-            top: calc(100% + 13px);
-        }
-        li {
-            white-space: nowrap;
-        }
+  & ~ ul {
+    background: white;
+    position: absolute;
+    top: calc(100% + 19px);
+    // width: 300px;
+    padding: 0 10px 10px;
+    border: 1px #e0e0e0 solid;
+    left: 0;
+    z-index: 20;
+    @media(max-width: 575px) {
+      top: calc(100% + 10px);
     }
+    @media(max-width: 480px) {
+      top: calc(100% + 11px);
+    }
+
+    li {
+      white-space: nowrap;
+    }
+  }
 }
 
 .Rotatable {
-    transition: all .25s ease !important;
+  transition: all .25s ease !important;
 }
 
 .Rotate {
 
-    transform: rotateZ(-180deg)
+  transform: rotateZ(-180deg)
 }
 
 .Categories {
-    margin-left: 2rem;
-    margin-right: auto;
+  margin-left: 2rem;
+  margin-right: auto;
 
-    @media(max-width: 600px) {
-        margin: 0;
+  @media(max-width: 600px) {
+    margin: 0;
+  }
+}
+
+.CategoriesDropdown {
+
+  background-color: var(--accent);
+  border-radius: 5px;
+  padding: 5px 10px 6px;
+  &:hover {
+    opacity: 0.8;
+    * {
+      color: white !important
     }
+  }
+
+  * {
+    color: white;
+  }
+
+  img:first-child {
+    position:relative;
+    bottom: 1px
+
+  }
+  @media(max-width: 480px) {
+    padding: 2px 8px 3px
+  }
 }
 
 .Container {
 
-    padding-left: 3rem;
-    padding-right: 3rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
 
-    @media(max-width: 600px) {
-        padding: 0 1.5rem;
-    }
+  @media(max-width: 600px) {
+    padding: 0 1.5rem;
+  }
 }

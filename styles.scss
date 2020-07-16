@@ -281,14 +281,16 @@ p {
 .list a {
   * {
     transition: .25s ease all;
-    color: #777;
+    //color: #777;
   }
 
   img {
     filter: invert(51%) sepia(0%) saturate(1427%) hue-rotate(151deg) brightness(89%) contrast(81%);
     transition: none;
   }
-
+  .img {
+    filter: invert(100%) sepia(4%) saturate(18%) hue-rotate(238deg) brightness(106%) contrast(100%);
+  }
   &:hover {
     text-decoration: none;
     color: var(--accent);
@@ -296,7 +298,9 @@ p {
     img {
       filter: invert(14%) sepia(88%) saturate(3341%) hue-rotate(196deg) brightness(93%) contrast(98%);
     }
-
+    .img {
+      filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(306deg) brightness(103%) contrast(101%);
+    }
     * {
       color: var(--accent);
     }

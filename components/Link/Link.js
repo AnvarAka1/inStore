@@ -14,6 +14,7 @@ const CustomLink = ({children, className, href}) => {
         if (!isEmpty(router.query)) {
             // go through all queries in current route
             if (Object.keys(router.query).length === 1) hasQueries = false;
+            if(Object.keys(router.query).length === 2 && router.query.page && router.query.l) hasQueries = false
             else {
                 for (let key in router.query) {
                     // check whether there is a value in link's query

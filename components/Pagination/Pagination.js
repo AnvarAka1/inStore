@@ -33,7 +33,7 @@ function Pagination({numberOfItems, active}) {
         )
         if(numberOfPages > PAGE_SHOW_THRESHOLD) {
             if(Math.abs(active - number) === 3) {
-                pagination = <BPPagination.Ellipsis disabled />
+                pagination = <BPPagination.Ellipsis key={number} disabled />
             }
             if(Math.abs(active - number) > 3 && number > 1 && number < numberOfPages){
                 continue;

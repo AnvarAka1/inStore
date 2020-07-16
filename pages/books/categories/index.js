@@ -139,8 +139,9 @@ export const getServerSideProps = async ({query}) => {
     // axios
     const lang = ["ru", "en", "uz"];
     const page = query.page ? query.page : 1
+    const g = query.genre && query.genre !== 'nogenre' ? `&g=${query.genre}` : ''
+    const url = `${lang[+query.l || 0]}/categories/books?page=${page}${g}`;
 
-    const url = lang[+query.l || 0] + "/categories/books?page=" + page;
     let res = null;
     let error = null;
     try {
