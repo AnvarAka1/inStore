@@ -14,7 +14,6 @@ const OrdersPage = ({ results, error }) => {
     const content = {
         headers: ["История заказов", "Order history", "Sotib olish tarixi"]
     }
-    console.log(results)
     return (
         <ProfileLayout>
             <Row>
@@ -48,18 +47,17 @@ export const getServerSideProps = async ({req, query}) => {
         });
     } catch (err) {
         error = "Error";
-        console.log(err);
-
         return {
             props: {
                 error
             }
         };
     }
-    const {results} = res.data;
+    const { results } = res.data;
+
     return {
         props: {
-            results
+            results: results.reverse()
         }
     };
 };
