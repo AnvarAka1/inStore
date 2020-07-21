@@ -8,7 +8,7 @@ const footer = ({lang}) => {
     const content = {
         supports: ["Служба поддержки", "Support service", "Qo'llab-quvvatlash xizmati"],
         socials: ["Мы в социальных сетях", "We are at social media", "Biz ijtimoiy tarmoqlarda"],
-        payments: ["Оплата", "Payment", "To'lov"]
+        payments: ["Оплата", "Payment", "To'lov usullari"]
     };
     return (
         <footer className={`${classes.Footer} text-left`}>
@@ -27,7 +27,7 @@ const footer = ({lang}) => {
                                 <p className="mb-2 text-small">{content.supports[lang]}</p>
 
                                 <div className={classes.Social}>
-                                    <h6 className="text-accent mt-5">{content.socials[lang]}</h6>
+                                    <h6 className="text-accent mt-5 mb-3">{content.socials[lang]}</h6>
                                     <ul>
                                         {getSocial().map((social, index) => {
                                             return (
@@ -59,8 +59,8 @@ const footer = ({lang}) => {
                             </div>
                         </div>
                     </Col>
-                    <Col sm={{span: 8}}>
-                        <div className="d-flex justify-content-between align-items-start flex-column flex-sm-row w-100">
+                    <Col sm={{span: 5, offset: 3}} lg={{span: 4, offset: 4}}>
+                        <div className="d-flex justify-content-between align-items-start flex-column flex-sm-row w-100 mt-3 mt-sm-0">
                             {getItems().map(item => {
                                 return (
                                     <FooterItems
@@ -118,10 +118,6 @@ const getItems = () => [
                 link: "/"
             },
             {
-                titles: ["Электронный билет", "E-ticket", "Elektron chipta"],
-                link: "/"
-            },
-            {
                 titles: ["Возврат и обмен", "Return and exchange", "Qaytish va almashish"],
                 link: "/"
             },
@@ -136,43 +132,6 @@ const getItems = () => [
         items: [
             {
                 titles: ["Издательствам", "For publishers", "Nashriyot"],
-                link: "/"
-            },
-            {
-                titles: ["Авторам", "For authors", "Mualliflar uchun"],
-                link: "/"
-            },
-            {
-                titles: ["Библиотекам", "To libraries", "Kutubxonalarga"],
-                link: "/"
-            },
-            {
-                titles: ["Партнёрам", "For partners", "Hamkorlar"],
-                link: "/"
-            },
-            {
-                titles: ["Стать спикером", "Become a speaker", "Notiq bo'ling"],
-                link: "/"
-            }
-        ]
-    },
-    {
-        titles: ["Что почитать?", "What to read?", "Nima o'qish kerak?"],
-        items: [
-            {
-                titles: ["Бестселлеры", "Best sellers", "Eng yaxshi sotuvchilar"],
-                link: "/"
-            },
-            {
-                titles: ["Скоро в продаже", "Coming soon", "Tez kunda"],
-                link: "/"
-            },
-            {
-                titles: ["Публичная оферта", "Public offer", "Ommaviy taklif"],
-                link: "/"
-            },
-            {
-                titles: ["Конфиденциальность", "Confidentiality", "Maxfiylik"],
                 link: "/"
             }
         ]

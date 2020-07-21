@@ -38,7 +38,6 @@
     background: white;
     position: absolute;
     top: calc(100% + 19px);
-    // width: 300px;
     padding: 0 10px 10px;
     border: 1px #e0e0e0 solid;
     left: 0;
@@ -79,8 +78,10 @@
   background-color: var(--accent);
   border-radius: 5px;
   padding: 5px 10px 6px;
+
   &:hover {
     opacity: 0.8;
+
     * {
       color: white !important
     }
@@ -91,10 +92,11 @@
   }
 
   img:first-child {
-    position:relative;
+    position: relative;
     bottom: 1px
 
   }
+
   @media(max-width: 480px) {
     padding: 2px 8px 3px
   }

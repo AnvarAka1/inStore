@@ -44,3 +44,18 @@
         box-shadow: -1px 1px 2px #EDEDED, 1px 1px 2px rgba(0, 0, 0, 0.25), inset -1px -1px 2px rgba(117, 117, 117, 0.25);
     }
 }
+
+.LangImage {
+    width: 25px;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+.Lang{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 2px
+}

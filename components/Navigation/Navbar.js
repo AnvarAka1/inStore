@@ -9,7 +9,7 @@ import clsx from "clsx";
 const navbar = React.forwardRef(
 	({ booksCategories, search, navItems, isBooksOpen, booksToggle, lang = 0, navItemsMobile }, bookCatsRef) => {
 		const content = {
-			books: ["Книги", "Books", "Kitoblar"]
+			books: ["Каталог продуктов", "Categories", "Mahsulotlar Katalogi"]
 		};
 		const booksTitle = (
 			<div className={classes.CategoriesDropdown}>

@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./NavItems.module.scss";
 import Link from "next/link";
+import clsx from "clsx";
 
 const navItems = ({authModalShow, cartCount, name, isAuthorized, onLogout, onChangeLang, lang, isMobile}) => {
     const content = {
@@ -59,15 +60,22 @@ const navItems = ({authModalShow, cartCount, name, isAuthorized, onLogout, onCha
                 <a role="button" className="dropdown-hover text-secondary">
                     | {content.language[lang]}
                     <ul>
-                        {["Ру", "En", "Uz"].map((language, index) => (
-                            <li key={language}>
-								<span
+                        {getLangs().map((language, index) => (
+                            <li key={language.title} className="">
+								<div
                                     role="button"
-                                    className={`${index === lang && "text-accent"}`}
+                                    className={clsx(
+                                        classes.Lang,
+                                        {
+                                            ["text-accent"]: index === lang
+                                        })}
                                     onClick={() => onChangeLang(index)}
                                 >
-									{language}
-								</span>
+                                    <div className={classes.LangImage}>
+                                        <img src={language.image} alt={language.title} />
+                                    </div>
+									{language.title}
+								</div>
                             </li>
                         ))}
                     </ul>
@@ -76,5 +84,19 @@ const navItems = ({authModalShow, cartCount, name, isAuthorized, onLogout, onCha
         </div>
     );
 };
+const getLangs = () => [
+    {
+        title: "Ру",
+        image: '/images/flags/ru.png'
+    },
+    {
+        title: "En",
+        image: '/images/flags/en.png'
+    },
+    {
+        title: "Uz",
+        image: '/images/flags/uz.png'
+    },
 
+]
 export default navItems;
