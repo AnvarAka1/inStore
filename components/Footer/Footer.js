@@ -22,8 +22,7 @@ const footer = ({lang}) => {
                     <Col sm={4}>
                         <div className="d-flex justify-content-between align-items-start">
                             <div className="w-50 mr-5">
-                                <p className="mb-2 text-small text-bold">+998 90 000 00 00</p>
-                                <p className="mb-2 text-small text-bold">+998 90 000 00 00</p>
+                                <p className="mb-2 text-small text-bold">+99890 018 88 11</p>
                                 <p className="mb-2 text-small">{content.supports[lang]}</p>
 
                                 <div className={classes.Social}>
