@@ -74,7 +74,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, err
 				/>
 			)}
 			<Head>
-				<title>InStore | {content.titles[lang]}</title>
+				<title>in-Study.uz | {content.titles[lang]}</title>
 			</Head>
 			<Navbar
 				lang={lang}

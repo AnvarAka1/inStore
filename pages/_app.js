@@ -12,7 +12,8 @@ import App from "next/app";
 import SnackbarProvider from 'react-simple-snackbar'
 import Router from "next/router";
 import NProgress from 'nprogress'
-
+import {I18nextProvider} from 'react-i18next';
+import i18n from '../lib/i18n/i18n'
 
 Router.events.on('routeChangeStart', () => {
     NProgress.start()
@@ -97,8 +98,9 @@ const MyComponent = ({children, store}) => {
         return cartCopy.filter(c => +c.book_type !== type)
     }
     return (
-        <LangContext.Provider value={{lang, langs: ["ru", "en", "uz"], onChangeLang: changeLangHandler}}>
-            <AuthModalContext.Provider value={{authModal}}>
+        <I18nextProvider i18n={i18n}>
+            <LangContext.Provider value={{lang, langs: ["ru", "en", "uz"], onChangeLang: changeLangHandler}}>
+                <AuthModalContext.Provider value={{authModal}}>
                     <SnackbarProvider>
                         <CartContext.Provider
                             value={{
@@ -115,8 +117,9 @@ const MyComponent = ({children, store}) => {
                             <Layout cartCount={cart.length}>{children}</Layout>
                         </CartContext.Provider>
                     </SnackbarProvider>
-            </AuthModalContext.Provider>
-        </LangContext.Provider>
+                </AuthModalContext.Provider>
+            </LangContext.Provider>
+        </I18nextProvider>
     );
 };
 

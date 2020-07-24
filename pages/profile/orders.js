@@ -7,8 +7,8 @@ import axios from "../../axios-api";
 import {Col, Row} from "react-bootstrap";
 import {Check, Table} from '../../components/';
 
-const OrdersPage = ({ results, error }) => {
-
+const OrdersPage = ({ results, data, error }) => {
+    console.log(data)
     const langContext = useContext(LangContext);
     if (error) return <ErrorPage/>;
     const content = {
@@ -45,6 +45,7 @@ export const getServerSideProps = async ({req, query}) => {
                 Authorization: `Bearer ${parseCookies(req).token}`
             }
         });
+
     } catch (err) {
         error = "Error";
         return {
@@ -57,6 +58,7 @@ export const getServerSideProps = async ({req, query}) => {
 
     return {
         props: {
+            data: res.data,
             results: results.reverse()
         }
     };
