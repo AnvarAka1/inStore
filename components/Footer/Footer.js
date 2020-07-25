@@ -1,15 +1,12 @@
 import React from "react";
 import classes from "./Footer.module.scss";
 import {Container, Row, Col} from "react-bootstrap";
-import {Logo} from "../";
-import FooterItems from "./FooterItems/FooterItems";
+import {FooterItem, Logo} from "../";
+import {useTranslation} from "react-i18next";
 
-const footer = ({lang}) => {
-    const content = {
-        supports: ["Служба поддержки", "Support service", "Qo'llab-quvvatlash xizmati"],
-        socials: ["Мы в социальных сетях", "We are at social media", "Biz ijtimoiy tarmoqlarda"],
-        payments: ["Оплата", "Payment", "To'lov usullari"]
-    };
+const footer = ({ lang }) => {
+    const {t} = useTranslation()
+
     return (
         <footer className={`${classes.Footer} text-left`}>
             <Container fluid className="pl-5 pr-5">
@@ -23,10 +20,10 @@ const footer = ({lang}) => {
                         <div className="d-flex justify-content-between align-items-start">
                             <div className="w-50 mr-5">
                                 <p className="mb-2 text-small text-bold">+99890 018 88 11</p>
-                                <p className="mb-2 text-small">{content.supports[lang]}</p>
+                                <p className="mb-2 text-small">{t('footer.support')}</p>
 
                                 <div className={classes.Social}>
-                                    <h6 className="text-accent mt-5 mb-3">{content.socials[lang]}</h6>
+                                    <h6 className="text-accent mt-5 mb-3">{t('footer.social')}</h6>
                                     <ul>
                                         {getSocial().map((social, index) => {
                                             return (
@@ -45,7 +42,7 @@ const footer = ({lang}) => {
                             </div>
 
                             <div>
-                                <h6 className="text-accent">{content.payments[lang]}</h6>
+                                <h6 className="text-accent">{t('footer.payment')}</h6>
                                 <ul>
                                     {getImages().map((image, index) => {
                                         return (
@@ -59,17 +56,16 @@ const footer = ({lang}) => {
                         </div>
                     </Col>
                     <Col sm={{span: 5, offset: 3}} lg={{span: 4, offset: 4}}>
-                        <div className="d-flex justify-content-between align-items-start flex-column flex-sm-row w-100 mt-3 mt-sm-0">
-                            {getItems().map(item => {
-                                return (
-                                    <FooterItems
-                                        key={item.titles[lang]}
-                                        titles={item.titles[lang]}
-                                        items={item.items}
-                                        lang={lang}
-                                    />
-                                );
-                            })}
+                        <div
+                            className="d-flex justify-content-between align-items-start flex-column flex-sm-row w-100 mt-3 mt-sm-0">
+                            {getItems().map((items,index) => (
+                                <div className="mt-3 mt-sm-0">
+                                    <ul> {items.map((item, index1) => (
+                                        <FooterItem title={t(`footer.items.${index}.${index1}`)} link={item}/>
+                                    ))}
+                                    </ul>
+                                </div>
+                            ))}
                         </div>
                     </Col>
                 </Row>
@@ -94,46 +90,20 @@ const getSocial = () => [
 ];
 const getImages = () => [
     "/images/payment/payme.png",
-    // "/images/payment/uzcard.png",
     "/images/payment/click.png"
-    // "/images/payment/humo.png",
-    // "/images/payment/visa.png",
-    // "/images/payment/paynet.png"
 ];
 const getItems = () => [
-    {
-        titles: ["О нас", "About us", "Biz haqimizda"],
-        items: [
-            {
-                titles: ["Часто задаваемые вопросы", "F.A.Q", "Ko'p so'raladigan savollar"],
-                link: "/"
-            },
-            {
-                titles: ["Помощь", "Help", "Yordam"],
-                link: "/"
-            },
-            {
-                titles: ["Правила и условия", "Rules and conditions", "Foydalanish shartlari"],
-                link: "/"
-            },
-            {
-                titles: ["Возврат и обмен", "Return and exchange", "Qaytish va almashish"],
-                link: "/"
-            },
-            {
-                titles: ["Политика конфиденциальности", "Privacy policy", "Maxfiylik siyosati"],
-                link: "/"
-            }
-        ]
-    },
-    {
-        titles: ["Сотрудничество", "Partnership", "Hamkorlik"],
-        items: [
-            {
-                titles: ["Издательствам", "For publishers", "Nashriyot"],
-                link: "/"
-            }
-        ]
-    }
+    [
+        "/faq/about",
+        "/faq/delivery",
+        "/faq/",
+        "/faq/"
+
+    ],
+    [
+        "/faq/partnership",
+        "/faq/",
+        "/faq/help"
+    ]
 ];
 export default React.memo(footer);

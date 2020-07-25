@@ -31,5 +31,24 @@
       "title": "Delivery",
       "description": "Delivery is available throughout Uzbekistan. Delivery of products is organized within 2 working days within Tashkent city and 4 working days (through postal services) to other regions of Uzbekistan. Delivery might be ordered via website or call center. Cost of delivery within Tashkent city is 15,000 UZS, to other regions of Uzbekistan 25,000 UZS."
     }
+  },
+  "footer": {
+    "support": "Support service",
+    "social": "We are at social media",
+    "payment": "Payment",
+    "items": [
+
+      [
+        "About us",
+        "Delivery",
+        "Return and exchange",
+        "Privacy policy"
+      ],
+      [
+        "Partnership",
+        "F.A.Q",
+        "Help"
+      ]
+    ]
   }
 }

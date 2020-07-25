@@ -31,5 +31,23 @@
       "title": "Yetkazmalar",
       "description": "Yetkazmalar butun O’zbekiston bo’ylab amalga oshiriladi. Yetkazmalar vebsayt yoki “call center” orqali berilgan buyurtma vaqtidan boshlab Toshkent bo’ylab 2 ish kunida, qolgan viloyatlarga esa 4 ish kuni ichida amalga oshiriladi (pochta orqali). Toshkent bo’ylab yetkazmalar narxi 15,000 so’m. O’zbekiston bo’ylab yetkazmalar 25,000 so’mni tashkil etadi."
     }
+  },
+  "footer": {
+    "support": "Qo'llab-quvvatlash xizmati",
+    "social": "Biz ijtimoiy tarmoqlarda",
+    "payment": "To'lov usullari",
+    "items": [
+      [
+        "Biz haqimizda",
+        "Yetkazmalar",
+        "Qaytish va almashish",
+        "Maxfiylik siyosati"
+      ],
+      [
+        "Hamkorlik",
+        "Ko'p so'raladigan savollar",
+        "Yordam"
+      ]
+    ]
   }
 }
