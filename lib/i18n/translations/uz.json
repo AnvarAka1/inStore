@@ -1,4 +1,20 @@
 {
+  "profile": {
+    "orders": {
+      "table": {
+        "book": "Kitob",
+        "price": "Narxi",
+        "author": "Muallif"
+      },
+      "check": {
+        "number": "Buyurtma",
+        "date": "Sana",
+        "amount": "Narxi",
+        "paymentType": "To'lov turi",
+        "paymentStatus": "Holat"
+      }
+    }
+  },
   "faq": {
     "about": {
       "title": "Biz haqimizda",

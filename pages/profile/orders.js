@@ -8,6 +8,7 @@ import {Col, Row} from "react-bootstrap";
 import {Check, Table} from '../../components/';
 import Pagination from "../../components/Pagination/Pagination";
 import {useRouter} from "next/router";
+import {useTranslation} from "react-i18next";
 
 const langs = ["ru", "en", "uz"];
 
@@ -16,8 +17,9 @@ const OrdersPage = ({results, paginationProps, error}) => {
     const [orders, setOrders] = useState(results)
     const {lang} = useContext(LangContext);
     const pag = paginationProps ? paginationProps : {}
-    const [pagination, setPagination] = useState(pag)
+    const [pagination] = useState(pag)
     const router = useRouter()
+
     const content = {
         headers: ["История заказов", "Order history", "Sotib olish tarixi"]
     }
@@ -46,7 +48,7 @@ const OrdersPage = ({results, paginationProps, error}) => {
                 <Col>
                     {orders && orders.map((order, index) => (
                         <div key={index} className="mb-5 overflow-auto">
-                            <Table rows={order.books} lang={lang}/>
+                            <Table rows={order.books} lang={lang} />
                             <Check order={order} lang={lang}/>
                         </div>
                     ))}

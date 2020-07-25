@@ -1,4 +1,20 @@
 {
+  "profile": {
+    "orders": {
+      "table": {
+        "book": "Книга",
+        "price": "Цена",
+        "author": "Автор"
+      },
+      "check": {
+        "number": "Заказ",
+        "date": "Дата",
+        "amount": "Стоимость",
+        "paymentType": "Тип оплаты",
+        "paymentStatus": "Статус"
+      }
+    }
+  },
   "faq": {
     "about": {
       "title": "О нас",

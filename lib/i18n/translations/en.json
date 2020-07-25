@@ -1,4 +1,20 @@
 {
+  "profile": {
+    "orders": {
+      "table": {
+        "book": "Book",
+        "price": "Price",
+        "author": "Author"
+      },
+      "check": {
+        "number": "Order",
+        "date": "Date",
+        "amount": "Cost",
+        "paymentType": "Payment type",
+        "paymentStatus": "Status"
+      }
+    }
+  },
   "faq": {
     "about": {
       "title": "About us",
