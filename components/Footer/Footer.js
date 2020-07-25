@@ -4,7 +4,7 @@ import {Container, Row, Col} from "react-bootstrap";
 import {FooterItem, Logo} from "../";
 import {useTranslation} from "react-i18next";
 
-const footer = ({ lang }) => {
+const footer = () => {
     const {t} = useTranslation()
 
     return (
@@ -59,9 +59,9 @@ const footer = ({ lang }) => {
                         <div
                             className="d-flex justify-content-between align-items-start flex-column flex-sm-row w-100 mt-3 mt-sm-0">
                             {getItems().map((items,index) => (
-                                <div className="mt-3 mt-sm-0">
+                                <div className="mt-3 mt-sm-0" key={index}>
                                     <ul> {items.map((item, index1) => (
-                                        <FooterItem title={t(`footer.items.${index}.${index1}`)} link={item}/>
+                                        <FooterItem title={t(`footer.items.${index}.${index1}`)} key={index1} link={item}/>
                                     ))}
                                     </ul>
                                 </div>

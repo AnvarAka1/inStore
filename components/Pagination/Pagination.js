@@ -5,7 +5,7 @@ import {useRouter} from 'next/router'
 const ITEMS_PER_PAGE = 10
 const PAGE_SHOW_THRESHOLD = 4
 
-function Pagination({numberOfItems, active}) {
+function Pagination({numberOfItems, active, onChange}) {
     const activePage = parseInt(active)
     const router = useRouter()
     const pages = Math.ceil(parseInt(numberOfItems) / ITEMS_PER_PAGE)
@@ -16,8 +16,9 @@ function Pagination({numberOfItems, active}) {
         if (key === 'page') continue
         path += `${key}=${query[key]}&`
     }
-    const onChange = (number) => {
-        router.push(`${path}page=${number}`)
+    const onChangePage = (page) => {
+        return onChange(page)
+            .then(() => router.push(`${path}page=${page}`))
             .then(() => window.scrollTo(0, 0))
     }
     const items = []
@@ -26,7 +27,7 @@ function Pagination({numberOfItems, active}) {
             <BPPagination.Item
                 key={number}
                 active={number === activePage}
-                onClick={() => onChange(number)}
+                onClick={() => onChangePage(number)}
             >
                 {number}
             </BPPagination.Item>
@@ -55,5 +56,7 @@ function Pagination({numberOfItems, active}) {
         </BPPagination>
     )
 }
-
+Pagination.defaultProps = {
+    onChange: () => Promise.resolve()
+}
 export default Pagination
