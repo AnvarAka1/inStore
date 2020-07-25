@@ -1,1 +1,35 @@
-{}
+{
+  "faq": {
+    "about": {
+      "title": "Biz haqimizda",
+      "descriptions": [
+        " kitob savdosini taklif qiluvchi onlayn platforma bo’lib, kitoblar xaridi in-Study.uz vebsaytida yoki “call center” orqali 24/7 amalga oshirilishi mumkin.",
+        "Kitoblar xarid qilinganidan so’ng, Toshkent bo’ylab 2 ish kunida, O’zbekiston bo’ylab 4 ish kunida yetkazib beriladi.  "
+      ],
+      "organization": {
+        "title": "KORXONA NOMI",
+        "content": "MCHJ «LUMOS DIGITAL»"
+      },
+      "address": {
+        "title": "MANZIL",
+        "content": "O`zbekiston, Toshkent sh., Yunusobod tumani, Amir Temur 1 A Mo’ljal: Moliya instituti qarshisi."
+      }
+    },
+    "help": {
+      "title": "Yordam",
+      "descriptions": [
+        "Ko'p beriladigan savollar sahifasida mavjud bo'lgan savollaringizga javob olmagan bo'lsangiz, bizning mijozlarni qo'llab-quvvatlash",
+        "markazimiz bilan +99899 849 3311 raqami yoki info@in-study.uz orqali bog'lanishingiz mumkin.",
+        "Mijozlarni qo'llab-quvvatlash markazi har kuni 9:00 dan 18:00 ga qadar ishlaydi."
+      ]
+    },
+    "partnership": {
+      "title": "Hamkorlik",
+      "description": "Har qanday hamkorlik takliflarini +99899 8493311 raqami bilan bog’lanish yoki info@in-study.uz manziliga xat yuborish orqali taqdim qilishingiz mumkin."
+    },
+    "delivery": {
+      "title": "Yetkazmalar",
+      "description": "Yetkazmalar butun O’zbekiston bo’ylab amalga oshiriladi. Yetkazmalar vebsayt yoki “call center” orqali berilgan buyurtma vaqtidan boshlab Toshkent bo’ylab 2 ish kunida, qolgan viloyatlarga esa 4 ish kuni ichida amalga oshiriladi (pochta orqali). Toshkent bo’ylab yetkazmalar narxi 15,000 so’m. O’zbekiston bo’ylab yetkazmalar 25,000 so’mni tashkil etadi."
+    }
+  }
+}

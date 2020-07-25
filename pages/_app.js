@@ -20,7 +20,7 @@ Router.events.on('routeChangeStart', () => {
 })
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
-
+const l = ['ru', 'en', 'uz']
 const MyComponent = ({children, store}) => {
     const [cart, setCart] = useState([]);
     const [lang, setLang] = useState(0);
@@ -28,12 +28,23 @@ const MyComponent = ({children, store}) => {
 
     useEffect(() => {
         store.dispatch(actions.authCheckState());
-        if (localStorage.getItem("cart")) setCart(JSON.parse(localStorage.getItem("cart")));
-        if (localStorage.getItem("lang")) setLang(localStorage.getItem("lang"));
+        const cart = localStorage.getItem("cart")
+        const lang = localStorage.getItem("lang")
+
+        if (cart) {
+            setCart(JSON.parse(cart));
+        }
+
+        if (lang) {
+            setLang(lang);
+            i18n.changeLanguage(l[lang])
+        }
     }, []);
 
     const changeLangHandler = language => {
         setLang(language);
+
+        i18n.changeLanguage(l[language])
         localStorage.setItem("lang", language);
     };
     // adds product to cart

@@ -1,1 +1,35 @@
-{}
+{
+  "faq": {
+    "about": {
+      "title": "About us",
+      "descriptions": [
+        " is an online platform providing, where you can buy printed, electronic, audio books via website or call center 24/7.",
+        ""
+      ],
+      "organization": {
+        "title": "Legan name",
+        "content": "“LUMOS DIGITAL” LLC"
+      },
+      "address": {
+        "title": "Address",
+        "content": "1 A, Amir Temur street, Yunusobod district, Tashkent, Uzbekistan. Reference point: Opposite to Tashkent Financial Institute"
+      }
+    },
+    "help": {
+      "title": "Help",
+      "descriptions": [
+        "If you could not find response to you question in Frequently Asked Questions (FAQ) section, you may approach our Call Center",
+        "via +99890 018 88 11 or info@in-study.uz.",
+        "Call center works every day from 9:00 to 18:00."
+      ]
+    },
+    "partnership": {
+      "title": "Partnership",
+      "description": "Regarding any partnership enquires you may approach call +99890 018 88 11 or send message to info@in-study.uz."
+    },
+    "delivery": {
+      "title": "Delivery",
+      "description": "Delivery is available throughout Uzbekistan. Delivery of products is organized within 2 working days within Tashkent city and 4 working days (through postal services) to other regions of Uzbekistan. Delivery might be ordered via website or call center. Cost of delivery within Tashkent city is 15,000 UZS, to other regions of Uzbekistan 25,000 UZS."
+    }
+  }
+}
