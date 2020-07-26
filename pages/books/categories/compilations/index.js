@@ -40,6 +40,7 @@ export const getServerSideProps = async ({query}) => {
     try {
         res = await axios.get(`${lang[query.l || 0]}/categories/collections`);
     } catch (err) {
+        console.log(err)
         error = "Error";
         return {
             props: {
