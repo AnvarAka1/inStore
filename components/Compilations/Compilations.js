@@ -4,7 +4,7 @@ import { Col } from "react-bootstrap";
 const compilations = ({ items }) => {
 	const compilationsView = items.map(item => {
 		return (
-			<Col md={4} sm={6} key={item.id}>
+			<Col md={4} sm={6} key={item.id} className="mb-3">
 				<Compilation {...item} />
 			</Col>
 		);

@@ -3,19 +3,23 @@ import axios from "../../../../axios-api";
 import {CategoriesLayout} from "../../../../layouts";
 import {Row, Col} from "react-bootstrap";
 import {Compilations} from "../../../../components";
-import Router from "next/router";
+import Router, {useRouter} from "next/router";
 import {LangContext} from "../../../../store";
+import Pagination from "../../../../components/Pagination/Pagination";
 
-const CompilationsPage = props => {
-    const langContext = useContext(LangContext);
+const CompilationsPage = ({results, pagination}) => {
+    const { lang } = useContext(LangContext);
+    const router = useRouter()
+
     useEffect(() => {
-        Router.replace(`${Router.pathname}?l=${langContext.lang}`);
-    }, [langContext.lang]);
+        Router.replace(`${Router.pathname}?l=${lang}`);
+    }, [lang]);
+
     return (
         <CategoriesLayout withoutGenre>
-            {props.results &&
-            props.results.map(result => (
-                result.collections.length ? (
+            {results &&
+            results.map(result => (
+                result.books.length ? (
                     <React.Fragment key={result.id}>
                         <Row>
                             <Col>
@@ -23,7 +27,15 @@ const CompilationsPage = props => {
                             </Col>
                         </Row>
                         <Row className="mb-5 mt-1">
-                            <Compilations items={result.collections}/>
+                            <Compilations items={result.books}/>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Pagination
+                                    numberOfItems={pagination.count}
+                                    active={router.query.page ? router.query.page : 1}
+                                />
+                            </Col>
                         </Row>
                     </React.Fragment>
                 ) : null
@@ -33,14 +45,17 @@ const CompilationsPage = props => {
 };
 export const getServerSideProps = async ({query}) => {
     // axios
-    const lang = ["ru", "en", "uz"];
+    const langs = ["ru", "en", "uz"];
     let res = null;
     let error = null;
+    const lang = langs[query.l || 0]
 
     try {
-        res = await axios.get(`${lang[query.l || 0]}/categories/collections`);
+
+        res = await axios.get(`${lang}/collections/books`);
+
+        // console.log(res)
     } catch (err) {
-        console.log(err)
         error = "Error";
         return {
             props: {
@@ -48,10 +63,17 @@ export const getServerSideProps = async ({query}) => {
             }
         };
     }
-    const {results} = res.data;
+    const {results, next, previous, count } = res.data
+
+    const pagination = {
+        next,
+        previous,
+        count
+    }
     return {
         props: {
-            results: results
+            results,
+            pagination
         }
     };
 };
