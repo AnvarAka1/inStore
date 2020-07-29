@@ -13,7 +13,7 @@ const makeOrder = ({productCount, currentPrice, oldPrice, ordered, lang}) => {
         totals: ['Итого', 'Total', 'Jami'],
         deliveries: ['Доставка по Ташкенту', 'Delivery in Tashkent', 'Toshkentda etkazib berish'],
         deliveryConsiderations: ['Итого (с учетом доставки)', 'Total (With delivery)', 'Jami (etkazib berish bilan birga)'],
-        checkouts: ['Оформить заказ', 'Checkout', 'Tekshirib ko\'rmoq']
+        checkouts: ['Оформить заказ', 'Checkout', 'Buyurtma berish']
     }
     return (
         <div>

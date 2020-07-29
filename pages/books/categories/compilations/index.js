@@ -12,6 +12,7 @@ const CompilationsPage = ({results, pagination}) => {
     const { lang } = useContext(LangContext);
     const router = useRouter()
     const { t } = useTranslation()
+
     useEffect(() => {
         Router.replace(`${Router.pathname}?l=${lang}`);
     }, [lang]);
