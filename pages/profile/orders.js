@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import {ProfileLayout} from "../../layouts";
 import {LangContext} from "../../store/";
 import ErrorPage from "../404";
@@ -8,7 +8,6 @@ import {Col, Row} from "react-bootstrap";
 import {Check, Table} from '../../components/';
 import Pagination from "../../components/Pagination/Pagination";
 import {useRouter} from "next/router";
-import {useTranslation} from "react-i18next";
 
 const langs = ["ru", "en", "uz"];
 
