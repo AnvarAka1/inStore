@@ -12,6 +12,7 @@ import {Row, Col, Button} from "react-bootstrap";
 import {connect} from "react-redux";
 import {CartLayout} from "../../../layouts";
 import {PaymentCard, PaymentMethod} from "../../../components/Payment";
+import * as gtag from '../../../lib/gtag'
 
 let fData = null;
 
@@ -89,12 +90,21 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
             purchaseHandler()
                 .then(res => {
                     if (methodOfPayment < 2) {
+                        gtag.event({
+                            action: 'Only_online_or_only_printed_books_offline_payment',
+                            category: 'purchase',
+                            label: 'Purchase by offline payment'
+                        })
                         cartContext.onClearCart();
                         purchaseModal.onShow();
                         mixedBooksPaymentModal.onHide()
                         paymentModal.onHide()
-
                     } else {
+                        gtag.event({
+                            action: 'Only_online_or_only_printed_books_card_payment',
+                            category: 'purchase',
+                            label: 'Purchase by card payment'
+                        })
                         location.href = res.data.redirect_url;
                     }
                 })
@@ -102,8 +112,14 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
         } else if (allOnlineRef.current) {
             // true - online fully
             purchaseHandler()
-                .then(res =>
-                    location.href = res.data.redirect_url)
+                .then(res => {
+                    gtag.event({
+                        action: 'purchase_all_online',
+                        category: 'purchase',
+                        label: 'Online payment'
+                    })
+                    location.href = res.data.redirect_url
+                })
                 .catch(err => console.log(err))
         } else {
             // false - separate online, audio from printed books and then submit one by one
@@ -124,6 +140,14 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
 
                 return purchaseHandler()
             })
+                .then(res => {
+                    gtag.event({
+                        action: 'purchase_mix',
+                        category: 'purchase',
+                        label: 'Purchase when printed books are paid offline, online books are paid via card'
+                    })
+                    return res
+                })
                 .then(res => location.href = res.data.redirect_url)
                 .catch(err => console.log(err))
 

@@ -14,7 +14,7 @@ import Router from "next/router";
 import NProgress from 'nprogress'
 import {I18nextProvider} from 'react-i18next';
 import i18n from '../lib/i18n/i18n'
-
+import * as gtag from '../lib/gtag'
 Router.events.on('routeChangeStart', () => {
     NProgress.start()
 })
@@ -25,6 +25,17 @@ const MyComponent = ({children, store}) => {
     const [cart, setCart] = useState([]);
     const [lang, setLang] = useState(0);
     const authModal = useModal(false);
+
+    useEffect(() => {
+        const handleRouteChange = url => {
+            gtag.pageview(url)
+        }
+        Router.events.on('routeChangeComplete', handleRouteChange)
+        return () => {
+            Router.events.off('routeChangeComplete', handleRouteChange)
+        }
+    })
+
 
     useEffect(() => {
         store.dispatch(actions.authCheckState());
