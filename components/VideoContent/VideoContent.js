@@ -1,7 +1,7 @@
 import React from 'react';
 import Content from "./Content";
 import Title from "./Title";
-import Overview from "./Overview";
+import CourseOverview from "../CourseOverview/";
 
 function VideoContent({title, author, description, overview, lang}) {
     return (
@@ -9,7 +9,7 @@ function VideoContent({title, author, description, overview, lang}) {
             {/* Video */}
             <Title title={title} author={author}/>
             <Content lang={lang} description={description}/>
-            <Overview overviewItems={overview} lang={lang}/>
+            <CourseOverview overviewItems={overview} lang={lang}/>
         </div>
     )
 }

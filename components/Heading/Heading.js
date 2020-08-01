@@ -3,10 +3,9 @@ import classes from "./Heading.module.scss";
 import { Button } from "react-bootstrap";
 import Link from "next/link";
 import Fade from 'react-reveal/Fade';
-const heading = ({ className, children, text, href, lang }) => {
-	const content = {
-		buttons: [ "Открыть весь список", "Open full list", "Barcha ro'yxatni oching" ]
-	};
+import {useTranslation} from "react-i18next";
+const heading = ({ className, children, text, href }) => {
+	const { t } = useTranslation()
 
 	return (
 		<Fade bottom>
@@ -15,7 +14,7 @@ const heading = ({ className, children, text, href, lang }) => {
 			<h5 className="mb-3 text-normal">{text}</h5>
 			<Link href={href}>
 				<a>
-					<Button>{content.buttons[lang]}</Button>
+					<Button>{t('Open full list')}</Button>
 				</a>
 			</Link>
 		</div>

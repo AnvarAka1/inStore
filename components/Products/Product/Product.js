@@ -36,7 +36,7 @@ const product = ({id, image, title, author, rate, current_price, price, isVideo,
                             ellipsis="..."
                             id={`${title[1]}${author[1]}${id}${Math.floor(Math.random() * 1000)}`}
                             innerElement="h5"
-                            className={`text-black mb-1 mt-2`}
+                            className={`text-black mb-1 mt-2 without-button`}
                         />
                         <TextOverflow>
                             <p className="text-small" title={author}>{author}</p>

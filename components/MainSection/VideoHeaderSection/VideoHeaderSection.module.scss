@@ -1,0 +1,22 @@
+.VideoHeaderSection {
+
+}
+.Content {
+    width: 300px;
+    position: absolute;
+    text-align: left;
+    bottom: 25%;
+    left: 15%;
+    color: white;
+}
+.Backdrop {
+    background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0) 47.92%);
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+.Image {
+  position: relative;
+}

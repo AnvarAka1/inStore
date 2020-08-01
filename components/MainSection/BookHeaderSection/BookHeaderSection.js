@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./TopImage.module.scss";
+import classes from "./BookHeaderSection.module.scss";
 import Link from "next/link";
-const topImage = ({ title, img, link }) => {
+const bookHeaderSection = ({ title, img, link }) => {
 	return (
 		<Link href={link}>
 			<a>
@@ -20,4 +20,4 @@ const topImage = ({ title, img, link }) => {
 	);
 };
 
-export default topImage;
+export default bookHeaderSection;

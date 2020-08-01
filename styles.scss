@@ -17,7 +17,7 @@
   }
 
   @media(max-width: 480px) {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
@@ -43,7 +43,7 @@ img {
 }
 
 p {
-  color: #777777;
+  color: #555;
   font-size: 1rem;
 }
 
@@ -522,6 +522,21 @@ p {
   }
 }
 
-.clamp-lines__button{
-  display: none
+.without-button .clamp-lines__button{
+  display: none;
+
+}
+.clamp-lines__button {
+  display: block;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 5px 0;
+  color: var(--accent);
+  text-decoration: underline;
+  font-size: 1rem;
+  &:focus{
+    outline: none;
+    border: none
+  }
 }

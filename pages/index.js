@@ -6,7 +6,7 @@ import Fade from 'react-reveal/Fade';
 import {Carousel, Col, Row} from "react-bootstrap";
 import {CompilationsCarousel, Heading, NewHeader, PreCarousel, ProductsCarousel} from "../components";
 
-const LandingPage = ({ books, audioBooks, bookCollections, audioCollections, lang, error}) => {
+const LandingPage = ({books, audioBooks, bookCollections, audioCollections, lang, error}) => {
     const [loading, setLoading] = useState(false);
     const langContext = useContext(LangContext);
 
@@ -62,14 +62,21 @@ const LandingPage = ({ books, audioBooks, bookCollections, audioCollections, lan
                 <Col sm={6} className="d-none d-sm-block">
                     <Fade>
                         <div>
-                            <img src="/images/main/books/first.png" alt="Электронные и печатные книги"/>
+                            <img
+                                src="/images/main/books/first.png"
+                                alt="Электронные и печатные книги"
+                            />
                         </div>
                     </Fade>
                 </Col>
                 <Col sm={6} xs={12}>
 
                     {/* E-books and printed books show full list */}
-                    <Heading text={content.eBook.titles[lang]} lang={lang} href={`/books/categories?l=${lang}`}>
+                    <Heading
+                        text={content.eBook.titles[lang]}
+                        lang={lang}
+                        href={`/books/categories?l=${lang}`}
+                    >
                         {content.eBook.titles[lang]}
                     </Heading>
 
@@ -78,22 +85,42 @@ const LandingPage = ({ books, audioBooks, bookCollections, audioCollections, lan
             <Row className="mt-4 mb-4 pt-4 pb-4">
                 {/* Books compilation */}
                 <Col sm={4}>
-                    <PreCarousel link={`/books/categories/compilations?l=${lang}`}>
+                    <PreCarousel
+                        link={`/books/categories/compilations?l=${lang}`}
+                    >
                         {content.booksCompilations[lang]}
                     </PreCarousel>
                 </Col>
-                <Col sm={8}>{!loading && <CompilationsCarousel lang={lang} items={bookCollections}/>}</Col>
+                <Col sm={8}>
+                    {!loading && (
+                        <CompilationsCarousel
+                            lang={lang}
+                            items={bookCollections}/>
+                    )}
+                </Col>
             </Row>
             <Row>
                 <Col>
                     {/* New books */}
-                    <NewHeader href={`/books/categories?l=${lang}`} lang={lang}>
+                    <NewHeader
+                        href={`/books/categories?l=${lang}`}
+                        lang={lang}
+                    >
                         {content.newBooks[lang]}
                     </NewHeader>
                 </Col>
             </Row>
             <Row>
-                <Col><Fade right>{!loading && <ProductsCarousel items={books} lang={lang}/>}</Fade></Col>
+                <Col>
+                    <Fade right>
+                        {!loading && (
+                            <ProductsCarousel
+                                items={books}
+                                lang={lang}
+                            />
+                        )}
+                    </Fade>
+                </Col>
             </Row>
             <Row className="mt-5 pt-4 mb-5 pb-4">
                 <Col sm={6} xs={12}>
@@ -109,7 +136,10 @@ const LandingPage = ({ books, audioBooks, bookCollections, audioCollections, lan
 
                 <Col sm={6} className="d-none d-sm-block">
                     <div>
-                        <img src="/images/main/books/second.png" alt="Электронные и печатные книги"/>
+                        <img
+                            src="/images/main/books/second.png"
+                            alt="Электронные и печатные книги"
+                        />
                     </div>
                 </Col>
 
@@ -120,7 +150,14 @@ const LandingPage = ({ books, audioBooks, bookCollections, audioCollections, lan
                         {content.audiobooksCompilations[lang]}
                     </PreCarousel>
                 </Col>
-                <Col sm={8}>{!loading && <CompilationsCarousel lang={lang} items={audioCollections}/>}</Col>
+                <Col sm={8}>
+                    {!loading && (
+                        <CompilationsCarousel
+                            lang={lang}
+                            items={audioCollections}
+                        />
+                    )}
+                </Col>
             </Row>
 
             <Row className="mt-5 pt-4">
@@ -131,7 +168,16 @@ const LandingPage = ({ books, audioBooks, bookCollections, audioCollections, lan
                 </Col>
             </Row>
             <Row>
-                <Col><Fade left>{!loading && <ProductsCarousel items={audioBooks} lang={lang}/>}</Fade></Col>
+                <Col>
+                    <Fade left>
+                        {!loading && (
+                            <ProductsCarousel
+                                items={audioBooks}
+                                lang={lang}
+                            />
+                        )}
+                    </Fade>
+                </Col>
             </Row>
         </React.Fragment>
     );
@@ -151,6 +197,7 @@ const getCarouselItems = () => [
         link: "/"
     }
 ];
+
 export const getServerSideProps = async ({query}) => {
     const lang = ["ru", "en", "uz"];
     let res = null;

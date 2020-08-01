@@ -17,6 +17,7 @@ const navbar = React.forwardRef(
 				<span className="text-mobile-invisible">{content.books[lang]} </span>
 				<img
 					src="/images/icons/caret.png"
+					alt="expand"
 					className={clsx(
 						"icon img",
 						classes.Rotatable, {

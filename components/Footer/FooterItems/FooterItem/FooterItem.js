@@ -5,7 +5,7 @@ const footerItem = ({ title, link }) => {
 		<li>
 			<Link href={link}>
 				<a className="text-small text-accent">
-					<p className="mb-2 text-underline">{title}</p>
+					<p className="mb-sm-3 mb-5 text-underline">{title}</p>
 				</a>
 			</Link>
 		</li>

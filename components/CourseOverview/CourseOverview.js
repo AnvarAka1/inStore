@@ -1,14 +1,14 @@
 import React from 'react';
 import {Accordion} from "react-bootstrap";
 import OverviewItem from "./OverviewItem/OverviewItem";
+import {useTranslation} from "react-i18next";
 
-function Overview({overviewItems, lang}) {
-    const content = {
-        overviews: ['Обзор курса', 'Course overview', 'Uzb']
-    }
+function CourseOverview({overviewItems, lang}) {
+    const { t } = useTranslation()
+
     return (
         <>
-            <h4 className="mb-4">{content.overviews[lang]}</h4>
+            <h4 className="mb-4">{t('Course overview')}</h4>
             <Accordion>
                 {overviewItems.map((item, index) => (
                     <OverviewItem key={item.id} {...item} eventKey={index} lang={lang}/>
@@ -18,4 +18,4 @@ function Overview({overviewItems, lang}) {
     )
 }
 
-export default Overview
+export default CourseOverview
