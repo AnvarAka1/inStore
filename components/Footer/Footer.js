@@ -75,13 +75,13 @@ const footer = () => {
 };
 const getSocial = () => [
     {
-        href: 'https://www.facebook.com/instudyuzb/',
+        href: 'https://www.facebook.com/instore.uzb/?modal=admin_todo_tour',
         image: '/images/social/fb.png'
     }, {
-        href: 'https://www.instagram.com/in_study.uz/',
+        href: 'https://www.instagram.com/instore_uz/',
         image: '/images/social/instagram.png'
     }, {
-        href: 'https://t.me/inStudy_uz',
+        href: 'https://t.me/in_Storeuz',
         image: '/images/social/tg.png',
     }, {
         href: 'https://twitter.com/StudyUz',
