@@ -34,11 +34,7 @@ export const getServerSideProps = async ({ req, query }) => {
 	let res = null;
 	let error = null;
 	try {
-		res = await axios.get(lang[+query.l || 0] + "/profile/library", {
-			headers: {
-				Authorization: `Bearer ${parseCookies(req).token}`
-			}
-		});
+		res = await axios.get(lang[+query.l || 0] + "/profile/library", req);
 	} catch (err) {
 		error = "Error";
 		console.log(err);

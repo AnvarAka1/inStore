@@ -1,10 +1,17 @@
 import cookie from "cookie";
-
+import Cookie from "js-cookie";
+import { propOr } from 'ramda'
+import {LANGS} from "../constants";
 export const parseCookies = req => {
 	// isServer ? "" : ""
 	return cookie.parse(req ? req.headers.cookie || "" : document.cookie);
 };
-
+export const setCookie = (key, value) => {
+	Cookie.set(key, value)
+}
+export const getLang = (req) => {
+	return LANGS[propOr(0, 'lang', parseCookies(req))]
+}
 export const categorySelector = (id, categories, _selectedId) => {
 	if (id === _selectedId) return null;
 	if (_selectedId != -1) {

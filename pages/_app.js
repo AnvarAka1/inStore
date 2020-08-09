@@ -3,7 +3,9 @@ import * as actions from "../store/actions";
 import {Provider} from "react-redux";
 import {useModal} from "../hooks";
 import withReduxStore from "../helpers/with-redux-store";
+import { prop } from 'ramda'
 import {CartContext, AuthModalContext, LangContext} from "../store";
+import { setCookie, parseCookies } from '../helpers/utils'
 import {Layout} from "../layouts";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-multi-carousel/lib/styles.css";
@@ -40,8 +42,7 @@ const MyComponent = ({children, store}) => {
     useEffect(() => {
         store.dispatch(actions.authCheckState());
         const cart = localStorage.getItem("cart")
-        const lang = localStorage.getItem("lang")
-
+        const lang = prop('lang' ,parseCookies(null))
         if (cart) {
             setCart(JSON.parse(cart));
         }
@@ -56,7 +57,7 @@ const MyComponent = ({children, store}) => {
         setLang(language);
 
         i18n.changeLanguage(l[language])
-        localStorage.setItem("lang", language);
+        setCookie('lang', language)
     };
     // adds product to cart
     const addRemoveItemFromCart = product => {

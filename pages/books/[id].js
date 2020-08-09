@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
-import {parseCookies} from "../../helpers/utils";
+import {getLang, parseCookies} from "../../helpers/utils";
 import axios from "../../axios-api";
 import {connect} from "react-redux";
 import {useForm} from "../../hooks";
@@ -10,6 +10,8 @@ import {ProductDetails, ProductDescription, Comments, ProductsCarousel} from "..
 import Router from "next/router";
 import Fade from 'react-reveal/Fade'
 import Link from "next/link";
+import {useTranslation} from "react-i18next";
+import {LANGS} from "../../constants";
 const langs = ['ru', 'en', "uz"];
 
 const options = {
@@ -35,9 +37,11 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
     const authModalContext = useContext(AuthModalContext);
     const commentControl = useForm();
     const [openSnackbar] = useSnackbar(options)
+
     useEffect(() => {
         setBook(bookProps);
     }, [bookProps]);
+
     useEffect(() => {
         Router.replace(Router.pathname, `/books/${query.id}?l=${langContext.lang}`);
     }, [langContext.lang]);
@@ -165,18 +169,11 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
     );
 };
 
-export const getServerSideProps = async ({query, params, req}) => {
+export const getServerSideProps = async ({query, req}) => {
+    const lang = getLang(req)
     let res = null;
-    const lang = ["ru", "en", "uz"];
-    const token = parseCookies(req).token;
     try {
-        res = await axios.get(lang[+query.l || 0] + "/books/" + query.id, {
-            headers: token
-                ? {
-                    Authorization: `Bearer ${token}`
-                }
-                : null
-        });
+        res = await axios.get(`${lang}/books/${query.id}`, req);
     } catch (error) {
         return {
             props: {
@@ -185,7 +182,6 @@ export const getServerSideProps = async ({query, params, req}) => {
         };
     }
     const bookProps = res.data;
-
     return {
         props: {
             bookProps,

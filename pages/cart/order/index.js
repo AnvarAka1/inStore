@@ -350,11 +350,7 @@ export const getServerSideProps = async ({req, query}) => {
     let profile = null;
     const token = parseCookies(req).token;
     if (token) {
-        profile = await axios.get("profile", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
+        profile = await axios.get("profile", req);
         profile = profile.data;
     }
 

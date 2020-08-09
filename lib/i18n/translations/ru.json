@@ -1,4 +1,21 @@
 {
+  "Book": "Книга",
+  "Price": "Цена",
+  "Author": "Автор",
+  "Order": "Заказ",
+  "Date": "Дата",
+  "Cost": "Стоимость",
+  "Payment type": "Тип платежа",
+  "Status": "Статус",
+  "About us": "О нас",
+  "New": "Новое",
+  "Legan name":  "Legan name",
+  "Address": "Адрес",
+  "Help": "Помощь",
+  "books": "книги",
+  "for any taste": "на любой вкус",
+  "audiobooks": "аудиокниги",
+  "Printed and e-books": "Печатные и электронные книги",
   "profile": {
     "orders": {
       "table": {

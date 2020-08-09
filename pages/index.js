@@ -1,13 +1,14 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect} from "react";
 import axios from "../axios-api";
 import {LangContext} from "../store";
 import Router from "next/router";
 import Fade from 'react-reveal/Fade';
 import {Carousel, Col, Row} from "react-bootstrap";
-import {CompilationsCarousel, Heading, NewHeader, PreCarousel, ProductsCarousel} from "../components";
+import {CompilationsCarousel, Heading, NewHeader, ProductsCarousel} from "../components";
+import {useTranslation} from "react-i18next";
 
-const LandingPage = ({books, audioBooks, bookCollections, audioCollections, lang, error}) => {
-    const [loading, setLoading] = useState(false);
+const LandingPage = ({books, bookCollections, lang, error}) => {
+    const { t } = useTranslation()
     const langContext = useContext(LangContext);
 
     useEffect(() => {
@@ -19,22 +20,7 @@ const LandingPage = ({books, audioBooks, bookCollections, audioCollections, lang
 
     // multilang
     lang = langContext.lang;
-    const content = {
-        eBook: {
-            titles: ["Электронные и печатные", "Printed and e-books", "Elektron va bosma"],
-            texts: ["книги на любой вкус", "for any taste", "Har qanday lazzat uchun kitoblar"]
-        },
 
-        booksCompilations: ["Сборники книг", "Books compilation", "Kitob to'plamlari"],
-
-        newBooks: ["книги", "books", "kitoblar"],
-        audiobook: {
-            titles: ["Аудиокниги", "Audiobooks", "Audiokitoblar"],
-            texts: ["слушайте когда и где угодно", "Listen whenever and wherever you are", "qachon va qaerda tinglang"]
-        },
-        audiobooksCompilations: ["Сборники аудиокниг", "Audiobooks compilation", "Audiokitoblar to'plamlari"],
-        newAudiobooks: ["аудиокниги", "audiobooks", "audio kitoblar"]
-    };
     return (
         <React.Fragment>
             <Row className="mb-4">
@@ -58,7 +44,6 @@ const LandingPage = ({books, audioBooks, bookCollections, audioCollections, lang
                 </Col>
             </Row>
             <Row>
-
                 <Col sm={6} className="d-none d-sm-block">
                     <Fade>
                         <div>
@@ -70,112 +55,37 @@ const LandingPage = ({books, audioBooks, bookCollections, audioCollections, lang
                     </Fade>
                 </Col>
                 <Col sm={6} xs={12}>
-
                     {/* E-books and printed books show full list */}
                     <Heading
-                        text={content.eBook.titles[lang]}
-                        lang={lang}
+                        text={t('for any taste')}
                         href={`/books/categories?l=${lang}`}
                     >
-                        {content.eBook.titles[lang]}
+                        {t('Printed and e-books')}
                     </Heading>
-
                 </Col>
             </Row>
             <Row className="mt-4 mb-4 pt-4 pb-4">
-                {/* Books compilation */}
-                <Col sm={4}>
-                    <PreCarousel
-                        link={`/books/categories/compilations?l=${lang}`}
-                    >
-                        {content.booksCompilations[lang]}
-                    </PreCarousel>
-                </Col>
-                <Col sm={8}>
-                    {!loading && (
-                        <CompilationsCarousel
-                            lang={lang}
-                            items={bookCollections}/>
-                    )}
+                <Col sm={12}>
+                    <CompilationsCarousel items={bookCollections}/>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    {/* New books */}
                     <NewHeader
                         href={`/books/categories?l=${lang}`}
                         lang={lang}
                     >
-                        {content.newBooks[lang]}
+                        {t('books')}
                     </NewHeader>
                 </Col>
             </Row>
             <Row>
                 <Col>
                     <Fade right>
-                        {!loading && (
-                            <ProductsCarousel
-                                items={books}
-                                lang={lang}
-                            />
-                        )}
-                    </Fade>
-                </Col>
-            </Row>
-            <Row className="mt-5 pt-4 mb-5 pb-4">
-                <Col sm={6} xs={12}>
-                    {/* Audio books show full list */}
-                    <Heading
-                        lang={lang}
-                        text={content.audiobook.texts[lang]}
-                        href={`/books/categories/audio-books?l=${lang}`}
-                    >
-                        {content.audiobook.titles[lang]}
-                    </Heading>
-                </Col>
-
-                <Col sm={6} className="d-none d-sm-block">
-                    <div>
-                        <img
-                            src="/images/main/books/second.png"
-                            alt="Электронные и печатные книги"
-                        />
-                    </div>
-                </Col>
-
-            </Row>
-            <Row>
-                <Col sm={4}>
-                    <PreCarousel link={`/books/categories/compilations?l=${lang}`}>
-                        {content.audiobooksCompilations[lang]}
-                    </PreCarousel>
-                </Col>
-                <Col sm={8}>
-                    {!loading && (
-                        <CompilationsCarousel
+                        <ProductsCarousel
+                            items={books}
                             lang={lang}
-                            items={audioCollections}
                         />
-                    )}
-                </Col>
-            </Row>
-
-            <Row className="mt-5 pt-4">
-                <Col>
-                    <NewHeader href={`/books/categories/audio-books?l=${lang}`} lang={lang}>
-                        {content.newAudiobooks[lang]}
-                    </NewHeader>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <Fade left>
-                        {!loading && (
-                            <ProductsCarousel
-                                items={audioBooks}
-                                lang={lang}
-                            />
-                        )}
                     </Fade>
                 </Col>
             </Row>
@@ -213,15 +123,14 @@ export const getServerSideProps = async ({query}) => {
         };
     }
 
-    const {feedback, books, audio_books, book_collections, audio_book_collections} = res.data;
+    const {feedback, books, book_collections} = res.data;
 
     return {
         props: {
             feedback,
             books,
-            audioBooks: audio_books,
             bookCollections: book_collections,
-            audioCollections: audio_book_collections,
+
             error
         }
     };

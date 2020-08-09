@@ -1,4 +1,21 @@
 {
+  "Book": "Book",
+  "Price": "Price",
+  "Author": "Author",
+  "Order": "Order",
+  "Date": "Date",
+  "Cost": "Cost",
+  "Payment type": "Payment type",
+  "Status": "Status",
+  "About us": "About us",
+  "New": "New",
+  "Legan name":  "Legan name",
+  "Address": "Address",
+  "Help": "Help",
+  "books": "books",
+  "for any taste": "for any taste",
+  "audiobooks": "audiobooks",
+  "Printed and e-books": "Printed and e-books",
   "profile": {
     "orders": {
       "table": {

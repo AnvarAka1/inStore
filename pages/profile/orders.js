@@ -73,11 +73,7 @@ export const getServerSideProps = async ({req, query}) => {
 
     const lang = langs[+query.l || 0]
     try {
-        res = await axios.get(`${lang}/profile/orders${page}`, {
-            headers: {
-                Authorization: `Bearer ${parseCookies(req).token}`
-            }
-        });
+        res = await axios.get(`${lang}/profile/orders${page}`, req);
 
     } catch (err) {
         error = "Error";

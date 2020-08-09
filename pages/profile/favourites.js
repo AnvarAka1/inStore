@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
-import { parseCookies } from "../../helpers/utils";
-import { LangContext } from "../../store";
+import React, {useState} from "react";
+import {parseCookies} from "../../helpers/utils";
+import {defaultTo, path, prop, propOr} from 'ramda'
 import axios from "../../axios-api";
 import ErrorPage from "../404";
-import { Row, Col } from "react-bootstrap";
-import { Products } from "../../components";
-import { ProfileLayout } from "../../layouts";
-import Router from "next/router";
+import {Col, Row} from "react-bootstrap";
+import {Products} from "../../components";
+import {ProfileLayout} from "../../layouts";
+import {LANGS} from "../../constants";
+
 const FavouritesPage = ({ productsProps, error }) => {
-	const [products, setProducts] = useState(productsProps ? productsProps : []);
-	const langContext = useContext(LangContext);
-	useEffect(() => {
-		Router.replace(Router.pathname, `?l=${langContext.lang}`);
-	}, [langContext.lang]);
+	const defaultProducts = defaultTo([], productsProps)
+	const [products, setProducts] = useState(defaultProducts);
+
+
 	if (error) return <ErrorPage />;
 	return (
 		<ProfileLayout>
@@ -22,8 +22,8 @@ const FavouritesPage = ({ productsProps, error }) => {
 				</Col>
 			</Row>
 			<Row>
-				{products && products.length ? (
-					<Products items={products} lang={langContext.lang} />
+				{products.length ? (
+					<Products items={products} />
 				) : (
 					<Col>
 						<h5 className="text-secondary">Пусто</h5>
@@ -33,16 +33,13 @@ const FavouritesPage = ({ productsProps, error }) => {
 		</ProfileLayout>
 	);
 };
-export const getServerSideProps = async ({ query, req }) => {
-	const lang = ["ru", "en", "uz"];
+export const getServerSideProps = async ({ req }) => {
+	const cookies = parseCookies(req)
 	let res = null;
 	let error = null;
+
 	try {
-		res = await axios.get(lang[+query.l || 0] + "/profile/favourites", {
-			headers: {
-				Authorization: `Bearer ${parseCookies(req).token}`
-			}
-		});
+		res = await axios.get(`${LANGS[propOr(0, 'lang', cookies)]}/profile/favourites`, req);
 	} catch (err) {
 		error = "Error";
 		return {
@@ -51,7 +48,7 @@ export const getServerSideProps = async ({ query, req }) => {
 			}
 		};
 	}
-	const products = res.data.results;
+	const products = path(['data', 'results'], res)
 	return {
 		props: {
 			productsProps: products

@@ -261,11 +261,7 @@ export const getServerSideProps = async ({req}) => {
     let res = null;
     let error = null;
     try {
-        res = await axios.get("/profile", {
-            headers: {
-                Authorization: `Bearer ${parseCookies(req).token}`
-            }
-        });
+        res = await axios.get("/profile", req);
         res = res.data;
     } catch (err) {
         error = "Error";

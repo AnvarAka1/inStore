@@ -38,7 +38,7 @@ const sliderCarousel = ({ className, children, items, arrows = true, autoPlay = 
 				containerClass="carousel-container"
 				removeArrowOnDeviceType={[ "tablet", "mobile" ]}
 				itemClass={[ classes.Item, className ].join(" ")}
-				autoPlay={autoPlay}
+				autoPlay={true}
 				autoPlaySpeed={5000}
 				customLeftArrow={<CustomArrowLeft />}
 				customRightArrow={<CustomArrowRight />}
