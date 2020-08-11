@@ -9,11 +9,11 @@ const instance = axios.create({
 instance.interceptors.request.use((req) => {
 	const cookies = parseCookies(req)
 	const token = prop('token', cookies)
+	delete req.headers.accept
+	delete req.headers.host
+
 	if(token) {
 		const Authorization = `Bearer ${token}`
-		delete req.headers.accept
-		delete req.headers.host
-
 		req.headers = {
 			...req.headers,
 			Authorization

@@ -1,17 +1,16 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {getLang, parseCookies} from "../../helpers/utils";
 import axios from "../../axios-api";
 import {connect} from "react-redux";
 import {useForm} from "../../hooks";
-import {CartContext, AuthModalContext, LangContext} from "../../store";
+import {AuthModalContext, CartContext, LangContext} from "../../store";
 import {useSnackbar} from "react-simple-snackbar";
-import {Row, Col} from "react-bootstrap";
-import {ProductDetails, ProductDescription, Comments, ProductsCarousel} from "../../components/";
+import {Col, Row} from "react-bootstrap";
+import {Comments, ProductDescription, ProductDetails, ProductsCarousel} from "../../components/";
 import Router from "next/router";
 import Fade from 'react-reveal/Fade'
 import Link from "next/link";
-import {useTranslation} from "react-i18next";
-import {LANGS} from "../../constants";
+
 const langs = ['ru', 'en', "uz"];
 
 const options = {
@@ -30,6 +29,7 @@ const options = {
 }
 const BookPage = ({bookProps, isAuthorized, query}) => {
     const [book, setBook] = useState(bookProps);
+    console.log(book)
     const [rate, setRate] = useState(0);
     const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
     const cartContext = useContext(CartContext);
@@ -171,9 +171,11 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
 
 export const getServerSideProps = async ({query, req}) => {
     const lang = getLang(req)
+
     let res = null;
     try {
         res = await axios.get(`${lang}/books/${query.id}`, req);
+
     } catch (error) {
         return {
             props: {
@@ -182,6 +184,7 @@ export const getServerSideProps = async ({query, req}) => {
         };
     }
     const bookProps = res.data;
+    console.log(bookProps.feedback)
     return {
         props: {
             bookProps,
