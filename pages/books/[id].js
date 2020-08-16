@@ -29,7 +29,6 @@ const options = {
 }
 const BookPage = ({bookProps, isAuthorized, query}) => {
     const [book, setBook] = useState(bookProps);
-    console.log(book)
     const [rate, setRate] = useState(0);
     const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
     const cartContext = useContext(CartContext);
@@ -184,7 +183,6 @@ export const getServerSideProps = async ({query, req}) => {
         };
     }
     const bookProps = res.data;
-    console.log(bookProps.feedback)
     return {
         props: {
             bookProps,
