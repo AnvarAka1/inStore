@@ -4,6 +4,7 @@
     @media (max-width: 600px) {
         width: 100px
     }
+
 }
 
 .Mobile {
@@ -12,6 +13,9 @@
     @media(max-width: 600px) {
         display: block;
         width: 40px
+    }
+    @media (max-width: 375px) {
+        width: 30px;
     }
 }
 
