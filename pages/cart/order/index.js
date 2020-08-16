@@ -191,7 +191,7 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
     const validationSchema = object({
         phone: string().min(8).required("Введите номер"),
         name: string().required("Имя обязательно"),
-        email: string().email().required(),
+        email: string().email(),
         street: isOnlineBooks ? string() : string().required("Введите улицу"),
         house: isOnlineBooks ? string() : string().required("Введите номер дома")
     })
