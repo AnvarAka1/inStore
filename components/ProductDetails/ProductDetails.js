@@ -3,7 +3,7 @@ import classes from "./ProductDetails.module.scss";
 import { Stars } from "../../components";
 import Social from "../Social/Social";
 const productDetails = props => {
-	const { lang } = props;
+
 	const rows = [
 		["ISBN: ", props.isbn],
 		["Страниц: ", props.page_count],

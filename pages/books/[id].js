@@ -10,6 +10,8 @@ import {Comments, ProductDescription, ProductDetails, ProductsCarousel} from "..
 import Router from "next/router";
 import Fade from 'react-reveal/Fade'
 import Link from "next/link";
+import Head from 'next/head'
+import {prop} from "ramda";
 
 const langs = ['ru', 'en', "uz"];
 
@@ -36,6 +38,8 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
     const authModalContext = useContext(AuthModalContext);
     const commentControl = useForm();
     const [openSnackbar] = useSnackbar(options)
+
+    const title = prop('title', book)
 
     useEffect(() => {
         setBook(bookProps);
@@ -125,7 +129,15 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
                 isAuthorized={isAuthorized}
             />
     )
+
     return (
+        <>
+            <Head>
+                <title>{title}</title>
+                <meta name="title" property="og:title" content={title} />
+                <meta name="description" property="og:description" content={prop('description', book)} />
+                <meta name="og:image" property="og:image" content={prop('image', book)} />
+            </Head>
         <Row>
             <Col sm={4}>
                 <ProductDetails
@@ -162,9 +174,16 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
                     </Col>
                 </Row>
                 <h3 className="mt-5">{content.headers[lang]}</h3>
-                <Fade right><ProductsCarousel items={book.related} lang={lang} responsive={{lg: 4, xl: 4, sm: 4}}/></Fade>
+                <Fade right>
+                    <ProductsCarousel
+                        items={prop('related', book)}
+                        lang={lang}
+                        responsive={{lg: 4, xl: 4, sm: 4}}
+                    />
+                </Fade>
             </Col>
         </Row>
+            </>
     );
 };
 

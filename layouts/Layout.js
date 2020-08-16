@@ -8,8 +8,11 @@ import Router from "next/router";
 import { useForm } from "../hooks/";
 import { Container } from "react-bootstrap";
 import { AuthModal, NavItems, Navbar, Footer, Search } from "../components/";
+import {useTranslation} from "react-i18next";
 
 const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, error }) => {
+	const { t } = useTranslation()
+
 	const [isSignUp, setIsSignUp] = useState(true);
 	const [isBooksOpen, setIsBooksOpen] = useState(false);
 	const [showInputMask, setShowInputMask] = useState(false);
@@ -42,9 +45,8 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, err
 	};
 	// JSX
 	const lang = langContext.lang;
-	const content = {
-		titles: ["Библиотека книг и видеоуроков", "Library of books and videolessons", "Kitoblar kutubxonasi va video darsliklar"]
-	};
+
+
 	const search = <Search control={searchControl} lang={lang} onSearch={onSearch} />;
 	// Right side of navbar with cart, login/logout
 
@@ -74,8 +76,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, err
 				/>
 			)}
 			<Head>
-				<title>in-Study.uz | {content.titles[lang]}</title>
-
+				<title>in-Study.uz | {t('Library of books')}</title>
 			</Head>
 			<Navbar
 				lang={lang}
