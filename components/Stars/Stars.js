@@ -11,7 +11,7 @@ const stars = ({rate, isBig, onClick}) => {
             <div
                 key={i}
                 className="mr-1"
-                onClick={onClick ? () => onClick(i + 1) : null}
+                onClick={() => onClick(i)}
             >
                 <img
                     src="/images/icons/star.png"
@@ -26,7 +26,7 @@ const stars = ({rate, isBig, onClick}) => {
             <div
                 key={i}
                 className="mr-1"
-                onClick={onClick ? () => onClick(i + 1) : null}
+                onClick={() => onClick(i)}
             >
                 <img
                     src="/images/icons/star-gold.png"
@@ -39,4 +39,7 @@ const stars = ({rate, isBig, onClick}) => {
     return <div className="d-flex align-items-center">{starsArray}</div>;
 };
 
+stars.defaultProps = {
+    onClick: () => {}
+}
 export default stars;

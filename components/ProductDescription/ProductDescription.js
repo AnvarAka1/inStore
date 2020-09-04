@@ -1,7 +1,7 @@
 import React from "react";
 import {Button} from "react-bootstrap";
 import classes from "./ProductDescription.module.scss";
-
+import ReactHtmlParser from 'react-html-parser'
 const MAX_LENGTH = 128;
 const productDescription = ({
 	title,
@@ -40,13 +40,13 @@ const productDescription = ({
 	if (desc && desc.length > MAX_LENGTH) {
 		desc = !isDescriptionExpanded ? (
 			<React.Fragment>
-				{description.substr(0, MAX_LENGTH)}
+				{ReactHtmlParser(description.substr(0, MAX_LENGTH))}
 				<a role="button" className="text-accent ml-2" style={{ cursor: "pointer" }} onClick={expandDescription}>
 					Подробнее »
 				</a>
 			</React.Fragment>
 		) : (
-			description
+			ReactHtmlParser(description)
 		);
 	}
 
