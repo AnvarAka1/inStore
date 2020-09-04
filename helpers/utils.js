@@ -3,7 +3,6 @@ import Cookie from "js-cookie";
 import { propOr } from 'ramda'
 import {LANGS} from "../constants";
 export const parseCookies = req => {
-	// isServer ? "" : ""
 	return cookie.parse(req ? req.headers.cookie || "" : document.cookie);
 };
 export const setCookie = (key, value) => {

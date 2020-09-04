@@ -112,10 +112,13 @@ export const getServerSideProps = async ({query}) => {
     const lang = ["ru", "en", "uz"];
     let res = null;
     let error = null;
+
     try {
         res = await axios.get(lang[+query.l || 0] + "/home");
     } catch (err) {
         error = "Error";
+
+        console.log(err)
         return {
             props: {
                 error

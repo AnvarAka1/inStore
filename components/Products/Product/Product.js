@@ -10,6 +10,7 @@ const product = ({id, image, title, author, rate, current_price, price, isVideo,
         remove: ["Удалить из корзины", "Remove from cart", "Savatdan olib tashlash"],
         currency: ["сум", "so'm", "so'm"]
     };
+
     return (
         <div>
             <div className={classes.Product}>
@@ -34,7 +35,7 @@ const product = ({id, image, title, author, rate, current_price, price, isVideo,
                             buttons={true}
                             delay={200}
                             ellipsis="..."
-                            id={`${title[1]}${author[1]}${id}`}
+                            id={`${title}${author}${id}`}
                             innerElement="h5"
                             className={`text-black mb-1 mt-2 without-button`}
                         />
