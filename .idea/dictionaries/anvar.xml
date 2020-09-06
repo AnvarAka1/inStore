@@ -2,6 +2,8 @@
   <dictionary name="anvar">
     <words>
       <w>clsx</w>
+      <w>formik</w>
+      <w>navbar</w>
     </words>
   </dictionary>
 </component>

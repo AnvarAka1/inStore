@@ -1,6 +1,5 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import LessonHeader from "../../components/Lesson/LessonHeader";
-import LangContext from "../../components/Language/LangContext";
 import PriceBlock from "../../components/Lesson/PriceBlock/PriceBlock";
 import {Col, Container, Row} from "react-bootstrap";
 import ListBox from "../../components/Lesson/LessonContent/ListBox";
@@ -9,7 +8,6 @@ import ClampLines from "react-clamp-lines";
 import CourseOverview from "../../components/CourseOverview";
 
 function VideoLessonPage({header, pricing, listItems, requirements, courseDescription, overview }) {
-    const {lang} = useContext(LangContext)
     const { t } = useTranslation()
 
     return (

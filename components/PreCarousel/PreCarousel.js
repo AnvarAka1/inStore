@@ -1,21 +1,22 @@
 import React from "react";
 import Link from "next/link";
 import classes from "./PreCarousel.module.scss";
+import {useTranslation} from "react-i18next";
 
-const preCarousel = ({isVideo, children, link, lang}) => {
-    const content = {
-        texts: ["Все сборники", "All compilations", "Barcha to'plamlar"]
-    };
+const preCarousel = ({ children, link }) => {
+    const { t } = useTranslation()
+
     return (
         <Link href={link}>
             <a>
                 <div className={classes.PreCarousel}>
                     <div>
                         <div className={classes.Image}>
-                            <img src={`/images/icons/${!isVideo ? "books.png" : "videos.png"}`} alt="video books"/>
+                            <img
+                                src={`/images/icons/books.png`} alt="books"/>
                         </div>
                         <h3 className="text-accent">{children}</h3>
-                        <p className={`text-small mt-auto ${isVideo && "text-bold"}`}>{content.texts[lang]}</p>
+                        <p className={`text-small mt-auto`}>{t('All compilations')}</p>
                     </div>
                 </div>
             </a>

@@ -1,5 +1,4 @@
-import React, {useContext, useEffect, useRef, useState} from "react";
-import {LangContext} from "../../../store/";
+import React, {useEffect, useRef, useState} from "react";
 import {useModal} from "../../../hooks";
 import InputMask from "react-input-mask";
 import {convertPhoneForBackend, parseCookies} from "../../../helpers/utils";
@@ -15,6 +14,7 @@ import {PaymentCard, PaymentMethod} from "../../../components/Payment";
 import * as gtag from '../../../lib/gtag'
 import {E_BOOKS_ONLY, MIXED, PRINTED_ONLY, useCart, useCartManipulator} from "../../../components/Cart";
 import {useAuthModal} from "../../../components/Auth";
+import {useTranslation} from "react-i18next";
 
 let fData = null;
 
@@ -36,11 +36,11 @@ const Comment = ({className, getFieldProps}) => (
 )
 
 const OrderPage = ({queryCase, isAuthorized, profile}) => {
+    const { i18n } = useTranslation()
     const allOnlineRef = useRef(true)
     const [showInputMask, setShowInputMask] = useState(false);
     const [methodOfPayment, setMethodOfPayment] = useState(queryCase !== 1 ? 2 : 0);
     const [stage, setStage] = useState(0);
-    const {lang} = useContext(LangContext);
     const { getBooksByType, getBooksExceptType, getIds } = useCart()
     const { onClearCart } = useCartManipulator()
     const { onShow } = useAuthModal()
@@ -201,11 +201,13 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
 
     // Modal
     const paymentMethodModal = (
-        <Modal modal={mixedBooksPaymentModal} onHide={mixedBooksPaymentHide}>
+        <Modal
+            modal={mixedBooksPaymentModal}
+            onHide={mixedBooksPaymentHide}
+        >
             {isMixedBooks && stage > 1 ?
                 (
                     <PaymentCard
-                        lang={lang}
                         isPrintedBooks={isPrintedBooks}
                         methodOfPayment={methodOfPayment}
                         methodOfPaymentClicked={methodOfPaymentHandler}
@@ -214,19 +216,19 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
 
                     />
                 )
-                :
-                <Card className="mt-3">
-                    <Card.Header>СПОСОБ ОПЛАТЫ</Card.Header>
-                    <Card.Body>
-                        <PaymentMethod lang={lang} clicked={paymentHandler}/>
-                    </Card.Body>
-                </Card>}
+                : (
+                    <Card className="mt-3">
+                        <Card.Header>СПОСОБ ОПЛАТЫ</Card.Header>
+                        <Card.Body>
+                            <PaymentMethod clicked={paymentHandler}/>
+                        </Card.Body>
+                    </Card>
+                )}
         </Modal>
     )
     const pModal = (
         <Modal modal={paymentModal}>
             <PaymentCard
-                lang={lang}
                 isPrintedBooks={isPrintedBooks}
                 methodOfPayment={methodOfPayment}
                 methodOfPaymentClicked={methodOfPaymentHandler}
@@ -239,7 +241,7 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
         <React.Fragment>
             <Modal modal={purchaseModal}>
                 {methodOfPayment < 2 && (
-                    <Success lang={lang} closed={purchaseModal.onHide}/>
+                    <Success closed={purchaseModal.onHide}/>
                 )}
             </Modal>
             {paymentMethodModal}
@@ -331,20 +333,20 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
 const getMethodsOfPayment = () => [
     {
         id: 0,
-        titles: ["Наличные деньги", "Cash", "Naqd pullar"]
+        title: "Cash"
     },
     {
         id: 1,
-        titles: ["Пластиковая карта", "Plastic card", "Plastik karta"]
+        title: "Plastic card"
     },
     {
         id: 2,
-        titles: ["Click", "Click", "Click"],
+        title: "Click",
         percent: "3.2"
     },
     {
         id: 3,
-        titles: ["Payme", "Payme", "Payme"],
+        title: "Payme",
         percent: "2"
     }
 ];

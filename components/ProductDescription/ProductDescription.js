@@ -3,7 +3,7 @@ import {Button} from "react-bootstrap";
 import classes from "./ProductDescription.module.scss";
 import ReactHtmlParser from 'react-html-parser'
 import {useTranslation} from "react-i18next";
-import { prop } from 'ramda'
+import {prop} from 'ramda'
 
 const MAX_LENGTH = 128;
 const BOOK_TYPES = ["Аудиокнига", "Печатное издание", "Электронная книга"];

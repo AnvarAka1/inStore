@@ -1,21 +1,15 @@
-import React, {useContext} from "react";
+import React from "react";
 import {CartLayout} from "../../layouts";
-import {LangContext} from "../../store";
 import {Button, Col, Row} from "react-bootstrap";
 import {Products} from "../../components";
 import {useCart, useCartManipulator} from "../../components/Cart";
+import {useTranslation} from "react-i18next";
 
 const CartPage = props => {
+	const { t } = useTranslation()
 	const {cart} = useCart()
 	const { onAddRemoveItem, onClearCart } = useCartManipulator()
-	const langContext = useContext(LangContext);
-	const lang = langContext.lang;
-	const content = {
-		titles: ['Корзина', 'Cart', 'Savat'],
-		totals: ['Всего в корзине', 'Total in cart', 'Savatda jami'],
-		resets: ['Сбросить корзину', 'Reset cart', 'Savat bo\'shatish'],
-		empties: ['Корзина пуста', 'Cart is empty', 'Savat bo\'sh']
-	}
+
 	const responsive = {
 		md: 3,
 		lg: 2,
@@ -26,15 +20,17 @@ const CartPage = props => {
 		<CartLayout>
 			<Row>
 				<Col>
-					<h2>{content.titles[lang]}</h2>
+					<h2>{t('Cart')}</h2>
 				</Col>
 			</Row>
 			<Row>
 				<Col>
 					<div className="d-flex align-items-center">
-						<h3 className="text-normal mb-0 mr-3">{content.totals[lang]} {cart.length}</h3>
+						<h3 className="text-normal mb-0 mr-3">
+							{t('Total in cart')} {cart.length}
+						</h3>
 						<Button variant="secondary text-small" onClick={onClearCart}>
-							{content.resets[lang]}
+							{t('Reset cart')}
 						</Button>
 					</div>
 				</Col>
@@ -45,11 +41,10 @@ const CartPage = props => {
 						{...responsive}
 						items={cart}
 						onAddRemoveItem={onAddRemoveItem}
-						lang={lang}
 					/>
 				) : (
 					<Col>
-						<h4 className="text-secondary">{content.empties[lang]}</h4>
+						<h4 className="text-secondary">{t('Cart is empty')}</h4>
 					</Col>
 				)}
 			</Row>

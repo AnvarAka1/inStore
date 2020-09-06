@@ -1,14 +1,15 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Col, Row} from "react-bootstrap";
 import {NavigationItems} from "../components/";
-import {LangContext} from "../store/";
 import {parseCookies} from "../helpers/utils";
 import axios from "../axios-api";
 import {useCart} from "../components/Cart";
+import {useTranslation} from "react-i18next";
 
 const ProfileLayout = ({children}) => {
+    const { t, i18n } = useTranslation()
     const [navigationItems, setNavigationItems] = useState([]);
-    const langContext = useContext(LangContext);
+
     const { cart } = useCart()
     useEffect(() => {
         axios
@@ -29,15 +30,13 @@ const ProfileLayout = ({children}) => {
                             finalArray.push({
                                 ...el,
                                 count: element.data,
-                                href: el.href + "?l=" + langContext.lang
+                                href: `${el.href}?l=${i18n.language}`
                             })
                         }
                     }
                 }
                 let staticArray = getNavigationItems().splice(3, 2);
-                staticArray.forEach(el=>{
-                        el.href = el.href + "?l=" + langContext.lang
-                });
+                staticArray.forEach(el => el.href = `${el.href}?l=${i18n.language}`);
                 staticArray[0].count = cart.length;
                 finalArray = [...finalArray, ...staticArray];
                 setNavigationItems(finalArray);
@@ -53,7 +52,7 @@ const ProfileLayout = ({children}) => {
     return (
         <Row>
             <Col sm={3}>
-                <NavigationItems lang={langContext.lang} items={navigationItems}/>
+                <NavigationItems items={navigationItems} />
             </Col>
             <Col sm={9}>{children}</Col>
         </Row>
@@ -65,7 +64,7 @@ const getNavigationItems = () => [
         id: 0,
         key: "orders",
         icon: "/images/icons/story.png",
-        titles: ["История заказов", "Order history", "Sotib olish tarixi"],
+        title: "Order history",
         count: 0,
         href: "/profile/orders"
     },
@@ -74,7 +73,7 @@ const getNavigationItems = () => [
         id: 1,
         key: "library",
         icon: "/images/icons/book.png",
-        titles: ["Моя библиотека", "My library", "Mening kutubxonam"],
+        title: "My library",
         count: 0,
         href: "/profile/library"
     },
@@ -82,7 +81,7 @@ const getNavigationItems = () => [
         id: 2,
         key: "favourites",
         icon: "/images/icons/star.png",
-        titles: ["Избранные", "Favourites", "Tanlangan"],
+        title: "Favourites",
         count: 0,
         href: "/profile/favourites"
     },
@@ -90,14 +89,14 @@ const getNavigationItems = () => [
         id: 3,
         key: "cart",
         icon: "/images/icons/cart.png",
-        titles: ["Корзина", "Cart", "Savat"],
+        title: "Cart",
         count: 0,
         href: "/cart"
     },
     {
         id: 4,
         icon: "/images/icons/settings.png",
-        titles: ["Настройки", "Settings", "Sozlamalar"],
+        title: "Settings",
         href: "/profile/settings",
         count: null,
         className: "mt-auto"

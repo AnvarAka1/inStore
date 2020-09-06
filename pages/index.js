@@ -1,13 +1,14 @@
-import React, {useContext, useEffect} from "react";
+import React, {useEffect} from "react";
 import axios from "../axios-api";
-import {LangContext} from "../store";
 import Router from "next/router";
+import { prop } from 'ramda'
 import Fade from 'react-reveal/Fade';
 import {Carousel, Col, Row} from "react-bootstrap";
 import {CompilationsCarousel, Heading, NewHeader, ProductsCarousel} from "../components";
 import {useTranslation} from "react-i18next";
+import {getLang} from "../helpers/utils";
 
-const LandingPage = ({books, bookCollections, lang, error}) => {
+const LandingPage = ({books, bookCollections, error}) => {
     const { t, i18n } = useTranslation()
 
     if (error) return <h3>{error}</h3>
@@ -26,9 +27,13 @@ const LandingPage = ({books, bookCollections, lang, error}) => {
                                 {getCarouselItems().map(item => {
                                     return (
                                         <Carousel.Item key={item.id}>
-                                            <img className="d-block w-100" src={item.img} alt={item.titles[lang]}/>
+                                            <img
+                                                className="d-block w-100"
+                                                src={item.img}
+                                                alt={item.titles[0]}
+                                            />
                                             <Carousel.Caption>
-                                                <h3>{item.titles[lang]}</h3>
+                                                <h3>{item.titles[0]}</h3>
                                             </Carousel.Caption>
                                         </Carousel.Item>
                                     );
@@ -50,10 +55,9 @@ const LandingPage = ({books, bookCollections, lang, error}) => {
                     </Fade>
                 </Col>
                 <Col sm={6} xs={12}>
-                    {/* E-books and printed books show full list */}
                     <Heading
                         text={t('for any taste')}
-                        href={`/books/categories?l=${lang}`}
+                        href={`/books/categories?l=${i18n.language}`}
                     >
                         {t('Printed and e-books')}
                     </Heading>
@@ -66,10 +70,7 @@ const LandingPage = ({books, bookCollections, lang, error}) => {
             </Row>
             <Row>
                 <Col>
-                    <NewHeader
-                        href={`/books/categories?l=${lang}`}
-                        lang={lang}
-                    >
+                    <NewHeader href={`/books/categories?l=${i18n.language}`}>
                         {t('books')}
                     </NewHeader>
                 </Col>
@@ -77,10 +78,7 @@ const LandingPage = ({books, bookCollections, lang, error}) => {
             <Row>
                 <Col>
                     <Fade right>
-                        <ProductsCarousel
-                            items={books}
-                            lang={lang}
-                        />
+                        <ProductsCarousel items={books} />
                     </Fade>
                 </Col>
             </Row>
@@ -103,34 +101,30 @@ const getCarouselItems = () => [
     }
 ];
 
-export const getServerSideProps = async ({query}) => {
-    const lang = ["ru", "en", "uz"];
-    let res = null;
-    let error = null;
+export const getServerSideProps = async ({ req }) => {
+    const lang = getLang(req)
 
     try {
-        res = await axios.get(lang[+query.l || 0] + "/home");
-    } catch (err) {
-        error = "Error";
+        const res = await axios.get(lang + "/home");
 
-        console.log(err)
+        const data = prop('data', res)
+        const feedback = prop('feedback', data)
+        const books = prop('books', data)
+        const bookCollections = prop('book_collections', data)
+
         return {
             props: {
-                error
+                feedback,
+                books,
+                bookCollections,
+            }
+        }
+    } catch (err) {
+        return {
+            props: {
+                error: "Error"
             }
         };
     }
-
-    const {feedback, books, book_collections} = res.data;
-
-    return {
-        props: {
-            feedback,
-            books,
-            bookCollections: book_collections,
-
-            error
-        }
-    };
 };
 export default React.memo(LandingPage);

@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import { useModal } from "../../hooks";
+import React from 'react';
+import {useModal} from "../../hooks";
 import Context from './context'
 
 function AuthModal ({ children }) {

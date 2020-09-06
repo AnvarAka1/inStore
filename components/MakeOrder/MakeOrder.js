@@ -3,18 +3,12 @@ import {Button} from "react-bootstrap";
 import classes from './MakeOrder.module.scss'
 import {DELIVERY_COST} from '../../constants'
 import {useCart} from "../Cart";
+import {useTranslation} from "react-i18next";
 
-const makeOrder = ({productCount, currentPrice, oldPrice, ordered, lang}) => {
+const makeOrder = ({ productCount, currentPrice, oldPrice, ordered }) => {
+    const { t } = useTranslation()
     const { getCase } = useCart()
-    const content = {
-        firstRowItems: ['товара на сумму', 'products for', 'tovarlar miqdori'],
-        currencies: ['сум', "so'm", "so'm"],
-        discounts: ['Все скидки', 'All discounts', 'Barcha chegirmalar'],
-        totals: ['Итого', 'Total', 'Jami'],
-        deliveries: ['Доставка по Ташкенту', 'Delivery in Tashkent', 'Toshkentda etkazib berish'],
-        deliveryConsiderations: ['Итого (с учетом доставки)', 'Total (With delivery)', 'Jami (etkazib berish bilan birga)'],
-        checkouts: ['Оформить заказ', 'Checkout', 'Buyurtma berish']
-    }
+
     return (
         <div>
             <h6>Сумма</h6>
@@ -22,26 +16,26 @@ const makeOrder = ({productCount, currentPrice, oldPrice, ordered, lang}) => {
                 <tbody>
                 <tr>
                     <th>
-                        <p>{productCount} {content.firstRowItems[lang]}</p>
+                        <p>{productCount} {t('products for')}</p>
                     </th>
                     <th>
-                        <p>{oldPrice} {content.currencies[lang]}</p>
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                        <p>{content.discounts[lang]}</p>
-                    </th>
-                    <th>
-                        <p>{currentPrice - oldPrice} {content.currencies[lang]}</p>
+                        <p>{oldPrice} {t('so\'m')}</p>
                     </th>
                 </tr>
                 <tr>
                     <th>
-                        <p>{content.totals[lang]}</p>
+                        <p>{t('All discounts')}</p>
                     </th>
                     <th>
-                        <p>{currentPrice} {content.currencies[lang]}</p>
+                        <p>{currentPrice - oldPrice} {t('so\'m')}</p>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <p>{t('Total')}</p>
+                    </th>
+                    <th>
+                        <p>{currentPrice} {t('so\'m')}</p>
                     </th>
                 </tr>
 
@@ -53,12 +47,12 @@ const makeOrder = ({productCount, currentPrice, oldPrice, ordered, lang}) => {
                             </th>
                         </tr>
                         <tr>
-                            <th>{content.deliveries[lang]}</th>
-                            <th>{DELIVERY_COST} {content.currencies[lang]}</th>
+                            <th>{t('Delivery in Tashkent')}</th>
+                            <th>{DELIVERY_COST} {t('so\'m')}</th>
                         </tr>
                         <tr>
-                            <th>{content.deliveryConsiderations[lang]}</th>
-                            <th>{currentPrice + DELIVERY_COST} {content.currencies[lang]}</th>
+                            <th>{t('Total (With delivery)')}</th>
+                            <th>{currentPrice + DELIVERY_COST} {t('so\'m')}</th>
                         </tr>
                     </>
                 )}
@@ -66,7 +60,7 @@ const makeOrder = ({productCount, currentPrice, oldPrice, ordered, lang}) => {
             </table>
             <hr/>
             <Button onClick={ordered} type="submit" disabled={productCount < 1}>
-                {content.checkouts[lang]}
+                {t('Checkout')}
             </Button>
         </div>
     );

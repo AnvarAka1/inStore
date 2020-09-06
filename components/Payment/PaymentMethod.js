@@ -1,19 +1,17 @@
 import React from 'react';
 import classes from './PaymentMethod.module.scss';
+import {useTranslation} from "react-i18next";
 
-const paymentMethod = ({lang, clicked}) => {
-    const content = {
-        leftButtons: ["Оплатить все онлайн", "Pay everything online", "Barchasini onlayn to'lash"],
-        rightButtons: ['Оплатить печатные книги наличными', 'Pay printed books with cash', "Chop etilgan kitoblar uchun naqd pul bilan to'lang"]
-    }
+const paymentMethod = ({ clicked }) => {
+    const { t } = useTranslation()
 
     return (
         <div className={classes.PaymentMethod}>
-            <button onClick={()=> clicked(true)}>
-                {content.leftButtons[lang]}
+            <button onClick={() => clicked(true)}>
+                {t('Pay everything online')}
             </button>
-            <button onClick={()=> clicked(false)}>
-                {content.rightButtons[lang]}
+            <button onClick={() => clicked(false)}>
+                {t('Pay everything online')}
             </button>
         </div>
     )

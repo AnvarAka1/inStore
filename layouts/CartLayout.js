@@ -1,44 +1,47 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Router from "next/router";
 import {useForm} from "../hooks";
-import {LangContext} from "../store";
 import {Col, Row} from "react-bootstrap";
 import {MakeOrder} from "../components";
 import {useCart} from "../components/Cart";
+import {useTranslation} from "react-i18next";
 
 const CartLayout = ({ children, isOrderPage }) => {
+	const { i18n } = useTranslation()
 	const [currentPrice, setCurrentPrice] = useState(0);
 	const [oldPrice, setOldPrice] = useState(0);
 	const [orderCase, setOrderCase] = useState(0);
 	const { cart, getCase } = useCart()
-	const langContext = useContext(LangContext)
 	const codeControl = useForm();
+
 	useEffect(() => {
 		const oldPrice = cart.reduce((sum, product) => {
 			return sum + +product.price;
 		}, 0);
 		const currentPrice = cart.reduce((sum, product) => {
-			return sum + +product.current_price;
+			return sum + parseInt(product.current_price);
 		}, 0);
 		setOldPrice(oldPrice);
 		setCurrentPrice(currentPrice);
 		setOrderCase(getCase());
 	}, [cart]);
+
 	useEffect(() => {
 		Router.replace({
 			pathname: Router.pathname,
 			query:{
-				l: langContext.lang,
+				l: i18n.language,
 				case: orderCase
 			}
 		})
-	}, [langContext.lang, orderCase])
+	}, [i18n.language, orderCase])
+
 	const orderHandler = () => {
 		if (!isOrderPage) {
 			Router.push({
 				pathname: "/cart/order",
 				query: {
-					l: langContext.lang,
+					l: i18n.language,
 					case: orderCase
 				}
 			});
@@ -50,7 +53,6 @@ const CartLayout = ({ children, isOrderPage }) => {
 			<Col md={9}>{children}</Col>
 			<Col md={3}>
 				<MakeOrder
-					lang={langContext.lang}
 					isValidCode={true}
 					currentPrice={currentPrice}
 					oldPrice={oldPrice}

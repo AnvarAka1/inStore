@@ -1,53 +1,37 @@
 import React from "react";
 import classes from "./Success.module.scss";
 import Link from "next/link";
+import {useTranslation} from "react-i18next";
 
-const success = ({ lang, closed, isWithLink, paymentLink }) => {
-	const content = {
-		paymentTitles: [
-			"Остался один шаг. Кликните по этой ссылке",
-			"One more step. Click the link",
-			"Bir qadam qoldi. Ushbu havolani bosing."
-		],
-		linkToPaymentSystems: ["Перейти к оплате", "Proceed to payment", "Ro'yxatdan o'chirilishda davom etish"],
-		titles: [
-			"Ваш заказ обрабатывается. Мы вам позвоним",
-			"Your order is being proceeded. We will call you back",
-			"Buyurtmangiz qayta ishlanmoqda. Biz sizga qo'ng'iroq qilamiz"
-		],
-		links: [
-			"Перейти в персональный кабинет",
-			"Proceed to personal account",
-			"Shaxsiy kabinetga kirish"
-		],
-		closes: ["Закрыть", "Close", "Yopish"]
-	};
+const success = ({ closed, isWithLink, paymentLink }) => {
+	const { t, i18n } = useTranslation()
+
 	return (
 		<div className={classes.Success}>
 			{isWithLink ? (
 				<>
 					<div>
-						<img src="/images/success.png" alt="Success!"></img>
+						<img src="/images/success.png" alt="Success!" />
 					</div>
-					<h3>{content.paymentTitles[lang]}</h3>
+					<h3>{t('One more step. Click the link')}</h3>
 					<div>
 						<a href={paymentLink} target="_blank">
-							{content.linkToPaymentSystems[lang]}
+							{t('Proceed to payment')}
 						</a>
 					</div>
 				</>
 			) : (
 				<>
 					<div>
-						<img src="/images/success.png" alt="Success!"></img>
+						<img src="/images/success.png" alt="Success!" />
 					</div>
-					<h3>{content.titles[lang]}</h3>
+					<h3>{t('Your order is being proceeded. We will call you back')}</h3>
 					<div>
-						<Link href={`/profile/library?l=${lang}`}>
-							<a>{content.links[lang]}</a>
+						<Link href={`/profile/library?l=${i18n.language}`}>
+							<a>{t('Proceed to personal account')}</a>
 						</Link>
 						<a role="button" onClick={closed}>
-							{content.closes[lang]}
+							{t('Close')}
 						</a>
 					</div>
 				</>

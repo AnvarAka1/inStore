@@ -1,21 +1,35 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {LangContext} from "../../store";
+import React, {useEffect, useState} from 'react';
 import {Alert, Button, Col, Row} from "react-bootstrap";
 import {Card} from "../../components";
 import {Form, Formik} from "formik";
 import {object, string} from "yup";
 import {FormikGroup} from "../../components/UI";
 import axios from '../../axios-api'
-import Router from "next/router";
+import {useRouter} from "next/router";
+import {useTranslation} from "react-i18next";
 
 function RestorePage({ query }) {
+    const { t, i18n } = useTranslation()
+    const router = useRouter()
+
     const [count, setCount] = useState(3)
     const [isSent, setIsSent] = useState(false)
     const [error, setError] = useState(null)
-    const langContext = useContext(LangContext)
-    const lang = langContext.lang
+
+    const initialValues = {
+        fPassword: '',
+        sPassword: ''
+    }
+
+    const validationSchema = object({
+        fPassword: string().min(6).max(20).required(),
+        sPassword: string().min(6).max(20).required()
+    })
+
     useEffect(() => {
-        if(count < 1) Router.replace(`/?l=${lang}`)
+        if(count < 1) {
+            router.replace(`/?l=${i18n.language}`)
+        }
         let timer = null
         if(isSent && !error){
             timer = setTimeout(() => {
@@ -25,58 +39,40 @@ function RestorePage({ query }) {
         return () => clearTimeout(timer)
     }, [isSent, count])
 
-    const content = {
-        titles: ['Восстановление аккаунта', 'Restoring account', 'Hisobni tiklash'],
-        headers: ['Измените свой пароль', 'Change your password', 'Parolni o\'zgartiring'],
-        buttons: ['Отправить', 'Submit', 'Yuborish'],
-        fPasswords: ['Новый пароль', 'New password', 'Yangi parol'],
-        sPasswords: ['Повторите пароль', 'Repeat password', 'Parolni qayta kiriting'],
-        errorMessages: ['Что то пошло не так. Попробуйте еще раз', 'Something went wrong. Try again', 'Nimadir noto\'g\'ri bajarildi. yana bir bor urinib ko `ring'],
-        successMessages: [
-            'Получилось. Можете войти используя Ваш новый пароль',
-            'Success. You can now login with Your new password',
-            'Bo\'ldi. Siz yangi parolingizdan foydalanib tizimga kirishingiz mumkin.'
-        ]
-    }
     const submitHandler = (values) => {
         setIsSent(false)
         setError(null)
         const formData = new FormData()
         formData.append('password', values.fPassword)
         formData.append('token', query.token)
-        axios.post('/accounts/password/retrieve', formData).then(res => {
-            setIsSent(true)
-        }).catch(err => {
-            console.log(err)
-        }).finally(() => {
-            setIsSent(true)
-        })
+
+        axios.post('/accounts/password/retrieve', formData)
+            .then(() => setIsSent(true))
+            .catch(err => console.log(err))
+            .finally(() => setIsSent(true))
     }
     return (
         <React.Fragment>
             <Row>
                 <Col>
-                    <h2>{content.titles[lang]}</h2>
+                    <h2>{t('Restoring account')}</h2>
                 </Col>
             </Row>
             <Row className="mt-4">
                 <Col md={{span: '6', offset: '3'}}>
                     <Card>
-                        <Card.Header>{content.headers[lang]}</Card.Header>
+                        <Card.Header>{t('Change your password')}</Card.Header>
                         <Card.Body>
                             {isSent && <Alert variant={error ? 'danger' : 'success'}>
-                                {error ? content.errorMessages[lang] : content.successMessages[lang]}
+                                {error
+                                    ? t('Something went wrong. Try again')
+                                    : t('Success. You can now login with Your new password')
+                                }
                             </Alert>}
-                            <Formik onSubmit={submitHandler}
-                                    initialValues={{
-                                        fPassword: '',
-                                        sPassword: ''
-                                    }}
-                                    validationSchema={
-                                        object({
-                                            fPassword: string().min(6).max(20).required(),
-                                            sPassword: string().min(6).max(20).required()
-                                        })}
+                            <Formik
+                                onSubmit={submitHandler}
+                                initialValues={initialValues}
+                                validationSchema={validationSchema}
                             >
                                 {formik => (
                                     <Form onSubmit={formik.handleSubmit}>
@@ -86,7 +82,7 @@ function RestorePage({ query }) {
                                             type='password'
                                             {...formik.getFieldProps('fPassword')}
                                         >
-                                            {content.fPasswords[lang]}
+                                            {t('New password')}
                                         </FormikGroup>
                                         <FormikGroup
                                             name='sPassword'
@@ -94,9 +90,14 @@ function RestorePage({ query }) {
                                             type='password'
                                             {...formik.getFieldProps('sPassword')}
                                         >
-                                            {content.sPasswords[lang]}
+                                            {t('Repeat password')}
                                         </FormikGroup>
-                                        <Button type='submit' className='mt-2 w-100'>{content.buttons[lang]}</Button>
+                                        <Button
+                                            type='submit'
+                                            className='mt-2 w-100'
+                                        >
+                                            {t('Send')}
+                                        </Button>
                                     </Form>
                                 )}
                             </Formik>

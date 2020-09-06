@@ -1,15 +1,17 @@
 import React from 'react';
 import {Button} from "react-bootstrap";
 import clsx from "clsx";
+import {useTranslation} from "react-i18next";
 
 const payment = props => {
     const {
         methodOfPaymentList,
         methodOfPayment,
         isPrintedBooks,
-        methodOfPaymentClicked,
-        lang
+        methodOfPaymentClicked
     } = props
+
+    const { t } = useTranslation()
 
     // if only ebooks and only audio book => render only click and payme
     // else if only printed books => render all
@@ -29,7 +31,7 @@ const payment = props => {
                                 ["green-active"]: active
                             })}
                         >
-                            {method.titles[lang].toUpperCase()}
+                            {t(method.title).toUpperCase()}
                         </Button>
                     )
 

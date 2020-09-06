@@ -1,9 +1,8 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getLang, parseCookies} from "../../helpers/utils";
 import axios from "../../axios-api";
 import {connect} from "react-redux";
 import {useForm} from "../../hooks";
-import {AuthModalContext, LangContext} from "../../store";
 import {useSnackbar} from "react-simple-snackbar";
 import {Col, Row} from "react-bootstrap";
 import {Comments, ProductDescription, ProductDetails, ProductsCarousel} from "../../components/";

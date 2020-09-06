@@ -15,7 +15,7 @@ const CompilationsPage = ({results, pagination}) => {
     const router = useRouter()
 
     useEffect(() => {
-        Router.replace(`${Router.pathname}?l=${lang}`);
+        Router.replace(`${Router.pathname}?l=${i18n.language}`);
     }, [i18n.language]);
 
     return (
@@ -45,8 +45,10 @@ export const getServerSideProps = async ({ req }) => {
     try {
         const res = await axios.get(`${lang}/collections`);
 
-        const results = prop('data', res)
-        const pagination = getPaginationFromResponse(results)
+        const data = prop('data', res)
+        const results = prop('results', data)
+
+        const pagination = getPaginationFromResponse(data)
 
         return {
             props: {

@@ -4,7 +4,7 @@ import {Button, Form} from "react-bootstrap";
 import classes from "./Comments.module.scss";
 import Comment from "./Comment/Comment";
 import {Stars} from "../";
-import { prop } from 'ramda'
+import {prop} from 'ramda'
 import {useTranslation} from "react-i18next";
 import clsx from "clsx";
 

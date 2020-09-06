@@ -1,57 +1,57 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {Card} from '../../components'
 import {FormikGroup} from '../../components/UI'
 import {Alert, Button, Col, Row} from 'react-bootstrap'
 import {Form, Formik} from 'formik'
 import {object, string} from 'yup'
-import {LangContext} from '../../store'
 import axios from '../../axios-api'
+import {useTranslation} from "react-i18next";
 
 function ForgotPage() {
+    const { t } = useTranslation()
     const [isSent, setIsSent] = useState(false)
     const [error, setError] = useState(null)
-    const langContext = useContext(LangContext)
 
-    const lang = langContext.lang
-    const content = {
-        titles: ['Восстановление пароля', 'Restoring password', 'Parolni tiklash'],
-        headers: ['Введите Вашу электронную почту', 'Enter Your email', 'E-pochtangizni kiriting'],
-        messages: ['Успешно! Проверьте свою электронную почту', 'Success! Check your email', 'Muvaffaqiyatli! Elektron pochtangizni tekshiring'],
-        labels: ['Эл. почта', 'Email', 'Elektron pochta pochta idorasi'],
-        buttons: ['Отправить', 'Submit', 'Yuborish']
+    const initialValues = {
+        email: ''
     }
+
+    const validationSchema = object({
+        email: string().email().required()
+    })
+
     const submitHandler = (values) => {
         setError(null)
         setIsSent(false)
         const formData = new FormData()
         formData.append('email', values.email)
-        axios.post('/accounts/password/forgot', formData).then(res => {
-        }).catch(err => {
-            setError('No such email')
-        }).finally(() => {
-            setIsSent(true)
-        })
 
+        axios.post('/accounts/password/forgot', formData)
+            .then(() => {})
+            .catch(() => setError('No such email'))
+            .finally(() => setIsSent(true))
     }
+
     return (
         <React.Fragment>
             <Row>
                 <Col>
-                    <h2>{content.titles[lang]}</h2>
+                    <h2>{t('Restoring password')}</h2>
                 </Col>
             </Row>
             <Row className="mt-4">
                 <Col md={{span: '6', offset: '3'}}>
                     <Card>
-                        <Card.Header>{content.headers[lang]}</Card.Header>
+                        <Card.Header>{t('Enter Your email')}</Card.Header>
                         <Card.Body>
-                            {isSent && <Alert variant={error ? 'danger' : 'success'}>{error ? error : content.messages[lang]}</Alert>}
+                            {isSent && (
+                                <Alert variant={error ? 'danger' : 'success'}>
+                                    {error || t('Success! Check your email')}
+                                </Alert>
+                            )}
                             <Formik onSubmit={submitHandler}
-                                    initialValues={{email: ''}}
-                                    validationSchema={
-                                        object({
-                                            email: string().email().required()
-                                        })}
+                                initialValues={initialValues}
+                                validationSchema={validationSchema}
                             >
                                 {formik => (
                                     <Form onSubmit={formik.handleSubmit}>
@@ -61,9 +61,15 @@ function ForgotPage() {
                                             size='sm'
                                             {...formik.getFieldProps('email')}
                                         >
-                                            {content.labels[lang]}
+                                            {t('Email')}
                                         </FormikGroup>
-                                        <Button type='submit' className='mt-2 w-100' disabled={formik.isSubmitting}>{content.buttons[lang]}</Button>
+                                        <Button
+                                            type='submit'
+                                            className='mt-2 w-100'
+                                            disabled={formik.isSubmitting}
+                                        >
+                                            {t('Submit')}
+                                        </Button>
                                     </Form>
                                 )}
                             </Formik>

@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import { getStaticCategories } from "../lib/categories";
-import { Row, Col } from "react-bootstrap";
-import { Categories } from "../components/";
+import React, {useEffect, useState} from "react";
+import {getStaticCategories} from "../lib/categories";
+import {Col, Row} from "react-bootstrap";
+import {Categories} from "../components/";
 import axios from "../axios-api";
-import { LangContext } from "../store";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 import {useTranslation} from "react-i18next";
-import { path } from 'ramda'
+import {path} from 'ramda'
 
 let _isMounted = false;
 

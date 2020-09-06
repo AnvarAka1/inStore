@@ -2,11 +2,11 @@ import React from 'react';
 import classes from './OverviewItem.module.scss'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCaretSquareRight} from "@fortawesome/free-regular-svg-icons";
+import {useTranslation} from "react-i18next";
 
-function OverviewHeader({ title, lectureCount, duration, lang }) {
-    const content = {
-        lectures: ['лекции', 'lectures', 'Uzb']
-    }
+function OverviewHeader({ title, lectureCount, duration }) {
+    const { t } = useTranslation()
+
     return (
         <div className={classes.OverviewHeader}>
             <div>
@@ -14,7 +14,7 @@ function OverviewHeader({ title, lectureCount, duration, lang }) {
                 <h6>{title}</h6>
             </div>
             <div>
-                <p>{lectureCount} {content.lectures[lang]}</p>
+                <p>{lectureCount} {t('lectures')}</p>
                 <p>{duration}</p>
             </div>
 

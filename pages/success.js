@@ -1,34 +1,29 @@
-import React, {useContext, useEffect, useState} from "react";
-import {LangContext} from "../store";
-import Router from "next/router";
+import React, {useEffect, useState} from "react";
+import {useRouter} from "next/router";
 import {useCartManipulator} from "../components/Cart";
+import {useTranslation} from "react-i18next";
 
 const SuccessPage = () => {
+	const { t, i18n } = useTranslation()
 	const [count, setCount] = useState(2);
-	const langContext = useContext(LangContext);
 	const { onClearCart } = useCartManipulator()
+	const router = useRouter()
 
 	useEffect(() => {
 		onClearCart();
 		if (count <= 1) {
-			Router.replace("/profile/library?l=" + langContext.lang);
+			router.replace(`/profile/library?l=${i18n.language}`);
 		}
 		const timeout = setTimeout(() => {
 			setCount(count - 1);
 		}, 1000);
 		return () => clearTimeout(timeout);
 	}, [count]);
-	const content = {
-		messages: [
-			"Оплата совершена успешно! Перенаправление через ",
-			"Successfully purchased! Redirect in ",
-			"To'lov muvaffaqiyatli yakunlandi! Qayta yo'naltirish "
-		]
-	};
+
 	return (
 		<div>
 			<h1 className="text-center mt-5">
-				{content.messages[langContext.lang]} {count}
+				{t('Successfully purchased! Redirect in')} {count}
 			</h1>
 		</div>
 	);

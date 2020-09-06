@@ -1,11 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Col, Row} from "react-bootstrap";
 import VideoContent from "../../../components/VideoContent/VideoContent";
 import PlaylistItems from "../../../components/VideoContent/Playlist/PlaylistItems";
-import {LangContext} from "../../../store";
+
 
 function VideoPage({overview, playlist}) {
-    const {lang} = useContext(LangContext)
 
     return (
         <Row>
@@ -16,14 +15,12 @@ function VideoPage({overview, playlist}) {
                     title="Title"
                     description="Some description"
                     overview={overview}
-                    lang={lang}
                 />
 
             </Col>
             <Col sm={3}>
                 <PlaylistItems
                     items={playlist}
-                    lang={lang}
                 />
             </Col>
         </Row>

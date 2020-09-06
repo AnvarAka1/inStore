@@ -1,14 +1,13 @@
-import React, {useContext} from "react";
+import React from "react";
 import {ProfileLayout} from "../../layouts";
-import {LangContext} from "../../store/";
 import {Products} from "../../components";
 import ErrorPage from "../404";
 import axios from "../../axios-api";
 import {Col, Row} from "react-bootstrap";
 
 const LibraryPage = ({ books, error }) => {
-	const langContext = useContext(LangContext);
 	if (error) return <ErrorPage />;
+
 	return (
 		<ProfileLayout>
 			<Row>
@@ -18,7 +17,7 @@ const LibraryPage = ({ books, error }) => {
 			</Row>
 			<Row>
 				{books && books.length ? (
-					<Products items={books} lang={langContext.lang} />
+					<Products items={books}  />
 				) : (
 					<Col>
 						<h5 className="text-secondary">Пусто</h5>
