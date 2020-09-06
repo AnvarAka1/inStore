@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import { ProfileLayout } from "../../layouts";
-import { LangContext } from "../../store/";
-import { Products } from "../../components";
+import React, {useContext} from "react";
+import {ProfileLayout} from "../../layouts";
+import {LangContext} from "../../store/";
+import {Products} from "../../components";
 import ErrorPage from "../404";
-import { parseCookies } from "../../helpers/utils";
 import axios from "../../axios-api";
-import { Row, Col } from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
+
 const LibraryPage = ({ books, error }) => {
 	const langContext = useContext(LangContext);
 	if (error) return <ErrorPage />;

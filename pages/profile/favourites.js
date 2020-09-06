@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {parseCookies} from "../../helpers/utils";
-import {defaultTo, path, prop, propOr} from 'ramda'
+import {defaultTo, path, propOr} from 'ramda'
 import axios from "../../axios-api";
 import ErrorPage from "../404";
 import {Col, Row} from "react-bootstrap";

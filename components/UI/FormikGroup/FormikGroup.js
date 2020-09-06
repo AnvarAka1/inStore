@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./FormGroup.module.scss";
-import { ErrorMessage } from "formik";
-import { Form } from "react-bootstrap";
+import {ErrorMessage} from "formik";
+import {Form} from "react-bootstrap";
+
 const formikGroup = ({
 	children,
 	onChange,

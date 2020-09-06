@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React from 'react';
 import Product from "./Product/Product";
 import {SliderCarousel} from "../index";
 import {Tab, Tabs} from "react-bootstrap";

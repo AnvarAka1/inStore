@@ -4,7 +4,7 @@ import classes from "./AuthModal.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebookSquare, faGoogle, faVk} from "@fortawesome/free-brands-svg-icons";
 import FacebookLogin from 'react-facebook-login'
-import GoogleLogin from 'react-google-authentication'
+
 function Social({ onAuth, isSignUp }) {
 
     const responseFacebook = (res) => {

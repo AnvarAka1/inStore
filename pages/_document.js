@@ -1,8 +1,7 @@
-import Document, {Html, Head, Main, NextScript} from "next/document";
+import Document, {Head, Html, Main, NextScript} from "next/document";
 import meta from '../lib/meta.json'
 import React from "react";
 import {GA_TRACKING_ID} from "../lib/gtag";
-
 
 
 class MyDocument extends Document {

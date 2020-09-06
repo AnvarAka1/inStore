@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
-import {Row, Col, Card} from 'react-bootstrap'
+import {Card, Col, Row} from 'react-bootstrap'
 import {PageTitle} from "../../components";
 
 function HelpPage() {

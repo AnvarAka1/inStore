@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import LessonHeader from "../../components/Lesson/LessonHeader";
 import LangContext from "../../store/LangContext";
 import PriceBlock from "../../components/Lesson/PriceBlock/PriceBlock";
-import {Container, Col, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import ListBox from "../../components/Lesson/LessonContent/ListBox";
 import {useTranslation} from "react-i18next";
 import ClampLines from "react-clamp-lines";

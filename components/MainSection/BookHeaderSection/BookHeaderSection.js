@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./BookHeaderSection.module.scss";
 import Link from "next/link";
+
 const bookHeaderSection = ({ title, img, link }) => {
 	return (
 		<Link href={link}>

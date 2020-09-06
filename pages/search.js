@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "../axios-api";
-import { Products } from "../components";
-import { Row, Col } from "react-bootstrap";
+import {Products} from "../components";
+import {Col, Row} from "react-bootstrap";
+
 const SeachPage = ({ results }) => {
 	return (
 		<React.Fragment>

@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './OverviewItem.module.scss'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCaretSquareRight} from "@fortawesome/free-regular-svg-icons";
+
 function OverviewHeader({ title, lectureCount, duration, lang }) {
     const content = {
         lectures: ['лекции', 'lectures', 'Uzb']

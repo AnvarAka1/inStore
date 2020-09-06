@@ -1,14 +1,15 @@
-import React, {useState, useEffect, useContext} from "react";
-import {Row, Col} from "react-bootstrap";
+import React, {useContext, useEffect, useState} from "react";
+import {Col, Row} from "react-bootstrap";
 import {NavigationItems} from "../components/";
-import {CartContext, LangContext} from "../store/";
+import {LangContext} from "../store/";
 import {parseCookies} from "../helpers/utils";
 import axios from "../axios-api";
+import {useCart} from "../components/Cart";
 
 const ProfileLayout = ({children}) => {
     const [navigationItems, setNavigationItems] = useState([]);
     const langContext = useContext(LangContext);
-    const cartContext = useContext(CartContext)
+    const { cart } = useCart()
     useEffect(() => {
         axios
             .get("profile/info", {
@@ -37,7 +38,7 @@ const ProfileLayout = ({children}) => {
                 staticArray.forEach(el=>{
                         el.href = el.href + "?l=" + langContext.lang
                 });
-                staticArray[0].count = cartContext.cart.length;
+                staticArray[0].count = cart.length;
                 finalArray = [...finalArray, ...staticArray];
                 setNavigationItems(finalArray);
 

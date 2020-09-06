@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from "react";
-import {convertPhoneForBackend, convertBackToFrontDate, parseCookies} from "../../helpers/utils";
+import React, {useState} from "react";
+import {convertPhoneForBackend} from "../../helpers/utils";
 import axios from "../../axios-api";
 import ErrorPage from "../404";
-import {Button, Row, Col, FormLabel, FormGroup} from "react-bootstrap";
+import {Button, Col, FormGroup, FormLabel, Row} from "react-bootstrap";
 import {FormikGroup} from "../../components/UI";
 import {AddressForm} from "../../components";
 import {Form, Formik} from "formik";
-import {object, string, date} from "yup";
+import {date, object, string} from "yup";
 import {ProfileLayout} from "../../layouts";
 // can make static page also
 const defaultImage = "/images/avatar.png";

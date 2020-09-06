@@ -2,6 +2,7 @@ import React from 'react';
 import {Table} from 'react-bootstrap';
 import Link from 'next/link';
 import {useTranslation} from "react-i18next";
+
 const table = ({rows, lang}) => {
     const {t} = useTranslation()
 

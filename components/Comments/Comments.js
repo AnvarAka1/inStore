@@ -1,9 +1,10 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 
 import classes from "./Comments.module.scss";
 import Comment from "./Comment/Comment";
-import { Stars } from "../";
+import {Stars} from "../";
+
 const comments = ({ items, rate, commentControl, isAuthorized, rateClicked, onSubmit, onAuth, lang }) => {
 	const content = {
 		reviews: [ "Оставить отзыв", "Leave review", "Sharh qoldiring" ],

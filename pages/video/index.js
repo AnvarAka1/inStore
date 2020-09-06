@@ -3,17 +3,15 @@ import axios from "../../axios-api";
 import {useForm, useModal} from "../../hooks";
 import {Button, Col, Row} from "react-bootstrap";
 import {
-    Card,
     Heading,
     ImagesCarousel,
-    Modal,
     PreCarousel,
-    ProductsCarousel,
-    ReviewForm, ReviewModal,
+    ReviewModal,
     ReviewsCarousel,
     Speaker,
     SpeakerModal,
-    VideoHeaderSection, VideoProductsCarousel
+    VideoHeaderSection,
+    VideoProductsCarousel
 } from "../../components";
 import {useTranslation} from "react-i18next";
 

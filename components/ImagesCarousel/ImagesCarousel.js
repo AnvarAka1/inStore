@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./ImageCarousel.module.scss";
-import { SliderCarousel } from "../";
+import {SliderCarousel} from "../";
+
 const imagesCarousel = ({ items, nextClicked, prevClicked, beforeChange }) => {
 	const imagesView = items.map(item => {
 		return (

@@ -1,16 +1,28 @@
 import React from "react";
 import classes from "./AuthModal.module.scss";
 import Link from "next/link";
-import { Modal, Card } from "../";
-import { FormikGroup } from "../UI";
-import { convertPhoneForBackend } from "../../helpers/utils";
-import { Button, FormCheck, FormGroup, FormLabel, Alert } from "react-bootstrap";
+import {Card, Modal} from "../";
+import {FormikGroup} from "../UI";
+import {convertPhoneForBackend} from "../../helpers/utils";
+import {Alert, Button, FormCheck, FormGroup, FormLabel} from "react-bootstrap";
 import InputMask from "react-input-mask";
-import { Form, Formik, ErrorMessage } from "formik";
-import { string, object } from "yup";
+import {ErrorMessage, Form, Formik} from "formik";
+import {object, string} from "yup";
 import Social from "./Social";
 
-const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkboxControl, onAuth, lang, error }) => {
+const authModal = (props) => {
+	const {
+		modal,
+		onHide,
+		isSignUp,
+		modeHandler,
+		showInputMask,
+		checkboxControl,
+		onAuth,
+		lang,
+		error
+	} = props
+
 	const content = {
 		login: ["Войти", "Login", "Kirish"],
 		register: ["Регистрация", "Register", "Ro'yxatdan o'tish"],
@@ -43,22 +55,11 @@ const authModal = ({ modal, onHide, isSignUp, modeHandler, showInputMask, checkb
 				sPassword: ""
 			}}
 			validationSchema={object({
-				name: string()
-					.min(2)
-					.required(),
-				email: string()
-					.email()
-					.min(4)
-					.required(),
+				name: string().min(2).required(),
+				email: string().email().min(4).required(),
 				phone: string().required(),
-				fPassword: string()
-					.min(6)
-					.max(20)
-					.required(),
-				sPassword: string()
-					.min(6)
-					.max(20)
-					.required()
+				fPassword: string().min(6).max(20).required(),
+				sPassword: string().min(6).max(20).required()
 			})}
 			onSubmit={(values, { setSubmitting }) => {
 				setSubmitting(true);

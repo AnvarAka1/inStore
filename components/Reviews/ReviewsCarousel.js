@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./ReviewsCarousel.module.scss";
 import Review from "./Review/Review";
-import { SliderCarousel } from "../";
+import {SliderCarousel} from "../";
+
 const reviewsCarousel = ({ items }) => {
 	const reviewsView = items.map(item => {
 		return <Review key={item.id} {...item} />;

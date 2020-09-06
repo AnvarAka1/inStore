@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Check.module.scss'
 import Moment from 'react-moment'
 import {useTranslation} from "react-i18next";
+
 const check = ({ order,lang}) => {
     const {t} = useTranslation()
     return <table className={classes.Check}>

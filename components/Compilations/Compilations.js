@@ -1,6 +1,7 @@
 import React from "react";
 import Compilation from "./Compilation/Compilation";
-import { Col } from "react-bootstrap";
+import {Col} from "react-bootstrap";
+
 const compilations = ({ items }) => {
 	const compilationsView = items.map(item => {
 		return (

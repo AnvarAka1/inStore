@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {LangContext} from "../../store";
-import {Button, Col, Row, Alert} from "react-bootstrap";
+import {Alert, Button, Col, Row} from "react-bootstrap";
 import {Card} from "../../components";
 import {Form, Formik} from "formik";
 import {object, string} from "yup";

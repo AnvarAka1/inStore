@@ -1,6 +1,4 @@
 import React from 'react';
-import CategoryItem from "./CategoryItem/CategoryItem";
-import classes from './CategoryItems.module.scss'
 import {Tab, Tabs} from "react-bootstrap";
 
 function CategoryItems({activeKey, items, onClick}) {

@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./Comment.module.scss";
-import { Stars } from "../../";
+import {Stars} from "../../";
 import Moment from 'react-moment'
+
 const comment = ({ id, user, rate, text, created_at }) => {
 	return (
 		<li className={classes.Comment}>

@@ -1,10 +1,11 @@
-import React, { useEffect, useContext } from "react";
+import React, {useContext, useEffect} from "react";
 import axios from "../../../../axios-api";
-import { LangContext } from "../../../../store";
-import { Row, Col } from "react-bootstrap";
+import {LangContext} from "../../../../store";
+import {Col, Row} from "react-bootstrap";
 import Router from "next/router";
-import { Products } from "../../../../components";
-import { CategoriesLayout } from "../../../../layouts/";
+import {Products} from "../../../../components";
+import {CategoriesLayout} from "../../../../layouts/";
+
 const CompilationPage = ({ title, books, query }) => {
 	const langContext = useContext(LangContext);
 	useEffect(() => {

@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./Review.module.scss";
-import { Stars } from "../../";
+import {Stars} from "../../";
 import Link from "next/link";
+
 const review = ({ id, rate, text, user }) => {
 	return (
 		<Link href={`/users/${user.id}`}>

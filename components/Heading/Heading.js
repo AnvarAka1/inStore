@@ -1,9 +1,10 @@
 import React from "react";
 import classes from "./Heading.module.scss";
-import { Button } from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import Link from "next/link";
 import Fade from 'react-reveal/Fade';
 import {useTranslation} from "react-i18next";
+
 const heading = ({ className, children, text, href }) => {
 	const { t } = useTranslation()
 

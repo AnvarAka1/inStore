@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
-import { CartLayout } from "../../layouts";
-import { CartContext, LangContext } from "../../store";
-import { Row, Col, Button } from "react-bootstrap";
-import { Products } from "../../components";
+import React, {useContext} from "react";
+import {CartLayout} from "../../layouts";
+import {LangContext} from "../../store";
+import {Button, Col, Row} from "react-bootstrap";
+import {Products} from "../../components";
+import {useCart, useCartManipulator} from "../../components/Cart";
 
 const CartPage = props => {
-	const cartContext = useContext(CartContext);
+	const {cart} = useCart()
+	const { onAddRemoveItem, onClearCart } = useCartManipulator()
 	const langContext = useContext(LangContext);
 	const lang = langContext.lang;
 	const content = {
@@ -30,16 +32,21 @@ const CartPage = props => {
 			<Row>
 				<Col>
 					<div className="d-flex align-items-center">
-						<h3 className="text-normal mb-0 mr-3">{content.totals[lang]} {cartContext.cart.length}</h3>
-						<Button variant="secondary text-small" onClick={cartContext.onClearCart}>
+						<h3 className="text-normal mb-0 mr-3">{content.totals[lang]} {cart.length}</h3>
+						<Button variant="secondary text-small" onClick={onClearCart}>
 							{content.resets[lang]}
 						</Button>
 					</div>
 				</Col>
 			</Row>
 			<Row className="mt-3">
-				{cartContext.cart.length ? (
-					<Products {...responsive} items={cartContext.cart} onAddRemoveItem={cartContext.onAddRemoveItem} lang={lang} />
+				{cart.length ? (
+					<Products
+						{...responsive}
+						items={cart}
+						onAddRemoveItem={onAddRemoveItem}
+						lang={lang}
+					/>
 				) : (
 					<Col>
 						<h4 className="text-secondary">{content.empties[lang]}</h4>

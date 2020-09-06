@@ -1,18 +1,20 @@
-import React, {useState, useEffect, useContext, useRef} from "react";
-import {LangContext, CartContext, AuthModalContext} from "../../../store/";
+import React, {useContext, useEffect, useRef, useState} from "react";
+import {LangContext} from "../../../store/";
 import {useModal} from "../../../hooks";
 import InputMask from "react-input-mask";
-import {parseCookies, convertPhoneForBackend} from "../../../helpers/utils";
+import {convertPhoneForBackend, parseCookies} from "../../../helpers/utils";
 import axios from "../../../axios-api";
 import {ErrorMessage, Form, Formik} from "formik";
 import {object, string} from "yup";
 import {FormikGroup} from "../../../components/UI";
-import {Card, Modal, Success, AddressForm} from "../../../components";
-import {Row, Col, Button} from "react-bootstrap";
+import {AddressForm, Card, Modal, Success} from "../../../components";
+import {Col, Row} from "react-bootstrap";
 import {connect} from "react-redux";
 import {CartLayout} from "../../../layouts";
 import {PaymentCard, PaymentMethod} from "../../../components/Payment";
 import * as gtag from '../../../lib/gtag'
+import {E_BOOKS_ONLY, MIXED, PRINTED_ONLY, useCart, useCartManipulator} from "../../../components/Cart";
+import {useAuthModal} from "../../../components/Auth";
 
 let fData = null;
 
@@ -39,15 +41,16 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
     const [methodOfPayment, setMethodOfPayment] = useState(queryCase !== 1 ? 2 : 0);
     const [stage, setStage] = useState(0);
     const {lang} = useContext(LangContext);
-    const cartContext = useContext(CartContext);
-    const authModalContext = useContext(AuthModalContext);
+    const { getBooksByType, getBooksExceptType, getIds } = useCart()
+    const { onClearCart } = useCartManipulator()
+    const { onShow } = useAuthModal()
     const purchaseModal = useModal();
     const mixedBooksPaymentModal = useModal();
     const paymentModal = useModal();
 
-    const isOnlineBooks = queryCase === 0
-    const isPrintedBooks = queryCase === 1
-    const isMixedBooks = queryCase === 2
+    const isOnlineBooks = queryCase === E_BOOKS_ONLY
+    const isPrintedBooks = queryCase === PRINTED_ONLY
+    const isMixedBooks = queryCase === MIXED
 
     useEffect(() => {
         setShowInputMask(true);
@@ -63,7 +66,7 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
     const onSubmit = values => {
         initFormData(values)
         if (!isAuthorized) {
-            authModalContext.authModal.onShow();
+           onShow();
         }
         if (isAuthorized && !isMixedBooks) {
             paymentModal.onShow()
@@ -95,7 +98,7 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
                             category: 'purchase',
                             label: 'Purchase by offline payment'
                         })
-                        cartContext.onClearCart();
+                        onClearCart();
                         purchaseModal.onShow();
                         mixedBooksPaymentModal.onHide()
                         paymentModal.onHide()
@@ -125,14 +128,14 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
             // false - separate online, audio from printed books and then submit one by one
             fData.delete('books')
             // get printed books
-            const printedBooksIds = cartContext.getBooksByType(2).map(el => el.id);
+            const printedBooksIds = getBooksByType(2).map(el => el.id);
             fData.append('books', printedBooksIds)
             fData.delete('payment_type')
             fData.append('payment_type', 1)
 
             purchaseHandler().then(res => {
                 // get online and audio books
-                const ebooksIds = cartContext.getBooksExceptType(2).map(el => el.id);
+                const ebooksIds = getBooksExceptType(2).map(el => el.id);
                 fData.delete('books')
                 fData.delete('payment_type')
                 fData.append('books', ebooksIds)
@@ -165,7 +168,7 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
         formData.append("full_adress", address);
         formData.append("comment", comment);
         formData.append("payment_type", (methodOfPayment + 1).toString());
-        formData.append("books", cartContext.getIds());
+        formData.append("books", getIds());
         formData.append('source', navigator.userAgent)
         fData = formData;
     }

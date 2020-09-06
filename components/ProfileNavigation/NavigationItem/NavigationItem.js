@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./NavigationItem.module.scss";
-import { Link } from "../../";
+import {Link} from "../../";
+
 const navigationItem = ({ href, children, icon, count }) => {
 	return (
 		<li className={`${classes.NavigationItem} list mt-2`}>

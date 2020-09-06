@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./ProductDetails.module.scss";
-import { Stars } from "../../components";
+import {Stars} from "../../components";
 import Social from "../Social/Social";
+
 const productDetails = props => {
 
 	const rows = [

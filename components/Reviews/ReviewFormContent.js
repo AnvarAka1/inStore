@@ -1,9 +1,8 @@
 import React from 'react';
 import {Form, useField} from "formik";
-import {FormLabel, FormGroup} from 'react-bootstrap'
+import {Button, FormGroup, FormLabel} from 'react-bootstrap'
 import {Stars} from "../index";
 import {FormikGroup} from "../UI";
-import {Button} from "react-bootstrap";
 import {useTranslation} from "react-i18next";
 
 function ReviewFormContent({onSubmit, getFieldProps}) {

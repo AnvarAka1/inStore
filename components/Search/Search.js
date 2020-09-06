@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./Search.module.scss";
-import { Form } from "react-bootstrap";
+import {Form} from "react-bootstrap";
 import {useTranslation} from "react-i18next";
+
 const search = ({ control, onSearch }) => {
 	const { t } = useTranslation()
 

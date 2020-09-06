@@ -1,6 +1,7 @@
 import React from "react";
-import { Col } from "react-bootstrap";
+import {Col} from "react-bootstrap";
 import Product from "./Product/Product";
+
 const products = ({ items, title, isVideo, md, sm, xs,onAddRemoveItem, limit = -1, lang }) => {
 
 	const productsView = items.map((item, index) => {

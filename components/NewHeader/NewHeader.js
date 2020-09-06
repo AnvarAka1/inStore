@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import {useTranslation} from "react-i18next";
+
 const newHeader = ({ children, href }) => {
 	const { t } = useTranslation()
 

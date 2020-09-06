@@ -1,8 +1,8 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import classes from "./Speaker.module.scss";
-import Link from "next/link";
 import {useTranslation} from "react-i18next";
+
 const speaker = ({ fio, occupation, quote, onClick }) => {
 	const { t } = useTranslation()
 

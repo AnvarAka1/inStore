@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Category.module.scss";
-import { Link } from "../../";
+import {Link} from "../../";
 
 const category = ({ id, pathname, children, href, icon, isStatic, lang }) => {
 	const item = (

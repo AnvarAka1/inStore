@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './PaymentMethod.module.scss';
+
 const paymentMethod = ({lang, clicked}) => {
     const content = {
         leftButtons: ["Оплатить все онлайн", "Pay everything online", "Barchasini onlayn to'lash"],

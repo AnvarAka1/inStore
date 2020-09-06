@@ -1,6 +1,7 @@
 import React from "react";
-import { SliderCarousel } from "../";
+import {SliderCarousel} from "../";
 import Compilation from "./Compilation/Compilation";
+
 const CompilationsCarousel = ({ items, responsive, onClick }) => {
 	const resp = {
 		xl: responsive ? (responsive.xl ? responsive.xl : 4) : 4,

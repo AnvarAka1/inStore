@@ -1,11 +1,11 @@
-import React, {useContext} from "react";
+import React from "react";
 import {Button} from "react-bootstrap";
-import {CartContext} from '../../store'
 import classes from './MakeOrder.module.scss'
 import {DELIVERY_COST} from '../../constants'
+import {useCart} from "../Cart";
 
 const makeOrder = ({productCount, currentPrice, oldPrice, ordered, lang}) => {
-    const cartContext = useContext(CartContext)
+    const { getCase } = useCart()
     const content = {
         firstRowItems: ['товара на сумму', 'products for', 'tovarlar miqdori'],
         currencies: ['сум', "so'm", "so'm"],
@@ -45,7 +45,7 @@ const makeOrder = ({productCount, currentPrice, oldPrice, ordered, lang}) => {
                     </th>
                 </tr>
 
-                {cartContext.getCase() !== 0 && (
+                {getCase() !== 0 && (
                     <>
                         <tr>
                             <th>

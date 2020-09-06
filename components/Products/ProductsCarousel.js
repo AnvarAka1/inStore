@@ -1,6 +1,6 @@
 import React from "react";
 import Product from "./Product/Product";
-import { SliderCarousel } from "../";
+import {SliderCarousel} from "../";
 
 const productsCarousel = ({ items, responsive, lang }) => {
 	const resp = {

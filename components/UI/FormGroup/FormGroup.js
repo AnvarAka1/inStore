@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./FormGroup.module.scss";
-import { Form } from "react-bootstrap";
+import {Form} from "react-bootstrap";
+
 const formGroup = ({ children, control, size, as, type, placeholder }) => {
 	return (
 		<Form.Group className="mt-2 mb-2">

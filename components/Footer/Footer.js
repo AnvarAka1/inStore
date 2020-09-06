@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Footer.module.scss";
-import {Container, Row, Col} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import {FooterItem, Logo} from "../";
 import {useTranslation} from "react-i18next";
 

@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./Compilation.module.scss";
 import Link from "next/link";
+
 const compilation = ({ className, id, title, image }) => {
 	return (
 		<Link href={`/books/categories/compilations/[id]`} as={`/books/categories/compilations/${id}`}>

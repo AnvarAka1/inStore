@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Logo.module.scss";
+
 const logo = ({ mobile, desktop }) => {
 	const logo = ["/images/logo/main_logo.png", "/images/logo/main_mobile_logo.png"];
 	return (

@@ -3,7 +3,7 @@ import {getLang, parseCookies} from "../../helpers/utils";
 import axios from "../../axios-api";
 import {connect} from "react-redux";
 import {useForm} from "../../hooks";
-import {AuthModalContext, CartContext, LangContext} from "../../store";
+import {AuthModalContext, LangContext} from "../../store";
 import {useSnackbar} from "react-simple-snackbar";
 import {Col, Row} from "react-bootstrap";
 import {Comments, ProductDescription, ProductDetails, ProductsCarousel} from "../../components/";
@@ -12,6 +12,8 @@ import Fade from 'react-reveal/Fade'
 import Link from "next/link";
 import Head from 'next/head'
 import {prop} from "ramda";
+import {useCart, useCartManipulator} from "../../components/Cart";
+import {useAuthModal} from "../../components/Auth";
 
 const langs = ['ru', 'en', "uz"];
 
@@ -33,9 +35,10 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
     const [book, setBook] = useState(bookProps);
     const [rate, setRate] = useState(0);
     const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
-    const cartContext = useContext(CartContext);
+    const { onFindInCart } = useCart()
+    const { onAddRemoveItem } = useCartManipulator()
     const langContext = useContext(LangContext);
-    const authModalContext = useContext(AuthModalContext);
+    const { onShow } = useAuthModal()
     const commentControl = useForm();
     const [openSnackbar] = useSnackbar(options)
 
@@ -57,8 +60,8 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
             removes: ['Удалено с корзины', 'Removed from cart', 'Axlat qutisidan chiqarildi'],
             link: ['Перейти в корзину', 'Proceed to cart', 'Savatga o\'ting']
         }
-        cartContext.onAddRemoveItem(book)
-        const inCart = cartContext.onFindInCart(book.id)
+        onAddRemoveItem(book)
+        const inCart = onFindInCart(book.id)
         const add = (
             <>
                 {content.adds[lang]}<br />
@@ -124,7 +127,7 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
                 expandDescription={expandDescription}
                 isDescriptionExpanded={isDescriptionExpanded}
                 cartClicked={() => cartHandler(book)}
-                isInCart={cartContext.onFindInCart(book.id)}
+                isInCart={onFindInCart(book.id)}
                 favouriteClicked={favouriteHandler}
                 isAuthorized={isAuthorized}
             />
@@ -156,7 +159,7 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
                             expandDescription={expandDescription}
                             isDescriptionExpanded={isDescriptionExpanded}
                             cartClicked={() => cartHandler(book)}
-                            isInCart={cartContext.onFindInCart(book.id)}
+                            isInCart={onFindInCart(book.id)}
                             favouriteClicked={favouriteHandler}
                             isAuthorized={isAuthorized}
                         />
@@ -168,7 +171,7 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
                             onSubmit={commentSubmitHandler}
                             commentControl={commentControl}
                             rateClicked={rateHandler}
-                            onAuth={authModalContext.authModal.onShow}
+                            onAuth={onShow}
                             isAuthorized={isAuthorized}
                         />
                     </Col>

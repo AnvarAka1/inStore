@@ -1,6 +1,6 @@
 import React from 'react';
-import classes from './CategoryItem.module.scss'
-import { Tab } from 'react-bootstrap'
+import {Tab} from 'react-bootstrap'
+
 function CategoryItem({children, onClick}) {
     return (
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">

@@ -1,12 +1,15 @@
-import React, { useState, useContext, useEffect } from "react";
-import {CartContext, LangContext} from "../store";
+import React, {useContext, useEffect, useState} from "react";
+import {LangContext} from "../store";
 import Router from "next/router";
+import {useCartManipulator} from "../components/Cart";
+
 const SuccessPage = () => {
 	const [count, setCount] = useState(2);
 	const langContext = useContext(LangContext);
-	const cartContext = useContext(CartContext)
+	const { onClearCart } = useCartManipulator()
+
 	useEffect(() => {
-		cartContext.onClearCart();
+		onClearCart();
 		if (count <= 1) {
 			Router.replace("/profile/library?l=" + langContext.lang);
 		}

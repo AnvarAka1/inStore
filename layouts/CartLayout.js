@@ -1,28 +1,29 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Router from "next/router";
-import { useForm } from "../hooks";
-import {CartContext, LangContext} from "../store";
-import { Row, Col } from "react-bootstrap";
-import { MakeOrder } from "../components";
+import {useForm} from "../hooks";
+import {LangContext} from "../store";
+import {Col, Row} from "react-bootstrap";
+import {MakeOrder} from "../components";
+import {useCart} from "../components/Cart";
 
 const CartLayout = ({ children, isOrderPage }) => {
 	const [currentPrice, setCurrentPrice] = useState(0);
 	const [oldPrice, setOldPrice] = useState(0);
 	const [orderCase, setOrderCase] = useState(0);
-	const cartContext = useContext(CartContext);
+	const { cart, getCase } = useCart()
 	const langContext = useContext(LangContext)
 	const codeControl = useForm();
 	useEffect(() => {
-		const oldPrice = cartContext.cart.reduce((sum, product) => {
+		const oldPrice = cart.reduce((sum, product) => {
 			return sum + +product.price;
 		}, 0);
-		const currentPrice = cartContext.cart.reduce((sum, product) => {
+		const currentPrice = cart.reduce((sum, product) => {
 			return sum + +product.current_price;
 		}, 0);
 		setOldPrice(oldPrice);
 		setCurrentPrice(currentPrice);
-		setOrderCase(cartContext.getCase());
-	}, [cartContext.cart]);
+		setOrderCase(getCase());
+	}, [cart]);
 	useEffect(() => {
 		Router.replace({
 			pathname: Router.pathname,
@@ -53,7 +54,7 @@ const CartLayout = ({ children, isOrderPage }) => {
 					isValidCode={true}
 					currentPrice={currentPrice}
 					oldPrice={oldPrice}
-					productCount={cartContext.cart.length}
+					productCount={cart.length}
 					codeControl={codeControl}
 					ordered={orderHandler}
 				/>

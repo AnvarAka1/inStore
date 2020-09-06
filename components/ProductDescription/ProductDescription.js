@@ -2,6 +2,7 @@ import React from "react";
 import {Button} from "react-bootstrap";
 import classes from "./ProductDescription.module.scss";
 import ReactHtmlParser from 'react-html-parser'
+
 const MAX_LENGTH = 128;
 const productDescription = ({
 	title,

@@ -1,23 +1,25 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
-import { connect } from "react-redux";
+import React, {useContext, useEffect, useRef, useState} from "react";
+import {connect} from "react-redux";
 import * as actions from "../store/actions/index";
-import { getStaticCategories } from "../lib/categories";
+import {getStaticCategories} from "../lib/categories";
 import Head from "next/head";
-import { AuthModalContext, LangContext } from "../store";
+import {LangContext} from "../store";
 import Router from "next/router";
-import { useForm } from "../hooks/";
-import { Container } from "react-bootstrap";
-import { AuthModal, NavItems, Navbar, Footer, Search } from "../components/";
+import {useForm} from "../hooks/";
+import {Container} from "react-bootstrap";
+import {AuthModal, Footer, Navbar, NavItems, Search} from "../components/";
 import {useTranslation} from "react-i18next";
+import {useCart} from "../components/Cart";
+import {useAuthModal} from "../components/Auth";
 
-const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, error }) => {
+const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
 	const { t } = useTranslation()
-
+	const { cart } = useCart()
 	const [isSignUp, setIsSignUp] = useState(true);
 	const [isBooksOpen, setIsBooksOpen] = useState(false);
 	const [showInputMask, setShowInputMask] = useState(false);
 	const bookCatsRef = useRef(null);
-	const authModalContext = useContext(AuthModalContext);
+	const authModal = useAuthModal()
 	const langContext = useContext(LangContext);
 	const checkboxControl = useForm();
 	const searchControl = useForm();
@@ -27,13 +29,12 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, err
 		setShowInputMask(true);
 		return () => document.removeEventListener("click", handleClick);
 	}, []);
+
 	// click outside the categories => the dropdown is closed
 	const handleClick = event => {
 		if (!bookCatsRef.current.contains(event.target)) setIsBooksOpen(false);
 	};
-	const booksToggleHandler = state => {
-		setIsBooksOpen(state);
-	};
+
 	const modeHandler = mode => {
 		setIsSignUp(mode);
 	};
@@ -48,15 +49,14 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, err
 
 
 	const search = <Search control={searchControl} lang={lang} onSearch={onSearch} />;
-	// Right side of navbar with cart, login/logout
 
 	const navItems = (
 		<NavItems
 			onChangeLang={langContext.onChangeLang}
 			name={name}
 			lang={lang}
-			authModalShow={authModalContext.authModal.onShow}
-			cartCount={cartCount}
+			authModalShow={authModal.onShow}
+			cartCount={cart.length}
 			isAuthorized={isAuthorized}
 			onLogout={onLogout}
 		/>
@@ -70,7 +70,7 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, err
 					onAuth={onAuth}
 					showInputMask={showInputMask}
 					isSignUp={isSignUp}
-					modal={authModalContext.authModal}
+					modal={authModal}
 					modeHandler={modeHandler}
 					checkboxControl={checkboxControl}
 				/>
@@ -82,10 +82,10 @@ const Layout = ({ children, cartCount, onAuth, onLogout, isAuthorized, name, err
 				lang={lang}
 				ref={bookCatsRef}
 				isBooksOpen={isBooksOpen}
-				booksToggle={booksToggleHandler}
+				booksToggle={setIsBooksOpen}
 				name={name}
 				isAuthorized={isAuthorized}
-				cartCount={cartCount}
+				cartCount={cart.length}
 				search={search}
 				booksCategories={getStaticCategories()}
 				navItems={navItems}

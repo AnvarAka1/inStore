@@ -1,8 +1,8 @@
-import React, {useState, useEffect, useContext, useRef} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import axios from "../../../axios-api";
 import {LangContext} from "../../../store/";
 import {CategoriesLayout} from "../../../layouts";
-import {Row, Col} from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 import {Products} from "../../../components";
 import {useRouter} from "next/router";
 import Pagination from "../../../components/Pagination/Pagination";

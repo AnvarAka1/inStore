@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./Success.module.scss";
 import Link from "next/link";
+
 const success = ({ lang, closed, isWithLink, paymentLink }) => {
 	const content = {
 		paymentTitles: [

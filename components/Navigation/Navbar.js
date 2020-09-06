@@ -2,8 +2,8 @@ import React from "react";
 import classes from "./Navbar.module.scss";
 import Link from "next/link";
 
-import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
-import { Logo } from "../";
+import {Col, Container, Nav, Navbar, Row} from "react-bootstrap";
+import {Logo} from "../";
 import clsx from "clsx";
 
 const navbar = React.forwardRef(

@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
-import {Row, Col} from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 import VideoContent from "../../../components/VideoContent/VideoContent";
 import PlaylistItems from "../../../components/VideoContent/Playlist/PlaylistItems";
-import { LangContext } from "../../../store";
+import {LangContext} from "../../../store";
 
 function VideoPage({overview, playlist}) {
     const {lang} = useContext(LangContext)
