@@ -9,11 +9,12 @@ import {getLang} from "../../../helpers/utils";
 import {prop} from "ramda";
 import {getPaginationFromResponse} from "../../../components/Pagination/utils";
 import {useTranslation} from "react-i18next";
+import Head from "next/head";
 
 let initialPageLoad = true;
 let _isMounted = false;
 
-const BooksPage = ({title, error, bookProps, resultsProps, url, paginationProps}) => {
+const BooksPage = ({ headerTitle, title, error, bookProps, resultsProps, url, paginationProps}) => {
     if (error) return null
 
     const pag = paginationProps || {}
@@ -95,48 +96,54 @@ const BooksPage = ({title, error, bookProps, resultsProps, url, paginationProps}
                 setResults(res.data.results);
             }
         }
-    };
+    }
+
     return (
-        <CategoriesLayout>
-            {!loading && bookProps && books && (
-                <React.Fragment>
-                    <Row>
-                        <Col>
-                            <h2 className="mb-3">{t(title)}</h2>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Products items={books}/>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Pagination
-                                numberOfItems={pagination.count}
-                                active={router.query.page ? router.query.page : 1}
-                            />
-                        </Col>
-                    </Row>
-                </React.Fragment>
-            )}
-            {resultsProps &&
-            results &&
-            results.map(result => (
-                result.books.length ? (
-                    <React.Fragment key={result.id}>
+        <>
+            <Head>
+                <title>{headerTitle}</title>
+                <meta property="og:title" content={headerTitle} />
+            </Head>
+            <CategoriesLayout>
+                {!loading && bookProps && books && (
+                    <React.Fragment>
                         <Row>
                             <Col>
-                                <h2 className="mb-3">{result.title}</h2>
+                                <h2 className="mb-3">{t(title)}</h2>
                             </Col>
                         </Row>
-
                         <Row>
-                            <Products items={result.books} limit={10}/>
+                            <Products items={books}/>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Pagination
+                                    numberOfItems={pagination.count}
+                                    active={router.query.page ? router.query.page : 1}
+                                />
+                            </Col>
                         </Row>
                     </React.Fragment>
-                ) : null
-            ))}
+                )}
+                {resultsProps &&
+                results &&
+                results.map(result => (
+                    result.books.length ? (
+                        <React.Fragment key={result.id}>
+                            <Row>
+                                <Col>
+                                    <h2 className="mb-3">{result.title}</h2>
+                                </Col>
+                            </Row>
 
-        </CategoriesLayout>
+                            <Row>
+                                <Products items={result.books} limit={10}/>
+                            </Row>
+                        </React.Fragment>
+                    ) : null
+                ))}
+            </CategoriesLayout>
+        </>
     );
 };
 
@@ -152,14 +159,16 @@ export const getServerSideProps = async ({req, query}) => {
         const data = prop('data', res)
         const resultsProps = prop('results', data)
         const paginationProps = getPaginationFromResponse(data)
+        const headerTitle = 'Все книги в категории "Книги"'
 
-    return {
-        props: {
-            url,
-            resultsProps,
-            paginationProps
+        return {
+            props: {
+                url,
+                resultsProps,
+                paginationProps,
+                headerTitle
+            }
         }
-    }
     } catch (err) {
         const error = "Error";
         return {

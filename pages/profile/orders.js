@@ -14,7 +14,7 @@ import {useTranslation} from "react-i18next";
 const OrdersPage = ({results, paginationProps, error}) => {
     if (error) return <ErrorPage/>;
 
-    const { i18n } = useTranslation()
+    const { t, i18n } = useTranslation()
     const [orders, setOrders] = useState(results)
 
     const pag = paginationProps || {}

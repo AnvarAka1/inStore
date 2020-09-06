@@ -7,6 +7,7 @@ import {Carousel, Col, Row} from "react-bootstrap";
 import {CompilationsCarousel, Heading, NewHeader, ProductsCarousel} from "../components";
 import {useTranslation} from "react-i18next";
 import {getLang} from "../helpers/utils";
+import Head from "next/head";
 
 const LandingPage = ({books, bookCollections, error}) => {
     const { t, i18n } = useTranslation()
@@ -18,7 +19,11 @@ const LandingPage = ({books, bookCollections, error}) => {
     }, [i18n.language]);
 
     return (
-        <React.Fragment>
+        <>
+            <Head>
+                <title>in-Study.uz | {t('Books library - Tashkent, Uzbekistan')}</title>
+                <meta property="og:title" content={'in-Study.uz | Книжная библиотека - Ташкент, Узбекистан'} />
+            </Head>
             <Row className="mb-4">
                 <Col>
                     <Fade>
@@ -82,7 +87,7 @@ const LandingPage = ({books, bookCollections, error}) => {
                     </Fade>
                 </Col>
             </Row>
-        </React.Fragment>
+        </>
     );
 };
 const getCarouselItems = () => [

@@ -20,6 +20,7 @@ export const getServerSideProps = async ({ query, req }) => {
 		const paginationProps = getPaginationFromResponse(data)
 
 		const title = 'Audio books'
+		const headerTitle = 'Список Аудиокниг в категории "Книги"'
 
 		return {
 			props: {
@@ -27,6 +28,7 @@ export const getServerSideProps = async ({ query, req }) => {
 				paginationProps,
 				title,
 				url,
+				headerTitle
 			}
 		}
 	} catch (err) {

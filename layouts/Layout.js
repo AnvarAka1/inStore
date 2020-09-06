@@ -59,20 +59,6 @@ const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
 	);
 	return (
 		<div>
-			{!isAuthorized && (
-				<AuthModal
-					error={error}
-					onAuth={onAuth}
-					showInputMask={showInputMask}
-					isSignUp={isSignUp}
-					modal={authModal}
-					modeHandler={modeHandler}
-					checkboxControl={checkboxControl}
-				/>
-			)}
-			<Head>
-				<title>in-Study.uz | {t('Library of books')}</title>
-			</Head>
 			<Navbar
 				ref={bookCatsRef}
 				isBooksOpen={isBooksOpen}
@@ -90,6 +76,17 @@ const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
 				</Container>
 			</main>
 			<Footer />
+			{!isAuthorized && (
+				<AuthModal
+					error={error}
+					onAuth={onAuth}
+					showInputMask={showInputMask}
+					isSignUp={isSignUp}
+					modal={authModal}
+					modeHandler={modeHandler}
+					checkboxControl={checkboxControl}
+				/>
+			)}
 		</div>
 	);
 };

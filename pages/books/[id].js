@@ -33,15 +33,14 @@ const options = {
 
 const BookPage = ({ bookProps, isAuthorized, query }) => {
     const { t, i18n } = useTranslation()
-
-    const [book, setBook] = useState(bookProps);
-    const [rate, setRate] = useState(0);
-    const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+    const [book, setBook] = useState(bookProps)
+    const [rate, setRate] = useState(0)
+    const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false)
 
     const { onFindInCart } = useCart()
     const { onAddRemoveItem } = useCartManipulator()
     const { onShow } = useAuthModal()
-    const commentControl = useForm();
+    const commentControl = useForm()
     const [openSnackbar] = useSnackbar(options)
 
     const title = prop('title', book)
@@ -55,6 +54,10 @@ const BookPage = ({ bookProps, isAuthorized, query }) => {
     const expandDescription = () => {
         setIsDescriptionExpanded(true);
     };
+
+    useEffect(() => {
+        setBook(bookProps)
+    }, [bookProps])
 
     const cartHandler = (book) => {
         onAddRemoveItem(book)
@@ -92,7 +95,6 @@ const BookPage = ({ bookProps, isAuthorized, query }) => {
             .catch(err => console.log(err));
     };
     const favouriteHandler = () => {
-
         axios
             .post(`${i18n.language}/profile/favourites/${book.id}`, null, {
                 headers: {

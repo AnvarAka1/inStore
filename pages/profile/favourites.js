@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {parseCookies} from "../../helpers/utils";
+import {getLang, parseCookies} from "../../helpers/utils";
 import {defaultTo, path, propOr} from 'ramda'
 import axios from "../../axios-api";
 import ErrorPage from "../404";
@@ -34,26 +34,25 @@ const FavouritesPage = ({ productsProps, error }) => {
 	);
 };
 export const getServerSideProps = async ({ req }) => {
-	const cookies = parseCookies(req)
-	let res = null;
-	let error = null;
+	const lang = getLang(req)
 
 	try {
-		res = await axios.get(`${LANGS[propOr(0, 'lang', cookies)]}/profile/favourites`, req);
+		const res = await axios.get(`${lang}/profile/favourites`, req);
+
+		const products = path(['data', 'results'], res)
+		return {
+			props: {
+				productsProps: products
+			}
+		}
 	} catch (err) {
-		error = "Error";
+		const error = "Error";
 		return {
 			props: {
 				error
 			}
 		};
 	}
-	const products = path(['data', 'results'], res)
-	return {
-		props: {
-			productsProps: products
-		}
-	};
 };
 
 export default FavouritesPage;

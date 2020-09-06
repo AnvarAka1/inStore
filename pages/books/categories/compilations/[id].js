@@ -7,9 +7,10 @@ import {CategoriesLayout} from "../../../../layouts/";
 import {path, prop} from 'ramda'
 import {getLang} from "../../../../helpers/utils";
 import {useTranslation} from "react-i18next";
+import Head from "next/head";
 
 const CompilationPage = ({ title, books, query }) => {
-	const { t, i18n } = useTranslation()
+	const { i18n } = useTranslation()
 	const router = useRouter()
 
 	useEffect(() => {
@@ -19,21 +20,29 @@ const CompilationPage = ({ title, books, query }) => {
 		);
 	}, [i18n.language]);
 
+
+
 	return (
-		<CategoriesLayout withoutGenre>
-			{books && (
-				<React.Fragment>
-					<Row>
-						<Col>
-							<h2 className="mb-3">{title}</h2>
-						</Col>
-					</Row>
-					<Row>
-						<Products items={books} />
-					</Row>
-				</React.Fragment>
-			)}
-		</CategoriesLayout>
+		<>
+			<Head>
+				<title>{title}</title>
+				<meta property="og:title" content={title} />
+			</Head>
+			<CategoriesLayout withoutGenre>
+				{books && (
+					<React.Fragment>
+						<Row>
+							<Col>
+								<h2 className="mb-3">{title}</h2>
+							</Col>
+						</Row>
+						<Row>
+							<Products items={books} />
+						</Row>
+					</React.Fragment>
+				)}
+			</CategoriesLayout>
+		</>
 	);
 };
 export const getServerSideProps = async ({ req, query }) => {

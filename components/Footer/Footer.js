@@ -96,13 +96,13 @@ const getItems = () => [
     [
         "/faq/about",
         "/faq/delivery",
-        "/faq/",
-        "/faq/"
+        "/faq/delivery",
+        "/faq/delivery"
 
     ],
     [
         "/faq/partnership",
-        "/faq/",
+        "/faq/help",
         "/faq/help"
     ]
 ];

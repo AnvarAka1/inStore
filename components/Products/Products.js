@@ -6,7 +6,7 @@ import {prop, propOr} from "ramda";
 const products = (props) => {
 	const items = prop('items', props)
 	const title = prop('title', props)
-	const isVideo = prop('isVideo', props)
+	const removable = prop('removable', props)
 	const md = prop('md', props)
 	const sm = prop('sm', props)
 	const xs = prop('xs', props)
@@ -27,7 +27,7 @@ const products = (props) => {
 					<Col className="mb-4" key={item.id} md={md} sm={sm} xs={xs}>
 						<Product
 							{...item}
-							isVideo={isVideo}
+							removable={removable}
 							onAddRemoveItem={() => onAddRemoveItem(item)}
 						/>
 					</Col>

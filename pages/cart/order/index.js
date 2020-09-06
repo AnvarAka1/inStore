@@ -15,7 +15,7 @@ import * as gtag from '../../../lib/gtag'
 import {E_BOOKS_ONLY, MIXED, PRINTED_ONLY, useCart, useCartManipulator} from "../../../components/Cart";
 import {useAuthModal} from "../../../components/Auth";
 import {useTranslation} from "react-i18next";
-
+import Head from 'next/head'
 let fData = null;
 
 const Comment = ({className, getFieldProps}) => (
@@ -36,7 +36,7 @@ const Comment = ({className, getFieldProps}) => (
 )
 
 const OrderPage = ({queryCase, isAuthorized, profile}) => {
-    const { i18n } = useTranslation()
+    const { t } = useTranslation()
     const allOnlineRef = useRef(true)
     const [showInputMask, setShowInputMask] = useState(false);
     const [methodOfPayment, setMethodOfPayment] = useState(queryCase !== 1 ? 2 : 0);
@@ -237,8 +237,15 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
             />
         </Modal>
     )
+
+    const title = t('Purchase order')
+
     return (
-        <React.Fragment>
+        <>
+            <Head>
+                <title>{title}</title>
+                <meta property="og:title" content={title} />
+            </Head>
             <Modal modal={purchaseModal}>
                 {methodOfPayment < 2 && (
                     <Success closed={purchaseModal.onHide}/>
@@ -326,7 +333,7 @@ const OrderPage = ({queryCase, isAuthorized, profile}) => {
                     </Form>
                 )}
             </Formik>
-        </React.Fragment>
+        </>
     );
 };
 

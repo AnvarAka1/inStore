@@ -15,6 +15,7 @@ const product = (props) => {
     const rate = prop('rate', props)
     const currentPrice = prop('current_price', props)
     const price = prop('price', props)
+    const removable = prop('removable', props)
     const onAddRemoveItem = prop('onAddRemoveItem', props)
 
 
@@ -76,7 +77,7 @@ const product = (props) => {
                     </a>
                 </Link>
             </div>
-            {onAddRemoveItem && (
+            {removable && (
                 <Button
                     onClick={onAddRemoveItem}
                     variant="secondary text-small w-100"

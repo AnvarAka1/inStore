@@ -2,14 +2,21 @@ import React from 'react';
 import {useTranslation} from "react-i18next";
 import {Card, Col, Row} from 'react-bootstrap'
 import {PageTitle} from "../../components";
+import Head from "next/head";
 
 function HelpPage() {
     const {t} = useTranslation()
+    const title = t('faq.help.title')
+
     return (
         <>
+            <Head>
+                <title>{title}</title>
+                <meta property="og:title" content={title} />
+            </Head>
             <Row>
                 <Col>
-                    <PageTitle>{t('faq.help.title')}</PageTitle>
+                    <PageTitle>{title}</PageTitle>
                 </Col>
             </Row>
             <Row>

@@ -17,8 +17,9 @@ export const getServerSideProps = async ({ query, req }) => {
 		const data = prop('data', res)
 		const bookProps = prop('results', data)
 		const paginationProps = getPaginationFromResponse(data)
+		const headerTitle = 'Список Электронных книг в категории "Книги"'
 
-		const title = "E-books"
+		const title = "headerTitle"
 
 		return {
 			props: {
@@ -26,6 +27,7 @@ export const getServerSideProps = async ({ query, req }) => {
 				paginationProps,
 				title,
 				url,
+				headerTitle
 			}
 		}
 	} catch (err) {

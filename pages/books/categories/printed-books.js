@@ -19,14 +19,16 @@ export const getServerSideProps = async ({ req, query }) => {
 		const data = prop('data', res)
 		const bookProps = prop('results', data)
 		const paginationProps = getPaginationFromResponse(data)
-
+		const headerTitle = 'Список Печатных книг в категории "Книги"'
 		const title = 'Printed books'
+
 		return {
 			props: {
 				bookProps,
 				paginationProps,
 				title,
 				url,
+				headerTitle
 			}
 		}
 	} catch (err) {

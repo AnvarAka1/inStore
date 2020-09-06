@@ -92,7 +92,7 @@ const productDescription = props => {
 			</div>
 			{!bought ? (
 				<Button onClick={cartClicked} className="w-100">
-					<img src="/images/icons/cart-white.png" className="icon icon-sm mr-1" />
+					<img src="/images/icons/cart-white.png" alt={t("Добавить в корзину")} className="icon icon-sm mr-1" />
 					{isInCart
 						? t('Remove from cart')
 						: t('Add to cart')
