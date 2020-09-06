@@ -14,8 +14,8 @@ import Head from 'next/head'
 import {prop} from "ramda";
 import {useCart, useCartManipulator} from "../../components/Cart";
 import {useAuthModal} from "../../components/Auth";
+import {useTranslation} from "react-i18next";
 
-const langs = ['ru', 'en', "uz"];
 
 const options = {
     position: 'top-right',
@@ -31,13 +31,16 @@ const options = {
         fontSize: '16px',
     },
 }
-const BookPage = ({bookProps, isAuthorized, query}) => {
+
+const BookPage = ({ bookProps, isAuthorized, query }) => {
+    const { t, i18n } = useTranslation()
+
     const [book, setBook] = useState(bookProps);
     const [rate, setRate] = useState(0);
     const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+
     const { onFindInCart } = useCart()
     const { onAddRemoveItem } = useCartManipulator()
-    const langContext = useContext(LangContext);
     const { onShow } = useAuthModal()
     const commentControl = useForm();
     const [openSnackbar] = useSnackbar(options)
@@ -45,32 +48,29 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
     const title = prop('title', book)
 
     useEffect(() => {
-        setBook(bookProps);
-    }, [bookProps]);
+        Router.replace(
+            Router.pathname,
+            `/books/${query.id}?l=${i18n.language}`);
+    }, [i18n.language]);
 
-    useEffect(() => {
-        Router.replace(Router.pathname, `/books/${query.id}?l=${langContext.lang}`);
-    }, [langContext.lang]);
     const expandDescription = () => {
         setIsDescriptionExpanded(true);
     };
+
     const cartHandler = (book) => {
-        const content = {
-            adds: ['Добавлено в корзину', 'Added to cart', 'Savatga qo\'shildi'],
-            removes: ['Удалено с корзины', 'Removed from cart', 'Axlat qutisidan chiqarildi'],
-            link: ['Перейти в корзину', 'Proceed to cart', 'Savatga o\'ting']
-        }
         onAddRemoveItem(book)
         const inCart = onFindInCart(book.id)
         const add = (
             <>
-                {content.adds[lang]}<br />
-                <Link href={`/cart/?l=${lang}`}>
-                    <a className="mt-2 d-inline-block text-warning">{content.link[lang]}</a>
+                {t('Added to cart')}<br />
+                <Link href={`/cart/?l=${i18n.language}`}>
+                    <a className="mt-2 d-inline-block text-warning">
+                        {t('Proceed to cart')}
+                    </a>
                 </Link>
             </>
         )
-        openSnackbar(inCart ? content.removes[lang] : add)
+        openSnackbar(inCart ? t('Removed from cart') : add)
     }
     const commentSubmitHandler = event => {
         event.preventDefault();
@@ -78,7 +78,7 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
         formData.append("rate", rate);
         formData.append("text", commentControl.value);
         axios
-            .post(`${langs[langContext.lang]}/books/${book.id}/feedback`, formData, {
+            .post(`${i18n.language}/books/${book.id}/feedback`, formData, {
                 headers: {
                     Authorization: `Bearer ${parseCookies(null).token}`
                 }
@@ -95,7 +95,7 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
     const favouriteHandler = () => {
 
         axios
-            .post(`${langs[langContext.lang]}/profile/favourites/${book.id}`, null, {
+            .post(`${i18n.language}/profile/favourites/${book.id}`, null, {
                 headers: {
                     Authorization: `Bearer ${parseCookies(null).token}`
                 }
@@ -114,24 +114,8 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
     const rateHandler = id => {
         setRate(id + 1);
     };
-    // JSX
-    const lang = langContext.lang;
-    const content = {
-        headers: ["Также вас может заинтересовать", "This may be interesting for you", "Uzb"]
-    };
-    const mobileProductDescription = (
-            <ProductDescription
-                isMobile={true}
-                {...book}
-                lang={lang}
-                expandDescription={expandDescription}
-                isDescriptionExpanded={isDescriptionExpanded}
-                cartClicked={() => cartHandler(book)}
-                isInCart={onFindInCart(book.id)}
-                favouriteClicked={favouriteHandler}
-                isAuthorized={isAuthorized}
-            />
-    )
+
+
 
     return (
         <>
@@ -141,62 +125,64 @@ const BookPage = ({bookProps, isAuthorized, query}) => {
                 <meta name="description" property="og:description" content={prop('description', book)} />
                 <meta name="og:image" property="og:image" content={prop('image', book)} />
             </Head>
-        <Row>
-            <Col sm={4}>
-                <ProductDetails
-                    {...book}
-                    social={null}
-                    mobileProductDescription={mobileProductDescription}
-                />
-
-            </Col>
-            <Col sm={8}>
-                <Row>
-                    <Col sm={12} md={11} lg={9}>
-                        <ProductDescription
-                            {...book}
-                            lang={lang}
-                            expandDescription={expandDescription}
-                            isDescriptionExpanded={isDescriptionExpanded}
-                            cartClicked={() => cartHandler(book)}
-                            isInCart={onFindInCart(book.id)}
-                            favouriteClicked={favouriteHandler}
-                            isAuthorized={isAuthorized}
-                        />
-
-                        <Comments
-                            lang={lang}
-                            items={book.feedback}
-                            rate={rate}
-                            onSubmit={commentSubmitHandler}
-                            commentControl={commentControl}
-                            rateClicked={rateHandler}
-                            onAuth={onShow}
-                            isAuthorized={isAuthorized}
-                        />
-                    </Col>
-                </Row>
-                <h3 className="mt-5">{content.headers[lang]}</h3>
-                <Fade right>
-                    <ProductsCarousel
-                        items={prop('related', book)}
-                        lang={lang}
-                        responsive={{lg: 4, xl: 4, sm: 4}}
+            <Row>
+                <Col sm={4}>
+                    <ProductDetails
+                        {...book}
+                        social={null}
                     />
-                </Fade>
-            </Col>
-        </Row>
-            </>
+
+                </Col>
+                <Col sm={8}>
+                    <Row>
+                        <Col sm={12} md={11} lg={9}>
+                            <ProductDescription
+                                {...book}
+                                expandDescription={expandDescription}
+                                isDescriptionExpanded={isDescriptionExpanded}
+                                cartClicked={() => cartHandler(book)}
+                                isInCart={onFindInCart(book.id)}
+                                favouriteClicked={favouriteHandler}
+                                isAuthorized={isAuthorized}
+                            />
+
+                            <Comments
+                                items={book.feedback}
+                                rate={rate}
+                                onSubmit={commentSubmitHandler}
+                                commentControl={commentControl}
+                                rateClicked={rateHandler}
+                                onAuth={onShow}
+                                isAuthorized={isAuthorized}
+                            />
+                        </Col>
+                    </Row>
+                    <h3 className="mt-5">{t('This may be interesting for you')}</h3>
+                    <Fade right>
+                        <ProductsCarousel
+                            items={prop('related', book)}
+                            responsive={{lg: 4, xl: 4, sm: 4}}
+                        />
+                    </Fade>
+                </Col>
+            </Row>
+        </>
     );
 };
 
 export const getServerSideProps = async ({query, req}) => {
     const lang = getLang(req)
 
-    let res = null;
     try {
-        res = await axios.get(`${lang}/books/${query.id}`, req);
+        const res = await axios.get(`${lang}/books/${query.id}`, req);
+        const bookProps = prop('data', res);
 
+        return {
+            props: {
+                bookProps,
+                query
+            }
+        }
     } catch (error) {
         return {
             props: {
@@ -204,13 +190,6 @@ export const getServerSideProps = async ({query, req}) => {
             }
         };
     }
-    const bookProps = res.data;
-    return {
-        props: {
-            bookProps,
-            query
-        }
-    };
 };
 const mapStateToProps = state => {
     return {

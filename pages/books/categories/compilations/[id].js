@@ -1,19 +1,24 @@
-import React, {useContext, useEffect} from "react";
+import React, {useEffect} from "react";
 import axios from "../../../../axios-api";
-import {LangContext} from "../../../../store";
 import {Col, Row} from "react-bootstrap";
-import Router from "next/router";
+import {useRouter} from "next/router";
 import {Products} from "../../../../components";
 import {CategoriesLayout} from "../../../../layouts/";
+import {path, prop} from 'ramda'
+import {getLang} from "../../../../helpers/utils";
+import {useTranslation} from "react-i18next";
 
 const CompilationPage = ({ title, books, query }) => {
-	const langContext = useContext(LangContext);
+	const { t, i18n } = useTranslation()
+	const router = useRouter()
+
 	useEffect(() => {
-		Router.replace(
-			`${Router.pathname}?l=${langContext.lang}`,
-			`/books/categories/compilations/${query.id}?l=${langContext.lang}`
+		router.replace(
+			`${router.pathname}?l=${i18n.language}`,
+			`/books/categories/compilations/${query.id}?l=${i18n.language}`
 		);
-	}, [langContext.lang]);
+	}, [i18n.language]);
+
 	return (
 		<CategoriesLayout withoutGenre>
 			{books && (
@@ -31,31 +36,31 @@ const CompilationPage = ({ title, books, query }) => {
 		</CategoriesLayout>
 	);
 };
-export const getServerSideProps = async ({ query }) => {
-	const lang = ["ru", "en", "uz"];
-	let res = null;
-	let error = null;
-	let books = null;
+export const getServerSideProps = async ({ req, query }) => {
+	const lang = getLang(req)
 
-	let title = null;
 	try {
-		res = await axios.get(`${lang[+query.l || 0]}/collections/books?pk=${query.id}`);
+		const res = await axios.get(`${lang}/collections/books?pk=${query.id}`);
+
+		const data = path(['data', 'results', 0], res);
+		const books = prop('books', data)
+		const title = prop('title', data)
+
+		return {
+			props: {
+				title,
+				books,
+				query
+			}
+		}
 	} catch (err) {
-		error = "Error";
+		const error = "Error";
 		return {
 			props: {
 				error
 			}
 		};
 	}
-	books = res.data.results[0].books;
-	title = res.data.results[0].title;
-	return {
-		props: {
-			title,
-			books,
-			query
-		}
-	};
 };
+
 export default CompilationPage;

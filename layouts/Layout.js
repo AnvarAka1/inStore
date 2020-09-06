@@ -1,9 +1,9 @@
-import React, {useContext, useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {connect} from "react-redux";
 import * as actions from "../store/actions/index";
 import {getStaticCategories} from "../lib/categories";
 import Head from "next/head";
-import {LangContext} from "../store";
+
 import Router from "next/router";
 import {useForm} from "../hooks/";
 import {Container} from "react-bootstrap";
@@ -20,7 +20,6 @@ const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
 	const [showInputMask, setShowInputMask] = useState(false);
 	const bookCatsRef = useRef(null);
 	const authModal = useAuthModal()
-	const langContext = useContext(LangContext);
 	const checkboxControl = useForm();
 	const searchControl = useForm();
 
@@ -44,17 +43,14 @@ const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
 		searchControl.clear();
 		Router.push(`/search?q=${encodeURI(searchControl.value)}`);
 	};
-	// JSX
-	const lang = langContext.lang;
 
 
-	const search = <Search control={searchControl} lang={lang} onSearch={onSearch} />;
+
+	const search = <Search control={searchControl} onSearch={onSearch} />;
 
 	const navItems = (
 		<NavItems
-			onChangeLang={langContext.onChangeLang}
 			name={name}
-			lang={lang}
 			authModalShow={authModal.onShow}
 			cartCount={cart.length}
 			isAuthorized={isAuthorized}
@@ -66,7 +62,6 @@ const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
 			{!isAuthorized && (
 				<AuthModal
 					error={error}
-					lang={lang}
 					onAuth={onAuth}
 					showInputMask={showInputMask}
 					isSignUp={isSignUp}
@@ -79,7 +74,6 @@ const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
 				<title>in-Study.uz | {t('Library of books')}</title>
 			</Head>
 			<Navbar
-				lang={lang}
 				ref={bookCatsRef}
 				isBooksOpen={isBooksOpen}
 				booksToggle={setIsBooksOpen}
@@ -95,7 +89,7 @@ const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
 					{children}
 				</Container>
 			</main>
-			<Footer lang={lang} />
+			<Footer />
 		</div>
 	);
 };

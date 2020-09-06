@@ -1,21 +1,22 @@
-import React, {useContext, useEffect} from "react";
+import React, {useEffect} from "react";
 import axios from "../../../../axios-api";
 import {CategoriesLayout} from "../../../../layouts";
 import {Col, Row} from "react-bootstrap";
 import {Compilations} from "../../../../components";
 import Router, {useRouter} from "next/router";
-import {LangContext} from "../../../../store";
 import Pagination from "../../../../components/Pagination/Pagination";
 import {useTranslation} from "react-i18next";
+import {prop} from "ramda";
+import {getPaginationFromResponse} from "../../../../components/Pagination/utils";
+import {getLang} from "../../../../helpers/utils";
 
 const CompilationsPage = ({results, pagination}) => {
-    const { lang } = useContext(LangContext);
+    const { t, i18n } = useTranslation()
     const router = useRouter()
-    const { t } = useTranslation()
 
     useEffect(() => {
         Router.replace(`${Router.pathname}?l=${lang}`);
-    }, [lang]);
+    }, [i18n.language]);
 
     return (
         <CategoriesLayout withoutGenre>
@@ -31,46 +32,36 @@ const CompilationsPage = ({results, pagination}) => {
                 <Col>
                     <Pagination
                         numberOfItems={pagination.count}
-                        active={router.query.page ? router.query.page : 1}
+                        active={router.query.page || 1}
                     />
                 </Col>
             </Row>
         </CategoriesLayout>
     );
 };
-export const getServerSideProps = async ({query}) => {
-    // axios
-    const langs = ["ru", "en", "uz"];
-    let res = null;
-    let error = null;
-    const lang = langs[query.l || 0]
+export const getServerSideProps = async ({ req }) => {
+    const lang = getLang(req)
 
     try {
+        const res = await axios.get(`${lang}/collections`);
 
-        res = await axios.get(`${lang}/collections`);
+        const results = prop('data', res)
+        const pagination = getPaginationFromResponse(results)
 
-        // console.log(res)
+        return {
+            props: {
+                results,
+                pagination
+            }
+        }
     } catch (err) {
-        error = "Error";
+        const error = "Error";
         return {
             props: {
                 error
             }
         };
     }
-    const {results, next, previous, count } = res.data
-
-    const pagination = {
-        next,
-        previous,
-        count
-    }
-    return {
-        props: {
-            results,
-            pagination
-        }
-    };
 };
 
 export default CompilationsPage;

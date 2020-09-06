@@ -9,6 +9,8 @@ import InputMask from "react-input-mask";
 import {ErrorMessage, Form, Formik} from "formik";
 import {object, string} from "yup";
 import Social from "./Social";
+import {useTranslation} from "react-i18next";
+import clsx from "clsx";
 
 const authModal = (props) => {
 	const {
@@ -23,26 +25,7 @@ const authModal = (props) => {
 		error
 	} = props
 
-	const content = {
-		login: ["Войти", "Login", "Kirish"],
-		register: ["Регистрация", "Register", "Ro'yxatdan o'tish"],
-		regForm: {
-			titles: ["Зарегистрируйтесь через социальные сети", "Register via social media", "Ijtimoiy tarmoqlar orqali ro'yxatdan o'ting"],
-			fios: ["Ф.И.О", "Full name", "To'liq ismi sharif"],
-			phones: ["Номер телефона", "Phone number", "Telefon raqami"],
-			fPasswords: ["Введите пароль", "Enter password", "Parolni kiriting"],
-			sPasswords: ["Подтвердите пароль", "Confirm password", "Parolni tasdiqlang"],
-			buttons: ["Зарегистрироваться", "Register", "Ro'yxatdan o'tish"]
-		},
-		loginForm: {
-			titles: ["Войдите через социальные сети", "Login via social media", "Ijtimoiy tarmoqlar orqali kiring"],
-			emails: ["Электронная почта или номер телефона", "Email or phone number", "Elektron pochta yoki telefon raqami"],
-			passwords: ["Введите пароль", "Enter password", "Parolni kiriting"],
-			buttons: ["Войти", "Login", "Kirish"],
-			accesses: ["Не можете получить доступ?", "Can't access?", "Kirish mumkin emasmi?"],
-			rememberPasswords: ["Запомнить пароль", "Remember password", "Parolni unutmang"]
-		}
-	};
+	const { t } = useTranslation()
 
 	const form = isSignUp ? (
 		<Formik
@@ -69,15 +52,23 @@ const authModal = (props) => {
 		>
 			{register => (
 				<Form onSubmit={register.handleSubmit}>
-					<FormikGroup name="name" {...register.getFieldProps("name")} size="md">
-						{content.regForm.fios[lang]}
+					<FormikGroup
+						name="name"
+						size="md"
+						{...register.getFieldProps("name")}
+					>
+						{t('Full name')}
 					</FormikGroup>
-					<FormikGroup name="email" {...register.getFieldProps("email")} size="md">
+					<FormikGroup
+						name="email"
+						size="md"
+						{...register.getFieldProps("email")}
+					>
 						Email
 					</FormikGroup>
 					{showInputMask && (
 						<FormGroup>
-							<FormLabel>{content.regForm.phones[lang]}</FormLabel>
+							<FormLabel>{t('Phone number')}</FormLabel>
 							<InputMask
 								className="form-control form-control-md"
 								mask="+\9\98 (99) 999-99-99"
@@ -92,14 +83,30 @@ const authModal = (props) => {
 							</span>
 						</FormGroup>
 					)}
-					<FormikGroup name="fPassword" {...register.getFieldProps("fPassword")} type="password" size="md">
-						{content.regForm.fPasswords[lang]}
+					<FormikGroup
+						name="fPassword"
+						type="password"
+						size="md"
+						{...register.getFieldProps("fPassword")}
+					>
+						{t('Enter password')}
 					</FormikGroup>
-					<FormikGroup name="sPassword" {...register.getFieldProps("sPassword")} type="password" size="md">
-						{content.regForm.sPasswords[lang]}
+					<FormikGroup
+						name="sPassword"
+						type="password"
+						size="md"
+						{...register.getFieldProps("sPassword")}
+					>
+						{t('Confirm password')}
 					</FormikGroup>
-					<Button type="submit" className="w-100 mt-2 pt-3 pb-3" disabled={register.isSubmitting}>
-						<h6 className="mb-0">{content.regForm.buttons[lang]}</h6>
+					<Button
+						type="submit"
+						className="w-100 mt-2 pt-3 pb-3"
+						disabled={register.isSubmitting}
+					>
+						<h6 className="mb-0">
+							{t('Register')}
+						</h6>
 					</Button>
 				</Form>
 			)}
@@ -123,30 +130,51 @@ const authModal = (props) => {
 			})}
 			onSubmit={(values, { setSubmitting }) => {
 				setSubmitting(true);
-				onAuth(null, values.emailPhone, null, values.password, isSignUp, () => setSubmitting(false));
+				onAuth(
+					null,
+					values.emailPhone,
+					null,
+					values.password,
+					isSignUp,
+					() => setSubmitting(false)
+				);
 			}}
 		>
 			{login => (
 				<Form onSubmit={login.handleSubmit}>
-					<FormikGroup name="emailPhone" {...login.getFieldProps("emailPhone")} size="md">
-						{content.loginForm.emails[lang]}
+					<FormikGroup
+						name="emailPhone"
+						{...login.getFieldProps("emailPhone")}
+						size="md"
+					>
+						{t('Email or phone number')}
 					</FormikGroup>
-					<FormikGroup name="password" {...login.getFieldProps("password")} type="password" size="md">
-						{content.loginForm.passwords[lang]}
+					<FormikGroup
+						name="password"
+						{...login.getFieldProps("password")}
+						type="password" size="md"
+					>
+						{t('Enter password')}
 					</FormikGroup>
 
 					<FormCheck
 						type="checkbox"
-						label={content.loginForm.rememberPasswords[lang]}
+						label={t('Remember password')}
 						value={checkboxControl.value}
 						onChange={checkboxControl.onChange}
 					/>
 
 					<Link href="/forgot">
-						<a className="text-small" onClick={modal.onHide}>{content.loginForm.accesses[lang]}</a>
+						<a className="text-small" onClick={modal.onHide}>
+							{t('Can\'t access?')}
+						</a>
 					</Link>
-					<Button type="submit" className="w-100 mt-2 pt-3 pb-3" disabled={login.isSubmitting}>
-						<h6 className="mb-0">{content.loginForm.buttons[lang]}</h6>
+					<Button
+						type="submit"
+						className="w-100 mt-2 pt-3 pb-3"
+						disabled={login.isSubmitting}
+					>
+						<h6 className="mb-0">{t('Login')}</h6>
 					</Button>
 				</Form>
 			)}
@@ -159,13 +187,21 @@ const authModal = (props) => {
 					<div className={classes.TopButtons}>
 						<a
 							role="button"
-							className={!isSignUp ? classes.Active : null}
 							onClick={() => modeHandler(false)}
+							className={clsx({
+								[classes.Active]: !isSignUp
+							})}
 						>
-							{content.login[lang].toUpperCase()}
+							{t('Login').toUpperCase()}
 						</a>
-						<a role="button" className={isSignUp ? classes.Active : null} onClick={() => modeHandler(true)}>
-							{content.register[lang].toUpperCase()}
+						<a
+							role="button"
+							onClick={() => modeHandler(true)}
+							className={clsx({
+								[classes.Active]: isSignUp
+							})}
+						>
+							{t('Register').toUpperCase()}
 						</a>
 					</div>
 				</Card.Header>
@@ -174,7 +210,12 @@ const authModal = (props) => {
 						<div className="w-100 pl-2 pr-4">
 							<div className={`${classes.Social}  w-100`}>
 								<p className="text-small text-bold mb-3" />
-								<h6>{isSignUp ? content.regForm.titles[lang] : content.loginForm.titles[lang]}:</h6>
+								<h6>
+									{isSignUp
+										? t('Register via social media')
+										: t('Login via social media')
+									}:
+								</h6>
 								<Social onAuth={onAuth} />
 							</div>
 

@@ -8,18 +8,13 @@ import {CompilationsCarousel, Heading, NewHeader, ProductsCarousel} from "../com
 import {useTranslation} from "react-i18next";
 
 const LandingPage = ({books, bookCollections, lang, error}) => {
-    const { t } = useTranslation()
-    const langContext = useContext(LangContext);
+    const { t, i18n } = useTranslation()
+
+    if (error) return <h3>{error}</h3>
 
     useEffect(() => {
-        Router.replace(Router.pathname, `/?l=${langContext.lang}`);
-    }, [langContext.lang]);
-    // Return error instead of page if there is an error while fetching data from database
-    if (error) return <h3>{error}</h3>;
-
-
-    // multilang
-    lang = langContext.lang;
+        Router.replace(Router.pathname, `/?l=${i18n.language}`);
+    }, [i18n.language]);
 
     return (
         <React.Fragment>

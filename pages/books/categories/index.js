@@ -1,23 +1,28 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "../../../axios-api";
-import {LangContext} from "../../../store/";
 import {CategoriesLayout} from "../../../layouts";
 import {Col, Row} from "react-bootstrap";
 import {Products} from "../../../components";
 import {useRouter} from "next/router";
 import Pagination from "../../../components/Pagination/Pagination";
+import {getLang} from "../../../helpers/utils";
+import {prop} from "ramda";
+import {getPaginationFromResponse} from "../../../components/Pagination/utils";
+import {useTranslation} from "react-i18next";
 
 let initialPageLoad = true;
 let _isMounted = false;
-const BooksPage = ({title, error, booksProps, resultsProps, url, paginationProps}) => {
+
+const BooksPage = ({title, error, bookProps, resultsProps, url, paginationProps}) => {
     if (error) return null
-    const pag = paginationProps ? paginationProps : {}
-    const [books, setBooks] = useState(booksProps);
+
+    const pag = paginationProps || {}
+    const [books, setBooks] = useState(bookProps);
     const [results, setResults] = useState(resultsProps);
     const [pagination, setPagination] = useState(pag)
     const [loading, setLoading] = useState(false)
 
-    const {lang} = useContext(LangContext);
+    const { t, i18n } = useTranslation()
     const router = useRouter();
 
     useEffect(() => {
@@ -53,8 +58,8 @@ const BooksPage = ({title, error, booksProps, resultsProps, url, paginationProps
     }, [router.query.genre]);
 
     useEffect(() => {
-        setBooks(booksProps);
-    }, [booksProps]);
+        setBooks(bookProps);
+    }, [bookProps]);
 
     useEffect(() => {
         setResults(resultsProps);
@@ -74,13 +79,13 @@ const BooksPage = ({title, error, booksProps, resultsProps, url, paginationProps
         const page = router.query.page ? router.query.page : 1
         const genre = router.query.genre ? "genre=" + router.query.genre + "&" : "genre=nogenre&"
         router.replace(
-            `${router.pathname}?${genre}l=${lang}&page=${page}`
+            `${router.pathname}?${genre}l=${i18n.language}&page=${page}`
         );
-    }, [lang]);
+    }, [i18n.language]);
 
     const updateValues = res => {
         if (_isMounted) {
-            if (booksProps) {
+            if (bookProps) {
                 setBooks(res.data.results);
                 const pagination = {
                     count: res.data.count
@@ -93,11 +98,11 @@ const BooksPage = ({title, error, booksProps, resultsProps, url, paginationProps
     };
     return (
         <CategoriesLayout>
-            {!loading && booksProps && books && (
+            {!loading && bookProps && books && (
                 <React.Fragment>
                     <Row>
                         <Col>
-                            <h2 className="mb-3">{title[lang]}</h2>
+                            <h2 className="mb-3">{t(title)}</h2>
                         </Col>
                     </Row>
                     <Row>
@@ -135,39 +140,33 @@ const BooksPage = ({title, error, booksProps, resultsProps, url, paginationProps
     );
 };
 
-export const getServerSideProps = async ({query}) => {
-    // axios
-    const lang = ["ru", "en", "uz"];
+export const getServerSideProps = async ({req, query}) => {
+    const lang = getLang(req)
     const page = query.page ? query.page : 1
-    const g = query.genre && query.genre !== 'nogenre' ? `&g=${query.genre}` : ''
-    const url = `${lang[+query.l || 0]}/categories/books?page=${page}${g}`;
+    const hasGenre = query.genre && query.genre !== 'nogenre'
+    const g = hasGenre ? `&g=${query.genre}` : ''
+    const url = `${lang}/categories/books?page=${page}${g}`;
 
-    let res = null;
-    let error = null;
     try {
-        res = await axios.get(url);
+        const res = await axios.get(url);
+        const data = prop('data', res)
+        const resultsProps = prop('results', data)
+        const paginationProps = getPaginationFromResponse(data)
+
+    return {
+        props: {
+            url,
+            resultsProps,
+            paginationProps
+        }
+    }
     } catch (err) {
-        error = "Error";
+        const error = "Error";
         return {
             props: {
                 error
             }
         };
     }
-
-    const {results} = res.data;
-    const {next, previous, count,} = res.data
-    const paginationProps = {
-        next,
-        previous,
-        count
-    }
-    return {
-        props: {
-            url,
-            resultsProps: results,
-            paginationProps
-        }
-    };
 };
 export default BooksPage;

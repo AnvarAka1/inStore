@@ -1,11 +1,4 @@
 .ProductDescription {
-  @media(max-width: 576px){
-    display: none;
-  }
-  &.IsMobile {
-    display: none;
-    @media(max-width: 576px) {
-      display: block;
-    }
-  }
+
+
 }

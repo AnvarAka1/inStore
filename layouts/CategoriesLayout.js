@@ -5,21 +5,28 @@ import { Categories } from "../components/";
 import axios from "../axios-api";
 import { LangContext } from "../store";
 import { useRouter } from "next/router";
+import {useTranslation} from "react-i18next";
+import { path } from 'ramda'
+
 let _isMounted = false;
+
 const CategoriesLayout = ({ children, withoutGenre }) => {
-	const [pathname, setPathname] = useState();
+	const { i18n } = useTranslation()
+	const [pathname, setPathname] = useState(null);
 	const [categories, setCategories] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const router = useRouter();
-	const langContext = useContext(LangContext);
+
 
 	useEffect(() => {
 		_isMounted = true;
-		const langs = ["ru", "en", "uz"];
 		axios
-			.get(langs[langContext.lang] + "/genres")
+			.get(`${i18n.language}/genres`)
 			.then(res => {
-				if (_isMounted) setCategories(res.data.results);
+				if (_isMounted) {
+					const results = path(['data', 'results'], res)
+					setCategories(results)
+				}
 			})
 			.catch(err => {
 				console.log(err);
@@ -31,19 +38,24 @@ const CategoriesLayout = ({ children, withoutGenre }) => {
 		return () => {
 			_isMounted = false;
 		};
-	}, [langContext.lang]);
+	}, [i18n.language]);
+
 	useEffect(() => {
 		_isMounted = true;
-		if (_isMounted) setPathname(router.pathname);
-		return () => (_isMounted = false);
+		if (_isMounted) {
+			setPathname(router.pathname)
+		}
+		return () => {
+			_isMounted = false
+		};
 	}, [router.pathname]);
 
 	return (
 		<Row>
 			<Col sm={3}>
-				<Categories items={getStaticCategories()} lang={langContext.lang} isStatic={true} />
+				<Categories items={getStaticCategories()} isStatic={true} />
 				{!withoutGenre && !loading && (
-					<Categories items={categories} lang={langContext.lang} pathname={pathname} />
+					<Categories items={categories} pathname={pathname} />
 				)}
 			</Col>
 			<Col sm={9}>{children}</Col>

@@ -12,7 +12,7 @@ const comment = ({ id, user, rate, text, created_at }) => {
 			</div>
 			<p className="text-small mb-4">{text}</p>
 			<p className="text-small">
-				<Moment format="hh:mm:ss DD/MM/YYYY">{created_at}</Moment>
+				<Moment format="HH:mm:ss DD/MM/YYYY">{created_at}</Moment>
 			</p>
 		</li>
 	);

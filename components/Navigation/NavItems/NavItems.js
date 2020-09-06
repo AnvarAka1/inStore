@@ -2,17 +2,24 @@ import React from "react";
 import classes from "./NavItems.module.scss";
 import Link from "next/link";
 import clsx from "clsx";
+import {useTranslation} from "react-i18next";
+import {prop} from "ramda";
 
-const navItems = ({authModalShow, cartCount, name, isAuthorized, onLogout, onChangeLang, lang, isMobile}) => {
-    const content = {
-        favourites: ["Избранные", "Favourites", "Tanlangan"],
-        carts: ["Корзина", "Cart", "Savat"],
-        logins: ["Войти", "Login", "Kirish"],
-        logouts: ["Выйти", "Logout", "Chiqish"],
-        language: ["Язык", "Language", "Til"]
-    };
+const navItems = (props) => {
+    const {
+        authModalShow,
+        cartCount,
+        name,
+        isAuthorized,
+        onLogout,
+        isMobile
+    } = props
+
+    const { t, i18n } = useTranslation()
     return (
-        <div className={`${classes.NavItems} ${isMobile && classes.IsMobile} `}>
+        <div className={clsx(classes.NavItems, {
+            [classes.IsMobile]: isMobile
+        })}>
             <div>
                 <div className="list">
                     <Link href="/cart">
@@ -26,7 +33,7 @@ const navItems = ({authModalShow, cartCount, name, isAuthorized, onLogout, onCha
                                     ) : null}
                                     <img src="/images/icons/cart.png" className="icon icon-sm icon-cart" alt="cart"/>
                                 </div>
-                                {!isAuthorized && <p className="ml-1 text-mobile-invisible">{content.carts[lang]}</p>}
+                                {!isAuthorized && <p className="ml-1 text-mobile-invisible">{t('Cart')}</p>}
                             </div>
                         </a>
                     </Link>
@@ -37,7 +44,7 @@ const navItems = ({authModalShow, cartCount, name, isAuthorized, onLogout, onCha
                     <a>
                         <div className="d-flex align-items-center list">
                             <img src="/images/icons/user.png" className="icon icon-sm mr-1" alt="login"/>
-                            <p className="text-mobile-invisible">{content.logins[lang]}</p>
+                            <p className="text-mobile-invisible">{t('Login')}</p>
                         </div>
                     </a>
                 </div>
@@ -52,32 +59,37 @@ const navItems = ({authModalShow, cartCount, name, isAuthorized, onLogout, onCha
                     </Link>
                     <div onClick={onLogout} className="text-secondary text-small">
                         <img src="/images/icons/logout.png" className="icon mr-1"/>
-                        {content.logouts[lang]}
+                        {t('Logout')}
                     </div>
                 </div>
             )}
             <div className="position-relative">
                 <a role="button" className="dropdown-hover text-secondary">
-                    | {content.language[lang]}
+                    | {t('Language')}
                     <ul>
-                        {getLangs().map((language, index) => (
-                            <li key={language.title} className="">
-								<div
-                                    role="button"
-                                    className={clsx(
-                                        classes.Lang,
-                                        {
-                                            ["text-accent"]: index === lang
+                        {getLangs().map((language, index) => {
+                            const title = prop('title', language)
+                            const value = prop('value', language)
+                            const image = prop('image', language)
+                            const active = value === i18n.language
+
+                            return (
+                                <li key={value}>
+                                    <div
+                                        role="button"
+                                        onClick={() => i18n.changeLanguage(language.value)}
+                                        className={clsx(classes.Lang, {
+                                            ["text-accent"]: active
                                         })}
-                                    onClick={() => onChangeLang(index)}
-                                >
-                                    <div className={classes.LangImage}>
-                                        <img src={language.image} alt={language.title} />
+                                    >
+                                        <div className={classes.LangImage}>
+                                            <img src={image} alt={title} />
+                                        </div>
+                                        {language.title}
                                     </div>
-									{language.title}
-								</div>
-                            </li>
-                        ))}
+                                </li>
+                            )
+                        })}
                     </ul>
                 </a>
             </div>
@@ -87,15 +99,18 @@ const navItems = ({authModalShow, cartCount, name, isAuthorized, onLogout, onCha
 const getLangs = () => [
     {
         title: "Ру",
-        image: '/images/flags/ru.png'
+        image: '/images/flags/ru.png',
+        value: 'ru'
     },
     {
         title: "En",
-        image: '/images/flags/en.png'
+        image: '/images/flags/en.png',
+        value: 'en'
     },
     {
         title: "Uz",
-        image: '/images/flags/uz.png'
+        image: '/images/flags/uz.png',
+        value: 'uz'
     },
 
 ]

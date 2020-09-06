@@ -4,19 +4,32 @@ import {Stars, TextOverflow} from "../../";
 import classes from "./Product.module.scss";
 import Link from "next/link";
 import ClampLines from "react-clamp-lines";
+import {useTranslation} from "react-i18next";
 
-const product = ({id, image, title, author, rate, current_price, price, isVideo, onAddRemoveItem, lang}) => {
-    const content = {
-        remove: ["Удалить из корзины", "Remove from cart", "Savatdan olib tashlash"],
-        currency: ["сум", "so'm", "so'm"]
-    };
+const product = (props) => {
+    const {
+        id,
+        image,
+        title,
+        author,
+        rate,
+        current_price,
+        price,
+        onAddRemoveItem
+    } = props
 
+    const { t, i18n } = useTranslation()
+
+    const path = `/books/[id]?l=${i18n.language}`
+    const as = `/books/${id}?l=${i18n.language}`
+
+    const isDiscount = parseInt(current_price) !== parseInt(price)
     return (
         <div>
             <div className={classes.Product}>
                 <Link
-                    href={`/${isVideo ? "videos" : "books"}/[id]?l=${lang}`}
-                    as={`/${isVideo ? "videos" : "books"}/${id}?l=${lang}`}
+                    href={path}
+                    as={as}
                 >
                     <a>
                         <div className={classes.Image}>
@@ -25,8 +38,8 @@ const product = ({id, image, title, author, rate, current_price, price, isVideo,
                     </a>
                 </Link>
                 <Link
-                    href={`/${isVideo ? "videos" : "books"}/[id]?l=${lang}`}
-                    as={`/${isVideo ? "videos" : "books"}/${id}?l=${lang}`}
+                    href={path}
+                    as={as}
                 >
                     <a className="d-block w-100 h-100">
                         <ClampLines
@@ -46,23 +59,30 @@ const product = ({id, image, title, author, rate, current_price, price, isVideo,
                     </a>
                 </Link>
                 <Link
-                    href={`/${isVideo ? "videos" : "books"}/[id]?l=${lang}`}
-                    as={`/${isVideo ? "videos" : "books"}/${id}?l=${lang}`}
+                    href={path}
+                    as={as}
                 >
                     <a>
                         <TextOverflow>
                             <div className="d-flex align-items-end mt-1">
-                            <p className="text-danger text-bold mb-0 mr-1 text-md">{current_price} {content.currency[lang]}</p>
-                            {parseInt(current_price) !== parseInt(price) &&
-                            <p className="text-xsmall text-crossed">{price}</p>}
+                            <p className="text-danger text-bold mb-0 mr-1 text-md">
+                                {current_price} {t('so\'m')}
+                            </p>
+                            {isDiscount && (
+                                <p className="text-xsmall text-crossed">{price}</p>
+                            )}
                         </div>
                         </TextOverflow>
                     </a>
                 </Link>
             </div>
             {onAddRemoveItem && (
-                <Button onClick={onAddRemoveItem} variant="secondary text-small w-100" className="mt-2">
-                    <TextOverflow>{content.remove[lang]}</TextOverflow>
+                <Button
+                    onClick={onAddRemoveItem}
+                    variant="secondary text-small w-100"
+                    className="mt-2"
+                >
+                    <TextOverflow>{t('Remove from cart')}</TextOverflow>
                 </Button>
             )}
         </div>

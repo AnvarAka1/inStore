@@ -2,41 +2,40 @@ import React from "react";
 import {Button} from "react-bootstrap";
 import classes from "./ProductDescription.module.scss";
 import ReactHtmlParser from 'react-html-parser'
+import {useTranslation} from "react-i18next";
+import { prop } from 'ramda'
 
 const MAX_LENGTH = 128;
-const productDescription = ({
-	title,
-	author,
-	book_type,
-	description,
-	price,
-	current_price,
-	isInCart,
-	cartClicked,
-	favouriteClicked,
-	in_favourites,
-	isAuthorized,
-	isDescriptionExpanded,
-	expandDescription,
-	book_format,
-	bought,
-	lang,
-	isMobile
-}) => {
+const BOOK_TYPES = ["Аудиокнига", "Печатное издание", "Электронная книга"];
 
-	const bookTypes = ["Аудиокнига", "Печатное издание", "Электронная книга"];
-	const content = {
-		removeFromCarts: ["Удалить из корзины", "Remove from cart", "Savatdan olib tashlang"],
-		addToCarts: ["Добавить в корзину", "Add to cart", "Savatga qo'shish"],
-		boughts: ["Куплено", "Bought", "Xarid qilingan"]
-	};
+const productDescription = props => {
+	const title = prop('title', props)
+	const author = prop('author', props)
+	const bookType = parseInt(prop('book_type', props))
+	const description =	prop('description', props)
+	const price = prop('price', props)
+	const currentPrice = prop('current_price', props)
+	const isInCart = prop('isInCart', props)
+	const cartClicked =	prop('cartClicked', props)
+	const favouriteClicked = prop('favouriteClicked', props)
+	const inFavourites = prop('in_favourites', props)
+	const isAuthorized = prop('isAuthorized', props)
+	const isDescriptionExpanded = prop('isDescriptionExpanded', props)
+	const expandDescription = prop('expandDescription', props)
+	const bookFormat =	prop('book_format', props)
+	const bought = prop('bought', props)
+
+	const { t } = useTranslation()
+
+
 	const getDiscount = () => {
-		let disc = (1 - current_price / price) * 100
+		const disc = (1 - currentPrice / price) * 100
 		if(disc.toString().indexOf('.') !== -1){
 			return disc.toFixed(2)
 		}
 		return disc;
-	};
+	}
+
 	let desc = description;
 	if (desc && desc.length > MAX_LENGTH) {
 		desc = !isDescriptionExpanded ? (
@@ -52,7 +51,7 @@ const productDescription = ({
 	}
 
 	return (
-		<div className={`${classes.ProductDescription} ${isMobile ? classes.IsMobile : ""}`}>
+		<div className={classes.ProductDescription}>
 			<h2>{title}</h2>
 			<div className="d-flex justify-content-between align-items-center">
 				<h4 className="text-secondary mb-0">{author}</h4>
@@ -61,12 +60,12 @@ const productDescription = ({
 						<Button onClick={favouriteClicked} className="text-small mr-2" variant="secondary">
 							<div className="d-flex align-items-center">
 								<img src="/images/icons/star.png" className="icon mr-1" />
-								{in_favourites ? "Убрать из избранного" : "Избранное"}
+								{inFavourites ? "Убрать из избранного" : "Избранное"}
 							</div>
 						</Button>
 					)}
 					<p className="text-small btn btn-secondary">
-						{book_format ? book_format : bookTypes[+book_type - 1]}
+						{bookFormat ? bookFormat : BOOK_TYPES[bookType - 1]}
 					</p>
 				</div>
 			</div>
@@ -75,16 +74,16 @@ const productDescription = ({
 			</p>
 			<p className="text-md">{desc}</p>
 			<div className="d-flex justify-content-between align-items-end mt-2 mb-4">
-				<h2 className="mb-0 text-accent">{current_price} сум</h2>
+				<h2 className="mb-0 text-accent">{currentPrice} сум</h2>
 				<div className="d-flex align-items-end ml-4">
-					{parseInt(current_price) !== parseInt(price) && (
+					{parseInt(currentPrice) !== parseInt(price) && (
 						<div className="text-center">
 						<p className="text-crossed text-small text-black">{price} сум</p>
 						<p className="btn btn-primary text-small">{getDiscount()}% Скидка</p>
 					</div>
 					)}
 					{/* Читать фрагмент */}
-					{+book_type === 3 && (
+					{bookType === 3 && (
 						<Button onClick={null} className="text-small ml-2" variant="secondary">
 							Читать фрагмент
 						</Button>
@@ -94,11 +93,14 @@ const productDescription = ({
 			{!bought ? (
 				<Button onClick={cartClicked} className="w-100">
 					<img src="/images/icons/cart-white.png" className="icon icon-sm mr-1" />
-					{isInCart ? content.removeFromCarts[lang] : content.addToCarts[lang]}
+					{isInCart
+						? t('Remove from cart')
+						: t('Add to cart')
+					}
 				</Button>
 			) : (
 				<Button className="w-100" disabled>
-					{content.boughts[lang]}
+					{t('Bought')}
 				</Button>
 			)}
 		</div>

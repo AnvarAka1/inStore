@@ -1,39 +1,40 @@
 import axios from "../../../axios-api";
 import BooksPage from "./";
+import {getLang} from "../../../helpers/utils";
+import {prop} from "ramda";
+import {getPaginationFromResponse} from "../../../components/Pagination/utils";
 
 export default BooksPage;
 
 export const getServerSideProps = async ({ query, req }) => {
-	const lang = ["ru", "en", "uz"];
+	const lang = getLang(req)
 	const page = query.page ? query.page : 1
-	const g = query.genre && query.genre !== 'nogenre' ? `&g=${query.genre}` : ''
-	const url = `${lang[+query.l || 0]}/books/type/1?page=${page}${g}`;
-	let res = null;
-	let error = null;
+	const hasGenre = query.genre && query.genre !== 'nogenre'
+	const g = hasGenre ? `&g=${query.genre}` : ''
+	const url = `${lang}/books/type/1?page=${page}${g}`;
+
 	try {
-		res = await axios.get(url);
+		const res = await axios.get(url);
+		const data = prop('data', res)
+		const bookProps = prop('results', data)
+		const paginationProps = getPaginationFromResponse(data)
+
+		const title = 'Audio books'
+
+		return {
+			props: {
+				bookProps,
+				paginationProps,
+				title,
+				url,
+			}
+		}
 	} catch (err) {
-		error = "Error";
+		const error = "Error";
 		return {
 			props: {
 				error
 			}
 		};
 	}
-	const {next, previous, count, } = res.data
-	const books = res.data.results
-	const pagination = {
-		next,
-		previous,
-		count
-	}
-
-	return {
-		props: {
-			title: ["Аудиокниги", "Audiobooks", "Audiokitoblar"],
-			url,
-			booksProps: books,
-			pagination
-		}
-	};
 };

@@ -4,23 +4,24 @@ import {Button, Form} from "react-bootstrap";
 import classes from "./Comments.module.scss";
 import Comment from "./Comment/Comment";
 import {Stars} from "../";
+import { prop } from 'ramda'
+import {useTranslation} from "react-i18next";
+import clsx from "clsx";
 
-const comments = ({ items, rate, commentControl, isAuthorized, rateClicked, onSubmit, onAuth, lang }) => {
-	const content = {
-		reviews: [ "Оставить отзыв", "Leave review", "Sharh qoldiring" ],
-		send: [ "Отправить", "Submit", "Yuborish" ],
-		unAuth: [
-			"Отзыв могут отправить авторизованные пользователи.",
-			"Only authorized users can leave reviews",
-			"Vakolatli foydalanuvchilar sharhlarini yuborishlari mumkin"
-		],
-		auth: [ "Пройти АВТОРИЗАЦИЮ", "Login", "Avtorizatsiyadan o'tish" ],
-		noReviews: [ "Пока нет отзывов", "No reviews yet", "Hali sharhlar yo'q" ]
-	};
-	const commentsView = items.map(item => <Comment key={item.id} {...item} />);
+const comments = (props) => {
+	const { t } = useTranslation()
+
+	const items = prop('items', props)
+	const rate = prop('rate', props)
+	const commentControl = prop('commentControl', props)
+	const isAuthorized = prop('isAuthorized', props)
+	const rateClicked = prop('rateClicked', props)
+	const onSubmit = prop('onSubmit', props)
+	const onAuth = prop('onAuth', props)
+
 	return (
 		<React.Fragment>
-			<h2 className="mt-5 mb-2">{content.reviews[lang]}</h2>
+			<h2 className="mt-5 mb-2">{t('Leave review')}</h2>
 			{isAuthorized ? (
 				<Form onSubmit={onSubmit}>
 					<Form.Control
@@ -32,24 +33,35 @@ const comments = ({ items, rate, commentControl, isAuthorized, rateClicked, onSu
 					<div className="d-flex justify-content-between align-items-center mt-2">
 						<Stars rate={rate} isBig onClick={rateClicked} />
 						<Button type="submit" className="text-small">
-							{content.send[lang]}
+							{t('Submit')}
 						</Button>
 					</div>
 				</Form>
 			) : (
 				<div className="mt-4">
-					{content.unAuth[lang]} <br />
-					<span className="text-accent text-bold" style={{ cursor: "pointer" }} onClick={onAuth}>
-						{content.auth[lang]}
+					{t('Only authorized users can leave reviews')} <br />
+					<span
+						className="text-accent text-bold"
+						style={{ cursor: "pointer" }}
+						onClick={onAuth}
+					>
+						{t('Login')}
 					</span>
 				</div>
 			)}
 
 			<h3 className="mt-4">Отзывы</h3>
 			{items.length ? (
-				<ul className={`${classes.Comments} ${items.length > 20 && classes.BottomBox}`}>{commentsView}</ul>
+				<ul className={clsx(classes.Comments, {
+					[classes.BottomBox]: items.length > 20
+				})}
+				>
+					{items.map(item => (
+						<Comment key={item.id} {...item} />
+						))}
+				</ul>
 			) : (
-				<p className="text-secondary">{content.noReviews[lang]}</p>
+				<p className="text-secondary">{t('No reviews yet')}</p>
 			)}
 		</React.Fragment>
 	);

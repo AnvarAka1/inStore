@@ -1,8 +1,11 @@
 import React from "react";
 import classes from "./Category.module.scss";
 import {Link} from "../../";
+import {useTranslation} from "react-i18next";
 
-const category = ({ id, pathname, children, href, icon, isStatic, lang }) => {
+const category = ({ id, pathname, children, href, icon, isStatic }) => {
+	const { i18n } = useTranslation()
+
 	const item = (
 		<a>
 			<div className="d-flex align-items-center">
@@ -19,9 +22,11 @@ const category = ({ id, pathname, children, href, icon, isStatic, lang }) => {
 	return (
 		<li className={`${classes.Category} mt-2 list`}>
 			{href !== undefined ? (
-				<Link href={`/books/categories${href}?l=${lang}`}>{item}</Link>
+				<Link href={`/books/categories${href}?l=${i18n.language}`}>{item}</Link>
 			) : (
-				<Link href={{ pathname: pathname, query: { genre: id, l: lang } }}>{item}</Link>
+				<Link href={{ pathname: pathname, query: { genre: id, l: i18n.language } }}>
+					{item}
+				</Link>
 			)}
 		</li>
 	);

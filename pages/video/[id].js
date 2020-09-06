@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import LessonHeader from "../../components/Lesson/LessonHeader";
-import LangContext from "../../store/LangContext";
+import LangContext from "../../components/Language/LangContext";
 import PriceBlock from "../../components/Lesson/PriceBlock/PriceBlock";
 import {Col, Container, Row} from "react-bootstrap";
 import ListBox from "../../components/Lesson/LessonContent/ListBox";
