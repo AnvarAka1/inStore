@@ -8,6 +8,7 @@ import {path, prop} from 'ramda'
 import {getLang} from "../../../../helpers/utils";
 import {useTranslation} from "react-i18next";
 import Head from "next/head";
+import meta from "../../../../lib/meta.json";
 
 const CompilationPage = ({ title, books, query }) => {
 	const { i18n } = useTranslation()
@@ -27,6 +28,7 @@ const CompilationPage = ({ title, books, query }) => {
 			<Head>
 				<title>{title}</title>
 				<meta property="og:title" content={title} />
+				<meta name="description" content={title} />
 			</Head>
 			<CategoriesLayout withoutGenre>
 				{books && (

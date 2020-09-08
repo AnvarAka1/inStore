@@ -10,6 +10,7 @@ import {prop} from "ramda";
 import {getPaginationFromResponse} from "../../../../components/Pagination/utils";
 import {getLang} from "../../../../helpers/utils";
 import Head from "next/head";
+import meta from "../../../../lib/meta.json";
 
 const CompilationsPage = ({results, pagination}) => {
     const { t, i18n } = useTranslation()
@@ -26,6 +27,7 @@ const CompilationsPage = ({results, pagination}) => {
             <Head>
                 <title>{title}</title>
                 <meta property="og:title" content={title} />
+                <meta name="description" content={meta.title} />
             </Head>
             <CategoriesLayout withoutGenre>
                 <Row>

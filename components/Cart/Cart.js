@@ -26,7 +26,6 @@ const Cart = ({ children }) => {
         if (item) {
             const newCart = cart.filter(item => item.id !== product.id)
             saveCart(newCart)
-
         } else {
             const newCart = [...cart, product]
             saveCart(newCart)

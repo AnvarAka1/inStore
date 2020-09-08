@@ -5,6 +5,7 @@ import {Col, Row} from "react-bootstrap";
 import {MakeOrder} from "../components";
 import {useCart} from "../components/Cart";
 import {useTranslation} from "react-i18next";
+import {reduce} from "ramda";
 
 const CartLayout = ({ children, isOrderPage }) => {
 	const { i18n } = useTranslation()
@@ -15,12 +16,12 @@ const CartLayout = ({ children, isOrderPage }) => {
 	const codeControl = useForm();
 
 	useEffect(() => {
-		const oldPrice = cart.reduce((sum, product) => {
-			return sum + +product.price;
-		}, 0);
-		const currentPrice = cart.reduce((sum, product) => {
+		const oldPrice = reduce((sum, product) => {
+			return sum + parseInt(product.price);
+		}, 0, cart);
+		const currentPrice = reduce((sum, product) => {
 			return sum + parseInt(product.current_price);
-		}, 0);
+		}, 0, cart);
 		setOldPrice(oldPrice);
 		setCurrentPrice(currentPrice);
 		setOrderCase(getCase());

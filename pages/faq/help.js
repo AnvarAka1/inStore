@@ -3,6 +3,7 @@ import {useTranslation} from "react-i18next";
 import {Card, Col, Row} from 'react-bootstrap'
 import {PageTitle} from "../../components";
 import Head from "next/head";
+import meta from "../../lib/meta.json";
 
 function HelpPage() {
     const {t} = useTranslation()
@@ -13,6 +14,7 @@ function HelpPage() {
             <Head>
                 <title>{title}</title>
                 <meta property="og:title" content={title} />
+                <meta name="description" content={title} />
             </Head>
             <Row>
                 <Col>

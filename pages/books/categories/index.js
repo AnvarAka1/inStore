@@ -10,6 +10,7 @@ import {prop} from "ramda";
 import {getPaginationFromResponse} from "../../../components/Pagination/utils";
 import {useTranslation} from "react-i18next";
 import Head from "next/head";
+import meta from "../../../lib/meta.json";
 
 let initialPageLoad = true;
 let _isMounted = false;
@@ -103,6 +104,7 @@ const BooksPage = ({ headerTitle, title, error, bookProps, resultsProps, url, pa
             <Head>
                 <title>{headerTitle}</title>
                 <meta property="og:title" content={headerTitle} />
+                <meta name="description" content={headerTitle} />
             </Head>
             <CategoriesLayout>
                 {!loading && bookProps && books && (

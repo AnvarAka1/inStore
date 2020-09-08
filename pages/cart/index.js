@@ -5,6 +5,7 @@ import {Products} from "../../components";
 import {useCart, useCartManipulator} from "../../components/Cart";
 import {useTranslation} from "react-i18next";
 import Head from 'next/head'
+import meta from "../../lib/meta.json";
 
 const CartPage = () => {
 	const { t } = useTranslation()
@@ -25,6 +26,7 @@ const CartPage = () => {
 			<Head>
 				<title>{title}</title>
 				<meta property="og:title" content={title} />
+				<meta name="description" content={title} />
 			</Head>
 			<CartLayout>
 				<Row>
