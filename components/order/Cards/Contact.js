@@ -1,6 +1,6 @@
 import React from 'react';
-import {Card} from "../../../index";
-import {FormikGroup} from "../../../UI";
+import {Card} from "../../index";
+import {FormikGroup} from "../../UI";
 
 function Contact({ getFieldProps }) {
     return (

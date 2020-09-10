@@ -34,7 +34,7 @@ export {default as Search} from "./Search/Search";
 export {default as Success} from "./Success/Success";
 export {default as Check} from './Check/Check';
 export {default as Table} from './Table/Table';
-export {default as Payment} from './Payment/Payment'
+export {default as Payment} from './order/Payment/Payment'
 export {default as AddressForm} from './Forms/AddressForm'
 export {default as TextOverflow} from './TextOverflow/TextOverflow'
 export {default as PageTitle} from './PageTitle/PageTitle'

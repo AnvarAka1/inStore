@@ -1,6 +1,6 @@
 import React from 'react';
-import {Card} from "../../../index";
-import {FormikGroup} from "../../../UI";
+import {Card} from "../../index";
+import {FormikGroup} from "../../UI";
 import {useTranslation} from "react-i18next";
 
 function Comment({ getFieldProps, className, ...props }) {
