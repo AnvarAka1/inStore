@@ -1,16 +1,16 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react'
+import Link from 'next/link'
 
 const footerItem = ({ title, link }) => {
-	return (
-		<li>
-			<Link href={link}>
-				<a className="text-small text-accent">
-					<p className="mb-sm-3 mb-5 text-underline">{title}</p>
-				</a>
-			</Link>
-		</li>
-	);
-};
+  return (
+    <li>
+      <Link href={link}>
+        <a className="text-small text-accent">
+          <p className="mb-sm-3 mb-5 text-underline">{title}</p>
+        </a>
+      </Link>
+    </li>
+  )
+}
 
-export default footerItem;
+export default footerItem

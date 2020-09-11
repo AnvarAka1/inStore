@@ -7,7 +7,11 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((req) => {
-	const cookies = parseCookies(req)
+	const isClient = typeof window !== 'undefined'
+
+	const actualRequest = isClient ? null : req
+	const cookies = parseCookies(actualRequest)
+
 	const token = prop('token', cookies)
 	delete req.headers.accept
 	delete req.headers.host

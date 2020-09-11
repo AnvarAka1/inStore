@@ -1,20 +1,21 @@
-import React from 'react';
-import {useModal} from "../../hooks";
+import React from 'react'
+
 import Context from './context'
 
+import { useModal } from '../../hooks'
+
 function AuthModal ({ children }) {
+  const authModal = useModal(false)
 
-    const authModal = useModal(false);
+  const value = {
+    ...authModal
+  }
 
-    const value = {
-        ...authModal
-    }
-
-    return (
-        <Context.Provider value={value}>
-            {children}
-        </Context.Provider>
-    )
+  return (
+    <Context.Provider value={value}>
+      {children}
+    </Context.Provider>
+  )
 }
 
 export default AuthModal

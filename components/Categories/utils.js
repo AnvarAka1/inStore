@@ -1,12 +1,10 @@
-import {prop} from "ramda";
+import { prop } from 'ramda'
 
 export const getValuesFromResponse = (res) => {
+  const booksProps = prop('results', data)
 
-    const booksProps = prop('results', data)
-
-
-    return {
-        booksProps,
-        pagination
-    }
+  return {
+    booksProps,
+    pagination
+  }
 }

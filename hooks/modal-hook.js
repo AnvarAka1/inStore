@@ -7,7 +7,7 @@ const useModal = (initialState = false, initialLoading = false) => {
 		setShow(false);
 	};
 	const modalShowHandler = () => {
-		setShow(true);
+		setShow(true)
 	};
 	const modalToggleHandler = () => {
 		setShow(!show);

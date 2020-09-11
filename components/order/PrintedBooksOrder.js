@@ -1,19 +1,27 @@
-import React from 'react';
+import React from 'react'
+
 import { PrintedBooksOrderForm } from './Forms'
-import {useModal} from "../../hooks";
 
-function PrintedBooksOrder({ onAuthValidate, onSubmit }) {
-    const paymentModal = useModal();
-    const handleSubmit = () => {
-        const isAuthorized = onAuthValidate()
-        if(isAuthorized) {
-            paymentModal.onShow()
-        }
+import { useModal } from '../../hooks'
+
+function PrintedBooksOrder ({ onAuthValidate, onSubmit, ...props }) {
+  const paymentModal = useModal()
+
+  const handleSubmit = () => {
+    const isAuthorized = onAuthValidate()
+    if (isAuthorized) {
+      paymentModal.onShow()
     }
+  }
 
-    return (
-        <PrintedBooksOrderForm modal={paymentModal} onSubmit={handleSubmit} />
-    )
+  return (
+    <PrintedBooksOrderForm
+      {...props}
+      modal={paymentModal}
+      onSubmit={handleSubmit}
+      onSubmitValues={onSubmit}
+    />
+  )
 }
 
 export default PrintedBooksOrder

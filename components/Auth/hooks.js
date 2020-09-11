@@ -1,7 +1,8 @@
-import {useContext} from 'react'
+import { useContext } from 'react'
+
 import Context from './context'
 
 export const useAuthModal = () => {
-    const values = useContext(Context)
-    return { ...values }
+  const values = useContext(Context)
+  return { ...values }
 }
