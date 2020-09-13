@@ -1,11 +1,11 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-
+import PropTypes from 'prop-types'
 import classes from './Category.module.scss'
 
 import { Link } from '../../'
 
-const category = ({ id, pathname, children, href, icon, isStatic }) => {
+const Category = ({ id, pathname, children, href, icon, isStatic }) => {
   const { i18n } = useTranslation()
 
   const item = (
@@ -34,4 +34,4 @@ const category = ({ id, pathname, children, href, icon, isStatic }) => {
   )
 }
 
-export default category
+export default Category

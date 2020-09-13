@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { Form, useField } from 'formik'
+import PropTypes from 'prop-types'
 
 import Comment from '../Cards/Comment'
 import Address from '../Cards/Address'
@@ -11,7 +12,7 @@ import { PaymentCard } from '../Payment'
 import { Modal } from '../../index'
 import { PAYMENT_TYPES } from '../constants'
 
-function PrintedBooksOrderForm ({ formik, modal, onSubmitValues, ...props }) {
+function PrintedBooksOrderForm ({ formik, modal, onSubmitValues }) {
   const { handleSubmit, getFieldProps, values } = formik
 
   const [, meta, helpers] = useField('payment_type')
@@ -45,6 +46,12 @@ function PrintedBooksOrderForm ({ formik, modal, onSubmitValues, ...props }) {
       </Row>
     </Form>
   )
+}
+
+PrintedBooksOrderForm.propTypes = {
+  onSubmitValues: PropTypes.func.isRequired,
+  modal: PropTypes.func.isRequired,
+  formik: PropTypes.object.isRequired
 }
 
 export default withForm(PrintedBooksOrderForm)

@@ -1,25 +1,22 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { object, string } from 'yup'
 import { Col, Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import Head from 'next/head'
 import { pathOr, prop, propOr } from 'ramda'
+import PropTypes from 'prop-types'
 
 import { useModal } from '../../../hooks'
-import { parseCookies } from '../../../helpers/utils'
 import axios from '../../../axios-api'
 import { Modal, Success } from '../../../components'
 import { CartLayout } from '../../../layouts'
-import * as gtag from '../../../lib/gtag'
 import { E_BOOKS_ONLY, MIXED, PRINTED_BOOK, PRINTED_ONLY, useCart, useCartManipulator } from '../../../components/Cart'
 import { useAuthModal } from '../../../components/Auth'
 import OnlineBooksOrder from '../../../components/order/OnlineBooksOrder'
 import PrintedBooksOrder from '../../../components/order/PrintedBooksOrder'
 import MixedBooksOrder from '../../../components/order/MixedBooksOrder'
 import { orderSerializer } from '../../../components/order/serializers'
-
-let fData = null
 
 const getInitialValues = (profile, isOnline) => {
   const phone = propOr('', 'phone', profile)
@@ -59,7 +56,6 @@ const getValidationSchema = isOnlineBooks => {
 }
 const OrderPage = ({ queryCase, isAuthorized, profile }) => {
   const { t } = useTranslation()
-  const allOnlineRef = useRef(true)
   const { getBooksByType, getBooksExceptType, getIds } = useCart()
   const { onClearCart } = useCartManipulator()
   const { onShow } = useAuthModal()
@@ -76,6 +72,12 @@ const OrderPage = ({ queryCase, isAuthorized, profile }) => {
     return isAuthorized
   }
 
+  const redirectFromResponse = response => {
+    const redirect = pathOr('', ['data', 'redirect_url'], response)
+
+    location.href = redirect
+  }
+
   const handleOnlineSubmit = formValues => {
     const paymentType = prop('payment_type', formValues)
     const isOnlinePayment = paymentType < 3
@@ -83,62 +85,39 @@ const OrderPage = ({ queryCase, isAuthorized, profile }) => {
     return handleSubmit(formValues, getIds())
       .then(res => {
         if (isOnlinePayment) {
-          gtag.event({
-            action: 'Only_online_or_only_printed_books_offline_payment',
-            category: 'purchase',
-            label: 'Purchase by offline payment'
-          })
           onClearCart()
           purchaseModal.onShow()
         }
         if (!isOnlinePayment) {
-          gtag.event({
-            action: 'Only_online_or_only_printed_books_card_payment',
-            category: 'purchase',
-            label: 'Purchase by card payment'
-          })
-          const redirect = pathOr('', ['data', 'redirect_url'], res)
-          location.href = redirect
+          redirectFromResponse(res)
         }
       })
   }
 
-  const handleMixedBooksSubmit = formValues => {
-    if (allOnlineRef.current) {
+  const handleMixedBooksSubmit = (formValues, isOnline) => {
+    if (isOnline) {
       handleSubmit(formValues, getIds())
-        .then(res => {
-          gtag.event({
-            action: 'purchase_all_online',
-            category: 'purchase',
-            label: 'Online payment'
-          })
-          const redirect = pathOr('', ['data', 'redirect_url'], res)
-          location.href = redirect
-        })
+        .then(res => redirectFromResponse(res))
     }
-    if (!allOnlineRef.current) {
-      const printedBooksIds = getBooksByType(PRINTED_BOOK).map(el => el.id)
-      handleSubmit(formValues, printedBooksIds)
+
+    if (!isOnline) {
+      const printedBooksIds = getBooksByType(PRINTED_BOOK).map(el => el.id).join(',')
+      return handleSubmit(formValues, printedBooksIds, 1)
         .then(() => {
-          const ebooksIds = getBooksExceptType(2).map(el => el.id)
+          const ebooksIds = getBooksExceptType(2).map(el => el.id).join(', ')
           return handleSubmit(formValues, ebooksIds)
         })
-        .then(res => {
-          gtag.event({
-            action: 'purchase_mix',
-            category: 'purchase',
-            label: 'Purchase when printed books are paid offline, online books are paid via card'
-          })
-          const redirect = pathOr('', ['data', 'redirect_url'], res)
-          location.href = redirect
-        })
+        .then(res => redirectFromResponse(res))
     }
   }
 
-  const handleSubmit = (formValues, books) => {
-    const data = orderSerializer(formValues, books)
+  const handleSubmit = (formValues, books, customMethodOfPayment) => {
+    const data = orderSerializer(formValues, books, customMethodOfPayment)
 
     return axios.post('orders/create', data, null)
+      .then(res => {
+        return res
+      })
   }
 
   const title = t('Purchase order')
@@ -162,8 +141,9 @@ const OrderPage = ({ queryCase, isAuthorized, profile }) => {
         </Row>
         {isOnlineBooks && (
           <OnlineBooksOrder
-            initialValues={getInitialValues(profile)}
-            validationSchema={getValidationSchema()}
+            onAuthValidate={handleAuthValidate}
+            initialValues={getInitialValues(profile, true)}
+            validationSchema={getValidationSchema(true)}
             onSubmit={handleOnlineSubmit}
           />
         )}
@@ -176,7 +156,8 @@ const OrderPage = ({ queryCase, isAuthorized, profile }) => {
           />)}
         {isMixedBooks && (
           <MixedBooksOrder
-            initialValues={getInitialValues(profile)}
+            onAuthValidate={handleAuthValidate}
+            initialValues={getInitialValues(profile, true)}
             validationSchema={getValidationSchema()}
             onSubmit={handleMixedBooksSubmit}
           />)}
@@ -186,23 +167,35 @@ const OrderPage = ({ queryCase, isAuthorized, profile }) => {
 }
 
 export const getServerSideProps = async ({ req, query }) => {
-  let profile = null
-  const token = parseCookies(req).token
-  if (token) {
-    profile = await axios.get('profile', req)
-    profile = profile.data
-  }
+  try {
+    const res = await axios.get('profile', req)
+    const profile = prop('data', res)
+    const queryCase = parseInt(prop('case', query))
 
-  return {
-    props: {
-      profile,
-      queryCase: +query.case
+    return {
+      props: {
+        profile,
+        queryCase
+      }
+    }
+  } catch (err) {
+    return {
+      props: {
+        err
+      }
     }
   }
 }
+
 const mapStateToProps = state => {
   return {
     isAuthorized: state.auth.token !== null
   }
 }
+OrderPage.propTypes = {
+  queryCase: PropTypes.number.isRequired,
+  isAuthorized: PropTypes.bool.isRequired,
+  profile: PropTypes.object
+}
+
 export default connect(mapStateToProps)(OrderPage)

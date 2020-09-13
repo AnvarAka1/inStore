@@ -6,7 +6,7 @@ import classes from './Footer.module.scss'
 
 import { FooterItem, Logo } from '../'
 
-const footer = () => {
+const Footer = () => {
   const { t } = useTranslation()
 
   return (
@@ -108,4 +108,4 @@ const getItems = () => [
     '/faq/help'
   ]
 ]
-export default React.memo(footer)
+export default React.memo(Footer)

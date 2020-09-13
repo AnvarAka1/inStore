@@ -2,8 +2,8 @@ import React from 'react'
 import { Col } from 'react-bootstrap'
 
 import Compilation from './Compilation/Compilation'
-
-const compilations = ({ items }) => {
+import PropTypes from 'prop-types'
+const Compilations = ({ items }) => {
   const compilationsView = items.map(item => {
     return (
       <Col md={4} sm={6} key={item.id} className="mb-3">
@@ -14,4 +14,4 @@ const compilations = ({ items }) => {
   return <React.Fragment>{compilationsView}</React.Fragment>
 }
 
-export default compilations
+export default Compilations

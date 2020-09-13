@@ -6,8 +6,8 @@ import classes from './MakeOrder.module.scss'
 
 import { DELIVERY_COST } from '../../constants'
 import { useCart } from '../Cart'
-
-const makeOrder = ({ productCount, currentPrice, oldPrice, onOrder, disabled }) => {
+import PropTypes from 'prop-types'
+const MakeOrder = ({ productCount, currentPrice, oldPrice, onOrder, disabled }) => {
   const { t } = useTranslation()
   const { getCase } = useCart()
 
@@ -72,7 +72,8 @@ const makeOrder = ({ productCount, currentPrice, oldPrice, onOrder, disabled }) 
     </div>
   )
 }
-makeOrder.defaultProps = {
+
+MakeOrder.defaultProps = {
   discount: 0,
   price: 0,
   codeControl: {
@@ -80,4 +81,4 @@ makeOrder.defaultProps = {
     onChange: null
   }
 }
-export default makeOrder
+export default MakeOrder

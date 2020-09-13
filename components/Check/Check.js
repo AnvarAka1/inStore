@@ -2,10 +2,10 @@ import React from 'react'
 import Moment from 'react-moment'
 import { useTranslation } from 'react-i18next'
 import { prop } from 'ramda'
-
+import PropTypes from 'prop-types'
 import classes from './Check.module.scss'
 
-const check = ({ order }) => {
+const Check = ({ order }) => {
   const { t } = useTranslation()
   const id = prop('id', order)
   const paymentType = prop('payment_type', order)
@@ -59,4 +59,4 @@ const check = ({ order }) => {
   </table>
 }
 
-export default check
+export default Check

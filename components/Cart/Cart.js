@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { filter, find, prop, reduce } from 'ramda'
 
 import Context from './context'
-
+import PropTypes from 'prop-types'
 export const E_BOOKS_ONLY = 0
 export const PRINTED_ONLY = 1
 export const MIXED = 2

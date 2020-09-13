@@ -1,7 +1,7 @@
 import React from 'react'
 
 import FooterItem from './FooterItem/FooterItem'
-
+import PropTypes from 'prop-types'
 const footerItems = ({ titles, items, lang }) => {
   const footerItemsView = items.map((item, index) => {
     return <FooterItem key={index} title={item.titles[lang]} link={item.link} />

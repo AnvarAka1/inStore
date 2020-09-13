@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-
+import PropTypes from 'prop-types'
 import classes from './Compilation.module.scss'
 
 const compilation = ({ className, id, title, image }) => {

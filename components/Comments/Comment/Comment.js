@@ -2,10 +2,10 @@ import React from 'react'
 import Moment from 'react-moment'
 
 import classes from './Comment.module.scss'
-
+import PropTypes from 'prop-types'
 import { Stars } from '../../'
 
-const comment = ({ id, user, rate, text, created_at }) => {
+const Comment = ({ id, user, rate, text, created_at }) => {
   return (
     <li className={classes.Comment}>
       <div className="d-flex align-items-end mb-1">
@@ -20,4 +20,4 @@ const comment = ({ id, user, rate, text, created_at }) => {
   )
 }
 
-export default comment
+export default Comment

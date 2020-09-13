@@ -4,6 +4,7 @@ import { Alert, Button, FormCheck, FormGroup, FormLabel } from 'react-bootstrap'
 import InputMask from 'react-input-mask'
 import { ErrorMessage, Form, Formik } from 'formik'
 import { object, string } from 'yup'
+import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import clsx from 'clsx'
 

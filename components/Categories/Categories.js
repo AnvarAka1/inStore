@@ -1,9 +1,9 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-
+import PropTypes from 'prop-types'
 import Category from './Category/Category'
 
-const categories = ({ items, isStatic, lang, pathname }) => {
+const Categories = ({ items, isStatic, lang, pathname }) => {
   const { t } = useTranslation()
 
   return (
@@ -34,4 +34,4 @@ const categories = ({ items, isStatic, lang, pathname }) => {
   )
 }
 
-export default categories
+export default Categories

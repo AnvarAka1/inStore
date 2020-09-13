@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookSquare, faGoogle, faVk } from '@fortawesome/free-brands-svg-icons'
 import FacebookLogin from 'react-facebook-login'
-
+import PropTypes from 'prop-types'
 import classes from './AuthModal.module.scss'
 
 function Social ({ onAuth, isSignUp }) {
@@ -10,9 +10,6 @@ function Social ({ onAuth, isSignUp }) {
     const { name, email } = res
     // console.log(res)
     onAuth(name, email, '', '', isSignUp, () => {})
-  }
-  const responseSuccessGoogle = (res) => {
-    // console.log(res)
   }
   return (
     <div className="d-flex align-items-center justify-content-center">

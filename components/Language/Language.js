@@ -3,7 +3,7 @@ import { prop } from 'ramda'
 import { useTranslation } from 'react-i18next'
 
 import { parseCookies, setCookie } from '../../helpers/utils'
-
+import PropTypes from 'prop-types'
 function Language ({ children }) {
   const { i18n } = useTranslation()
 

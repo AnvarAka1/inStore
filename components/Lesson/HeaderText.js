@@ -1,7 +1,7 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
-
+import PropTypes from 'prop-types'
 import classes from './HeaderText.module.scss'
 
 function HeaderText ({ title, subtitle, curator, date, rating }) {

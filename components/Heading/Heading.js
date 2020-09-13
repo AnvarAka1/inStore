@@ -5,8 +5,8 @@ import Fade from 'react-reveal/Fade'
 import { useTranslation } from 'react-i18next'
 
 import classes from './Heading.module.scss'
-
-const heading = ({ className, title, text, href }) => {
+import PropTypes from 'prop-types'
+const Heading = ({ className, title, text, href }) => {
   const { t } = useTranslation()
 
   return (
@@ -24,7 +24,7 @@ const heading = ({ className, title, text, href }) => {
   )
 }
 
-heading.defaultProps = {
+Heading.defaultProps = {
   href: '#'
 }
-export default heading
+export default Heading

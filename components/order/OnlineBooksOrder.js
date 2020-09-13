@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { OnlineBooksOrderForm } from './Forms'
 
@@ -22,6 +23,11 @@ function OnlineBooksOrder ({ onAuthValidate, onSubmit, ...props }) {
       onSubmitValues={onSubmit}
     />
   )
+}
+
+OnlineBooksOrder.propTypes = {
+  onAuthValidate: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default OnlineBooksOrder

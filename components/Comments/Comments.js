@@ -6,10 +6,10 @@ import clsx from 'clsx'
 
 import classes from './Comments.module.scss'
 import Comment from './Comment/Comment'
-
+import PropTypes from 'prop-types'
 import { Stars } from '../'
 
-const comments = (props) => {
+const Comments = (props) => {
   const { t } = useTranslation()
 
   const items = prop('items', props)
@@ -68,4 +68,4 @@ const comments = (props) => {
   )
 }
 
-export default comments
+export default Comments

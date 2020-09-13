@@ -2,7 +2,7 @@ import React from 'react'
 // import classes from './Link.module.scss';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
+import PropTypes from 'prop-types'
 const CustomLink = ({ children, className, href }) => {
   let hasQueries = true
   const router = useRouter()

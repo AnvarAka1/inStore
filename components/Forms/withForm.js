@@ -1,8 +1,9 @@
 import React from 'react'
 import { Formik } from 'formik'
+import PropTypes from 'prop-types'
 
 function withForm (Component, FormProps) {
-  return props => {
+  const Form = props => {
     const { initialValues, validationSchema, onSubmit, ...rest } = props
     return (
       <Formik
@@ -17,6 +18,14 @@ function withForm (Component, FormProps) {
       </Formik>
     )
   }
+
+  Form.propTypes = {
+    initialValues: PropTypes.object,
+    validationSchema: PropTypes.any,
+    onSubmit: PropTypes.func.isRequired
+  }
+
+  return Form
 }
 
 export default withForm

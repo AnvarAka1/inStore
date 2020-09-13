@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { Form, useField } from 'formik'
+import PropTypes from 'prop-types'
 
 import Phone from '../Cards/Phone'
 import Contact from '../Cards/Contact'
@@ -10,7 +11,7 @@ import { PaymentCard } from '../Payment'
 import { Modal } from '../../index'
 import { ONLINE_PAYMENT_TYPES } from '../constants'
 
-function OnlineBooksOrderForm ({ formik, modal, onSubmitValues, ...props }) {
+function OnlineBooksOrderForm ({ formik, modal, onSubmitValues }) {
   const { handleSubmit, getFieldProps, values } = formik
 
   const [, meta, helpers] = useField('payment_type')
@@ -23,7 +24,7 @@ function OnlineBooksOrderForm ({ formik, modal, onSubmitValues, ...props }) {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} id="orderForm">
       <Modal modal={modal}>
         <PaymentCard
           activePaymentType={paymentType}
@@ -43,6 +44,12 @@ function OnlineBooksOrderForm ({ formik, modal, onSubmitValues, ...props }) {
       </Row>
     </Form>
   )
+}
+
+OnlineBooksOrderForm.propTypes = {
+  onSubmitValues: PropTypes.func.isRequired,
+  modal: PropTypes.func.isRequired,
+  formik: PropTypes.object.isRequired
 }
 
 export default withForm(OnlineBooksOrderForm)

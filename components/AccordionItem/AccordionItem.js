@@ -1,6 +1,6 @@
 import React from 'react'
 import { Accordion as BTAccordion, Card } from 'react-bootstrap'
-
+import PropTypes from 'prop-types'
 function AccordionItem ({ title, content, eventKey }) {
   const Header = (props) => <Card.Header style={{ cursor: 'pointer' }} {...props} />
   return (
