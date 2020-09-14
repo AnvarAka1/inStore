@@ -11,6 +11,7 @@ import { useForm } from '../hooks/'
 import { AuthModal, Footer, Navbar, NavItems, Search } from '../components/'
 import { useCart } from '../components/Cart'
 import { useAuthModal } from '../components/Auth'
+import { CATEGORIES } from "../constants/categories";
 
 const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
   const { t } = useTranslation()
@@ -65,7 +66,7 @@ const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
         isAuthorized={isAuthorized}
         cartCount={cart.length}
         search={search}
-        booksCategories={getStaticCategories()}
+        booksCategories={CATEGORIES}
         navItems={navItems}
       />
       <main className="pt-4 page">

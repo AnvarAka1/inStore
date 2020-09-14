@@ -2,60 +2,49 @@ import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
-import { path } from 'ramda'
+import {find, path, pipe, prop, propEq} from 'ramda'
 
 import axios from '../axios-api'
-import { Categories } from '../components/'
-import { getStaticCategories } from '../lib/categories'
+import Genres from '../components/Categories/Genres'
+import Categories from '../components/Categories/Categories'
+import { CATEGORIES, COMPILATION_ID } from '../constants/categories'
 
-let _isMounted = false
+const getCompilationRoute = pipe(
+  find(propEq('id', COMPILATION_ID)),
+  prop('link')
+)
 
-const CategoriesLayout = ({ children, withoutGenre }) => {
+const CategoriesLayout = ({ children }) => {
   const { i18n } = useTranslation()
   const [pathname, setPathname] = useState(null)
-  const [categories, setCategories] = useState([])
+  const [genres, setGenres] = useState([])
   const [loading, setLoading] = useState(true)
   const router = useRouter()
 
+  const isCompilationPage = prop('route', router) === getCompilationRoute(CATEGORIES)
+  const renderGenres = !loading && !isCompilationPage
+
+  console.log(prop('route', router), getCompilationRoute(CATEGORIES))
+  console.log(router.route)
   useEffect(() => {
-    _isMounted = true
     axios
       .get(`${i18n.language}/genres`)
       .then(res => {
-        if (_isMounted) {
-          const results = path(['data', 'results'], res)
-          setCategories(results)
-        }
+        const results = path(['data', 'results'], res)
+        setGenres(results)
       })
-      .catch(err => {
-        console.log(err)
-      })
-      .finally(() => {
-        if (_isMounted) setLoading(false)
-      })
-
-    return () => {
-      _isMounted = false
-    }
+      .finally(() => setLoading(false))
   }, [i18n.language])
 
   useEffect(() => {
-    _isMounted = true
-    if (_isMounted) {
-      setPathname(router.pathname)
-    }
-    return () => {
-      _isMounted = false
-    }
+    setPathname(router.pathname)
   }, [router.pathname])
 
   return (
     <Row>
       <Col sm={3}>
-        <Categories items={getStaticCategories()} isStatic={true} />
-        {!withoutGenre && !loading && (
-          <Categories items={categories} pathname={pathname} />
-        )}
+        <Categories items={CATEGORIES} isStatic={true} />
+        {renderGenres && <Genres items={genres} pathname={pathname} />}
       </Col>
       <Col sm={9}>{children}</Col>
     </Row>

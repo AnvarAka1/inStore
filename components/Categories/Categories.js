@@ -1,37 +1,24 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
+
 import Category from './Category/Category'
+import classes from './Category/Category.module.scss'
 
-const Categories = ({ items, isStatic, lang, pathname }) => {
-  const { t } = useTranslation()
-
+function Categories ({ items }) {
   return (
-    <React.Fragment>
-      {!isStatic && (
-        <div className="d-flex align-items-center mb-4">
-          <img className="icon icon-md" src="/images/icons/janra.png" alt="Жанры" />
-          <h5 className="ml-1 mb-0 text-secondary">{t('Genres')}</h5>
-        </div>
-      )}
+    <>
       <ul>
         {items.map(item => (
-          <Category
-            lang={lang}
-            key={item.id}
-            icon={item.icon}
-            id={item.id}
-            href={item.link}
-            pathname={pathname}
-            isStatic={isStatic}
-          >
-            {item.title}
-          </Category>
+          <li className={`${classes.Category} mt-2 list`}>
+            <Category key={item.id} {...item} />
+          </li>
         ))}
       </ul>
       <hr className="mt-4 pb-2" />
-    </React.Fragment>
+    </>
   )
 }
-
+Categories.propTypes = {
+  items: PropTypes.array.isRequired
+}
 export default Categories
