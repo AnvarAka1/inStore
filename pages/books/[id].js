@@ -1,199 +1,195 @@
-import React, {useEffect, useState} from "react";
-import {getLang, parseCookies} from "../../helpers/utils";
-import axios from "../../axios-api";
-import {connect} from "react-redux";
-import {useForm} from "../../hooks";
-import {useSnackbar} from "react-simple-snackbar";
-import {Col, Row} from "react-bootstrap";
-import {Comments, ProductDescription, ProductDetails, ProductsCarousel} from "../../components/";
-import Router from "next/router";
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { useSnackbar } from 'react-simple-snackbar'
+import { Col, Row } from 'react-bootstrap'
+import Router from 'next/router'
 import Fade from 'react-reveal/Fade'
-import Link from "next/link";
+import Link from 'next/link'
 import Head from 'next/head'
-import {prop} from "ramda";
-import {useCart, useCartManipulator} from "../../components/Cart";
-import {useAuthModal} from "../../components/Auth";
-import {useTranslation} from "react-i18next";
+import { prop } from 'ramda'
+import { useTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
 
+import { useCart, useCartManipulator } from '../../components/Cart'
+import { useAuthModal } from '../../components/Auth'
+import {
+  Comments,
+  ProductDescription,
+  ProductDetails,
+  ProductsCarousel
+} from '../../components/'
+import axios from '../../axios-api'
+import { useForm } from '../../hooks'
+import { getLang } from '../../helpers/utils'
 
-const options = {
-    position: 'top-right',
-    style: {
-        backgroundColor: 'rgba(0, 0, 0, .75)',
-        color: 'white',
-        zIndex: '999999999',
-        textAlign: 'left',
-        fontSize: '1rem'
-    },
-    closeStyle: {
-        color: 'white',
-        fontSize: '16px',
-    },
+const OPTIONS = {
+  position: 'top-right',
+  style: {
+    backgroundColor: 'rgba(0, 0, 0, .75)',
+    color: 'white',
+    zIndex: '999999999',
+    textAlign: 'left',
+    fontSize: '1rem'
+  },
+  closeStyle: {
+    color: 'white',
+    fontSize: '16px',
+  },
 }
 
 const BookPage = ({ bookProps, isAuthorized, query }) => {
-    const { t, i18n } = useTranslation()
-    const [book, setBook] = useState(bookProps)
-    const [rate, setRate] = useState(0)
-    const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false)
+  const { t, i18n } = useTranslation()
+  const [book, setBook] = useState(bookProps)
+  const [rate, setRate] = useState(0)
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false)
 
-    const { onFindInCart } = useCart()
-    const { onAddRemoveItem } = useCartManipulator()
-    const { onShow } = useAuthModal()
-    const commentControl = useForm()
-    const [openSnackbar] = useSnackbar(options)
+  const [openSnackbar] = useSnackbar(OPTIONS)
 
-    const title = prop('title', book)
+  const { onFindInCart } = useCart()
+  const { onAddRemoveItem } = useCartManipulator()
+  const { onShow } = useAuthModal()
 
-    useEffect(() => {
-        Router.replace(
-            Router.pathname,
-            `/books/${query.id}?l=${i18n.language}`);
-    }, [i18n.language]);
+  const commentControl = useForm()
 
-    const expandDescription = () => {
-        setIsDescriptionExpanded(true);
-    };
+  const title = prop('title', book)
 
-    useEffect(() => {
-        setBook(bookProps)
-    }, [bookProps])
+  useEffect(() => {
+    Router.replace(Router.pathname, `/books/${query.id}?l=${i18n.language}`)
+  }, [i18n.language, query.id])
 
-    const cartHandler = (book) => {
-        onAddRemoveItem(book)
-        const inCart = onFindInCart(book.id)
-        const add = (
-            <>
-                {t('Added to cart')}<br />
-                <Link href={`/cart/?l=${i18n.language}`}>
-                    <a className="mt-2 d-inline-block text-warning">
-                        {t('Proceed to cart')}
-                    </a>
-                </Link>
-            </>
-        )
-        openSnackbar(inCart ? t('Removed from cart') : add)
-    }
-    const commentSubmitHandler = event => {
-        event.preventDefault();
-        const formData = new FormData();
-        formData.append("rate", rate);
-        formData.append("text", commentControl.value);
-        axios
-            .post(`${i18n.language}/books/${book.id}/feedback`, formData, {
-                headers: {
-                    Authorization: `Bearer ${parseCookies(null).token}`
-                }
-            })
-            .then(res => {
-                commentControl.clear();
-                return axios.get("books/" + book.id);
-            })
-            .then(res => {
-                setBook(res.data);
-            })
-            .catch(err => console.log(err));
-    };
-    const favouriteHandler = () => {
-        axios
-            .post(`${i18n.language}/profile/favourites/${book.id}`, null, {
-                headers: {
-                    Authorization: `Bearer ${parseCookies(null).token}`
-                }
-            })
-            .then(res => {
-                const bookCopy = {
-                    ...book,
-                    in_favourites: !book.in_favourites
-                };
-                setBook(bookCopy);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
-    const rateHandler = id => {
-        setRate(id + 1);
-    };
+  const expandDescription = () => {
+    setIsDescriptionExpanded(true)
+  }
 
-    return (
-        <>
-            <Head>
-                <title>{title}</title>
-                <meta name="title" property="og:title" content={title} />
-                <meta name="description" property="og:description" content={prop('description', book)} />
-                <meta name="description" property="og:description" content={prop('description', book)} />
-                <meta name="og:image" property="og:image" content={prop('image', book)} />
-            </Head>
-            <Row>
-                <Col sm={4}>
-                    <ProductDetails
-                        {...book}
-                        social={null}
-                    />
+  useEffect(() => {
+    setBook(bookProps)
+  }, [bookProps])
 
-                </Col>
-                <Col sm={8}>
-                    <Row>
-                        <Col sm={12} md={11} lg={9}>
-                            <ProductDescription
-                                {...book}
-                                expandDescription={expandDescription}
-                                isDescriptionExpanded={isDescriptionExpanded}
-                                cartClicked={() => cartHandler(book)}
-                                isInCart={onFindInCart(book.id)}
-                                favouriteClicked={favouriteHandler}
-                                isAuthorized={isAuthorized}
-                            />
+  const cartHandler = (book) => {
+    onAddRemoveItem(book)
+    const inCart = onFindInCart(book.id)
+    const add = (
+      <>
+        {t('Added to cart')}<br />
+        <Link href={`/cart/?l=${i18n.language}`}>
+          <a className="mt-2 d-inline-block text-warning">
+            {t('Proceed to cart')}
+          </a>
+        </Link>
+      </>
+    )
+    const remove = t('Removed from cart')
 
-                            <Comments
-                                items={book.feedback}
-                                rate={rate}
-                                onSubmit={commentSubmitHandler}
-                                commentControl={commentControl}
-                                rateClicked={rateHandler}
-                                onAuth={onShow}
-                                isAuthorized={isAuthorized}
-                            />
-                        </Col>
-                    </Row>
-                    <h3 className="mt-5">{t('This may be interesting for you')}</h3>
-                    <Fade right>
-                        <ProductsCarousel
-                            items={prop('related', book)}
-                            responsive={{lg: 4, xl: 4, sm: 4}}
-                        />
-                    </Fade>
-                </Col>
-            </Row>
-        </>
-    );
-};
+    openSnackbar(!inCart ? add : remove)
+  }
 
-export const getServerSideProps = async ({query, req}) => {
-    const lang = getLang(req)
+  const commentSubmitHandler = event => {
+    event.preventDefault()
+    const data = { rate, text: commentControl.value }
+    axios
+      .post(`${i18n.language}/books/${book.id}/feedback`, data)
+      .then(() => {
+        commentControl.clear()
+        return axios.get('books/' + book.id)
+      })
+      .then(res => setBook(res.data))
+  }
 
-    try {
-        const res = await axios.get(`${lang}/books/${query.id}`, req);
-        const bookProps = prop('data', res);
+  const favouriteHandler = () => {
+    axios
+      .post(`${i18n.language}/profile/favourites/${book.id}`, null)
+      .then(() => setBook({ ...book, in_favourites: !book.in_favourites }))
+  }
 
-        return {
-            props: {
-                bookProps,
-                query
-            }
-        }
-    } catch (error) {
-        return {
-            props: {
-                error: "Error"
-            }
-        };
-    }
-};
-const mapStateToProps = state => {
+  const rateHandler = id => setRate(id + 1)
+
+  const relatedBooks = prop('related', book)
+
+  return (
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta name="title" property="og:title" content={title} />
+        <meta name="description" property="og:description" content={prop('description', book)} />
+        <meta name="description" property="og:description" content={prop('description', book)} />
+        <meta name="og:image" property="og:image" content={prop('image', book)} />
+      </Head>
+      <Row>
+        <Col sm={4}>
+          <ProductDetails
+            {...book}
+            social={null}
+          />
+
+        </Col>
+        <Col sm={8}>
+          <Row>
+            <Col sm={12} md={11} lg={9}>
+              <ProductDescription
+                {...book}
+                expandDescription={expandDescription}
+                isDescriptionExpanded={isDescriptionExpanded}
+                cartClicked={() => cartHandler(book)}
+                isInCart={onFindInCart(book.id)}
+                favouriteClicked={favouriteHandler}
+                isAuthorized={isAuthorized}
+              />
+
+              <Comments
+                items={book.feedback}
+                rate={rate}
+                onSubmit={commentSubmitHandler}
+                commentControl={commentControl}
+                rateClicked={rateHandler}
+                onAuth={onShow}
+                isAuthorized={isAuthorized}
+              />
+            </Col>
+          </Row>
+          <h3 className="mt-5">{t('This may be interesting for you')}</h3>
+          <Fade right={true}>
+            <ProductsCarousel
+              items={relatedBooks}
+              responsive={{ lg: 4, xl: 4, sm: 4 }}
+            />
+          </Fade>
+        </Col>
+      </Row>
+    </>
+  )
+}
+
+export const getServerSideProps = async ({ query, req }) => {
+  const lang = getLang(req)
+
+  try {
+    const res = await axios.get(`${lang}/books/${query.id}`, req)
+    const bookProps = prop('data', res)
+
     return {
-        isAuthorized: state.auth.token !== null
-    };
-};
-export default connect(mapStateToProps)(BookPage);
+      props: {
+        bookProps,
+        query
+      }
+    }
+  } catch (error) {
+    return {
+      props: {
+        error: 'Error'
+      }
+    }
+  }
+}
+
+BookPage.propTypes = {
+  bookProps: PropTypes.object.isRequired,
+  isAuthorized: PropTypes.object.isRequired,
+  query: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => {
+  return {
+    isAuthorized: state.auth.token !== null
+  }
+}
+export default connect(mapStateToProps)(BookPage)

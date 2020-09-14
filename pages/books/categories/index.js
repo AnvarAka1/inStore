@@ -54,11 +54,11 @@ const BooksPage = (props) => {
       const genre = `&g=${router.query.genre}`
       axios
         .get(url + genre)
-        .then(res => {
-          updateValues(res)
-        })
+        .then(res => updateValues(res))
         .finally(() => setLoading(false))
-    } else if (!initialPageLoad && !router.query.genre) {
+    }
+
+    if (!initialPageLoad && !router.query.genre) {
       setLoading(true)
       axios.get(url)
         .then(res => updateValues(res))

@@ -4,6 +4,7 @@ import Router, { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { prop } from 'ramda'
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 
 import axios from '../../../../axios-api'
 import { CategoriesLayout } from '../../../../layouts'
@@ -76,6 +77,11 @@ export const getServerSideProps = async ({ req }) => {
       }
     }
   }
+}
+
+CompilationsPage.propTypes = {
+  results: PropTypes.array,
+  pagination: PropTypes.object
 }
 
 export default CompilationsPage

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
-import {find, path, pipe, prop, propEq} from 'ramda'
+import { find, path, pipe, prop, propEq } from 'ramda'
+import PropTypes from 'prop-types'
 
 import axios from '../axios-api'
 import Genres from '../components/Categories/Genres'
@@ -16,16 +17,19 @@ const getCompilationRoute = pipe(
 
 const CategoriesLayout = ({ children }) => {
   const { i18n } = useTranslation()
-  const [pathname, setPathname] = useState(null)
   const [genres, setGenres] = useState([])
   const [loading, setLoading] = useState(true)
   const router = useRouter()
 
-  const isCompilationPage = prop('route', router) === getCompilationRoute(CATEGORIES)
+  const route = prop('route', router)
+
+  const isCompilationPage = (
+    route === getCompilationRoute(CATEGORIES) ||
+    route.includes('compilations')
+  )
+
   const renderGenres = !loading && !isCompilationPage
 
-  console.log(prop('route', router), getCompilationRoute(CATEGORIES))
-  console.log(router.route)
   useEffect(() => {
     axios
       .get(`${i18n.language}/genres`)
@@ -36,19 +40,21 @@ const CategoriesLayout = ({ children }) => {
       .finally(() => setLoading(false))
   }, [i18n.language])
 
-  useEffect(() => {
-    setPathname(router.pathname)
-  }, [router.pathname])
-
   return (
     <Row>
       <Col sm={3}>
         <Categories items={CATEGORIES} isStatic={true} />
-        {renderGenres && <Genres items={genres} pathname={pathname} />}
+        {renderGenres && (
+          <Genres items={genres} />
+        )}
       </Col>
       <Col sm={9}>{children}</Col>
     </Row>
   )
+}
+
+CategoriesLayout.propTypes = {
+  children: PropTypes.any.isRequired
 }
 
 export default CategoriesLayout

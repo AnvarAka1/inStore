@@ -5,16 +5,15 @@ import NavigationItem from './NavigationItem/NavigationItem'
 
 const NavigationItems = ({ items }) => {
   const { t } = useTranslation()
+
   return (
     <>
       <ul>
         {items.map(item => {
           return (
             <NavigationItem
-              href={item.href}
-              count={item.count}
               key={item.id}
-              icon={item.icon}
+              {...item}
             >
               {t(item.title)}
             </NavigationItem>

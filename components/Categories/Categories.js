@@ -3,14 +3,15 @@ import PropTypes from 'prop-types'
 
 import Category from './Category/Category'
 import classes from './Category/Category.module.scss'
+import clsx from "clsx";
 
 function Categories ({ items }) {
   return (
     <>
       <ul>
         {items.map(item => (
-          <li className={`${classes.Category} mt-2 list`}>
-            <Category key={item.id} {...item} />
+          <li key={item.id} className={clsx(classes.Category, 'mt-2 list')}>
+            <Category {...item} />
           </li>
         ))}
       </ul>

@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useRouter } from 'next/router'
 import { path, prop } from 'ramda'
 import { useTranslation } from 'react-i18next'
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 
 import { Products } from '../../../../components'
 import { CategoriesLayout } from '../../../../layouts/'
@@ -14,13 +15,14 @@ import meta from '../../../../lib/meta.json'
 const CompilationPage = ({ title, books, query }) => {
   const { i18n } = useTranslation()
   const router = useRouter()
+  const routerRef = useRef(router)
 
   useEffect(() => {
-    router.replace(
-      `${router.pathname}?l=${i18n.language}`,
+    routerRef.current.replace(
+      `${routerRef.current.pathname}?l=${i18n.language}`,
       `/books/categories/compilations/${query.id}?l=${i18n.language}`
     )
-  }, [i18n.language, query.id, router])
+  }, [i18n.language, query.id])
 
   return (
     <>
@@ -29,19 +31,15 @@ const CompilationPage = ({ title, books, query }) => {
         <meta property="og:title" content={title} />
         <meta name="description" content={title} />
       </Head>
-      <CategoriesLayout withoutGenre={true}>
-        {books && (
-          <React.Fragment>
-            <Row>
-              <Col>
-                <h2 className="mb-3">{title}</h2>
-              </Col>
-            </Row>
-            <Row>
-              <Products items={books} />
-            </Row>
-          </React.Fragment>
-        )}
+      <CategoriesLayout>
+        <Row>
+          <Col>
+            <h2 className="mb-3">{title}</h2>
+          </Col>
+        </Row>
+        <Row>
+          {books && (<Products items={books} />)}
+        </Row>
       </CategoriesLayout>
     </>
   )
@@ -71,6 +69,12 @@ export const getServerSideProps = async ({ req, query }) => {
       }
     }
   }
+}
+
+CompilationPage.propTypes = {
+  title: PropTypes.string.isRequired,
+  query: PropTypes.object.isRequired,
+  books: PropTypes.array
 }
 
 export default CompilationPage

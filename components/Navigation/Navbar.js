@@ -70,7 +70,7 @@ const navbar = React.forwardRef(
                       {booksCategories.map(cat => {
                         return (
                           <li key={cat.id} className={classes.CategoryItem}>
-                            <Link href={`/books/categories${cat.link}?l=${i18n.language}`}>
+                            <Link href={`${cat.link}?l=${i18n.language}`}>
                               <a onClick={() => booksToggle(false)}>{t(cat.title)}</a>
                             </Link>
                           </li>

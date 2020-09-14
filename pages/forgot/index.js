@@ -1,34 +1,30 @@
 import React, { useState } from 'react'
-import { Alert, Button, Col, Row } from 'react-bootstrap'
-import { Form, Formik } from 'formik'
+import { Alert, Col, Row } from 'react-bootstrap'
 import { object, string } from 'yup'
 import { useTranslation } from 'react-i18next'
 
 import axios from '../../axios-api'
 import { Card } from '../../components'
-import { FormikGroup } from '../../components/UI'
+import ForgotForm from '../../components/forgot/ForgotForm'
+
+const initialValues = {
+  email: ''
+}
+
+const validationSchema = object({
+  email: string().email().required()
+})
 
 function ForgotPage () {
   const { t } = useTranslation()
   const [isSent, setIsSent] = useState(false)
   const [error, setError] = useState(null)
 
-  const initialValues = {
-    email: ''
-  }
-
-  const validationSchema = object({
-    email: string().email().required()
-  })
-
-  const submitHandler = (values) => {
+  const handleSubmit = formValues => {
     setError(null)
     setIsSent(false)
-    const formData = new FormData()
-    formData.append('email', values.email)
-
-    axios.post('/accounts/password/forgot', formData)
-      .then(() => {})
+    const data = { email: formValues.email }
+    axios.post('/accounts/password/forgot', data)
       .catch(() => setError('No such email'))
       .finally(() => setIsSent(true))
   }
@@ -50,30 +46,11 @@ function ForgotPage () {
                   {error || t('Success! Check your email')}
                 </Alert>
               )}
-              <Formik onSubmit={submitHandler}
+              <ForgotForm
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-              >
-                {formik => (
-                  <Form onSubmit={formik.handleSubmit}>
-                    <FormikGroup
-                      name="email"
-                      placeholder="Email"
-                      size="sm"
-                      {...formik.getFieldProps('email')}
-                    >
-                      {t('Email')}
-                    </FormikGroup>
-                    <Button
-                      type="submit"
-                      className="mt-2 w-100"
-                      disabled={formik.isSubmitting}
-                    >
-                      {t('Submit')}
-                    </Button>
-                  </Form>
-                )}
-              </Formik>
+                onSubmit={handleSubmit}
+              />
             </Card.Body>
           </Card>
         </Col>

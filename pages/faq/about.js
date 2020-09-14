@@ -30,9 +30,7 @@ function AboutPage () {
                 <b>in-Study.uz</b>
                 {t('faq.about.descriptions.0')}
               </p>
-              <p>
-                {t('faq.about.descriptions.1')}
-              </p>
+              <p>{t('faq.about.descriptions.1')}</p>
 
               <br />
               <ul>
@@ -50,9 +48,7 @@ function AboutPage () {
                   </p>
                 </li>
                 <li>
-                  <p className="pl-5">
-                    {t('faq.about.address.content')}
-                  </p>
+                  <p className="pl-5">{t('faq.about.address.content')}</p>
                 </li>
               </ul>
             </Card.Body>

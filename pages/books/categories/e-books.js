@@ -7,6 +7,7 @@ import { getPaginationFromResponse } from '../../../components/Pagination/utils'
 import BooksPage from './'
 
 export default BooksPage
+
 export const getServerSideProps = async ({ query, req }) => {
   const lang = getLang(req)
   const page = query.page ? query.page : 1

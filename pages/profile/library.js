@@ -37,7 +37,6 @@ export const getServerSideProps = async ({ req, query }) => {
     res = await axios.get(lang[+query.l || 0] + '/profile/library', req)
   } catch (err) {
     error = 'Error'
-    console.log(err)
 
     return {
       props: {

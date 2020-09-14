@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import Genre from './Category/Genre'
 import classes from './Category/Category.module.scss'
+import clsx from "clsx";
 
 function Genres ({ items }) {
   const { t } = useTranslation()
@@ -16,8 +17,8 @@ function Genres ({ items }) {
       </div>
       <ul>
         {items.map(item => (
-          <li className={`${classes.Category} mt-2 list`}>
-            <Genre key={item.id} {...item} />
+          <li key={item.id} className={clsx(classes.Category, 'mt-2 list')}>
+            <Genre {...item} />
           </li>
         ))}
       </ul>
