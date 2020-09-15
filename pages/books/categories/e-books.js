@@ -11,7 +11,7 @@ export default BooksPage
 export const getServerSideProps = async ({ query, req }) => {
   const lang = getLang(req)
   const page = query.page ? query.page : 1
-  const hasGenre = query.genre && query.genre !== 'nogenre'
+  const hasGenre = query.genre
   const g = hasGenre ? `&g=${query.genre}` : ''
   const url = `${lang}/books/type/3?page=${page}${g}`
 

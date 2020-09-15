@@ -12,7 +12,7 @@ export const getServerSideProps = async ({ req, query }) => {
   const lang = getLang(req)
   const page = query.page ? query.page : 1
 
-  const hasGenre = query.genre && query.genre !== 'nogenre'
+  const hasGenre = query.genre
   const g = hasGenre ? `&g=${query.genre}` : ''
 
   const url = `${lang}/books/type/2?page=${page}${g}`

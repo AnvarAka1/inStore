@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useRouter } from 'next/router'
-import { path, pathOr } from 'ramda'
 import { useTranslation } from 'react-i18next'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
@@ -31,7 +30,7 @@ const BooksPage = (props) => {
     const url = `${routerRef.current.pathname}?${genre}l=${i18n.language}&page=${page}`
 
     routerRef.current.replace(url)
-  }, [i18n.language])
+  }, [genreQuery, i18n.language, page])
 
   return (
     <>

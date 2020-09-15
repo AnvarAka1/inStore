@@ -22,7 +22,6 @@ const AllPage = (props) => {
   } = props
 
   const results = getResults(resultsProps)
-  console.log(resultsProps)
 
   return (
     <>
