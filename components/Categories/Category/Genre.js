@@ -35,7 +35,7 @@ function Genre ({ title, pathname, id }) {
 
 Genre.propTypes = {
   title: PropTypes.string.isRequired,
-  pathname: PropTypes.string.isRequired,
+  pathname: PropTypes.string,
   id: PropTypes.number.isRequired
 }
 

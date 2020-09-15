@@ -22,7 +22,7 @@ function GenreLink ({ href, children }) {
 }
 
 GenreLink.propTypes = {
-  href: PropTypes.string.isRequired,
+  href: PropTypes.object.isRequired,
   children: PropTypes.any.isRequired
 }
 

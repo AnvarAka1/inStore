@@ -7,7 +7,7 @@ export const E_BOOKS_ID = 4
 export const CATEGORIES = [
   {
     id: ALL_ID,
-    link: '/books/categories',
+    link: '/books/categories/all',
     title: 'All',
     icon: '/images/icons/all.png'
   },
