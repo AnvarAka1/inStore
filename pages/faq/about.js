@@ -35,17 +35,13 @@ function AboutPage () {
               <br />
               <ul>
                 <li>
-                  <p>
-                    <i>{t('faq.about.organization.title')}</i>
-                  </p>
+                  <p><i>{t('faq.about.organization.title')}</i></p>
                 </li>
                 <li>
                   <p className="pl-5">{t('faq.about.organization.content')}</p>
                 </li>
                 <li>
-                  <p>
-                    <i>{t('faq.about.address.title')}</i>
-                  </p>
+                  <p><i>{t('faq.about.address.title')}</i></p>
                 </li>
                 <li>
                   <p className="pl-5">{t('faq.about.address.content')}</p>

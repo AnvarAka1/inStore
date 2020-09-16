@@ -1,17 +1,16 @@
-import React, { useState } from 'react'
-import { defaultTo, path, propOr } from 'ramda'
+import React from 'react'
+import { defaultTo, path } from 'ramda'
 import { Col, Row } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
-import { getLang, parseCookies } from '../../helpers/utils'
+import { getLang } from '../../helpers/utils'
 import axios from '../../axios-api'
 import ErrorPage from '../404'
 import { Products } from '../../components'
 import { ProfileLayout } from '../../layouts'
-import { LANGS } from '../../constants'
 
 const FavouritesPage = ({ productsProps, error }) => {
-  const defaultProducts = defaultTo([], productsProps)
-  const [products, setProducts] = useState(defaultProducts)
+  const products = defaultTo([], productsProps)
 
   if (error) return <ErrorPage />
   return (
@@ -55,4 +54,8 @@ export const getServerSideProps = async ({ req }) => {
   }
 }
 
+FavouritesPage.propTypes = {
+  productsProps: PropTypes.array.isRequired,
+  error: PropTypes.string
+}
 export default FavouritesPage

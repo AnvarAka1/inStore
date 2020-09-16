@@ -1,10 +1,13 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
+import PropTypes from 'prop-types'
+import { path } from 'ramda'
 
 import { ProfileLayout } from '../../layouts'
 import { Products } from '../../components'
 import ErrorPage from '../404'
 import axios from '../../axios-api'
+import { getLang } from '../../helpers/utils'
 
 const LibraryPage = ({ books, error }) => {
   if (error) return <ErrorPage />
@@ -29,14 +32,19 @@ const LibraryPage = ({ books, error }) => {
   )
 }
 
-export const getServerSideProps = async ({ req, query }) => {
-  const lang = ['ru', 'en', 'uz']
-  let res = null
-  let error = null
+export const getServerSideProps = async ({ req }) => {
+  const lang = getLang(req)
   try {
-    res = await axios.get(lang[+query.l || 0] + '/profile/library', req)
+    const res = await axios.get(`${lang}/profile/library`, req)
+    const books = path(['data', 'results'], res)
+
+    return {
+      props: {
+        books
+      }
+    }
   } catch (err) {
-    error = 'Error'
+    const error = 'Error'
 
     return {
       props: {
@@ -44,11 +52,9 @@ export const getServerSideProps = async ({ req, query }) => {
       }
     }
   }
-  const books = res.data.results
-  return {
-    props: {
-      books
-    }
-  }
+}
+LibraryPage.propTypes = {
+  books: PropTypes.array.isRequired,
+  error: PropTypes.string
 }
 export default LibraryPage

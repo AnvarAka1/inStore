@@ -1,281 +1,139 @@
-import React, {useState} from "react";
-import {convertPhoneForBackend} from "../../helpers/utils";
-import axios from "../../axios-api";
-import ErrorPage from "../404";
-import {Button, Col, FormGroup, FormLabel, Row} from "react-bootstrap";
-import {FormikGroup} from "../../components/UI";
-import {AddressForm} from "../../components";
-import {Form, Formik} from "formik";
-import {date, object, string} from "yup";
-import {ProfileLayout} from "../../layouts";
-// can make static page also
-const defaultImage = "/images/avatar.png";
-const SettingsPage = ({userData, error}) => {
-    const [avatar, setAvatar] = useState(userData && userData.avatar ? userData.avatar : defaultImage);
-    if (error) {
-        return <ErrorPage/>;
-    }
+import React from 'react'
+import { Col, Row } from 'react-bootstrap'
+import { date, object, string } from 'yup'
+import { prop, propOr } from 'ramda'
+import PropTypes from 'prop-types'
 
-    let personalInfoInitialValues = {
-        avatar: "",
-        name: userData.fio,
-        dob: userData.dob,
-        gender: userData.gender ? userData.gender : "m",
-        phone: userData.phone,
-        city: userData.city ? userData.city : "Ташкент",
-        district: userData.region ? userData.region : "Сергелийский",
-        street: userData.street ? userData.street : "",
-        house: userData.house ? userData.house : ""
+import axios from '../../axios-api'
+import ErrorPage from '../404'
+import { ProfileLayout } from '../../layouts'
+import SecurityForm from '../../components/settings/SecurityForm'
+import { PersonalSerializer, SecuritySerializer } from '../../components/settings/serializers'
+import Personal from '../../components/settings/Personal'
 
-    };
-    let passwordInitialValues = {
-        curPassword: "",
-        newPassword: "",
-        repPassword: ""
-    };
+const personalValidationSchema = object({
+  name: string()
+    .min(2, 'Имя должно содержать минимум 2 буквы')
+    .max(100, 'Name is too long')
+    .required('Name is required!'),
+  dob: date(),
+  gender: string().required(),
+  phone: string()
+})
 
-    const updatePersonalInformationHandler = values => {
-        const formData = new FormData();
-        const {
-            avatar,
-            name,
-            dob,
-            gender,
-            phone,
-            city,
-            district,
-            street,
-            house
-        } = values
-        if (avatar) formData.append("avatar", avatar);
-        formData.append("fio", name);
-        if (dob) formData.append("dob", dob);
-        formData.append("gender", gender);
-        formData.append("phone", convertPhoneForBackend(phone));
-        formData.append("city", city);
-        formData.append("region", district);
-        formData.append("street", street);
-        formData.append("house", house);
+const securityValidationSchema = object({
+  email: string().email(),
+  curPassword: string()
+    .min(8)
+    .max(20),
+  newPassword: string()
+    .min(8)
+    .max(20),
+  repPassword: string()
+    .min(8)
+    .max(20)
+})
 
-        return axios
-            .patch("profile/", formData, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-            .then(res => {
-                setAvatar(res.data.avatar);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
-    const updatePasswordHandler = () => {
-        const formData = new FormData();
-        formData.append("old_password", values.curPassword);
-        formData.append("new_password", values.newPassword);
+const getPersonalInitialValues = values => {
+  const avatar = prop('avatar', values)
+  const name = prop('fio', values)
+  const phone = prop('phone', values)
+  const gender = propOr('m', 'gender', values)
+  const city = propOr('Ташкент', 'city', values)
+  const district = propOr('Сергелийский', 'region', values)
+  const street = propOr('', 'street', values)
+  const house = propOr('', 'house', values)
 
-		return axios.put("profile/password", formData, {
-			headers: {
-				Authorization: `Bearer ${localStorage.getItem("token")}`
-			}
-		});
-	};
+  return {
+    avatar,
+    name,
+    phone,
+    gender,
+    city,
+    district,
+    street,
+    house
+  }
+}
 
-    return (
-        <ProfileLayout>
-            <Row>
-                <Col sm={12}>
-                    <h2>Настройки</h2>
-                    <p className="mb-5">ID пользователя: {userData.id}</p>
-                </Col>
-            </Row>
-            <Row>
-                <Col md={4} sm={6}>
-                    <h6 className="text-md">Персональные данные</h6>
-                    <Formik
-                        initialValues={personalInfoInitialValues}
-                        onSubmit={(values, {setSubmitting}) => {
-                            setSubmitting(true);
-                            updatePersonalInformationHandler(values)
-                                .then(res => {
+const SettingsPage = ({ userData, error }) => {
+  if (error) {
+    return <ErrorPage />
+  }
 
-                                })
-                                .catch(err => console.log(err))
-                                .finally(() => {
-                                    setSubmitting(false);
-                                });
-                        }}
-                        validationSchema={object({
-                            name: string()
-                                .min(2, "Имя должно содержать минимум 2 буквы")
-                                .max(100, "Name is too long")
-                                .required("Name is required!"),
-                            dob: date(),
-                            gender: string().required(),
-                            phone: string()
-                        })}
-                    >
-                        {({values, handleChange, getFieldProps, handleSubmit, isSubmitting, isValidating, setFieldValue}) => (
-                            <Form onSubmit={handleSubmit}>
-                                <FormGroup className="mb-0">
-                                    <FormLabel htmlFor="upload-button">
-                                        <p className="text-small">Фотография профиля</p>
-                                        <div className="d-flex align-items-center justify-content-start mt-2">
-                                            <div className="avatar">
-                                                <img src={avatar} className="image" alt="avatar"></img>
-                                            </div>
-                                            <p className="ml-1 text-small">Выбрать файл</p>
-                                        </div>
-                                    </FormLabel>
-                                    <input
-                                        type="file"
-                                        style={{display: "none"}}
-                                        id="upload-button"
-                                        name="avatar"
-                                        onChange={event => setFieldValue("avatar", event.currentTarget.files[0])}
-                                    />
-                                </FormGroup>
-                                <FormikGroup name="name" onChange={handleChange} value={values.name} size="sm">
-                                    Ф.И.О
-                                </FormikGroup>
-                                <FormikGroup
-                                    name="dob"
-                                    onChange={handleChange}
-                                    value={values.dob}
-                                    type="date"
-                                    size="sm"
-                                >
-                                    Дата рождения
-                                </FormikGroup>
-                                <FormikGroup
-                                    name="gender"
-                                    onChange={handleChange}
-                                    value={values.gender}
-                                    as="select"
-                                    size="sm"
-                                    options={[
-                                        {value: "m", title: "Мужчина"},
-                                        {value: "f", title: "Женщина"}
-                                    ]}
-                                >
-                                    Ваш пол
-                                </FormikGroup>
-                                <FormikGroup name="phone" onChange={handleChange} value={values.phone} size="sm">
-                                    Номер телефона
-                                </FormikGroup>
-                                <AddressForm getFieldProps={getFieldProps}/>
-                                <Button type="submit" disabled={isSubmitting || isValidating}>
-                                    Сохранить
-                                </Button>
-                            </Form>
-                        )}
-                        {/* avatar */}
-                    </Formik>
-                </Col>
-                <Col md={4} sm={6}>
-                    <h6 className="text-md mt-4 mt-sm-0">Защита</h6>
-                    <Formik
-                        initialValues={passwordInitialValues}
-                        onSubmit={(values, {setSubmitting, resetForm}) => {
-                            setSubmitting(true);
-                            updatePasswordHandler(values)
-                                .then(res => {
+  const securityInitialValues = {
+    email: prop('email', userData),
+    curPassword: '',
+    newPassword: '',
+    repPassword: ''
+  }
 
-                                })
-                                .catch(err => console.log(err))
-                                .finally(() => {
-                                    setSubmitting(false);
-                                });
-                        }}
-                        validationSchema={object({
-                            email: string().email(),
-                            curPassword: string()
-                                .min(8)
-                                .max(20),
-                            newPassword: string()
-                                .min(8)
-                                .max(20),
-                            repPassword: string()
-                                .min(8)
-                                .max(20)
-                        })}
-                    >
-                        {({values, handleChange, handleSubmit, isSubmitting, isValidating}) => (
-                            <Form onSubmit={handleSubmit}>
-                                <FormikGroup
-                                    name="email"
-                                    onChange={null}
-                                    autoComplete="username"
-                                    value={userData.email}
-                                    type="email"
-                                    size="sm"
-                                    disabled
-                                >
-                                    Эл. почта
-                                </FormikGroup>
-                                <FormikGroup
-                                    name="curPassword"
-                                    type="password"
-                                    autoComplete="current-password"
-                                    onChange={handleChange}
-                                    value={values.curPassword}
-                                    size="sm"
-                                >
-                                    Текущий пароль
-                                </FormikGroup>
-                                <FormikGroup
-                                    name="newPassword"
-                                    type="password"
-                                    autoComplete="new-password"
-                                    onChange={handleChange}
-                                    value={values.newPassword}
-                                    size="sm"
-                                >
-                                    Новый пароль
-                                </FormikGroup>
-                                <FormikGroup
-                                    name="repPassword"
-                                    type="password"
-                                    autoComplete="new-password"
-                                    onChange={handleChange}
-                                    value={values.repPassword}
-                                    size="sm"
-                                >
-                                    Подтвердите пароль
-                                </FormikGroup>
+  const updatePasswordHandler = (formValues) =>
+    axios.put('profile/password', SecuritySerializer(formValues))
 
-                                <Button type="submit" disabled={isSubmitting || isValidating}>
-                                    Сохранить
-                                </Button>
-                            </Form>
-                        )}
-                    </Formik>
-                </Col>
-            </Row>
-        </ProfileLayout>
-    );
-};
+  const handlePersonalSubmit = (formValues, { setSubmitting }) => {
+    setSubmitting(true)
+    return axios
+      .patch('profile/', PersonalSerializer(formValues))
+      .finally(() => setSubmitting(false))
+  }
 
-export const getServerSideProps = async ({req}) => {
-    let res = null;
-    let error = null;
-    try {
-        res = await axios.get("/profile", req);
-        res = res.data;
-    } catch (err) {
-        error = "Error";
-        return {
-            props: {
-                error
-            }
-        };
-    }
+  const handleSecuritySubmit = (values, { setSubmitting }) => {
+    setSubmitting(true)
+    updatePasswordHandler(values)
+      .finally(() => setSubmitting(false))
+  }
 
+  return (
+    <ProfileLayout>
+      <Row>
+        <Col sm={12}>
+          <h2>Настройки</h2>
+          <p className="mb-5">ID пользователя: {userData.id}</p>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={4} sm={6}>
+          <Personal
+            initialValues={getPersonalInitialValues(userData)}
+            onSubmit={handlePersonalSubmit}
+            validationSchema={personalValidationSchema}
+          />
+        </Col>
+        <Col md={4} sm={6}>
+          <SecurityForm
+            initialValues={securityInitialValues}
+            onSubmit={handleSecuritySubmit}
+            validationSchema={securityValidationSchema}
+          />
+        </Col>
+      </Row>
+    </ProfileLayout>
+  )
+}
+
+export const getServerSideProps = async ({ req }) => {
+  try {
+    const res = await axios.get('/profile', req)
+    const userData = prop('data', res)
     return {
-        props: {
-            userData: res
-        }
-    };
-};
-export default SettingsPage;
+      props: {
+        userData
+      }
+    }
+  } catch (err) {
+    const error = 'Error'
+    return {
+      props: {
+        error
+      }
+    }
+  }
+}
+
+SettingsPage.propTypes = {
+  userData: PropTypes.object,
+  error: PropTypes.string
+}
+
+export default SettingsPage

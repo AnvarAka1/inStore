@@ -10,7 +10,7 @@ import {useRouter} from "next/router";
 import {getPaginationFromResponse} from "../../components/Pagination/utils";
 import {path, prop} from "ramda";
 import {useTranslation} from "react-i18next";
-
+import PropTypes from 'prop-types'
 const OrdersPage = ({results, paginationProps, error}) => {
     if (error) return <ErrorPage/>;
 

@@ -8,17 +8,17 @@ import { Products } from '../../components'
 import { useCart, useCartManipulator } from '../../components/Cart'
 import meta from '../../lib/meta.json'
 
+const responsive = {
+  md: 3,
+  lg: 2,
+  sm: 3,
+  xs: 6
+}
+
 const CartPage = () => {
   const { t } = useTranslation()
   const { cart } = useCart()
   const { onAddRemoveItem, onClearCart } = useCartManipulator()
-
-  const responsive = {
-    md: 3,
-    lg: 2,
-    sm: 3,
-    xs: 6
-  }
 
   const title = t('Cart')
 

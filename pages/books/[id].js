@@ -65,7 +65,7 @@ const BookPage = ({ bookProps, isAuthorized, query }) => {
     setBook(bookProps)
   }, [bookProps])
 
-  const cartHandler = (book) => {
+  const handleCart = (book) => {
     onAddRemoveItem(book)
     const inCart = onFindInCart(book.id)
     const add = (
@@ -129,7 +129,7 @@ const BookPage = ({ bookProps, isAuthorized, query }) => {
                 {...book}
                 expandDescription={expandDescription}
                 isDescriptionExpanded={isDescriptionExpanded}
-                cartClicked={() => cartHandler(book)}
+                cartClicked={() => handleCart(book)}
                 isInCart={onFindInCart(book.id)}
                 favouriteClicked={favouriteHandler}
                 isAuthorized={isAuthorized}
