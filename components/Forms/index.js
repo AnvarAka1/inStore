@@ -1,1 +1,1 @@
-export { default as withForm } from './WithForm'
+export { default as withForm } from './withForm'
