@@ -1,105 +1,99 @@
-import React, {useEffect, useState} from "react";
-import {Col, Row} from "react-bootstrap";
-import {NavigationItems} from "../components/";
-import {parseCookies} from "../helpers/utils";
-import axios from "../axios-api";
-import {useCart} from "../components/Cart";
-import {useTranslation} from "react-i18next";
+import React, { useEffect, useState } from 'react'
+import { Col, Row } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
+import Head from 'next/head'
+import PropTypes from 'prop-types'
+import { prop } from 'ramda'
 
-const ProfileLayout = ({children}) => {
-    const { t, i18n } = useTranslation()
-    const [navigationItems, setNavigationItems] = useState([]);
+import { NavigationItems } from '../components/'
+import axios from '../axios-api'
+import { useCart } from '../components/Cart'
+import meta from '../lib/meta.json'
 
-    const { cart } = useCart()
-    useEffect(() => {
-        axios
-            .get("profile/info", {
-                headers: {
-                    Authorization: `Bearer ${parseCookies(null).token}`
-                }
-            })
-            .then(res => {
-                let finalArray = [];
-                const array = [];
-                for (let key in res.data) {
-                    array.push({key, data: res.data[key]});
-                }
-                for (let element of array) {
-                    for(let el of getNavigationItems()){
-                        if (element.key === el.key){
-                            finalArray.push({
-                                ...el,
-                                count: element.data,
-                                href: `${el.href}?l=${i18n.language}`
-                            })
-                        }
-                    }
-                }
-                let staticArray = getNavigationItems().splice(3, 2);
-                staticArray.forEach(el => el.href = `${el.href}?l=${i18n.language}`);
-                staticArray[0].count = cart.length;
-                finalArray = [...finalArray, ...staticArray];
-                setNavigationItems(finalArray);
+const FAVOURITES = 'favourites'
+const LIBRARY = 'library'
+const ORDERS = 'orders'
+const CART = 'cart'
+const SETTINGS = 'settings'
 
-            })
-            .catch(error => {
-                console.log(error);
-            })
-            .finally(() => {
-            });
-    }, []);
+const navigation = {
+  [ORDERS]: {
+    icon: '/images/icons/story.png',
+    title: 'Order history',
+    count: 0,
+    href: '/profile/orders'
+  },
+  [LIBRARY]: {
+    icon: '/images/icons/book.png',
+    title: 'My library',
+    count: 0,
+    href: '/profile/library'
+  },
+  [FAVOURITES]: {
+    icon: '/images/icons/star.png',
+    title: 'Favourites',
+    count: 0,
+    href: '/profile/favourites'
+  },
+  [CART]: {
+    icon: '/images/icons/cart.png',
+    title: 'Cart',
+    count: 0,
+    href: '/cart'
+  },
+  [SETTINGS]: {
+    icon: '/images/icons/settings.png',
+    title: SETTINGS,
+    href: '/profile/settings',
+    count: null,
+    className: 'mt-auto'
+  }
+}
+const ProfileLayout = ({ children, title }) => {
+  const { i18n } = useTranslation()
+  const [navigationItems, setNavigationItems] = useState([])
 
-    return (
-        <Row>
-            <Col sm={3}>
-                <NavigationItems items={navigationItems} />
-            </Col>
-            <Col sm={9}>{children}</Col>
-        </Row>
-    );
-};
+  const { cart } = useCart()
+  useEffect(() => {
+    axios
+      .get('profile/info')
+      .then(({ data }) => {
+        const orders = prop(ORDERS, data)
+        const library = prop(LIBRARY, data)
+        const favourites = prop(FAVOURITES, data)
 
-const getNavigationItems = () => [
-    {
-        id: 0,
-        key: "orders",
-        icon: "/images/icons/story.png",
-        title: "Order history",
-        count: 0,
-        href: "/profile/orders"
-    },
+        const countableNavigationItems = [
+          { ...navigation[ORDERS], count: orders },
+          { ...navigation[LIBRARY], count: library },
+          { ...navigation[FAVOURITES], count: favourites },
+          { ...navigation[CART], count: cart.length },
+          { ...navigation[SETTINGS], count: null }
+        ]
 
-    {
-        id: 1,
-        key: "library",
-        icon: "/images/icons/book.png",
-        title: "My library",
-        count: 0,
-        href: "/profile/library"
-    },
-    {
-        id: 2,
-        key: "favourites",
-        icon: "/images/icons/star.png",
-        title: "Favourites",
-        count: 0,
-        href: "/profile/favourites"
-    },
-    {
-        id: 3,
-        key: "cart",
-        icon: "/images/icons/cart.png",
-        title: "Cart",
-        count: 0,
-        href: "/cart"
-    },
-    {
-        id: 4,
-        icon: "/images/icons/settings.png",
-        title: "Settings",
-        href: "/profile/settings",
-        count: null,
-        className: "mt-auto"
-    }
-];
-export default ProfileLayout;
+        setNavigationItems(countableNavigationItems)
+      })
+  }, [cart.length, i18n.language])
+
+  return (
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta property="og:title" content={title} />
+        <meta name="description" content={title} />
+      </Head>
+      <Row>
+        <Col sm={3}>
+          <NavigationItems items={navigationItems} />
+        </Col>
+        <Col sm={9}>{children}</Col>
+      </Row>
+    </>
+  )
+}
+
+ProfileLayout.propTypes = {
+  children: PropTypes.any.isRequired,
+  title: PropTypes.string
+}
+
+export default ProfileLayout

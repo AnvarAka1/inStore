@@ -5,32 +5,48 @@ import Fade from 'react-reveal/Fade'
 import { Carousel, Col, Row } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 
 import { CompilationsCarousel, Heading, NewHeader, ProductsCarousel } from '../components'
 import { getLang } from '../helpers/utils'
 import axios from '../axios-api'
 
+const carouselItems = [
+  {
+    id: 0,
+    titles: ['Электронные книги и Видео уроки', 'E-books and Videolessons', 'Elektron darsliklar va video darsliklar'],
+    img: '/images/main/books/carousel.png',
+    link: '/'
+  },
+
+  {
+    id: 1,
+    titles: ['Электронные книги и Видео уроки', 'E-books and Videolessons', 'Elektron darsliklar va video darsliklar'],
+    img: '/images/main/books/carousel.png',
+    link: '/'
+  }
+]
+
 const LandingPage = ({ books, bookCollections, error }) => {
   const { t, i18n } = useTranslation()
-
-  if (error) return <h3>{error}</h3>
 
   useEffect(() => {
     Router.replace(Router.pathname, `/?l=${i18n.language}`)
   }, [i18n.language])
 
+  if (error) return <h3>{error}</h3>
   return (
     <>
       <Head>
         <title>in-Study.uz | {t('Books library - Tashkent, Uzbekistan')}</title>
-        <meta property="og:title" content={'in-Study.uz | Книжная библиотека - Ташкент, Узбекистан'} />
+        <meta property="og:title" content="in-Study.uz | Книжная библиотека - Ташкент, Узбекистан" />
       </Head>
       <Row className="mb-4">
         <Col>
           <Fade>
             <section>
               <Carousel>
-                {getCarouselItems().map(item => {
+                {carouselItems.map(item => {
                   return (
                     <Carousel.Item key={item.id}>
                       <img
@@ -91,21 +107,6 @@ const LandingPage = ({ books, bookCollections, error }) => {
     </>
   )
 }
-const getCarouselItems = () => [
-  {
-    id: 0,
-    titles: ['Электронные книги и Видео уроки', 'E-books and Videolessons', 'Elektron darsliklar va video darsliklar'],
-    img: '/images/main/books/carousel.png',
-    link: '/'
-  },
-
-  {
-    id: 1,
-    titles: ['Электронные книги и Видео уроки', 'E-books and Videolessons', 'Elektron darsliklar va video darsliklar'],
-    img: '/images/main/books/carousel.png',
-    link: '/'
-  }
-]
 
 export const getServerSideProps = async ({ req }) => {
   const lang = getLang(req)
@@ -133,4 +134,11 @@ export const getServerSideProps = async ({ req }) => {
     }
   }
 }
+
+LandingPage.propTypes = {
+  books: PropTypes.array,
+  bookCollections: PropTypes.array,
+  error: PropTypes.string
+}
+
 export default React.memo(LandingPage)

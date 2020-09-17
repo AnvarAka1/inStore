@@ -8,6 +8,7 @@ import SnackbarProvider from 'react-simple-snackbar'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import { I18nextProvider } from 'react-i18next'
+import PropTypes from 'prop-types'
 
 import { Layout } from '../layouts'
 import withReduxStore from '../helpers/with-redux-store'
@@ -70,6 +71,11 @@ class myApp extends App {
       </Provider>
     )
   }
+}
+
+MyComponent.propTypes = {
+  children: PropTypes.any,
+  store: PropTypes.object
 }
 
 export default withReduxStore(myApp)
