@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import clsx from 'clsx'
 
 import Category from './Category/Category'
 import classes from './Category/Category.module.scss'
-import clsx from "clsx";
 
 function Categories ({ items }) {
   return (

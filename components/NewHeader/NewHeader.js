@@ -1,8 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
 
-const newHeader = ({ title, href }) => {
+const NewHeader = ({ title, href }) => {
   const { t } = useTranslation()
 
   return (
@@ -18,4 +19,9 @@ const newHeader = ({ title, href }) => {
   )
 }
 
-export default newHeader
+NewHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired
+}
+
+export default NewHeader

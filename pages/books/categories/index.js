@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
@@ -20,17 +20,18 @@ const BooksPage = (props) => {
 
   const { t, i18n } = useTranslation()
   const router = useRouter()
-  const routerRef = useRef(router)
   const genreQuery = router.query.genre
   const page = router.query.page || '1'
+
+
 
   useEffect(() => {
     const genre = genreQuery ? `genre=${genreQuery}&` : `genre=&`
 
-    const url = `${routerRef.current.pathname}?${genre}l=${i18n.language}&page=${page}`
+    const url = `${router.pathname}?${genre}l=${i18n.language}&page=${page}`
 
-    routerRef.current.replace(url)
-  }, [genreQuery, i18n.language, page])
+    router.replace(url)
+  }, [genreQuery, i18n.language, page, router.pathname])
 
   return (
     <>

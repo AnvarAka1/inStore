@@ -5,14 +5,14 @@ import PropTypes from 'prop-types'
 import CategoryLink from './CategoryLink'
 
 function Category ({ title, icon, link }) {
-  const { i18n } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   return (
     <CategoryLink href={`${link}?l=${i18n.language}`}>
       <div className="d-flex align-items-center">
         <div className="d-flex align-items-center">
           <img src={icon} alt={title} className="icon icon-sm mr-2" />
-          <p className="text-lg mr-1">{title}</p>
+          <p className="text-lg mr-1">{t(title)}</p>
         </div>
         <div className="category__tick">
           <img src="/images/icons/tick.png" className="icon icon-sm" alt="active" />

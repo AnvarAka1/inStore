@@ -43,7 +43,7 @@ const CategoriesLayout = ({ children }) => {
   return (
     <Row>
       <Col sm={3}>
-        <Categories items={CATEGORIES} isStatic={true} />
+        <Categories items={CATEGORIES} />
         {renderGenres && (
           <Genres items={genres} />
         )}

@@ -93,7 +93,7 @@ const LandingPage = ({ books, bookCollections, error }) => {
         <Col>
           <NewHeader
             href={`/books/categories?l=${i18n.language}`}
-            title="New books"
+            title={t('New books')}
           />
         </Col>
       </Row>

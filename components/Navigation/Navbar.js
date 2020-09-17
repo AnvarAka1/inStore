@@ -1,14 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
-import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap'
+import { Col, Container, Nav, Navbar as BPNavbar, Row } from 'react-bootstrap'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
 
 import classes from './Navbar.module.scss'
 
 import { Logo } from '../'
 
-const navbar = React.forwardRef(
+const Navbar = React.forwardRef(
   (props, bookCatsRef) => {
     const {
       booksCategories,
@@ -47,7 +48,7 @@ const navbar = React.forwardRef(
         <Container fluid={true} className={classes.Container}>
           <Row>
             <Col>
-              <Navbar expand="lg">
+              <BPNavbar expand="lg">
                 <Link href="/">
                   <a>
                     <Logo desktop={true} />
@@ -81,7 +82,7 @@ const navbar = React.forwardRef(
                 </Nav>
                 {search}
                 {navItems}
-              </Navbar>
+              </BPNavbar>
             </Col>
           </Row>
         </Container>
@@ -89,4 +90,12 @@ const navbar = React.forwardRef(
     )
   }
 )
-export default React.memo(navbar)
+
+Navbar.propTypes = {
+  booksCategories: PropTypes.array.isRequired,
+  search: PropTypes.object.isRequired,
+  navItems: PropTypes.array.isRequired,
+  isBooksOpen: PropTypes.bool.isRequired,
+  booksToggle: PropTypes.func.isRequired
+}
+export default React.memo(Navbar)
