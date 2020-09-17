@@ -9,22 +9,21 @@ import classes from './ProductDescription.module.scss'
 const MAX_LENGTH = 128
 const BOOK_TYPES = ['Аудиокнига', 'Печатное издание', 'Электронная книга']
 
-const productDescription = props => {
+const ProductDescription = props => {
   const title = prop('title', props)
   const author = prop('author', props)
   const bookType = parseInt(prop('book_type', props))
-  const description =	prop('description', props)
+  const description = prop('description', props)
   const price = prop('price', props)
   const currentPrice = prop('current_price', props)
   const isInCart = prop('isInCart', props)
-  const cartClicked =	prop('cartClicked', props)
+  const cartClicked = prop('cartClicked', props)
   const favouriteClicked = prop('favouriteClicked', props)
   const inFavourites = prop('in_favourites', props)
   const isAuthorized = prop('isAuthorized', props)
   const isDescriptionExpanded = prop('isDescriptionExpanded', props)
   const expandDescription = prop('expandDescription', props)
-  const bookFormat =	prop('book_format', props)
-  const bought = prop('bought', props)
+  const bookFormat = prop('book_format', props)
 
   const { t } = useTranslation()
 
@@ -82,7 +81,6 @@ const productDescription = props => {
               <p className="btn btn-primary text-small">{getDiscount()}% Скидка</p>
             </div>
           )}
-          {/* Читать фрагмент */}
           {bookType === 3 && (
             <Button onClick={null} className="text-small ml-2" variant="secondary">
               Читать фрагмент
@@ -90,20 +88,16 @@ const productDescription = props => {
           )}
         </div>
       </div>
-      {!bought ? (
-        <Button onClick={cartClicked} className="w-100">
-          <img src="/images/icons/cart-white.png" alt={t('Добавить в корзину')} className="icon icon-sm mr-1" />
-          {isInCart
-            ? t('Remove from cart')
-            : t('Add to cart')
-          }
-        </Button>
-      ) : (
-        <Button className="w-100" disabled={true}>
-          {t('Bought')}
-        </Button>
-      )}
+      <Button onClick={cartClicked} className="w-100">
+        <img
+          src="/images/icons/cart-white.png" alt={t('Добавить в корзину')} className="icon icon-sm mr-1" />
+        {isInCart
+          ? t('Remove from cart')
+          : t('Add to cart')
+        }
+      </Button>
+
     </div>
   )
 }
-export default productDescription
+export default ProductDescription
