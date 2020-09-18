@@ -6,6 +6,8 @@ import { useTranslation } from 'react-i18next'
 import axios from '../../axios-api'
 import { Card } from '../../components'
 import ForgotForm from '../../components/forgot/ForgotForm'
+import meta from "../../lib/meta.json";
+import Head from "next/head";
 
 const initialValues = {
   email: ''
@@ -31,6 +33,11 @@ function ForgotPage () {
 
   return (
     <React.Fragment>
+      <Head>
+        <title>{t('Forgot password')}</title>
+        <meta property="og:title" content={t('Forgot password')} />
+        <meta name="description" content={t('Forgot password')} />
+      </Head>
       <Row>
         <Col>
           <h2>{t('Restoring password')}</h2>

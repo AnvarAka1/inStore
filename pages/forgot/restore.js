@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Alert, Button, Col, Row } from 'react-bootstrap'
-import { Form, Formik } from 'formik'
+import { Alert, Col, Row } from 'react-bootstrap'
 import { object, string } from 'yup'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { prop } from 'ramda'
 
-import { FormikGroup } from '../../components/UI'
 import axios from '../../axios-api'
 import { Card } from '../../components'
 import RestoreForm from '../../components/restore/RestoreForm'
+import meta from "../../lib/meta.json";
+import Head from "next/head";
 
 const initialValues = {
   fPassword: '',
@@ -56,6 +56,11 @@ function RestorePage ({ query }) {
 
   return (
     <>
+      <Head>
+        <title>{t('Reset password')}</title>
+        <meta property="og:title" content={t('Reset password')} />
+        <meta name="description" content={t('Reset password')} />
+      </Head>
       <Row>
         <Col>
           <h2>{t('Restoring account')}</h2>

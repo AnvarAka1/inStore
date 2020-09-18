@@ -63,9 +63,10 @@ export const getServerSideProps = async ({ req, query }) => {
     const res = await axios.get(url)
     const data = prop('data', res)
     const resultsProps = prop('results', data)
-
+    const headerTitle = 'Все книги | In-Study.uz'
     return {
       props: {
+        headerTitle,
         url,
         resultsProps
       }

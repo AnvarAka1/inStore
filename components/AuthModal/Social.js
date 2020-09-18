@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookSquare, faGoogle, faVk } from '@fortawesome/free-brands-svg-icons'
 import FacebookLogin from 'react-facebook-login'
 import PropTypes from 'prop-types'
+
 import classes from './AuthModal.module.scss'
 
 function Social ({ onAuth, isSignUp }) {
   const responseFacebook = (res) => {
     const { name, email } = res
-    // console.log(res)
     onAuth(name, email, '', '', isSignUp, () => {})
   }
   return (
@@ -28,15 +28,13 @@ function Social ({ onAuth, isSignUp }) {
       <div className={classes.Google}>
         <FontAwesomeIcon icon={faGoogle} />
       </div>
-      {/* <GoogleLogin */}
-      {/*    onSuccess={responseSuccessGoogle} */}
-      {/*    authenticationUrl="https://example.com/auth/google" */}
-      {/*    requestUrl="https://example.com/auth/google/url" */}
-      {/* > */}
-      {/*    Login with Google */}
-      {/* </GoogleLogin> */}
     </div>
   )
+}
+
+Social.propTypes = {
+  onAuth: PropTypes.func.isRequired,
+  isSignUp: PropTypes.bool
 }
 
 export default Social

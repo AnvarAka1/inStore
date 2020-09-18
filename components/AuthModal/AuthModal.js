@@ -15,7 +15,7 @@ import { FormikGroup } from '../UI'
 import { convertPhoneForBackend } from '../../helpers/utils'
 import { Card, Modal } from '../'
 
-const authModal = (props) => {
+const AuthModal = (props) => {
   const {
     modal,
     onHide,
@@ -24,7 +24,6 @@ const authModal = (props) => {
     showInputMask,
     checkboxControl,
     onAuth,
-    lang,
     error
   } = props
 
@@ -223,7 +222,7 @@ const authModal = (props) => {
               </div>
 
               <h5 className={classes.Or}>or</h5>
-              {error && <Alert variant="danger">{error[lang]}</Alert>}
+              {error && <Alert variant="danger" />}
               {form}
             </div>
           </div>
@@ -233,4 +232,15 @@ const authModal = (props) => {
   )
 }
 
-export default React.memo(authModal)
+AuthModal.propTypes = {
+  modal: PropTypes.object.isRequired,
+  onHide: PropTypes.func.isRequired,
+  isSignUp: PropTypes.bool.isRequired,
+  modeHandler: PropTypes.func.isRequired,
+  showInputMask: PropTypes.bool.isRequired,
+  checkboxControl: PropTypes.object.isRequired,
+  onAuth: PropTypes.func.isRequired,
+  error: PropTypes.string
+}
+
+export default React.memo(AuthModal)

@@ -85,7 +85,7 @@ const SettingsPage = ({ userData, error }) => {
   }
 
   return (
-    <ProfileLayout>
+    <ProfileLayout title="Settings">
       <Row>
         <Col sm={12}>
           <h2>Настройки</h2>

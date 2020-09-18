@@ -13,7 +13,7 @@ const LibraryPage = ({ books, error }) => {
   if (error) return <ErrorPage />
 
   return (
-    <ProfileLayout>
+    <ProfileLayout title="My library">
       <Row>
         <Col>
           <h2>Моя библиотека</h2>

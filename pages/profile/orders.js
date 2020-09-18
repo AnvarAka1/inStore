@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 
 import { ProfileLayout } from '../../layouts'
 import ErrorPage from '../404'
-import { getLang, parseCookies } from '../../helpers/utils'
+import { getLang } from '../../helpers/utils'
 import axios from '../../axios-api'
 import { Check, Table } from '../../components/'
 import Pagination from '../../components/Pagination/Pagination'
@@ -27,7 +27,7 @@ const OrdersPage = ({ results, paginationProps, error }) => {
     .then(res => setOrders(path(['data', 'results'], res)))
 
   return (
-    <ProfileLayout>
+    <ProfileLayout title="My orders">
       <Row>
         <Col>
           <h2>{t('Order history')}</h2>

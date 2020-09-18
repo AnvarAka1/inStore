@@ -11,10 +11,9 @@ import { ProfileLayout } from '../../layouts'
 
 const FavouritesPage = ({ productsProps, error }) => {
   const products = defaultTo([], productsProps)
-
   if (error) return <ErrorPage />
   return (
-    <ProfileLayout>
+    <ProfileLayout title="Favourites">
       <Row>
         <Col>
           <h2>Избранные</h2>
