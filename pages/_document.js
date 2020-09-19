@@ -34,7 +34,7 @@ class MyDocument extends Document {
                     />
                     <link rel="shortcut icon" href="/images/favicon.ico"/>
                     <meta name="keywords" content={meta.keywords}/>
-                    <meta name="description" content={meta.description} />
+
                     <meta name="og:image" property="og:image" content="/images/logo/logo-alt.png" />
                 </Head>
                 <body>

@@ -6,10 +6,12 @@ import { Carousel, Col, Row } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
+import ReactHtmlParser from 'react-html-parser'
 
 import { CompilationsCarousel, Heading, NewHeader, ProductsCarousel } from '../components'
 import { getLang } from '../helpers/utils'
 import axios from '../axios-api'
+import meta from '../lib/meta.json'
 
 const carouselItems = [
   {
@@ -38,8 +40,10 @@ const LandingPage = ({ books, bookCollections, error }) => {
   return (
     <>
       <Head>
+
         <title>in-Study.uz | {t('Books library - Tashkent, Uzbekistan')}</title>
         <meta property="og:title" content="in-Study.uz | Книжная библиотека - Ташкент, Узбекистан" />
+        <meta name="description" content={ReactHtmlParser(meta.description)} />
       </Head>
       <Row className="mb-4">
         <Col>

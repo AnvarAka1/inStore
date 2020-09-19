@@ -110,7 +110,7 @@ const BookPage = ({ bookProps, isAuthorized, query }) => {
       <Head>
         <title>{title}</title>
         <meta name="title" property="og:title" content={title} />
-        <meta name="description" property="og:description" content={prop('description', book)} />
+        <meta name="description" content={prop('description', book)} />
         <meta name="description" property="og:description" content={prop('description', book)} />
         <meta name="og:image" property="og:image" content={prop('image', book)} />
       </Head>
