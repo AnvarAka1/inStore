@@ -48,14 +48,14 @@ const BookPage = ({ bookProps, isAuthorized, query }) => {
   const { onFindInCart } = useCart()
   const { onAddRemoveItem } = useCartManipulator()
   const { onShow } = useAuthModal()
-
   const commentControl = useForm()
 
+  const id = prop('id', query)
   const title = prop('title', book)
 
   useEffect(() => {
-    Router.replace(Router.pathname, `/books/${query.id}?l=${i18n.language}`)
-  }, [i18n.language, query.id])
+    Router.replace(Router.pathname, `/books/${id}?l=${i18n.language}`)
+  }, [i18n.language, id])
 
   const expandDescription = () => {
     setIsDescriptionExpanded(true)
@@ -165,6 +165,7 @@ export const getServerSideProps = async ({ query, req }) => {
   try {
     const res = await axios.get(`${lang}/books/${query.id}`, req)
     const bookProps = prop('data', res)
+    console.log(bookProps)
 
     return {
       props: {
@@ -173,6 +174,7 @@ export const getServerSideProps = async ({ query, req }) => {
       }
     }
   } catch (error) {
+    console.log('hey')
     return {
       props: {
         error: 'Error'

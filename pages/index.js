@@ -12,24 +12,9 @@ import { CompilationsCarousel, Heading, NewHeader, ProductsCarousel } from '../c
 import { getLang } from '../helpers/utils'
 import axios from '../axios-api'
 import meta from '../lib/meta.json'
+import Banner from '../components/Banner/Banner'
 
-const carouselItems = [
-  {
-    id: 0,
-    titles: ['Электронные книги и Видео уроки', 'E-books and Videolessons', 'Elektron darsliklar va video darsliklar'],
-    img: '/images/main/books/carousel.png',
-    link: '/'
-  },
-
-  {
-    id: 1,
-    titles: ['Электронные книги и Видео уроки', 'E-books and Videolessons', 'Elektron darsliklar va video darsliklar'],
-    img: '/images/main/books/carousel.png',
-    link: '/'
-  }
-]
-
-const LandingPage = ({ books, bookCollections, error }) => {
+const LandingPage = ({ slider, books, bookCollections, error }) => {
   const { t, i18n } = useTranslation()
 
   useEffect(() => {
@@ -40,31 +25,16 @@ const LandingPage = ({ books, bookCollections, error }) => {
   return (
     <>
       <Head>
-
         <title>in-Study.uz | {t('Books library - Tashkent, Uzbekistan')}</title>
         <meta property="og:title" content="in-Study.uz | Книжная библиотека - Ташкент, Узбекистан" />
         <meta name="description" content={ReactHtmlParser(meta.description)} />
       </Head>
+
       <Row className="mb-4">
         <Col>
           <Fade>
             <section>
-              <Carousel>
-                {carouselItems.map(item => {
-                  return (
-                    <Carousel.Item key={item.id}>
-                      <img
-                        className="d-block w-100"
-                        src={item.img}
-                        alt={item.titles[0]}
-                      />
-                      <Carousel.Caption>
-                        <h3>{item.titles[0]}</h3>
-                      </Carousel.Caption>
-                    </Carousel.Item>
-                  )
-                })}
-              </Carousel>
+              <Banner slider={slider} />
             </section>
           </Fade>
         </Col>
@@ -122,10 +92,12 @@ export const getServerSideProps = async ({ req }) => {
     const feedback = prop('feedback', data)
     const books = prop('books', data)
     const bookCollections = prop('book_collections', data)
+    const slider = prop('slider', data)
 
     return {
       props: {
         feedback,
+        slider,
         books,
         bookCollections,
       }
@@ -140,6 +112,7 @@ export const getServerSideProps = async ({ req }) => {
 }
 
 LandingPage.propTypes = {
+  slider: PropTypes.array,
   books: PropTypes.array,
   bookCollections: PropTypes.array,
   error: PropTypes.string

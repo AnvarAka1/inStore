@@ -9,7 +9,9 @@ import classes from './Product.module.scss'
 
 import { Stars, TextOverflow } from '../../'
 
-const product = (props) => {
+const Product = (props) => {
+  const { t, i18n } = useTranslation()
+
   const id = prop('id', props)
   const image = prop('image', props)
   const title = prop('title', props)
@@ -19,8 +21,6 @@ const product = (props) => {
   const price = prop('price', props)
   const removable = prop('removable', props)
   const onAddRemoveItem = prop('onAddRemoveItem', props)
-
-  const { t, i18n } = useTranslation()
 
   const path = `/books/[id]?l=${i18n.language}`
   const as = `/books/${id}?l=${i18n.language}`
@@ -54,12 +54,18 @@ const product = (props) => {
               innerElement="h5"
               className={`text-black mb-1 mt-2 without-button`}
             />
+          </a>
+        </Link>
+        <Link href="/books/authors/[authorId]" as={`/books/authors/${author}`}>
+          <a>
             <TextOverflow>
               <p className="text-small" title={author}>{author}</p>
             </TextOverflow>
-            <Stars rate={Math.round(rate)} />
           </a>
         </Link>
+
+        <Stars rate={Math.round(rate)} />
+
         <Link
           href={path}
           as={as}
@@ -91,4 +97,4 @@ const product = (props) => {
   )
 }
 
-export default React.memo(product)
+export default React.memo(Product)

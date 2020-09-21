@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import PropTypes from 'prop-types'
+import { pathOr } from 'ramda'
 
 import axios from '../axios-api'
 import { Products } from '../components'
@@ -14,7 +15,7 @@ const SearchPage = ({ results }) => {
         </Col>
       </Row>
       <Row>
-        {results.length ? (
+        {results && results.length ? (
           <Products items={results} md={2} sm={3} xs={6} />
         ) : (
           <Col>
@@ -27,11 +28,20 @@ const SearchPage = ({ results }) => {
 }
 
 export const getServerSideProps = async ({ query }) => {
-  const res = await axios.get(`/books/search?q=${encodeURI(query.q)}`)
-  const { results } = res.data
-  return {
-    props: {
-      results
+  try {
+    const res = await axios.get(`/books/search?q=${encodeURI(query.q)}`)
+    const results = pathOr([], ['data', 'results'], res)
+
+    return {
+      props: {
+        results
+      }
+    }
+  } catch (error) {
+    return {
+      props: {
+        error: 'Error'
+      }
     }
   }
 }
