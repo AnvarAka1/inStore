@@ -54,7 +54,7 @@ const LandingPage = ({ slider, books, bookCollections, error }) => {
           <Heading
             text={t('for any taste')}
             href={`/books/categories?l=${i18n.language}`}
-            title={t('Printed and e-books')}
+            title={t('Books')}
           />
         </Col>
       </Row>

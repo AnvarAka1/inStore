@@ -1,4 +1,5 @@
 {
+  "New books": "Yangi kitoblar",
   "All": "Hammasi",
   "Compilations": "To'plamlar",
   "Audio books": "Audiokitoblar",
@@ -87,9 +88,10 @@
   "Address": "Manzili",
   "Help": "Yordam",
   "books": "Kitoblar",
+  "Open full list": "To'liq ro'yxat",
   "for any taste": "Har qanday didga mos",
   "audiobooks": "Audiokitoblar",
-  "Printed and e-books": "Bosma va elektron kitoblar",
+  "Books": "Kitoblar",
   "profile": {
     "orders": {
       "table": {
