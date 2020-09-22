@@ -1,4 +1,5 @@
 {
+  "Books for everyone": "Books for everyone",
   "All": "All",
   "Compilations": "Compilations",
   "Audio books": "Audio books",
@@ -87,7 +88,9 @@
   "Legan name":  "Legan name",
   "Address": "Address",
   "Help": "Help",
+  "Books": "Books",
   "books": "books",
+
   "for any taste": "for any taste",
   "audiobooks": "audiobooks",
   "Printed and e-books": "Printed and e-books",
