@@ -66,7 +66,7 @@ const LandingPage = ({ slider, books, bookCollections, error }) => {
       <Row>
         <Col>
           <NewHeader
-            href={`/books/categories?l=${i18n.language}`}
+            href={`/books/categories/all?l=${i18n.language}`}
             title={t('New books')}
           />
         </Col>
