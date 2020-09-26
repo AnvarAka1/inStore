@@ -67,7 +67,7 @@ const BookPage = ({ bookProps, isAuthorized, query }) => {
 
   const handleCart = (book) => {
     onAddRemoveItem(book)
-    const inCart = onFindInCart(book.id)
+    const inCart = onFindInCart(prop('id', book))
     const add = (
       <>
         {t('Added to cart')}<br />
@@ -130,13 +130,13 @@ const BookPage = ({ bookProps, isAuthorized, query }) => {
                 expandDescription={expandDescription}
                 isDescriptionExpanded={isDescriptionExpanded}
                 cartClicked={() => handleCart(book)}
-                isInCart={onFindInCart(book.id)}
+                isInCart={onFindInCart(prop('id', book))}
                 favouriteClicked={favouriteHandler}
                 isAuthorized={isAuthorized}
               />
 
               <Comments
-                items={book.feedback}
+                items={prop('feedback', book)}
                 rate={rate}
                 onSubmit={commentSubmitHandler}
                 commentControl={commentControl}
@@ -165,7 +165,6 @@ export const getServerSideProps = async ({ query, req }) => {
   try {
     const res = await axios.get(`${lang}/books/${query.id}`, req)
     const bookProps = prop('data', res)
-    console.log(bookProps)
 
     return {
       props: {
@@ -174,7 +173,6 @@ export const getServerSideProps = async ({ query, req }) => {
       }
     }
   } catch (error) {
-    console.log('hey')
     return {
       props: {
         error: 'Error'

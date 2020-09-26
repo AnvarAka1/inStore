@@ -3,6 +3,7 @@ import Moment from 'react-moment'
 import { useTranslation } from 'react-i18next'
 import { prop } from 'ramda'
 import PropTypes from 'prop-types'
+
 import classes from './Check.module.scss'
 
 const Check = ({ order }) => {

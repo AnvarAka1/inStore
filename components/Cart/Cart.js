@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { filter, find, prop, reduce } from 'ramda'
+import { filter, find, prop, path, reduce } from 'ramda'
+import PropTypes from 'prop-types'
 
 import Context from './context'
-import PropTypes from 'prop-types'
+
 export const E_BOOKS_ONLY = 0
 export const PRINTED_ONLY = 1
 export const MIXED = 2
 export const PRINTED_BOOK = 2
 
 const getPrintedBooksCount = reduce((printedBookCounter, book) => {
-  return prop('book_type', book) === PRINTED_BOOK ? ++printedBookCounter : printedBookCounter
+  return path(['book_type', 'id'], book) === PRINTED_BOOK ? ++printedBookCounter : printedBookCounter
 }, 0)
 
 const Cart = ({ children }) => {
@@ -81,6 +82,10 @@ const Cart = ({ children }) => {
       {children}
     </Context.Provider>
   )
+}
+
+Cart.propTypes = {
+  children: PropTypes.object.isRequired
 }
 
 export default Cart

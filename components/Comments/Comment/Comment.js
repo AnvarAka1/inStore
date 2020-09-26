@@ -1,8 +1,9 @@
 import React from 'react'
 import Moment from 'react-moment'
+import PropTypes from 'prop-types'
 
 import classes from './Comment.module.scss'
-import PropTypes from 'prop-types'
+
 import { Stars } from '../../'
 
 const Comment = ({ id, user, rate, text, created_at }) => {

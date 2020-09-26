@@ -1,18 +1,18 @@
 import React from 'react'
 import { Button, Form } from 'react-bootstrap'
-import { prop } from 'ramda'
+import { prop, propOr } from 'ramda'
 import { useTranslation } from 'react-i18next'
 import clsx from 'clsx'
 
 import classes from './Comments.module.scss'
 import Comment from './Comment/Comment'
-import PropTypes from 'prop-types'
+
 import { Stars } from '../'
 
 const Comments = (props) => {
   const { t } = useTranslation()
 
-  const items = prop('items', props)
+  const items = propOr([], 'items', props)
   const rate = prop('rate', props)
   const commentControl = prop('commentControl', props)
   const isAuthorized = prop('isAuthorized', props)

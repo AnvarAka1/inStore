@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Router from 'next/router'
 import { prop } from 'ramda'
 import Fade from 'react-reveal/Fade'
-import { Carousel, Col, Row } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
@@ -22,6 +22,7 @@ const LandingPage = ({ slider, books, bookCollections, error }) => {
   }, [i18n.language])
 
   if (error) return <h3>{error}</h3>
+
   return (
     <>
       <Head>
@@ -52,7 +53,6 @@ const LandingPage = ({ slider, books, bookCollections, error }) => {
         </Col>
         <Col sm={6} xs={12}>
           <Heading
-            // text={t('for any taste')}
             href={`/books/categories?l=${i18n.language}`}
             title={t('Books for everyone')}
           />

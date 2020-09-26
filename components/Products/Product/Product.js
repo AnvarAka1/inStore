@@ -16,6 +16,8 @@ const Product = (props) => {
   const image = prop('image', props)
   const title = prop('title', props)
   const author = prop('author', props)
+  const authorName = prop('title', author)
+  const authorId = prop('id', author)
   const rate = prop('rate', props)
   const currentPrice = prop('current_price', props)
   const price = prop('price', props)
@@ -56,10 +58,10 @@ const Product = (props) => {
             />
           </a>
         </Link>
-        <Link href="/books/authors/[authorId]" as={`/books/authors/${author}`}>
+        <Link href="/books/authors/[authorId]" as={`/books/authors/${authorId}`}>
           <a>
             <TextOverflow>
-              <p className="text-small" title={author}>{author}</p>
+              <p className="text-small" title={authorName}>{authorName}</p>
             </TextOverflow>
           </a>
         </Link>

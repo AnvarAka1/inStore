@@ -1,10 +1,10 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
+import clsx from 'clsx'
 
 import Genre from './Category/Genre'
 import classes from './Category/Category.module.scss'
-import clsx from "clsx";
 
 function Genres ({ items }) {
   const { t } = useTranslation()

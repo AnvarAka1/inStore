@@ -3,9 +3,10 @@ import { Button } from 'react-bootstrap'
 import Link from 'next/link'
 import Fade from 'react-reveal/Fade'
 import { useTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
 
 import classes from './Heading.module.scss'
-import PropTypes from 'prop-types'
+
 const Heading = ({ className, title, text, href }) => {
   const { t } = useTranslation()
 

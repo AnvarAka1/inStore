@@ -54,6 +54,7 @@ export const getServerSideProps = async ({ req, query }) => {
     const bookProps = prop('results', data)
     const paginationProps = getPaginationFromResponse(data)
     const headerTitle = 'Author'
+
     return {
       props: {
         bookProps,

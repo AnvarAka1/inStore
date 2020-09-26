@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { prop } from 'ramda'
 import { useTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
 
 import { parseCookies, setCookie } from '../../helpers/utils'
-import PropTypes from 'prop-types'
+
 function Language ({ children }) {
   const { i18n } = useTranslation()
 

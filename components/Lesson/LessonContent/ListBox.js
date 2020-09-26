@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import classes from './ListBox.module.scss'
-import PropTypes from 'prop-types'
+
 function ListBox ({ title, listItems }) {
   return (
     <div className={classes.ListBox}>

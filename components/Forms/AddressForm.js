@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { FormikGroup } from '../UI'
 import { cities, districts } from '../../lib/locations'
-import PropTypes from 'prop-types'
+
 function AddressForm ({ getFieldProps }) {
   return (
     <React.Fragment>

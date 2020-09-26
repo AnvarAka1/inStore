@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Compilation from './Compilation/Compilation'
 
 import { SliderCarousel } from '../'
-import PropTypes from 'prop-types'
+
 const CompilationsCarousel = ({ items, responsive, onClick }) => {
   const resp = {
     xl: responsive ? (responsive.xl ? responsive.xl : 4) : 4,

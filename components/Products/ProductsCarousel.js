@@ -17,4 +17,7 @@ const productsCarousel = ({ items, responsive }) => {
   return <SliderCarousel items={resp}>{productsView}</SliderCarousel>
 }
 
+productsCarousel.defaultProps = {
+  items: []
+}
 export default React.memo(productsCarousel)

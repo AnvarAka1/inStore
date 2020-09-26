@@ -1,8 +1,9 @@
 import React from 'react'
 import { Col } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
 import Compilation from './Compilation/Compilation'
-import PropTypes from 'prop-types'
+
 const Compilations = ({ items }) => {
   const compilationsView = items.map(item => {
     return (

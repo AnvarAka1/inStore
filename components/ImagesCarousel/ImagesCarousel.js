@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import classes from './ImageCarousel.module.scss'
 
 import { SliderCarousel } from '../'
-import PropTypes from 'prop-types'
+
 const imagesCarousel = ({ items, nextClicked, prevClicked, beforeChange }) => {
   const imagesView = items.map(item => {
     return (

@@ -1,12 +1,13 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
 
 import classes from './MakeOrder.module.scss'
 
 import { DELIVERY_COST } from '../../constants'
 import { useCart } from '../Cart'
-import PropTypes from 'prop-types'
+
 const MakeOrder = ({ productCount, currentPrice, oldPrice, onOrder, disabled }) => {
   const { t } = useTranslation()
   const { getCase } = useCart()

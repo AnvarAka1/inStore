@@ -2,7 +2,8 @@ import React from 'react'
 import { Button } from 'react-bootstrap'
 import ReactHtmlParser from 'react-html-parser'
 import { useTranslation } from 'react-i18next'
-import { prop } from 'ramda'
+import { prop, path } from 'ramda'
+import Link from 'next/link'
 
 import classes from './ProductDescription.module.scss'
 
@@ -12,7 +13,8 @@ const BOOK_TYPES = ['Аудиокнига', 'Печатное издание', '
 const ProductDescription = props => {
   const title = prop('title', props)
   const author = prop('author', props)
-  const bookType = parseInt(prop('book_type', props))
+  const authorName = prop('name', author)
+  const authorId = prop('id', author)
   const description = prop('description', props)
   const price = prop('price', props)
   const currentPrice = prop('current_price', props)
@@ -23,7 +25,7 @@ const ProductDescription = props => {
   const isAuthorized = prop('isAuthorized', props)
   const isDescriptionExpanded = prop('isDescriptionExpanded', props)
   const expandDescription = prop('expandDescription', props)
-  const bookFormat = prop('book_format', props)
+  const bookType = path(['book_type', 'title'], props)
 
   const { t } = useTranslation()
 
@@ -53,7 +55,14 @@ const ProductDescription = props => {
     <div className={classes.ProductDescription}>
       <h2>{title}</h2>
       <div className="d-flex justify-content-between align-items-center">
-        <h4 className="text-secondary mb-0">{author}</h4>
+        <Link href="/books/authors/[authorId]" as={`/books/authors/${authorId}`}>
+          <a>
+            <h4 className="text-secondary mb-0">
+              {authorName}
+            </h4>
+          </a>
+        </Link>
+
         <div className="d-flex ml-4">
           {isAuthorized && (
             <Button onClick={favouriteClicked} className="text-small mr-2" variant="secondary">
@@ -63,9 +72,7 @@ const ProductDescription = props => {
               </div>
             </Button>
           )}
-          <p className="text-small btn btn-secondary">
-            {bookFormat || BOOK_TYPES[bookType - 1]}
-          </p>
+          <p className="text-small btn btn-secondary">{bookType}</p>
         </div>
       </div>
       <p className="text-md mt-3">

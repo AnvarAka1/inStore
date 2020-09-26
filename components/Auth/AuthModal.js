@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Context from './context'
 
 import { useModal } from '../../hooks'
-import PropTypes from 'prop-types'
+
 function AuthModal ({ children }) {
   const authModal = useModal(false)
 
