@@ -27,7 +27,7 @@ function AboutPage () {
           <Card>
             <Card.Body>
               <p>
-                <b>in-Study.uz</b>
+                <b>in-Store.uz</b>
                 {t('faq.about.descriptions.0')}
               </p>
               <p>{t('faq.about.descriptions.1')}</p>

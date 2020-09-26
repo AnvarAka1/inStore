@@ -1,5 +1,5 @@
 import React from 'react'
-import { prop } from 'ramda'
+import { prop, path } from 'ramda'
 import { Col, Row } from 'react-bootstrap'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -13,6 +13,11 @@ import Pagination from '../../../components/Pagination/Pagination'
 import meta from '../../../lib/meta.json'
 import { getPaginationFromResponse } from '../../../components/Pagination/utils'
 
+const responsive = {
+  md: 2,
+  sm: 3,
+  xs: 6
+}
 const BooksByAuthorPage = ({ title, bookProps, paginationProps }) => {
   const router = useRouter()
   const { t } = useTranslation()
@@ -30,7 +35,7 @@ const BooksByAuthorPage = ({ title, bookProps, paginationProps }) => {
         </Col>
       </Row>
       <Row>
-        <Products items={bookProps} />
+        <Products items={bookProps} {...responsive} />
       </Row>
       <Row>
         <Col>
@@ -52,14 +57,15 @@ export const getServerSideProps = async ({ req, query }) => {
     const res = await axios.get(`${lang}/books/author/${authorId}`)
     const data = prop('data', res)
     const bookProps = prop('results', data)
+    const title = path(['0', 'author'], bookProps)
+
     const paginationProps = getPaginationFromResponse(data)
-    const headerTitle = 'Author'
 
     return {
       props: {
         bookProps,
         paginationProps,
-        headerTitle
+        title
       }
     }
   } catch (error) {

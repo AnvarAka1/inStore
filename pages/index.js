@@ -26,8 +26,8 @@ const LandingPage = ({ slider, books, bookCollections, error }) => {
   return (
     <>
       <Head>
-        <title>in-Study.uz | {t('Books library - Tashkent, Uzbekistan')}</title>
-        <meta property="og:title" content="in-Study.uz | Книжная библиотека - Ташкент, Узбекистан" />
+        <title>in-Store.uz | {meta.title}</title>
+        <meta property="og:title" content={meta.title} />
         <meta name="description" content={ReactHtmlParser(meta.description)} />
       </Head>
 
