@@ -1,11 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 function PageTitle ({ children }) {
   return (
-    <h2 className="mb-3">
+    <h1 className="mb-3">
       {children}
-    </h2>
+    </h1>
   )
 }
 
 export default PageTitle
+
+PageTitle.propTypes = {
+  children: PropTypes.any.isRequired
+}

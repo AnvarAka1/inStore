@@ -16,7 +16,7 @@ const success = ({ closed, isWithLink, paymentLink }) => {
           </div>
           <h3>{t('One more step. Click the link')}</h3>
           <div>
-            <a href={paymentLink} target="_blank">
+            <a href={paymentLink} target="_blank" rel="noopener noreferrer">
               {t('Proceed to payment')}
             </a>
           </div>

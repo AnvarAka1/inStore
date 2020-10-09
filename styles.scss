@@ -66,6 +66,9 @@ div {
     margin-bottom: 0;
   }
 }
+h1 {
+  font-size: 2rem;
+}
 
 ul {
   margin: 0;
@@ -312,10 +315,6 @@ p {
 }
 
 .circle {
-  display: flex;
-  align-items: center;
-
-  justify-content: center;
   background: #ff0000;
   border-radius: 50%;
   border: 1px solid white;

@@ -1,20 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { connect } from 'react-redux'
-import Head from 'next/head'
 import Router from 'next/router'
 import { Container } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
+import Head from 'next/head'
+import PropTypes from 'prop-types'
 
 import * as actions from '../store/actions/index'
-import { getStaticCategories } from '../lib/categories'
 import { useForm } from '../hooks/'
 import { AuthModal, Footer, Navbar, NavItems, Search } from '../components/'
 import { useCart } from '../components/Cart'
 import { useAuthModal } from '../components/Auth'
-import { CATEGORIES } from "../constants/categories";
+import { CATEGORIES } from '../constants/categories'
 
 const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
-  const { t } = useTranslation()
+  const { i18n } = useTranslation()
   const { cart } = useCart()
   const [isSignUp, setIsSignUp] = useState(true)
   const [isBooksOpen, setIsBooksOpen] = useState(false)
@@ -57,36 +57,41 @@ const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
     />
   )
   return (
-    <div>
-      <Navbar
-        ref={bookCatsRef}
-        isBooksOpen={isBooksOpen}
-        booksToggle={setIsBooksOpen}
-        name={name}
-        isAuthorized={isAuthorized}
-        cartCount={cart.length}
-        search={search}
-        booksCategories={CATEGORIES}
-        navItems={navItems}
-      />
-      <main className="pt-4 page">
-        <Container fluid={true} className="pl-5 pr-5">
-          {children}
-        </Container>
-      </main>
-      <Footer />
-      {!isAuthorized && (
-        <AuthModal
-          error={error}
-          onAuth={onAuth}
-          showInputMask={showInputMask}
-          isSignUp={isSignUp}
-          modal={authModal}
-          modeHandler={modeHandler}
-          checkboxControl={checkboxControl}
+    <>
+      <Head>
+        <meta name="language" content={i18n.language} />
+      </Head>
+      <div>
+        <Navbar
+          ref={bookCatsRef}
+          isBooksOpen={isBooksOpen}
+          booksToggle={setIsBooksOpen}
+          name={name}
+          isAuthorized={isAuthorized}
+          cartCount={cart.length}
+          search={search}
+          booksCategories={CATEGORIES}
+          navItems={navItems}
         />
-      )}
-    </div>
+        <main className="pt-4 page">
+          <Container fluid={true} className="pl-5 pr-5">
+            {children}
+          </Container>
+        </main>
+        <Footer />
+        {!isAuthorized && (
+          <AuthModal
+            error={error}
+            onAuth={onAuth}
+            showInputMask={showInputMask}
+            isSignUp={isSignUp}
+            modal={authModal}
+            modeHandler={modeHandler}
+            checkboxControl={checkboxControl}
+          />
+        )}
+      </div>
+    </>
   )
 }
 const mapStateToProps = state => {
@@ -104,3 +109,12 @@ const mapDispatchToProps = dispatch => {
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+
+Layout.propTypes = {
+  children: PropTypes.any,
+  error: PropTypes.any,
+  isAuthorized: PropTypes.bool.isRequired,
+  name: PropTypes.string,
+  onAuth: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired
+}

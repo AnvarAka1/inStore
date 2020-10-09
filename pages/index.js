@@ -6,7 +6,6 @@ import { Col, Row } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
-import ReactHtmlParser from 'react-html-parser'
 
 import { CompilationsCarousel, Heading, NewHeader, ProductsCarousel } from '../components'
 import { getLang } from '../helpers/utils'
@@ -26,9 +25,9 @@ const LandingPage = ({ slider, books, bookCollections, error }) => {
   return (
     <>
       <Head>
-        <title>in-Store.uz | {meta.title}</title>
-        <meta property="og:title" content={meta.title} />
-        <meta name="description" content={ReactHtmlParser(meta.description)} />
+        <title>in-Store.uz | {t(meta.title)}</title>
+        <meta property="og:title" content={t(meta.title)} />
+        <meta name="description" content={t(meta.description)} />
       </Head>
 
       <Row className="mb-4">

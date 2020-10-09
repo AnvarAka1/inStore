@@ -53,7 +53,7 @@ const ProductDescription = props => {
 
   return (
     <div className={classes.ProductDescription}>
-      <h2>{title}</h2>
+      <h1>{title}</h1>
       <div className="d-flex justify-content-between align-items-center">
         <Link href="/books/authors/[authorId]" as={`/books/authors/${authorId}`}>
           <a>

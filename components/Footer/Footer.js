@@ -31,7 +31,7 @@ const Footer = () => {
                       return (
                         <li key={index}>
                           <a href={social.href}
-                            target="_blank noopener noreferrer">
+                            target="_blank" rel="noopener noreferrer">
                             <div>
                               <img src={social.image} alt="social" />
                             </div>

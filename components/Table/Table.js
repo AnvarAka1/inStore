@@ -6,28 +6,30 @@ import { useTranslation } from 'react-i18next'
 const table = ({ rows, lang }) => {
   const { t } = useTranslation()
 
-  return <Table striped={true} bordered={true} hover={true}>
-    <thead>
-      <tr>
-        <th>{t('profile.orders.table.book')}</th>
-        <th>{t('profile.orders.table.price')}</th>
-        <th>{t('profile.orders.table.author')}</th>
-      </tr>
-    </thead>
-    <tbody>
-      {rows.map(row => (
-        <tr key={row.id}>
-          <td>
-            <Link href={`/books/[id]?l=${lang}`} as={`/books/${row.id}?l=${lang}`}>
-              <a>{row.title}</a>
-            </Link>
-          </td>
-          <td>{row.current_price}</td>
-          <td>{row.author}</td>
+  return (
+    <Table striped={true} bordered={true} hover={true}>
+      <thead>
+        <tr>
+          <th>{t('profile.orders.table.book')}</th>
+          <th>{t('profile.orders.table.price')}</th>
+          <th>{t('profile.orders.table.author')}</th>
         </tr>
-      ))}
-    </tbody>
-  </Table>
+      </thead>
+      <tbody>
+        {rows.map(row => (
+          <tr key={row.id}>
+            <td>
+              <Link href={`/books/[id]?l=${lang}`} as={`/books/${row.id}?l=${lang}`}>
+                <a>{row.title}</a>
+              </Link>
+            </td>
+            <td>{row.current_price}</td>
+            <td>{row.author}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  )
 }
 
 export default table

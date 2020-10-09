@@ -12,6 +12,7 @@ import axios from '../../axios-api'
 import { Check, Table } from '../../components/'
 import Pagination from '../../components/Pagination/Pagination'
 import { getPaginationFromResponse } from '../../components/Pagination/utils'
+import { ORDER_CANCEL } from '../../constants/api'
 
 const OrdersPage = ({ results, paginationProps, error }) => {
   const { t, i18n } = useTranslation()

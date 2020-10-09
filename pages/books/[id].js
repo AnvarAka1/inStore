@@ -9,7 +9,7 @@ import Head from 'next/head'
 import { prop } from 'ramda'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-
+import schema from '../../lib/schema/bookDetail.json'
 import { useCart, useCartManipulator } from '../../components/Cart'
 import { useAuthModal } from '../../components/Auth'
 import {
@@ -113,6 +113,10 @@ const BookPage = ({ bookProps, isAuthorized, query }) => {
         <meta name="description" content={prop('description', book)} />
         <meta name="description" property="og:description" content={prop('description', book)} />
         <meta name="og:image" property="og:image" content={prop('image', book)} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
       </Head>
       <Row>
         <Col sm={4}>

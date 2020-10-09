@@ -1,0 +1,15 @@
+{
+  "@context" : "http://schema.org",
+  "@type" : "Product",
+  "name" : "Shaytanat 2-jild",
+  "image" : "https://api.in-study.uz/media/books/book_j8YJxjs.webp",
+  "description" : "Аннотация к книге &quot;Shaytanat 2-jild&quot;",
+  "offers" : {
+    "@type" : "Offer",
+    "price" : "46000сум"
+  },
+  "aggregateRating" : {
+    "@type" : "AggregateRating",
+    "ratingValue" : "[star] [star] [star] [star] [star]"
+  }
+}
