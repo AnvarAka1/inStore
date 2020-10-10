@@ -222,7 +222,7 @@ const AuthModal = (props) => {
               </div>
 
               <h5 className={classes.Or}>or</h5>
-              {error && <Alert variant="danger" />}
+              {error && <Alert variant="danger">{t(error)}</Alert>}
               {form}
             </div>
           </div>

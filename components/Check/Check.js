@@ -17,44 +17,24 @@ const Check = ({ order }) => {
   return <table className={classes.Check}>
     <tbody>
       <tr>
-        <td>
-          <p>{t('profile.orders.check.number')} №</p>
-        </td>
-        <td>
-          <p>{id}</p>
-        </td>
+        <td><p>{t('profile.orders.check.number')} №</p></td>
+        <td><p>{id}</p></td>
       </tr>
       <tr>
-        <td>
-          <p>{t('profile.orders.check.paymentType')}:</p>
-        </td>
-        <td>
-          <p>{paymentType}</p>
-        </td>
+        <td><p>{t('profile.orders.check.paymentType')}:</p></td>
+        <td><p>{paymentType}</p></td>
       </tr>
       <tr>
-        <td>
-          <p>{t('profile.orders.check.paymentStatus')}:</p>
-        </td>
-        <td>
-          <p>{paymentStatus}</p>
-        </td>
+        <td><p>{t('profile.orders.check.paymentStatus')}:</p></td>
+        <td><p>{paymentStatus}</p></td>
       </tr>
       <tr>
         <td><p>{t('profile.orders.check.date')}:</p></td>
-        <td>
-          <p>
-            <Moment format="hh:mm:ss DD/MM/YYYY">{createdAt}</Moment>
-          </p>
-        </td>
+        <td><p><Moment format="hh:mm:ss DD/MM/YYYY">{createdAt}</Moment></p></td>
       </tr>
       <tr>
-        <td>
-          <p>{t('profile.orders.check.amount')}:</p>
-        </td>
-        <td>
-          <p>{amount}</p>
-        </td>
+        <td><p>{t('profile.orders.check.amount')}:</p></td>
+        <td><p>{amount}</p></td>
       </tr>
     </tbody>
   </table>
