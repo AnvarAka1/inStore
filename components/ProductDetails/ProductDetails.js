@@ -7,12 +7,11 @@ import Social from '../Social/Social'
 
 const productDetails = props => {
   const rows = [
-    ['ISBN: ', props.isbn],
     ['Страниц: ', props.page_count],
-    ['Масса: ', props.mass],
     ['Тип обложки', props.cover],
     ['Подробнее: ', props.link]
   ]
+
   return (
     <div className={classes.ProductDetails}>
       <div className={classes.Image}>

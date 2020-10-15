@@ -8,7 +8,6 @@ import Link from 'next/link'
 import classes from './ProductDescription.module.scss'
 
 const MAX_LENGTH = 128
-const BOOK_TYPES = ['Аудиокнига', 'Печатное издание', 'Электронная книга']
 
 const ProductDescription = props => {
   const title = prop('title', props)

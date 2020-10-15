@@ -65,18 +65,12 @@ export const getServerSideProps = async ({ req, query }) => {
     const resultsProps = prop('results', data)
     const headerTitle = 'Все книги | In-Study.uz'
     return {
-      props: {
-        headerTitle,
-        url,
-        resultsProps
-      }
+      props: { headerTitle, url, resultsProps }
     }
   } catch (err) {
     const error = 'Error'
     return {
-      props: {
-        error
-      }
+      props: { error }
     }
   }
 }

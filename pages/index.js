@@ -25,9 +25,9 @@ const LandingPage = ({ slider, books, bookCollections, error }) => {
   return (
     <>
       <Head>
-        <title>in-Store.uz | {t(meta.title)}</title>
-        <meta property="og:title" content={t(meta.title)} />
-        <meta name="description" content={t(meta.description)} />
+        <title>in-Store.uz | {t('title')}</title>
+        <meta property="og:title" content={t('title')} />
+        <meta name="description" content={t('title')} />
       </Head>
 
       <Row className="mb-4">
