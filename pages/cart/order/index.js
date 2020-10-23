@@ -171,7 +171,6 @@ export const getServerSideProps = async ({ req, query }) => {
     const res = await axios.get('profile', req)
     const profile = prop('data', res)
     const queryCase = parseInt(prop('case', query))
-
     return {
       props: {
         profile,
@@ -179,9 +178,11 @@ export const getServerSideProps = async ({ req, query }) => {
       }
     }
   } catch (err) {
+    const queryCase = parseInt(prop('case', query))
     return {
       props: {
-        err
+        queryCase,
+        err: 'Error'
       }
     }
   }
