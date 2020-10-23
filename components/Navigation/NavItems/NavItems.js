@@ -6,7 +6,7 @@ import { prop } from 'ramda'
 
 import classes from './NavItems.module.scss'
 
-const navItems = (props) => {
+const NavItems = (props) => {
   const {
     authModalShow,
     cartCount,
@@ -55,7 +55,11 @@ const navItems = (props) => {
           <Link href="/profile/settings">
             <div>
               <p className="color-accent d-sm-inline-block d-none">{name}</p>
-              <img src="/images/icons/user.png" className="icon icon-sm clear-left float-right d-sm-none d-block" alt="login" />
+              <img
+                src="/images/icons/user.png"
+                className="icon icon-sm clear-left float-right d-sm-none d-block"
+                alt="login"
+              />
             </div>
           </Link>
           <div onClick={onLogout} className="text-secondary text-small">
@@ -115,4 +119,4 @@ const getLangs = () => [
   },
 
 ]
-export default navItems
+export default NavItems

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Router from 'next/router'
 import { prop } from 'ramda'
 import Fade from 'react-reveal/Fade'
@@ -52,7 +52,7 @@ const LandingPage = ({ slider, books, bookCollections, error }) => {
         </Col>
         <Col sm={6} xs={12}>
           <Heading
-            href={`/books/categories?l=${i18n.language}`}
+            href={`/books/categories/all?l=${i18n.language}`}
             title={t('Books for everyone')}
           />
         </Col>
