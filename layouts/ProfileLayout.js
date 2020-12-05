@@ -54,6 +54,7 @@ const ProfileLayout = ({ children, title }) => {
   const [navigationItems, setNavigationItems] = useState([])
 
   const { cart } = useCart()
+
   useEffect(() => {
     axios
       .get('profile/info')

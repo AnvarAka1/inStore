@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react'
-import Router from 'next/router'
+import React from 'react'
 import { prop } from 'ramda'
 import Fade from 'react-reveal/Fade'
 import { Col, Row } from 'react-bootstrap'
@@ -15,10 +14,6 @@ import Banner from '../components/Banner/Banner'
 
 const LandingPage = ({ slider, books, bookCollections, error }) => {
   const { t, i18n } = useTranslation()
-
-  useEffect(() => {
-    Router.replace(Router.pathname, `/?l=${i18n.language}`)
-  }, [i18n.language])
 
   if (error) return <h3>{error}</h3>
 
@@ -94,18 +89,11 @@ export const getServerSideProps = async ({ req }) => {
     const slider = prop('slider', data)
 
     return {
-      props: {
-        feedback,
-        slider,
-        books,
-        bookCollections,
-      }
+      props: { feedback, slider, books, bookCollections }
     }
   } catch (err) {
     return {
-      props: {
-        error: 'Error'
-      }
+      props: { error: 'Error' }
     }
   }
 }

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 import { prop } from 'ramda'
+import PropTypes from 'prop-types'
 
 import classes from './NavItems.module.scss'
 
@@ -116,7 +117,16 @@ const getLangs = () => [
     title: 'Uz',
     image: '/images/flags/uz.png',
     value: 'uz'
-  },
-
+  }
 ]
+
+NavItems.propTypes = {
+  authModalShow: PropTypes.bool.isRequired,
+  cartCount: PropTypes.number.isRequired,
+  isAuthorized: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  onLogout: PropTypes.func.isRequired
+}
+
 export default NavItems

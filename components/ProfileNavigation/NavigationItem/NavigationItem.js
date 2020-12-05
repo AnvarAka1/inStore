@@ -3,12 +3,12 @@ import clsx from 'clsx'
 
 import classes from './NavigationItem.module.scss'
 
-import CategoryLink from '../../Categories/Category/CategoryLink'
+import ProfileLink from '../../profile/ProfileLink'
 
 const navigationItem = ({ href, children, icon, count }) => {
   return (
     <li className={clsx(classes.NavigationItem, 'list mt-2')}>
-      <CategoryLink href={href}>
+      <ProfileLink href={href} as={href}>
         <div className="d-flex align-items-center">
           <img src={icon} alt={children} className="icon icon-sm mr-2" />
           <p className="text-lg">
@@ -16,7 +16,7 @@ const navigationItem = ({ href, children, icon, count }) => {
             <>{count !== null && `: ${count}`}</></p>
 
         </div>
-      </CategoryLink>
+      </ProfileLink>
     </li>
   )
 }

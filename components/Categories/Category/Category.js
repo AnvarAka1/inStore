@@ -4,15 +4,14 @@ import PropTypes from 'prop-types'
 
 import CategoryLink from './CategoryLink'
 
-function Category ({ title, icon, link }) {
+function Category ({ id, title_ru }) {
   const { t, i18n } = useTranslation()
-
+  const path = `/books/categories/${id}?l=${i18n.language}`
   return (
-    <CategoryLink href={`${link}?l=${i18n.language}`}>
+    <CategoryLink href="/books/categories/[id]" as={path}>
       <div className="d-flex align-items-center">
         <div className="d-flex align-items-center">
-          <img src={icon} alt={title} className="icon icon-sm mr-2" />
-          <p className="text-lg mr-1">{t(title)}</p>
+          <p className="text-lg mr-1">{t(title_ru)}</p>
         </div>
         <div className="category__tick">
           <img src="/images/icons/tick.png" className="icon icon-sm" alt="active" />
@@ -23,9 +22,8 @@ function Category ({ title, icon, link }) {
 }
 
 Category.propTypes = {
-  title: PropTypes.any.isRequired,
-  icon: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired
+  title_ru: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 }
 
 export default Category

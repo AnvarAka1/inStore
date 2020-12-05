@@ -1,20 +1,20 @@
 import React from 'react'
 import Link from 'next/link'
-import { path } from 'ramda'
-import { useRouter } from 'next/router'
+import { prop } from 'ramda'
 import PropTypes from 'prop-types'
+import clsx from 'clsx'
 
-function GenreLink ({ href, children }) {
-  const router = useRouter()
+import useQuery from '../../../helpers/useQuery'
 
-  const routerGenre = parseInt(path(['query', 'genre'], router))
-  const hrefGenre = path(['query', 'genre'], href)
-
-  const className = routerGenre === hrefGenre ? 'active' : ''
+function GenreLink ({ id, href, as, children }) {
+  const { queryParams } = useQuery()
+  const routerGenre = parseInt(prop('genre', queryParams))
 
   return (
-    <Link href={href} passHref={true}>
-      <a className={className}>
+    <Link href={href} as={as} passHref={true}>
+      <a className={clsx({
+        'active': routerGenre === id
+      })}>
         {children}
       </a>
     </Link>
@@ -22,6 +22,8 @@ function GenreLink ({ href, children }) {
 }
 
 GenreLink.propTypes = {
+  id: PropTypes.number.isRequired,
+  as: PropTypes.string.isRequired,
   href: PropTypes.object.isRequired,
   children: PropTypes.any.isRequired
 }

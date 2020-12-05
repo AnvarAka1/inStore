@@ -6,12 +6,15 @@ import { useTranslation } from 'react-i18next'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
 
+import axios from '../axios-api'
 import * as actions from '../store/actions/index'
 import { useForm } from '../hooks/'
 import { AuthModal, Footer, Navbar, NavItems, Search } from '../components/'
 import { useCart } from '../components/Cart'
 import { useAuthModal } from '../components/Auth'
 import { CATEGORIES } from '../constants/categories'
+import useList from '../hooks/useList'
+import * as API from '../constants/api'
 
 const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
   const { i18n } = useTranslation()
@@ -23,6 +26,7 @@ const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
   const authModal = useAuthModal()
   const checkboxControl = useForm()
   const searchControl = useForm()
+  const categoryList = useList(API.CATEGORY_LIST)
 
   useEffect(() => {
     document.addEventListener('click', handleClick)
@@ -70,7 +74,7 @@ const Layout = ({ children, onAuth, onLogout, isAuthorized, name, error }) => {
           isAuthorized={isAuthorized}
           cartCount={cart.length}
           search={search}
-          booksCategories={CATEGORIES}
+          booksCategories={categoryList.results}
           navItems={navItems}
         />
         <main className="pt-4 page">

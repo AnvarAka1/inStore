@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Col, Row } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 
 import { MakeOrder } from '../components'
 import { useCart } from '../components/Cart'
+import useQuery from '../helpers/useQuery'
 
 const CartLayout = ({ children, isOrderPage }) => {
   const { i18n } = useTranslation()
@@ -15,7 +16,7 @@ const CartLayout = ({ children, isOrderPage }) => {
   const [orderCase, setOrderCase] = useState(0)
   const { cart, getCase } = useCart()
   const router = useRouter()
-  const routerRef = useRef(router)
+  const { replaceParams } = useQuery()
 
   useEffect(() => {
     const oldPrice = reduce((sum, product) => {
@@ -31,15 +32,11 @@ const CartLayout = ({ children, isOrderPage }) => {
     setOrderCase(getCase())
   }, [cart, getCase])
 
+  const replace = useCallback(replaceParams, [orderCase])
+
   useEffect(() => {
-    routerRef.current.replace({
-      pathname: routerRef.current.pathname,
-      query:{
-        l: i18n.language,
-        case: orderCase
-      }
-    })
-  }, [i18n.language, orderCase])
+    replace({ case: orderCase })
+  }, [orderCase, replace])
 
   const handleOrder = () => {
     if (!isOrderPage) {
