@@ -117,6 +117,11 @@ const getLangs = () => [
     title: 'Uz',
     image: '/images/flags/uz.png',
     value: 'uz'
+  },
+  {
+    title: 'Уз',
+    image: '/images/flags/uz.png',
+    value: 'kr'
   }
 ]
 

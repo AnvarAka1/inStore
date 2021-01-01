@@ -1,19 +1,18 @@
-import React, { useCallback, useEffect } from 'react'
-import { Col, Row } from 'react-bootstrap'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'react-i18next'
+import React from 'react'
+import {Col, Row} from 'react-bootstrap'
+import {useRouter} from 'next/router'
+import {useTranslation} from 'react-i18next'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
-import { prop } from 'ramda'
+import {prop} from 'ramda'
 
-import { CategoriesLayout } from '../../../layouts'
-import { Products } from '../../../components'
+import {CategoriesLayout} from '../../../layouts'
+import {Products} from '../../../components'
 import Pagination from '../../../components/Pagination/Pagination'
 import meta from '../../../lib/meta.json'
-import { getLang } from '../../../helpers/utils'
+import {getLang} from '../../../helpers/utils'
 import axios from '../../../axios-api'
-import { getPaginationFromResponse } from '../../../components/Pagination/utils'
-import useQuery from '../../../helpers/useQuery'
+import {getPaginationFromResponse} from '../../../components/Pagination/utils'
 
 const BooksPage = (props) => {
   const {
@@ -23,27 +22,19 @@ const BooksPage = (props) => {
     paginationProps
   } = props
 
-  const { t, i18n } = useTranslation()
-  const { replaceParams } = useQuery()
+  const { t } = useTranslation()
   const router = useRouter()
-
-
 
   return (
     <>
       <Head>
-        <title>{headerTitle || 'Some header'}</title>
+        <title>In-store</title>
         <meta property="og:title" content={headerTitle || 'Some title'} />
         <meta name="description" content={headerTitle || 'Some description'} />
       </Head>
       <CategoriesLayout>
         {bookProps && (
           <React.Fragment>
-            <Row>
-              <Col>
-                <h2 className="mb-3">{t(title)}</h2>
-              </Col>
-            </Row>
             <Row>
               <Products items={bookProps} />
             </Row>
@@ -74,7 +65,6 @@ export const getServerSideProps = async ({ query, req }) => {
     const data = prop('data', res)
     const bookProps = prop('results', data)
     const paginationProps = getPaginationFromResponse(data)
-
     const title = 'Audio books'
     const headerTitle = 'Список Аудиокниг в категории "Книги"'
 
