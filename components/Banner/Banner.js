@@ -36,9 +36,6 @@ function Banner ({ slider }) {
                 />
               </a>
             </Link>
-            <Carousel.Caption>
-              <h3>{title}</h3>
-            </Carousel.Caption>
           </Carousel.Item>
         ) : null
       })}

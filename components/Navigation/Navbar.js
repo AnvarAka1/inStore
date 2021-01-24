@@ -68,11 +68,6 @@ const Navbar = React.forwardRef(
                   </a>
                   {isBooksOpen && (
                     <ul>
-                      <li className={classes.CategoryItem}>
-                        <Link href={`/books/categories/all?l=${i18n.language}`}>
-                          <a onClick={() => booksToggle(false)}>{t('Все книги')}</a>
-                        </Link>
-                      </li>
                       {booksCategories.map(cat => (
                         <li key={cat.id} className={classes.CategoryItem}>
                           <Link
