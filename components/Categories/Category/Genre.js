@@ -2,16 +2,22 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
+import { path } from 'ramda'
 
 import GenreLink from './GenreLink'
 
 function Genre ({ id, title }) {
   const { i18n } = useTranslation()
   const router = useRouter()
+  const catId = path(['query', 'id'], router)
 
   const href = {
-    pathname: router.pathname
+    pathname: router.pathname,
+    query: {
+      id: catId
+    }
   }
+
   const as = {
     as: router.asPath,
     query: {
@@ -19,6 +25,7 @@ function Genre ({ id, title }) {
       l: i18n.language
     }
   }
+
   return (
     <GenreLink id={id} href={href} as={as}>
       <div className="d-flex align-items-center">
@@ -39,7 +46,6 @@ function Genre ({ id, title }) {
 
 Genre.propTypes = {
   title: PropTypes.string.isRequired,
-  pathname: PropTypes.string,
   id: PropTypes.number.isRequired
 }
 

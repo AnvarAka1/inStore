@@ -7,6 +7,7 @@ import CategoryLink from './CategoryLink'
 function Category ({ id, title_ru }) {
   const { t, i18n } = useTranslation()
   const path = `/books/categories/${id}?l=${i18n.language}`
+  console.log(path)
   return (
     <CategoryLink href="/books/categories/[id]" as={path}>
       <div className="d-flex align-items-center">
