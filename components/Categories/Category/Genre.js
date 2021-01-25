@@ -14,16 +14,14 @@ function Genre ({ id, title }) {
   const href = {
     pathname: router.pathname,
     query: {
-      id: catId
+      id: catId,
+      genre: id,
+      l: i18n.language
     }
   }
 
   const as = {
-    as: router.asPath,
-    query: {
-      genre: id,
-      l: i18n.language
-    }
+    as: router.asPath
   }
 
   return (
