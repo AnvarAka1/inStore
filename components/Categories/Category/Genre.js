@@ -2,26 +2,23 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
-import { path } from 'ramda'
 
 import GenreLink from './GenreLink'
 
 function Genre ({ id, title }) {
   const { i18n } = useTranslation()
   const router = useRouter()
-  const catId = path(['query', 'id'], router)
 
   const href = {
     pathname: router.pathname,
-    query: {
-      id: catId,
-      genre: id,
-      l: i18n.language
-    }
   }
 
   const as = {
-    as: router.asPath
+    as: router.asPath,
+    query: {
+      genre: id,
+      l: i18n.language
+    }
   }
 
   return (
