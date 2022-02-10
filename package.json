@@ -31,7 +31,7 @@
 		"next": "^9.3.4",
 		"next-fonts": "^1.1.0",
 		"next-redux-wrapper": "^6.0.0",
-		"node-sass": "^4.13.1",
+		"node-sass": "^7.0.0",
 		"nprogress": "^0.2.0",
 		"prop-types": "^15.7.2",
 		"query-string": "^6.13.1",
